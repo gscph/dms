@@ -1,0 +1,449 @@
+var isCFOValid = true;
+var count = 0;
+var baseModelId = "";
+$(document).ready(function () {
+    // Initialize editable grid on-load
+    $(document).trigger("initializeEditableGrid", gridInstance);
+    isFieldsDisabled = false;
+    DisableFields();
+    $('#gsc_cfostatus').attr('disabled', true);
+
+    //Create Print Button
+    CreatePrintButton();
+
+    // Condition in CFOStatus by AMR.
+    var cfoStatus = $("#gsc_cfostatus :selected").text();
+    if (cfoStatus == "Open") {
+        createSubmitButton();
+        createCancelButton();
+    }
+    else if (cfoStatus == "Submitted") {
+        createSubmitButton();
+        createGVPOButton();
+        createCancelButton();
+        $(".SubmitBtn").attr("disabled", true);
+        $("#gsc_committedfirmorderquantitypn").attr("Readonly", true);
+        $("#gsc_cfodescription").attr("Readonly", true);
+        $("#gsc_cfomonth").attr("Readonly", true);
+        $("#gsc_year").attr("Readonly", true);
+        $("#gsc_remarks").attr("Readonly", true);
+    }
+    else if (cfoStatus == 'Cancelled' || cfoStatus == 'Completed' || cfoStatus == 'Closed') {
+        setTimeout(function () {
+            DMS.Helpers.DisableEntityForm();
+        }, 1000);
+    }
+
+    var cfoStatus = $("#gsc_cfostatus :selected").text();
+    $('#gsc_generatepo').addClass("hidden");
+    $('label[for=gsc_generatepo]').addClass("hidden");
+    var submissionDatePicker = $("#gsc_submissiondate").siblings('.datetimepicker');
+    submissionDatePicker.children('span').addClass('hidden');
+    submissionDatePicker.children('input').attr('readonly', 'readonly');
+
+    if (cfoStatus != "Open") {
+        $(".editable-grid-toolbar").find('.cancel').addClass('disabled');
+        $(".editable-grid-toolbar").find('.addnew').addClass('disabled');
+    }
+
+    //set page validators
+    if (typeof (Page_Validators) == 'undefined') return;
+
+    //Validator when the discounts are not equal to 100%
+    var cfoQtyValidator = document.createElement('span');
+    cfoQtyValidator.style.display = "none";
+    cfoQtyValidator.id = "RequiredFieldValidatordiscounts";
+    cfoQtyValidator.errormessage = "CFO Quantity cannot be less than its original value.";
+    cfoQtyValidator.validationGroup = "";
+    cfoQtyValidator.initialvalue = "";
+    cfoQtyValidator.evaluationfunction = function () {
+        if (isCFOValid == true) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    Page_Validators.push(cfoQtyValidator);
+
+    //Submit Button
+    function createSubmitButton() {
+        var SubmitIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-thumbs-o-up');
+        var SubmitBtn = DMS.Helpers.CreateButton('button', 'btn btn-primary SubmitBtn', '', ' SUBMIT', SubmitIcon);
+        var SubmitConfirmation = DMS.Helpers.CreateModalConfirmation({ id: 'SubmitModal', headerTitle: ' Submit CFO', Body: 'Are you sure you want to Submit this CFO Record?' });
+        $(".crmEntityFormView").append(SubmitConfirmation);
+        SubmitBtn.on('click', function (evt) {
+            SubmitConfirmation.find('.confirmModal').on('click', function () {
+                SubmitCFO();
+            });
+            SubmitConfirmation.modal('show');
+        });
+        DMS.Helpers.AppendButtonToToolbar(SubmitBtn);
+    }
+
+    //Cancel Button
+    function createCancelButton() {
+        var cancelButton = DMS.Helpers.CreateAnchorButton('btn btn-primary cancelButton', '', ' CANCEL', DMS.Helpers.CreateFontAwesomeIcon('fa-ban'));
+        var cancelConfirmation = DMS.Helpers.CreateModalConfirmation({ id: 'CancelModal', headerTitle: ' Cancel CFO', Body: 'Are you sure you want to cancel this CFO record?' });
+        $(".crmEntityFormView").append(cancelConfirmation);
+        cancelButton.on('click', function (evt) {
+            cancelConfirmation.find('.confirmModal').on('click', function () {
+                $("#gsc_cfostatus").prop("disabled", false);
+                $('#gsc_cfostatus').val('100000003');
+                cancelConfirmation.modal('hide');
+                $("#UpdateButton").click();
+            });
+            cancelConfirmation.modal('show');
+        });
+        DMS.Helpers.AppendButtonToToolbar(cancelButton);
+    }
+
+    //GeneratePO Button
+    function createGVPOButton() {
+        var gvpoIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-file');
+        var gvpoBtn = DMS.Helpers.CreateButton('button', 'btn btn-primary GVPO', '', ' GENERATE VPO', gvpoIcon);
+        var gvpoConfirmation = DMS.Helpers.CreateModalConfirmation({ id: 'gvpoModal', headerTitle: ' Generate VPO', headerIcon: 'fa fa-file', Body: 'CFO quantity details with zero VPO balance will not be            created. Are you sure you want to proceed?' });
+        $(".crmEntityFormView").append(gvpoConfirmation);
+        gvpoBtn.on('click', function (evt) {
+            gvpoConfirmation.find('.confirmModal').on('click', function () {
+                $('#gsc_generatepo').attr('checked', true);
+                $("#UpdateButton").click();
+            });
+            gvpoConfirmation.modal('show');
+        });
+        DMS.Helpers.AppendButtonToToolbar(gvpoBtn);
+    }
+
+    //Print A Copy Button
+    function CreatePrintButton() {
+        var printIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-print');
+        var printBtn = DMS.Helpers.CreateButton('button', 'btn btn-primary printCFO', '', ' PRINT A COPY', printIcon);
+        DMS.Helpers.AppendButtonToToolbar(printBtn);
+        printBtn.on('click', function (evt) {
+            if (Page_ClientValidate("")) {
+                var param1var = DMS.Helpers.GetUrlQueryString('id');
+                var protocol = window.location.protocol;
+                var host = window.location.host;
+                var url = protocol + "//" + host + "/report/?reportname={b748e668-623e-e611-80d9-00155d010e2c}&reportid=" + param1var;
+                window.open(url, 'blank', 'scrollbars=1,resizable=1,width=850,height=1000');
+            }
+        });
+    }
+
+    function DisableFields() {
+        var cfoMonth = $("#gsc_cfomonth option:selected").html();
+        var monthToday = new Date();
+        monthToday = monthToday.getMonth();
+
+        var difference = parseInt(cfoMonth) - parseInt(monthToday);
+
+        if (difference <= 1) {
+            isFieldsDisabled = true;
+
+            setTimeout(function () {
+                DMS.Helpers.DisableEntityForm();
+            }, 3000);
+
+        }
+    }
+
+
+    function GeneratePO(event) {
+        if (!isFieldsDisabled) {
+            var checkedCount = 0;
+            var orderNull = false;
+            var orderInvalid = false;
+            var saveData = hotInstance.getData();
+
+            $.each(saveData, function (row, columns) {
+                var ischecked = hotInstance.getDataAtRowProp(row, 'gsc_selected');
+                if (ischecked) {
+                    checkedCount += 1;
+                    var order = hotInstance.getDataAtRowProp(row, 'gsc_orderquantity');
+                    if (order == 0) {
+                        orderNull = true;
+                    }
+                    else {
+                        var remaining = hotInstance.getDataAtRowProp(row, 'gsc_remainingallocatedquantity');
+                        if (parseInt(order) > parseInt(remaining)) {
+                            orderInvalid = true;
+                        }
+                    }
+                }
+            });
+
+            if (checkedCount == 0) {
+                $(".generate-selectone").remove();
+                $(".generate-ordernull").remove();
+                $(".generate-orderinvalid").remove();
+                var errorNotif = document.createElement("div");
+                errorNotif.setAttribute("id", "ValidationSummaryEntityFormView");
+                errorNotif.setAttribute("class", "generate-selectone validation-summary alert alert-error alert-danger alert-block ui-draggable");
+                errorNotif.setAttribute("role", "alert");
+                errorNotif.innerHTML = '<h2> <span class="fa fa-info-circle">' +
+                    '</span> Cannot generate Purchase Order. Please select at least one record. </h2>';
+                $(".crmEntityFormView").append(errorNotif);
+            } else {
+                if (orderNull) {
+                    $(".generate-selectone").remove();
+                    $(".generate-ordernull").remove();
+                    $(".generate-orderinvalid").remove();
+                    var errorNotif = document.createElement("div");
+                    errorNotif.setAttribute("id", "ValidationSummaryEntityFormView");
+                    errorNotif.setAttribute("class", "generate-ordernull validation-summary alert alert-error alert-danger alert-block ui-draggable");
+                    errorNotif.setAttribute("role", "alert");
+                    errorNotif.innerHTML = '<h2> <span class="fa fa-info-circle">' +
+                        '</span> Cannot generate Purchase Order. Order Quantity cannot be zero (0) or null. </h2>';
+                    $(".crmEntityFormView").append(errorNotif);
+                }
+                else if (orderInvalid) {
+                    $(".generate-selectone").remove();
+                    $(".generate-ordernull").remove();
+                    $(".generate-orderinvalid").remove();
+                    var errorNotif = document.createElement("div");
+                    errorNotif.setAttribute("id", "ValidationSummaryEntityFormView");
+                    errorNotif.setAttribute("class", "generate-orderinvalid validation-summary alert alert-error alert-danger alert-block ui-draggable");
+                    errorNotif.setAttribute("role", "alert");
+                    errorNotif.innerHTML = '<h2> <span class="fa fa-info-circle">' +
+                        '</span> Cannot generate Purchase Order. Order Quantity cannot be greater than the Remaining Allocated Quantity. </h2>';
+                    $(".crmEntityFormView").append(errorNotif);
+                }
+                else {
+                    $('#gsc_generatepo').attr('checked', true);
+                    $(".generate-selectone").remove();
+                    $(".generate-ordernull").remove();
+                    $(".generate-orderinvalid").remove();
+                    $(".save").click();
+                    $("#UpdateButton").click();
+                }
+            }
+        }
+        event.preventDefault();
+    }
+
+    function SubmitCFO(event) {
+        if (!isFieldsDisabled) {
+            var today = new Date();
+            var dataType = $("#gsc_submissiondate").data("type");
+            var dateFormat = dataType == "date" ? "M/D/YYYY" : "M/D/YYYY h:mm A"
+            var formattedDate = today == "" ? "" : moment(today).utc().format(dateFormat);
+            $("#gsc_submissiondate").siblings('.datetimpicker').val(formattedDate);
+            $("#gsc_submissiondate").val(today.format('yyyy-MM-ddTHH:mm:ss.0000000Z'));
+            $("#UpdateButton").click();
+        }
+        event.preventDefault();
+    }
+
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+    }
+    setTimeout(disableTab, 3000);
+
+    function disableTab()
+    {
+        $('.disabled').attr("tabindex", "-1");
+    }
+    
+});
+
+baseModelSelectData = DMS.Helpers.GetOptionListSet("/_odata/basemodel?$filter=gsc_isglobalrecord eq true or gsc_branchid/Id eq (Guid'" + $("#gsc_branchid").val() + "')", "gsc_iv_vehiclebasemodelid", "gsc_basemodelpn");
+productSelectData = DMS.Helpers.GetOptionListSet("/_odata/parentproduct?$filter=gsc_isglobalrecord eq true or gsc_branchid/Id eq (Guid'" + $("#gsc_branchid").val() + "')", "productid", "name");
+
+var gridInstance = {
+    initialize: function () {
+
+        $('<div id="CFODetails" class="editable-grid"></div>').appendTo('.content-wrapper');
+        var $container = document.getElementById('CFODetails');
+        var idQueryString = DMS.Helpers.GetUrlQueryString('id');
+        var odataQuery = '/_odata/gsc_sls_committedfirmorderquantitydetail?$filter=gsc_committedfirmorderquantityid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
+        var screenSize = $(window).width() - 105;
+        var options = {
+            dataSchema: {
+                gsc_sls_committedfirmorderquantitydetailid: null,
+                gsc_vehiclebasemodelid: { Id: null, Name: null }, gsc_productid: { Id: null, Name: null },
+                gsc_cfoquantity: null, gsc_allocatedquantity: null, gsc_vpobalfromprevmonth: null,
+                gsc_vpoquantityforsubmission: null, gsc_submittedvpo: null, gsc_vpobalance: null,
+                gsc_siteid: { Id: null, Name: null }, gsc_remarks: null
+            },
+            colHeaders: [
+            'Base Model', 'Model Description', 'CFO Quantity',
+            'MMPC Allocated Quantity', 'VPO Bal from Pev Month',
+            'VPO Quantity for Submission', 'Submitted VPO',
+            'VPO Balance', 'Site', 'Remarks'
+            ],
+            columns: [
+            {
+                data: 'gsc_vehiclebasemodelid', readOnly: true, className: "htCenter htMiddle", width: 50, renderer: function (instance, td, row, col, prop, value, cellProperties) {
+                    return lookupRenderer2(baseModelSelectData, instance, td, row, col, prop, value, cellProperties);
+                },
+                editor: 'select2',
+                select2Options: { // these options are the select2 initialization options 
+                    data: baseModelSelectData,
+                    dropdownAutoWidth: true,
+                    allowClear: true,
+                    width: 'resolve',
+                }
+            },
+            {
+                data: 'gsc_productid', readOnly: true, className: "product-editor htCenter htMiddle", width: 50, renderer: function (instance, td, row, col, prop, value, cellProperties) {
+                    return lookupRenderer2(productSelectData, instance, td, row, col, prop, value, cellProperties);
+                },
+                editor: 'select2',
+                select2Options: { // these options are the select2 initialization options 
+                    data: productSelectData,
+                    dropdownAutoWidth: true,
+                    allowClear: true,
+                    width: 'resolve',
+                }
+            },
+            { data: 'gsc_cfoquantity', renderer: isCFOQtyReadonly, readOnly: false, className: "htCenter htMiddle", width: 50 },
+            { data: 'gsc_allocatedquantity', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 50 },
+            { data: 'gsc_vpobalfromprevmonth', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 50 },
+            { data: 'gsc_vpoquantityforsubmission', renderer: isVPOQtyReadonly, readOnly: true, className: "htCenter htMiddle", width: 55 },
+            { data: 'gsc_submittedvpo', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 50 },
+            { data: 'gsc_vpobalance', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 50 },
+            { data: 'gsc_siteid', renderer: multiPropertyRenderer, readOnly: true, className: "htCenter htMiddle", width: 50 },
+            { data: 'gsc_remarks', renderer: stringRenderer, readOnly: false, className: "htCenter htMiddle", width: 100 }
+            ],
+            gridWidth: screenSize,
+            addNewRows: true,
+            deleteRows: true
+        }
+        var sectionName = "CommittedFirmQuantityDetails";
+        var attributes = [{ key: 'gsc_cfoquantity', type: 'System.Int32' }, { key: 'gsc_vpoquantityforsubmission', type: 'System.Int32' },
+            { key: 'gsc_vehiclebasemodelid', type: 'Microsoft.Xrm.Sdk.EntityReference' },
+            { key: 'gsc_productid', type: 'Microsoft.Xrm.Sdk.EntityReference' },
+            { key: 'gsc_committedfirmorderquantityid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'gsc_sls_committedfirmorderquantity', value: idQueryString }];
+        var model = { id: 'gsc_sls_committedfirmorderquantitydetailid', entity: 'gsc_sls_committedfirmorderquantitydetail', attr: attributes };
+        var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model, {
+            gsc_sls_committedfirmorderquantitydetailid: null,
+            gsc_vehiclebasemodelid: { Id: null, Name: null }, gsc_productid: { Id: null, Name: null },
+            gsc_cfoquantity: null, gsc_allocatedquantity: null, gsc_vpobalfromprevmonth: null,
+            gsc_vpoquantityforsubmission: null, gsc_submittedvpo: null, gsc_vpobalance: null,
+            gsc_siteid: { Id: null, Name: null }, gsc_remarks: null
+        });
+
+        hotInstance.addHook('afterLoadData', function () {
+            if (count == 0) {
+                $(".editable-grid-toolbar .save").hide();
+                $btnSaveCopy = DMS.Helpers.CreateButton('button', "btn-primary btn SaveCopy", '', ' SAVE', DMS.Helpers.CreateFontAwesomeIcon('fa-floppy-o'));
+                $btnSaveCopy.append(" ");
+                $(".editable-grid-toolbar").find('.delete').before($btnSaveCopy);
+                $btnSaveCopy.click(function (e) {
+                    if (!Page_ClientValidate(""))
+                        e.preventDefault();
+                    else
+                        $(".save").click();
+                });
+            }
+            count++;
+        });
+
+        function getProduct() {
+
+            if (baseModelId == "")
+                productSelectData = DMS.Helpers.GetOptionListSet("/_odata/parentproduct?$filter=gsc_isglobalrecord eq true or gsc_branchid/Id eq (Guid'" + $("#gsc_branchid").val() + "')", "productid", "name");
+            else
+                productSelectData = DMS.Helpers.GetOptionListSet("/_odata/parentproduct?$filter=(gsc_isglobalrecord eq true and gsc_vehiclemodelid/Id eq (Guid'" + baseModelId + "')) or gsc_branchid/Id eq (Guid'" + $("#gsc_branchid").val() + "') ", "productid", "name");
+
+            return productSelectData;
+        }
+
+        function isCFOQtyReadonly(instance, td, row, col, prop, value, cellProperties) {
+            if ($("#gsc_cfostatus :selected").text() != "Open") {
+                cellProperties.readOnly = true;
+            }
+            else {
+                if (hotInstance.getDataAtRowProp(row, "gsc_allocatedquantity") != null) {
+                    cellProperties.readOnly = true;
+                }
+            }
+            
+            if (value === null || (typeof value === 'undefined')) {
+                Handsontable.renderers.NumericRenderer.apply(this, arguments);
+                return;
+            }
+
+            Handsontable.renderers.NumericRenderer.apply(this, arguments);
+
+        }
+
+        function isVPOQtyReadonly(instance, td, row, col, prop, value, cellProperties) {
+            var vpoBalance = hotInstance.getDataAtRowProp(row, "gsc_vpobalance");
+            if (vpoBalance != 0 && vpoBalance != null) {
+                cellProperties.readOnly = false;
+            }
+            
+            if (value === null || (typeof value === 'undefined')) {
+                Handsontable.renderers.NumericRenderer.apply(this, arguments);
+                return;
+            }
+
+            Handsontable.renderers.NumericRenderer.apply(this, arguments);
+
+        }
+
+        function lookupRenderer2(optionsList, instance, td, row, col, prop, value, cellProperties) {
+
+            if (hotInstance.getDataAtRowProp(row, "gsc_sls_committedfirmorderquantitydetailid") == null) {
+                cellProperties.readOnly = false;
+            }
+
+            var rowValue = instance.getDataAtRowProp(row, prop);
+
+            if (rowValue != null && (typeof rowValue !== 'undefined') && rowValue != "" && (typeof optionsList !== 'undefined')) {
+                for (var index = 0; index < optionsList.length; index++) {
+                    if (rowValue == optionsList[index].id) {
+                        value = {
+                            Id: optionsList[index].id,
+                            Name: optionsList[index].text
+                        };
+                    }
+                }
+                td.style.textAlign = "center";
+                if (typeof value.Name !== 'undefined') {
+                    td.innerHTML = value.Name;
+                }
+                return td;
+            }
+
+            td.style.textAlign = "center";
+            td.innerHTML = '';
+            return td;
+        }
+
+        hotInstance.addHook('afterChange', function (changes) {
+            if (changes != null) {
+                $.each(changes, function (index, element) {
+                    var row = element[0];
+                    var attribute = element[1];
+                    var oldValue = element[3];
+                    var newValue = element[2];
+                    if (attribute == "gsc_cfoquantity") {
+                        if (oldValue < newValue) {
+                            isCFOValid = false;
+                        }
+                        else {
+                            isCFOValid = true;
+                        }
+                    }
+                    else if (attribute == "gsc_vehiclebasemodelid") {
+                        baseModelId = hotInstance.getDataAtCell(row, "gsc_vehiclebasemodelid");
+                        /*productSelectData = DMS.Helpers.GetOptionListSet("/_odata/product?$filter=(gsc_isglobalrecord eq true and gsc_vehiclemodelid/Id eq (Guid'" + baseModelId + "')) or gsc_branchid/Id eq (Guid'" + $("#gsc_branchid").val() + "') ", "productid", "name");*/
+
+                        hotInstance.setDataAtRowProp(row, "gsc_productid", null);
+                        //hotInstance.getActiveEditor(row, 2).options.data = productSelectData;
+                        // console.log(hotInstance.getCellEditor(row, 1).options.data);
+                    }
+
+                });
+            }
+        });
+    }
+}

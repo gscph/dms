@@ -1,0 +1,17 @@
+!include $(SRCBASE)\QA\TestApplication.mak
+
+TARGETNAME = DeviceRegistration
+TARGETTYPE = PROGRAM
+UMTYPE = console
+
+MANAGED_CODE = 1
+
+SOURCES = \
+	CommandLineParameters.cs \
+	..\..\SampleCode\CS\HelperCode\DeviceIdManager.cs \
+	Program.cs
+	
+REFERENCES=\
+	$(CLR_REF_PATH)\System.ServiceModel.metadata_dll
+
+NO_BINPLACE=1

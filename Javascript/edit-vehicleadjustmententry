@@ -1,0 +1,594 @@
+$(document).ready(function (){
+  var adjustmentVarianceStatus = $('#gsc_adjustmentvariancestatus').val();
+  var status = $('.record-status').html();
+  
+    $('#AvailableVehicles .entity-grid.subgrid').on('loaded', function() {
+       if ($('a:contains("REFRESH")').is(':visible'))
+            $('a:contains("REFRESH")').click();
+	});
+	
+   //Hide Inventory Id to Allocate field
+  $('#gsc_inventoryidtoallocate').hide();
+  $('#gsc_inventoryidtoallocate_label').hide();
+  $('#gsc_adjustmentidtounallocate').hide();
+  $('#gsc_adjustmentidtounallocate_label').hide();
+  $('#gsc_adjustmentvariancestatus').hide();
+  $('#gsc_adjustmentvariancestatus_label').hide();
+
+  drawAllocateButton(); 
+  drawPrintButton();
+  drawRemoveButton();
+  
+  if(adjustmentVarianceStatus == 100000000 || status == "")
+  {
+    drawCancelButton();
+    drawPostButton();
+  }
+  
+  $('#VehicleAdjustmentVarianceEntryDetail_Subgrid .entity-grid.subgrid').on('loaded', function () {
+        if ($('#VehicleAdjustmentVarianceEntryDetail_Subgrid tr').length == 1 && $('.record-status').html() == "Open") {
+            if ($('.post').length == 1)
+                $('.post').addClass("permanent-disabled disabled");
+        }
+    });
+  
+  setTimeout(function () {
+        RefreshAvailableItems($(".btn-primary").closest("div #AvailableVehicles"), 1, 4);
+
+        $('.btn-primary').on('click', function (e) {
+
+            var $subgrid = $(this).closest(".subgrid");
+            var $subgridId = $subgrid.parent().attr("id");
+
+            if ($subgridId == "AvailableVehicles") {
+                e.preventDefault();
+                e.stopPropagation();
+
+                RefreshAvailableItems($subgrid.parent(), 1, 4);
+            }
+        });
+
+    }, 3000);
+
+
+    function RefreshAvailableItems($parent, page, PageSize) {
+        var $subgrid = $parent.children(".subgrid");
+        var $table = $subgrid.children(".view-grid").find("table");
+        var $tbody = $("<tbody></tbody>");
+        var $errorMessage = $subgrid.children(".view-error");
+        var $emptyMessage = $subgrid.children(".view-empty");
+        var $accessDeniedMessage = $subgrid.children(".view-access-denied");
+        var $loadingMessage = $subgrid.children(".view-loading");
+        var $pagination = $subgrid.children(".view-pagination");
+        var url = $subgrid.data("get-url");
+        var layout = $subgrid.data("view-layouts");
+        var configuration = layout[0].Configuration;
+        var base64SecureConfiguration = layout[0].Base64SecureConfiguration;
+        var sortExpression = $table.data("sort-expression");
+
+        $subgrid.children(".view-grid").find("tbody").remove();
+
+        $errorMessage.hide().prop("aria-hidden", true);
+        $emptyMessage.hide().prop("aria-hidden", true);
+        $accessDeniedMessage.hide().prop("aria-hidden", true);
+
+        $loadingMessage.show().prop("aria-hidden", false);
+
+        $pagination.hide();
+
+        var odataUrl = "/_odata/inventory";
+        $.ajax({
+            type: "get",
+            async: true,
+            url: odataUrl,
+            success: function (inventory) {
+
+                var filteredInventory = inventory.value.filter(FilterInventory);
+
+                ReCreateInventoryTable($parent, filteredInventory, page, PageSize);
+            }
+        });
+
+    }
+
+    //filtered inventory of the filter criteria
+    function FilterInventory(data) {
+
+        var colorIdFilter = $("#gsc_colorid_name").val();
+        var siteIdFilter = $("#gsc_siteid").val();
+        var modelDescriptionFilter = $("#gsc_productid").val();
+        var modelCodeFilter = $("#gsc_modelcode").val();
+        var optionCodeFilter = $("#gsc_optioncode").val();
+        var baseModelFilter = $('#gsc_vehiclebasemodelid').val();
+
+        var colorId = data["gsc_color"];
+        var siteId = data["gsc_iv_productquantity-gsc_siteid"];
+        var productId = data["gsc_iv_productquantity-gsc_productid"];
+        var modelCode = data["gsc_modelcode"];
+        var optionCode = data["gsc_optioncode"];
+        var baseModel = data["gsc_iv_productquantity-gsc_vehiclemodelid"];
+
+        var removeData = false;
+
+        if (colorIdFilter != null && colorIdFilter != "")
+            if (colorId != colorIdFilter)
+                removeData = true;
+
+        if (siteIdFilter != null && siteIdFilter != "")
+            if (siteId != null) {
+                if (siteId.Id != siteIdFilter)
+                    removeData = true;
+            }
+            else
+                removeData = true;
+
+        if (modelDescriptionFilter != null && modelDescriptionFilter != "")
+            if (productId != null) {
+                if (productId.Id != modelDescriptionFilter)
+                    removeData = true;
+            }
+            else
+                removeData = true;
+
+        if (baseModelFilter != null && baseModelFilter != "")
+            if (baseModel != null) {
+                if (baseModel.Id != baseModelFilter)
+                    removeData = true;
+            }
+            else
+                removeData = true;
+
+        if (modelCodeFilter != null && modelCodeFilter != "")
+            if (modelCodeFilter != modelCode)
+                removeData = true;
+
+        if (optionCodeFilter != null && optionCodeFilter != "")
+            if (optionCodeFilter != optionCode)
+                removeData = true;
+
+        if (removeData == false)
+            return data;
+
+    }
+
+    function ReCreateInventoryTable($parent, data, page, PageSize) {
+        var $subgrid = $parent.children(".subgrid");
+        var $table = $subgrid.children(".view-grid").find("table");
+        var $tbody = $("<tbody></tbody>");
+        var $errorMessage = $subgrid.children(".view-error");
+        var $emptyMessage = $subgrid.children(".view-empty");
+        var $accessDeniedMessage = $subgrid.children(".view-access-denied");
+        var $loadingMessage = $subgrid.children(".view-loading");
+        var $pagination = $subgrid.children(".view-pagination");
+        var $rowCount = $subgrid.children(".row-count-container");
+        var url = $subgrid.data("get-url");
+        var layout = $subgrid.data("view-layouts");
+        var configuration = layout[0].Configuration;
+        var base64SecureConfiguration = layout[0].Base64SecureConfiguration;
+        var sortExpression = $table.data("sort-expression");
+
+        $subgrid.children(".view-grid").find("tbody").remove();
+
+        $errorMessage.hide().prop("aria-hidden", true);
+        $emptyMessage.hide().prop("aria-hidden", true);
+        $accessDeniedMessage.hide().prop("aria-hidden", true);
+
+        $loadingMessage.show().prop("aria-hidden", false);
+
+
+        if (typeof data !== typeof undefined && data !== false && (data == null || data.length == 0)) {
+            $emptyMessage.fadeIn().prop("aria-hidden", false);
+            $loadingMessage.hide().prop("aria-hidden", true);
+            $rowCount.hide();
+            //$pagination.hide();
+            return;
+        }
+
+        var columns = $.map($table.find("th"), function (e) {
+            return $(e).data('field');
+        });
+
+        var nameColumn = columns.length == 0 ? "" : columns[0] == "col-select" ? columns[1] : columns[0];
+
+        $subgrid.data("total-record-count", data.length);
+
+        var pageStart = (parseInt(page) - 1) * parseInt(PageSize);
+        var pageEnd = parseInt(pageStart) + (parseInt(PageSize - 1));
+
+        data.forEach(function (item, index) {
+
+            if ((index < pageStart)) {
+                return true;
+            }
+            else if ((index > pageEnd)) {
+                return false;
+            }
+
+            var record = item;
+            var name = record.gsc_inventorypn;
+
+            var $tr = $("<tr></tr>")
+                .attr("data-id", record.gsc_iv_inventoryid)
+                .attr("data-entity", configuration.EntityName)
+                .attr("data-name", name)
+                .on("focus", function () {
+                    $(this).addClass("active");
+                })
+                .on("blur", function () {
+                    $(this).removeClass("active");
+                });
+
+            for (var j = 0; j < columns.length; j++) {
+                var found = false;
+
+                $.each(item, function (key, value) {
+                    if (key == columns[j]) {
+                        var html = value;
+                        if (typeof value === 'object') {
+                            var $td = $("<td></td>").attr('data-value', JSON.stringify(value));
+                            if (value != null && typeof value.Name !== 'undefined') {
+                                $td.html(value.Name);
+                            }
+                            $tr.append($td);
+                            found = true;
+                            return false;
+                        }
+
+                        var $td = $("<td></td>")
+                            .attr("data-attribute", value)
+                            .attr("data-value", value)
+                            .html(html);
+                        $tr.append($td);
+                        found = true;
+                        return false;
+                    }
+                });
+                if (!found) {
+                    var typeColumn = columns[j];
+
+                    var $td = $("<td></td>")
+                        .attr("data-attribute", columns[j]);
+
+                    $tr.append($td);
+                };
+            }
+
+            $tbody.append($tr);
+        });
+
+        $subgrid.children(".view-grid").children("table").append($tbody.show());
+        $subgrid.fadeIn();
+        initializePagination(data, $parent, page);
+        $loadingMessage.hide().prop("aria-hidden", true);
+
+    }
+
+    function initializePagination(data, $parent, PageNumber) {
+        // requires ~/js/jquery.bootstrap-pagination.js
+
+        var $subgrid = $parent.children(".subgrid");
+        var $pagination = $subgrid.children(".view-pagination");
+        var ItemCount = data.length;
+        var PageSize = 4;
+        var PageCount = Math.ceil(ItemCount / PageSize);
+        //var PageCount = Math.round(ItemCount / PageSize); //Add by ARM
+
+        if (typeof data === typeof undefined || data === false || data == null) {
+            $pagination.hide();
+            return;
+        }
+
+        if (PageCount <= 1) {
+            $pagination.hide();
+            return;
+        }
+
+        $pagination
+            .data("pagesize", PageSize)
+            .data("pages", PageCount)
+            .data("current-page", PageNumber)
+            .data("count", ItemCount)
+            .off("click")
+            .pagination({
+                total_pages: $pagination.data("pages"),
+                current_page: $pagination.data("current-page"),
+                callback: function (event, pg) {
+                    var $li = $(event.target).closest("li");
+                    if ($li.not(".disabled").length > 0 && $li.not(".active").length > 0) {
+                        $pagination.show();
+                        RefreshAvailableItems($parent, pg, PageSize);
+                    }
+                    event.preventDefault();
+                }
+            })
+            .show();
+    }
+	
+	function drawAllocateButton() {
+    var allocateButton = document.createElement('BUTTON');
+    var allocateButtonLabel = document.createTextNode(' ADJUSTMENT');
+    var allocateSpan = document.createElement('SPAN');
+    allocateSpan.className = 'fa fa-minus';
+    allocateButton.appendChild(allocateSpan);
+    allocateButton.appendChild(allocateButtonLabel);
+    allocateButton.className = 'allocate-link btn btn-primary action disabled';
+    allocateButton.style = "margin-left:5px";
+    allocateButton.addEventListener('click', allocateVehicle);
+    
+    $('#AvailableVehicles').find('.view-toolbar.grid-actions.clearfix').append(allocateButton);
+  }
+  
+  function drawRemoveButton()
+  {
+    var removeButton = document.createElement("BUTTON");
+    var remove = document.createElement("SPAN");
+    remove.className = "fa fa-lock";
+    removeButton.appendChild(remove);
+    removeButton.style = "margin-left:5px";
+    removeButton.setAttribute("id", "removeButton");
+    var removeButtonLabel = document.createTextNode(" REMOVE");
+    removeButton.appendChild(removeButtonLabel);
+    removeButton.className = "btn btn-primary action disabled";
+    removeButton.addEventListener("click", removeVehicle);
+    $("#VehicleAdjustmentVarianceEntryDetail_Subgrid").find(".view-toolbar.grid-actions.clearfix").append(removeButton);
+  }
+
+   function drawCancelButton()
+  {
+    var cancelButton = document.createElement("BUTTON");
+    var cancel = document.createElement("SPAN");
+    cancel.className = "fa fa-ban";
+    cancelButton.appendChild(cancel);
+    var cancelButtonLabel = document.createTextNode(" CANCEL");
+    cancelButton.appendChild(cancelButtonLabel);
+    cancelButton.className = "btn btn-primary action";
+    cancelButton.addEventListener("click", cancelRecord);
+    $('.toolbar-right').append($('<li></li>').append(cancelButton));
+
+  }
+
+  function drawPostButton() {
+    var postButton = document.createElement('BUTTON');
+    var postButtonLabel = document.createTextNode(' POST');
+    var postSpan = document.createElement('SPAN');
+    postSpan.className = 'fa fa-thumb-tack';
+    postButton.appendChild(postSpan);
+    postButton.appendChild(postButtonLabel);
+    postButton.addEventListener('click', postVehicle);
+ 
+    if (adjustmentVarianceStatus == 100000000) {
+      postButton.className ='post btn btn-primary action';
+    }
+    else {
+      postButton.className = 'post btn btn-primary action disabled';
+    }
+    
+    $('.toolbar-right').append($('<li></li>').append(postButton));
+  }
+  
+  function drawPrintButton() {
+    var printButton = document.createElement('BUTTON');
+    var printButtonLabel = document.createTextNode(' PRINT');
+    var printSpan = document.createElement('SPAN');
+    printSpan.className = 'fa fa-print';
+    printButton.appendChild(printSpan);
+    printButton.appendChild(printButtonLabel);
+    printButton.addEventListener('click', printAdjustmentVariance);
+
+    printButton.className = 'btn btn-primary action printBtn';
+    
+    $('.toolbar-right').append($('<li></li>').append(printButton));
+  }
+  
+  
+ function allocateVehicle(event) {
+    var count = 0;
+    var id = '';
+    
+    $('#AvailableVehicles tbody tr td.multi-select-cbx').each(function () {
+      if ($(this).data('checked') == "true") {
+        count += 1;
+        id = $(this).closest('tr').data('id');
+      }
+    });
+
+    if (count == 1) {
+      $("#gsc_inventoryidtoallocate").val(id);
+     
+      $("#UpdateButton").click();
+    }
+    else {
+      //$(".allocate-link").attr('disabled', true);
+      var allocationNotif = document.createElement("div");
+      allocationNotif.innerHTML = '<div">' +
+         '<div class="alert alert-danger">' +
+         '<span class="glyphicon glyphicon-exclamation-sign"></span>' +
+         'You can only allocate one vehicle per transaction.</div>';
+      allocationNotif.setAttribute("id", "allocationNotif");
+      $("#confirmOnExitMessage").after(allocationNotif);
+      $('html,body').scrollTop(0);
+    }
+  }
+  
+  //ADDED
+
+     $(document).on('click', '#AvailableVehicles .view-grid table tbody tr', AddEventtoAvailableClick);
+  
+  setTimeout(function () {
+        $('#AvailableVehicles .view-grid table tbody td.multi-select-cbx').click(function () {
+            AddEventtoAvailableClick();
+        });
+    }, 3000);
+ function AddEventtoAvailableClick() {
+      var id;
+      var counter =0;
+     
+       $('#AvailableVehicles tbody tr td.multi-select-cbx').each(function () {
+            if ($(this).data('checked') == "true") {
+              counter ++;
+            }
+        });
+        if(counter >0  && (adjustmentVarianceStatus == 100000000 || status == ""))
+        {
+  
+          $('.allocate-link').removeClass("disabled");
+        }
+        else
+        {
+
+          $('.allocate-link').addClass("disabled");
+        }
+    }
+    //END
+  
+  function cancelRecord(event){
+
+    $('#gsc_adjustmentvariancestatus').val('100000002');
+    $("#UpdateButton").click();
+
+  }
+  var removeNotification = false;
+  $(document).on('click', '#VehicleAdjustmentVarianceEntryDetail_Subgrid .view-grid table tbody tr', AddEventtoAdjustmentClick);
+
+    setTimeout(function () {
+        $('#VehicleAdjustmentVarianceEntryDetail_Subgrid .view-grid table tbody td.multi-select-cbx').click(function () {
+            AddEventtoAdjustmentClick();
+        });
+    }, 3000);
+
+    function AddEventtoAdjustmentClick() {
+      var id;
+      var latestId = $('#gsc_adjustmentidtounallocate').val();
+      var counter =0;
+     
+       $('#VehicleAdjustmentVarianceEntryDetail_Subgrid tbody tr td.multi-select-cbx').each(function () {
+            if ($(this).data('checked') == "true") {
+
+              counter ++;
+              id = $(this).closest('tr').data('id');
+
+              if(id != latestId)
+              {
+                latestId = id;
+                $('#gsc_adjustmentidtounallocate').val(latestId);
+
+              }
+            }
+        });
+
+        if(counter > 1)
+          removeNotification = true;
+        if(counter >0 && (adjustmentVarianceStatus == 100000000 || status == ""))
+        {
+ 
+          $('#removeButton').removeClass("disabled");
+        }
+        else
+        {
+
+          $('#removeButton').addClass("disabled");
+          $('#gsc_adjustmentidtounallocate').val("");
+        }
+    }
+
+    function removeVehicle(event) {
+
+      if(removeNotification)
+      {
+        var notify = document.createElement("div");
+        notify.innerHTML = '<div">' +
+           '<div class="alert alert-danger">' +
+           '<span class="glyphicon glyphicon-exclamation-sign"></span>' +
+           'You can only remove one adjustment vehicle record at a time.</div>';
+        notify.setAttribute("id", "notify");
+        $("#confirmOnExitMessage").after(notify);
+        $('html,body').scrollTop(0);
+
+      }
+      else
+       $('#gsc_adjustmentvariancestatus').val('100000000');
+        $('#UpdateButton').click();
+        event.preventDefault();
+    }
+       
+  function postVehicle() {
+    $.blockUI({ message: null, overlayCSS: { opacity: .3 } });
+  
+    var div = document.createElement("DIV");
+    div.className = "view-loading message text-center";
+    div.style.cssText = 'position: absolute; top: 50%; left: 50%;margin-right: -50%;display: block;';
+    var span = document.createElement("SPAN");
+    span.className = "fa fa-2x fa-spinner fa-spin";
+    div.appendChild(span);
+    $(".content-wrapper").append(div);
+                
+    $('#gsc_adjustmentvariancestatus').prop('disabled', false);
+    $('#gsc_adjustmentvariancestatus').val('100000001');
+    $('#UpdateButton').click();
+  }
+  
+  function printAdjustmentVariance() {
+    var param1var = getQueryVariable('id');
+    var protocol = window.location.protocol;
+    var host = window.location.host;
+    var url = protocol + '//' + host + '/report/?reportname={f4f1218e-1574-e611-80dc-00155d010e2c}&reportid=' + param1var;
+    window.open(url, 'windowOpenTab', 'scrollbars=1,resizable=1,width=850,height=1000');
+    event.preventDefault();
+  }
+  
+  
+  //Set fields to readonly on 'Posted' status
+  if (status == "Posted" || status == "Cancelled") {
+    $('.control > input').attr('readonly', true);
+    $('.control > textarea').attr('readonly', true);
+    $('.datetimepicker > .form-control').attr('readonly', true);
+    $('.clearlookupfield').remove();
+    $('.launchentitylookup').remove();
+    $('.input-group-addon').remove();
+    $('#AvailableVehicles .btn-primary').addClass("disabled");
+    $('#VehicleAdjustmentVarianceEntryDetail_Subgrid .btn-primary').addClass("disabled");
+    $('#gsc_documenttype').attr('disabled', true);
+    $('.delete-link').addClass("permanent-disabled disabled");
+    $('#UpdateButton').addClass("permanent-disabled disabled");
+    checkSubgrid("AdjustedVehicles");
+    
+    if(status == "Cancelled")
+    {
+      $('#SubmitButton').addClass("permanent-disabled disabled");
+      $(".printBtn").addClass("permanent-disabled disabled");
+    }
+  }
+  
+  function checkSubgrid(tableDataName) {
+        if ($('table[data-name="'+tableDataName+'"]').is(":visible")) {
+            $('table[data-name="'+tableDataName+'"]').parent().addClass("permanent-disabled");
+            $('table[data-name="'+tableDataName+'"]').parent().attr("disabled", "disabled");
+        }
+        else {
+            setTimeout(function () { checkSubgrid(tableDataName); }, 50);
+        }
+    }
+  
+  
+  function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split('=');
+      if (pair[0] == variable) {
+        return pair[1];
+      }
+    }
+  }
+
+  function preventDefault(event){
+    event.preventDefault();
+  }
+
+ setTimeout(disableTab, 3000);
+
+    function disableTab()
+    {
+        $('.disabled').attr("tabindex", "-1");
+    }
+});

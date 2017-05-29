@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{61D6CFF8-35F1-40B5-A453-98E1A80C47AE}</ProjectGuid>
+    <ProjectTypeGuids>{4C25E9B5-9FA6-436c-8E19-B395D2A65FAF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GSC.Rover.DMS.Platform.Plugins</RootNamespace>
+    <AssemblyName>GSC.Rover.DMS.Platform.Plugins</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>GSC.Rover.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Adxstudio.Xrm">
+      <HintPath>..\..\..\..\References\Adxstudio Framework\Adxstudio.Xrm.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.Account, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\Account\bin\Release\GSC.Rover.DMS.BusinessLogic.Account.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.AllocatedVehicle">
+      <HintPath>..\..\..\GSC.Rover.DMS\AllocatedVehicle\bin\Release\GSC.Rover.DMS.BusinessLogic.AllocatedVehicle.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.AppliedCharges">
+      <HintPath>..\..\..\GSC.Rover.DMS\AppliedCharges\bin\Release\GSC.Rover.DMS.BusinessLogic.AppliedCharges.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.AppliedPriceList">
+      <HintPath>..\..\..\GSC.Rover.DMS\AppliedPriceList\bin\Release\GSC.Rover.DMS.BusinessLogic.AppliedPriceList.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.ApproverSetup">
+      <HintPath>..\..\..\GSC.Rover.DMS\ApproverSetup\bin\Release\GSC.Rover.DMS.BusinessLogic.ApproverSetup.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.CashReceipt, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7c9699a7e9c67cb1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\CashReceipt\bin\Release\GSC.Rover.DMS.BusinessLogic.CashReceipt.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.ChargesItem">
+      <HintPath>..\..\..\GSC.Rover.DMS\ChargesItem\bin\Release\GSC.Rover.DMS.BusinessLogic.ChargesItem.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder">
+      <HintPath>..\..\..\GSC.Rover.DMS\CommittedFirmOrder\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity">
+      <HintPath>..\..\..\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantityDetail, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\CommittedFirmOrderDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantityDetail.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\Common\bin\Debug\GSC.Rover.DMS.BusinessLogic.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.Contact, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\Contact\bin\Release\GSC.Rover.DMS.BusinessLogic.Contact.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.DocumentChecklist, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7c9699a7e9c67cb1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\DocumentChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.DocumentChecklist.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\ExtendedPriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.GVDReport">
+      <HintPath>..\..\..\GSC.Rover.DMS\GVDReport\bin\Release\GSC.Rover.DMS.BusinessLogic.GVDReport.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.IDRequest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\IDRequest\bin\Release\GSC.Rover.DMS.BusinessLogic.IDRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.IDSequence">
+      <HintPath>..\..\..\GSC.Rover.DMS\IDSequence\bin\Release\GSC.Rover.DMS.BusinessLogic.IDSequence.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.Insurance">
+      <HintPath>..\..\..\GSC.Rover.DMS\Insurance\bin\Release\GSC.Rover.DMS.BusinessLogic.Insurance.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.InventoryMovement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\InventoryMovementHandler\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.Invitation">
+      <HintPath>..\..\..\GSC.Rover.DMS\Invitation\bin\Release\GSC.Rover.DMS.BusinessLogic.Invitation.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.Invoice">
+      <HintPath>..\..\..\GSC.Rover.DMS\Invoice\bin\Release\GSC.Rover.DMS.BusinessLogic.Invoice.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.Opportunity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7c9699a7e9c67cb1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\Opportunity\bin\Release\GSC.Rover.DMS.BusinessLogic.Opportunity.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.OrderPlanning">
+      <HintPath>..\..\..\GSC.Rover.DMS\OrderPlanning\bin\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanning.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail">
+      <HintPath>..\..\..\GSC.Rover.DMS\OrderPlanningDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.PostDeliveryAdminSetup">
+      <HintPath>..\..\..\GSC.Rover.DMS\PostDeliveryAdminSetup\bin\Release\GSC.Rover.DMS.BusinessLogic.PostDeliveryAdminSetup.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.PriceList">
+      <HintPath>..\..\..\GSC.Rover.DMS\PriceList\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceList.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.PriceListItem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7c9699a7e9c67cb1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\PriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.Product">
+      <HintPath>..\..\..\GSC.Rover.DMS\Product\bin\Release\GSC.Rover.DMS.BusinessLogic.Product.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.Prospect">
+      <HintPath>..\..\..\GSC.Rover.DMS\Prospect\bin\Release\GSC.Rover.DMS.BusinessLogic.Prospect.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.ProspectInquiry">
+      <HintPath>..\..\..\GSC.Rover.DMS\ProspectInquiry\bin\Release\GSC.Rover.DMS.BusinessLogic.ProspectInquiry.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.PurchaseOrder">
+      <HintPath>..\..\..\GSC.Rover.DMS\PurchaseOrder\bin\Release\GSC.Rover.DMS.BusinessLogic.PurchaseOrder.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.Quote, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7c9699a7e9c67cb1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\Quote\bin\Release\GSC.Rover.DMS.BusinessLogic.Quote.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.QuoteAccessory">
+      <HintPath>..\..\..\GSC.Rover.DMS\QuoteAccessory\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteAccessory.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.QuoteCabChassis">
+      <HintPath>..\..\..\GSC.Rover.DMS\QuoteCabChassis\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteCabChassis.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.QuoteCharge">
+      <HintPath>..\..\..\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteCharge.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.QuoteDiscount">
+      <HintPath>..\..\..\GSC.Rover.DMS\QuoteDiscount\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteDiscount.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization">
+      <HintPath>..\..\..\GSC.Rover.DMS\MonthlyAmortization\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.QuoteProduct">
+      <HintPath>..\..\..\GSC.Rover.DMS\QuoteProduct\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.ReceivingTransaction">
+      <HintPath>..\..\..\GSC.Rover.DMS\ReceivingTransaction\bin\Release\GSC.Rover.DMS.BusinessLogic.ReceivingTransaction.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail">
+      <HintPath>..\..\..\GSC.Rover.DMS\ReceivingTransactionDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.RequirementChecklist, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\RequirementChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.RequirementChecklist.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.ReturnTransaction">
+      <HintPath>..\..\..\GSC.Rover.DMS\ReturnTransaction\bin\Release\GSC.Rover.DMS.BusinessLogic.ReturnTransaction.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.SalesDocument">
+      <HintPath>..\..\..\GSC.Rover.DMS\Sales Document\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.SalesOrder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\SalesOrder\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesOrder.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.SalesOrderAccessory">
+      <HintPath>..\..\..\GSC.Rover.DMS\SalesOrderAccessory\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderAccessory.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.SalesOrderCabChassis">
+      <HintPath>..\..\..\GSC.Rover.DMS\SalesOrderCabChassis\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderCabChassis.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.SalesOrderCharge">
+      <HintPath>..\..\..\GSC.Rover.DMS\SalesOrderCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderCharge.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount">
+      <HintPath>..\..\..\GSC.Rover.DMS\SalesOrderDiscount\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization">
+      <HintPath>..\..\..\GSC.Rover.DMS\SalesOrderMonthlyAmortization\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.SalesReturnDetail">
+      <HintPath>..\..\..\GSC.Rover.DMS\SalesReturnDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesReturnDetail.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.ShippingClaim">
+      <HintPath>..\..\..\GSC.Rover.DMS\ShippingClaim\bin\Release\GSC.Rover.DMS.BusinessLogic.ShippingClaim.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.TaxMaintenance">
+      <HintPath>..\..\..\GSC.Rover.DMS\TaxMaintenance\bin\Release\GSC.Rover.DMS.BusinessLogic.TaxMaintenance.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.TransactedVehicle">
+      <HintPath>..\..\..\GSC.Rover.DMS\TransactedVehicle\bin\Release\GSC.Rover.DMS.BusinessLogic.TransactedVehicle.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.UnitOfMeasure">
+      <HintPath>..\..\..\GSC.Rover.DMS\UnitOfMeasure\bin\Release\GSC.Rover.DMS.BusinessLogic.UnitOfMeasure.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleAccessory">
+      <HintPath>..\..\..\GSC.Rover.DMS\VehicleAccessory\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleAccessory.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry">
+      <HintPath>..\..\..\GSC.Rover.DMS\VehicleAdjustmentVarianceEntry\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail">
+      <HintPath>..\..\..\GSC.Rover.DMS\VehicleAdjustmentVarianceEntryDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleCabChassis">
+      <HintPath>..\..\..\GSC.Rover.DMS\VehicleCabChassis\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCabChassis.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleClaim">
+      <HintPath>..\..\..\GSC.Rover.DMS\VehicleClaim\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleClaim.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleColor">
+      <HintPath>..\..\..\GSC.Rover.DMS\VehicleColor\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleColor.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleCountEntry">
+      <HintPath>..\..\..\GSC.Rover.DMS\VehicleCountEntry\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountEntry.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleCountEntryDetail">
+      <HintPath>..\..\..\GSC.Rover.DMS\VehicleCountEntryDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountEntryDetail.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule">
+      <HintPath>..\..\..\GSC.Rover.DMS\VehicleCountSchedule\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer">
+      <HintPath>..\..\..\GSC.Rover.DMS\Vehicle In-Transit Transfer\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring">
+      <HintPath>..\..\..\GSC.Rover.DMS\VehiclePostDeliveryMonitoring\bin\Release\GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrder">
+      <HintPath>..\..\..\GSC.Rover.DMS\VehiclePurchaseOrder\bin\Release\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrder.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\VehiclePurchaseOrderDetails\bin\Release\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\VehicleSalesReturn\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleTransfer">
+      <HintPath>..\..\..\GSC.Rover.DMS\VehicleTransfer\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleTransfer.dll</HintPath>
+    </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleTransferDetails">
+      <HintPath>..\..\..\GSC.Rover.DMS\VehicleTransferDetails\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleTransferDetails.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Microsoft.Xrm.Sdk">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\Extensions\Microsoft\Dynamics CRM 2011 Developer Tools\1.0\Microsoft.Xrm.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.Sdk.Proxy">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\Extensions\Microsoft\Dynamics CRM 2011 Developer Tools\1.0\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PostAccountCreate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PostAccountUpdate.cs" />
+    <Compile Include="PostApproverSetupUpdate.cs" />
+    <Compile Include="PostCashReceiptCreate.cs" />
+    <Compile Include="PostCashReceiptUpdate.cs" />
+    <Compile Include="PostChargeItemCreate.cs" />
+    <Compile Include="PostChargeItemUpdate.cs" />
+    <Compile Include="PostCommittedFirmOrderCreate.cs" />
+    <Compile Include="PostCommittedFirmOrderQuantityDetailCreate.cs" />
+    <Compile Include="PostCommittedFirmOrderQuantityDetailUpdate.cs" />
+    <Compile Include="PostCommittedFirmOrderQuantityUpdate.cs" />
+    <Compile Include="PostCommittedFirmOrderUpdate.cs" />
+    <Compile Include="PostContactCreate.cs" />
+    <Compile Include="PostContactUpdate.cs" />
+    <Compile Include="PostDocumentChecklistUpdate.cs" />
+    <Compile Include="PostExtendedPriceListItemCreate.cs" />
+    <Compile Include="PostGeneralVehicleDataCreate.cs" />
+    <Compile Include="PostGeneralVehicleDataUpdate.cs" />
+    <Compile Include="PostIDRequestCreate.cs" />
+    <Compile Include="PostInsuranceCoverageCreate.cs" />
+    <Compile Include="PostInsuranceCoverageUpdate.cs" />
+    <Compile Include="PostInventoryUpdate.cs" />
+    <Compile Include="PostInvoiceCreate.cs" />
+    <Compile Include="PostInvoiceUpdate.cs" />
+    <Compile Include="PostMonthlyAmortizationUpdate.cs" />
+    <Compile Include="PostOpportunityCreate.cs" />
+    <Compile Include="PostOpportunityUpdate.cs" />
+    <Compile Include="PostOpportunityWin.cs" />
+    <Compile Include="PostOrderAccessoryUpdate.cs" />
+    <Compile Include="PostOrderCabChassisCreate.cs" />
+    <Compile Include="PostOrderCabChassisUpdate.cs" />
+    <Compile Include="PostOrderChargeCreate.cs" />
+    <Compile Include="PostOrderChargeUpdate.cs" />
+    <Compile Include="PostOrderCreate.cs" />
+    <Compile Include="PostOrderDiscountCreate.cs" />
+    <Compile Include="PostOrderDiscountUpdate.cs" />
+    <Compile Include="PostOrderMonthlyAmortizationUpdate.cs" />
+    <Compile Include="PostOrderPlanningCreate.cs" />
+    <Compile Include="PostOrderPlanningDetailUpdate.cs" />
+    <Compile Include="PostOrderPlanningUpdate.cs" />
+    <Compile Include="PostOrderUpdate.cs" />
+    <Compile Include="PostPriceListCreate.cs" />
+    <Compile Include="PostPriceListItemCreate.cs" />
+    <Compile Include="PostPriceListItemUpdate.cs" />
+    <Compile Include="PostPriceListUpdate.cs" />
+    <Compile Include="PostProductQuantityUpdate.cs" />
+    <Compile Include="PostProspectInquiryCreate.cs" />
+    <Compile Include="PostProspectInquiryUpdate.cs" />
+    <Compile Include="PostPurchaseOrderCreate.cs" />
+    <Compile Include="PostPurchaseOrderDetailUpdate.cs" />
+    <Compile Include="PostPurchaseOrderUpdate.cs" />
+    <Compile Include="PostQuoteAccessoryUpdate.cs" />
+    <Compile Include="PostQuoteCabChassisCreate.cs" />
+    <Compile Include="PostQuoteCabChassisUpdate.cs" />
+    <Compile Include="PostQuoteChargeCreate.cs" />
+    <Compile Include="PostQuoteChargeUpdate.cs" />
+    <Compile Include="PostQuoteCreate.cs" />
+    <Compile Include="PostQuoteDiscountCreate.cs" />
+    <Compile Include="PostQuoteDiscountUpdate.cs" />
+    <Compile Include="PostQuoteMonthlyAmortizationUpdate.cs" />
+    <Compile Include="PostQuoteProductUpdate.cs" />
+    <Compile Include="PostQuoteUpdate.cs" />
+    <Compile Include="PostReceivingTransactionCreate.cs" />
+    <Compile Include="PostReceivingTransactionDetailUpdate.cs" />
+    <Compile Include="PostReceivingTransactionUpdate.cs" />
+    <Compile Include="PostRequirementChecklistUpdate.cs" />
+    <Compile Include="PostReturnTransactionCreate.cs" />
+    <Compile Include="PostReturnTransactionUpdate.cs" />
+    <Compile Include="PostSalesDocumentUpdate.cs" />
+    <Compile Include="PostShippingClaimCreate.cs" />
+    <Compile Include="PostShippingClaimUpdate.cs" />
+    <Compile Include="PostTaxMaintenanceCreate.cs" />
+    <Compile Include="PostTaxMaintenanceUpdate.cs" />
+    <Compile Include="PostTransactedVehicleUpdate.cs" />
+    <Compile Include="PostVehicleAdjustmentVarianceEntryDetailUpdate.cs" />
+    <Compile Include="PostVehicleAdjustmentVarianceEntryUpdate.cs" />
+    <Compile Include="PostVehicleandItemCatalogCreate.cs" />
+    <Compile Include="PostVehicleandItemCatalogUpdate.cs" />
+    <Compile Include="PostVehicleClaimUpdate.cs" />
+    <Compile Include="PostVehicleCountEntryDetailsUpdate.cs" />
+    <Compile Include="PostVehicleCountEntryUpdate.cs" />
+    <Compile Include="PostVehicleInTransitTransferReceivingUpdate.cs" />
+    <Compile Include="PostVehicleInTransitTransferUpdate.cs" />
+    <Compile Include="PostVehicleCountScheduleUpdate.cs" />
+    <Compile Include="PostVehiclePostDeliveryMonitoringCreate.cs" />
+    <Compile Include="PostVehiclePostDeliveryMonitoringUpdate.cs" />
+    <Compile Include="PostVehiclePurchaseOrderDetailCreate.cs" />
+    <Compile Include="PostVehicleSalesReturnUpdate.cs" />
+    <Compile Include="PostVehicleTransferDetailsUpdate.cs" />
+    <Compile Include="PostVehicleTransferUpdate.cs" />
+    <Compile Include="PreApproverSetupCreate.cs" />
+    <Compile Include="PreCommittedFirmOrderQuantityDetailCreate.cs" />
+    <Compile Include="PreContactCreate.cs" />
+    <Compile Include="PreDocumentChecklistCreate.cs" />
+    <Compile Include="PreExtendedPriceListItemCreate.cs" />
+    <Compile Include="PreInventoryHistoryCreate.cs" />
+    <Compile Include="PreInvoiceCreate.cs" />
+    <Compile Include="PreOpportunityCreate.cs" />
+    <Compile Include="PreOrderAccessoryCreate.cs" />
+    <Compile Include="PreOrderCabChassisCreate.cs" />
+    <Compile Include="PreOrderChargeCreate.cs" />
+    <Compile Include="PreOrderCreate.cs" />
+    <Compile Include="PreOrderDiscountCreate.cs" />
+    <Compile Include="PreOrderPlanningCreate.cs" />
+    <Compile Include="PrePostDeliveryAdministrationCreate.cs" />
+    <Compile Include="PrePriceListCreate.cs" />
+    <Compile Include="PreProductQuantityCreate.cs" />
+    <Compile Include="PreProspectCreate.cs" />
+    <Compile Include="PreProspectInquiryCreate.cs" />
+    <Compile Include="PrePurchaseOrderCreate.cs" />
+    <Compile Include="PrePurchaseOrderDetailCreate.cs" />
+    <Compile Include="PrePurchaseOrderDetailDelete.cs" />
+    <Compile Include="PreQuoteAccessoryCreate.cs" />
+    <Compile Include="PreQuoteCabChassisCreate.cs" />
+    <Compile Include="PreQuoteChargeCreate.cs" />
+    <Compile Include="PreQuoteCreate.cs" />
+    <Compile Include="PreQuoteDiscountCreate.cs" />
+    <Compile Include="PreReceivingTransactionCreate.cs" />
+    <Compile Include="PreReceivingTransactionDetailCreate.cs" />
+    <Compile Include="PreShippingClaimCreate.cs" />
+    <Compile Include="PreUnitCreate.cs" />
+    <Compile Include="PreValidateAccountCreate.cs" />
+    <Compile Include="PreValidateAccountDelete.cs" />
+    <Compile Include="PreValidateAllocatedVehicleDelete.cs" />
+    <Compile Include="PreValidateCashReceiptCreate.cs" />
+    <Compile Include="PreValidateCommittedFirmOrderQuantityDetailDelete.cs" />
+    <Compile Include="PreValidateContactCreate.cs" />
+    <Compile Include="PreValidateContactDelete.cs" />
+    <Compile Include="PreValidateExtendedPriceListItemDelete.cs" />
+    <Compile Include="PreValidateIDSequenceDelete.cs" />
+    <Compile Include="PreValidateInsuranceCoverageDelete.cs" />
+    <Compile Include="PreValidateInventoryCreate.cs" />
+    <Compile Include="PreValidateInvoiceDelete.cs" />
+    <Compile Include="PreValidateOpportunityDelete.cs" />
+    <Compile Include="PreValidateOrderAccessoryDelete.cs" />
+    <Compile Include="PreValidateOrderCabChassisDelete.cs" />
+    <Compile Include="PreValidateOrderChargeDelete.cs" />
+    <Compile Include="PreValidateOrderDiscountDelete.cs" />
+    <Compile Include="PreValidateProspectInquiryDelete.cs" />
+    <Compile Include="PreValidatePurchaseOrderDelete.cs" />
+    <Compile Include="PreValidateQuoteAccessoryDelete.cs" />
+    <Compile Include="PreValidateQuoteCabChassisDelete.cs" />
+    <Compile Include="PreValidateQuoteChargeDelete.cs" />
+    <Compile Include="PreValidateQuoteDelete.cs" />
+    <Compile Include="PreValidateQuoteDiscountDelete.cs" />
+    <Compile Include="PreValidateReceivingTransactionDelete.cs" />
+    <Compile Include="PreValidateRequirementChecklistDelete.cs" />
+    <Compile Include="PreValidateReturnTransactionDelete.cs" />
+    <Compile Include="PreValidateSalesOrderDelete.cs" />
+    <Compile Include="PreValidateUnitCreate.cs" />
+    <Compile Include="PreValidateVehicleAdjustmentVarianceEntryDelete.cs" />
+    <Compile Include="PreValidateVehicleAdjustmentVarianceEntryDetailDelete.cs" />
+    <Compile Include="PreValidateVehicleandItemCatalogCreate.cs" />
+    <Compile Include="PreValidateVehicleInTransitTransferCreate.cs" />
+    <Compile Include="PreValidateVehicleInTransitTransferDelete.cs" />
+    <Compile Include="PreValidateVehicleSalesReturnDelete.cs" />
+    <Compile Include="PreValidateVehicleTransferCreate.cs" />
+    <Compile Include="PreValidateVehicleTransferDelete.cs" />
+    <Compile Include="PreVehicleAccessoryCreate.cs" />
+    <Compile Include="PreVehicleAdjustmentVarianceEntryDetailCreate.cs" />
+    <Compile Include="PreVehicleandItemCatalogCreate.cs" />
+    <Compile Include="PreVehicleCabChassisCreate.cs" />
+    <Compile Include="PreVehicleSalesReturnCreate.cs" />
+    <Compile Include="PreVehicleColorCreate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Plugin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GSC.Rover.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

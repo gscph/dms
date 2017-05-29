@@ -1,0 +1,504 @@
+C:\Product Development\DMS (MMPC)\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Plugins.dll
+C:\Product Development\DMS (MMPC)\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Workflow.dll
+C:\Product Development\DMS (MMPC)\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Product Development\DMS (MMPC)\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Plugins.pdb
+C:\Product Development\DMS (MMPC)\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Workflow.pdb
+C:\Product Development\DMS (MMPC)\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\obj\Debug\CrmPackage.csprojResolveAssemblyReference.cache
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Plugins.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Workflow.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Plugins.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Workflow.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\obj\Debug\CrmPackage.csprojResolveAssemblyReference.cache
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ProspectInquiry.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Opportunity.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ProspectInquiry.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Opportunity.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Quote.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.DocumentChecklist.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrder.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrder.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.DocumentChecklist.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Quote.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteDiscount.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteDiscount.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteCharge.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteCharge.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderCharge.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderCharge.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Prospect.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Prospect.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\Microsoft.Xrm.Sdk.Workflow.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PurchaseOrder.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PurchaseOrder.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Plugins.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Workflow.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\Microsoft.Xrm.Sdk.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\Microsoft.Xrm.Sdk.Workflow.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Plugins.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Workflow.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\obj\Debug\CrmPackage.csprojResolveAssemblyReference.cache
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteProduct.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteProduct.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Invoice.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Invoice.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.AllocatedVehicle.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.AllocatedVehicle.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleClaim.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleClaim.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanning.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanning.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesDocument.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesDocument.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CashReceipt.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantityDetail.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CashReceipt.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantityDetail.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrder.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Product.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrder.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Product.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransaction.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransaction.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PurchaseOrder.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PurchaseOrder.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CashReceipt.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantityDetail.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.DocumentChecklist.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Invoice.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Opportunity.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderCharge.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrder.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanning.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ProspectInquiry.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteCharge.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Quote.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteDiscount.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteProduct.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransaction.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.RequirementsChecklist.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReturnTransaction.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesDocument.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleClaim.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrder.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesReturnDetail.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Prospect.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.AllocatedVehicle.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Product.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CashReceipt.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantityDetail.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.DocumentChecklist.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Invoice.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Opportunity.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderCharge.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrder.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanning.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ProspectInquiry.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteCharge.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Quote.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteDiscount.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteProduct.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransaction.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.RequirementsChecklist.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReturnTransaction.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesDocument.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleClaim.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrder.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesReturnDetail.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Prospect.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.AllocatedVehicle.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Product.pdb
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleTransfer.dll
+D:\DMS\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleTransfer.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.IDRequest.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReturnTransaction.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ShippingClaim.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleTransfer.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.IDRequest.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReturnTransaction.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ShippingClaim.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleTransfer.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Account.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ChargesItem.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Contact.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Insurance.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteAccessory.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteCabChassis.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.RequirementChecklist.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.TransactedVehicle.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountEntryDetail.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountEntry.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PostDeliveryAdminSetup.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAccessory.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCabChassis.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Account.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ChargesItem.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Contact.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Insurance.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteAccessory.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteCabChassis.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.RequirementChecklist.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.TransactedVehicle.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountEntryDetail.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountEntry.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PostDeliveryAdminSetup.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAccessory.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCabChassis.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PriceList.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PriceList.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesReturnDetail.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesReturnDetail.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.pdb
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.GVDReport.dll
+C:\Product Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.GVDReport.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Plugins.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Workflow.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Account.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CashReceipt.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ChargesItem.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantityDetail.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Contact.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.DocumentChecklist.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.GVDReport.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.IDRequest.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Insurance.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Invoice.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Opportunity.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderAccessory.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderCharge.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrder.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanning.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PriceList.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ProspectInquiry.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrder.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteAccessory.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteCabChassis.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteCharge.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Quote.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteDiscount.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteProduct.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransaction.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.RequirementChecklist.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReturnTransaction.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesDocument.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ShippingClaim.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.TaxMaintenance.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.TransactedVehicle.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Product.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleClaim.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountEntryDetail.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountEntry.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesReturnDetail.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleTransfer.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ApproverSetup.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PostDeliveryAdminSetup.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Prospect.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.AllocatedVehicle.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.IDSequence.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAccessory.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCabChassis.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleColor.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\Microsoft.Xrm.Sdk.Workflow.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Invitation.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PurchaseOrder.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Plugins.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Workflow.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Account.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CashReceipt.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ChargesItem.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantityDetail.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Contact.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.DocumentChecklist.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.IDRequest.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Insurance.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Invoice.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Opportunity.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderAccessory.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderCharge.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrder.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanning.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PriceList.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ProspectInquiry.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrder.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteAccessory.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteCabChassis.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteCharge.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Quote.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteDiscount.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteProduct.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransaction.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.RequirementChecklist.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReturnTransaction.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesDocument.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ShippingClaim.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.TaxMaintenance.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.TransactedVehicle.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Product.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleClaim.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountEntryDetail.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountEntry.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesReturnDetail.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleTransfer.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ApproverSetup.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PostDeliveryAdminSetup.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Prospect.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.AllocatedVehicle.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.IDSequence.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAccessory.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCabChassis.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleColor.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PurchaseOrder.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\obj\Debug\CrmPackage.csprojResolveAssemblyReference.cache
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderCabChassis.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderCabChassis.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.City.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.City.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Invitation.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.GVDReport.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Plugins.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Workflow.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\Microsoft.Xrm.Sdk.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Account.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ApproverSetup.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CashReceipt.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ChargesItem.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantityDetail.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Contact.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.DocumentChecklist.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.GVDReport.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.IDRequest.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Insurance.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Invoice.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Opportunity.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderAccessory.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderCabChassis.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderCharge.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrder.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanning.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PriceList.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ProspectInquiry.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrder.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteAccessory.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteCabChassis.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteCharge.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Quote.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteDiscount.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteProduct.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransaction.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.RequirementChecklist.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReturnTransaction.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesDocument.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ShippingClaim.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.TaxMaintenance.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.TransactedVehicle.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Product.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleClaim.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountEntryDetail.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountEntry.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesReturnDetail.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleTransfer.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PostDeliveryAdminSetup.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Prospect.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.AllocatedVehicle.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.IDSequence.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAccessory.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCabChassis.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleColor.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\Microsoft.Xrm.Sdk.Workflow.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Invitation.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PurchaseOrder.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.City.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Plugins.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Workflow.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Account.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ApproverSetup.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CashReceipt.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ChargesItem.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantityDetail.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Contact.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.DocumentChecklist.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.GVDReport.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.IDRequest.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Insurance.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Invoice.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Opportunity.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderAccessory.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderCabChassis.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderCharge.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrder.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanning.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PriceList.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ProspectInquiry.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrder.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteAccessory.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteCabChassis.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteCharge.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Quote.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteDiscount.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.QuoteProduct.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransaction.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.RequirementChecklist.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ReturnTransaction.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesDocument.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.ShippingClaim.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.TaxMaintenance.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.TransactedVehicle.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Product.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleClaim.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountEntryDetail.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountEntry.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.SalesReturnDetail.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleTransfer.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PostDeliveryAdminSetup.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Prospect.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.AllocatedVehicle.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.IDSequence.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleAccessory.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleCabChassis.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleColor.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Invitation.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PurchaseOrder.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.City.pdb
+D:\PROJECTS\DMS\CODE\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\obj\Debug\CrmPackage.csprojResolveAssemblyReference.cache

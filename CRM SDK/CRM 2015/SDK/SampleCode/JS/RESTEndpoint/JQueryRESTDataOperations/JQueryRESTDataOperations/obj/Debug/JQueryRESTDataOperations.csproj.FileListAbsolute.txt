@@ -1,0 +1,5 @@
+D:\Installers\2015\SDK\SampleCode\JS\RESTEndpoint\JQueryRESTDataOperations\JQueryRESTDataOperations\bin\JQueryRESTDataOperations.dll
+D:\Installers\2015\SDK\SampleCode\JS\RESTEndpoint\JQueryRESTDataOperations\JQueryRESTDataOperations\bin\JQueryRESTDataOperations.pdb
+D:\Installers\2015\SDK\SampleCode\JS\RESTEndpoint\JQueryRESTDataOperations\JQueryRESTDataOperations\obj\Debug\JQueryRESTDataOperations.csprojResolveAssemblyReference.cache
+D:\Installers\2015\SDK\SampleCode\JS\RESTEndpoint\JQueryRESTDataOperations\JQueryRESTDataOperations\obj\Debug\JQueryRESTDataOperations.dll
+D:\Installers\2015\SDK\SampleCode\JS\RESTEndpoint\JQueryRESTDataOperations\JQueryRESTDataOperations\obj\Debug\JQueryRESTDataOperations.pdb

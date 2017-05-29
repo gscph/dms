@@ -1,0 +1,804 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/xrm/2011/Metadata" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/xrm/2011/Metadata" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation=".\OrganizationService_schemas_microsoft_com_xrm_2011_Contracts.xsd" namespace="http://schemas.microsoft.com/xrm/2011/Contracts" />
+  <xs:import schemaLocation=".\OrganizationService_schemas_microsoft_com_2003_10_Serialization.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation=".\OrganizationService_schemas_microsoft_com_2003_10_Serialization_Arrays.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfEntityMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EntityMetadata" nillable="true" type="tns:EntityMetadata" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEntityMetadata" nillable="true" type="tns:ArrayOfEntityMetadata" />
+  <xs:complexType name="EntityMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MetadataBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ActivityTypeMask" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Attributes" nillable="true" type="tns:ArrayOfAttributeMetadata" />
+          <xs:element minOccurs="0" name="AutoRouteToOwnerQueue" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q34="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="CanBeInManyToMany" nillable="true" type="q34:BooleanManagedProperty" />
+          <xs:element xmlns:q35="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="CanBePrimaryEntityInRelationship" nillable="true" type="q35:BooleanManagedProperty" />
+          <xs:element xmlns:q36="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="CanBeRelatedEntityInRelationship" nillable="true" type="q36:BooleanManagedProperty" />
+          <xs:element xmlns:q37="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="CanCreateAttributes" nillable="true" type="q37:BooleanManagedProperty" />
+          <xs:element xmlns:q38="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="CanCreateCharts" nillable="true" type="q38:BooleanManagedProperty" />
+          <xs:element xmlns:q39="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="CanCreateForms" nillable="true" type="q39:BooleanManagedProperty" />
+          <xs:element xmlns:q40="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="CanCreateViews" nillable="true" type="q40:BooleanManagedProperty" />
+          <xs:element xmlns:q41="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="CanModifyAdditionalSettings" nillable="true" type="q41:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="CanTriggerWorkflow" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q42="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Description" nillable="true" type="q42:Label" />
+          <xs:element xmlns:q43="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="DisplayCollectionName" nillable="true" type="q43:Label" />
+          <xs:element xmlns:q44="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="DisplayName" nillable="true" type="q44:Label" />
+          <xs:element minOccurs="0" name="IconLargeName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IconMediumName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IconSmallName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsActivity" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsActivityParty" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q45="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="IsAuditEnabled" nillable="true" type="q45:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="IsAvailableOffline" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsChildEntity" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q46="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="IsConnectionsEnabled" nillable="true" type="q46:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="IsCustomEntity" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q47="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="IsCustomizable" nillable="true" type="q47:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="IsDocumentManagementEnabled" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q48="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="IsDuplicateDetectionEnabled" nillable="true" type="q48:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="IsEnabledForCharts" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsImportable" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsIntersect" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q49="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="IsMailMergeEnabled" nillable="true" type="q49:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="IsManaged" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q50="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="IsMappable" nillable="true" type="q50:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="IsReadingPaneEnabled" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q51="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="IsRenameable" nillable="true" type="q51:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="IsValidForAdvancedFind" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q52="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="IsValidForQueue" nillable="true" type="q52:BooleanManagedProperty" />
+          <xs:element xmlns:q53="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="IsVisibleInMobile" nillable="true" type="q53:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="LogicalName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ManyToManyRelationships" nillable="true" type="tns:ArrayOfManyToManyRelationshipMetadata" />
+          <xs:element minOccurs="0" name="ManyToOneRelationships" nillable="true" type="tns:ArrayOfOneToManyRelationshipMetadata" />
+          <xs:element minOccurs="0" name="ObjectTypeCode" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="OneToManyRelationships" nillable="true" type="tns:ArrayOfOneToManyRelationshipMetadata" />
+          <xs:element minOccurs="0" name="OwnershipType" nillable="true" type="tns:OwnershipTypes" />
+          <xs:element minOccurs="0" name="PrimaryIdAttribute" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PrimaryNameAttribute" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Privileges" nillable="true" type="tns:ArrayOfSecurityPrivilegeMetadata" />
+          <xs:element minOccurs="0" name="RecurrenceBaseEntityLogicalName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReportViewName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SchemaName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityMetadata" nillable="true" type="tns:EntityMetadata" />
+  <xs:complexType name="MetadataBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MetadataId" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MetadataBase" nillable="true" type="tns:MetadataBase" />
+  <xs:complexType name="RelationshipMetadataBase">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MetadataBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsCustomRelationship" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q54="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="IsCustomizable" nillable="true" type="q54:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="IsManaged" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsValidForAdvancedFind" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SchemaName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecurityTypes" nillable="true" type="tns:SecurityTypes" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RelationshipMetadataBase" nillable="true" type="tns:RelationshipMetadataBase" />
+  <xs:simpleType name="AttributeRequiredLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="SystemRequired" />
+      <xs:enumeration value="ApplicationRequired" />
+      <xs:enumeration value="Recommended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AttributeRequiredLevel" nillable="true" type="tns:AttributeRequiredLevel" />
+  <xs:simpleType name="SecurityTypes">
+    <xs:list>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="None">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Append">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ParentChild">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Pointer">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Inheritance">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:list>
+  </xs:simpleType>
+  <xs:element name="SecurityTypes" nillable="true" type="tns:SecurityTypes" />
+  <xs:complexType name="OneToManyRelationshipMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RelationshipMetadataBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AssociatedMenuConfiguration" nillable="true" type="tns:AssociatedMenuConfiguration" />
+          <xs:element minOccurs="0" name="CascadeConfiguration" nillable="true" type="tns:CascadeConfiguration" />
+          <xs:element minOccurs="0" name="ReferencedAttribute" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReferencedEntity" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReferencingAttribute" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReferencingEntity" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OneToManyRelationshipMetadata" nillable="true" type="tns:OneToManyRelationshipMetadata" />
+  <xs:complexType name="AssociatedMenuConfiguration">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Behavior" nillable="true" type="tns:AssociatedMenuBehavior" />
+      <xs:element minOccurs="0" name="Group" nillable="true" type="tns:AssociatedMenuGroup" />
+      <xs:element xmlns:q55="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Label" nillable="true" type="q55:Label" />
+      <xs:element minOccurs="0" name="Order" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssociatedMenuConfiguration" nillable="true" type="tns:AssociatedMenuConfiguration" />
+  <xs:simpleType name="AssociatedMenuBehavior">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UseCollectionName" />
+      <xs:enumeration value="UseLabel" />
+      <xs:enumeration value="DoNotDisplay" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AssociatedMenuBehavior" nillable="true" type="tns:AssociatedMenuBehavior" />
+  <xs:simpleType name="AssociatedMenuGroup">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Details" />
+      <xs:enumeration value="Sales" />
+      <xs:enumeration value="Service" />
+      <xs:enumeration value="Marketing" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AssociatedMenuGroup" nillable="true" type="tns:AssociatedMenuGroup" />
+  <xs:complexType name="CascadeConfiguration">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Assign" nillable="true" type="tns:CascadeType" />
+      <xs:element minOccurs="0" name="Delete" nillable="true" type="tns:CascadeType" />
+      <xs:element minOccurs="0" name="Merge" nillable="true" type="tns:CascadeType" />
+      <xs:element minOccurs="0" name="Reparent" nillable="true" type="tns:CascadeType" />
+      <xs:element minOccurs="0" name="Share" nillable="true" type="tns:CascadeType" />
+      <xs:element minOccurs="0" name="Unshare" nillable="true" type="tns:CascadeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CascadeConfiguration" nillable="true" type="tns:CascadeConfiguration" />
+  <xs:simpleType name="CascadeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoCascade" />
+      <xs:enumeration value="Cascade" />
+      <xs:enumeration value="Active" />
+      <xs:enumeration value="UserOwned" />
+      <xs:enumeration value="RemoveLink" />
+      <xs:enumeration value="Restrict" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CascadeType" nillable="true" type="tns:CascadeType" />
+  <xs:complexType name="ManyToManyRelationshipMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RelationshipMetadataBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Entity1AssociatedMenuConfiguration" nillable="true" type="tns:AssociatedMenuConfiguration" />
+          <xs:element minOccurs="0" name="Entity1IntersectAttribute" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Entity1LogicalName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Entity2AssociatedMenuConfiguration" nillable="true" type="tns:AssociatedMenuConfiguration" />
+          <xs:element minOccurs="0" name="Entity2IntersectAttribute" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Entity2LogicalName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IntersectEntityName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ManyToManyRelationshipMetadata" nillable="true" type="tns:ManyToManyRelationshipMetadata" />
+  <xs:complexType name="AttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MetadataBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AttributeOf" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AttributeType" nillable="true" type="tns:AttributeTypeCode" />
+          <xs:element minOccurs="0" name="CanBeSecuredForCreate" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CanBeSecuredForRead" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CanBeSecuredForUpdate" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q56="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="CanModifyAdditionalSettings" nillable="true" type="q56:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="ColumnNumber" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="DeprecatedVersion" nillable="true" type="xs:string" />
+          <xs:element xmlns:q57="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Description" nillable="true" type="q57:Label" />
+          <xs:element xmlns:q58="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="DisplayName" nillable="true" type="q58:Label" />
+          <xs:element minOccurs="0" name="EntityLogicalName" nillable="true" type="xs:string" />
+          <xs:element xmlns:q59="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="IsAuditEnabled" nillable="true" type="q59:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="IsCustomAttribute" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q60="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="IsCustomizable" nillable="true" type="q60:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="IsManaged" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsPrimaryId" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsPrimaryName" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q61="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="IsRenameable" nillable="true" type="q61:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="IsSecured" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q62="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="IsValidForAdvancedFind" nillable="true" type="q62:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="IsValidForCreate" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsValidForRead" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsValidForUpdate" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LinkedAttributeId" nillable="true" type="ser:guid" />
+          <xs:element minOccurs="0" name="LogicalName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RequiredLevel" nillable="true" type="tns:AttributeRequiredLevelManagedProperty" />
+          <xs:element minOccurs="0" name="SchemaName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AttributeMetadata" nillable="true" type="tns:AttributeMetadata" />
+  <xs:simpleType name="AttributeTypeCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Boolean" />
+      <xs:enumeration value="Customer" />
+      <xs:enumeration value="DateTime" />
+      <xs:enumeration value="Decimal" />
+      <xs:enumeration value="Double" />
+      <xs:enumeration value="Integer" />
+      <xs:enumeration value="Lookup" />
+      <xs:enumeration value="Memo" />
+      <xs:enumeration value="Money" />
+      <xs:enumeration value="Owner" />
+      <xs:enumeration value="PartyList" />
+      <xs:enumeration value="Picklist" />
+      <xs:enumeration value="State" />
+      <xs:enumeration value="Status" />
+      <xs:enumeration value="String" />
+      <xs:enumeration value="Uniqueidentifier" />
+      <xs:enumeration value="CalendarRules" />
+      <xs:enumeration value="Virtual" />
+      <xs:enumeration value="BigInt" />
+      <xs:enumeration value="ManagedProperty" />
+      <xs:enumeration value="EntityName" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AttributeTypeCode" nillable="true" type="tns:AttributeTypeCode" />
+  <xs:complexType name="AttributeRequiredLevelManagedProperty">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q63="http://schemas.microsoft.com/xrm/2011/Contracts" base="q63:ManagedPropertyAttributeRequiredLevel">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AttributeRequiredLevelManagedProperty" nillable="true" type="tns:AttributeRequiredLevelManagedProperty" />
+  <xs:complexType name="IntegerAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AttributeMetadata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Format" nillable="true" type="tns:IntegerFormat" />
+          <xs:element minOccurs="0" name="MaxValue" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="MinValue" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IntegerAttributeMetadata" nillable="true" type="tns:IntegerAttributeMetadata" />
+  <xs:simpleType name="IntegerFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Duration" />
+      <xs:enumeration value="TimeZone" />
+      <xs:enumeration value="Language" />
+      <xs:enumeration value="Locale" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IntegerFormat" nillable="true" type="tns:IntegerFormat" />
+  <xs:complexType name="MemoAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AttributeMetadata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Format" nillable="true" type="tns:StringFormat" />
+          <xs:element minOccurs="0" name="ImeMode" nillable="true" type="tns:ImeMode" />
+          <xs:element minOccurs="0" name="MaxLength" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MemoAttributeMetadata" nillable="true" type="tns:MemoAttributeMetadata" />
+  <xs:simpleType name="StringFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Email" />
+      <xs:enumeration value="Text" />
+      <xs:enumeration value="TextArea" />
+      <xs:enumeration value="Url" />
+      <xs:enumeration value="TickerSymbol" />
+      <xs:enumeration value="PhoneticGuide" />
+      <xs:enumeration value="VersionNumber" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StringFormat" nillable="true" type="tns:StringFormat" />
+  <xs:simpleType name="ImeMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Auto" />
+      <xs:enumeration value="Inactive" />
+      <xs:enumeration value="Active" />
+      <xs:enumeration value="Disabled" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ImeMode" nillable="true" type="tns:ImeMode" />
+  <xs:complexType name="MoneyAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AttributeMetadata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CalculationOf" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ImeMode" nillable="true" type="tns:ImeMode" />
+          <xs:element minOccurs="0" name="MaxValue" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="MinValue" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Precision" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="PrecisionSource" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MoneyAttributeMetadata" nillable="true" type="tns:MoneyAttributeMetadata" />
+  <xs:complexType name="EntityNameAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EnumAttributeMetadata">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityNameAttributeMetadata" nillable="true" type="tns:EntityNameAttributeMetadata" />
+  <xs:complexType name="EnumAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AttributeMetadata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DefaultFormValue" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="OptionSet" nillable="true" type="tns:OptionSetMetadata" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EnumAttributeMetadata" nillable="true" type="tns:EnumAttributeMetadata" />
+  <xs:complexType name="OptionSetMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OptionSetMetadataBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Options" nillable="true" type="tns:ArrayOfOptionMetadata" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OptionSetMetadata" nillable="true" type="tns:OptionSetMetadata" />
+  <xs:complexType name="OptionSetMetadataBase">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MetadataBase">
+        <xs:sequence>
+          <xs:element xmlns:q64="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Description" nillable="true" type="q64:Label" />
+          <xs:element xmlns:q65="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="DisplayName" nillable="true" type="q65:Label" />
+          <xs:element minOccurs="0" name="IsCustomOptionSet" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q66="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="IsCustomizable" nillable="true" type="q66:BooleanManagedProperty" />
+          <xs:element minOccurs="0" name="IsGlobal" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsManaged" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OptionSetType" nillable="true" type="tns:OptionSetType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OptionSetMetadataBase" nillable="true" type="tns:OptionSetMetadataBase" />
+  <xs:simpleType name="OptionSetType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Picklist" />
+      <xs:enumeration value="State" />
+      <xs:enumeration value="Status" />
+      <xs:enumeration value="Boolean" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OptionSetType" nillable="true" type="tns:OptionSetType" />
+  <xs:complexType name="BooleanOptionSetMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OptionSetMetadataBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FalseOption" nillable="true" type="tns:OptionMetadata" />
+          <xs:element minOccurs="0" name="TrueOption" nillable="true" type="tns:OptionMetadata" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BooleanOptionSetMetadata" nillable="true" type="tns:BooleanOptionSetMetadata" />
+  <xs:complexType name="OptionMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MetadataBase">
+        <xs:sequence>
+          <xs:element xmlns:q67="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Description" nillable="true" type="q67:Label" />
+          <xs:element minOccurs="0" name="IsManaged" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q68="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Label" nillable="true" type="q68:Label" />
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OptionMetadata" nillable="true" type="tns:OptionMetadata" />
+  <xs:complexType name="StateOptionMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OptionMetadata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DefaultStatus" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="InvariantName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StateOptionMetadata" nillable="true" type="tns:StateOptionMetadata" />
+  <xs:complexType name="StatusOptionMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OptionMetadata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="State" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StatusOptionMetadata" nillable="true" type="tns:StatusOptionMetadata" />
+  <xs:complexType name="StatusAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EnumAttributeMetadata">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StatusAttributeMetadata" nillable="true" type="tns:StatusAttributeMetadata" />
+  <xs:complexType name="PicklistAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EnumAttributeMetadata">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PicklistAttributeMetadata" nillable="true" type="tns:PicklistAttributeMetadata" />
+  <xs:complexType name="StateAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EnumAttributeMetadata">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StateAttributeMetadata" nillable="true" type="tns:StateAttributeMetadata" />
+  <xs:complexType name="ManagedPropertyAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AttributeMetadata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ManagedPropertyLogicalName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ParentAttributeName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ParentComponentType" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ValueAttributeTypeCode" type="tns:AttributeTypeCode" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ManagedPropertyAttributeMetadata" nillable="true" type="tns:ManagedPropertyAttributeMetadata" />
+  <xs:complexType name="BooleanAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AttributeMetadata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DefaultValue" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="OptionSet" nillable="true" type="tns:BooleanOptionSetMetadata" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BooleanAttributeMetadata" nillable="true" type="tns:BooleanAttributeMetadata" />
+  <xs:complexType name="DateTimeAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AttributeMetadata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Format" nillable="true" type="tns:DateTimeFormat" />
+          <xs:element minOccurs="0" name="ImeMode" nillable="true" type="tns:ImeMode" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DateTimeAttributeMetadata" nillable="true" type="tns:DateTimeAttributeMetadata" />
+  <xs:simpleType name="DateTimeFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DateOnly" />
+      <xs:enumeration value="DateAndTime" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DateTimeFormat" nillable="true" type="tns:DateTimeFormat" />
+  <xs:complexType name="DecimalAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AttributeMetadata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ImeMode" nillable="true" type="tns:ImeMode" />
+          <xs:element minOccurs="0" name="MaxValue" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="MinValue" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Precision" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DecimalAttributeMetadata" nillable="true" type="tns:DecimalAttributeMetadata" />
+  <xs:complexType name="DoubleAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AttributeMetadata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ImeMode" nillable="true" type="tns:ImeMode" />
+          <xs:element minOccurs="0" name="MaxValue" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="MinValue" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Precision" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DoubleAttributeMetadata" nillable="true" type="tns:DoubleAttributeMetadata" />
+  <xs:complexType name="BigIntAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AttributeMetadata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MaxValue" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="MinValue" nillable="true" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BigIntAttributeMetadata" nillable="true" type="tns:BigIntAttributeMetadata" />
+  <xs:complexType name="LookupAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AttributeMetadata">
+        <xs:sequence>
+          <xs:element xmlns:q69="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Targets" nillable="true" type="q69:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LookupAttributeMetadata" nillable="true" type="tns:LookupAttributeMetadata" />
+  <xs:complexType name="StringAttributeMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AttributeMetadata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Format" nillable="true" type="tns:StringFormat" />
+          <xs:element minOccurs="0" name="ImeMode" nillable="true" type="tns:ImeMode" />
+          <xs:element minOccurs="0" name="MaxLength" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="YomiOf" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StringAttributeMetadata" nillable="true" type="tns:StringAttributeMetadata" />
+  <xs:complexType name="ArrayOfOptionMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OptionMetadata" nillable="true" type="tns:OptionMetadata" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOptionMetadata" nillable="true" type="tns:ArrayOfOptionMetadata" />
+  <xs:complexType name="ArrayOfAttributeMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AttributeMetadata" nillable="true" type="tns:AttributeMetadata" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAttributeMetadata" nillable="true" type="tns:ArrayOfAttributeMetadata" />
+  <xs:complexType name="ArrayOfManyToManyRelationshipMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ManyToManyRelationshipMetadata" nillable="true" type="tns:ManyToManyRelationshipMetadata" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfManyToManyRelationshipMetadata" nillable="true" type="tns:ArrayOfManyToManyRelationshipMetadata" />
+  <xs:complexType name="ArrayOfOneToManyRelationshipMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OneToManyRelationshipMetadata" nillable="true" type="tns:OneToManyRelationshipMetadata" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOneToManyRelationshipMetadata" nillable="true" type="tns:ArrayOfOneToManyRelationshipMetadata" />
+  <xs:simpleType name="OwnershipTypes">
+    <xs:list>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="None">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="UserOwned">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="TeamOwned">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="BusinessOwned">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="OrganizationOwned">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="BusinessParented">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:list>
+  </xs:simpleType>
+  <xs:element name="OwnershipTypes" nillable="true" type="tns:OwnershipTypes" />
+  <xs:complexType name="ArrayOfSecurityPrivilegeMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SecurityPrivilegeMetadata" nillable="true" type="tns:SecurityPrivilegeMetadata" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSecurityPrivilegeMetadata" nillable="true" type="tns:ArrayOfSecurityPrivilegeMetadata" />
+  <xs:complexType name="SecurityPrivilegeMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CanBeBasic" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanBeDeep" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanBeGlobal" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanBeLocal" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrivilegeId" type="ser:guid" />
+      <xs:element minOccurs="0" name="PrivilegeType" type="tns:PrivilegeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SecurityPrivilegeMetadata" nillable="true" type="tns:SecurityPrivilegeMetadata" />
+  <xs:simpleType name="PrivilegeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Create" />
+      <xs:enumeration value="Read" />
+      <xs:enumeration value="Write" />
+      <xs:enumeration value="Delete" />
+      <xs:enumeration value="Assign" />
+      <xs:enumeration value="Share" />
+      <xs:enumeration value="Append" />
+      <xs:enumeration value="AppendTo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PrivilegeType" nillable="true" type="tns:PrivilegeType" />
+  <xs:complexType name="ArrayOfRelationshipMetadataBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RelationshipMetadataBase" nillable="true" type="tns:RelationshipMetadataBase" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRelationshipMetadataBase" nillable="true" type="tns:ArrayOfRelationshipMetadataBase" />
+  <xs:simpleType name="EntityFilters">
+    <xs:list>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Entity" />
+          <xs:enumeration value="Attributes" />
+          <xs:enumeration value="Privileges" />
+          <xs:enumeration value="Relationships" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:list>
+  </xs:simpleType>
+  <xs:element name="EntityFilters" nillable="true" type="tns:EntityFilters" />
+  <xs:complexType name="ArrayOfOptionSetMetadataBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OptionSetMetadataBase" nillable="true" type="tns:OptionSetMetadataBase" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOptionSetMetadataBase" nillable="true" type="tns:ArrayOfOptionSetMetadataBase" />
+  <xs:complexType name="ManagedPropertyMetadata">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MetadataBase">
+        <xs:sequence>
+          <xs:element xmlns:q70="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Description" nillable="true" type="q70:Label" />
+          <xs:element xmlns:q71="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="DisplayName" nillable="true" type="q71:Label" />
+          <xs:element minOccurs="0" name="EnablesAttributeName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EnablesEntityName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="EvaluationPriority" nillable="true" type="tns:ManagedPropertyEvaluationPriority" />
+          <xs:element minOccurs="0" name="IsGlobalForOperation" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsPrivate" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LogicalName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ManagedPropertyType" nillable="true" type="tns:ManagedPropertyType" />
+          <xs:element minOccurs="0" name="Operation" nillable="true" type="tns:ManagedPropertyOperation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ManagedPropertyMetadata" nillable="true" type="tns:ManagedPropertyMetadata" />
+  <xs:simpleType name="ManagedPropertyEvaluationPriority">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Low" />
+      <xs:enumeration value="Normal" />
+      <xs:enumeration value="High" />
+      <xs:enumeration value="Essential" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ManagedPropertyEvaluationPriority" nillable="true" type="tns:ManagedPropertyEvaluationPriority" />
+  <xs:simpleType name="ManagedPropertyType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Operation" />
+      <xs:enumeration value="Attribute" />
+      <xs:enumeration value="CustomEvaluator" />
+      <xs:enumeration value="Custom" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ManagedPropertyType" nillable="true" type="tns:ManagedPropertyType" />
+  <xs:simpleType name="ManagedPropertyOperation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Create" />
+      <xs:enumeration value="Update" />
+      <xs:enumeration value="Delete">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CreateUpdate">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UpdateDelete">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="All">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ManagedPropertyOperation" nillable="true" type="tns:ManagedPropertyOperation" />
+  <xs:complexType name="ArrayOfManagedPropertyMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ManagedPropertyMetadata" nillable="true" type="tns:ManagedPropertyMetadata" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfManagedPropertyMetadata" nillable="true" type="tns:ArrayOfManagedPropertyMetadata" />
+</xs:schema>

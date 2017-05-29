@@ -1,0 +1,1484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Register xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/crm/2011/tools/pluginregistration">
+  <Solutions>
+    <Solution Assembly="GSC.Rover.DMS.Platform.Plugins.dll" Id="52c58133-16c0-e511-80cb-00155d010e2c" IsolationMode="None" SourceType="Database">
+      <PluginTypes>
+        <Plugin Description="Plug-in to PreProspectInquiryCreate" FriendlyName="PreProspectInquiryCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreProspectInquiryCreate" Id="ab1e6035-8dc8-e511-80cd-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreProspectInquiryCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreProspectInquiryCreate" Description="Pre-Operation of Prospect Inquiry Create" Id="ac1e6035-8dc8-e511-80cd-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="lead" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreOpportunityCreate" FriendlyName="PreOpportunityCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreOpportunityCreate" Id="0c5bcc88-9bc9-e511-80cd-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreOpportunityCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreOpportunityCreate" Description="Pre-Operation of Opportunity Create" Id="0d5bcc88-9bc9-e511-80cd-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="opportunity" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreQuoteCreate" FriendlyName="PreQuoteCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreQuoteCreate" Id="46d94ad3-6fd1-e511-80ce-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreQuoteCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreQuoteCreate" Description="Pre-Operation of Quote Create" Id="47d94ad3-6fd1-e511-80ce-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="quote" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostQuoteCreate" FriendlyName="PostQuoteCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostQuoteCreate" Id="de7d6698-22d5-e511-80ce-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostQuoteCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostQuoteCreate" Description="Post-Operation of Quote Create" Id="df7d6698-22d5-e511-80ce-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="quote" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreOrderCreate" FriendlyName="PreOrderCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreOrderCreate" Id="29822fcf-00e1-e511-80d0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreOrderCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreOrderCreate" Description="Pre-Operation of Order Create" Id="2a822fcf-00e1-e511-80d0-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="salesorder" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreDocumentChecklistCreate" FriendlyName="PreDocumentChecklistCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreDocumentChecklistCreate" Id="28974919-11e1-e511-80d0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreDocumentChecklistCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreDocumentChecklistCreate" Description="Pre-Operation of Document Checklist Create" Id="29974919-11e1-e511-80d0-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_documentchecklist" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOrderCreate" FriendlyName="PostOrderCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostOrderCreate" Id="4906a0d1-f3e1-e511-80d0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOrderCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOrderCreate" Description="Post-Operation of Order Create" Id="4a06a0d1-f3e1-e511-80d0-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="salesorder" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOrderUpdate" FriendlyName="PostOrderUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostOrderUpdate" Id="ddd5ba62-03e5-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOrderUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOrderUpdate" Description="Post-Operation of Order Update" Id="ded5ba62-03e5-e511-80d1-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="salesorder" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="e1d5ba62-03e5-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="f268c168-03e5-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostProspectInquiryUpdate" FriendlyName="PostProspectInquiryUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostProspectInquiryUpdate" Id="29da3271-48e7-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostProspectInquiryUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostProspectInquiryUpdate" Description="Post-Operation of Prospect Inquiry Update" Id="2ada3271-48e7-e511-80d1-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="lead" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="2dda3271-48e7-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="2eda3271-48e7-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostQuoteUpdate" FriendlyName="PostQuoteUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostQuoteUpdate" Id="2fda3271-48e7-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostQuoteUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostQuoteUpdate" Description="Post-Operation of Quote Update" Id="30da3271-48e7-e511-80d1-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="quote" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="33da3271-48e7-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="34da3271-48e7-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostMonthlyAmortizationUpdate" FriendlyName="PostMonthlyAmortizationUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostMonthlyAmortizationUpdate" Id="35da3271-48e7-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostMonthlyAmortizationUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostMonthlyAmortizationUpdate" Description="Post-Operation of Monthly Amortization Update" Id="2af84277-48e7-e511-80d1-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_monthlyamortization" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="2df84277-48e7-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="2ef84277-48e7-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostDocumentChecklistUpdate" FriendlyName="PostDocumentChecklistUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostDocumentChecklistUpdate" Id="2ff84277-48e7-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostDocumentChecklistUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostDocumentChecklistUpdate" Description="Post-Operation of Document Checklist Update" Id="30f84277-48e7-e511-80d1-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_documentchecklist" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="33f84277-48e7-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="34f84277-48e7-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostQuoteDiscountCreate" FriendlyName="PostQuoteDiscountCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostQuoteDiscountCreate" Id="1e1a059f-95e9-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostQuoteDiscountCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostQuoteDiscountCreate" Description="Post-Operation of Quote Discount Create" Id="1f1a059f-95e9-e511-80d1-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_quotediscount" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostQuoteDiscountUpdate" FriendlyName="PostQuoteDiscountUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostQuoteDiscountUpdate" Id="5677c78a-a8e9-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostQuoteDiscountUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostQuoteDiscountUpdate" Description="Post-Operation of Quote Discount Update" Id="5777c78a-a8e9-e511-80d1-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_cmn_quotediscount" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="5a77c78a-a8e9-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="5b77c78a-a8e9-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateQuoteDiscountDelete" FriendlyName="PreValidateQuoteDiscountDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateQuoteDiscountDelete" Id="5c77c78a-a8e9-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateQuoteDiscountDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateQuoteDiscountDelete" Description="Pre-Validation of Quote Discount Delete" Id="5d77c78a-a8e9-e511-80d1-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_cmn_quotediscount" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostPriceListItemUpdate" FriendlyName="PostPriceListItemUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostPriceListItemUpdate" Id="2f65d391-b0e9-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostPriceListItemUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostPriceListItemUpdate" Description="Post-Operation of Price List Item Update" Id="cfa7cb97-b0e9-e511-80d1-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="productpricelevel" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="7d5cb509-baec-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="7e5cb509-baec-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostQuoteChargeCreate" FriendlyName="PostQuoteChargeCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostQuoteChargeCreate" Id="62b25571-b5e9-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostQuoteChargeCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostQuoteChargeCreate" Description="Post-Operation of Quote Charge Create" Id="63b25571-b5e9-e511-80d1-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_quotecharge" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostQuoteChargeUpdate" FriendlyName="PostQuoteChargeUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostQuoteChargeUpdate" Id="66b25571-b5e9-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostQuoteChargeUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostQuoteChargeUpdate" Description="Post-Operation of Quote Charge Update" Id="67b25571-b5e9-e511-80d1-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_cmn_quotecharge" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="6ab25571-b5e9-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="6bb25571-b5e9-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateQuoteChargeDelete" FriendlyName="PreValidateQuoteChargeDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateQuoteChargeDelete" Id="6cb25571-b5e9-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateQuoteChargeDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateQuoteChargeDelete" Description="Pre-Validation of Quote Charge Delete" Id="6db25571-b5e9-e511-80d1-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_cmn_quotecharge" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOrderDiscountCreate" FriendlyName="PostOrderDiscountCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostOrderDiscountCreate" Id="b43c94f0-bee9-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOrderDiscountCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOrderDiscountCreate" Description="Post-Operation of Order Discount Create" Id="b53c94f0-bee9-e511-80d1-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_salesorderdiscount" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOrderDiscountUpdate" FriendlyName="PostOrderDiscountUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostOrderDiscountUpdate" Id="b83c94f0-bee9-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOrderDiscountUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOrderDiscountUpdate" Description="Post-Operation of Order Discount Update" Id="b93c94f0-bee9-e511-80d1-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_cmn_salesorderdiscount" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="bc3c94f0-bee9-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="bd3c94f0-bee9-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateOrderDiscountDelete" FriendlyName="PreValidateOrderDiscountDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateOrderDiscountDelete" Id="be3c94f0-bee9-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateOrderDiscountDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateOrderDiscountDelete" Description="Pre-Validation of Order Discount Delete" Id="bf3c94f0-bee9-e511-80d1-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_cmn_salesorderdiscount" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOrderChargeCreate" FriendlyName="PostOrderChargeCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostOrderChargeCreate" Id="c23c94f0-bee9-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOrderChargeCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOrderChargeCreate" Description="Post-Operation of Order Charge Create" Id="c33c94f0-bee9-e511-80d1-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_ordercharge" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOrderChargeUpdate" FriendlyName="PostOrderChargeUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostOrderChargeUpdate" Id="c63c94f0-bee9-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOrderChargeUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOrderChargeUpdate" Description="Post-Operation of Order Charge Update" Id="c73c94f0-bee9-e511-80d1-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_cmn_ordercharge" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="ca3c94f0-bee9-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="cb3c94f0-bee9-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateOrderChargeDelete" FriendlyName="PreValidateOrderChargeDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateOrderChargeDelete" Id="cc3c94f0-bee9-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateOrderChargeDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateOrderChargeDelete" Description="Pre-Validation of Order Charge Delete" Id="cd3c94f0-bee9-e511-80d1-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_cmn_ordercharge" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostQuoteMonthlyAmortizationUpdate" FriendlyName="PostQuoteMonthlyAmortizationUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostQuoteMonthlyAmortizationUpdate" Id="ee963749-22ec-e511-80d1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostQuoteMonthlyAmortizationUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostQuoteMonthlyAmortizationUpdate" Description="Post-Operation of Quote Monthly Amortization Update" Id="ef963749-22ec-e511-80d1-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_quotemonthlyamortization" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="f2963749-22ec-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="f3963749-22ec-e511-80d1-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreQuoteChargeCreate" FriendlyName="PreQuoteChargeCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreQuoteChargeCreate" Id="dd846b8c-92f4-e511-80d2-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreQuoteChargeCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreQuoteChargeCreate" Description="Pre-Operation of Quote Charge Create" Id="de846b8c-92f4-e511-80d2-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_quotecharge" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostPriceListItemCreate" FriendlyName="PostPriceListItemCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostPriceListItemCreate" Id="8cdb572d-29f7-e511-80d2-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostPriceListItemCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostPriceListItemCreate" Description="Post-Operation of Price List Item Create" Id="8ddb572d-29f7-e511-80d2-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="productpricelevel" Rank="2" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreOrderChargeCreate" FriendlyName="PreOrderChargeCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreOrderChargeCreate" Id="ca304934-3afa-e511-80d2-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreOrderChargeCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreOrderChargeCreate" Description="Pre-Operation of Order Charge Create" Id="cb304934-3afa-e511-80d2-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_ordercharge" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOrderMonthlyAmortizationUpdate" FriendlyName="PostOrderMonthlyAmortizationUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostOrderMonthlyAmortizationUpdate" Id="36c01888-cafb-e511-80d2-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOrderMonthlyAmortizationUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOrderMonthlyAmortizationUpdate" Description="Post-Operation of Order Monthly Amortization Update" Id="37c01888-cafb-e511-80d2-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_ordermonthlyamortization" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="3ac01888-cafb-e511-80d2-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="3bc01888-cafb-e511-80d2-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreProspectCreate" FriendlyName="PreProspectCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreProspectCreate" Id="9c1be4d0-0306-e611-80d2-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreProspectCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreProspectCreate" Description="Pre-Operation of Prospect Create" Id="9d1be4d0-0306-e611-80d2-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_prospect" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostQuoteProductUpdate" FriendlyName="PostQuoteProductUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostQuoteProductUpdate" Id="63d2de3f-a60d-e611-80d7-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostQuoteProductUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostQuoteProductUpdate" Description="Post-Operation of Quote Product Update" Id="2e2bea45-a60d-e611-80d7-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="quotedetail" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="312bea45-a60d-e611-80d7-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="322bea45-a60d-e611-80d7-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostCashReceiptCreate" FriendlyName="PostCashReceiptCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostCashReceiptCreate" Id="909a0d1d-7b16-e611-80d8-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostCashReceiptCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostCashReceiptCreate" Description="Post-Operation of Cash Receipt Create" Id="919a0d1d-7b16-e611-80d8-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_cashreceipt" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreInvoiceCreate" FriendlyName="PreInvoiceCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreInvoiceCreate" Id="ac15e391-4f17-e611-80d8-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreInvoiceCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreInvoiceCreate" Description="Pre-Operation of Invoice Create" Id="ad15e391-4f17-e611-80d8-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="invoice" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostInvoiceCreate" FriendlyName="PostInvoiceCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostInvoiceCreate" Id="270b802e-e717-e611-80d8-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostInvoiceCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostInvoiceCreate" Description="Post-Operation of Invoice Create" Id="280b802e-e717-e611-80d8-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="invoice" Rank="2" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostInvoiceUpdate" FriendlyName="PostInvoiceUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostInvoiceUpdate" Id="87f030b3-601d-e611-80d8-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostInvoiceUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostInvoiceUpdate" Description="Post-Operation of Invoice Update" Id="88f030b3-601d-e611-80d8-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="invoice" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="8bf030b3-601d-e611-80d8-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="8cf030b3-601d-e611-80d8-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehicleClaimUpdate" FriendlyName="PostVehicleClaimUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehicleClaimUpdate" Id="5941e5a1-b720-e611-80d8-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehicleClaimUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehicleClaimUpdate" Description="Post-Operation of Vehicle Claim Update" Id="5a41e5a1-b720-e611-80d8-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_vehicleclaim" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="5d41e5a1-b720-e611-80d8-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="5e41e5a1-b720-e611-80d8-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOrderPlanningCreate" FriendlyName="PostOrderPlanningCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostOrderPlanningCreate" Id="2cbae9ca-be27-e611-80d8-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOrderPlanningCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOrderPlanningCreate" Description="Post-Operation of Order Planning Create" Id="2dbae9ca-be27-e611-80d8-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_orderplanning" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOrderPlanningUpdate" FriendlyName="PostOrderPlanningUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostOrderPlanningUpdate" Id="3176ce30-6f28-e611-80d8-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOrderPlanningUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOrderPlanningUpdate" Description="Post-Operation of Order Planning Update" Id="3276ce30-6f28-e611-80d8-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_orderplanning" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="3576ce30-6f28-e611-80d8-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="3676ce30-6f28-e611-80d8-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehicleSalesReturnUpdate" FriendlyName="PostVehicleSalesReturnUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehicleSalesReturnUpdate" Id="4adf96cf-7c28-e611-80d8-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehicleSalesReturnUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehicleSalesReturnUpdate" Description="Post-Operation of Vehicle Sales Return Update" Id="4bdf96cf-7c28-e611-80d8-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_vehiclesalesreturn" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="4edf96cf-7c28-e611-80d8-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="4fdf96cf-7c28-e611-80d8-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreOrderPlanningCreate" FriendlyName="PreOrderPlanningCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreOrderPlanningCreate" Id="d05ee54d-3a29-e611-80d8-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreOrderPlanningCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreOrderPlanningCreate" Description="Pre-Operation of Order Planning Create" Id="d15ee54d-3a29-e611-80d8-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_orderplanning" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehiclePostDeliveryMonitoringUpdate" FriendlyName="PostVehiclePostDeliveryMonitoringUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehiclePostDeliveryMonitoringUpdate" Id="7c30ba8b-5c29-e611-80d8-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehiclePostDeliveryMonitoringUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehiclePostDeliveryMonitoringUpdate" Description="Post-Operation of Vehicle Post-Delivery Monitoring Update" Id="a796afd4-6f29-e611-80d8-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_vehiclepostdeliverymonitoring" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="aa96afd4-6f29-e611-80d8-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="ab96afd4-6f29-e611-80d8-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateVehicleSalesReturnDelete" FriendlyName="PreValidateVehicleSalesReturnDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleSalesReturnDelete" Id="83378ad5-7b29-e611-80d8-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleSalesReturnDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateVehicleSalesReturnDelete" Description="Pre-Validation of Vehicle Sales Return Delete" Id="84378ad5-7b29-e611-80d8-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_sls_vehiclesalesreturn" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="87378ad5-7b29-e611-80d8-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOrderPlanningDetailUpdate" FriendlyName="PostOrderPlanningDetailUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostOrderPlanningDetailUpdate" Id="04d8d55c-712c-e611-80d9-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOrderPlanningDetailUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOrderPlanningDetailUpdate" Description="Post-Operation of Order Planning Detail Update" Id="05d8d55c-712c-e611-80d9-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_orderplanningdetail" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="08d8d55c-712c-e611-80d9-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="09d8d55c-712c-e611-80d9-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehiclePostDeliveryMonitoringCreate" FriendlyName="PostVehiclePostDeliveryMonitoringCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehiclePostDeliveryMonitoringCreate" Id="051f6ae8-9b2c-e611-80d9-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehiclePostDeliveryMonitoringCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehiclePostDeliveryMonitoringCreate" Description="Post-Operation of Vehicle Post-Delivery Monitoring Create" Id="061f6ae8-9b2c-e611-80d9-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_vehiclepostdeliverymonitoring" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostCashReceiptUpdate" FriendlyName="PostCashReceiptUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostCashReceiptUpdate" Id="cc975123-1b44-e611-80da-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostCashReceiptUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostCashReceiptUpdate" Description="Post-Operation of Post Cash Receipt Update" Id="d57e7c15-ef2d-e611-80d9-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_cashreceipt" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="d87e7c15-ef2d-e611-80d9-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="d97e7c15-ef2d-e611-80d9-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostCommittedFirmOrderCreate" FriendlyName="PostCommittedFirmOrderCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostCommittedFirmOrderCreate" Id="b52fba52-5b2d-e611-80d9-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostCommittedFirmOrderCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostCommittedFirmOrderCreate" Description="Post-Operation of Committed Firm Order Create" Id="b62fba52-5b2d-e611-80d9-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_committedfirmorder" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOpportunityUpdate" FriendlyName="PostOpportunityUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostOpportunityUpdate" Id="a4441bc4-e332-e611-80d9-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOpportunityUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOpportunityUpdate" Description="Post-Operation of Opportunity Update" Id="a5441bc4-e332-e611-80d9-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="opportunity" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="a8441bc4-e332-e611-80d9-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="aa441bc4-e332-e611-80d9-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreVehicleandItemCatalogCreate" FriendlyName="PreVehicleandItemCatalogCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreVehicleandItemCatalogCreate" Id="14f57fe8-fb3c-e611-80d9-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreVehicleandItemCatalogCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreVehicleandItemCatalogCreate" Description="Pre-Operation of Vehicle and Item Catalog Create" Id="15f57fe8-fb3c-e611-80d9-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="product" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostCommittedFirmOrderQuantityUpdate" FriendlyName="PostCommittedFirmOrderQuantityUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostCommittedFirmOrderQuantityUpdate" Id="545e38cf-043d-e611-80d9-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostCommittedFirmOrderQuantityUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostCommittedFirmOrderQuantityUpdate" Description="Post-Operation of Committed Firm Order Quantity Update" Id="555e38cf-043d-e611-80d9-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_committedfirmorderquantity" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="585e38cf-043d-e611-80d9-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="595e38cf-043d-e611-80d9-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidatePurchaseOrderDelete" FriendlyName="PreValidatePurchaseOrderDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidatePurchaseOrderDelete" Id="cfaad50f-a93d-e611-80d9-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidatePurchaseOrderDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidatePurchaseOrderDelete" Description="Pre-Validation of Purchase Order Delete" Id="d0aad50f-a93d-e611-80d9-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_cmn_purchaseorder" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreReceivingTransactionDetailCreate" FriendlyName="PreReceivingTransactionDetailCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreReceivingTransactionDetailCreate" Id="fabf4c80-cc3d-e611-80d9-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreReceivingTransactionDetailCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreReceivingTransactionDetailCreate" Description="Pre-Operation of Receiving Transaction Detail Create" Id="fbbf4c80-cc3d-e611-80d9-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_receivingtransactiondetail" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostPurchaseOrderCreate" FriendlyName="PostPurchaseOrderCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostPurchaseOrderCreate" Id="750827f2-1144-e611-80da-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostPurchaseOrderCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostPurchaseOrderCreate" Description="Post-Operation of Purchase Order Create" Id="760827f2-1144-e611-80da-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_purchaseorder" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostReceivingTransactionUpdate" FriendlyName="PostReceivingTransactionUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostReceivingTransactionUpdate" Id="ebcb3061-fb47-e611-80da-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostReceivingTransactionUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostReceivingTransactionUpdate" Description="Post-Operation of Receiving Transaction Update" Id="eccb3061-fb47-e611-80da-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_cmn_receivingtransaction" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="efcb3061-fb47-e611-80da-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="f0cb3061-fb47-e611-80da-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehiclePurchaseOrderDetailCreate" FriendlyName="PostVehiclePurchaseOrderDetailCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehiclePurchaseOrderDetailCreate" Id="49de25c7-0f48-e611-80da-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehiclePurchaseOrderDetailCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehiclePurchaseOrderDetailCreate" Description="Post-Operation of Vehicle Purchase Order Detail Create" Id="4ade25c7-0f48-e611-80da-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_purchaseorderitemdetails" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreReceivingTransactionCreate" FriendlyName="PreReceivingTransactionCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreReceivingTransactionCreate" Id="a3b55450-9c49-e611-80da-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreReceivingTransactionCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreReceivingTransactionCreate" Description="Pre-Operation of Receiving Transaction Create" Id="a4b55450-9c49-e611-80da-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_receivingtransaction" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostReceivingTransactionCreate" FriendlyName="PostReceivingTransactionCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostReceivingTransactionCreate" Id="4830d73b-a749-e611-80da-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostReceivingTransactionCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostReceivingTransactionCreate" Description="Post-Operation of Receiving Transaction Create" Id="4930d73b-a749-e611-80da-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_receivingtransaction" Rank="2" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostReturnTransactionUpdate" FriendlyName="PostReturnTransactionUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostReturnTransactionUpdate" Id="6ef30b9a-cf4c-e611-80da-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostReturnTransactionUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostReturnTransactionUpdate" Description="Post-Operation of Return Transaction Update" Id="6ff30b9a-cf4c-e611-80da-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_cmn_returntransaction" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="72f30b9a-cf4c-e611-80da-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="73f30b9a-cf4c-e611-80da-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostReturnTransactionCreate" FriendlyName="PostReturnTransactionCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostReturnTransactionCreate" Id="34da073a-824d-e611-80da-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostReturnTransactionCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostReturnTransactionCreate" Description="Post-Operation of Return Transaction Create" Id="35da073a-824d-e611-80da-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_returntransaction" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreQuoteDiscountCreate" FriendlyName="PreQuoteDiscountCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreQuoteDiscountCreate" Id="7f5bff64-9753-e611-80da-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreQuoteDiscountCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreQuoteDiscountCreate" Description="Pre-Operation of Quote Discount Create" Id="805bff64-9753-e611-80da-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_quotediscount" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreOrderDiscountCreate" FriendlyName="PreOrderDiscountCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreOrderDiscountCreate" Id="79d44932-9054-e611-80da-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreOrderDiscountCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreOrderDiscountCreate" Description="Pre-Operation of Order Discount Create" Id="7ad44932-9054-e611-80da-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_salesorderdiscount" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateVehicleTransferCreate" FriendlyName="PreValidateVehicleTransferCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleTransferCreate" Id="17da5ffc-d157-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleTransferCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateVehicleTransferCreate" Description="Pre-Validation of Vehicle Transfer Create" Id="18da5ffc-d157-e611-80db-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_iv_vehicletransfer" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateAllocatedVehicleDelete" FriendlyName="PreValidateAllocatedVehicleDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleTransferCreate" Id="9e005011-1f5a-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateAllocatedVehicleDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateAllocatedVehicleDelete" Description="Pre-Validation of Allocated Vehicle Delete" Id="9f005011-1f5a-e611-80db-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_iv_allocatedvehicle" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostShippingClaimCreate" FriendlyName="PostShippingClaimCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostShippingClaimCreate" Id="eeb4ccd5-8e58-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostShippingClaimCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostShippingClaimCreate" Description="Post-Operation of Shipping Claim Create" Id="efb4ccd5-8e58-e611-80db-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_shippingclaim" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostShippingClaimUpdate" FriendlyName="PostShippingClaimUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostShippingClaimUpdate" Id="f78ce24a-3959-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostShippingClaimUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostShippingClaimUpdate" Description="Post-Operation of Shipping Claim Update" Id="f88ce24a-3959-e611-80db-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_shippingclaim" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="fb8ce24a-3959-e611-80db-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="fc8ce24a-3959-e611-80db-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehicleTransferUpdate" FriendlyName="PostVehicleTransferUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehicleTransferUpdate" Id="6c5b2e1a-6359-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehicleTransferUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehicleTransferUpdate" Description="Post-Operation of Vehicle Transfer Update" Id="6d5b2e1a-6359-e611-80db-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_iv_vehicletransfer" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="705b2e1a-6359-e611-80db-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="715b2e1a-6359-e611-80db-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreShippingClaimCreate" FriendlyName="PreShippingClaimCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreShippingClaimCreate" Id="a76fa4b5-e859-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreShippingClaimCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreShippingClaimCreate" Description="Pre-Operation of Shipping Claim Create" Id="a86fa4b5-e859-e611-80db-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_shippingclaim" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateVehicleTransferDelete" FriendlyName="PreValidateVehicleTransferDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleTransferDelete" Id="1254bd3e-b65a-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleTransferDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateVehicleTransferDelete" Description="Pre-Validation of Vehicle Transfer Delete" Id="1354bd3e-b65a-e611-80db-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_iv_vehicletransfer" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostIDRequestCreate" FriendlyName="PostIDRequestCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostIDRequestCreate" Id="8e6c68ee-c85e-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostIDRequestCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostIDRequestCreate" Description="Post-Operation of ID Request Create" Id="8f6c68ee-c85e-e611-80db-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_idrequest" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateVehicleInTransitTransferCreate" FriendlyName="PreValidateVehicleInTransitTransferCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleInTransitTransferCreate" Id="f7d25311-4768-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleInTransitTransferCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateVehicleInTransitTransferCreate" Description="Pre-Validation of Vehicle In-Transit Transfer Create" Id="f8d25311-4768-e611-80db-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_iv_vehicleintransittransfer" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehicleInTransitTransferUpdate" FriendlyName="PostVehicleInTransitTransferUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehicleInTransitTransferUpdate" Id="4043c522-1669-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehicleInTransitTransferUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehicleInTransitTransferUpdate" Description="Post-Operation of Vehicle In-Transit Transfer Update" Id="4143c522-1669-e611-80db-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_iv_vehicleintransittransfer" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="4443c522-1669-e611-80db-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="4543c522-1669-e611-80db-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehicleCountScheduleUpdate" FriendlyName="PostVehicleCountScheduleUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehicleCountScheduleUpdate" Id="25f31271-bd69-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehicleCountScheduleUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehicleCountScheduleUpdate" Description="Post-Operation of Vehicle Count Schedule Update" Id="26f31271-bd69-e611-80db-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_iv_vehiclecountschedule" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="29f31271-bd69-e611-80db-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="2af31271-bd69-e611-80db-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateVehicleInTransitTransferDelete" FriendlyName="PreValidateVehicleInTransitTransferDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleInTransitTransferDelete" Id="bf6db23b-916a-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleInTransitTransferDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateVehicleInTransitTransferDelete" Description="Pre-Validation of Vehicle In-Transit Transfer Delete" Id="c06db23b-916a-e611-80db-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_iv_vehicleintransittransfer" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehicleAdjustmentVarianceEntryUpdate" FriendlyName="PostVehicleAdjustmentVarianceEntryUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehicleAdjustmentVarianceEntryUpdate" Id="2b0225c8-6b6b-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehicleAdjustmentVarianceEntryUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehicleAdjustmentVarianceEntryUpdate" Description="Post-Operation of Vehicle Adjustment/Variance Entry Update" Id="4cc07a74-5f6e-e611-80db-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_vehicleadjustmentvarianceentry" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="4fc07a74-5f6e-e611-80db-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="50c07a74-5f6e-e611-80db-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreVehicleAdjustmentVarianceEntryDetailCreate" FriendlyName="PreVehicleAdjustmentVarianceEntryDetailCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreVehicleAdjustmentVarianceEntryDetailCreate" Id="0a5cfa00-296f-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreVehicleAdjustmentVarianceEntryDetailCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreVehicleAdjustmentVarianceEntryDetailCreate" Description="Pre-Operation of Vehicle Adjustment/Variance Entry Detail Create" Id="0b5cfa00-296f-e611-80db-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_adjustmentvariancedetail" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateVehicleAdjustmentVarianceEntryDetailDelete" FriendlyName="PreValidateVehicleAdjustmentVarianceEntryDetailDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleAdjustmentVarianceEntryDetailDelete" Id="e49567a3-0470-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleAdjustmentVarianceEntryDetailDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateVehicleAdjustmentVarianceEntryDetailDelete" Description="Pre-Validation of Vehicle Adjustment/Variance Entry Detail Delete" Id="e59567a3-0470-e611-80db-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_sls_adjustmentvariancedetail" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehicleInTransitTransferReceivingUpdate" FriendlyName="PostVehicleInTransitTransferReceivingUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehicleInTransitTransferReceivingUpdate" Id="f3345792-0870-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehicleInTransitTransferReceivingUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehicleInTransitTransferReceivingUpdate" Description="Post-Operation of Vehicle In-Transit Transfer Receiving Update" Id="f4345792-0870-e611-80db-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_iv_vehicleintransittransferreceiving" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="f7345792-0870-e611-80db-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="f8345792-0870-e611-80db-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateVehicleAdjustmentVarianceEntryDelete" FriendlyName="PreValidateVehicleAdjustmentVarianceEntryDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleAdjustmentVarianceEntryDelete" Id="d5185be5-2570-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleAdjustmentVarianceEntryDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateVehicleAdjustmentVarianceEntryDelete" Description="Pre-Validation of Vehicle Adjustment/Variance Entry Delete" Id="d6185be5-2570-e611-80db-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_sls_vehicleadjustmentvarianceentry" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehicleCountEntryDetailsUpdate" FriendlyName="PostVehicleCountEntryDetailsUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehicleCountEntryDetailsUpdate" Id="f3b9981e-d870-e611-80db-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehicleCountEntryDetailsUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehicleCountEntryDetailsUpdate" Description="Post-Operation of Vehicle Count Entry Details Update" Id="f4b9981e-d870-e611-80db-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_iv_vehiclecountentrydetails" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="f7b9981e-d870-e611-80db-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="f8b9981e-d870-e611-80db-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehicleCountEntryUpdate" FriendlyName="PostVehicleCountEntryUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehicleCountEntryUpdate" Id="2f5d916e-a474-e611-80dc-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehicleCountEntryUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehicleCountEntryUpdate" Description="Post-Operation of Vehicle Count Entry Update" Id="305d916e-a474-e611-80dc-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_iv_vehiclecountentry" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="335d916e-a474-e611-80dc-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="345d916e-a474-e611-80dc-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOpportunityWin" FriendlyName="PostOpportunityWin" Name="GSC.Rover.DMS.Platform.Plugins.PostOpportunityWin" Id="7ce44450-4a7a-e611-80dc-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOpportunityWin">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOpportunityWin" Description="Post-Operation of Opportunity Win" Id="7de44450-4a7a-e611-80dc-00155d010e2c" MessageName="Win" Mode="Synchronous" PrimaryEntityName="opportunity" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreVehicleAccessoryCreate" FriendlyName="PreVehicleAccessoryCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreVehicleAccessoryCreate" Id="6240c430-dc7b-e611-80dc-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreVehicleAccessoryCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreVehicleAccessoryCreate" Description="Pre-Operation of Vehicle Accessory Create" Id="6340c430-dc7b-e611-80dc-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_vehicleaccessory" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreVehicleCabChassisCreate" FriendlyName="PreVehicleCabChassisCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreVehicleCabChassisCreate" Id="179c922a-e37b-e611-80dc-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreVehicleCabChassisCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreVehicleCabChassisCreate" Description="Pre-Operation of Vehicle Cab Chassis Create" Id="189c922a-e37b-e611-80dc-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_vehiclecabchassis" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostQuoteCabChassisUpdate" FriendlyName="PostQuoteCabChassisUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostQuoteCabChassisUpdate" Id="3d4606a4-6f80-e611-80dc-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostQuoteCabChassisUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostQuoteCabChassisUpdate" Description="Post-Operation of Quote Cab Chassis Update" Id="c4ad9842-7480-e611-80dc-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_quotecabchassis" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="c7ad9842-7480-e611-80dc-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="c8ad9842-7480-e611-80dc-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateQuoteCabChassisDelete" FriendlyName="PreValidateQuoteCabChassisDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateQuoteCabChassisDelete" Id="434606a4-6f80-e611-80dc-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateQuoteCabChassisDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateQuoteCabChassisDelete" Description="Pre-Validation of Quote Cab Chassis Delete" Id="0c337849-7480-e611-80dc-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_sls_quotecabchassis" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreQuoteAccessoryCreate" FriendlyName="PreQuoteAccessoryCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreQuoteAccessoryCreate" Id="e52a4a28-8084-e611-80dc-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreQuoteAccessoryCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreQuoteAccessoryCreate" Description="Pre-Operation of Quote Accessory Create" Id="e62a4a28-8084-e611-80dc-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_quoteaccessory" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostQuoteAccessoryUpdate" FriendlyName="PostQuoteAccessoryUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostQuoteAccessoryUpdate" Id="e92a4a28-8084-e611-80dc-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostQuoteAccessoryUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostQuoteAccessoryUpdate" Description="Post-Operation of Quote Accessory Update" Id="ea2a4a28-8084-e611-80dc-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_quoteaccessory" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="ed2a4a28-8084-e611-80dc-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="ee2a4a28-8084-e611-80dc-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateQuoteAccessoryDelete" FriendlyName="PreValidateQuoteAccessoryDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateQuoteAccessoryDelete" Id="ef2a4a28-8084-e611-80dc-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateQuoteAccessoryDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateQuoteAccessoryDelete" Description="Pre-Validation of Quote Accessory Delete" Id="f02a4a28-8084-e611-80dc-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_sls_quoteaccessory" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostAccountCreate" FriendlyName="PostAccountCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostAccountCreate" Id="46017021-6585-e611-80dc-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostAccountCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostAccountCreate" Description="Post-Operation of Account Create" Id="47017021-6585-e611-80dc-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="account" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostAccountUpdate" FriendlyName="PostAccountUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostAccountUpdate" Id="5205a3c7-6685-e611-80dc-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostAccountUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostAccountUpdate" Description="Post-Operation of Account Update" Id="5305a3c7-6685-e611-80dc-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="account" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="5605a3c7-6685-e611-80dc-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="5705a3c7-6685-e611-80dc-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateCashReceiptCreate" FriendlyName="PreValidateCashReceiptCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateCashReceiptCreate" Id="67dddf43-4b89-e611-80dd-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateCashReceiptCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateCashReceiptCreate" Description="Pre-Validation of Cash Receipt Create" Id="68dddf43-4b89-e611-80dd-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_cashreceipt" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PrePostDeliveryAdministrationCreate" FriendlyName="PrePostDeliveryAdministrationCreate" Name="GSC.Rover.DMS.Platform.Plugins.PrePostDeliveryAdministrationCreate" Id="63a928ca-cd89-e611-80dd-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PrePostDeliveryAdministrationCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PrePostDeliveryAdministrationCreate" Description="Pre-Operation of Post-Delivery Administration Create" Id="64a928ca-cd89-e611-80dd-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_postdeliveryadministration" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostSalesDocumentUpdate" FriendlyName="PostSalesDocumentUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostSalesDocumentUpdate" Id="f0a8456c-138a-e611-80dd-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostSalesDocumentUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostSalesDocumentUpdate" Description="Post-Operation of Sales Document Update" Id="f1a8456c-138a-e611-80dd-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_salesdocument" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="f4a8456c-138a-e611-80dd-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="f5a8456c-138a-e611-80dd-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostContactCreate" FriendlyName="PostContactCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostContactCreate" Id="98c1e5e6-a48a-e611-80dd-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostContactCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostContactCreate" Description="Post-Operation of Contact Create" Id="99c1e5e6-a48a-e611-80dd-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="contact" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostContactUpdate" FriendlyName="PostContactUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostContactUpdate" Id="80c463cf-868b-e611-80dd-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostContactUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostContactUpdate" Description="Post-Operation of Contact Update" Id="566ed685-928b-e611-80dd-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="contact" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="596ed685-928b-e611-80dd-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="5a6ed685-928b-e611-80dd-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateRequirementChecklistDelete" FriendlyName="PreValidateRequirementChecklistDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateRequirementChecklistDelete" Id="31974b14-b28b-e611-80dd-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateRequirementChecklistDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateRequirementChecklistDelete" Description="Pre-Validation of Requirement Checklist Delete" Id="32974b14-b28b-e611-80dd-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_sls_requirementchecklist" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostRequirementChecklistUpdate" FriendlyName="PostRequirementChecklistUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostRequirementChecklistUpdate" Id="35974b14-b28b-e611-80dd-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostRequirementChecklistUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostRequirementChecklistUpdate" Description="Post-Operation of Requirement Checklist Update" Id="36974b14-b28b-e611-80dd-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_requirementchecklist" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="39974b14-b28b-e611-80dd-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="3a974b14-b28b-e611-80dd-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehicleandItemCatalogCreate" FriendlyName="PostVehicleandItemCatalogCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehicleandItemCatalogCreate" Id="b8571fcb-388c-e611-80dd-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehicleandItemCatalogCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehicleandItemCatalogCreate" Description="Post-Operation of Vehicle and Item Catalog Create" Id="b9571fcb-388c-e611-80dd-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="product" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehicleandItemCatalogUpdate" FriendlyName="PostVehicleandItemCatalogUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehicleandItemCatalogUpdate" Id="bc571fcb-388c-e611-80dd-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehicleandItemCatalogUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehicleandItemCatalogUpdate" Description="Post-Operation of Vehicle and Item Catalog Update" Id="bd571fcb-388c-e611-80dd-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="product" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="c0571fcb-388c-e611-80dd-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="c1571fcb-388c-e611-80dd-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreContactCreate" FriendlyName="PreContactCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreContactCreate" Id="29cf4fa6-6897-e611-80df-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreContactCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreContactCreate" Description="Pre-Operation of Contact Create" Id="2acf4fa6-6897-e611-80df-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="contact" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreQuoteCabChassisCreate" FriendlyName="PreQuoteCabChassisCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreQuoteCabChassisCreate" Id="ae3c5688-089c-e611-80df-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreQuoteCabChassisCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreQuoteCabChassisCreate" Description="Pre-Operation of Quote Cab Chassis Create" Id="af3c5688-089c-e611-80df-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_quotecabchassis" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostInsuranceCoverageCreate" FriendlyName="PostInsuranceCoverageCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostInsuranceCoverageCreate" Id="950258fd-10a7-e611-80e0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostInsuranceCoverageCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostInsuranceCoverageCreate" Description="Post-Operation of Insurance Coverage Create" Id="960258fd-10a7-e611-80e0-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_insurancecoverage" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostInsuranceCoverageUpdate" FriendlyName="PostInsuranceCoverageUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostInsuranceCoverageUpdate" Id="990258fd-10a7-e611-80e0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostInsuranceCoverageUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostInsuranceCoverageUpdate" Description="Post-Operation of Insurance Coverage Update" Id="9a0258fd-10a7-e611-80e0-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_cmn_insurancecoverage" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="9d0258fd-10a7-e611-80e0-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="9e0258fd-10a7-e611-80e0-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateInsuranceCoverageDelete" FriendlyName="PreValidateInsuranceCoverageDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateInsuranceCoverageDelete" Id="9f0258fd-10a7-e611-80e0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateInsuranceCoverageDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateInsuranceCoverageDelete" Description="Pre-Validation of Insurance Coverage Delete" Id="a00258fd-10a7-e611-80e0-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_cmn_insurancecoverage" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostChargeItemCreate" FriendlyName="PostChargeItemCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostChargeItemCreate" Id="06b8a1e6-b6a7-e611-80e0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostChargeItemCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostChargeItemCreate" Description="Post-Operation of Charge Item Create" Id="07b8a1e6-b6a7-e611-80e0-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_chargesitem" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostChargeItemUpdate" FriendlyName="PostChargeItemUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostChargeItemUpdate" Id="0ab8a1e6-b6a7-e611-80e0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostChargeItemUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostChargeItemUpdate" Description="Post-Operation of Charge Item Update" Id="0bb8a1e6-b6a7-e611-80e0-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_cmn_chargesitem" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="0eb8a1e6-b6a7-e611-80e0-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="0fb8a1e6-b6a7-e611-80e0-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOpportunityCreate" FriendlyName="PostOpportunityCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostOpportunityCreate" Id="2f293564-28bc-e611-80e5-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOpportunityCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOpportunityCreate" Description="Post-Operation of Opportunity Create" Id="30293564-28bc-e611-80e5-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="opportunity" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateContactDelete" FriendlyName="PreValidateContactDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateContactDelete" Id="5051e61c-3fbc-e611-80e5-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateContactDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateContactDelete" Description="Pre-Validation of Contact Delete" Id="d580ea22-3fbc-e611-80e5-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="contact" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostTransactedVehicleUpdate" FriendlyName="PostTransactedVehicleUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostTransactedVehicleUpdate" Id="44be0235-23bd-e611-80e5-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostTransactedVehicleUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostTransactedVehicleUpdate" Description="Post-Operation of Transacted Vehicle Update" Id="45be0235-23bd-e611-80e5-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_cmn_transactedvehicle" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="9464fd3a-23bd-e611-80e5-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="9564fd3a-23bd-e611-80e5-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostQuoteCabChassisCreate" FriendlyName="PostQuoteCabChassisCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostQuoteCabChassisCreate" Id="347ca574-60c2-e611-80e5-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostQuoteCabChassisCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostQuoteCabChassisCreate" Description="Post-Operation of Quote Cab Chassis Create" Id="357ca574-60c2-e611-80e5-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_quotecabchassis" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreVehicleSalesReturnCreate" FriendlyName="PreVehicleSalesReturnCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreVehicleSalesReturnCreate" Id="960c20e1-ebd2-e611-80e7-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreVehicleSalesReturnCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreVehicleSalesReturnCreate" Description="Pre-Operation of Vehicle Sales Return Create" Id="970c20e1-ebd2-e611-80e7-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_vehiclesalesreturn" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreVehicleColorCreate" FriendlyName="PreVehicleColorCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreVehicleColorCreate" Id="36ca8320-66d2-e611-80e7-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreVehicleColorCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreVehicleColorCreate" Description="Pre-Operation of Vehicle Color Create" Id="37ca8320-66d2-e611-80e7-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_vehiclecolor" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostExtendedPriceListItemCreate" FriendlyName="PostExtendedPriceListItemCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostExtendedPriceListItemCreate" Id="51b7b7d0-14d3-e611-80e7-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostExtendedPriceListItemCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostExtendedPriceListItemCreate" Description="Post-Operation of Extended Price List Item Create" Id="52b7b7d0-14d3-e611-80e7-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_extendedpricelistitem" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostPriceListUpdate" FriendlyName="PostPriceListUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostPriceListUpdate" Id="2a961204-c2d3-e611-80e7-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostPriceListUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostPriceListUpdate" Description="Post-Operation of Price List Update" Id="2b961204-c2d3-e611-80e7-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="pricelevel" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="2e961204-c2d3-e611-80e7-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="2f961204-c2d3-e611-80e7-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PrePriceListCreate" FriendlyName="PrePriceListCreate" Name="GSC.Rover.DMS.Platform.Plugins.PrePriceListCreate" Id="30961204-c2d3-e611-80e7-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PrePriceListCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PrePriceListCreate" Description="Pre-Operation of Price List Create" Id="31961204-c2d3-e611-80e7-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="pricelevel" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehicleAdjustmentVarianceEntryDetailUpdate" FriendlyName="PostVehicleAdjustmentVarianceEntryDetailUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehicleAdjustmentVarianceEntryDetailUpdate" Id="85c92a0e-8ed8-e611-80ea-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehicleAdjustmentVarianceEntryDetailUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehicleAdjustmentVarianceEntryDetailUpdate" Description="Post-Operation of Vehicle Adjustment/Variance Entry Detail Update" Id="86c92a0e-8ed8-e611-80ea-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_adjustmentvariancedetail" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="89c92a0e-8ed8-e611-80ea-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="8ac92a0e-8ed8-e611-80ea-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateAccountCreate" FriendlyName="PreValidateAccountCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateAccountCreate" Id="05a46c26-52d9-e611-80eb-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateAccountCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateAccountCreate" Description="Pre-Validation of Account Create" Id="06a46c26-52d9-e611-80eb-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="account" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateContactCreate" FriendlyName="PreValidateContactCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateContactCreate" Id="f2125229-56d9-e611-80eb-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateContactCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateContactCreate" Description="Pre-Validation of Contact Create" Id="f3125229-56d9-e611-80eb-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="contact" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostGeneralVehicleDataUpdate" FriendlyName="PostGeneralVehicleDataUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostGeneralVehicleDataUpdate" Id="bff7fcc2-fbd9-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostGeneralVehicleDataUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostGeneralVehicleDataUpdate" Description="Post-Operation of General Vehicle Data Update" Id="c0f7fcc2-fbd9-e611-80ed-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_gvd" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="c3f7fcc2-fbd9-e611-80ed-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="c4f7fcc2-fbd9-e611-80ed-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostTaxMaintenanceUpdate" FriendlyName="PostTaxMaintenanceUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostTaxMaintenanceUpdate" Id="c996f7bb-c6db-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostTaxMaintenanceUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostTaxMaintenanceUpdate" Description="Post-Operation of Tax Maintenance Update" Id="ca96f7bb-c6db-e611-80ed-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_cmn_taxmaintenance" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="cd96f7bb-c6db-e611-80ed-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="ce96f7bb-c6db-e611-80ed-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostTaxMaintenanceCreate" FriendlyName="PostTaxMaintenanceCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostTaxMaintenanceCreate" Id="cf96f7bb-c6db-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostTaxMaintenanceCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostTaxMaintenanceCreate" Description="Post-Operation of Tax Maintenance Create" Id="d096f7bb-c6db-e611-80ed-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_taxmaintenance" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostGeneralVehicleDataCreate" FriendlyName="PostGeneralVehicleDataCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostGeneralVehicleDataCreate" Id="0c36f282-c4db-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostGeneralVehicleDataCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostGeneralVehicleDataCreate" Description="Post-Operation of General Vehicle Data Create" Id="0d36f282-c4db-e611-80ed-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_gvd" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateInvoiceDelete" FriendlyName="PreValidateInvoiceDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateInvoiceDelete" Id="70a0ce82-b1df-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateInvoiceDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateInvoiceDelete" Description="Pre-Validation of Invoice Delete" Id="71a0ce82-b1df-e611-80ed-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="invoice" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateOpportunityDelete" FriendlyName="PreValidateOpportunityDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateOpportunityDelete" Id="e0ff10c3-16e1-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateOpportunityDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateOpportunityDelete" Description="Pre-Validation of Opportunity Delete" Id="e1ff10c3-16e1-e611-80ed-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="opportunity" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostInventoryUpdate" FriendlyName="PostInventoryUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostInventoryUpdate" Id="6dcc114f-4de1-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostInventoryUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostInventoryUpdate" Description="Post-Operation of Inventory Update" Id="6ecc114f-4de1-e611-80ed-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_iv_inventory" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="71cc114f-4de1-e611-80ed-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="72cc114f-4de1-e611-80ed-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateInventoryCreate" FriendlyName="PreValidateInventoryCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateInventoryCreate" Id="73cc114f-4de1-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateInventoryCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateInventoryCreate" Description="Pre-Validation of Inventory Create" Id="ff351155-4de1-e611-80ed-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_iv_inventory" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateAccountDelete" FriendlyName="PreValidateAccountDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateAccountDelete" Id="2806978e-00e2-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateAccountDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateAccountDelete" Description="Pre-Validation of Account Delete" Id="2906978e-00e2-e611-80ed-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="account" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreApproverSetupCreate" FriendlyName="PreApproverSetupCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreApproverSetupCreate" Id="b5eecaa2-cce2-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreApproverSetupCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreApproverSetupCreate" Description="Pre-Operation of Approver Setup Create" Id="b6eecaa2-cce2-e611-80ed-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_approversetup" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostPurchaseOrderUpdate" FriendlyName="PostPurchaseOrderUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostPurchaseOrderUpdate" Id="7d1376c3-3ee4-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostPurchaseOrderUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostPurchaseOrderUpdate" Description="Post-Operation of Purchase Order Update" Id="7e1376c3-3ee4-e611-80ed-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_cmn_purchaseorder" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="811376c3-3ee4-e611-80ed-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="821376c3-3ee4-e611-80ed-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateIDSequenceDelete" FriendlyName="PreValidateIDSequenceDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateIDSequenceDelete" Id="5e38d45a-70e4-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateIDSequenceDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateIDSequenceDelete" Description="Pre-Validation of ID Sequence Delete" Id="5f38d45a-70e4-e611-80ed-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_cmn_idsequence" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PrePurchaseOrderDetailDelete" FriendlyName="PrePurchaseOrderDetailDelete" Name="GSC.Rover.DMS.Platform.Plugins.PrePurchaseOrderDetailDelete" Id="69be3955-64e7-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PrePurchaseOrderDetailDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PrePurchaseOrderDetailDelete" Description="Pre-Operation of Purchase Order Detail Delete" Id="6abe3955-64e7-e611-80ed-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_cmn_purchaseorderitemdetails" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PrePurchaseOrderDetailCreate" FriendlyName="PrePurchaseOrderDetailCreate" Name="GSC.Rover.DMS.Platform.Plugins.PrePurchaseOrderDetailCreate" Id="747284f5-8ae7-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PrePurchaseOrderDetailCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PrePurchaseOrderDetailCreate" Description="Pre-Operation of Purchase Order Detail Create" Id="757284f5-8ae7-e611-80ed-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_purchaseorderitemdetails" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PrePurchaseOrderCreate" FriendlyName="PrePurchaseOrderCreate" Name="GSC.Rover.DMS.Platform.Plugins.PrePurchaseOrderCreate" Id="bcf194bf-97e7-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PrePurchaseOrderCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PrePurchaseOrderCreate" Description="Pre-Operation of Purchase Order Create" Id="bdf194bf-97e7-e611-80ed-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_purchaseorder" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostPurchaseOrderDetailUpdate" FriendlyName="PostPurchaseOrderDetailUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostPurchaseOrderDetailUpdate" Id="0bede88d-66e8-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostPurchaseOrderDetailUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostPurchaseOrderDetailUpdate" Description="Post-Operation of Purchase Order Detail Update" Id="0cede88d-66e8-e611-80ed-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_cmn_purchaseorderitemdetails" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="0fede88d-66e8-e611-80ed-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="10ede88d-66e8-e611-80ed-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostProductQuantityUpdate" FriendlyName="PostProductQuantityUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostProductQuantityUpdate" Id="d0d13c84-22e9-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostProductQuantityUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostProductQuantityUpdate" Description="Post-Operation of Product Quantity Update" Id="d1d13c84-22e9-e611-80ed-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_iv_productquantity" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="d4d13c84-22e9-e611-80ed-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="3ca13e8a-22e9-e611-80ed-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostReceivingTransactionDetailUpdate" FriendlyName="PostReceivingTransactionDetailUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostReceivingTransactionDetailUpdate" Id="24ff48e6-e4e9-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostReceivingTransactionDetailUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostReceivingTransactionDetailUpdate" Description="Post-Operation of Receiving Transaction Detail Update" Id="25ff48e6-e4e9-e611-80ed-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_cmn_receivingtransactiondetail" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="28ff48e6-e4e9-e611-80ed-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="29ff48e6-e4e9-e611-80ed-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateReceivingTransactionDelete" FriendlyName="PreValidateReceivingTransactionDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateReceivingTransactionDelete" Id="62932a46-f3e9-e611-80ed-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateReceivingTransactionDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateReceivingTransactionDelete" Description="Pre-Validation of Receiving Transaction Delete" Id="63932a46-f3e9-e611-80ed-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_cmn_receivingtransaction" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateReturnTransactionDelete" FriendlyName="PreValidateReturnTransactionDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateReturnTransactionDelete" Id="f942bfd9-c7ed-e611-80ee-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateReturnTransactionDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateReturnTransactionDelete" Description="Pre-Validation of Return Transaction Delete" Id="fb42bfd9-c7ed-e611-80ee-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_cmn_returntransaction" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreExtendedPriceListItemCreate" FriendlyName="PreExtendedPriceListItemCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreExtendedPriceListItemCreate" Id="bf85e03e-a4f8-e611-80ee-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreExtendedPriceListItemCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreExtendedPriceListItemCreate" Description="Pre-Operation of Extended Price List Item Create" Id="c085e03e-a4f8-e611-80ee-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_extendedpricelistitem" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreCommittedFirmOrderQuantityDetailCreate" FriendlyName="PreCommittedFirmOrderQuantityDetailCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreCommittedFirmOrderQuantityDetailCreate" Id="b03872c5-8ffd-e611-80ef-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreCommittedFirmOrderQuantityDetailCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreCommittedFirmOrderQuantityDetailCreate" Description="Pre-Operation of Committed Firm Order Quantity Detail Create" Id="b13872c5-8ffd-e611-80ef-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_committedfirmorderquantitydetail" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostCommittedFirmOrderQuantityDetailUpdate" FriendlyName="PostCommittedFirmOrderQuantityDetailUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostCommittedFirmOrderQuantityDetailUpdate" Id="d8dd2993-42fe-e611-80ef-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostCommittedFirmOrderQuantityDetailUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostCommittedFirmOrderQuantityDetailUpdate" Description="Post-Operation of Committed Firm Order Quantity Detail Update" Id="d9dd2993-42fe-e611-80ef-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_committedfirmorderquantitydetail" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="dcdd2993-42fe-e611-80ef-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="dddd2993-42fe-e611-80ef-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateCommittedFirmOrderQuantityDetailDelete" FriendlyName="PreValidateCommittedFirmOrderQuantityDetailDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateCommittedFirmOrderQuantityDetailDelete" Id="9b6def01-c4ff-e611-80ef-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateCommittedFirmOrderQuantityDetailDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateCommittedFirmOrderQuantityDetailDelete" Description="Pre-Validation of Committed Firm Order Quantity Detail Delete" Id="9c6def01-c4ff-e611-80ef-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_sls_committedfirmorderquantitydetail" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostCommittedFirmOrderQuantityDetailCreate" FriendlyName="PostCommittedFirmOrderQuantityDetailCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostCommittedFirmOrderQuantityDetailCreate" Id="a8efe286-ce03-e711-80ef-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostCommittedFirmOrderQuantityDetailCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostCommittedFirmOrderQuantityDetailCreate" Description="Post-Operation of Committed Firm Order Quantity Detail Create" Id="a9efe286-ce03-e711-80ef-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_committedfirmorderquantitydetail" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PostImage" Id="acefe286-ce03-e711-80ef-00155d010e2c" MessagePropertyName="id" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreProductQuantityCreate" FriendlyName="PreProductQuantityCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreProductQuantityCreate" Id="372f0f17-d90a-e711-80ef-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreProductQuantityCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreProductQuantityCreate" Description="Pre-Operation of Product Quantity Create" Id="382f0f17-d90a-e711-80ef-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_iv_productquantity" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreInventoryHistoryCreate" FriendlyName="PreInventoryHistoryCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreInventoryHistoryCreate" Id="64a3638e-e80a-e711-80ef-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreInventoryHistoryCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreInventoryHistoryCreate" Description="Pre-Operation of Inventory History Create" Id="65a3638e-e80a-e711-80ef-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_iv_inventoryhistory" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateSalesOrderDelete" FriendlyName="PreValidateSalesOrderDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateSalesOrderDelete" Id="f0423150-c612-e711-80ef-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateSalesOrderDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateSalesOrderDelete" Description="Pre-Validation of Sales Order Delete" Id="f1423150-c612-e711-80ef-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="salesorder" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateProspectInquiryDelete" FriendlyName="PreValidateProspectInquiryDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateProspectInquiryDelete" Id="929463b8-3518-e711-80f0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateProspectInquiryDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateProspectInquiryDelete" Description="Pre-Validation of Prospect Inquiry Delete" Id="939463b8-3518-e711-80f0-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="lead" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreOrderAccessoryCreate" FriendlyName="PreOrderAccessoryCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreOrderAccessoryCreate" Id="22fcf152-0719-e711-80f0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreOrderAccessoryCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreOrderAccessoryCreate" Description="Pre-Operation of Order Accessory Create" Id="6d19915c-2619-e711-80f0-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_orderaccessory" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOrderAccessoryUpdate" FriendlyName="PostOrderAccessoryUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostOrderAccessoryUpdate" Id="cbdb21fd-ff18-e711-80f0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOrderAccessoryUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOrderAccessoryUpdate" Description="Post-Operation of Order Accessory Update" Id="05fd6d49-3119-e711-80f0-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_orderaccessory" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image Attributes="gsc_productid" EntityAlias="preImage" Id="08fd6d49-3119-e711-80f0-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image Attributes="gsc_productid" EntityAlias="postImage" Id="09fd6d49-3119-e711-80f0-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOrderCabChassisCreate" FriendlyName="PostOrderCabChassisCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostOrderCabChassisCreate" Id="5d35de8b-c519-e711-80f0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOrderCabChassisCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOrderCabChassisCreate" Description="Post-Operation of Order Cab Chassis Create" Id="0fb779a4-cb19-e711-80f0-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_ordercabchassis" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostOrderCabChassisUpdate" FriendlyName="PostOrderCabChassisUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostOrderCabChassisUpdate" Id="6135de8b-c519-e711-80f0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostOrderCabChassisUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostOrderCabChassisUpdate" Description="Post-Operation of Order Cab Chassis Update" Id="12b779a4-cb19-e711-80f0-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_sls_ordercabchassis" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="15b779a4-cb19-e711-80f0-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="16b779a4-cb19-e711-80f0-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostProspectInquiryCreate" FriendlyName="PostProspectInquiryCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostProspectInquiryCreate" Id="57f7a797-df19-e711-80f0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostProspectInquiryCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostProspectInquiryCreate" Description="Post-Operation of Prospect Inquiry Create" Id="58f7a797-df19-e711-80f0-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="lead" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreOrderCabChassisCreate" FriendlyName="PreOrderCabChassisCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreOrderCabChassisCreate" Id="f0b5692c-b21d-e711-80f0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreOrderCabChassisCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreOrderCabChassisCreate" Description="Pre-Operation of Order Cab Chassis Create" Id="f1b5692c-b21d-e711-80f0-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_ordercabchassis" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateOrderCabChassisDelete" FriendlyName="PreValidateOrderCabChassisDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateOrderCabChassisDelete" Id="f4b5692c-b21d-e711-80f0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateOrderCabChassisDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateOrderCabChassisDelete" Description="Pre-Validation of Order Cab Chassis Delete" Id="f5b5692c-b21d-e711-80f0-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_sls_ordercabchassis" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateQuoteDelete" FriendlyName="PreValidateQuoteDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateQuoteDelete" Id="1b04941c-8b1e-e711-80f0-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateQuoteDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateQuoteDelete" Description="Pre-Validation of Quote Delete" Id="1c04941c-8b1e-e711-80f0-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="quote" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateOrderAccessoryDelete" FriendlyName="PreValidateOrderAccessoryDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateOrderAccessoryDelete" Id="db9aac4e-4c23-e711-80f1-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateOrderAccessoryDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateOrderAccessoryDelete" Description="Pre-Validation of Order Accessory Delete" Id="dc9aac4e-4c23-e711-80f1-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_sls_orderaccessory" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostApproverSetupUpdate" FriendlyName="PostApproverSetupUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostApproverSetupUpdate" Id="ac017ebf-062f-e711-80f2-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostApproverSetupUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostApproverSetupUpdate" Description="Post-Operation of Approver Setup Update" Id="ad017ebf-062f-e711-80f2-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_cmn_approversetup" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="b0017ebf-062f-e711-80f2-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="b1017ebf-062f-e711-80f2-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostVehicleTransferDetailsUpdate" FriendlyName="PostVehicleTransferDetailsUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostVehicleTransferDetailsUpdate" Id="edfcd5db-063a-e711-80f2-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostVehicleTransferDetailsUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostVehicleTransferDetailsUpdate" Description="Post-Operation of Vehicle Transfer Details Update" Id="eefcd5db-063a-e711-80f2-00155d010e2c" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_iv_vehicletransferdetails" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PreImage" Id="f1fcd5db-063a-e711-80f2-00155d010e2c" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="PostImage" Id="f2fcd5db-063a-e711-80f2-00155d010e2c" MessagePropertyName="Target" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreUnitCreate" FriendlyName="PreUnitCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreUnitCreate" Id="5c3dbc76-d73e-e711-80f2-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreUnitCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreUnitCreate" Description="Pre-Operation of Unit Create" Id="5d3dbc76-d73e-e711-80f2-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="uom" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateUnitCreate" FriendlyName="PreValidateUnitCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateUnitCreate" Id="a5948932-593f-e711-80f2-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateUnitCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateUnitCreate" Description="Pre-Validation of Unit Create" Id="a6948932-593f-e711-80f2-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="uom" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateVehicleandItemCatalogCreate" FriendlyName="PreValidateVehicleandItemCatalogCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleandItemCatalogCreate" Id="136ac073-793f-e711-80f2-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateVehicleandItemCatalogCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateVehicleandItemCatalogCreate" Description="Pre-Validation of Vehicle and Item Catalog Create" Id="146ac073-793f-e711-80f2-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="product" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreValidateExtendedPriceListItemDelete" FriendlyName="PreValidateExtendedPriceListItemDelete" Name="GSC.Rover.DMS.Platform.Plugins.PreValidateExtendedPriceListItemDelete" Id="3d0dde48-0544-e711-80f2-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreValidateExtendedPriceListItemDelete">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidateExtendedPriceListItemDelete" Description="Pre-Validation of Extended Price List Item Delete" Id="3e0dde48-0544-e711-80f2-00155d010e2c" MessageName="Delete" Mode="Synchronous" PrimaryEntityName="gsc_cmn_extendedpricelistitem" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+      </PluginTypes>
+    </Solution>
+    <Solution Assembly="GSC.Rover.DMS.Platform.Workflow.dll" Id="55c58133-16c0-e511-80cb-00155d010e2c" IsolationMode="None" SourceType="Database">
+      <WorkflowTypes>
+        <WorkflowType FriendlyName="Get PO Approver Information" Name="Get PO Approver Information" Description="Get PO Approver Information" WorkflowActivityGroupName="Purchase Management" Id="dedaad36-270d-e611-80d7-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Workflow.PurchaseManagement.GetPOApproverInformation" />
+        <WorkflowType FriendlyName="Generate Employee Credentials" Name="Generate Employee Credentials" Description="Generate Employee Credentials" WorkflowActivityGroupName="Generate Employee Credentials" Id="6d4da9b4-d994-e611-80dd-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Workflow.InvitationManagement.GenerateEmployeeCredentials" />
+      </WorkflowTypes>
+    </Solution>
+  </Solutions>
+  <XamlWorkflows />
+</Register>
