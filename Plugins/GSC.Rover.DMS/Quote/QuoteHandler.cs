@@ -808,8 +808,6 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                 ? quoteEntity.GetAttributeValue<Money>("gsc_applytoupamount").Value
                 : 0;
 
-          
-
             quoteEntity["gsc_totaldiscount"] = new Money(unitPrice);
             quoteEntity["gsc_lessdiscountaf"] = new Money(amountFinanced);
             quoteEntity["gsc_lessdiscount"] = new Money(downpayment);          
@@ -1123,7 +1121,6 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                 cashoutlay = downpayment + chattel + insurance + charges + accessories;
             else if (paymentmode == 100000000 || paymentmode == 100000003)
                 cashoutlay = totalAmountDue + chattel + insurance + charges + accessories;
-
 
             _tracingService.Trace("Ended ComputeCashLayout method...");
 
@@ -1627,11 +1624,11 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                     quoteEntity["gsc_vatamount"] = new Money(0);
                     quoteEntity["gsc_totalamountdue"] = new Money(sales);
                 }
+                _tracingService.Trace("Sales:" + sales);
             }
 
             _tracingService.Trace("Ending ComputeVAT method...");
             return quoteEntity;
-
         }
 
         //Created By: Leslie G. Baliguat
