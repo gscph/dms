@@ -141,13 +141,13 @@ namespace GSC.Rover.DMS.BusinessLogic.QuoteCharge
                   ? quote.GetAttributeValue<OptionSetValue>("gsc_paymentmode").Value
                   : Decimal.Zero;
 
-                quote["gsc_totalcashoutlay"] = new Money(quoteHandler.ComputeCashLayout(quote));
-
                 //Compute Net Price
                 quote["gsc_netprice"] = new Money(quoteHandler.ComputeNetPrice(quote));
 
                 //Compute VAT
                 quote = quoteHandler.ComputeVAT(quote);
+
+                quote["gsc_totalcashoutlay"] = new Money(quoteHandler.ComputeCashLayout(quote));
 
                 var amountfinanced = Decimal.Zero;
 
