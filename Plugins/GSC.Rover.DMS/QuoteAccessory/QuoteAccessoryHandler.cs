@@ -144,8 +144,9 @@ namespace GSC.Rover.DMS.BusinessLogic.QuoteAccessory
             Decimal totalAccessories = 0;
 
             EntityCollection quoteCollection = CommonHandler.RetrieveRecordsByOneValue("quote", "quoteid", quoteId, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_downpayment", "gsc_chattelfee", "gsc_insurance", "gsc_othercharges", "gsc_accessories", "gsc_netprice", "gsc_paymentmode", "gsc_branchid",
-                "gsc_vatablesales", "gsc_vatexemptsales", "gsc_zeroratedsales", "gsc_totalsales", "gsc_vatamount", "gsc_totalamountdue", "customerid", "gsc_productid"});
+                new[] { "gsc_downpayment", "gsc_chattelfee", "gsc_insurance", "gsc_othercharges", "gsc_accessories", "gsc_netprice", "gsc_paymentmode", 
+                    "gsc_branchid", "gsc_vatablesales", "gsc_vatexemptsales", "gsc_zeroratedsales", "gsc_totalsales", "gsc_vatamount", "gsc_totalamountdue",
+                    "customerid", "gsc_productid", "gsc_totalcashoutlay"});
 
             if (quoteCollection != null && quoteCollection.Entities.Count > 0)
             {
@@ -169,7 +170,6 @@ namespace GSC.Rover.DMS.BusinessLogic.QuoteAccessory
                             totalAccessories += quoteAccessoryEntity.GetAttributeValue<Money>("gsc_actualcost").Value;
                             _tracingService.Trace("Accessories:" + totalAccessories);
                         }
-                        
                     }
 
                     _tracingService.Trace("total Accessories: " + totalAccessories);
@@ -198,19 +198,17 @@ namespace GSC.Rover.DMS.BusinessLogic.QuoteAccessory
                   ? quoteEntity.GetAttributeValue<OptionSetValue>("gsc_paymentmode").Value
                   : Decimal.Zero;
 
-                quoteEntity["gsc_totalcashoutlay"] = new Money(quoteHandler.ComputeCashLayout(quoteEntity));
-
                 quoteEntity = quoteHandler.ComputeVAT(quoteEntity);
+
+                quoteEntity["gsc_totalcashoutlay"] = new Money(quoteHandler.ComputeCashLayout(quoteEntity));
 
                 _organizationService.Update(quoteEntity);
 
                 _tracingService.Trace("Quote Computation Updated");
                 #endregion
-
             }
 
             _tracingService.Trace("Ended SetTotalAccessories Method...");
-
         }
 
         //Created By: Leslie Baliguat, Created On: 4/17/2017
