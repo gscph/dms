@@ -1,0 +1,9 @@
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ApproverSetup\bin\Release\GSC.Rover.DMS.BusinessLogic.ApproverSetup.dll
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ApproverSetup\bin\Release\GSC.Rover.DMS.BusinessLogic.ApproverSetup.pdb
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ApproverSetup\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ApproverSetup\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ApproverSetup\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ApproverSetup\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ApproverSetup\obj\Release\ApproverSetup.csprojResolveAssemblyReference.cache
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ApproverSetup\obj\Release\GSC.Rover.DMS.BusinessLogic.ApproverSetup.dll
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ApproverSetup\obj\Release\GSC.Rover.DMS.BusinessLogic.ApproverSetup.pdb

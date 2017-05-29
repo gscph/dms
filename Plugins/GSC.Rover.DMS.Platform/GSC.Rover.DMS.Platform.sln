@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{88A30576-7583-4F75-8136-5EFD2C14ADFF}") = "CrmPackage", "GSC.Rover.DMS.Platform\CrmPackage\CrmPackage.csproj", "{E7EA329D-064B-44F7-9762-F08DAEDE951E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7997C81F-88DF-413B-9DD4-C0A003977C37} = {7997C81F-88DF-413B-9DD4-C0A003977C37}
+		{61D6CFF8-35F1-40B5-A453-98E1A80C47AE} = {61D6CFF8-35F1-40B5-A453-98E1A80C47AE}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugins", "GSC.Rover.DMS.Platform\Plugins\Plugins.csproj", "{61D6CFF8-35F1-40B5-A453-98E1A80C47AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workflow", "GSC.Rover.DMS.Platform\Workflow\Workflow.csproj", "{7997C81F-88DF-413B-9DD4-C0A003977C37}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://raven:8080/tfs/rndcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = GSC.Rover.DMS.Platform\\CrmPackage\\CrmPackage.csproj
+		SccProjectName1 = GSC.Rover.DMS.Platform/CrmPackage
+		SccLocalPath1 = GSC.Rover.DMS.Platform\\CrmPackage
+		SccProjectUniqueName2 = GSC.Rover.DMS.Platform\\Workflow\\Workflow.csproj
+		SccProjectName2 = GSC.Rover.DMS.Platform/Workflow
+		SccLocalPath2 = GSC.Rover.DMS.Platform\\Workflow
+		SccProjectUniqueName3 = GSC.Rover.DMS.Platform\\Plugins\\Plugins.csproj
+		SccProjectName3 = GSC.Rover.DMS.Platform/Plugins
+		SccLocalPath3 = GSC.Rover.DMS.Platform\\Plugins
+	EndGlobalSection
+	GlobalSection(CRMSolutionProperties) = preSolution
+		SolutionIsBoundToCRM = True
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7EA329D-064B-44F7-9762-F08DAEDE951E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7EA329D-064B-44F7-9762-F08DAEDE951E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7EA329D-064B-44F7-9762-F08DAEDE951E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E7EA329D-064B-44F7-9762-F08DAEDE951E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7EA329D-064B-44F7-9762-F08DAEDE951E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7EA329D-064B-44F7-9762-F08DAEDE951E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{61D6CFF8-35F1-40B5-A453-98E1A80C47AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61D6CFF8-35F1-40B5-A453-98E1A80C47AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61D6CFF8-35F1-40B5-A453-98E1A80C47AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61D6CFF8-35F1-40B5-A453-98E1A80C47AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7997C81F-88DF-413B-9DD4-C0A003977C37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7997C81F-88DF-413B-9DD4-C0A003977C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7997C81F-88DF-413B-9DD4-C0A003977C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7997C81F-88DF-413B-9DD4-C0A003977C37}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

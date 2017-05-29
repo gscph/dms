@@ -1,0 +1,12 @@
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\VehicleCountScheduleUnitTest.dll
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\VehicleCountScheduleUnitTest.pdb
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.dll
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\Moq.dll
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.pdb
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\Moq.xml
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountScheduleUnitTest\obj\Release\VehicleCountScheduleUnitTest.csprojResolveAssemblyReference.cache
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountScheduleUnitTest\obj\Release\VehicleCountScheduleUnitTest.dll
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountScheduleUnitTest\obj\Release\VehicleCountScheduleUnitTest.pdb

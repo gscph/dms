@@ -1,0 +1,5 @@
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountEntryUnitTests\bin\Debug\VehicleCountEntryUnitTests.dll
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountEntryUnitTests\bin\Debug\VehicleCountEntryUnitTests.pdb
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountEntryUnitTests\obj\Debug\VehicleCountEntryUnitTests.csprojResolveAssemblyReference.cache
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountEntryUnitTests\obj\Debug\VehicleCountEntryUnitTests.dll
+C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleCountEntryUnitTests\obj\Debug\VehicleCountEntryUnitTests.pdb

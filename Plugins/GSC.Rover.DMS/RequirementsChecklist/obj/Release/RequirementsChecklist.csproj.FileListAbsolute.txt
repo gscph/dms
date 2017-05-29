@@ -1,0 +1,9 @@
+C:\Development\Project Rover\Main\GSC.Rover.DMS\RequirementsChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.RequirementsChecklist.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS\RequirementsChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.RequirementsChecklist.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS\RequirementsChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS\RequirementsChecklist\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS\RequirementsChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Development\Project Rover\Main\GSC.Rover.DMS\RequirementsChecklist\bin\Release\Microsoft.Xrm.Sdk.xml
+C:\Development\Project Rover\Main\GSC.Rover.DMS\RequirementsChecklist\obj\Release\RequirementsChecklist.csprojResolveAssemblyReference.cache
+C:\Development\Project Rover\Main\GSC.Rover.DMS\RequirementsChecklist\obj\Release\GSC.Rover.DMS.BusinessLogic.RequirementsChecklist.dll
+C:\Development\Project Rover\Main\GSC.Rover.DMS\RequirementsChecklist\obj\Release\GSC.Rover.DMS.BusinessLogic.RequirementsChecklist.pdb
