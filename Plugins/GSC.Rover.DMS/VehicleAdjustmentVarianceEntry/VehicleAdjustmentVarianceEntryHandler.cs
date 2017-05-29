@@ -428,7 +428,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry
 
                         _tracingService.Trace("Retrieve Product Quantity records");
                         EntityCollection productQuantityRecords = CommonHandler.RetrieveRecordsByConditions("gsc_iv_productquantity", productQuantityConditionList, _organizationService, null, OrderType.Ascending,
-                            new[] { "gsc_onhand", "gsc_available", "gsc_siteid", "gsc_vehiclecolorid", "gsc_vehiclemodelid", "gsc_productid" });
+                            new[] { "gsc_onhand", "gsc_available", "gsc_siteid", "gsc_vehiclecolorid", "gsc_vehiclemodelid", "gsc_productid", "gsc_allocated", "gsc_sold", "gsc_onorder" });
 
                         Entity productQuantity;
                         Entity inventory = new Entity("gsc_iv_inventory");
@@ -464,6 +464,9 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry
                             _tracingService.Trace("Set product quantity count");
                             productQuantity["gsc_onhand"] = 1;
                             productQuantity["gsc_available"] = 1;
+                            productQuantity["gsc_allocated"] = 0;
+                            productQuantity["gsc_sold"] = 0;
+                            productQuantity["gsc_onorder"] = 0;
 
                             _tracingService.Trace("Set site field");
                             if (siteId != Guid.Empty)
