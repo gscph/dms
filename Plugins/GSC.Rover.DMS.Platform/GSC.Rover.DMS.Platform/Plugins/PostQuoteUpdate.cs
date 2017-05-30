@@ -328,14 +328,14 @@ namespace GSC.Rover.DMS.Platform.Plugins
                                ? postImageEntity.GetAttributeValue<OptionSetValue>("gsc_paymentmode").Value
                                : 0;
 
-                        if (prePaymentMode != postPaymentMode)
+                       /* if (prePaymentMode != postPaymentMode)
                         {
                             quotehandler.SetCabChassisFinancing(postImageEntity);
 
                             //Not Financed
                             if (postPaymentMode != 100000001)
                                 quotehandler.ClearFinancingFields(postImageEntity);
-                        }
+                        }*/
                         #endregion
 
                         //Recompute Unit Price when Markup % Changed - Leslie Baliguat 05/08/17
