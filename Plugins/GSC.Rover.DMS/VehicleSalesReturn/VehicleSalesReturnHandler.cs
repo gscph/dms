@@ -151,149 +151,71 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn
         public Entity PostTransaction(Entity vehicleSalesReturnEntity)
         {
             _tracingService.Trace("Started PostTransaction method...");
+
             if(IsValidInvoice(vehicleSalesReturnEntity) == false)
                 throw new InvalidPluginExecutionException("Sales invoice selected already returned.");
 
-            Guid inventoryId = vehicleSalesReturnEntity.Contains("gsc_inventoryid")
-                ? vehicleSalesReturnEntity.GetAttributeValue<EntityReference>("gsc_inventoryid").Id
-                : Guid.Empty;
-            Guid siteId = vehicleSalesReturnEntity.Contains("gsc_site")
-                ? vehicleSalesReturnEntity.GetAttributeValue<EntityReference>("gsc_site").Id
-                : Guid.Empty;
-            String SiteName = vehicleSalesReturnEntity.Contains("gsc_site") 
-                ? vehicleSalesReturnEntity.GetAttributeValue<EntityReference>("gsc_site").Name 
-                : String.Empty;
+            Entity inventory = RetrieveInventory(vehicleSalesReturnEntity);
 
-            EntityCollection inventoryRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId, _organizationService,
-                null, OrderType.Ascending, new[] { "gsc_status", "gsc_productquantityid", "gsc_modelcode", "gsc_optioncode"});
-            
-            String customerId = vehicleSalesReturnEntity.Contains("gsc_customerid") ? 
-                vehicleSalesReturnEntity.GetAttributeValue<String>("gsc_customerid"): String.Empty;
-            String customerName = vehicleSalesReturnEntity.Contains("gsc_customername") ?
-                vehicleSalesReturnEntity.GetAttributeValue<String>("gsc_customername"): String.Empty;
-            String transactionNumber = vehicleSalesReturnEntity.Contains("gsc_vehiclesalesreturnpn") ?
-                vehicleSalesReturnEntity.GetAttributeValue<String>("gsc_vehiclesalesreturnpn") : String.Empty;
-            DateTime transactionDate = DateTime.UtcNow;
-
-            _tracingService.Trace(inventoryRecords.Entities.Count + " Inventory Records Retrieved...");
-            
-            if (inventoryRecords != null && inventoryRecords.Entities.Count > 0)
+            if (inventory != null)
             {
-                var productQuantityId = inventoryRecords.Entities[0].GetAttributeValue<EntityReference>("gsc_productquantityid").Id;
+                _tracingService.Trace("Inventory Not Null.");
 
-                EntityCollection productQuantityRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_productquantity", "gsc_iv_productquantityid", productQuantityId, _organizationService, null, OrderType.Ascending,
-                    new[] { "gsc_sold", "gsc_available", "gsc_onhand", "gsc_siteid", "gsc_vehiclecolorid", "gsc_vehiclemodelid", "gsc_productid" });
+                Guid siteId = vehicleSalesReturnEntity.Contains("gsc_site")
+                    ? vehicleSalesReturnEntity.GetAttributeValue<EntityReference>("gsc_site").Id
+                    : Guid.Empty;
 
-                _tracingService.Trace(productQuantityRecords.Entities.Count + " Product Quantity Records Retrieved...");
-                
-                if (productQuantityRecords != null && productQuantityRecords.Entities.Count > 0)
+                Entity productQuantity = RetrieveOldProductQuantity(inventory, vehicleSalesReturnEntity, siteId);
+
+                String customerId = vehicleSalesReturnEntity.Contains("gsc_customerid") ?
+                    vehicleSalesReturnEntity.GetAttributeValue<String>("gsc_customerid") : String.Empty;
+                String customerName = vehicleSalesReturnEntity.Contains("gsc_customername") ?
+                    vehicleSalesReturnEntity.GetAttributeValue<String>("gsc_customername") : String.Empty;
+                String transactionNumber = vehicleSalesReturnEntity.Contains("gsc_vehiclesalesreturnpn") ?
+                    vehicleSalesReturnEntity.GetAttributeValue<String>("gsc_vehiclesalesreturnpn") : String.Empty;
+                DateTime transactionDate = DateTime.UtcNow;
+                Guid fromSite = productQuantity.Contains("gsc_siteid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_siteid").Id : Guid.Empty;
+                Guid productId = productQuantity.Contains("gsc_productid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_productid").Id : Guid.Empty;
+                Guid colorId = productQuantity.Contains("gsc_vehiclecolorid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_vehiclecolorid").Id : Guid.Empty;
+                Guid baseModel = productQuantity.Contains("gsc_vehiclemodelid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_vehiclemodelid").Id : Guid.Empty;
+                String productName = productQuantity.Contains("gsc_productid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_productid").Name : String.Empty;
+
+                _tracingService.Trace("Inventory History Created.");
+
+                Entity productQuantityDestination = new Entity();
+                if (siteId != fromSite)
                 {
-                    Entity productQuantity = productQuantityRecords.Entities[0];
-                    var presold = productQuantity.GetAttributeValue<Int32>("gsc_sold");
-                    var onHand = productQuantity.GetAttributeValue<Int32>("gsc_onhand");
-                    var sold = 0;
-                    if (presold != 0)
+                    productQuantityDestination = RetrieveNewProductQuantity(vehicleSalesReturnEntity, productQuantity, siteId);
+
+                    if (productQuantityDestination != null)
                     {
-                        sold = presold - 1;
-                    }
-                    productQuantity["gsc_sold"] = sold;
-                    _tracingService.Trace("Adjusting Product Quantity...");
-                    _organizationService.Update(productQuantity);
-
-                     InventoryMovementHandler inventoryMovementHandler = new InventoryMovementHandler(_organizationService, _tracingService);
-                     Guid fromSite = productQuantity.Contains("gsc_siteid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_siteid").Id : Guid.Empty;
-                     Guid productId = productQuantity.Contains("gsc_productid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_productid").Id : Guid.Empty;
-                     Guid colorId = productQuantity.Contains("gsc_vehiclecolorid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_vehiclecolorid").Id : Guid.Empty;
-                     Guid baseModel = productQuantity.Contains("gsc_vehiclemodelid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_vehiclemodelid").Id : Guid.Empty;
-                     String productName = productQuantity.Contains("gsc_productid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_productid").Name : String.Empty;
-                     inventoryMovementHandler.CreateInventoryHistory("Vehicle Sales Return", customerId, customerName, transactionNumber, transactionDate, 0, 1, onHand, Guid.Empty, fromSite, fromSite, inventoryRecords.Entities[0], productQuantity, true, true);
-                
-
-                    //Create filter for Sales Return To Site
-                     var destinationConditionList = new List<ConditionExpression>
-                    {
-                        new ConditionExpression("gsc_siteid", ConditionOperator.Equal, siteId),
-                        new ConditionExpression("gsc_productid", ConditionOperator.Equal, productId),
-                        new ConditionExpression("gsc_vehiclecolorid", ConditionOperator.Equal, colorId)
-                    };
-
-                    _tracingService.Trace("Start Retrieve inventory Records...");
-                    EntityCollection productQuantityDestinationCollection = CommonHandler.RetrieveRecordsByConditions("gsc_iv_productquantity", destinationConditionList, _organizationService, null, OrderType.Ascending,
-                        new[] { "gsc_allocated", "gsc_onhand" });
-
-                    Entity inventory = new Entity("gsc_iv_inventory");
-                    Entity productQuantityDestination = new Entity("gsc_iv_productquantity");
-                    Int32 onHandCount = 1;
-                    if (productQuantityDestinationCollection != null && productQuantityDestinationCollection.Entities.Count > 0)
-                    {
-                        //Adjustment of destination site
-                        productQuantityDestination = productQuantityDestinationCollection.Entities[0];
-                        Int32 availableDestination = productQuantityDestination.GetAttributeValue<Int32>("gsc_available");
-                        Int32 onHandDestination = productQuantityDestination.GetAttributeValue<Int32>("gsc_onhand");
-
-                        productQuantityDestination["gsc_available"] = availableDestination + 1;
-                        productQuantityDestination["gsc_onhand"] = onHandDestination + 1;
-                        _organizationService.Update(productQuantityDestination);
-                        _tracingService.Trace("Updated productquantity destination record...");
-
-                        //Update of inventory status
-                        inventory = inventoryRecords.Entities[0];
-                        inventory["gsc_status"] = new OptionSetValue(100000000);
-                        inventory["gsc_productquantityid"] = new EntityReference(productQuantityDestination.LogicalName, productQuantityDestination.Id);
-                        _organizationService.Update(inventory);
-                        _tracingService.Trace("Updated inventory status to available...");
-
-                        onHandCount = onHandDestination + 1;
+                        TransferInventoryToNewSite(productQuantityDestination, inventory, false);
                     }
                     else
                     {
-                        //Create productQuantity
-                        Entity prodQuantity = new Entity("gsc_iv_productquantity");
-                        _tracingService.Trace("Set product quantity count");
-                        prodQuantity["gsc_onhand"] = 1;
-                        prodQuantity["gsc_available"] = 1;
-                        prodQuantity["gsc_allocated"] = 0;
-                        prodQuantity["gsc_onorder"] = 0;
-                        prodQuantity["gsc_sold"] = 0;
-                        //
-                        _tracingService.Trace("Set site field");
-                        if (siteId != Guid.Empty)
-                        {
-                            prodQuantity["gsc_siteid"] = new EntityReference("gsc_iv_site", siteId);
-                        }
-                        _tracingService.Trace("Set Vehicle Base Model field");
-                        if (baseModel != Guid.Empty)
-                        {
-                            prodQuantity["gsc_vehiclemodelid"] = new EntityReference("gsc_iv_vehiclebasemodel", baseModel);
-                        }
-
-                        if (colorId != Guid.Empty)
-                        {
-                            prodQuantity["gsc_vehiclecolorid"] = new EntityReference("gsc_cmn_vehiclecolor", colorId);
-                        }
-                        _tracingService.Trace("Set Product Name field");
-                        prodQuantity["gsc_productid"] = new EntityReference("product", productId);
-                        prodQuantity["gsc_productquantitypn"] = productName + "-" + SiteName;
-
-                        Guid newProductQuantityId = _organizationService.Create(prodQuantity);
-
-                        EntityCollection productQuantityEC = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_productquantity", "gsc_iv_productquantityid", newProductQuantityId, _organizationService, null, OrderType.Ascending,
-                        new[] { "gsc_vehiclecolorid", "gsc_vehiclemodelid", "gsc_productid" });
-                        productQuantityDestination = productQuantityEC.Entities[0];
-
-                        //Update of inventory status
-                        inventory = inventoryRecords.Entities[0];
-                        inventory["gsc_status"] = new OptionSetValue(100000000);
-                        inventory["gsc_productquantityid"] = new EntityReference(prodQuantity.LogicalName, newProductQuantityId);
-                        _organizationService.Update(inventory);
-                        _tracingService.Trace("Updated inventory status to available...");
+                        productQuantityDestination = CreateNewProductQuantity(vehicleSalesReturnEntity, productQuantity, siteId);
+                        productQuantityDestination = TransferInventoryToNewSite(productQuantityDestination, inventory, true);
                     }
-                    inventoryMovementHandler.CreateInventoryHistory("Vehicle Sales Return", customerId, customerName, transactionNumber, transactionDate, 0, 1, onHandCount, Guid.Empty, fromSite, siteId, inventory, productQuantity, true, true);
-                
                 }
+                else
+                    productQuantityDestination = TransferInventoryToNewSite(productQuantity, inventory, false);
+
+                InventoryMovementHandler inventoryMovement = new InventoryMovementHandler(_organizationService, _tracingService);
+                Int32 onHandDestination = productQuantityDestination.GetAttributeValue<Int32>("gsc_onhand");
+                inventoryMovement.CreateInventoryHistory("Vehicle Sales Return", customerId, customerName, transactionNumber, transactionDate, 0, 1, onHandDestination, siteId, fromSite, siteId, inventory, productQuantityDestination, true, true);
+               
+                inventoryMovement.UpdateProductQuantityDirectly(productQuantity, 0, 0, 0, 0, -1, 0, 0, 0);
+                Int32 onHandFrom = productQuantity.GetAttributeValue<Int32>("gsc_onhand");
+                inventoryMovement.CreateInventoryHistory("Vehicle Sales Return", customerId, customerName, transactionNumber, transactionDate, 0, 1, onHandFrom, Guid.Empty, fromSite, fromSite, inventory, productQuantity, true, true);
+
+                _tracingService.Trace("Inventory History Created.");
             }
 
             _tracingService.Trace("Update gsc_vehiclesalesreturnstatus");
+
+            Entity quoteToUpdate = _organizationService.Retrieve(vehicleSalesReturnEntity.LogicalName, vehicleSalesReturnEntity.Id,
+                new ColumnSet("gsc_vehiclesalesreturnstatus", "gsc_isinvoicereturned" ));
+
             vehicleSalesReturnEntity["gsc_vehiclesalesreturnstatus"] = new OptionSetValue(100000001);
             //Added by: JGC_05222017, Description: This will call Sales Return - Update Invoice isSalesReturned Tagging Workflow
             vehicleSalesReturnEntity["gsc_isinvoicereturned"] = true;
@@ -303,6 +225,156 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn
             _tracingService.Trace("Ended PostTransaction method...");
             return vehicleSalesReturnEntity;
         }
+
+        private Entity RetrieveInventory(Entity vehicleSalesReturnEntity)
+        {
+            _tracingService.Trace("Retrieve Inventory.");
+
+            Guid inventoryId = vehicleSalesReturnEntity.Contains("gsc_inventoryid")
+                ? vehicleSalesReturnEntity.GetAttributeValue<EntityReference>("gsc_inventoryid").Id
+                : Guid.Empty;
+
+            EntityCollection inventoryRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId, _organizationService,
+                null, OrderType.Ascending, new[] { "gsc_status", "gsc_productquantityid", "gsc_modelcode", "gsc_optioncode" });
+            
+            _tracingService.Trace(inventoryRecords.Entities.Count + " Inventory Records Retrieved...");
+            
+            if (inventoryRecords != null && inventoryRecords.Entities.Count > 0)
+            {
+                return inventoryRecords.Entities[0];
+            }
+
+            return null;
+        }
+
+        private Entity RetrieveOldProductQuantity(Entity inventory, Entity vehicleSalesReturnEntity, Guid siteId)
+        {
+            _tracingService.Trace("Update Sold Quantity From Old Site.");
+
+            InventoryMovementHandler inventoryMovement = new InventoryMovementHandler(_organizationService, _tracingService);
+            var productQuantityId = inventory.GetAttributeValue<EntityReference>("gsc_productquantityid").Id;
+
+            EntityCollection productQuantityRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_productquantity", "gsc_iv_productquantityid", productQuantityId, _organizationService, null, OrderType.Ascending,
+                new[] { "gsc_sold", "gsc_available", "gsc_onhand", "gsc_siteid", "gsc_vehiclecolorid", "gsc_vehiclemodelid", "gsc_productid" });
+
+            _tracingService.Trace(productQuantityRecords.Entities.Count + " Product Quantity Records Retrieved...");
+
+            if (productQuantityRecords != null && productQuantityRecords.Entities.Count > 0)
+            {
+                _tracingService.Trace("Product Quantity Retrieved.");
+
+                return  productQuantityRecords.Entities[0];
+
+           /*     var presold = productQuantity.GetAttributeValue<Int32>("gsc_sold");
+                var sold = 0;
+                if (presold != 0)
+                {
+                    sold = presold - 1;
+                }
+                productQuantity["gsc_sold"] = sold;
+                _tracingService.Trace("Adjusting Product Quantity...");*/
+             //   _organizationService.Update(productQuantity);
+
+                //return productQuantity;
+            }
+
+            return null;
+        }
+
+        private Entity RetrieveNewProductQuantity(Entity vehicleSalesReturnEntity, Entity productQuantity, Guid siteId)
+        {
+            _tracingService.Trace("Retrieve New Product Quantity.");
+
+            Guid productId = productQuantity.Contains("gsc_productid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_productid").Id : Guid.Empty;
+            Guid colorId = productQuantity.Contains("gsc_vehiclecolorid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_vehiclecolorid").Id : Guid.Empty;
+
+            //Create filter for Sales Return To Site
+            var destinationConditionList = new List<ConditionExpression>
+                    {
+                        new ConditionExpression("gsc_siteid", ConditionOperator.Equal, siteId),
+                        new ConditionExpression("gsc_productid", ConditionOperator.Equal, productId),
+                        new ConditionExpression("gsc_vehiclecolorid", ConditionOperator.Equal, colorId)
+                    };
+
+            EntityCollection productQuantityDestinationCollection = CommonHandler.RetrieveRecordsByConditions("gsc_iv_productquantity", destinationConditionList, _organizationService, null, OrderType.Ascending,
+                new[] { "gsc_sold", "gsc_available", "gsc_onhand", "gsc_siteid", "gsc_vehiclecolorid", "gsc_vehiclemodelid", "gsc_productid" });
+
+            //    Int32 onHandCount = 1;
+            if (productQuantityDestinationCollection != null && productQuantityDestinationCollection.Entities.Count > 0)
+            {
+                _tracingService.Trace("New Product Quantity Retrieved.");
+
+                Entity productQuantityDestination = productQuantityDestinationCollection.Entities[0];
+
+                return productQuantityDestination;
+                //    onHandCount = onHandDestination + 1;
+            }
+
+            return null;
+        }
+
+        private Entity  CreateNewProductQuantity(Entity vehicleSalesReturnEntity, Entity productQuantity, Guid siteId)
+        {
+            _tracingService.Trace("Create New Product Quantity.");
+
+            Guid fromSite = productQuantity.Contains("gsc_siteid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_siteid").Id : Guid.Empty;
+            Guid productId = productQuantity.Contains("gsc_productid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_productid").Id : Guid.Empty;
+            Guid colorId = productQuantity.Contains("gsc_vehiclecolorid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_vehiclecolorid").Id : Guid.Empty;
+            Guid baseModel = productQuantity.Contains("gsc_vehiclemodelid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_vehiclemodelid").Id : Guid.Empty;
+            String productName = productQuantity.Contains("gsc_productid") ? productQuantity.GetAttributeValue<EntityReference>("gsc_productid").Name : String.Empty;
+            String SiteName = vehicleSalesReturnEntity.Contains("gsc_site")
+                ? vehicleSalesReturnEntity.GetAttributeValue<EntityReference>("gsc_site").Name
+                : String.Empty;
+
+            Entity prodQuantity = new Entity("gsc_iv_productquantity");
+
+            _tracingService.Trace("Set product quantity count");
+
+            prodQuantity["gsc_onhand"] = 1;
+            prodQuantity["gsc_available"] = 1;
+            prodQuantity["gsc_allocated"] = 0;
+            prodQuantity["gsc_onorder"] = 0;
+            prodQuantity["gsc_sold"] = 0;
+            prodQuantity["gsc_unservedpo"] = 0;
+            prodQuantity["gsc_siteid"] = siteId != Guid.Empty
+                ? new EntityReference("gsc_iv_site", siteId)
+                : null;
+            prodQuantity["gsc_vehiclemodelid"] = baseModel != Guid.Empty
+                ? new EntityReference("gsc_iv_vehiclebasemodel", baseModel)
+                : null;
+            prodQuantity["gsc_vehiclecolorid"] = colorId != Guid.Empty
+                ? new EntityReference("gsc_cmn_vehiclecolor", colorId)
+                : null;
+            prodQuantity["gsc_productid"] = new EntityReference("product", productId);
+            prodQuantity["gsc_productquantitypn"] = productName + "-" + SiteName;
+
+            Guid newProductQuantityId = _organizationService.Create(prodQuantity);
+            _tracingService.Trace("New Product Quantity Created.");
+
+            EntityCollection productQuantityEC = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_productquantity", "gsc_iv_productquantityid", newProductQuantityId, _organizationService, null, OrderType.Ascending,
+                    new[] { "gsc_sold", "gsc_available", "gsc_onhand", "gsc_siteid", "gsc_vehiclecolorid", "gsc_vehiclemodelid", "gsc_productid" });
+
+            _tracingService.Trace("Product Quantity Retrieved.");
+            return productQuantityEC.Entities[0];
+        }
+
+        private Entity TransferInventoryToNewSite(Entity productQuantityDestination, Entity inventory, Boolean newlyCreated)
+        {
+            //Update of inventory status
+            inventory["gsc_status"] = new OptionSetValue(100000000);
+            inventory["gsc_productquantityid"] = new EntityReference("gsc_iv_productquantity", productQuantityDestination.Id);
+            _organizationService.Update(inventory);
+            _tracingService.Trace("Updated inventory status to available...");
+
+            if (!newlyCreated)
+            {
+                InventoryMovementHandler inventoryMovement = new InventoryMovementHandler(_organizationService, _tracingService);
+                return inventoryMovement.UpdateProductQuantityDirectly(productQuantityDestination, 1, 1, 0, 0, 0, 0, 0, 0);
+            }
+
+            return productQuantityDestination;
+        }
+
 
         //Created By : Raphael Herrera, Created On : 6/3/2016
         /*Purpose: Checker if record is already posted
