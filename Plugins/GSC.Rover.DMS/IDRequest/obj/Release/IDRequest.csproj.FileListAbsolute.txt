@@ -15,3 +15,11 @@ C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\IDRequest\bin\
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\IDRequest\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\IDRequest\obj\Release\GSC.Rover.DMS.BusinessLogic.IDRequest.dll
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\IDRequest\obj\Release\GSC.Rover.DMS.BusinessLogic.IDRequest.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\IDRequest\bin\Release\GSC.Rover.DMS.BusinessLogic.IDRequest.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\IDRequest\bin\Release\GSC.Rover.DMS.BusinessLogic.IDRequest.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\IDRequest\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\IDRequest\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\IDRequest\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\IDRequest\obj\Release\IDRequest.csprojResolveAssemblyReference.cache
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\IDRequest\obj\Release\GSC.Rover.DMS.BusinessLogic.IDRequest.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\IDRequest\obj\Release\GSC.Rover.DMS.BusinessLogic.IDRequest.pdb

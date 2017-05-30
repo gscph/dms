@@ -19,3 +19,14 @@ C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ReceivingTrans
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ReceivingTransaction\bin\Release\Microsoft.Crm.Sdk.Proxy.xml
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ReceivingTransaction\obj\Release\GSC.Rover.DMS.BusinessLogic.ReceivingTransaction.dll
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ReceivingTransaction\obj\Release\GSC.Rover.DMS.BusinessLogic.ReceivingTransaction.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ReceivingTransaction\bin\Release\GSC.Rover.DMS.BusinessLogic.ReceivingTransaction.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ReceivingTransaction\bin\Release\GSC.Rover.DMS.BusinessLogic.ReceivingTransaction.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ReceivingTransaction\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ReceivingTransaction\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ReceivingTransaction\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ReceivingTransaction\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ReceivingTransaction\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ReceivingTransaction\bin\Release\Microsoft.Crm.Sdk.Proxy.xml
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ReceivingTransaction\obj\Release\ReceivingTransaction.csprojResolveAssemblyReference.cache
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ReceivingTransaction\obj\Release\GSC.Rover.DMS.BusinessLogic.ReceivingTransaction.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ReceivingTransaction\obj\Release\GSC.Rover.DMS.BusinessLogic.ReceivingTransaction.pdb

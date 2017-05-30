@@ -5,3 +5,10 @@ C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\City\bin\Relea
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\City\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\City\obj\Release\GSC.Rover.DMS.BusinessLogic.City.dll
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\City\obj\Release\GSC.Rover.DMS.BusinessLogic.City.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\City\bin\Release\GSC.Rover.DMS.BusinessLogic.City.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\City\bin\Release\GSC.Rover.DMS.BusinessLogic.City.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\City\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\City\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\City\obj\Release\City.csprojResolveAssemblyReference.cache
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\City\obj\Release\GSC.Rover.DMS.BusinessLogic.City.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\City\obj\Release\GSC.Rover.DMS.BusinessLogic.City.pdb

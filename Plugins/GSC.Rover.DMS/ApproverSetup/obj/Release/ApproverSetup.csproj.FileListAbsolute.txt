@@ -7,3 +7,10 @@ C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ApproverSetup\
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ApproverSetup\obj\Release\ApproverSetup.csprojResolveAssemblyReference.cache
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ApproverSetup\obj\Release\GSC.Rover.DMS.BusinessLogic.ApproverSetup.dll
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ApproverSetup\obj\Release\GSC.Rover.DMS.BusinessLogic.ApproverSetup.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ApproverSetup\bin\Release\GSC.Rover.DMS.BusinessLogic.ApproverSetup.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ApproverSetup\bin\Release\GSC.Rover.DMS.BusinessLogic.ApproverSetup.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ApproverSetup\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ApproverSetup\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ApproverSetup\obj\Release\ApproverSetup.csprojResolveAssemblyReference.cache
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ApproverSetup\obj\Release\GSC.Rover.DMS.BusinessLogic.ApproverSetup.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ApproverSetup\obj\Release\GSC.Rover.DMS.BusinessLogic.ApproverSetup.pdb

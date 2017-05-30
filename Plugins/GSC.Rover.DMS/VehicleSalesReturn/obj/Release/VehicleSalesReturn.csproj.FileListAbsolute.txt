@@ -8,3 +8,12 @@ C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleSalesRe
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleSalesReturn\obj\Release\VehicleSalesReturn.csprojResolveAssemblyReference.cache
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleSalesReturn\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.dll
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleSalesReturn\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleSalesReturn\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleSalesReturn\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleSalesReturn\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleSalesReturn\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleSalesReturn\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleSalesReturn\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleSalesReturn\obj\Release\VehicleSalesReturn.csprojResolveAssemblyReference.cache
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleSalesReturn\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleSalesReturn\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.pdb

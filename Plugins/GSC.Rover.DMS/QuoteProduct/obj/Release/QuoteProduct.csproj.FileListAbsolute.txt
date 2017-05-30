@@ -10,3 +10,8 @@ C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\QuoteProduct\b
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\QuoteProduct\obj\Release\QuoteProduct.csprojResolveAssemblyReference.cache
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\QuoteProduct\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.dll
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\QuoteProduct\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProduct\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProduct\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProduct\obj\Release\QuoteProduct.csprojResolveAssemblyReference.cache
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProduct\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProduct\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.pdb

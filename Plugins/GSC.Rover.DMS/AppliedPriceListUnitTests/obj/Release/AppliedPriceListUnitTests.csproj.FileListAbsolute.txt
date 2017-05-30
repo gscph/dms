@@ -27,3 +27,15 @@ C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\AppliedPriceLi
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.dll
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\AppliedPriceListUnitTests.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\AppliedPriceListUnitTests.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.AppliedPriceList.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\Moq.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.AppliedPriceList.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\Moq.xml
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.csprojResolveAssemblyReference.cache
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.pdb

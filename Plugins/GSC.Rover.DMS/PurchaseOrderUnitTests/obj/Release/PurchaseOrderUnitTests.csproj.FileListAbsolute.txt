@@ -62,3 +62,35 @@ C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\PurchaseOrderU
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\PurchaseOrderUnitTests\obj\Release\PurchaseOrderUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\PurchaseOrderUnitTests\obj\Release\PurchaseOrderUnitTests.dll
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\PurchaseOrderUnitTests\obj\Release\PurchaseOrderUnitTests.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\PurchaseOrderUnitTests.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\PurchaseOrderUnitTests.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\AntiXSSLibrary.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\CommonUnitTests.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\CrmSvcUtil.exe
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.PurchaseOrder.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Microsoft.ServiceBus.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Microsoft.WindowsAzure.Configuration.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Microsoft.Xrm.Client.CodeGeneration.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Microsoft.Xrm.Client.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Microsoft.Xrm.Portal.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Microsoft.Xrm.Portal.Files.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Microsoft.Xrm.Sdk.Deployment.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Microsoft.Xrm.Sdk.Workflow.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Moq.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Xrm.Framework.Test.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\CommonUnitTests.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\CrmSvcUtil.xml
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.PurchaseOrder.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Microsoft.ServiceBus.xml
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Microsoft.Xrm.Portal.xml
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Microsoft.Xrm.Sdk.Deployment.xml
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Microsoft.Xrm.Sdk.Workflow.xml
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\Moq.xml
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\obj\Release\PurchaseOrderUnitTests.csprojResolveAssemblyReference.cache
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\obj\Release\PurchaseOrderUnitTests.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PurchaseOrderUnitTests\obj\Release\PurchaseOrderUnitTests.pdb

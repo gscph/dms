@@ -24,3 +24,16 @@ C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ProspectUnitTe
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ProspectUnitTests\obj\Release\ProspectUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ProspectUnitTests\obj\Release\ProspectUnitTests.dll
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ProspectUnitTests\obj\Release\ProspectUnitTests.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\ProspectUnitTests.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\ProspectUnitTests.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Prospect.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\Moq.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Prospect.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\Microsoft.Xrm.Sdk.xml
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\Moq.xml
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\obj\Release\ProspectUnitTests.csprojResolveAssemblyReference.cache
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\obj\Release\ProspectUnitTests.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\obj\Release\ProspectUnitTests.pdb

@@ -24,3 +24,16 @@ C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\RequirementChe
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\RequirementChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.Invoice.pdb
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\RequirementChecklist\bin\Release\Microsoft.Crm.Sdk.Proxy.xml
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\RequirementChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\RequirementChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.RequirementChecklist.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\RequirementChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.RequirementChecklist.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\RequirementChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\RequirementChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.Invoice.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\RequirementChecklist\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\RequirementChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\RequirementChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\RequirementChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.Invoice.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\RequirementChecklist\bin\Release\Microsoft.Crm.Sdk.Proxy.xml
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\RequirementChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\RequirementChecklist\obj\Release\RequirementChecklist.csprojResolveAssemblyReference.cache
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\RequirementChecklist\obj\Release\GSC.Rover.DMS.BusinessLogic.RequirementChecklist.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\RequirementChecklist\obj\Release\GSC.Rover.DMS.BusinessLogic.RequirementChecklist.pdb

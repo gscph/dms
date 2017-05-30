@@ -7,3 +7,13 @@ C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleTransfe
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleTransfer\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleTransfer\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleTransfer.dll
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\VehicleTransfer\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleTransfer.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransfer\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleTransfer.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransfer\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleTransfer.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransfer\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransfer\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransfer\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransfer\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransfer\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransfer\obj\Release\VehicleTransfer.csprojResolveAssemblyReference.cache
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransfer\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleTransfer.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransfer\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleTransfer.pdb

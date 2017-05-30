@@ -24,3 +24,17 @@ C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\AllocatedVehic
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\AllocatedVehicleUnitTests\obj\Release\AllocatedVehicleUnitTests.dll
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\AllocatedVehicleUnitTests\obj\Release\AllocatedVehicleUnitTests.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\AllocatedVehicleUnitTests.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\AllocatedVehicleUnitTests.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.AllocatedVehicle.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\Moq.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.AllocatedVehicle.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\Moq.xml
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\obj\Release\AllocatedVehicleUnitTests.csprojResolveAssemblyReference.cache
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\obj\Release\AllocatedVehicleUnitTests.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\obj\Release\AllocatedVehicleUnitTests.pdb

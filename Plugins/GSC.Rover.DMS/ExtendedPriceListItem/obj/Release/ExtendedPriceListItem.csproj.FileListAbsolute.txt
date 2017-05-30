@@ -16,3 +16,12 @@ C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ExtendedPriceL
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ExtendedPriceListItem\obj\Release\ExtendedPriceListItem.csprojResolveAssemblyReference.cache
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ExtendedPriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.dll
 C:\Users\i-jcadiao\Documents\DMS\Project Rover\Main\GSC.Rover.DMS\ExtendedPriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\obj\Release\ExtendedPriceListItem.csprojResolveAssemblyReference.cache
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.dll
+C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.pdb
