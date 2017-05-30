@@ -6,9 +6,9 @@ $(document).ready(function (e) {
     var workflowName = 'Price List - Change Status';
     var webRole = DMS.Settings.User.webRole;
 
-    if(!webRole.includes("MMPC"))
-        $("#gsc_default").attr("disabled", "disabled");
-    
+    /* if(!webRole.includes("MMPC"))
+         $("#gsc_default").attr("disabled", "disabled");*/
+
     if (status == "Inactive") {
         checkSubgrid();
     }
@@ -82,8 +82,8 @@ $(document).ready(function (e) {
                 req.send(null); window.location.reload(true);
             }
         }).error(function (errormsg) { console.log(errormsg) });
-    });  
-    
+    });
+
     $publishButton = DMS.Helpers.CreateAnchorButton("btn-primary btn publishPromo", '', ' PUBLISH', DMS.Helpers.CreateFontAwesomeIcon('fa-book'));
     $publishButton.click(function (evt) {
         showLoading();
@@ -91,14 +91,12 @@ $(document).ready(function (e) {
         $("#UpdateButton").click();
     });
 
-    if ($("#gsc_publishenabled").prop("checked"))
-    {
-      DMS.Helpers.AppendButtonToToolbar($publishButton);
+    if ($("#gsc_publishenabled").prop("checked")) {
+        DMS.Helpers.AppendButtonToToolbar($publishButton);
     }
-    else
-    {
-      $('label[for=gsc_default], input#gsc_default').hide();
-      $('label[for=gsc_publish], input#gsc_publish').hide();
+    else {
+        $('label[for=gsc_default], input#gsc_default').hide();
+        $('label[for=gsc_publish], input#gsc_publish').hide();
     }
 
     if (status == 'Inactive') {
@@ -159,7 +157,7 @@ $(document).ready(function (e) {
     };
 
     Page_Validators.push(effectiveDatesValidator);
-    
+
     function showLoading() {
         $.blockUI({ message: null, overlayCSS: { opacity: .3 } });
 
@@ -171,10 +169,9 @@ $(document).ready(function (e) {
         div.appendChild(span);
         $(".content-wrapper").append(div);
     }
-     setTimeout(disableTab, 3000);
+    setTimeout(disableTab, 3000);
 
-    function disableTab()
-    {
+    function disableTab() {
         $('.disabled').attr("tabindex", "-1");
         $('fieldset.permanent-disabled .btn').attr("tabindex", "-1");
     }
