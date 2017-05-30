@@ -117,8 +117,8 @@ namespace GSC.Rover.DMS.BusinessLogic.Invoice
                 invoiceEntity["gsc_tin"] = salesOrder.GetAttributeValue<String>("gsc_tin") != null
                     ? salesOrder.GetAttributeValue<String>("gsc_tin")
                     : null;
-                invoiceEntity["gsc_markup"] = salesOrder.GetAttributeValue<Double>("gsc_markup") != null
-                   ? salesOrder.GetAttributeValue<Double>("gsc_markup")
+                invoiceEntity["gsc_markup"] = salesOrder.Contains("gsc_markup") != null
+                   ? salesOrder.GetAttributeValue<Decimal>("gsc_markup")
                    : 0;
                 _tracingService.Trace("9");
               
