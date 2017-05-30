@@ -340,10 +340,10 @@ namespace GSC.Rover.DMS.Platform.Plugins
 
                         //Recompute Unit Price when Markup % Changed - Leslie Baliguat 05/08/17
                         var preMarkup = preImageEntity.Contains("gsc_markup")
-                               ? preImageEntity.GetAttributeValue<Double>("gsc_markup")
+                               ? preImageEntity.GetAttributeValue<Decimal>("gsc_markup")
                                : 0;
                         var postMarkup = postImageEntity.Contains("gsc_markup")
-                               ? postImageEntity.GetAttributeValue<Double>("gsc_markup")
+                               ? postImageEntity.GetAttributeValue<Decimal>("gsc_markup")
                                : 0;
 
                         if (preMarkup != postMarkup)

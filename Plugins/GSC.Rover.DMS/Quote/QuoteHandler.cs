@@ -1744,7 +1744,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                     ? (Decimal)productEntity.GetAttributeValue<Double>("gsc_taxrate")
                     : 0;
                 var markup = quoteEntity.Contains("gsc_markup")
-                    ? (Decimal)quoteEntity.GetAttributeValue<Double>("gsc_markup")
+                    ? (Decimal)quoteEntity["gsc_markup"]
                     : 0;
 
                 if (markup != 0)
