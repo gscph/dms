@@ -37,3 +37,16 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\obj\Release\ProspectUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\obj\Release\ProspectUnitTests.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\obj\Release\ProspectUnitTests.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\ProspectUnitTests.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\ProspectUnitTests.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Prospect.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\Microsoft.Xrm.Sdk.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\Moq.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Prospect.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\Microsoft.Xrm.Sdk.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\bin\Release\Moq.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\obj\Release\ProspectUnitTests.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\obj\Release\ProspectUnitTests.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ProspectUnitTests\obj\Release\ProspectUnitTests.pdb

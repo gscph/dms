@@ -22,3 +22,15 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryD
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\obj\Release\VehicleCountEntryDetailUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\obj\Release\VehicleCountEntryDetailUnitTests.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\obj\Release\VehicleCountEntryDetailUnitTests.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\VehicleCountEntryDetailUnitTests.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\VehicleCountEntryDetailUnitTests.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountEntryDetail.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\Microsoft.Xrm.Sdk.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\Moq.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountEntryDetail.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\Moq.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\obj\Release\VehicleCountEntryDetailUnitTests.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\obj\Release\VehicleCountEntryDetailUnitTests.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\obj\Release\VehicleCountEntryDetailUnitTests.pdb

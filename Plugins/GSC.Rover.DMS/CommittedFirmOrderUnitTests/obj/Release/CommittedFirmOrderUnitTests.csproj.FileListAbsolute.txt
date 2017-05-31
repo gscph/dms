@@ -34,3 +34,15 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrder
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderUnitTests\obj\Release\CommittedFirmOrderUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderUnitTests\obj\Release\CommittedFirmOrderUnitTests.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderUnitTests\obj\Release\CommittedFirmOrderUnitTests.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderUnitTests\bin\Release\CommittedFirmOrderUnitTests.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderUnitTests\bin\Release\CommittedFirmOrderUnitTests.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderUnitTests\bin\Release\Microsoft.Xrm.Sdk.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderUnitTests\bin\Release\Moq.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderUnitTests\bin\Release\Moq.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderUnitTests\obj\Release\CommittedFirmOrderUnitTests.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderUnitTests\obj\Release\CommittedFirmOrderUnitTests.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderUnitTests\obj\Release\CommittedFirmOrderUnitTests.pdb

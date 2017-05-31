@@ -15,3 +15,8 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProduct\bin\R
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProduct\obj\Release\QuoteProduct.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProduct\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProduct\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteProduct\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteProduct\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteProduct\obj\Release\QuoteProduct.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteProduct\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteProduct\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.pdb

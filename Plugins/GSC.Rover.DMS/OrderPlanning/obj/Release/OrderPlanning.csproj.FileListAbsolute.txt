@@ -20,3 +20,10 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanning\bin\
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanning\obj\Release\OrderPlanning.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanning\obj\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanning.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanning\obj\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanning.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanning\bin\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanning.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanning\bin\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanning.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanning\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanning\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanning\obj\Release\OrderPlanning.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanning\obj\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanning.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanning\obj\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanning.pdb

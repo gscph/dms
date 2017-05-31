@@ -31,3 +31,14 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Releas
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\obj\Release\Invoice.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\obj\Release\GSC.Rover.DMS.BusinessLogic.Invoice.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\obj\Release\GSC.Rover.DMS.BusinessLogic.Invoice.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\GSC.Rover.DMS.BusinessLogic.Invoice.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\GSC.Rover.DMS.BusinessLogic.Invoice.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\Microsoft.Crm.Sdk.Proxy.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Invoice\obj\Release\Invoice.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Invoice\obj\Release\GSC.Rover.DMS.BusinessLogic.Invoice.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Invoice\obj\Release\GSC.Rover.DMS.BusinessLogic.Invoice.pdb

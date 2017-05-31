@@ -20,3 +20,10 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrder
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrder\obj\Release\CommittedFirmOrder.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrder\obj\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrder\obj\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrder\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrder\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrder\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrder\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrder\obj\Release\CommittedFirmOrder.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrder\obj\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrder\obj\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.pdb

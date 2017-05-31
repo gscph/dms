@@ -20,3 +20,10 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ReturnTransactionD
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ReturnTransactionDetail\obj\Release\ReturnTransactionDetail.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ReturnTransactionDetail\obj\Release\ReturnTransactionDetail.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ReturnTransactionDetail\obj\Release\ReturnTransactionDetail.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ReturnTransactionDetail\bin\Release\ReturnTransactionDetail.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ReturnTransactionDetail\bin\Release\ReturnTransactionDetail.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ReturnTransactionDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ReturnTransactionDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ReturnTransactionDetail\obj\Release\ReturnTransactionDetail.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ReturnTransactionDetail\obj\Release\ReturnTransactionDetail.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ReturnTransactionDetail\obj\Release\ReturnTransactionDetail.pdb

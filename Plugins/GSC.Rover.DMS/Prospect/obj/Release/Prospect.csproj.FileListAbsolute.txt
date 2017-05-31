@@ -21,3 +21,10 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Prospect\bin\Relea
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Prospect\obj\Release\Prospect.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Prospect\obj\Release\GSC.Rover.DMS.BusinessLogic.Prospect.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Prospect\obj\Release\GSC.Rover.DMS.BusinessLogic.Prospect.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Prospect\bin\Release\GSC.Rover.DMS.BusinessLogic.Prospect.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Prospect\bin\Release\GSC.Rover.DMS.BusinessLogic.Prospect.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Prospect\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Prospect\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Prospect\obj\Release\Prospect.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Prospect\obj\Release\GSC.Rover.DMS.BusinessLogic.Prospect.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Prospect\obj\Release\GSC.Rover.DMS.BusinessLogic.Prospect.pdb

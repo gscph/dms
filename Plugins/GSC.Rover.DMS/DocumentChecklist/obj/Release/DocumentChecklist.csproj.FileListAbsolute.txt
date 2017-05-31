@@ -20,3 +20,10 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\DocumentChecklist\
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\DocumentChecklist\obj\Release\DocumentChecklist.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\DocumentChecklist\obj\Release\GSC.Rover.DMS.BusinessLogic.DocumentChecklist.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\DocumentChecklist\obj\Release\GSC.Rover.DMS.BusinessLogic.DocumentChecklist.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\DocumentChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.DocumentChecklist.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\DocumentChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.DocumentChecklist.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\DocumentChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\DocumentChecklist\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\DocumentChecklist\obj\Release\DocumentChecklist.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\DocumentChecklist\obj\Release\GSC.Rover.DMS.BusinessLogic.DocumentChecklist.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\DocumentChecklist\obj\Release\GSC.Rover.DMS.BusinessLogic.DocumentChecklist.pdb

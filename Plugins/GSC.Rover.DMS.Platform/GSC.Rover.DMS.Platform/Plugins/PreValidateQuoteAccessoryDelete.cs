@@ -72,7 +72,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
                 Entity quoteAccessory = quoteAccessoryCollection.Entities[0];
 
                 if (quoteAccessoryHandler.IsAccessoryStandard(quoteAccessory))
-                    throw new InvalidPluginExecutionException("Cannot remove free accessories.");
+                    throw new InvalidPluginExecutionException("Cannot remove default accessories.");
 
                 quoteAccessoryHandler.SetTotalAccessories(quoteAccessory, message);
             }

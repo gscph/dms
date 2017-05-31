@@ -12,3 +12,10 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\TransactedVehicle\
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\TransactedVehicle\obj\Release\TransactedVehicle.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\TransactedVehicle\obj\Release\GSC.Rover.DMS.BusinessLogic.TransactedVehicle.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\TransactedVehicle\obj\Release\GSC.Rover.DMS.BusinessLogic.TransactedVehicle.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\TransactedVehicle\bin\Release\GSC.Rover.DMS.BusinessLogic.TransactedVehicle.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\TransactedVehicle\bin\Release\GSC.Rover.DMS.BusinessLogic.TransactedVehicle.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\TransactedVehicle\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\TransactedVehicle\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\TransactedVehicle\obj\Release\TransactedVehicle.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\TransactedVehicle\obj\Release\GSC.Rover.DMS.BusinessLogic.TransactedVehicle.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\TransactedVehicle\obj\Release\GSC.Rover.DMS.BusinessLogic.TransactedVehicle.pdb

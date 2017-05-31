@@ -16,3 +16,12 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\SalesReturnDetail\
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\SalesReturnDetail\obj\Release\SalesReturnDetail.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\SalesReturnDetail\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesReturnDetail.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\SalesReturnDetail\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesReturnDetail.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesReturnDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesReturnDetail.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesReturnDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesReturnDetail.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesReturnDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesReturnDetail\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesReturnDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesReturnDetail\bin\Release\Microsoft.Crm.Sdk.Proxy.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesReturnDetail\obj\Release\SalesReturnDetail.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesReturnDetail\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesReturnDetail.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesReturnDetail\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesReturnDetail.pdb

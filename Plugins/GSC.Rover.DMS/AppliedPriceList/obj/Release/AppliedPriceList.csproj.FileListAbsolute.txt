@@ -25,3 +25,12 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceList\b
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceList\obj\Release\AppliedPriceList.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceList\obj\Release\GSC.Rover.DMS.BusinessLogic.AppliedPriceList.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceList\obj\Release\GSC.Rover.DMS.BusinessLogic.AppliedPriceList.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceList\bin\Release\GSC.Rover.DMS.BusinessLogic.AppliedPriceList.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceList\bin\Release\GSC.Rover.DMS.BusinessLogic.AppliedPriceList.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceList\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceList\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceList\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceList\bin\Release\Microsoft.Crm.Sdk.Proxy.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceList\obj\Release\AppliedPriceList.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceList\obj\Release\GSC.Rover.DMS.BusinessLogic.AppliedPriceList.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceList\obj\Release\GSC.Rover.DMS.BusinessLogic.AppliedPriceList.pdb

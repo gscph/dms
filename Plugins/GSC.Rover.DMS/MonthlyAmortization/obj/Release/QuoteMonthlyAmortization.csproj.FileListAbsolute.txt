@@ -20,3 +20,10 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\MonthlyAmortizatio
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\MonthlyAmortization\obj\Release\QuoteMonthlyAmortization.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\MonthlyAmortization\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\MonthlyAmortization\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\MonthlyAmortization\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\MonthlyAmortization\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\MonthlyAmortization\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\MonthlyAmortization\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\MonthlyAmortization\obj\Release\QuoteMonthlyAmortization.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\MonthlyAmortization\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\MonthlyAmortization\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization.pdb

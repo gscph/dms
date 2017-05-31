@@ -12,3 +12,10 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\TaxMaintenance\bin
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\TaxMaintenance\obj\Release\TaxMaintenance.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\TaxMaintenance\obj\Release\GSC.Rover.DMS.BusinessLogic.TaxMaintenance.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\TaxMaintenance\obj\Release\GSC.Rover.DMS.BusinessLogic.TaxMaintenance.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\TaxMaintenance\bin\Release\GSC.Rover.DMS.BusinessLogic.TaxMaintenance.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\TaxMaintenance\bin\Release\GSC.Rover.DMS.BusinessLogic.TaxMaintenance.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\TaxMaintenance\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\TaxMaintenance\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\TaxMaintenance\obj\Release\TaxMaintenance.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\TaxMaintenance\obj\Release\GSC.Rover.DMS.BusinessLogic.TaxMaintenance.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\TaxMaintenance\obj\Release\GSC.Rover.DMS.BusinessLogic.TaxMaintenance.pdb

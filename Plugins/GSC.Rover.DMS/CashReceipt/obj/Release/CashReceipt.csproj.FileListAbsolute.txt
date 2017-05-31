@@ -30,3 +30,13 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CashReceipt\bin\Re
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CashReceipt\obj\Release\CashReceipt.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CashReceipt\obj\Release\GSC.Rover.DMS.BusinessLogic.CashReceipt.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CashReceipt\obj\Release\GSC.Rover.DMS.BusinessLogic.CashReceipt.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CashReceipt\bin\Release\GSC.Rover.DMS.BusinessLogic.CashReceipt.dll.config
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CashReceipt\bin\Release\GSC.Rover.DMS.BusinessLogic.CashReceipt.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CashReceipt\bin\Release\GSC.Rover.DMS.BusinessLogic.CashReceipt.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CashReceipt\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CashReceipt\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesDocument.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CashReceipt\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CashReceipt\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesDocument.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CashReceipt\obj\Release\CashReceipt.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CashReceipt\obj\Release\GSC.Rover.DMS.BusinessLogic.CashReceipt.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CashReceipt\obj\Release\GSC.Rover.DMS.BusinessLogic.CashReceipt.pdb

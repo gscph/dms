@@ -29,3 +29,14 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrder
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\obj\Release\CommittedFirmOrderQuantity.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\obj\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\obj\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantityDetail.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantityDetail.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\Microsoft.Crm.Sdk.Proxy.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\obj\Release\CommittedFirmOrderQuantity.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\obj\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\obj\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.pdb

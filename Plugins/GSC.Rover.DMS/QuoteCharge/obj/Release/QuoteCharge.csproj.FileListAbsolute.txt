@@ -38,3 +38,17 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Re
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\obj\Release\QuoteCharge.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteCharge.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteCharge.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteCharge.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteCharge.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.Quote.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceList.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.Quote.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceList.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteCharge\obj\Release\QuoteCharge.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteCharge\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteCharge.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteCharge\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteCharge.pdb

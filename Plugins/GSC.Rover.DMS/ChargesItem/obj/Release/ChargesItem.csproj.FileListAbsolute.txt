@@ -20,3 +20,10 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ChargesItem\bin\Re
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ChargesItem\obj\Release\ChargesItem.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ChargesItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ChargesItem.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ChargesItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ChargesItem.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ChargesItem\bin\Release\GSC.Rover.DMS.BusinessLogic.ChargesItem.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ChargesItem\bin\Release\GSC.Rover.DMS.BusinessLogic.ChargesItem.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ChargesItem\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ChargesItem\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ChargesItem\obj\Release\ChargesItem.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ChargesItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ChargesItem.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ChargesItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ChargesItem.pdb

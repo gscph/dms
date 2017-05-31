@@ -18,3 +18,13 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehiclePostDeliver
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehiclePostDeliveryMonitoring\obj\Release\VehiclePostDeliveryMonitoring.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehiclePostDeliveryMonitoring\obj\Release\GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehiclePostDeliveryMonitoring\obj\Release\GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePostDeliveryMonitoring\bin\Release\GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePostDeliveryMonitoring\bin\Release\GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePostDeliveryMonitoring\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePostDeliveryMonitoring\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePostDeliveryMonitoring\bin\Release\Microsoft.Xrm.Sdk.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePostDeliveryMonitoring\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePostDeliveryMonitoring\bin\Release\Microsoft.Crm.Sdk.Proxy.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePostDeliveryMonitoring\obj\Release\VehiclePostDeliveryMonitoring.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePostDeliveryMonitoring\obj\Release\GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePostDeliveryMonitoring\obj\Release\GSC.Rover.DMS.BusinessLogic.VehiclePostDeliveryMonitoring.pdb

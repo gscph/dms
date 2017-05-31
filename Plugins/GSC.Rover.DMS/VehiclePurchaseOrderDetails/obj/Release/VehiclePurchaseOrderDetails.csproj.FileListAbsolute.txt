@@ -24,3 +24,16 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrd
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\obj\Release\VehiclePurchaseOrderDetails.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\obj\Release\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\obj\Release\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\bin\Release\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\bin\Release\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceList.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\bin\Release\Microsoft.Xrm.Sdk.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceList.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\obj\Release\VehiclePurchaseOrderDetails.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\obj\Release\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehiclePurchaseOrderDetails\obj\Release\GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails.pdb

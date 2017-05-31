@@ -36,3 +36,15 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bi
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\obj\Release\InvitationUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\obj\Release\InviteUnitTests.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\obj\Release\InviteUnitTests.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\InviteUnitTests.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\InviteUnitTests.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Invitation.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\Moq.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Invitation.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\Moq.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\obj\Release\InvitationUnitTests.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\obj\Release\InviteUnitTests.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\obj\Release\InviteUnitTests.pdb

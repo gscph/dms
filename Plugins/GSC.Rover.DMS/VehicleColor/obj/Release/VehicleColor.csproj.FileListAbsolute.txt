@@ -16,3 +16,12 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleColor\bin\R
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleColor\obj\Release\VehicleColor.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleColor\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleColor.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleColor\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleColor.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleColor\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleColor.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleColor\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleColor.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleColor\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleColor\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleColor\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleColor\bin\Release\Microsoft.Crm.Sdk.Proxy.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleColor\obj\Release\VehicleColor.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleColor\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleColor.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleColor\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleColor.pdb

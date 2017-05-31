@@ -22,3 +22,11 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\IDSequence\bin\Rel
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\IDSequence\obj\Release\IDSequence.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\IDSequence\obj\Release\GSC.Rover.DMS.BusinessLogic.IDSequence.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\IDSequence\obj\Release\GSC.Rover.DMS.BusinessLogic.IDSequence.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\IDSequence\bin\Release\GSC.Rover.DMS.BusinessLogic.IDSequence.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\IDSequence\bin\Release\GSC.Rover.DMS.BusinessLogic.IDSequence.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\IDSequence\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\IDSequence\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\IDSequence\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\IDSequence\obj\Release\IDSequence.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\IDSequence\obj\Release\GSC.Rover.DMS.BusinessLogic.IDSequence.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\IDSequence\obj\Release\GSC.Rover.DMS.BusinessLogic.IDSequence.pdb

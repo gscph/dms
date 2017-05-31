@@ -25,3 +25,12 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Contact\bin\Releas
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Contact\obj\Release\Contact.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Contact\obj\Release\GSC.Rover.DMS.BusinessLogic.Contact.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Contact\obj\Release\GSC.Rover.DMS.BusinessLogic.Contact.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Contact\bin\Release\GSC.Rover.DMS.BusinessLogic.Contact.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Contact\bin\Release\GSC.Rover.DMS.BusinessLogic.Contact.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Contact\bin\Release\GSC.Rover.DMS.BusinessLogic.City.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Contact\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Contact\bin\Release\GSC.Rover.DMS.BusinessLogic.City.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Contact\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Contact\obj\Release\Contact.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Contact\obj\Release\GSC.Rover.DMS.BusinessLogic.Contact.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Contact\obj\Release\GSC.Rover.DMS.BusinessLogic.Contact.pdb

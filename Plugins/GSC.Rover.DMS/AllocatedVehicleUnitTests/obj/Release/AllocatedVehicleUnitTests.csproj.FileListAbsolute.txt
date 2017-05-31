@@ -38,3 +38,17 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUn
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\obj\Release\AllocatedVehicleUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\obj\Release\AllocatedVehicleUnitTests.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\obj\Release\AllocatedVehicleUnitTests.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\AllocatedVehicleUnitTests.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\AllocatedVehicleUnitTests.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.AllocatedVehicle.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\Microsoft.Xrm.Sdk.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\Moq.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.AllocatedVehicle.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\Moq.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\obj\Release\AllocatedVehicleUnitTests.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\obj\Release\AllocatedVehicleUnitTests.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AllocatedVehicleUnitTests\obj\Release\AllocatedVehicleUnitTests.pdb

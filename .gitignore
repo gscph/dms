@@ -9,3 +9,4 @@ Plugins/GSC.Rover.DMS/PriceList/bin/Release/GSC.Rover.DMS.BusinessLogic.PriceLis
 *.txt
 *.suo
 *.csproj
+Plugins/GSC.Rover.DMS.Platform/GSC.Rover.DMS.Platform/Plugins/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache

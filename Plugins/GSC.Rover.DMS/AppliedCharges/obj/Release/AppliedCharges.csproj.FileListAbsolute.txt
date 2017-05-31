@@ -33,3 +33,14 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedCharges\bin
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedCharges\obj\Release\AppliedCharges.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedCharges\obj\Release\GSC.Rover.DMS.BusinessLogic.AppliedCharges.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedCharges\obj\Release\GSC.Rover.DMS.BusinessLogic.AppliedCharges.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedCharges\bin\Release\GSC.Rover.DMS.BusinessLogic.AppliedCharges.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedCharges\bin\Release\GSC.Rover.DMS.BusinessLogic.AppliedCharges.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedCharges\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedCharges\bin\Release\Microsoft.Xrm.Client.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedCharges\bin\Release\Microsoft.Xrm.Sdk.Deployment.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedCharges\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedCharges\bin\Release\Microsoft.Xrm.Client.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedCharges\bin\Release\Microsoft.Xrm.Sdk.Deployment.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedCharges\obj\Release\AppliedCharges.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedCharges\obj\Release\GSC.Rover.DMS.BusinessLogic.AppliedCharges.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedCharges\obj\Release\GSC.Rover.DMS.BusinessLogic.AppliedCharges.pdb

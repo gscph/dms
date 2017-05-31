@@ -42,3 +42,17 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\obj\Release\PriceListItem.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\Microsoft.Xrm.Portal.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\Microsoft.Xrm.Client.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\AntiXssLibrary.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\Microsoft.Xrm.Sdk.Deployment.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\Microsoft.Xrm.Portal.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\Microsoft.Xrm.Client.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\Microsoft.Xrm.Sdk.Deployment.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\obj\Release\PriceListItem.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb

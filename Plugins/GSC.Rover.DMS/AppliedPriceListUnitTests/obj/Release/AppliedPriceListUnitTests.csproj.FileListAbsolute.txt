@@ -39,3 +39,15 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUn
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\AppliedPriceListUnitTests.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\AppliedPriceListUnitTests.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.AppliedPriceList.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\Microsoft.Xrm.Sdk.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\Moq.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.AppliedPriceList.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\Moq.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.pdb

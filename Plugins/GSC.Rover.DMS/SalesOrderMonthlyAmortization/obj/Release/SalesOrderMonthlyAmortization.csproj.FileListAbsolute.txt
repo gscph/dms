@@ -24,3 +24,11 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\SalesOrderMonthlyA
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\SalesOrderMonthlyAmortization\obj\Release\SalesOrderMonthlyAmortization.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\SalesOrderMonthlyAmortization\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\SalesOrderMonthlyAmortization\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesOrderMonthlyAmortization\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesOrderMonthlyAmortization\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesOrderMonthlyAmortization\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesOrderMonthlyAmortization\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesOrderMonthlyAmortization\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesOrderMonthlyAmortization\obj\Release\SalesOrderMonthlyAmortization.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesOrderMonthlyAmortization\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesOrderMonthlyAmortization\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization.pdb

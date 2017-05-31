@@ -15,3 +15,11 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountSchedu
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountSchedule\obj\Release\VehicleCountSchedule.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountSchedule\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountSchedule\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountSchedule\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountSchedule\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountSchedule\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountSchedule\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountSchedule\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountSchedule\obj\Release\VehicleCountSchedule.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountSchedule\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountSchedule\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.pdb

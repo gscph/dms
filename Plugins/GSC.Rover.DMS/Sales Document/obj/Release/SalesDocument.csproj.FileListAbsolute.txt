@@ -20,3 +20,10 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Sales Document\bin
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Sales Document\obj\Release\SalesDocument.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Sales Document\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesDocument.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Sales Document\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesDocument.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Sales Document\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesDocument.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Sales Document\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesDocument.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Sales Document\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Sales Document\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Sales Document\obj\Release\SalesDocument.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Sales Document\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesDocument.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Sales Document\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesDocument.pdb

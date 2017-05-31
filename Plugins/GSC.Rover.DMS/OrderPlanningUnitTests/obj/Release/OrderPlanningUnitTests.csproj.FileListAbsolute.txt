@@ -34,3 +34,15 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitT
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitTests\obj\Release\OrderPlanningUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitTests\obj\Release\OrderPlanningUnitTests.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitTests\obj\Release\OrderPlanningUnitTests.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitTests\bin\Release\OrderPlanningUnitTests.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitTests\bin\Release\OrderPlanningUnitTests.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanning.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitTests\bin\Release\Microsoft.Xrm.Sdk.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitTests\bin\Release\Moq.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanning.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitTests\bin\Release\Moq.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitTests\obj\Release\OrderPlanningUnitTests.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitTests\obj\Release\OrderPlanningUnitTests.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningUnitTests\obj\Release\OrderPlanningUnitTests.pdb

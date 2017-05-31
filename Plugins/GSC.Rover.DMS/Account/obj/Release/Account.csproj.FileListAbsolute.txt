@@ -24,3 +24,12 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Account\bin\Releas
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Account\obj\Release\Account.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Account\obj\Release\GSC.Rover.DMS.BusinessLogic.Account.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Account\obj\Release\GSC.Rover.DMS.BusinessLogic.Account.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Account\bin\Release\GSC.Rover.DMS.BusinessLogic.Account.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Account\bin\Release\GSC.Rover.DMS.BusinessLogic.Account.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Account\bin\Release\GSC.Rover.DMS.BusinessLogic.City.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Account\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Account\bin\Release\GSC.Rover.DMS.BusinessLogic.City.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Account\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Account\obj\Release\Account.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Account\obj\Release\GSC.Rover.DMS.BusinessLogic.Account.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Account\obj\Release\GSC.Rover.DMS.BusinessLogic.Account.pdb

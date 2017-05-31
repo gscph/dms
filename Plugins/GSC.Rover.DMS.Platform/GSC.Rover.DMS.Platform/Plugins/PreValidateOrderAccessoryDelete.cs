@@ -73,7 +73,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
                 Entity orderAccessory = orderAccessoryCollection.Entities[0];
 
                 if (orderAccessoryHandler.IsAccessoryStandard(orderAccessory))
-                    throw new InvalidPluginExecutionException("This record cannot be deleted.");
+                    throw new InvalidPluginExecutionException("Cannot remove default accessories.");
             }
 
             catch (Exception ex)

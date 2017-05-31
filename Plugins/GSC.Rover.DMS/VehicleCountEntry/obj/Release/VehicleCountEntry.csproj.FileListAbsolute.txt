@@ -12,3 +12,10 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntry\
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntry\obj\Release\VehicleCountEntry.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntry\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountEntry.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntry\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountEntry.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntry\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountEntry.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntry\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountEntry.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntry\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntry\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntry\obj\Release\VehicleCountEntry.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntry\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountEntry.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntry\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountEntry.pdb

@@ -24,3 +24,10 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\SalesOrderDiscount
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\SalesOrderDiscount\obj\Release\SalesOrderDiscount.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\SalesOrderDiscount\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\SalesOrderDiscount\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesOrderDiscount\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesOrderDiscount\bin\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesOrderDiscount\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesOrderDiscount\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesOrderDiscount\obj\Release\SalesOrderDiscount.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesOrderDiscount\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\SalesOrderDiscount\obj\Release\GSC.Rover.DMS.BusinessLogic.SalesOrderDiscount.pdb

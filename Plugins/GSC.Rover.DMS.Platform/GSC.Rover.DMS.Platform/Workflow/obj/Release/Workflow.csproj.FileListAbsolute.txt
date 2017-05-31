@@ -16,3 +16,17 @@ C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\
 C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\bin\Release\GSC.Rover.DMS.BusinessLogic.Invitation.pdb
 C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn.pdb
 C:\Development\Project Rover\Main\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\bin\Release\GSC.Rover.DMS.Platform.Workflow.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\bin\Release\GSC.Rover.DMS.Platform.Workflow.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\bin\Release\GSC.Rover.DMS.BusinessLogic.Invitation.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\bin\Release\GSC.Rover.DMS.BusinessLogic.PurchaseOrder.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\bin\Release\Microsoft.Xrm.Sdk.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\bin\Release\Microsoft.Xrm.Sdk.Workflow.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\bin\Release\GSC.Rover.DMS.BusinessLogic.Invitation.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\bin\Release\GSC.Rover.DMS.BusinessLogic.PurchaseOrder.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\obj\Release\Workflow.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\obj\Release\GSC.Rover.DMS.Platform.Workflow.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Workflow\obj\Release\GSC.Rover.DMS.Platform.Workflow.pdb

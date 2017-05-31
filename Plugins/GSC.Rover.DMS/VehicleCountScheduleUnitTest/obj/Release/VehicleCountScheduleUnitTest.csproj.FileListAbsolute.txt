@@ -22,3 +22,15 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountSchedu
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountScheduleUnitTest\obj\Release\VehicleCountScheduleUnitTest.csprojResolveAssemblyReference.cache
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountScheduleUnitTest\obj\Release\VehicleCountScheduleUnitTest.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountScheduleUnitTest\obj\Release\VehicleCountScheduleUnitTest.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\VehicleCountScheduleUnitTest.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\VehicleCountScheduleUnitTest.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\Microsoft.Xrm.Sdk.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\Moq.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\Moq.xml
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountScheduleUnitTest\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountScheduleUnitTest\obj\Release\VehicleCountScheduleUnitTest.csprojResolveAssemblyReference.cache
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountScheduleUnitTest\obj\Release\VehicleCountScheduleUnitTest.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountScheduleUnitTest\obj\Release\VehicleCountScheduleUnitTest.pdb
