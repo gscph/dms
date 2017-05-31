@@ -210,13 +210,14 @@ namespace GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails
                         branchRate = branchRate / 100;
                         productRate = productTaxEntity.Contains("gsc_rate") ? (decimal)productTaxEntity.GetAttributeValue<double>("gsc_rate") : 0;
                         productRate = productRate / 100;
+                        decimal taxInclusiveDNP = dnpAmount / (1 + productRate);
+                        purchaseOrder["gsc_taxinclusivednp"] = new Money(taxInclusiveDNP);
                         //if inclusive
                         if (priceList.GetAttributeValue<OptionSetValue>("gsc_taxstatus").Value == 100000000)
                         {
                             _tracingService.Trace("Pricelist is Tax inclusive...");
                             decimal totalAmount = dnpAmount / (1 + productRate);
-                            decimal vatamount = (dnpAmount / (1 + productRate)) * branchRate;
-                            purchaseOrder["gsc_taxinclusivednp"] = new Money(totalAmount);
+                            decimal vatamount = (dnpAmount / (1 + productRate)) * branchRate;                           
                             purchaseOrder["gsc_totalamount"] = new Money(totalAmount);
                             purchaseOrder["gsc_vatamount"] = new Money(vatamount);
                             purchaseOrder["gsc_totalvpoamount"] = new Money(totalAmount + vatamount);
@@ -228,8 +229,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrderDetails
                         //if exclusive
                         else if (priceList.GetAttributeValue<OptionSetValue>("gsc_taxstatus").Value == 100000001)
                         {
-                            _tracingService.Trace("Pricelist is exclusive of tax...");
-                            purchaseOrder["gsc_taxinclusivednp"] = new Money(dnpAmount);
+                            _tracingService.Trace("Pricelist is exclusive of tax...");                         
                             purchaseOrder["gsc_totalamount"] = new Money(dnpAmount);
                             purchaseOrder["gsc_vatamount"] = new Money(dnpAmount * branchRate);
                             purchaseOrder["gsc_totalvpoamount"] = new Money(dnpAmount + (dnpAmount * branchRate));

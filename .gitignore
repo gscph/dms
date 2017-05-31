@@ -4,3 +4,8 @@
 *.cache
 *.cache
 Plugins/GSC.Rover.DMS/Account/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
+*.dll
+Plugins/GSC.Rover.DMS/PriceList/bin/Release/GSC.Rover.DMS.BusinessLogic.PriceList.pdb
+*.txt
+*.suo
+*.csproj
