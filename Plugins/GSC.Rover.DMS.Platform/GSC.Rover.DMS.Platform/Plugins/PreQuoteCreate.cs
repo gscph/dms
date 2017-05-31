@@ -71,7 +71,6 @@ namespace GSC.Rover.DMS.Platform.Plugins
                 handler.SetChattelFeeAmount(quote, message);
                 handler.PopulateColorPrice(quote, message);
                 handler.PopulateCustomerInformation(quote, message);
-
             }
             catch (Exception ex)
             {

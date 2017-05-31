@@ -751,7 +751,9 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                 quoteEntity["gsc_totalamountfinanced"] = new Money(amountfinanced);              
             }
 
-            quoteEntity["gsc_totalcashoutlay"] = new Money(ComputeCashLayout(quoteEntity));
+            var cashoutlay = ComputeCashLayout(quoteEntity);
+            quoteEntity["gsc_totalcashoutlay"] = new Money(cashoutlay);
+
 
             if (message == "Update")
             {
@@ -771,7 +773,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                 quoteToUpdate["gsc_downpaymentamount"] = quoteEntity["gsc_downpaymentamount"];
                 quoteToUpdate["gsc_netdownpayment"] = quoteEntity["gsc_netdownpayment"];
                 quoteToUpdate["gsc_downpayment"] = quoteEntity["gsc_downpayment"];
-                quoteToUpdate["gsc_totalcashoutlay"] = quoteEntity["gsc_totalcashoutlay"];
+                quoteToUpdate["gsc_totalcashoutlay"] = new Money(cashoutlay);
                 _organizationService.Update(quoteToUpdate);
 
                 _tracingService.Trace("Updated Color Price ...");
@@ -1103,7 +1105,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             var totalAmountDue = quoteEntity.Contains("gsc_totalamountdue")
                 ? quoteEntity.GetAttributeValue<Money>("gsc_totalamountdue").Value
                 : 0;
-            var accessories = quoteEntity.GetAttributeValue<Money>("gsc_accessories") != null
+            var accessories = quoteEntity.Contains("gsc_accessories")
                 ? quoteEntity.GetAttributeValue<Money>("gsc_accessories").Value
                 : Decimal.Zero;
             var chattel = quoteEntity.Contains("gsc_chattelfee")
@@ -1112,7 +1114,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             var insurance = quoteEntity.Contains("gsc_insurance")
                 ? quoteEntity.GetAttributeValue<Money>("gsc_insurance").Value
                 : 0;
-            var charges = quoteEntity.GetAttributeValue<Money>("gsc_othercharges") != null
+            var charges = quoteEntity.Contains("gsc_othercharges")
                 ? quoteEntity.GetAttributeValue<Money>("gsc_othercharges").Value
                 : Decimal.Zero;
             decimal cashoutlay = 0;
@@ -1744,7 +1746,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                     ? (Decimal)productEntity.GetAttributeValue<Double>("gsc_taxrate")
                     : 0;
                 var markup = quoteEntity.Contains("gsc_markup")
-                    ? (Decimal)quoteEntity["gsc_markup"]
+                    ? quoteEntity.GetAttributeValue<Decimal>("gsc_markup")
                     : 0;
 
                 if (markup != 0)
@@ -1824,7 +1826,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                 if (message == "Update")
                 {
                     Entity quoteToUpdate = _organizationService.Retrieve(quoteEntity.LogicalName, quoteEntity.Id, new ColumnSet("gsc_colorprice", "gsc_netprice",
-                        "gsc_amountfinanced", "gsc_netprice", "gsc_vatablesales", "gsc_vehicleunitprice", "gsc_vatexemptsales", "gsc_zeroratedsales",
+                        "gsc_amountfinanced", "gsc_netprice", "gsc_vatablesales", "gsc_vehicleunitprice", "gsc_vatexemptsales", "gsc_zeroratedsales", "gsc_totalcashoutlay",
                         "gsc_vatamount", "gsc_totalamountdue", "gsc_totalamountfinanced", "gsc_totalsales", "gsc_unitprice", "gsc_downpaymentamount"));
                     quoteToUpdate["gsc_unitprice"] = quoteEntity["gsc_vehicleunitprice"];
                     quoteToUpdate["gsc_vehicleunitprice"] = quoteEntity["gsc_vehicleunitprice"];
@@ -1838,6 +1840,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                     quoteToUpdate["gsc_vatamount"] = quoteEntity["gsc_vatamount"];
                     quoteToUpdate["gsc_totalamountdue"] = quoteEntity["gsc_totalamountdue"];
                     quoteToUpdate["gsc_downpaymentamount"] = new Money(downPaymentAmount);
+                    quoteToUpdate["gsc_totalcashoutlay"] = quoteEntity["gsc_totalcashoutlay"];
 
                     _organizationService.Update(quoteToUpdate);
 
