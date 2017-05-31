@@ -1633,7 +1633,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                 : 0;
             var bankId = CommonHandler.GetEntityReferenceIdSafe(orderEntity, "gsc_bankid");
 
-            if (bankId != null && paymentMode == 100000001)
+            if (bankId != Guid.Empty && paymentMode == 100000001)
             {
                 _tracingService.Trace("Started CreateRequirementChecklist method - Bank id is not null ...");
 
@@ -1641,7 +1641,9 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                     ? orderEntity.GetAttributeValue<OptionSetValue>("gsc_customertype").Value
                     : 0;
 
-                var bankid = orderEntity.GetAttributeValue<EntityReference>("gsc_bankid").Id;
+                var bankid = orderEntity.GetAttributeValue<EntityReference>("") != null
+                    ? orderEntity.GetAttributeValue<EntityReference>("gsc_bankid").Id
+                    : Guid.Empty;
                 /*       var DocumentCondition = new List<ConditionExpression>
                            {
                                new ConditionExpression("gsc_bankid", ConditionOperator.Equal, bankid),
