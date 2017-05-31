@@ -194,7 +194,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Contact
                 ? ProspectEntity.GetAttributeValue<OptionSetValue>("gsc_recordtype").Value
                 : 0;
 
-            if (recordtype == 100000003)
+                if (recordtype == 100000003 || recordtype == 0)
                 return ProspectEntity;
 
             //if (recordtype != 100000001)
@@ -391,9 +391,11 @@ namespace GSC.Rover.DMS.BusinessLogic.Contact
         public Entity SetAccessLevel(Entity contactEntity)
         {
             _tracingService.Trace("Started SetAccessLevel Method...");
-            contactEntity["parentcustomerid"] = contactEntity["gsc_branchid"];
-            _tracingService.Trace("Ending SetAccessLevel Method...");
 
+            if(contactEntity.GetAttributeValue<EntityReference>("gsc_branchid") != null)
+                contactEntity["parentcustomerid"] = contactEntity["gsc_branchid"];
+
+            _tracingService.Trace("Ending SetAccessLevel Method...");
             return contactEntity;
         }
     }
