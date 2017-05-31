@@ -1590,15 +1590,15 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             if (paymentMode == 100000001 || paymentMode == 100000002)
             {
                 totalCashOutlay = netDownPaymentAmount + chattelFeeAmount + insuranceAmount + chargesAmount;
-
-                if (totalCashOutlay > reservationFee)
-                {
-                    totalCashOutlay = totalCashOutlay - reservationFee;
-                }
             }
             else if (paymentMode == 100000000 || paymentMode == 100000003)
             {
                 totalCashOutlay = totalAmountDue + chattelFeeAmount + insuranceAmount + chargesAmount;
+            }
+
+            if (totalCashOutlay > reservationFee)
+            {
+                totalCashOutlay = totalCashOutlay - reservationFee;
             }
 
             if (totalCashOutlay > 0)
@@ -1641,7 +1641,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                     ? orderEntity.GetAttributeValue<OptionSetValue>("gsc_customertype").Value
                     : 0;
 
-                var bankid = orderEntity.GetAttributeValue<EntityReference>("") != null
+                var bankid = orderEntity.GetAttributeValue<EntityReference>("gsc_bankid") != null
                     ? orderEntity.GetAttributeValue<EntityReference>("gsc_bankid").Id
                     : Guid.Empty;
                 /*       var DocumentCondition = new List<ConditionExpression>
