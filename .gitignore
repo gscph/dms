@@ -2,3 +2,5 @@
 *.pdb
 *.txt
 *.cache
+*.cache
+Plugins/GSC.Rover.DMS/Account/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
