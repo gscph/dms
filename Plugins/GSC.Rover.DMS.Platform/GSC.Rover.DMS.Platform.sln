@@ -12,21 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workflow", "GSC.Rover.DMS.Platform\Workflow\Workflow.csproj", "{7997C81F-88DF-413B-9DD4-C0A003977C37}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://raven:8080/tfs/rndcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = GSC.Rover.DMS.Platform\\CrmPackage\\CrmPackage.csproj
-		SccProjectName1 = GSC.Rover.DMS.Platform/CrmPackage
-		SccLocalPath1 = GSC.Rover.DMS.Platform\\CrmPackage
-		SccProjectUniqueName2 = GSC.Rover.DMS.Platform\\Workflow\\Workflow.csproj
-		SccProjectName2 = GSC.Rover.DMS.Platform/Workflow
-		SccLocalPath2 = GSC.Rover.DMS.Platform\\Workflow
-		SccProjectUniqueName3 = GSC.Rover.DMS.Platform\\Plugins\\Plugins.csproj
-		SccProjectName3 = GSC.Rover.DMS.Platform/Plugins
-		SccLocalPath3 = GSC.Rover.DMS.Platform\\Plugins
-	EndGlobalSection
 	GlobalSection(CRMSolutionProperties) = preSolution
 		SolutionIsBoundToCRM = True
 	EndGlobalSection
