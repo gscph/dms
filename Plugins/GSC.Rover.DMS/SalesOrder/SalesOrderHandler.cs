@@ -1692,7 +1692,10 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                     }
 
                 }
+            }
 
+            if (paymentMode == 100000001)
+            {
                 //Create default financing documents
                 CreateDefaultDocumentChecklist(orderEntity, false);
             }
