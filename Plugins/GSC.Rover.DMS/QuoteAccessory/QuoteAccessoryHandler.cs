@@ -246,7 +246,7 @@ namespace GSC.Rover.DMS.BusinessLogic.QuoteAccessory
             }
             else
             {
-                throw new InvalidPluginExecutionException("There is no effecive Price List for the selected accessory.");
+                throw new InvalidPluginExecutionException("There is no effecive Price List for the vehicle accessories.");
             }
         }
 
