@@ -1,0 +1,228 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPages/DMS-Forms.master" AutoEventWireup="true" CodeBehind="DMS-Profile.master.cs" Inherits="Site.MasterPages.DMS_Profile" %>
+
+<%@ Import Namespace="System.Web.Mvc.Html" %>
+<%@ Import Namespace="Adxstudio.Xrm.Web.Mvc.Html" %>
+
+<asp:Content ContentPlaceHolderID="Head" runat="server">
+    <asp:ContentPlaceHolder ID="Head" runat="server" />
+    <link href="~/dms-plugins/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" />
+  
+</asp:Content>
+
+<asp:Content ContentPlaceHolderID="Breadcrumbs" runat="server">
+    <asp:ContentPlaceHolder ID="Breadcrumbs" runat="server">        
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ContentPlaceHolderID="PageHeader" runat="server">
+    <script src="~/js/jquery.cookie.js"></script>
+    <script src="~/js/dms/service.js"></script>
+    <script src="~/js/dms/notification.js"></script>
+    <script src="~/js/dms/helpers.js"></script>
+    <script src="~/js/dms/site-settings.js"></script>
+    <script src="~/js/dms/dms-app.js"></script>
+    <asp:ContentPlaceHolder ID="PageHeader" runat="server">
+        <div class="notifications"></div>
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content9" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        .body-container {
+            padding: 100px 15px 25px 25px;
+        }
+    </style>
+
+    <div id="loader">
+        <span class="fa fa-spinner fa-spin fa-4x style="color: #e5e5e5" "></span>
+    </div>
+    <div id="mainContents" class="body-container">
+        <section class="content">
+            <!-- End Header -->
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="box box-dms">
+                        <div class="box-body box-profile">
+                            <img class="profile-user-img img-responsive"
+                                 src="<%: Url.UserImageUrl(Contact)%>"
+                                 onError="this.onerror=null;this.src='~/images/users/default.jpg'" data-toggle="modal" data-target="#photoUploadModal"
+                                 alt="User profile picture">
+                            <h3 class="profile-username text-center"><%: Html.AttributeLiteral(Html.PortalUser(), "fullname") %></h3>
+                            <p class="text-muted text-center userPosition" style="margin-bottom: 30px;"></p>
+                            <ul class="list-group list-group-unbordered">
+                                <% Html.RenderPartial("ProfileNavbar", ViewData); %>                            
+                            </ul>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <div class="col-md-9">
+                    <div class="box box-dms">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">
+                                <adx:Snippet SnippetName="Profile Form Legend" DefaultText="Your Information" EditType="text" runat="server" />
+                            </h3>
+                            <div class="box-tools pull-right">
+                                  <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"><i class="fa fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                                <%--  <%: Html.HtmlAttribute("adx_copy", cssClass: "page-copy") %>--%>
+                                <% Html.RenderPartial("ProfileMessage", Request["Message"] ?? string.Empty); %>
+                                <%--                                <% if (OwinEnabled && EmailConfirmationEnabled && !IsEmailConfirmed)
+                                   { %>
+                                <div class="alert alert-info clearfix">
+                                    <div class="pull-right">
+                                        <a class="btn btn-default btn-xs" href="<%: Url.Action("ConfirmEmailRequest", "Manage", new { area = "Account" }) %>">
+                                            <span class="fa fa-envelope-o" aria-hidden="true"></span><%: Html.SnippetLiteral("Profile/Alert/ConfirmEmailButtonText", "Confirm Email") %>
+                                        </a>
+                                    </div>
+                                    <span class="fa fa-exclamation-circle" aria-hidden="true"></span><%: Html.TextSnippet("Profile/EmailConfirmation/WarningText", defaultValue: "Your email requires confirmation.", tagName: "span") %>
+                                </div>
+                                <% } %>--%>
+                                <asp:ContentPlaceHolder ID="EntityControls" runat="server" ViewStateMode="Enabled">
+                                    <script type="text/javascript">
+                                        function entityFormClientValidate() {
+                                            // Custom client side validation. Method is called by the submit button's onclick event.
+                                            // Must return true or false. Returning false will prevent the form from submitting.
+                                            return true;
+                                        }
+
+                                        function webFormClientValidate() {
+                                            // Custom client side validation. Method is called by the next/submit button's onclick event.
+                                            // Must return true or false. Returning false will prevent the form from submitting.
+                                            return true;
+                                        }
+                                    </script>
+                                    <adx:WebForm ID="WebFormControl" runat="server" FormCssClass="crmEntityFormView" PreviousButtonCssClass="btn btn-default" NextButtonCssClass="btn btn-primary" SubmitButtonCssClass="btn btn-profile" ClientIDMode="Static" LanguageCode="<%$ SiteSetting: Language Code, 0 %>" PortalName="<%$ SiteSetting: Language Code %>" />
+                                    <adx:EntityForm ID="EntityFormControl" runat="server" FormCssClass="crmEntityFormView" PreviousButtonCssClass="btn btn-default" NextButtonCssClass="btn btn-primary" SubmitButtonCssClass="btn btn-profile" ClientIDMode="Static" LanguageCode="<%$ SiteSetting: Language Code, 0 %>" PortalName="<%$ SiteSetting: Language Code %>" />
+                                    <adx:EntityList ID="EntityListControl" runat="server" ListCssClass="table table-striped" DefaultEmptyListText="There are no items to display." ClientIDMode="Static" LanguageCode="<%$ SiteSetting: Language Code, 0 %>" PortalName="<%$ SiteSetting: Language Code %>" />
+                                </asp:ContentPlaceHolder>
+                                <asp:ContentPlaceHolder ID="ContentBottom" runat="server" />
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+     <section aria-hidden="true" id="photoUploadModal" class="modal fade modal-delete" data-backdrop="static" role="dialog" tabindex="-1"> 
+                          <div class="modal-dialog"> 
+                              <div class="modal-content"> 
+                                    <div class="modal-header"> 
+                                        <button class="close" data-dismiss="modal" type="button"> 
+                                            <span aria-hidden="true">×</span><span class="sr-only">Close</span> 
+                                        </button> 
+                                        <h1 class="modal-title h4">Edit Image</h1> 
+                                        <h1 class="modal-title h6">Change or edit image.</h1> 
+                                    </div> 
+                                    <div class="modal-body"> 
+                                          <div class="col-sm-3">
+                                                <img id="preview" src="<%: Url.UserImageUrl(Contact)%>" onError="this.onerror=null;this.src='~/images/users/default.jpg'" style="height:100px;width:100px;"> 
+                                          </div>
+                                          <div class="col-sm-9"><br/>
+                                                <input id="photoUploader" type="file" data-allowed-file-extensions='["jpg", "png", "svg"]'><br/>   
+                                                <b>Upload a picture from your computer</b><br/> (under 5 MB) 
+                                          </div>
+                                           <br/><br/><br/><br/><br/>
+                                    </div> 
+                                    <div class="modal-footer">
+                                        <button id="submitPhoto" class="btn btn-default btn-dialog disabled" type="button"><i class="fa fa-check"></i> SUBMIT</button> 
+                                        <button id="cancelPhotoUpload" class="btn btn-default btn-dialog" data-dismiss="modal" type="button"><i class="fa fa-remove"></i> CANCEL</button> 
+                                    </div> 
+                               </div> 
+                           </div> 
+                    </section>
+
+</asp:Content>
+
+<asp:Content ContentPlaceHolderID="Scripts" runat="server">
+    <script src="~/dms-plugins/bootstrap-fileinput/js/plugins/canvas-to-blob.min.js"></script>
+    <script src="~/dms-plugins/bootstrap-fileinput/js/plugins/purify.min.js"></script>
+    <script src="~/dms-plugins/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script>
+        //$(document).ready(function () {
+        //    $('#gsc_themeurl').hide();
+        //});      
+        var fullname = "<%: Html.AttributeLiteral(Html.PortalUser(), "firstname") %>";
+        var userId = "<%: Html.AttributeLiteral(Html.PortalUser(), "contactid") %>";
+        var uploadUrl = "/DMS_Api/FileUpload/UpdateUserImage?userFileName=" + userId + "_" + fullname + "&userId=" + userId;
+
+        var button = $('.modal-footer .btn-primary');
+        button.removeClass('btn-primary');
+        button.addClass('btn-default');
+
+        $("#photoUploader").fileinput({
+            showUpload: false,
+            showUploadedThumbs: false,
+            showCancel: false,
+            showRemove: false,
+            showCaption: false,
+            showPreview: false,
+            dropZoneEnabled: false,
+            browseClass: "btn btn-default",
+            browseLabel: "BROWSE",
+            uploadAsync: true,
+            uploadUrl: uploadUrl
+        }).on('fileuploaded', function (event, data, id, index) {
+            $("#photoUploader").fileinput('disable');
+            clearCache();           
+        });
+
+
+        function clearCache() {
+            var url = document.location.protocol + '//' + document.location.host + (document.location.host.indexOf("demo.adxstudio.com") != -1 ? document.location.pathname.split("/").slice(0, 3).join("/") : "") + '/Cache.axd?Message=InvalidateAll&d=' + (new Date()).valueOf();
+            var req = new XMLHttpRequest();
+            req.open('GET', url, false);
+            req.send(null);
+            window.location.reload(true);
+        }
+
+        function clearCacheWithDelay() {
+            setTimeout(function () {
+                clearCache();
+            }, 500);
+        }
+
+        $(document).ready(function () {
+            myFunction();
+        });
+
+
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+
+                $('#submitPhoto').removeClass('disabled');
+            }
+        }
+
+        $("#photoUploader").change(function (evt) {
+            readURL(this);
+            files = evt.target.files;
+        });
+
+        $("#cancelPhotoUpload").click(function () {
+            $('#photoUploader').val("");
+            $('#submitPhoto').addClass('disabled');
+        });
+
+        $("#submitPhoto").on("click", function () {          
+            $('#submitPhoto').addClass('disabled');
+            $('#cancelPhotoUpload').addClass('disabled');
+            $("#photoUploader").fileinput('upload');            
+        });
+
+    </script>
+    <asp:ContentPlaceHolder ID="Scripts" runat="server" />
+</asp:Content>

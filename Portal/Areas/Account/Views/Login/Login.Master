@@ -1,0 +1,84 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" ViewStateMode="Disabled" CodeBehind="Login.master.cs" Inherits="Site.Areas.Account.Views.Login.Login" %>
+
+<%@ Import Namespace="System.Web.Mvc.Html" %>
+<%@ Import Namespace="Adxstudio.Xrm.Web.Mvc.Html" %>
+
+<!DOCTYPE html>
+<html lang="<%: Html.Setting("Html/LanguageCode", "en") %>">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+        <asp:ContentPlaceHolder ID="Title" runat="server"><%: Html.AttributeLiteral("adx_title") ?? Html.AttributeLiteral("adx_name") %></asp:ContentPlaceHolder>
+        <%= Html.SnippetLiteral("Browser Title Suffix") %></title>
+    <asp:ContentPlaceHolder ID="MetaTags" runat="server">
+        <% var metaDescription = Html.Entity().GetAttribute("adx_meta_description"); %>
+        <% if (metaDescription != null && metaDescription.Value != null)
+           { %>
+        <meta name="description" content="<%: Html.AttributeLiteral(metaDescription) %>" />
+        <% } %>
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        // Fix for incorrect viewport width setting in IE 10 on Windows Phone 8.
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            msViewportStyle.appendChild(document.createTextNode("@-ms-viewport{width:auto!important}"));
+            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="Styles" runat="server">
+        <%: System.Web.Optimization.Styles.Render("~/css/default.bundle.css") %>
+        <link href="~/css/dms/metro-bootstrap.css" rel="stylesheet" />
+        <link href="~/Areas/Account/css/dms-template.css" rel="stylesheet" />
+        <link href="~/css/dms/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/css/dms/login.css" rel="stylesheet" />
+    </asp:ContentPlaceHolder>
+</head>
+
+<body class="hold-transition login-page">
+
+    <%: System.Web.Optimization.Scripts.Render("~/js/default.preform.bundle.js") %>
+    <asp:ContentPlaceHolder ID="ContentContainer" runat="server">
+        <asp:ContentPlaceHolder ID="ContentHeader" runat="server" />
+        <div id="content">
+            <div class="login-box">              
+                <div class="login-box-body">
+                    <asp:ContentPlaceHolder ID="PageCopy" runat="server" />
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+                </div>
+                <div class="login-logo">
+                    <img src="~/images/VerticalLogo1.png" class="mmpc-logo-right">
+                </div>
+                <div class="login-logo2">
+                    <img src="~/images/logoformmpc1.png" class="mmpc-logo-left">
+                </div>
+            </div>
+        </div>
+
+    </asp:ContentPlaceHolder>
+
+
+    <%: Html.EntityEditingMetadata() %>
+    <%: Html.EditingStyles(new []
+			{
+				"~/xrm-adx/css/yui-skin-sam-2.9.0/skin.css",
+				"~/js/select2/select2.css"
+			}) %>
+    <script src="<%: Url.Content("~/xrm-adx/js/tinymce/tinymce.min.js") %>"></script>
+    <%: Html.EditingScripts(dependencyScriptPaths: new []
+			{
+				"~/xrm-adx/js/yui-2.9.0-combo.min.js",
+				"~/xrm-adx/js/jquery-ui-1.10.0.min.js",
+				"~/js/select2/select2.min.js"
+			}, extensionScriptPaths: new string[] {}) %>
+    <%: System.Web.Optimization.Scripts.Render("~/js/default.bundle.js") %>
+    <asp:ContentPlaceHolder ID="Scripts" runat="server" />
+    <%: Html.ScriptAttribute("adx_customjavascript") %>
+    <%= Html.SnippetLiteral("Tracking Code") %>
+    <script src="~/dms-plugins/fastclick/fastclick.min.js"></script>
+</body>
+</html>
+<!-- Generated at <%: DateTime.UtcNow %> -->
+<!-- Page OK -->
+
