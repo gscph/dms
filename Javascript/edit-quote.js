@@ -2,9 +2,17 @@ $(document).ready(function () {
     $('form fieldset').attr('disabled', true);
 
     //JGC_01192017 : Disabled Activate Button
-    if ($('#gsc_paymentmode').val() == "100000001" && (($('#gsc_bankid').val() == null || $('#gsc_bankid').val() == "")
-           || ($('#gsc_financingschemeid').val() == null || $('#gsc_financingschemeid').val() == "")
-           || ($('#gsc_downpaymentamount').val() == "" || $('#gsc_downpaymentpercentage').val() == "") || ($('#gsc_netmonthlyamortization').html() == "" || $('#gsc_netmonthlyamortization').html() == "₱0.00"))) {
+    var paymentMode = $('#gsc_paymentmode').val();
+    var bank = $('#gsc_bankid').val();
+    var financingScheme = $('#gsc_financingschemeid').val();
+    var downpaymentAmt = $('#gsc_downpaymentamount').val();
+    var downpaymentPercentage = $('#gsc_downpaymentpercentage').val();
+    var netMonthlyAmort = $('#gsc_netmonthlyamortization').html();
+    var financing = "100000001";
+    var bankPo = "100000002";
+
+    if ((paymentMode == financing && (bank == "" || financingScheme == "" || downpaymentAmt == "" || downpaymentPercentage == ""
+        || (netMonthlyAmort == "" || netMonthlyAmort == "₱0.00"))) || (paymentMode == bankPo && bank == "")) {
         $(".activate-quote-link").addClass("permanent-disabled disabled");
     }
 
@@ -230,25 +238,25 @@ $(document).ready(function () {
         else {
             workflowName = 'Quote Won - Do Not Close Opportunity';
         }
-        
+
         if (isValidForCreateOrder == true) {
-          $('#createOrderModal').modal('hide');
-          showLoading();
-          $.ajax({
-            type: "PUT",
-            url: "/api/Service/RunWorkFlow/?workflowName=" + workflowName + "&entityId=" + entityId,
-            success: function (response) {
-              var url = document.location.protocol + '//' +
-                    document.location.host + (document.location.host.indexOf("demo.adxstudio.com") != -1
-                        ? document.location.pathname.split("/").slice(0, 3).join("/")
-                        : "") + '/Cache.axd?Message=InvalidateAll&d=' +
-                    (new Date()).valueOf();
+            $('#createOrderModal').modal('hide');
+            showLoading();
+            $.ajax({
+                type: "PUT",
+                url: "/api/Service/RunWorkFlow/?workflowName=" + workflowName + "&entityId=" + entityId,
+                success: function (response) {
+                    var url = document.location.protocol + '//' +
+                          document.location.host + (document.location.host.indexOf("demo.adxstudio.com") != -1
+                              ? document.location.pathname.split("/").slice(0, 3).join("/")
+                              : "") + '/Cache.axd?Message=InvalidateAll&d=' +
+                          (new Date()).valueOf();
                     var req = new XMLHttpRequest();
                     req.open('GET', url, false);
                     req.send(null); //window.location.reload(true);
-                    setTimeout(RedirecttoSalesOrder(), 1000);
-            }
-          }).error(function (errormsg) { console.log(errormsg) });
+                    setTimeout(RedirecttoSalesOrder(), 5000);
+                }
+            }).error(function (errormsg) { console.log(errormsg) });
         }
     });
 
@@ -387,67 +395,67 @@ $(document).ready(function () {
 
     //Added By: Jerome Anthony Gerero
     //Purpose : Disable 'Add' button on Cab Chassis Subgrid
+    /* setTimeout(function () {
+         var idQueryString = DMS.Helpers.GetUrlQueryString('id');
+         var quoteCabChassisOdataQuery = '/_odata/gsc_sls_quotecabchassis?$filter=gsc_quoteid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
+         $.ajax({
+             type: 'get',
+             async: true,
+             url: quoteCabChassisOdataQuery,
+             success: function (data) {
+                 if (data.value.length >= 1) {
+                     $('table[data-name="CABCHASSIS"] button.addnew').prop('disabled', true);
+                 }
+                 else if (data.value.length == 0) {
+                     $('table[data-name="CABCHASSIS"] button.addnew').prop('disabled', false);
+                 }
+             },
+             error: function (xhr, textStatus, errorMessage) {
+                 console.log(errorMessage);
+             }
+         });
+     }, 2000);*/
+
+    //Added By: Jerome Anthony Gerero
+    //Purpose : Hide Cab Chassis Subgrid
     setTimeout(function () {
-        var idQueryString = DMS.Helpers.GetUrlQueryString('id');
-        var quoteCabChassisOdataQuery = '/_odata/gsc_sls_quotecabchassis?$filter=gsc_quoteid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
+        var productId = $('#gsc_productid').val();
+
+        if (productId == null) {
+            productId = '00000000-0000-0000-0000-000000000000';
+        }
+        var productOdataUrl = "/_odata/vehicleanditemcatalog?$filter=productid eq (Guid'" + productId + "')";
+
         $.ajax({
             type: 'get',
             async: true,
-            url: quoteCabChassisOdataQuery,
+            url: productOdataUrl,
             success: function (data) {
-                if (data.value.length >= 1) {
-                    $('table[data-name="CABCHASSIS"] button.addnew').prop('disabled', true);
-                }
-                else if (data.value.length == 0) {
-                    $('table[data-name="CABCHASSIS"] button.addnew').prop('disabled', false);
+                var bodyType = data.value[0].gsc_bodytypeid;
+
+                if (bodyType != null) {
+                    var bodyTypeOdataUrl = "/_odata/bodytype?$filter=gsc_sls_bodytypeid eq (Guid'" + bodyType.Id + "')";
+                    $.ajax({
+                        type: 'get',
+                        async: true,
+                        url: bodyTypeOdataUrl,
+                        success: function (data) {
+                            var isCabChassis = data.value[0].gsc_cabchassis;
+
+                            if (isCabChassis == false) {
+                                $('[data-name="CABCHASSIS"').parent().hide();
+                            }
+                        },
+                        error: function (xhr, textStatus, errorMessage) {
+                            console.log(errorMessage);
+                        }
+                    });
                 }
             },
             error: function (xhr, textStatus, errorMessage) {
                 console.log(errorMessage);
             }
         });
-    }, 2000);
-	
-    //Added By: Jerome Anthony Gerero
-    //Purpose : Hide Cab Chassis Subgrid
-    setTimeout(function () {
-      var productId = $('#gsc_productid').val();
-      
-      if (productId == null) {
-        productId = '00000000-0000-0000-0000-000000000000';
-      }
-      var productOdataUrl = "/_odata/vehicleanditemcatalog?$filter=productid eq (Guid'" + productId + "')";
-      
-      $.ajax({
-        type: 'get',
-        async: true,
-        url: productOdataUrl,
-        success: function (data) {
-          var bodyType = data.value[0].gsc_bodytypeid;
-          
-          if(bodyType != null) {
-            var bodyTypeOdataUrl = "/_odata/bodytype?$filter=gsc_sls_bodytypeid eq (Guid'" + bodyType.Id + "')";
-            $.ajax({
-              type: 'get',
-              async: true,
-              url: bodyTypeOdataUrl,
-              success: function (data){
-                var isCabChassis = data.value[0].gsc_cabchassis;
-                
-                if (isCabChassis == false) {
-                  $('[data-name="CABCHASSIS"').parent().hide();
-                }
-              },
-              error: function (xhr, textStatus, errorMessage){
-                console.log(errorMessage);
-              }
-            });
-          }
-        },
-        error: function (xhr, textStatus, errorMessage){
-          console.log(errorMessage);
-        }
-      });
     }, 1000);
 
     function preventDefault(event) {
@@ -464,31 +472,31 @@ $(document).ready(function () {
             }
         }
     }
-    $('.text.money').mask("#,##0.00", {reverse: true});
+    $('.text.money').mask("#,##0.00", { reverse: true });
     //Added JGC_04102017 : Enhancement Of Insurance Tab
-	  $("#gsc_totalpremium").on('change', function () {
-	    var totalpremium = 0;
-	    var ctpl = 0;
-	    if ($("#gsc_totalpremium").val() != "") 
-        totalpremium = parseFloat($("#gsc_totalpremium").cleanVal());
-      if($("#gsc_ctpl").val() != "")   
-        ctpl = parseFloat($("#gsc_ctpl").cleanVal());
-	    $("#gsc_totalinsurancecharges").val(totalpremium + ctpl);
-      maskTotalInsuranceCharge();
-	  });
-	  $("#gsc_ctpl").on('change', function () {
-	     var totalpremium = 0;
-	     var ctpl = 0;
-	     if ($("#gsc_totalpremium").val() != "") 
-        totalpremium = parseFloat($("#gsc_totalpremium").cleanVal());
-       if($("#gsc_ctpl").val() != "") 
-        ctpl = parseFloat($("#gsc_ctpl").cleanVal());
-	    $("#gsc_totalinsurancecharges").val(totalpremium + ctpl);
-	    maskTotalInsuranceCharge();
-	  });
-	  function maskTotalInsuranceCharge() {
-	    $('#gsc_totalinsurancecharges').mask('000,000,000,000,000.00', {reverse: true});
-	  }
+    $("#gsc_totalpremium").on('change', function () {
+        var totalpremium = 0;
+        var ctpl = 0;
+        if ($("#gsc_totalpremium").val() != "")
+            totalpremium = parseFloat($("#gsc_totalpremium").cleanVal());
+        if ($("#gsc_ctpl").val() != "")
+            ctpl = parseFloat($("#gsc_ctpl").cleanVal());
+        $("#gsc_totalinsurancecharges").val(totalpremium + ctpl);
+        maskTotalInsuranceCharge();
+    });
+    $("#gsc_ctpl").on('change', function () {
+        var totalpremium = 0;
+        var ctpl = 0;
+        if ($("#gsc_totalpremium").val() != "")
+            totalpremium = parseFloat($("#gsc_totalpremium").cleanVal());
+        if ($("#gsc_ctpl").val() != "")
+            ctpl = parseFloat($("#gsc_ctpl").cleanVal());
+        $("#gsc_totalinsurancecharges").val(totalpremium + ctpl);
+        maskTotalInsuranceCharge();
+    });
+    function maskTotalInsuranceCharge() {
+        $('#gsc_totalinsurancecharges').mask('000,000,000,000,000.00', { reverse: true });
+    }
 
     //set page validators
     if (typeof (Page_Validators) == 'undefined') return;
@@ -604,12 +612,7 @@ $(document).ready(function () {
         div.appendChild(span);
         $(".content-wrapper").append(div);
     }
-    setTimeout(disableTab, 3000);
 
-    function disableTab()
-    {
-        $('.disabled').attr("tabindex", "-1");
-    }
 });
 
 var classOdataUrl = "/_odata/gsc_class?$filter=gsc_classmaintenancepn eq 'Accessory'";
@@ -640,7 +643,18 @@ var AccessroiessGridInstance = {
             ],
             columns: [
                 { data: 'gsc_free', type: 'checkbox', renderer: checkboxRenderer, className: "htCenter htMiddle", width: 50 },
-                { data: 'gsc_itemnumber', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 },
+                {
+                    data: 'gsc_itemnumber', className: "htCenter htMiddle", width: 100, renderer: function (instance, td, row, col, prop, value, cellProperties) {
+                        return lookupRenderer(accessoriesSelectData, instance, td, row, col, prop, value, cellProperties);
+                    },
+                    editor: 'select2',
+                    select2Options: { // these options are the select2 initialization options 
+                        data: accessoriesSelectData,
+                        dropdownAutoWidth: true,
+                        allowClear: true,
+                        width: 'resolve'
+                    }
+                },
                 {
                     data: 'gsc_productid', className: "htCenter htMiddle", width: 100, renderer: function (instance, td, row, col, prop, value, cellProperties) {
                         return lookupRenderer(accessoriesSelectData, instance, td, row, col, prop, value, cellProperties);
@@ -749,7 +763,9 @@ var monthlyAmortizationGridInstance = {
         var options = {
             dataSchema: {
                 gsc_isselected: null, gsc_quoteid: { Id: null, Name: null },
-                gsc_financingtermid: { Id: null, Name: null }, gsc_quotemonthlyamortizationpn: null
+                //gsc_financingtermid: { Id: null, Name: null },
+                gsc_financingtermid: null,
+                gsc_quotemonthlyamortizationpn: null
             },
             colHeaders: [
                             'Select Term *',
@@ -758,9 +774,13 @@ var monthlyAmortizationGridInstance = {
             ],
             columns: [
                { data: 'gsc_isselected', type: 'checkbox', renderer: checkboxRenderer, className: "htCenter htMiddle", width: 50 },
-               { data: 'gsc_financingtermid', renderer: multiPropertyRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 },
+               { data: 'gsc_financingtermid.Name', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 100 },
                { data: 'gsc_quotemonthlyamortizationpn', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 }
             ],
+            columnSorting: {
+                column: 1,
+                sortOrder: true
+            },
             gridWidth: screenSize,
             addNewRows: false,
             deleteRows: false

@@ -2889,7 +2889,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                 : null;
             salesOrder = SetTotalCashOutlayAmount(salesOrder, "create");
 
-            _organizationService.Update(salesOrder);
+            //_organizationService.Update(salesOrder);
 
             Entity orderToUpdate = _organizationService.Retrieve(salesOrder.LogicalName, salesOrder.Id,
                 new ColumnSet("gsc_totalcashoutlay", "gsc_reservation", "gsc_status"));
