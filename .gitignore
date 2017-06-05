@@ -2,12 +2,5 @@
 *.pdb
 *.txt
 *.cache
-*.cache
-Plugins/GSC.Rover.DMS/Account/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
-*.dll
-Plugins/GSC.Rover.DMS/PriceList/bin/Release/GSC.Rover.DMS.BusinessLogic.PriceList.pdb
-*.txt
 *.suo
 *.csproj
-Plugins/GSC.Rover.DMS.Platform/GSC.Rover.DMS.Platform/Plugins/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
-Plugins/GSC.Rover.DMS.Platform/GSC.Rover.DMS.Platform.v11.suo
