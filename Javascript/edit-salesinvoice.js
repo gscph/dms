@@ -2,26 +2,21 @@
 var checker = false;
 
 $(document).ready(function () {
-
     var status = $(".record-status").html();
     $('#gsc_reasonforcancellation').attr("readonly", "readonly");
     
     if (status != "Cancelled") {
         $('label[for=gsc_reasonforcancellation], input#gsc_reasonforcancellation').hide();
     }
-	
-  	if(status == "Invoiced")
-  	{	
-  	  //$('#name').attr("disabled","disabled");
-			$('#name').attr("readonly","true");
-  	}
-  	
-  	if(status == "Released")
-  	{
-  	  $('#SubmitButton').attr("disabled", true);
-  	  $('.delete-link').attr("disabled", true);
-  	}
-  	
+    
+    if(status != "Open")
+    {
+      $('#SubmitButton').attr("disabled", true);
+      $('#UpdateButton').attr("disabled", true);
+      $('.delete-link').attr("disabled", true);
+      $('#name').attr("readonly","true");
+    }
+    
     $('#InvoiceMonthlyAmortization_Subgrid').html('');
     $(document).trigger("initializeEditableGrid", monthlyAmortizationGridInstance);
     $('#InvoiceMonthlyAmortization_Subgrid .editable-grid-toolbar').hide();
@@ -32,6 +27,28 @@ $(document).ready(function () {
          $('#SubmitButton').addClass("hidden");
          $('#UpdateButton').addClass("hidden");
     }
+    
+  //JGC_05302017
+    //EXPORT BUTTON
+      var wordIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-file-word-o');
+      var exportWordBtn = DMS.Helpers.CreateButton('button', 'btn btn-primary exportWord', '', ' EXPORT TO WORD', wordIcon);
+    DMS.Helpers.AppendButtonToToolbar(exportWordBtn);
+    
+      exportWordBtn.click(function(e){
+        e.preventDefault();
+        if (Page_ClientValidate(""))
+        {
+            var invoiceId = $('#name').val();
+            var param1var = DMS.Helpers.GetUrlQueryString('id');
+        var protocol = window.location.protocol;
+        var host = window.location.host;
+        var url = protocol + "//" + host + "/report/?reportname={5d57ff39-61d2-e611-80e7-00155d010e2c}&reportid=" + param1var
+          +  "&recordId=" + invoiceId + "&exportToWord=" + 1;   
+        window.location.href = url; 
+          //exportWindow.document.write("<p> Successfully downloaded ! </p>");      
+        }   
+    });
+    //End
     
     //Added by: JGC_12092016
 /*    if (DMS.Settings.User.positionName != 'Sales Manager' && DMS.Settings.User.positionName != 'Sales Executive' && DMS.Settings.User.positionName != 'System Administrator') {
@@ -112,7 +129,7 @@ $(document).ready(function () {
     '<div class="modal-body">' +
     '' +
     ' <div class="form-group col-md-6"><label>Confirm Posting Date </label> <div class="input-group date" id="modalPostDate">' +
-        '<input type="text" id="modalPostDateValue" class="form-control" placeholder="Please enter post date" readonly="readonly"/>' +
+        '<input type="text" id="modalPostDateValue" class="form-control" placeholder="Please enter post date"/>' +
         '<span class="input-group-addon">' +
             '<span class="glyphicon glyphicon-calendar"></span>' +
         '</span> </div>' +
@@ -171,7 +188,7 @@ $(document).ready(function () {
         
         if ($("#modalPostDateValue").val() == "")
         {
-        alert("test");
+        //alert("test");
         checker = false; 
         }
     });
@@ -213,27 +230,27 @@ $(document).ready(function () {
         //$(".form-action-container-left").append(printBtn);
 
         $('#printBtn').click(function (e) {
-			e.preventDefault();
-			var printCount = $("#gsc_print").val();
-			if (printCount == "")
-				printCount = 0;
-			var print = parseInt(printCount) + 1;
-			var invoiceID = $('#name').val();
-			var button = $(this);
-			var fields = [{ key: 'gsc_print', value: print}, 
-				          { key: 'gsc_isdeliveryreceiptandgatepass', value: true, type: 'System.Boolean'}, 
-						  { key: 'name', value: invoiceID}];				
-		    var entityId = DMS.Helpers.GetUrlQueryString('id');
-		    recordArr = GetModelForSelectedRecords(fields,entityId);
-		    var that = $(this);
-		    var print_ = $('#printBtn').html();
-		if(status == "Released" || status == "Invoiced" || status == "Printed")
-		{
-			PrintReport();
-			$('#printMessageModal').modal('hide');
-		}
-		else
-		{
+            e.preventDefault();
+            var printCount = $("#gsc_print").val();
+            if (printCount == "")
+                printCount = 0;
+            var print = parseInt(printCount) + 1;
+            var invoiceID = $('#name').val();
+            var button = $(this);
+            var fields = [{ key: 'gsc_print', value: print}, 
+                          { key: 'gsc_isdeliveryreceiptandgatepass', value: true, type: 'System.Boolean'}, 
+                          { key: 'name', value: invoiceID}];                
+            var entityId = DMS.Helpers.GetUrlQueryString('id');
+            recordArr = GetModelForSelectedRecords(fields,entityId);
+            var that = $(this);
+            var print_ = $('#printBtn').html();
+        if(status != "Open")
+        {
+            PrintReport();
+            $('#printMessageModal').modal('hide');
+        }
+        else
+        {
         if (recordArr.length > 0) {
             that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
             that.addClass('disabled');
@@ -243,11 +260,7 @@ $(document).ready(function () {
             service.then(function () {
                 $("#UpdateButton").click();
                 PrintReport();
-                
-				if(status == "Invoiced")
-				{
-  	      $('#name').attr("disabled","disabled");
-				}
+            
             }).always(function () {
                 that.html(print_);
                 that.removeClass('disabled');
@@ -255,8 +268,8 @@ $(document).ready(function () {
             });
             return;
         }
-		}
-		function GetModelForSelectedRecords(fields,entityId) {
+        }
+        function GetModelForSelectedRecords(fields,entityId) {
         var result = [];
         var arr = { Id: null, Entity: null, Records: [] };
         arr.Entity = $('#EntityFormView_EntityLayoutConfig').data("form-layout").EntityName;
@@ -273,8 +286,8 @@ $(document).ready(function () {
                  result.push(arr);
                 }
         return result;
-		}
-	});
+        }
+    });
     //End Print Button
     
     
@@ -289,9 +302,11 @@ $(document).ready(function () {
 
     //Cancel Button
     $cancelInvoiceButton = DMS.Helpers.CreateAnchorButton("btn-primary btn", '', ' CANCEL ', DMS.Helpers.CreateFontAwesomeIcon('fa-ban'));
+    var cancelCtr = 0;
     $cancelInvoiceButton.click(function (evt) {
         evt.preventDefault();
 
+        cancelCtr++;
         $.blockUI({ message: null, overlayCSS: { opacity: .3 } });
 
         var div = document.createElement("DIV");
@@ -316,7 +331,8 @@ $(document).ready(function () {
                                     .text(value.gsc_reasonpn));
 
                 });
-                $('#statusReason').append($("<option></option>")
+                if(cancelCtr != 0)
+                    $('#statusReason').append($("<option></option>")
                                 .attr("value", "Others")
                                 .text("Others"));
             }
@@ -368,34 +384,34 @@ $(document).ready(function () {
     });
 
   //Modified by Ernest Sarmiento 02-02-2017
-	if (typeof (Page_Validators) == 'undefined') return;
-		
-	var statusReasonRemarksValidator = document.createElement('span');
-	statusReasonRemarksValidator.style.display = "none";
-	statusReasonRemarksValidator.id = "statusReasonRemarksValidator";
-	statusReasonRemarksValidator.errormessage = "Disqualify Remarks must not be empty.";
-	statusReasonRemarksValidator.validationGroup = "";
-	statusReasonRemarksValidator.initialvalue = "";
-	statusReasonRemarksValidator.evaluationfunction = function () {
-		if ( $('#statusReason option:selected').text() == "Others" && $('#disqualifyRemarks').val().length <= 0) {
-			return false;
-		} else {
-			return true;
-		}
-	};
-	
+    if (typeof (Page_Validators) == 'undefined') return;
+        
+    var statusReasonRemarksValidator = document.createElement('span');
+    statusReasonRemarksValidator.style.display = "none";
+    statusReasonRemarksValidator.id = "statusReasonRemarksValidator";
+    statusReasonRemarksValidator.errormessage = "Disqualify Remarks must not be empty.";
+    statusReasonRemarksValidator.validationGroup = "";
+    statusReasonRemarksValidator.initialvalue = "";
+    statusReasonRemarksValidator.evaluationfunction = function () {
+        if ( $('#statusReason option:selected').text() == "Others" && $('#disqualifyRemarks').val().length <= 0) {
+            return false;
+        } else {
+            return true;
+        }
+    };
+    
     $('#continueBtn').click(function () {
         var reason = $('#statusReason option:selected').text();
-		var disqualifyRemarks = $('#disqualifyRemarks').val();	
-		
-		if(reason == "Others" && disqualifyRemarks.length <= 0)	
-		{
-			Page_Validators.push(statusReasonRemarksValidator);   
-		} else {
-			$("#gsc_reasonforcancellation").val(disqualifyRemarks);
-			Page_Validators = jQuery.grep(Page_Validators, function (value) {
+        var disqualifyRemarks = $('#disqualifyRemarks').val();  
+        
+        if(reason == "Others" && disqualifyRemarks.length <= 0) 
+        {
+            Page_Validators.push(statusReasonRemarksValidator);   
+        } else {
+            $("#gsc_reasonforcancellation").val(disqualifyRemarks);
+            Page_Validators = jQuery.grep(Page_Validators, function (value) {
             return value != statusReasonRemarksValidator; });
-		}
+        }
     });
     // End of Continue Button
 
