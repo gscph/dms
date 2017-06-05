@@ -226,7 +226,7 @@ $(document).ready(function (e) {
         //check order status if open or not
         paymentModeOnChange();
 
-        $('#gsc_downpaymentamount').val(downpayment.replace(/,/g, ''));
+       // $('#gsc_downpaymentamount').val(downpayment.replace(/,/g, ''));
 
         //change type from text to number; only allow numbers in textbox
       //  $('#gsc_downpaymentamount').click(function () {
@@ -236,8 +236,18 @@ $(document).ready(function (e) {
         $('#gsc_downpaymentpercentage').click(function () {
             $(this).get(0).type = 'number';
         });
-
-        $('#gsc_downpaymentamount').blur(function () {
+		
+		$('#gsc_downpaymentamount').blur(function () {
+			  var netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
+			  var dpAmount = parseFloat($('#gsc_downpaymentamount').val().replace(/,/g, ""));
+            if (dpAmount > netPrice) {
+                //do not allow greater than net price
+				    this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+                $("#gsc_downpaymentamount").trigger('change');
+            }
+		});
+		  
+       /* $('#gsc_downpaymentamount').blur(function () {
             if (this.value < 0) {
                 //do not allow less than 0 input
                 this.value = 0;
@@ -247,7 +257,7 @@ $(document).ready(function (e) {
                 this.value = unitprice + additional;
                 $("#gsc_downpaymentamount").trigger('change');
             }
-        });
+        });*/
 
         $('#gsc_downpaymentpercentage').blur(function () {
             if (this.value < 0) {
@@ -263,7 +273,7 @@ $(document).ready(function (e) {
 
     }, 100);
 
-    setTimeout(function () {
+   /* setTimeout(function () {
 
         $('#gsc_vehiclecolorid1').on('change', function () {
             //recompute everything
@@ -285,7 +295,7 @@ $(document).ready(function (e) {
     }, 300);
 
     //get additoinal price from vehiclecolor
-    function getAdditionalPrice() {
+      function getAdditionalPrice() {
         setTimeout(function () {
 
             var vehiclecolorid = $("#gsc_vehiclecolorid1").val();
@@ -322,7 +332,7 @@ $(document).ready(function (e) {
             }
 
         }, 1000);
-    }
+    }*/
 
     function paymentModeOnChange() {
         var dpamountfield = $('#gsc_downpaymentamount');
@@ -489,9 +499,9 @@ $(document).ready(function (e) {
 
         if (amountfinanced > 0) {
             netamountfinanced = amountfinanced - parseFloat(downPaymentDiscountAmount);
-            $("#gsc_netamountfinanced").val(netamountfinanced.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+            $("#gsc_totalamountfinanced").val(netamountfinanced.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
         } else {
-            $("#gsc_netamountfinanced").val(amountfinanced.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+           // $("#gsc_totalamountfinanced").val(amountfinanced.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
         }
     }
 
