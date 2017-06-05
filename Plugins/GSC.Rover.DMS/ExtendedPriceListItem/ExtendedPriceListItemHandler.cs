@@ -286,7 +286,7 @@ namespace GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem
 
             EntityCollection priceListItemCollection = _organizationService.RetrieveMultiple(query);
 
-            if (priceListItemCollection != null || priceListItemCollection.Entities.Count > 0)
+            if (priceListItemCollection != null && priceListItemCollection.Entities.Count > 0)
             {
                 _organizationService.Delete("productpricelevel", priceListItemCollection.Entities[0].Id);
             }
