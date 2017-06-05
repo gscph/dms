@@ -883,7 +883,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             orderToUpdate["gsc_downpaymentamount"] = new Money(downPaymentAmount);
             orderToUpdate["gsc_netdownpayment"] = new Money(netdp);
             orderToUpdate["gsc_downpayment"] = new Money(netdp);
-            orderToUpdate["gsc_downpaymentdisplay"] = new Money(netdp);
+            orderToUpdate["gsc_downpaymentdisplay"] = new Money(downPaymentAmount);
             orderToUpdate["gsc_netprice"] = new Money(netprice);
             orderToUpdate["gsc_totalcashoutlay"] = salesOrderEntity.GetAttributeValue<Money>("gsc_totalcashoutlay");
             orderToUpdate["gsc_amountfinanced"] = amountfinanced != 0 ? new Money(amountfinanced) : null;
@@ -1251,7 +1251,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
 
             Decimal downPaymentAmount = ComputeDownPaymentAmount(salesOrderEntity);
             salesOrderEntity["gsc_downpaymentamount"] = new Money(downPaymentAmount);
-
+            salesOrderEntity["gsc_downpaymentdisplay"] = new Money(ComputeDownPaymentAmount(salesOrderEntity));
             Decimal netdp = Decimal.Zero;
             netdp = ComputeNetDownPayment(salesOrderEntity);
             salesOrderEntity["gsc_netdownpayment"] = new Money(netdp);
@@ -2541,8 +2541,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                 salesOrderEntity["gsc_netprice"] = new Money(netprice);
 
                 Decimal downPaymentAmount = ComputeDownPaymentAmount(salesOrderEntity);
-                salesOrderEntity["gsc_downpaymentamount"] = new Money(downPaymentAmount);
-
+                salesOrderEntity["gsc_downpaymentamount"] = new Money(downPaymentAmount);              
                 salesOrderEntity = ComputeVAT(salesOrderEntity);
 
                 var paymentmode = salesOrderEntity.Contains("gsc_paymentmode")
@@ -2575,6 +2574,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                     orderToUpdate["gsc_unitprice"] = salesOrderEntity["gsc_unitprice"];
                     orderToUpdate["gsc_vehicleunitprice"] = salesOrderEntity["gsc_vehicleunitprice"];
                     orderToUpdate["gsc_downpaymentamount"] = new Money(downPaymentAmount);
+                    orderToUpdate["gsc_downpaymentdisplay"] = new Money(downPaymentAmount);
                     orderToUpdate["gsc_netprice"] = new Money(netprice);
                     orderToUpdate["gsc_totalcashoutlay"] = salesOrderEntity["gsc_totalcashoutlay"];
                     orderToUpdate["gsc_amountfinanced"] = amountfinanced != 0 ? new Money(amountfinanced): null;

@@ -859,8 +859,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             quoteToUpdate["gsc_lessdiscountaf"] = quoteEntity["gsc_lessdiscountaf"];
             quoteToUpdate["gsc_totaldiscount"] = quoteEntity["gsc_totaldiscount"];
             quoteToUpdate["gsc_netdownpayment"] = new Money(netdp);
-            quoteToUpdate["gsc_downpayment"] = new Money(netdp);
-            quoteToUpdate["gsc_downpaymentdisplay"] = new Money(netdp);
+            quoteToUpdate["gsc_downpayment"] = new Money(netdp);           
             quoteToUpdate["gsc_netprice"] = new Money(netprice);
             quoteToUpdate["gsc_totalcashoutlay"] = new Money(cashoutlay);
             quoteToUpdate["gsc_amountfinanced"] = amountfinanced == 0 ? null : new Money(amountfinanced);
@@ -872,7 +871,8 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             quoteToUpdate["gsc_vatamount"] = quoteEntity["gsc_vatamount"];
             quoteToUpdate["gsc_totalamountdue"] = quoteEntity["gsc_totalamountdue"];
             quoteToUpdate["gsc_downpaymentamount"] = quoteEntity["gsc_downpaymentamount"];
-            
+            quoteToUpdate["gsc_downpaymentdisplay"] = new Money(ComputeDownpaymentAmount(quoteEntity));
+
             //Update Monthly Amortization
             CheckMonthlyAmortizationRecord(quoteToUpdate);
 
@@ -1840,6 +1840,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                     quoteToUpdate["gsc_vatamount"] = quoteEntity["gsc_vatamount"];
                     quoteToUpdate["gsc_totalamountdue"] = quoteEntity["gsc_totalamountdue"];
                     quoteToUpdate["gsc_downpaymentamount"] = new Money(downPaymentAmount);
+                    quoteToUpdate["gsc_downpaymentdisplay"] = new Money(downPaymentAmount);
                     quoteToUpdate["gsc_totalcashoutlay"] = quoteEntity["gsc_totalcashoutlay"];
 
                     _organizationService.Update(quoteToUpdate);
