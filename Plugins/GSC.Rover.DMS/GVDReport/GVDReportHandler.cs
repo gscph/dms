@@ -54,14 +54,14 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
                 : String.Empty;
 
             QueryExpression queryInvoice = new QueryExpression("invoice");
-            queryInvoice.ColumnSet = new ColumnSet(new[] { "invoiceid", "gsc_salesinvoicestatus", "gsc_paymentmode", "gsc_downpaymentpercentage", "gsc_salesexecutiveid", "customerid", "gsc_invoicedate" });
-            
+            queryInvoice.ColumnSet = new ColumnSet(new[] { "invoiceid", "gsc_salesinvoicestatus", "gsc_paymentmode", "gsc_downpaymentpercentage", "gsc_salesexecutiveid", "customerid", "gsc_invoicedate", "gsc_leadsourceid", "gsc_bankid", "gsc_cancelled" });
+
             FilterExpression filter = new FilterExpression(LogicalOperator.And);
             FilterExpression filter1 = new FilterExpression(LogicalOperator.And);
 
             filter1.Conditions.Add(new ConditionExpression("gsc_branchid", ConditionOperator.Equal, CommonHandler.GetEntityReferenceIdSafe(gvdReport, "gsc_branchid")));
             filter1.Conditions.Add(new ConditionExpression("gsc_dealerid", ConditionOperator.Equal, CommonHandler.GetEntityReferenceIdSafe(gvdReport, "gsc_dealerid")));
-            filter1.Conditions.Add(new ConditionExpression("gsc_isgvdreported", ConditionOperator.Equal, false));
+
 
             if (dateFrom != String.Empty)
                 filter1.Conditions.Add(new ConditionExpression("createdon", ConditionOperator.GreaterEqual, dateFrom));
@@ -70,7 +70,9 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
 
             FilterExpression filter2 = new FilterExpression(LogicalOperator.Or);
             filter2.Conditions.Add(new ConditionExpression("gsc_salesinvoicestatus", ConditionOperator.Equal, 100000002));
+            filter2.Conditions.Add(new ConditionExpression("gsc_salesinvoicestatus", ConditionOperator.Equal, 100000003));
             filter2.Conditions.Add(new ConditionExpression("gsc_salesinvoicestatus", ConditionOperator.Equal, 100000004));
+            filter2.Conditions.Add(new ConditionExpression("gsc_salesinvoicestatus", ConditionOperator.Equal, 100000005));
 
             filter.AddFilter(filter1);
             filter.AddFilter(filter2);
@@ -85,21 +87,6 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
 
                 foreach (var invoiceEntity in invoiceCollection.Entities)
                 {
-                    EntityCollection salesReturnCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_vehiclesalesreturn", "gsc_invoiceid", invoiceEntity.Id, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_posttransaction"});
-
-                    if (salesReturnCollection != null && salesReturnCollection.Entities.Count > 0)
-                    {
-                        _tracingService.Trace("Invoice has Sales Return");
-
-                        if (!salesReturnCollection.Entities[0].GetAttributeValue<Boolean>("gsc_PostTransaction"))
-                        {
-                            _tracingService.Trace("Sales Return not yet posted");
-                            CreateGVDDetails(invoiceEntity, gvdReport);
-                            continue;
-                        }
-                    }
-
                     CreateGVDDetails(invoiceEntity, gvdReport);
                 }
             }
@@ -134,7 +121,13 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
             gvdDetail["gsc_salesexecutive"] = invoiceEntity.GetAttributeValue<EntityReference>("gsc_salesexecutiveid") != null
                 ? invoiceEntity.GetAttributeValue<EntityReference>("gsc_salesexecutiveid").Name
                 : String.Empty;
-
+            gvdDetail["gsc_leadsource"] = invoiceEntity.GetAttributeValue<EntityReference>("gsc_leadsourceid") != null
+                ? invoiceEntity.GetAttributeValue<EntityReference>("gsc_leadsourceid").Name
+                : String.Empty;
+            gvdDetail["gsc_bankname"] = invoiceEntity.GetAttributeValue<EntityReference>("gsc_bankid") != null
+                ? invoiceEntity.GetAttributeValue<EntityReference>("gsc_bankid").Name
+                : String.Empty;
+            gvdDetail["gsc_cancelled"] = invoiceEntity.GetAttributeValue<Boolean>("gsc_cancelled");
 
             gvdDetail = SetPaymentTerm(gvdDetail, invoiceEntity);
             gvdDetail = SetCustomerDetails(gvdDetail, invoiceEntity);
@@ -153,7 +146,7 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
                 ? invoiceEntity.GetAttributeValue<EntityReference>("customerid")
                 : null;
 
-            if( customer != null)
+            if (customer != null)
             {
                 if (customer.LogicalName == "contact")
                 {
@@ -175,7 +168,7 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
             _tracingService.Trace("Started SetContactDetails Method ");
 
             EntityCollection customerCollection = CommonHandler.RetrieveRecordsByOneValue("contact", "contactid", customer.Id, _organizationService, null, OrderType.Ascending,
-        new[] { "firstname", "middlename", "lastname", "birthdate", "gendercode", "address1_line1", "gsc_cityid", "gsc_provinceid", "address1_postalcode", "mobilephone" });
+        new[] { "firstname", "middlename", "lastname", "birthdate", "gendercode", "address1_line1", "gsc_cityid", "gsc_provinceid", "address1_postalcode", "mobilephone", "gsc_isfleet", "gsc_fleetaccount", "gsc_fleetcategory", "gsc_classid", "gsc_occupationid", "emailaddress1" });
 
             if (customerCollection != null && customerCollection.Entities.Count > 0)
             {
@@ -214,7 +207,22 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
                 gvdDetail["gsc_contactno"] = customerEntity.Contains("mobilephone")
                     ? customerEntity.GetAttributeValue<String>("mobilephone")
                     : String.Empty;
-
+                gvdDetail["gsc_fleet"] = customerEntity.GetAttributeValue<Boolean>("gsc_isfleet");
+                gvdDetail["gsc_fleetaccountcode"] = customerEntity.Contains("gsc_fleetaccount")
+                    ? customerEntity.GetAttributeValue<String>("gsc_fleetaccount")
+                    : String.Empty;
+                gvdDetail["gsc_fleetcategory"] = customerEntity.Contains("gsc_fleetcategory")
+                    ? customerEntity.FormattedValues["gsc_fleetcategory"]
+                    : String.Empty;
+                gvdDetail["gsc_fleettype"] = customerEntity.GetAttributeValue<EntityReference>("gsc_classid") != null
+                    ? customerEntity.GetAttributeValue<EntityReference>("gsc_classid").Name
+                    : String.Empty;
+                gvdDetail["gsc_occupation"] = customerEntity.GetAttributeValue<EntityReference>("gsc_occupationid") != null
+                    ? customerEntity.GetAttributeValue<EntityReference>("gsc_occupationid").Name
+                    : String.Empty;
+                gvdDetail["gsc_emailaddress"] = customerEntity.Contains("emailaddress1")
+                    ? customerEntity.GetAttributeValue<String>("emailaddress1")
+                    : String.Empty;
             }
 
             _tracingService.Trace("Ended SetContactDetails Method ");
@@ -227,19 +235,19 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
             _tracingService.Trace("Started SetAccountDetails Method ");
 
             EntityCollection customerCollection = CommonHandler.RetrieveRecordsByOneValue("account", "accountid", customer.Id, _organizationService, null, OrderType.Ascending,
-            new[] { "address1_line1", "gsc_cityid", "gsc_provinceid", "address1_postalcode", "name", "telephone1"});
+            new[] { "address1_line1", "gsc_cityid", "gsc_provinceid", "address1_postalcode", "name", "telephone1", "gsc_isfleet", "gsc_fleetaccount", "gsc_fleetcategory", "gsc_classid", "primarycontactid" });
 
             if (customerCollection != null && customerCollection.Entities.Count > 0)
             {
                 _tracingService.Trace("Setup Customer Details ");
 
                 var customerEntity = customerCollection.Entities[0];
+                var primaryContact = customerEntity.GetAttributeValue<EntityReference>("primarycontactid") != null
+                    ? customerEntity.GetAttributeValue<EntityReference>("primarycontactid").Id
+                    : Guid.Empty;
 
                 gvdDetail["gsc_companyname"] = customerEntity.Contains("name")
                     ? customerEntity.GetAttributeValue<String>("name")
-                    : String.Empty;
-                gvdDetail["gsc_contactno"] = customerEntity.Contains("telephone1")
-                    ? customerEntity.GetAttributeValue<String>("telephone1")
                     : String.Empty;
                 var street = customerEntity.Contains("address1_line1")
                     ? customerEntity.GetAttributeValue<String>("address1_line1")
@@ -254,6 +262,38 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
                 gvdDetail["gsc_zipcode"] = customerEntity.Contains("address1_postalcode")
                     ? customerEntity.GetAttributeValue<String>("address1_postalcode")
                     : String.Empty;
+                gvdDetail["gsc_fleet"] = customerEntity.GetAttributeValue<Boolean>("gsc_isfleet");
+                gvdDetail["gsc_fleetaccountcode"] = customerEntity.Contains("gsc_fleetaccount")
+                    ? customerEntity.GetAttributeValue<String>("gsc_fleetaccount")
+                    : String.Empty;
+                gvdDetail["gsc_fleetcategory"] = customerEntity.Contains("gsc_fleetcategory")
+                    ? customerEntity.FormattedValues["gsc_fleetcategory"]
+                    : String.Empty;
+                gvdDetail["gsc_fleettype"] = customerEntity.GetAttributeValue<EntityReference>("gsc_classid") != null
+                    ? customerEntity.GetAttributeValue<EntityReference>("gsc_classid").Name
+                    : String.Empty;
+
+                if (primaryContact != Guid.Empty)
+                {
+                    EntityCollection primaryContactCollection = CommonHandler.RetrieveRecordsByOneValue("contact", "contactid", primaryContact, _organizationService, null, OrderType.Ascending,
+                    new[] { "gsc_occupationid", "emailaddress1", "mobilephone" });
+
+                    if (primaryContactCollection != null && primaryContactCollection.Entities.Count > 0)
+                    {
+                        _tracingService.Trace("Setup primaryContact Details ");
+
+                        var primaryContactEntity = primaryContactCollection.Entities[0];
+                        gvdDetail["gsc_occupation"] = primaryContactEntity.GetAttributeValue<EntityReference>("gsc_occupationid") != null
+                            ? customerEntity.GetAttributeValue<EntityReference>("gsc_occupationid").Name
+                            : String.Empty;
+                        gvdDetail["gsc_emailaddress"] = primaryContactEntity.Contains("emailaddress1")
+                            ? customerEntity.GetAttributeValue<String>("emailaddress1")
+                            : String.Empty;
+                        gvdDetail["gsc_contactno"] = customerEntity.Contains("mobilephone")
+                            ? customerEntity.GetAttributeValue<String>("mobilephone")
+                            : String.Empty;
+                    }
+                }
             }
 
             _tracingService.Trace("Ended SetAccountDetails Method ");
@@ -266,7 +306,7 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
             _tracingService.Trace("Started SetInventoryDetails Method ");
 
             EntityCollection inventoryCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_invoicedvehicle", "gsc_invoiceid", invoiceEntity.Id, _organizationService, null, OrderType.Ascending,
-            new[] { "gsc_vin", "gsc_csno" });
+            new[] { "gsc_vin", "gsc_csno", "gsc_productionno", "gsc_color" });
 
             if (inventoryCollection != null && inventoryCollection.Entities.Count > 0)
             {
@@ -279,6 +319,12 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
                     : String.Empty;
                 gvdDetail["gsc_csno"] = invoicedVehicle.Contains("gsc_csno")
                     ? invoicedVehicle.GetAttributeValue<String>("gsc_csno")
+                    : String.Empty;
+                gvdDetail["gsc_productionno"] = invoicedVehicle.Contains("gsc_productionno")
+                    ? invoicedVehicle.GetAttributeValue<String>("gsc_productionno")
+                    : String.Empty;
+                gvdDetail["gsc_vehiclecolor"] = invoicedVehicle.Contains("gsc_color")
+                    ? invoicedVehicle.GetAttributeValue<String>("gsc_color")
                     : String.Empty;
             }
 
@@ -298,7 +344,7 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
                         };
 
             EntityCollection paymentTermsCollection = CommonHandler.RetrieveRecordsByConditions("gsc_sls_invoicemonthlyamortization", selectedConditionList, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_financingtermid"});
+                new[] { "gsc_financingtermid" });
 
             if (paymentTermsCollection != null && paymentTermsCollection.Entities.Count > 0)
             {
@@ -315,75 +361,5 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
 
             return gvdDetail;
         }
-
-        public void GVDGenerated(Entity gvdReport)
-        {
-            _tracingService.Trace("Started GVDGenerated Method ");
-
-            EntityCollection gvdDetailsCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_gvdreportdetail", "gsc_gvdid", gvdReport.Id, _organizationService, null, OrderType.Ascending,
-            new[] { "gsc_invoiceid"});
-
-            if (gvdDetailsCollection != null && gvdDetailsCollection.Entities.Count > 0)
-            {
-                _tracingService.Trace("Retrieve GVD Details");
-
-                foreach (var gvdDetail in gvdDetailsCollection.Entities)
-                {
-                    EntityCollection invoiceCollection = CommonHandler.RetrieveRecordsByOneValue("invoice", "invoiceid", gvdDetail.GetAttributeValue<EntityReference>("gsc_invoiceid").Id, _organizationService, null, OrderType.Ascending,
-                    new[] { "gsc_isgvdreported", "gsc_salesinvoicestatus" });
-
-                    if (invoiceCollection != null && invoiceCollection.Entities.Count > 0)
-                    {
-                        _tracingService.Trace("Retrieve Invoice");
-
-                        foreach (var invoice in invoiceCollection.Entities)
-                        {
-                            _tracingService.Trace("Update Invoice");
-
-                            if (invoice.GetAttributeValue<OptionSetValue>("gsc_salesinvoicestatus").Value == 100000004)
-                            {
-                                ChangeInvoiceStatustoOpen(invoice);
-                                invoice["gsc_isgvdreported"] = true;
-                                _organizationService.Update(invoice);
-                                ChangeInvoiceStatustoReleased(invoice);
-                            }
-                            else
-                            {
-                                invoice["gsc_isgvdreported"] = true;
-                                _organizationService.Update(invoice);
-                            }
-                        }
-                    }
-                }
-            }
-
-            _tracingService.Trace("Ended GVDGenerated Method ");
-            
-        }
-
-        private void ChangeInvoiceStatustoOpen(Entity invoice)
-        {
-            SetStateRequest request = new SetStateRequest
-            {
-                EntityMoniker = new EntityReference(invoice.LogicalName, invoice.Id),
-                State = new OptionSetValue(0),
-                Status = new OptionSetValue(1)
-            };
-
-            _organizationService.Execute(request);
-        }
-
-        private void ChangeInvoiceStatustoReleased(Entity invoice)
-        {
-            SetStateRequest request = new SetStateRequest
-            {
-                EntityMoniker = new EntityReference(invoice.LogicalName, invoice.Id),
-                State = new OptionSetValue(2),
-                Status = new OptionSetValue(100001)
-            };
-
-            _organizationService.Execute(request);
-        }
-
     }
 }
