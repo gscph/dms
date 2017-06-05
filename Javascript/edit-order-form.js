@@ -1,7 +1,7 @@
 //Created By : Leslie Baliguat, Created On : 3/16/2016
 $(document).ready(function (e) {
     var status = "";
-
+    
     //set status field readonly 
     $('table[data-name="hideSection"]').closest('fieldset').hide();
     CheckifGovernment();
@@ -229,9 +229,9 @@ $(document).ready(function (e) {
         $('#gsc_downpaymentamount').val(downpayment.replace(/,/g, ''));
 
         //change type from text to number; only allow numbers in textbox
-        $('#gsc_downpaymentamount').click(function () {
-            $(this).get(0).type = 'number';
-        });
+      //  $('#gsc_downpaymentamount').click(function () {
+      //      $(this).get(0).type = 'number';
+      //  });
 
         $('#gsc_downpaymentpercentage').click(function () {
             $(this).get(0).type = 'number';
@@ -378,7 +378,10 @@ $(document).ready(function (e) {
 
             schemeidfield.siblings('.input-group-btn').addClass('hidden');
             $('#gsc_financingschemeid_label').parent("div").removeClass("required");
-
+            $('#gsc_bankid_label').parent("div").addClass('required');
+           
+            Page_Validators.push(bankValidator);
+            
             Page_Validators = jQuery.grep(Page_Validators, function (value) {
                 return value != schemeValidator;
             });
@@ -430,8 +433,8 @@ $(document).ready(function (e) {
         dppercent = $("#gsc_downpaymentpercentage").val() == "" ? 0 : $("#gsc_downpaymentpercentage").val();
 
         downpayment = (parseFloat(netprice)) * (parseFloat(dppercent) / 100);
-
-        $("#gsc_downpaymentamount").val(downpayment.toFixed(2));
+        
+        $("#gsc_downpaymentamount").val(downpayment.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
         computeNetDownpayment();
     }
 
@@ -440,7 +443,7 @@ $(document).ready(function (e) {
     //Purpose : Change computation to Unit Price * Down Payment Percentage
     function computeDownPaymentPercent() {
         netprice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
-        downpayment = $("#gsc_downpaymentamount").val() == "" ? 0 : $("#gsc_downpaymentamount").val();
+        downpayment = $("#gsc_downpaymentamount").val() == "" ? 0 : $("#gsc_downpaymentamount").val().replace(/,/g, '');
 
         if (netprice != 0) {
             dppercent = (parseFloat(downpayment) / (parseFloat(netprice))) * 100;
@@ -454,7 +457,7 @@ $(document).ready(function (e) {
 
     //Compute net downpayment = downpayment - less discount
     function computeNetDownpayment() {
-        downpayment = $("#gsc_downpaymentamount").val() == "" ? 0 : $("#gsc_downpaymentamount").val();
+        downpayment = $("#gsc_downpaymentamount").val() == "" ? 0 : $("#gsc_downpaymentamount").val().replace(/,/g, '');
         lessdiscount = $("#gsc_downpaymentdiscount").val() == "" ? 0 : $("#gsc_downpaymentdiscount").val().replace(/,/g, '');
 
         //if (downpayment == 0 || downpayment < lessdiscount) {
@@ -463,7 +466,7 @@ $(document).ready(function (e) {
         }
         else {
             netdp = parseFloat(downpayment) - parseFloat(lessdiscount);
-            $("#gsc_netdownpayment").val(netdp.toLocaleString());
+            $("#gsc_netdownpayment").val(netdp.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
         }
 
         $("#gsc_netdownpayment").trigger("change");
@@ -475,7 +478,7 @@ $(document).ready(function (e) {
         grossDownpayment = $("#gsc_downpaymentamount").val() == "" ? 0 : $("#gsc_downpaymentamount").val().replace(/,/g, "");
 
         amountfinanced = parseFloat(netPrice) - parseFloat(grossDownpayment);
-        $("#gsc_amountfinanced").val(amountfinanced.toLocaleString());
+        $("#gsc_amountfinanced").val(amountfinanced.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
         $("#gsc_amountfinanced").trigger('change');
     }
 
@@ -486,9 +489,9 @@ $(document).ready(function (e) {
 
         if (amountfinanced > 0) {
             netamountfinanced = amountfinanced - parseFloat(downPaymentDiscountAmount);
-            $("#gsc_netamountfinanced").val(netamountfinanced.toLocaleString());
+            $("#gsc_netamountfinanced").val(netamountfinanced.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
         } else {
-            $("#gsc_netamountfinanced").val(amountfinanced);
+            $("#gsc_netamountfinanced").val(amountfinanced.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
         }
     }
 
@@ -718,12 +721,12 @@ $(document).ready(function (e) {
 
         return isDuplicate;
     }
-
+    
     // CREATE INVOICE  by Artum Ramos
 
     $(".convert-order-link").click(function () {
         $("#gsc_status").val("100000007");
-        // $("#gsc_iscreateinvoice").prop("checked", true);
+       // $("#gsc_iscreateinvoice").prop("checked", true);
         $("#UpdateButton").click();
     });
 
