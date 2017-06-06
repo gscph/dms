@@ -6,9 +6,9 @@ $(document).ready(function (e) {
     var workflowName = 'Price List - Change Status';
     var webRole = DMS.Settings.User.webRole;
 
-    /* if(!webRole.includes("MMPC"))
-         $("#gsc_default").attr("disabled", "disabled");*/
-
+   /* if(!webRole.includes("MMPC"))
+        $("#gsc_default").attr("disabled", "disabled");*/
+    
     if (status == "Inactive") {
         checkSubgrid();
     }
@@ -82,8 +82,8 @@ $(document).ready(function (e) {
                 req.send(null); window.location.reload(true);
             }
         }).error(function (errormsg) { console.log(errormsg) });
-    });
-
+    });  
+    
     $publishButton = DMS.Helpers.CreateAnchorButton("btn-primary btn publishPromo", '', ' PUBLISH', DMS.Helpers.CreateFontAwesomeIcon('fa-book'));
     $publishButton.click(function (evt) {
         showLoading();
@@ -91,12 +91,14 @@ $(document).ready(function (e) {
         $("#UpdateButton").click();
     });
 
-    if ($("#gsc_publishenabled").prop("checked")) {
-        DMS.Helpers.AppendButtonToToolbar($publishButton);
+    if ($("#gsc_publishenabled").prop("checked"))
+    {
+      DMS.Helpers.AppendButtonToToolbar($publishButton);
     }
-    else {
-        $('label[for=gsc_default], input#gsc_default').hide();
-        $('label[for=gsc_publish], input#gsc_publish').hide();
+    else
+    {
+      $('label[for=gsc_default], input#gsc_default').hide();
+      $('label[for=gsc_publish], input#gsc_publish').hide();
     }
 
     if (status == 'Inactive') {
@@ -157,7 +159,7 @@ $(document).ready(function (e) {
     };
 
     Page_Validators.push(effectiveDatesValidator);
-
+    
     function showLoading() {
         $.blockUI({ message: null, overlayCSS: { opacity: .3 } });
 
@@ -169,10 +171,54 @@ $(document).ready(function (e) {
         div.appendChild(span);
         $(".content-wrapper").append(div);
     }
-    setTimeout(disableTab, 3000);
+     setTimeout(disableTab, 3000);
 
-    function disableTab() {
+    function disableTab()
+    {
         $('.disabled').attr("tabindex", "-1");
         $('fieldset.permanent-disabled .btn').attr("tabindex", "-1");
     }
+    
+    
+      
+
+     AddSearchToPriceListItems();
+		
 });
+
+
+function AddSearchToPriceListItems() {
+    var $searchContainer = $("<div></div>").addClass("input-group").addClass("pull-right").addClass("view-search").attr('style', 'width:240px');
+			var $searchButton = $("<button></button>")
+				.attr("type", "button")
+				.addClass("btn")
+				.addClass("btn-default")
+				.append($("<span></span>").addClass("sr-only").html("Search Results"))
+				.append($("<span></span>").addClass("fa").addClass("fa-search"))
+                .on("click", DMS.Helpers.Debounce(function (e) {
+                    e.preventDefault();
+                    $this.load(1);
+                }, 200));            
+
+
+
+	var $searchButtonGroup = $("<div></div>").addClass("input-group-btn").append($searchButton);
+			var $searchInput = $("<input/>")
+				.attr("placeholder", "Search")
+				.data("toggle", "tooltip")
+				.attr("title", "Use asterisk (*) wildcard character to search on partial text")
+				.tooltip()
+				.addClass("query")
+				.addClass("form-control")
+				.val("")
+				.on("keypress", function(e) {
+					var keyCode = e.keyCode ? e.keyCode : e.which;
+					if (keyCode == '13') {
+						e.preventDefault();
+						$searchButton.trigger("click");
+						$(this).trigger("focus");
+					}
+				});
+			$searchContainer.append($searchInput).append($searchButtonGroup).prependTo($('#Item .view-toolbar.grid-actions'));
+  
+}

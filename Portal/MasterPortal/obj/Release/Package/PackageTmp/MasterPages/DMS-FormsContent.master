@@ -1,0 +1,128 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPages/DMS-Forms.master" AutoEventWireup="true" CodeBehind="DMS-FormsContent.master.cs" Inherits="Site.MasterPages.DMS_FormsContent" %>
+
+<%@ Import Namespace="System.Web.Mvc.Html" %>
+<%@ Import Namespace="Adxstudio.Xrm.Web.Mvc.Html" %>
+<%@ Register TagPrefix="site" TagName="ChildNavigation" Src="~/Controls/ChildNavigation.ascx" %>
+
+
+<asp:Content ContentPlaceHolderID="Head" runat="server">
+    <asp:ContentPlaceHolder ID="Head" runat="server" />
+</asp:Content>
+
+<asp:Content ContentPlaceHolderID="Breadcrumbs" runat="server">
+    <asp:ContentPlaceHolder ID="Breadcrumbs" runat="server">
+        <% Html.RenderPartial("Breadcrumbs"); %>
+    </asp:ContentPlaceHolder>
+
+</asp:Content>
+
+<asp:Content ContentPlaceHolderID="PageHeader" runat="server">
+    <script src="~/js/jquery.cookie.js"></script>
+    <script src="~/js/dms/service.js"></script>
+    <script src="~/js/dms/notification.js"></script>
+    <script src="~/js/dms/helpers.js"></script>
+    <script src="~/js/dms/site-settings.js"></script>
+    <script src="~/js/dms/dms-app.js"></script>
+    <style>
+        .body-container {
+            padding: 100px 15px 25px 25px;
+        }
+    </style>
+  
+    <asp:ContentPlaceHolder ID="PageHeader" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ContentPlaceHolderID="MainContent" runat="server">   
+    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        <%--   <adx:snippet snippetname="Social Share Widget Code Page Top" edittype="text" htmltag="Div" defaulttext="" runat="server" />
+        <%: Html.HtmlAttribute("adx_copy", cssClass: "page-copy") %>--%>
+    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="EntityControls" runat="server" ViewStateMode="Enabled">
+        <script type="text/javascript">
+            function entityFormClientValidate() {
+                // Custom client side validation. Method is called by the submit button's onclick event.
+                // Must return true or false. Returning false will prevent the form from submitting.
+                 alert('hehehehe');
+                return true;
+            }
+
+            function webFormClientValidate() {
+                // Custom client side validation. Method is called by the next/submit button's onclick event.
+                // Must return true or false. Returning false will prevent the form from submitting.
+                return true;
+            }
+        </script>
+        <adx:webform id="WebFormControl" runat="server" formcssclass="crmEntityFormView" previousbuttoncssclass="btn btn-default" nextbuttoncssclass="btn btn-primary" submitbuttoncssclass="btn btn-primary" clientidmode="Static" languagecode="<%$ SiteSetting: Language Code, 0 %>" portalname="<%$ SiteSetting: Language Code %>" />
+        <adx:entityform id="EntityFormControl" runat="server" formcssclass="crmEntityFormView" previousbuttoncssclass="btn btn-default" nextbuttoncssclass="btn btn-primary" submitbuttoncssclass="btn btn-primary" clientidmode="Static" languagecode="<%$ SiteSetting: Language Code, 0 %>" portalname="<%$ SiteSetting: Language Code %>" />
+        <adx:entitylist id="EntityListControl" runat="server" listcssclass="table table-striped" defaultemptylisttext="There are no items to display." clientidmode="Static" languagecode="<%$ SiteSetting: Language Code, 0 %>" portalname="<%$ SiteSetting: Language Code %>" />
+    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="ContentBottom" runat="server" />
+
+
+    <%--  <asp:ContentPlaceHolder ID="SidebarContent" runat="server">
+        <div class="sidebar">
+            <asp:ContentPlaceHolder ID="SidebarTop" runat="server">
+                <site:childnavigation runat="server" />
+            </asp:ContentPlaceHolder>
+            <%: Html.WebLinksListGroup("Secondary Navigation") %>
+            <asp:ContentPlaceHolder ID="SidebarBottom" runat="server">
+                <% Html.RenderAction("PollPlacement", "Poll", new { Area = "Cms", id = "Sidebar", __portalScopeId__ = Website.Id }); %>
+                <% Html.RenderAction("AdPlacement", "Ad", new { Area = "Cms", id = "Sidebar Bottom", __portalScopeId__ = Website.Id }); %>
+            </asp:ContentPlaceHolder>
+        </div>
+    </asp:ContentPlaceHolder>--%>
+</asp:Content>
+
+<asp:Content ContentPlaceHolderID="ContentBottom" runat="server" />
+
+<asp:Content ContentPlaceHolderID="Scripts" runat="server">
+    <script>
+        $('.profile-img-container').hover(function () {
+            $(this).find('img').fadeTo(500, 0.5);
+        }, function () {
+            $(this).find('img').fadeTo(500, 1);
+        });
+
+
+        $('.sidebar-toggle').on('click', function () {
+            setTimeout(function () {
+                $(document).trigger('sidebarSizeChanged');
+            }, 100);
+        });
+
+        $(document).ready(function () {
+
+            $('.scroll-down span').on('mouseover', function () {
+                $('.sidebar').animate({ scrollTop: 150 }, 300);
+            });
+
+            if (typeof DMS.Settings.User !== 'undefined') {
+                $('#userInfo').html(DMS.Settings.User.branch);
+                $('.userPosition').html(DMS.Settings.User.positionName);
+            }    
+
+            $('.sidebar-menu .treeview-menu .treeview-menu li.active').each(function () {
+                $(this).closest('li.treeview').addClass('active');
+            });
+
+            $('.sidebar-menu .treeview-menu li.active').each(function () {
+                $(this).closest('li.treeview').addClass('active');
+            });
+        });
+
+        function ToggleOffCanvas() {
+
+            var isCollapsed = $('body').hasClass('sidebar-collapse');
+
+            if (isCollapsed) {
+                $('body').removeClass('sidebar-collapse');
+            }
+
+            $(document).trigger('sidebarSizeChanged');
+
+        }
+    </script>
+
+    <asp:ContentPlaceHolder ID="Scripts" runat="server" />
+</asp:Content>
