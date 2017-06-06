@@ -145,7 +145,7 @@ $(document).ready(function () {
     //JGC_01182016
     $('#OrderMonthlyAmortizationSubgrid .save').hide();
     $btnSaveCopy = DMS.Helpers.CreateButton('button', "btn-primary btn", 'margin-right:5px', ' SAVE', DMS.Helpers.CreateFontAwesomeIcon('fa-floppy-o'));
-    $btnSaveCopy.attr('id', 'btnSaveCopy');
+    $btnSaveCopy.addClass('btnSaveCopy');
     $btnSaveCopy.attr('disabled', true);
     $('#OrderMonthlyAmortizationSubgrid .editable-grid-toolbar').find($('.delete')).before($btnSaveCopy);
     $btnSaveCopy.click(function (e) {
@@ -204,9 +204,11 @@ $(document).ready(function () {
 
     $vehicleAllocationButton = DMS.Helpers.CreateAnchorButton("btn-primary btn", '', ' REQUEST VEHICLE FOR ALLOCATION', DMS.Helpers.CreateFontAwesomeIcon('fa-taxi'));
     $vehicleAllocationButton.click(function (evt) {
-        evt.preventDefault();
-        $("#gsc_isrequestforallocation").prop("checked", true);
-        $("#UpdateButton").click();
+        if (Page_ClientValidate("")) {
+            evt.preventDefault();
+            $("#gsc_isrequestforallocation").prop("checked", true);
+            $("#UpdateButton").click();
+        }
     });
     if (status == 'For Allocation') {
         DMS.Helpers.AppendButtonToToolbar($vehicleAllocationButton);
@@ -231,7 +233,7 @@ $(document).ready(function () {
         DMS.Helpers.AppendButtonToToolbar($btnTransfer);
     }
 
-    if (status == 'Open' || status == 'For Allocation' || status == 'Allocated' || status == 'For Invoicing') {
+    if (status == 'Open' || status == 'For Allocation' || status == 'Allocated' || status == 'Reserved') {
         $('#gsc_placeofrelease').prop("readOnly", false);
         $('#gsc_deliverytermsremarks').prop("readOnly", false);
         $('#gsc_promiseddeliverydate').next().children().first().prop("disabled", false);
@@ -343,7 +345,7 @@ $(document).ready(function () {
         $('.control > input').attr('readonly', true);
         $('.control > .input-group > input').attr('readonly', true);
         $('.control > select').attr('readonly', true);
-        $('.datetimepicker > .form-control').attr('readonly', true);
+        $(".datetimepicker > input").attr("disabled", "true");
         $('.clearlookupfield').remove();
         $('.launchentitylookup').remove();
         checkSubgrid("tabbed-DISCOUNTS");
@@ -373,12 +375,12 @@ $(document).ready(function () {
         $('.printOrder').addClass("permanent-disabled disabled");
         $('form fieldset').attr('disabled', true);
         $('form fieldset').addClass('permanent-disabled');
+        $(".datetimepicker > input").attr("disabled", "true");
     }
 
     //show convert order to invoice button if status = "For Invoicing"
     if (status != "For Invoicing") {
         $(".convert-order-link").addClass("hidden");
-        $(".datetimepicker > input").attr("disabled", "true");
     }
 
     function checkSubgrid(tableDataName) {
@@ -638,10 +640,11 @@ var accessoriesSelectData = DMS.Helpers.GetOptionListSet('/_odata/vehicleaccesso
 
 var AccessroiessGridInstance = {
     initialize: function () {
-        $('<div id="accessories-editablegrid" class="editable-grid hidden"></div>').appendTo('.content-wrapper');
+        $('<div id="accessories-editablegrid" class="editable-grid"></div>').appendTo('.content-wrapper');
 
         var $container = document.getElementById('accessories-editablegrid');
         var idQueryString = DMS.Helpers.GetUrlQueryString('id');
+        $container.style.display = 'none';
         var odataQuery = '/_odata/gsc_sls_orderaccessory?$filter=gsc_orderid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
         var screenSize = ($(window).width() / 2) - 80;
 
@@ -727,10 +730,11 @@ var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehicle
 
 var CabChasisGridInstance = {
     initialize: function () {
-        $('<div id="cabchassis-editablegrid" class="editable-grid hidden"></div>').appendTo('.content-wrapper');
+        $('<div id="cabchassis-editablegrid" class="editable-grid"></div>').appendTo('.content-wrapper');
 
         var $container = document.getElementById('cabchassis-editablegrid');
         var idQueryString = DMS.Helpers.GetUrlQueryString('id');
+        $container.style.display = 'none';
         var odataQuery = '/_odata/gsc_sls_ordercabchassis?$filter=gsc_orderid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
         var screenSize = ($(window).width() / 2) - 80;
 
