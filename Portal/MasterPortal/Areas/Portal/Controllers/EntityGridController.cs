@@ -103,8 +103,6 @@ namespace Site.Areas.Portal.Controllers
                 pageSize = DefaultPageSize;
             }
 
-            viewConfiguration = EnableSearchForPriceList(viewConfiguration);
-
             if (pageSize > DefaultMaxPageSize && !overrideMaxPageSize)
             {
                 Tracing.FrameworkInformation(GetType().FullName, "GetData",
@@ -687,21 +685,6 @@ namespace Site.Areas.Portal.Controllers
                 ? string.Format(@"""{0}"",", value.Replace(@"""", @""""""))
                 : ",";
         }
-
-
-
-        private static ViewConfiguration EnableSearchForPriceList(ViewConfiguration viewConfig)
-        {
-            if (viewConfig.EntityName == "gsc_cmn_extendedpricelistitem")
-            {
-                ViewSearch customSearch = viewConfig.Search;
-                customSearch.Enabled = true;
-
-                viewConfig.Search = customSearch;
-            }
-            return viewConfig;
-        }
-
 
         //private string FilterCreatedOn(ViewConfiguration viewConfig, PortalConfigurationDataAdapterDependencies configAdapter)
         //{
