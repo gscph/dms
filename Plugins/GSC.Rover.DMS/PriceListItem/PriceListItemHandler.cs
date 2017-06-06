@@ -44,7 +44,7 @@ namespace GSC.Rover.DMS.BusinessLogic.PriceListItem
                     };
 
             EntityCollection productCollection = CommonHandler.RetrieveRecordsByConditions("product", productConditionList, _organizationService, null, OrderType.Ascending,
-                new[] { "name", "gsc_optioncode", "gsc_modelcode", "gsc_modelyear", "gsc_vehiclemodelid" });
+                new[] { "name", "gsc_optioncode", "gsc_modelcode", "gsc_modelyear", "gsc_vehiclemodelid", "gsc_producttype" });
 
             if (productCollection != null && productCollection.Entities.Count > 0)
             {

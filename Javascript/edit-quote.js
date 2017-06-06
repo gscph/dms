@@ -81,13 +81,13 @@ $(document).ready(function () {
     function DisableMonthlyAmortizationSave() {
         var count = $('#monthlyamortization-editablegrid .htCheckboxRendererInput').length;
         if (count < 1)
-            $('#btnSaveCopy').addClass('permanent-disabled');
+            $('.btnSaveCopy').addClass('permanent-disabled');
     }
 
     //JGC_01182016
     $('#MonthlyAmortization .save').hide();
     $btnSaveCopy = DMS.Helpers.CreateButton('button', "btn-primary btn", '', ' SAVE', DMS.Helpers.CreateFontAwesomeIcon('fa-floppy-o'));
-    $btnSaveCopy.attr('id', 'btnSaveCopy');
+    $btnSaveCopy.addClass('btnSaveCopy');
     $('#MonthlyAmortization .editable-grid-toolbar').find($('.delete')).before($btnSaveCopy);
     $btnSaveCopy.click(function (e) {
         e.preventDefault();
@@ -254,7 +254,7 @@ $(document).ready(function () {
                     var req = new XMLHttpRequest();
                     req.open('GET', url, false);
                     req.send(null); //window.location.reload(true);
-                    setTimeout(RedirecttoSalesOrder(), 5000);
+                    setTimeout(RedirecttoSalesOrder(), 10000);
                 }
             }).error(function (errormsg) { console.log(errormsg) });
         }
