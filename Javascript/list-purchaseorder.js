@@ -1,6 +1,6 @@
 $(document).ready(function () { 
-  $(document).trigger("createFilter", [[["gsc_vpodate", "VPO Date"]]]);   
-  $(document).trigger("enableBulkDelete");
+  $(document).trigger('createFilter', [[['gsc_vpodate', 'VPO Date']]]);
+  $(document).trigger('enableBulkDelete');
   var approverSetupId = filterApproverSetup();
 
   //Submit Button
@@ -13,11 +13,11 @@ $(document).ready(function () {
   DMS.Helpers.AppendButtonToToolbar(approvalBtn);
   
   //Functions
-  var printed = '100000001'
-  var ordered = '100000002'
-  var forApproval = '100000003'
-  var approve = '100000000'
-  var disapprove = '100000001'
+  var printed = '100000001';
+  var ordered = '100000002';
+  var forApproval = '100000003';
+  var approve = '100000000';
+  var disapprove = '100000001';
   var recordArr = [];
   
   submitBtn.click(function () {
