@@ -1,0 +1,121 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloseCFOEntry", "CloseCFOEntry\CloseCFOEntry.csproj", "{5D1AE6FE-AB8F-42B8-A02C-23269E7B9E75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputeEndingInventory", "ComputeEndingInventory\ComputeEndingInventory\ComputeEndingInventory.csproj", "{B6A6A392-9FD8-4E29-A3E9-BC89ACE5F39D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputeRetailAverageSales", "ComputeRetailAverageSales\ComputeRetailAverageSales\ComputeRetailAverageSales.csproj", "{EF39038B-0FF1-4031-8850-67CE94B55862}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputeVehicleAllocationAgeDaily", "ComputeVehicleAllocationAgeDaily\ComputeVehicleAllocationAgeDaily\ComputeVehicleAllocationAgeDaily\ComputeVehicleAllocationAgeDaily.csproj", "{80C1C246-5CDF-4D4D-A4AB-BD160D81CA9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DailySalesManagerProspectMonitoringNotification", "DailySalesManagerProspectMonitoringNotification\DailySalesManagerProspectMonitoringNotification\DailySalesManagerProspectMonitoringNotification.csproj", "{6E87D783-EBA6-4A3D-A2AD-091B09757E66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityUpdateUtility", "EntityUpdateUtility\EntityUpdateUtility\EntityUpdateUtility.csproj", "{6FF391B5-75B9-4880-95AB-858292C41ED5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostDeliveryMonitoringOverdue", "PostDeliveryMonitoringOverdue\PostDeliveryMonitoringOverdue\PostDeliveryMonitoringOverdue.csproj", "{7DB7206D-4919-4D1E-8627-D2ECC6672EB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResetIdSequenceDaily", "ResetIdSequenceDaily\ResetIdSequenceDaily\ResetIdSequenceDaily.csproj", "{AAE037AD-4A83-4A19-B6BE-3775169637C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResetIdSequenceMonthly", "ResetIdSequenceMonthly\ResetIdSequenceMonthly\ResetIdSequenceMonthly.csproj", "{CC557CD3-EA1C-4E0B-87C1-5860022F9A61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResetIdSequenceWeekly", "ResetIdSequenceWeekly\ResetIdSequenceWeekly\ResetIdSequenceWeekly.csproj", "{2AAB8863-98E1-4F34-B89A-4B58AAA7FB71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResetIdSequenceYearly", "ResetIdSequenceYearly\ResetIdSequenceYearly\ResetIdSequenceYearly.csproj", "{767C8927-49DE-47CA-95E0-947777B3AC35}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 12
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://raven:8080/tfs/rndcollection
+		SccProjectUniqueName0 = ComputeEndingInventory\\ComputeEndingInventory\\ComputeEndingInventory.csproj
+		SccProjectName0 = ComputeEndingInventory/ComputeEndingInventory
+		SccLocalPath0 = ComputeEndingInventory\\ComputeEndingInventory
+		SccProjectUniqueName1 = ComputeRetailAverageSales\\ComputeRetailAverageSales\\ComputeRetailAverageSales.csproj
+		SccProjectName1 = ComputeRetailAverageSales/ComputeRetailAverageSales
+		SccLocalPath1 = ComputeRetailAverageSales\\ComputeRetailAverageSales
+		SccProjectUniqueName2 = ComputeVehicleAllocationAgeDaily\\ComputeVehicleAllocationAgeDaily\\ComputeVehicleAllocationAgeDaily\\ComputeVehicleAllocationAgeDaily.csproj
+		SccProjectName2 = ComputeVehicleAllocationAgeDaily/ComputeVehicleAllocationAgeDaily/ComputeVehicleAllocationAgeDaily
+		SccLocalPath2 = ComputeVehicleAllocationAgeDaily\\ComputeVehicleAllocationAgeDaily\\ComputeVehicleAllocationAgeDaily
+		SccProjectUniqueName3 = DailySalesManagerProspectMonitoringNotification\\DailySalesManagerProspectMonitoringNotification\\DailySalesManagerProspectMonitoringNotification.csproj
+		SccProjectName3 = DailySalesManagerProspectMonitoringNotification/DailySalesManagerProspectMonitoringNotification
+		SccLocalPath3 = DailySalesManagerProspectMonitoringNotification\\DailySalesManagerProspectMonitoringNotification
+		SccProjectUniqueName4 = EntityUpdateUtility\\EntityUpdateUtility\\EntityUpdateUtility.csproj
+		SccProjectName4 = EntityUpdateUtility/EntityUpdateUtility
+		SccLocalPath4 = EntityUpdateUtility\\EntityUpdateUtility
+		SccProjectUniqueName5 = PostDeliveryMonitoringOverdue\\PostDeliveryMonitoringOverdue\\PostDeliveryMonitoringOverdue.csproj
+		SccProjectName5 = PostDeliveryMonitoringOverdue/PostDeliveryMonitoringOverdue
+		SccLocalPath5 = PostDeliveryMonitoringOverdue\\PostDeliveryMonitoringOverdue
+		SccProjectUniqueName6 = ResetIdSequenceDaily\\ResetIdSequenceDaily\\ResetIdSequenceDaily.csproj
+		SccProjectName6 = ResetIdSequenceDaily/ResetIdSequenceDaily
+		SccLocalPath6 = ResetIdSequenceDaily\\ResetIdSequenceDaily
+		SccProjectUniqueName7 = ResetIdSequenceMonthly\\ResetIdSequenceMonthly\\ResetIdSequenceMonthly.csproj
+		SccProjectName7 = ResetIdSequenceMonthly/ResetIdSequenceMonthly
+		SccLocalPath7 = ResetIdSequenceMonthly\\ResetIdSequenceMonthly
+		SccProjectUniqueName8 = ResetIdSequenceWeekly\\ResetIdSequenceWeekly\\ResetIdSequenceWeekly.csproj
+		SccProjectName8 = ResetIdSequenceWeekly/ResetIdSequenceWeekly
+		SccLocalPath8 = ResetIdSequenceWeekly\\ResetIdSequenceWeekly
+		SccProjectUniqueName9 = ResetIdSequenceYearly\\ResetIdSequenceYearly\\ResetIdSequenceYearly.csproj
+		SccProjectName9 = ResetIdSequenceYearly/ResetIdSequenceYearly
+		SccLocalPath9 = ResetIdSequenceYearly\\ResetIdSequenceYearly
+		SccLocalPath10 = .
+		SccProjectUniqueName11 = CloseCFOEntry\\CloseCFOEntry.csproj
+		SccProjectName11 = CloseCFOEntry
+		SccLocalPath11 = CloseCFOEntry
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D1AE6FE-AB8F-42B8-A02C-23269E7B9E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D1AE6FE-AB8F-42B8-A02C-23269E7B9E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D1AE6FE-AB8F-42B8-A02C-23269E7B9E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D1AE6FE-AB8F-42B8-A02C-23269E7B9E75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6A6A392-9FD8-4E29-A3E9-BC89ACE5F39D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6A6A392-9FD8-4E29-A3E9-BC89ACE5F39D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6A6A392-9FD8-4E29-A3E9-BC89ACE5F39D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6A6A392-9FD8-4E29-A3E9-BC89ACE5F39D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF39038B-0FF1-4031-8850-67CE94B55862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF39038B-0FF1-4031-8850-67CE94B55862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF39038B-0FF1-4031-8850-67CE94B55862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF39038B-0FF1-4031-8850-67CE94B55862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80C1C246-5CDF-4D4D-A4AB-BD160D81CA9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80C1C246-5CDF-4D4D-A4AB-BD160D81CA9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80C1C246-5CDF-4D4D-A4AB-BD160D81CA9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80C1C246-5CDF-4D4D-A4AB-BD160D81CA9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E87D783-EBA6-4A3D-A2AD-091B09757E66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E87D783-EBA6-4A3D-A2AD-091B09757E66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E87D783-EBA6-4A3D-A2AD-091B09757E66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E87D783-EBA6-4A3D-A2AD-091B09757E66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FF391B5-75B9-4880-95AB-858292C41ED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FF391B5-75B9-4880-95AB-858292C41ED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FF391B5-75B9-4880-95AB-858292C41ED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FF391B5-75B9-4880-95AB-858292C41ED5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DB7206D-4919-4D1E-8627-D2ECC6672EB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DB7206D-4919-4D1E-8627-D2ECC6672EB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DB7206D-4919-4D1E-8627-D2ECC6672EB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DB7206D-4919-4D1E-8627-D2ECC6672EB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAE037AD-4A83-4A19-B6BE-3775169637C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAE037AD-4A83-4A19-B6BE-3775169637C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAE037AD-4A83-4A19-B6BE-3775169637C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE037AD-4A83-4A19-B6BE-3775169637C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC557CD3-EA1C-4E0B-87C1-5860022F9A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC557CD3-EA1C-4E0B-87C1-5860022F9A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC557CD3-EA1C-4E0B-87C1-5860022F9A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC557CD3-EA1C-4E0B-87C1-5860022F9A61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AAB8863-98E1-4F34-B89A-4B58AAA7FB71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AAB8863-98E1-4F34-B89A-4B58AAA7FB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AAB8863-98E1-4F34-B89A-4B58AAA7FB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AAB8863-98E1-4F34-B89A-4B58AAA7FB71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{767C8927-49DE-47CA-95E0-947777B3AC35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{767C8927-49DE-47CA-95E0-947777B3AC35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{767C8927-49DE-47CA-95E0-947777B3AC35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{767C8927-49DE-47CA-95E0-947777B3AC35}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
