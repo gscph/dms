@@ -158,8 +158,7 @@ $(document).ready(function () {
       // row is approved
       if (isRowSelected === 'true' && typeof status !== 'undefined' && typeof approvalStatus !== 'undefined') {
         if(optionSet === 'gsc_approvalstatus') {
-          //validation for approval status
-          
+          //validation for approval status          
           //for approval
           if (triggerStatus === '100000003' && (approvalStatus.Value === '100000002' || approvalStatus.Value === '100000001') && status.Value === '100000000') {
             isValid = true;            
@@ -182,7 +181,7 @@ $(document).ready(function () {
             Attr:  optionSet,
             Value: triggerStatus,
             Type: 'Microsoft.Xrm.Sdk.OptionSetValue'
-          }
+          };
           arr.Records.push(row);
           result.push(arr);
         }
@@ -219,7 +218,7 @@ $(document).ready(function () {
       async: true,
       url: odataUrl,
       success: function (approver) {
-        if (approver.value.length != 0 ) {
+        if (approver.value.length !== 0 ) {
           DrawApprovalButtons();
         }
       },
@@ -256,7 +255,7 @@ $(document).ready(function () {
       if (typeof td !== 'undefined') {
         status = td.data('value').Value;
         if(status !== vpoStatus) {
-          count++;
+          count = count + 1;
         }
       }
     }
