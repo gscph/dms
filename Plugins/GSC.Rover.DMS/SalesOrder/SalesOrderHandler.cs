@@ -858,6 +858,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             {
                 downPaymentAmount = ComputeDownPaymentAmount(salesOrderEntity);
                 salesOrderEntity["gsc_downpaymentamount"] = new Money(downPaymentAmount);
+                salesOrderEntity["gsc_downpaymentdisplay"] = new Money(downPaymentAmount);
 
                 netdp = ComputeNetDownPayment(salesOrderEntity);
                 salesOrderEntity["gsc_netdownpayment"] = new Money(netdp);
@@ -1251,7 +1252,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
 
             Decimal downPaymentAmount = ComputeDownPaymentAmount(salesOrderEntity);
             salesOrderEntity["gsc_downpaymentamount"] = new Money(downPaymentAmount);
-            salesOrderEntity["gsc_downpaymentdisplay"] = new Money(ComputeDownPaymentAmount(salesOrderEntity));
+            salesOrderEntity["gsc_downpaymentdisplay"] = new Money(downPaymentAmount);
             Decimal netdp = Decimal.Zero;
             netdp = ComputeNetDownPayment(salesOrderEntity);
             salesOrderEntity["gsc_netdownpayment"] = new Money(netdp);
