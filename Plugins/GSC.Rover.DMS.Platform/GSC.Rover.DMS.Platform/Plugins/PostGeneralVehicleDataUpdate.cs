@@ -93,16 +93,9 @@ namespace GSC.Rover.DMS.Platform.Plugins
             {
                 try
                 {
-                    var preImagePrinted = preImageEntity.GetAttributeValue<Boolean>("gsc_isprinted");
-                    var postImagePrinted = postImageEntity.GetAttributeValue<Boolean>("gsc_isprinted");
-
                     GVDReportHandler gvdReprotHandler = new GVDReportHandler(service, trace);
-
-                    if (postImagePrinted == false)
-                    {
                         gvdReprotHandler.DeleteGVDDetials(postImageEntity);
                         gvdReprotHandler.FilterInvoice(postImageEntity);
-                    }
 
                 }
                 catch (Exception ex)
