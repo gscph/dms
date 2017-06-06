@@ -1,6 +1,6 @@
 $(document).ready(function () { 
-  $(document).trigger("createFilter", [[["gsc_vpodate", "VPO Date"]]]);   
-  $(document).trigger("enableBulkDelete");
+  $(document).trigger('createFilter', [[['gsc_vpodate', 'VPO Date']]]);
+  $(document).trigger('enableBulkDelete');
   var approverSetupId = filterApproverSetup();
 
   //Submit Button
@@ -13,18 +13,18 @@ $(document).ready(function () {
   DMS.Helpers.AppendButtonToToolbar(approvalBtn);
   
   //Functions
-  var printed = '100000001'
-  var ordered = '100000002'
-  var forApproval = '100000003'
-  var approve = '100000000'
-  var disapprove = '100000001'
+  var printed = '100000001';
+  var ordered = '100000002';
+  var forApproval = '100000003';
+  var approve = '100000000';
+  var disapprove = '100000001';
   var recordArr = [];
   
   submitBtn.click(function () {
     var that = $(this);
     var html = that.html();
     var recordArrValidated = getSelectedRecords();
-    recordArr = GetModelForSelectedRecords(ordered, "gsc_vpostatus");
+    recordArr = GetModelForSelectedRecords(ordered, 'gsc_vpostatus');
     
     if (statusValidator(recordArrValidated, printed) > 0) {
       DMS.Notification.Error('Only records with printed vpo status can be submitted.', true, 5000);
@@ -35,7 +35,7 @@ $(document).ready(function () {
       that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
       that.addClass('disabled');
       
-      var url = "/api/EditableGrid/UpdateRecords";
+      var url = '/api/EditableGrid/UpdateRecords';
       var json = JSON.stringify(recordArr);
       var service = Service('PUT', url, json, DMS.Helpers.DefaultErrorHandler);
       
@@ -55,14 +55,14 @@ $(document).ready(function () {
     var that = $(this);
     var html = that.html();
     var approverCount = filterApprovalCount(approverSetupId);
-    recordArr = GetModelForSelectedRecords(forApproval, "gsc_approvalstatus");
+    recordArr = GetModelForSelectedRecords(forApproval, 'gsc_approvalstatus');
     
     if (approverCount > 0) {
       if (recordArr.length > 0) {
         that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
         that.addClass('disabled');
         
-        var url = "/api/EditableGrid/UpdateRecords";
+        var url = '/api/EditableGrid/UpdateRecords';
         var json = JSON.stringify(recordArr);
         var service = Service('PUT', url, json, DMS.Helpers.DefaultErrorHandler);
         
@@ -95,13 +95,13 @@ $(document).ready(function () {
     approveBtn.click(function() {
       var that = $(this);
       var html = that.html();
-      recordArr = GetModelForSelectedRecords(approve, "gsc_approvalstatus");
+      recordArr = GetModelForSelectedRecords(approve, 'gsc_approvalstatus');
       
       if (recordArr.length > 0) {
         that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
         that.addClass('disabled');
         
-        var url = "/api/EditableGrid/UpdateRecords";
+        var url = '/api/EditableGrid/UpdateRecords';
         var json = JSON.stringify(recordArr);
         var service = Service('PUT', url, json, DMS.Helpers.DefaultErrorHandler);
         
@@ -120,12 +120,12 @@ $(document).ready(function () {
     disapproveBtn.click(function() {
       var that = $(this);
       var html = that.html(); 
-      recordArr = GetModelForSelectedRecords(disapprove, "gsc_approvalstatus");
+      recordArr = GetModelForSelectedRecords(disapprove, 'gsc_approvalstatus');
       
       if (recordArr.length > 0) {
         that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
         that.addClass('disabled');
-        var url = "/api/EditableGrid/UpdateRecords";
+        var url = '/api/EditableGrid/UpdateRecords';
         var json = JSON.stringify(recordArr);
         var service = Service('PUT', url, json, DMS.Helpers.DefaultErrorHandler);
         
@@ -147,30 +147,34 @@ $(document).ready(function () {
     var isValid = false;
     
     // get configuration from adx layout config.
-    var _layouts = $('.entitylist[data-view-layouts]').data("view-layouts");
+    var _layouts = $('.entitylist[data-view-layouts]').data('view-layouts');
     
     $('.entity-grid .view-grid table tbody tr').each(function () {
       var that = $(this);
       var isRowSelected = that.find('td:first').data('checked');
       var status = that.find('td[data-attribute="gsc_vpostatus"]').data('value');
       var approvalStatus = that.find('td[data-attribute="gsc_approvalstatus"]').data('value');
-      var branchId = that.find('td[data-attribute="gsc_branchid"]').data('value');
       
       // row is approved
-      if (isRowSelected == "true" && typeof status !== 'undefined' && typeof approvalStatus !== 'undefined') {
-        if(optionSet == "gsc_approvalstatus") {
+      if (isRowSelected === 'true' && typeof status !== 'undefined' && typeof approvalStatus !== 'undefined') {
+        if(optionSet === 'gsc_approvalstatus') {
           //validation for approval status
-          if(triggerStatus == "100000003" && (approvalStatus.Value == "100000002" || approvalStatus.Value == "100000001") && status.Value == "100000000")//for approval
-          isValid = true;
           
-          else if(triggerStatus == "100000000" && approvalStatus.Value == "100000003")//approve
-          isValid = true;
-          
-          else if(triggerStatus == "100000001"  && approvalStatus.Value == "100000003")//disapprove
-          isValid = true;
+          //for approval
+          if (triggerStatus === '100000003' && (approvalStatus.Value === '100000002' || approvalStatus.Value === '100000001') && status.Value === '100000000') {
+            isValid = true;            
+          }          
+          //approve
+          else if (triggerStatus === '100000000' && approvalStatus.Value === '100000003') {
+            isValid = true;
+          }          
+          //disapprove
+          else if (triggerStatus === '100000001'  && approvalStatus.Value === '100000003') {
+            isValid = true;  
+          }
         }
         
-        if(isValid == true || optionSet == "gsc_vpostatus") {
+        if(isValid === true || optionSet === 'gsc_vpostatus') {
           var arr = { Id: null, Entity: null, Records: [] };
           arr.Entity = _layouts[0].Configuration.EntityName;
           arr.Id = that.data('id');
@@ -184,7 +188,6 @@ $(document).ready(function () {
         }
       }
     });
-    console.log(result);
     return result;
   }
   
@@ -193,11 +196,11 @@ $(document).ready(function () {
     var odataUrl = "/_odata/approversetup?$filter=statecode/Value eq 0 and gsc_transactiontype/Value eq 100000000 and gsc_branchid/Id eq (Guid'" + DMS.Settings.User.branchId + "')";
     var approverSetupId;
     $.ajax({
-      type: "get",
+      type: 'get',
       async: false,
       url: odataUrl,
       success: function (approverSetup) {
-        if (approverSetup.value.length != 0) {
+        if (approverSetup.value.length !== 0) {
           filterApproval(approverSetup.value[0].gsc_cmn_approversetupid);
           approverSetupId = approverSetup.value[0].gsc_cmn_approversetupid;
         }
@@ -212,7 +215,7 @@ $(document).ready(function () {
   function filterApproval(approverSetupId) {
     var odataUrl = "/_odata/approver?$filter=gsc_contactid/Id eq (guid'" + DMS.Settings.User.Id + "') and gsc_approversetupid/Id eq (Guid'" + approverSetupId + "')";
     $.ajax({
-      type: "get",
+      type: 'get',
       async: true,
       url: odataUrl,
       success: function (approver) {
@@ -231,7 +234,7 @@ $(document).ready(function () {
     var approverCount;
     
     $.ajax({
-      type: "get",
+      type: 'get',
       async: false,
       url: odataUrl,
       success: function (approver) {
@@ -252,7 +255,7 @@ $(document).ready(function () {
       
       if (typeof td !== 'undefined') {
         status = td.data('value').Value;
-        if(status != vpoStatus) {
+        if(status !== vpoStatus) {
           count++;
         }
       }
@@ -261,12 +264,12 @@ $(document).ready(function () {
   }
   
   function getSelectedRecords() {
-    var arr = []
+    var arr = [];
     
     $('.entity-grid .view-grid table tbody tr').each(function () {
       var isRowSelected = $(this).find('td:first').data('checked');
       
-      if (isRowSelected == "true") {
+      if (isRowSelected === 'true') {
         arr.push($(this).data('id'));
       }
     });

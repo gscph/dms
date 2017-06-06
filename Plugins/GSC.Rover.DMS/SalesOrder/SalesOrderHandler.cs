@@ -2944,5 +2944,41 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             }
             return null;
         }
+
+        //Created By: Raphael Herrera, Created On: 06/06/2017
+        //Purpose: Replicate discount fields from sales quote after order discount creation.
+        public Entity ReplicateDiscountFields(Entity salesOrder)
+        {
+            var quoteId = salesOrder.Contains("quoteid") ? salesOrder.GetAttributeValue<EntityReference>("quoteid").Id
+                : Guid.Empty;
+
+            EntityCollection quoteCollection = CommonHandler.RetrieveRecordsByOneValue("quote", "quoteid", quoteId, _organizationService, null,
+                OrderType.Ascending, new[] { "gsc_applytodppercentage", "gsc_applytouppercentage", "gsc_applytoafpercentage", "gsc_applytodpamount", "gsc_applytoupamount", "gsc_applytoafamount" });
+
+            if (quoteCollection.Entities.Count > 0)
+            {
+                Entity quoteEntity = quoteCollection.Entities[0];
+                salesOrder["gsc_applytodppercentage"] = quoteEntity.Contains("gsc_applytodppercentage")
+                ? quoteEntity.GetAttributeValue<Double>("gsc_applytodppercentage")
+                : 0.0;
+                salesOrder["gsc_applytouppercentage"] = quoteEntity.Contains("gsc_applytouppercentage")
+                    ? quoteEntity.GetAttributeValue<Double>("gsc_applytouppercentage")
+                    : 0.0;
+                salesOrder["gsc_applytoafpercentage"] = quoteEntity.Contains("gsc_applytoafpercentage")
+                    ? quoteEntity.GetAttributeValue<Double>("gsc_applytoafpercentage")
+                    : 0.0;
+                salesOrder["gsc_applytodpamount"] = quoteEntity.Contains("gsc_applytodpamount")
+                    ? quoteEntity.GetAttributeValue<Money>("gsc_applytodpamount")
+                    : new Money(0);
+                salesOrder["gsc_applytoupamount"] = quoteEntity.Contains("gsc_applytoupamount")
+                    ? quoteEntity.GetAttributeValue<Money>("gsc_applytoupamount")
+                    : new Money(0);
+                salesOrder["gsc_applytoafamount"] = quoteEntity.Contains("gsc_applytoafamount")
+                    ? quoteEntity.GetAttributeValue<Money>("gsc_applytoafamount")
+                    : new Money(0);
+            }
+
+            return salesOrder;
+        }
     }
 }
