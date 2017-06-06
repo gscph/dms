@@ -67,11 +67,11 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleColor
 
         public Entity PopulateColorCode(Entity vehicleColor)
         {
-            var colorCode = vehicleColor.Contains("gsc_colorcode")
+            var vehicleColorCode = vehicleColor.Contains("gsc_colorcode")
                 ? vehicleColor.GetAttributeValue<String>("gsc_colorcode")
                 : String.Empty;
 
-            if (colorCode != String.Empty)
+            if (vehicleColorCode != String.Empty)
             {
                     return null;
             }
@@ -81,17 +81,22 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleColor
                 : Guid.Empty;
 
             EntityCollection colorCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_color", "gsc_iv_colorid", colorId, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_colorcode" });
+                new[] { "gsc_colorcode", "gsc_colorpn" });
 
             if (colorCollection != null && colorCollection.Entities.Count > 0)
             {
                 Entity color = colorCollection.Entities[0];
 
-                var colorName = color.Contains("gsc_colorcode")
+                var colorCode = color.Contains("gsc_colorcode")
                 ? color.GetAttributeValue<String>("gsc_colorcode")
                 : String.Empty;
 
-                vehicleColor["gsc_colorcode"] = colorName;
+                var colorName = color.Contains("gsc_colorpn")
+                    ? color.GetAttributeValue<String>("gsc_colorpn")
+                    : String.Empty;
+
+                vehicleColor["gsc_colorcode"] = colorCode;
+                vehicleColor["gsc_vehiclecolorpn"] = colorName;
 
             }
 
