@@ -154,20 +154,24 @@ $(document).ready(function () {
       var isRowSelected = that.find('td:first').data('checked');
       var status = that.find('td[data-attribute="gsc_vpostatus"]').data('value');
       var approvalStatus = that.find('td[data-attribute="gsc_approvalstatus"]').data('value');
-      var branchId = that.find('td[data-attribute="gsc_branchid"]').data('value');
       
       // row is approved
       if (isRowSelected === 'true' && typeof status !== 'undefined' && typeof approvalStatus !== 'undefined') {
         if(optionSet === 'gsc_approvalstatus') {
           //validation for approval status
-          if(triggerStatus === '100000003' && (approvalStatus.Value === '100000002' || approvalStatus.Value === '100000001') && status.Value === '100000000')//for approval
-          isValid = true;
           
-          else if(triggerStatus === '100000000' && approvalStatus.Value === '100000003')//approve
-          isValid = true;
-          
-          else if(triggerStatus === '100000001'  && approvalStatus.Value === '100000003')//disapprove
-          isValid = true;
+          //for approval
+          if (triggerStatus === '100000003' && (approvalStatus.Value === '100000002' || approvalStatus.Value === '100000001') && status.Value === '100000000') {
+            isValid = true;            
+          }          
+          //approve
+          else if (triggerStatus === '100000000' && approvalStatus.Value === '100000003') {
+            isValid = true;
+          }          
+          //disapprove
+          else if (triggerStatus === '100000001'  && approvalStatus.Value === '100000003') {
+            isValid = true;  
+          }
         }
         
         if(isValid === true || optionSet === 'gsc_vpostatus') {
@@ -196,7 +200,7 @@ $(document).ready(function () {
       async: false,
       url: odataUrl,
       success: function (approverSetup) {
-        if (approverSetup.value.length != 0) {
+        if (approverSetup.value.length !== 0) {
           filterApproval(approverSetup.value[0].gsc_cmn_approversetupid);
           approverSetupId = approverSetup.value[0].gsc_cmn_approversetupid;
         }
@@ -251,7 +255,7 @@ $(document).ready(function () {
       
       if (typeof td !== 'undefined') {
         status = td.data('value').Value;
-        if(status != vpoStatus) {
+        if(status !== vpoStatus) {
           count++;
         }
       }
