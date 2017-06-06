@@ -871,7 +871,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             quoteToUpdate["gsc_vatamount"] = quoteEntity["gsc_vatamount"];
             quoteToUpdate["gsc_totalamountdue"] = quoteEntity["gsc_totalamountdue"];
             quoteToUpdate["gsc_downpaymentamount"] = quoteEntity["gsc_downpaymentamount"];
-            quoteToUpdate["gsc_downpaymentdisplay"] = new Money(ComputeDownpaymentAmount(quoteEntity));
+            quoteToUpdate["gsc_downpaymentdisplay"] = quoteEntity["gsc_downpaymentamount"];
 
             //Update Monthly Amortization
             CheckMonthlyAmortizationRecord(quoteToUpdate);
