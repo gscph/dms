@@ -104,10 +104,6 @@ namespace GSC.Rover.DMS.Platform.Plugins
                         gvdReprotHandler.FilterInvoice(postImageEntity);
                     }
 
-                    if (preImagePrinted != postImagePrinted && postImagePrinted == true)
-                    {
-                        gvdReprotHandler.GVDGenerated(postImageEntity);
-                    }
                 }
                 catch (Exception ex)
                 {
