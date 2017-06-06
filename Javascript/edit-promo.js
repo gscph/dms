@@ -178,4 +178,44 @@ $(document).ready(function (e) {
         $('.disabled').attr("tabindex", "-1");
         $('fieldset.permanent-disabled .btn').attr("tabindex", "-1");
     }
+    
+    AddSearchToPriceListItems('#Promo');
 });
+
+
+
+
+function AddSearchToPriceListItems(subgridId) {
+    var $searchContainer = $("<div></div>").addClass("input-group").addClass("pull-right").addClass("view-search").addClass("entitylist-search").attr('style', 'width:240px');
+			var $searchButton = $("<button></button>")
+				.attr("type", "button")
+				.addClass("btn")
+				.addClass("btn-default")
+				.append($("<span></span>").addClass("sr-only").html("Search Results"))
+				.append($("<span></span>").addClass("fa").addClass("fa-search"))
+                .on("click", DMS.Helpers.Debounce(function (e) {
+                    e.preventDefault();
+                    $(subgridId + ' .entity-grid').trigger('refresh');
+                }, 200));            
+
+	var $searchButtonGroup = $("<div></div>").addClass("input-group-btn").append($searchButton);
+			var $searchInput = $("<input/>")
+				.attr("placeholder", "Search")
+				.data("toggle", "tooltip")
+				.attr("title", "Use asterisk (*) wildcard character to search on partial text")
+				.tooltip()
+				.addClass("query")
+				.addClass("form-control")
+				.val("")
+				.on("keypress", function(e) {
+					var keyCode = e.keyCode ? e.keyCode : e.which;
+					if (keyCode == '13') {
+						e.preventDefault();
+						$searchButton.trigger("click");
+						$(this).trigger("focus");
+					}
+				});
+			$searchContainer.append($searchInput).append($searchButtonGroup).prependTo($(subgridId + ' .view-toolbar.grid-actions'));
+  
+}
+						
