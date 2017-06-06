@@ -157,20 +157,20 @@ $(document).ready(function () {
       var branchId = that.find('td[data-attribute="gsc_branchid"]').data('value');
       
       // row is approved
-      if (isRowSelected == 'true' && typeof status !== 'undefined' && typeof approvalStatus !== 'undefined') {
-        if(optionSet == 'gsc_approvalstatus') {
+      if (isRowSelected === 'true' && typeof status !== 'undefined' && typeof approvalStatus !== 'undefined') {
+        if(optionSet === 'gsc_approvalstatus') {
           //validation for approval status
-          if(triggerStatus == '100000003' && (approvalStatus.Value == '100000002' || approvalStatus.Value == '100000001') && status.Value == "100000000")//for approval
+          if(triggerStatus === '100000003' && (approvalStatus.Value === '100000002' || approvalStatus.Value === '100000001') && status.Value === '100000000')//for approval
           isValid = true;
           
-          else if(triggerStatus == '100000000' && approvalStatus.Value == '100000003')//approve
+          else if(triggerStatus === '100000000' && approvalStatus.Value === '100000003')//approve
           isValid = true;
           
-          else if(triggerStatus == '100000001'  && approvalStatus.Value == '100000003')//disapprove
+          else if(triggerStatus === '100000001'  && approvalStatus.Value === '100000003')//disapprove
           isValid = true;
         }
         
-        if(isValid == true || optionSet == 'gsc_vpostatus') {
+        if(isValid === true || optionSet === 'gsc_vpostatus') {
           var arr = { Id: null, Entity: null, Records: [] };
           arr.Entity = _layouts[0].Configuration.EntityName;
           arr.Id = that.data('id');
@@ -184,7 +184,6 @@ $(document).ready(function () {
         }
       }
     });
-    console.log(result);
     return result;
   }
   
@@ -266,7 +265,7 @@ $(document).ready(function () {
     $('.entity-grid .view-grid table tbody tr').each(function () {
       var isRowSelected = $(this).find('td:first').data('checked');
       
-      if (isRowSelected == 'true') {
+      if (isRowSelected === 'true') {
         arr.push($(this).data('id'));
       }
     });
