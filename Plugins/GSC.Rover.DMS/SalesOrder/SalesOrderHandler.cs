@@ -2481,7 +2481,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                     ? (Decimal)productEntity.GetAttributeValue<Double>("gsc_taxrate")
                     : 0;
                 var markup = salesOrderEntity.Contains("gsc_markup")
-                    ? (Decimal)salesOrderEntity.GetAttributeValue<Double>("gsc_markup")
+                    ? salesOrderEntity.GetAttributeValue<Decimal>("gsc_markup")
                     : 0;
 
                 if (markup != 0)
