@@ -71,7 +71,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
                EntityCollection salesOrderRecords = CommonHandler.RetrieveRecordsByOneValue("salesorder", "salesorderid", salesOrderEntity.Id, service, null, OrderType.Ascending,
                     new[] { "salesorderid", "quoteid", "gsc_productid", "ordernumber", "gsc_branchid", "gsc_paymentmode",
                         "gsc_vehiclecolorid1", "gsc_vehiclecolorid2", "gsc_vehiclecolorid3", "createdon", 
-                        "gsc_accessories", "gsc_colorprice", "gsc_financingschemeid", "gsc_amountfinanced", "gsc_bankid",  "gsc_vehicleunitprice", "gsc_netmonthlyamortization","gsc_insuranceid" });
+                        "gsc_accessories", "gsc_colorprice", "gsc_financingschemeid", "gsc_amountfinanced", "gsc_bankid",  "gsc_vehicleunitprice", "gsc_netmonthlyamortization","gsc_insuranceid", "gsc_customertype" });
 
                if (salesOrderRecords != null && salesOrderRecords.Entities.Count > 0)
                {
