@@ -4,3 +4,6 @@
 *.cache
 *.suo
 *.csproj
+*.vspscc
+*.vssscc
+*sln
