@@ -192,7 +192,7 @@ $(document).ready(function () {
       
       if (typeof td !== 'undefined') {
         status = td.data('value').Value;
-        if(status !== vpoStatus) {
+        if(status != vpoStatus) {
           count = count + 1;
         }
       }
