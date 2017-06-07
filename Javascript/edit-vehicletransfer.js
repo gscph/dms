@@ -3,7 +3,7 @@ $(document).ready(function () {
     //transfer status
     var transferStatus = $('#gsc_transferstatus').val();
     var status = $(".record-status").html();
-    
+
     if (status == "Cancelled" || status == "Posted") {
         checkSubgrid();
     }
@@ -30,7 +30,7 @@ $(document).ready(function () {
     drawPostButton();
 
     $('#AllocatedVehicles .entity-grid.subgrid').on('loaded', function () {
-        if ($('#AllocatedVehicles tr').length > 1 && $('.record-status').html() == "Open") {
+        if ($('#AllocatedVehicles tr').length > 1 && status == "Open") {
             if ($('.post').length == 1)
                 $('.post').removeClass("permanent-disabled disabled");
         }
@@ -44,7 +44,7 @@ $(document).ready(function () {
             //   DMS.Helpers.DisableEntityForm();
         }, 1000);
     }
-    if (transferStatus == 100000001) createCancelButton();
+    if (status == "Open") createCancelButton();
 
     $('#gsc_inventoryidtoallocate').hide();
     $('#gsc_inventoryidtoallocate_label').hide();
@@ -54,17 +54,8 @@ $(document).ready(function () {
     $('#gsc_transferstatus_label').hide();
 
     /*transferStatus == Posted*/
-    if (transferStatus == 100000000)
+    if (status != "Open")
         disableFields();
-        
-    if(transferStatus == 100000002)
-    {
-      disableFields();
-      //$printBtn.addClass('permanent-disabled');
-    }
-
-    if (transferStatus != 100000001)
-        $('.delete-link').addClass('permanent-disabled');
 
     setTimeout(function () {
         RefreshAvailableItems($(".btn-primary").closest("div #Inventory"), 1, 4);
@@ -357,7 +348,7 @@ $(document).ready(function () {
         allocate.className = "fa fa-plus";
         allocateButton.appendChild(allocate);
         allocateButton.style = "margin-left:5px";
-        var allocateButtonLabel = document.createTextNode(" ADD VEHICLE TRANSFER");
+        var allocateButtonLabel = document.createTextNode(" TRANSFER VEHICLE");
         allocateButton.appendChild(allocateButtonLabel);
 
         /*transferStatus == Unposted*/
@@ -415,7 +406,7 @@ $(document).ready(function () {
     //set fields to readonly
     function disableFields() {
         $('#UpdateButton').addClass('permanent-disabled disabled');
-        $('.delete-link').addClass('disabled');
+        $('.delete-link').addClass('permanent-disabled disabled');
         $('.control > input').attr('readOnly', true);
         $('.control > textarea').attr('readOnly', true);
         $('.datetimepicker > .form-control').attr('readOnly', true);
@@ -490,8 +481,7 @@ $(document).ready(function () {
         event.preventDefault();
     }
 
-    function showLoading()
-    {
+    function showLoading() {
         $.blockUI({ message: null, overlayCSS: { opacity: .3 } });
 
         var div = document.createElement("DIV");
@@ -504,8 +494,7 @@ $(document).ready(function () {
     }
     setTimeout(disableTab, 3000);
 
-    function disableTab()
-    {
+    function disableTab() {
         $('.disabled').attr("tabindex", "-1");
     }
 });
