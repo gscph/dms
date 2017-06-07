@@ -204,7 +204,7 @@ $(document).ready(function (e) {
         });
     }, 100);
 
-    function checkPreferredColor(index) {
+     function checkPreferredColor(index) {
         var colorNum = index;
         var color1 = $('#gsc_vehiclecolorid1').val();
         var color2 = $('#gsc_vehiclecolorid2').val();
@@ -212,21 +212,21 @@ $(document).ready(function (e) {
         var isDuplicate = false;
 
         if (colorNum == 1) {
-            if (color1 == color2)
+            if (color1 == color2 && color1 != "" && color2 != "")
                 isDuplicate = true;
-            else if (color1 == color3)
+            else if (color1 == color3 && color3 != "")
                 isDuplicate = true;
         }
         else if (colorNum == 2) {
-            if (color2 == color1)
+            if (color2 == color1 && color1 != "" && color2 != "")
                 isDuplicate = true;
-            else if (color2 == color3)
+            else if (color2 == color3 && color3 != "")
                 isDuplicate = true;
         }
         else if (colorNum == 3) {
-            if (color3 == color1)
+            if (color3 == color1 && color1 != "" && color3 != "")
                 isDuplicate = true;
-            else if (color3 == color2)
+            else if (color3 == color2 && color2 != "")
                 isDuplicate = true;
         }
         else

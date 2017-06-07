@@ -236,17 +236,17 @@ $(document).ready(function (e) {
         $('#gsc_downpaymentpercentage').click(function () {
             $(this).get(0).type = 'number';
         });
-		
-		$('#gsc_downpaymentamount').blur(function () {
-			  var netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
-			  var dpAmount = parseFloat($('#gsc_downpaymentamount').val().replace(/,/g, ""));
+        
+        $('#gsc_downpaymentamount').blur(function () {
+              var netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
+              var dpAmount = parseFloat($('#gsc_downpaymentamount').val().replace(/,/g, ""));
             if (dpAmount > netPrice) {
                 //do not allow greater than net price
-				    this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+                    this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
                 $("#gsc_downpaymentamount").trigger('change');
             }
-		});
-		  
+        });
+          
        /* $('#gsc_downpaymentamount').blur(function () {
             if (this.value < 0) {
                 //do not allow less than 0 input
@@ -701,7 +701,7 @@ $(document).ready(function (e) {
         DMS.Notification.Error("Error: Cannot select preferred color twice.", true, 5000);
     }
 
-    function checkPreferredColor(index) {
+     function checkPreferredColor(index) {
         var colorNum = index;
         var color1 = $('#gsc_vehiclecolorid1').val();
         var color2 = $('#gsc_vehiclecolorid2').val();
@@ -709,21 +709,21 @@ $(document).ready(function (e) {
         var isDuplicate = false;
 
         if (colorNum == 1) {
-            if (color1 == color2)
+            if (color1 == color2 && color1 != "" && color2 != "")
                 isDuplicate = true;
-            else if (color1 == color3)
+            else if (color1 == color3 && color3 != "")
                 isDuplicate = true;
         }
         else if (colorNum == 2) {
-            if (color2 == color1)
+            if (color2 == color1 && color1 != "" && color2 != "")
                 isDuplicate = true;
-            else if (color2 == color3)
+            else if (color2 == color3 && color3 != "")
                 isDuplicate = true;
         }
         else if (colorNum == 3) {
-            if (color3 == color1)
+            if (color3 == color1 && color1 != "" && color3 != "")
                 isDuplicate = true;
-            else if (color3 == color2)
+            else if (color3 == color2 && color2 != "")
                 isDuplicate = true;
         }
         else
