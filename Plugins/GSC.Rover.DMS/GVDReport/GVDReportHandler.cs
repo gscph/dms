@@ -54,7 +54,8 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
                 : String.Empty;
 
             QueryExpression queryInvoice = new QueryExpression("invoice");
-            queryInvoice.ColumnSet = new ColumnSet(new[] { "invoiceid", "gsc_salesinvoicestatus", "gsc_paymentmode", "gsc_downpaymentpercentage", "gsc_salesexecutiveid", "customerid", "gsc_invoicedate", "gsc_leadsourceid", "gsc_bankid", "gsc_issalesreturned" });
+            queryInvoice.ColumnSet = new ColumnSet(new[] { "invoiceid", "gsc_salesinvoicestatus", "gsc_paymentmode", "gsc_downpaymentpercentage", 
+                "gsc_salesexecutiveid", "customerid", "gsc_invoicedate", "gsc_leadsourceid", "gsc_bankid", "gsc_issalesreturned" });
 
             FilterExpression filter = new FilterExpression(LogicalOperator.And);
             FilterExpression filter1 = new FilterExpression(LogicalOperator.And);
@@ -69,10 +70,10 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
                 filter1.Conditions.Add(new ConditionExpression("createdon", ConditionOperator.LessEqual, dateTo));
 
             FilterExpression filter2 = new FilterExpression(LogicalOperator.Or);
-            filter2.Conditions.Add(new ConditionExpression("gsc_salesinvoicestatus", ConditionOperator.Equal, 100000002));
-            filter2.Conditions.Add(new ConditionExpression("gsc_salesinvoicestatus", ConditionOperator.Equal, 100000003));
-            filter2.Conditions.Add(new ConditionExpression("gsc_salesinvoicestatus", ConditionOperator.Equal, 100000004));
-            filter2.Conditions.Add(new ConditionExpression("gsc_salesinvoicestatus", ConditionOperator.Equal, 100000005));
+            filter2.Conditions.Add(new ConditionExpression("gsc_salesinvoicestatus", ConditionOperator.Equal, 100000002)); //Invoiced
+            filter2.Conditions.Add(new ConditionExpression("gsc_salesinvoicestatus", ConditionOperator.Equal, 100000003)); //Printed DR
+            filter2.Conditions.Add(new ConditionExpression("gsc_salesinvoicestatus", ConditionOperator.Equal, 100000004)); //Released
+            filter2.Conditions.Add(new ConditionExpression("gsc_salesinvoicestatus", ConditionOperator.Equal, 100000005)); //Cancelled
 
             filter.AddFilter(filter1);
             filter.AddFilter(filter2);
@@ -132,7 +133,7 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
                 ? invoiceEntity.FormattedValues["gsc_salesinvoicestatus"]
                 : String.Empty;
             var salesReturned = invoiceEntity.GetAttributeValue<Boolean>("gsc_issalesreturned");
-            if (invoiceStatus == "Cancelled" || salesReturned == true)
+            if (invoiceStatus == "Cancelled" || salesReturned)
             {
                 cancelled = true;
             }
