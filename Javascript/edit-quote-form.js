@@ -21,11 +21,11 @@ $(document).ready(function (e) {
     function CheckStatus() {
         setTimeout(function () {
             var stateCode = $(".record-status").html();
-            if (stateCode == 'Draft') 
+            if (stateCode === 'Draft') 
 			{
                 paymentModeOnChange("onload");
             }
-            else if (stateCode == "Active") 
+            else if (stateCode === "Active") 
 			{
                 $('#SubmitButton').attr("disabled", true);
                 $('.delete-link').attr("disabled", true);
@@ -33,7 +33,7 @@ $(document).ready(function (e) {
                 $(".cancel").attr("disabled", true);
                 $(".addnew").attr("disabled", true);
             }
-            else if (stateCode == "Closed" || stateCode == "Won") 
+            else if (stateCode === "Closed" || stateCode === "Won") 
 			{
                 $('#SubmitButton').attr("disabled", true);
                 $('.delete-link').attr("disabled", true);
@@ -76,7 +76,7 @@ $(document).ready(function (e) {
     }
 
     function CheckifGovernment() {
-        if ($("#customerid_entityname").val() == "account") {
+        if ($("#customerid_entityname").val() === "account") {
             var accountid = $("#customerid").val();
 
             var odataUrl = "/_odata/account?$filter=accountid eq (Guid'" + accountid + "')";
@@ -88,7 +88,7 @@ $(document).ready(function (e) {
                 success: function (data) {
                     for (var i = 0; i < data.value.length; i++) {
                         var obj = data.value[i];
-                        if (obj.gsc_customertype.Name == "Corporate") {
+                        if (obj.gsc_customertype.Name === 'Corporate') {
                             $("#customerid_name").closest("td").attr("colspan", 4);
                             $('label[for=gsc_markup], input#gsc_markup').hide();
                         }
@@ -100,7 +100,7 @@ $(document).ready(function (e) {
             });
         }
         else {
-            $("#customerid_name").closest("td").attr("colspan", 4);
+            $('#customerid_name').closest('td').attr('colspan', 4);
             $('label[for=gsc_markup], input#gsc_markup').hide();
         }
     }
@@ -109,18 +109,18 @@ $(document).ready(function (e) {
     $('#gsc_netdownpayment').attr('readonly', true);
     $('#gsc_amountfinanced').attr('readonly', true);
     $('#gsc_netamountfinanced').attr('readonly', true);
-    var status = $(".record-status").html();
+    var status = $('.record-status').html();
 
     //set page validators
-    if (typeof (Page_Validators) == 'undefined') return;
+    if (typeof (Page_Validators) === 'undefined') return;
 
     //Validator when valid until is not less than current date
     var validUntilValidator = document.createElement('span');
-    validUntilValidator.style.display = "none";
-    validUntilValidator.id = "RequiredFieldValidatorvaliduntil";
-    validUntilValidator.errormessage = "Valid Until Date should not be less than the current date.";
-    validUntilValidator.validationGroup = "";
-    validUntilValidator.initialvalue = "";
+    validUntilValidator.style.display = 'none';
+    validUntilValidator.id = 'RequiredFieldValidatorvaliduntil';
+    validUntilValidator.errormessage = 'Valid Until Date should not be less than the current date.';
+    validUntilValidator.validationGroup = '';
+    validUntilValidator.initialvalue = '';
     validUntilValidator.evaluationfunction = function () {
         var validDate = $("#gsc_validuntil").val() == "" ? 0 : $("#gsc_validuntil").val();
         var currentDate = new Date();
@@ -1163,21 +1163,21 @@ $(document).ready(function (e) {
         var isDuplicate = false;
 
         if (colorNum == 1) {
-            if (color1 == color2 && color1 != "" && color2 != "")
+            if (color1 === color2 && color1 != '' && color2 != '')
                 isDuplicate = true;
-            else if (color1 == color3 && color3 != "")
+            else if (color1 === color3 && color3 != '')
                 isDuplicate = true;
         }
         else if (colorNum == 2) {
-            if (color2 == color1 && color1 != "" && color2 != "")
+            if (color2 === color1 && color1 != '' && color2 != '')
                 isDuplicate = true;
-            else if (color2 == color3 && color3 != "")
+            else if (color2 === color3 && color3 != '')
                 isDuplicate = true;
         }
         else if (colorNum == 3) {
-            if (color3 == color1 && color1 != "" && color3 != "")
+            if (color3 === color1 && color1 != '' && color3 != '')
                 isDuplicate = true;
-            else if (color3 == color2 && color2 != "")
+            else if (color3 === color2 && color2 != '')
                 isDuplicate = true;
         }
         else
