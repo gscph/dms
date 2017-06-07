@@ -729,6 +729,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
 
             Decimal downPaymentAmount = ComputeDownpaymentAmount(quoteEntity);
             quoteEntity["gsc_downpaymentamount"] = new Money(downPaymentAmount);
+            quoteEntity["gsc_downpaymentdisplay"] = new Money(downPaymentAmount);
 
             Decimal netdp = Decimal.Zero;
             netdp = ComputeNetDownPayment(quoteEntity);
@@ -759,7 +760,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             {
                 Entity quoteToUpdate = _organizationService.Retrieve(quoteEntity.LogicalName, quoteEntity.Id, new ColumnSet("gsc_colorprice", "gsc_netprice",
                     "gsc_amountfinanced", "gsc_netprice", "gsc_vatablesales", "gsc_vatexemptsales", "gsc_zeroratedsales", "gsc_totalsales", "gsc_totalcashoutlay",
-                    "gsc_vatamount", "gsc_totalamountdue", "gsc_totalamountfinanced", "gsc_downpaymentamount","gsc_netdownpayment","gsc_downpayment"));
+                    "gsc_vatamount", "gsc_totalamountdue", "gsc_totalamountfinanced", "gsc_downpaymentamount", "gsc_netdownpayment", "gsc_downpayment", "gsc_downpaymentdisplay"));
                 quoteToUpdate["gsc_colorprice"] = new Money(additionalprice);
                 quoteToUpdate["gsc_netprice"] = new Money(netprice);
                 quoteToUpdate["gsc_amountfinanced"] = amountfinanced == 0 ? null : new Money(amountfinanced);
@@ -771,6 +772,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                 quoteToUpdate["gsc_vatamount"] = quoteEntity["gsc_vatamount"];
                 quoteToUpdate["gsc_totalamountdue"] = quoteEntity["gsc_totalamountdue"];
                 quoteToUpdate["gsc_downpaymentamount"] = quoteEntity["gsc_downpaymentamount"];
+                quoteToUpdate["gsc_downpaymentdisplay"] = quoteEntity["gsc_downpaymentamount"];
                 quoteToUpdate["gsc_netdownpayment"] = quoteEntity["gsc_netdownpayment"];
                 quoteToUpdate["gsc_downpayment"] = quoteEntity["gsc_downpayment"];
                 quoteToUpdate["gsc_totalcashoutlay"] = new Money(cashoutlay);
