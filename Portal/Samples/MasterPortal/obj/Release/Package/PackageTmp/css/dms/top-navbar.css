@@ -1,0 +1,238 @@
+.top-navbar {
+    background-color: #000;
+    margin-bottom: 0px;
+}
+
+#myActbar {
+    background: rgb(239, 239, 242);
+    height: 88px;
+}
+
+.brand-logo {
+    margin-top: 8px;
+}
+
+#toolBar {
+    float: right;
+}
+
+#toolBarBody ul.nav.navbar-nav > li > a {
+    bottom: 5px;
+    padding-bottom: 8px;
+}
+
+.breadcrumb {
+    float: right;
+    background: transparent;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    padding: 7px 5px;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    border-radius: 2px;
+}
+
+    .breadcrumb > li > a {
+        color: #72afd2;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+        .breadcrumb > li > a > .fa,
+        .breadcrumb > li > a > .glyphicon,
+        .breadcrumb > li > a > .ion {
+            margin-right: 5px;
+        }
+
+    .breadcrumb > li + li:before {
+        content: '>\00a0';
+        color: #000;
+        font-size: 12px;
+    }
+
+@media (max-width: 991px) {
+    .breadcrumb {
+        position: relative;
+        margin-top: 5px;
+        top: 0;
+        right: 0;
+        float: none;
+        background: #d2d6de;
+        padding-left: 10px;
+    }
+
+        .breadcrumb li:before {
+            color: #97a0b3;
+        }
+}
+
+#dropFilter {
+    width: 1000px;
+}
+
+.nav-toggle {
+    bottom: 5px;
+    padding-bottom: 8px;
+}
+
+#actBar {
+    height: 50px;
+}
+
+.nav .breadcrumb {
+    margin: -7px 20px;
+}
+
+@media (min-width: 768px) {
+    .nav .breadcrumb {
+        float: left;
+        margin: 3px -30px;
+    }
+}
+
+.img-logo-mini {
+    display: none;
+}
+
+.img-logo-lg {
+    padding: 0;
+    margin: 5px 8px;
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    left: 0;
+    display: block;
+}
+
+.text-logo-lg {
+    padding: 0;
+    margin: -2px 30px;
+    position: absolute;
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    font-family: Calibri;
+}
+
+body.sidebar-collapse .img-logo-mini {
+    padding: 0;
+    margin: 0;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    left: 0;
+    display: block;
+    height: 35px;
+    width: 35px;
+    margin: 5px 8px;
+}
+
+body.sidebar-collapse .text-logo-lg {
+    display: none;
+}
+
+body.sidebar-collapse .img-logo-lg {
+    display: none;
+}
+
+.profile-item {
+    padding: 5px 5px 5px 5px;
+    height: 40px;
+}
+
+    .profile-item:hover {
+        background-color: #3c8dbc !important;
+        color: #000 !important;
+    }
+
+    .profile-item a:hover {
+        background-color: #3c8dbc !important;
+        color: #000 !important;
+    }
+
+    .profile-item.with-border {
+        border: 1px solid #e5e5e5;
+        border-radius: 0px;
+        border-left: 0;
+        border-right: 0;
+    }
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header > img:hover {
+    content: "Ghadaffi";
+}
+
+
+.profile-img-container {
+    position: relative;
+    display: inline-block; /* added */
+    overflow: hidden; /* added */
+}
+
+    .profile-img-container img {
+        width: 100%;
+    }
+        /* remove if using in grid system */
+
+
+        .profile-img-container img:hover {
+            opacity: 1;
+        }
+
+    .profile-img-container:hover a {
+        opacity: 1; /* added */
+        top: 0; /* added */
+        z-index: 500;
+    }
+        /* added */
+        .profile-img-container:hover a span {
+            top: 50%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+        }
+    /* added */
+    .profile-img-container a {
+        display: block;
+        position: absolute;
+        top: -100%;
+        opacity: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        text-align: center;
+        color: inherit;
+    }
+
+.scroll-down {
+    position: fixed;
+    bottom: 0;
+    left: 110px;
+    cursor: pointer;
+    display: block;
+}
+
+body.sidebar-collapse .scroll-down {
+    display: none;
+}
+
+a.btn-sm {
+    color: #000;
+}
+
+    a.btn-sm:hover {
+        color: #3c8dbc !important;
+    }
+
+     a.btn-sm:active {
+        background-color: rgb(0, 122, 204) !important;
+        color: #fff !important;
+    }
+
+     #toolBarBody .dropdown.open a.dropdown-toggle {
+          background-color: rgb(0, 122, 204) !important;
+          color: #fff !important;
+     }
+    

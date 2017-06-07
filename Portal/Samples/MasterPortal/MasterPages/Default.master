@@ -1,0 +1,202 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" ViewStateMode="Disabled" CodeBehind="Default.master.cs" Inherits="Site.MasterPages.Default" %>
+
+<%@ Import Namespace="System.Web.Mvc.Html" %>
+<%@ Import Namespace="Adxstudio.Xrm.Web.Mvc.Html" %>
+
+<!DOCTYPE html>
+<html lang="<%: Html.Setting("Html/LanguageCode", "en") %>">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+        <asp:ContentPlaceHolder ID="Title" runat="server"><%: Html.AttributeLiteral("adx_title") ?? Html.AttributeLiteral("adx_name") %></asp:ContentPlaceHolder>
+        <%= Html.SnippetLiteral("Browser Title Suffix") %></title>
+    <asp:ContentPlaceHolder ID="MetaTags" runat="server">
+        <% var metaDescription = Html.Entity().GetAttribute("adx_meta_description"); %>
+        <% if (metaDescription != null && metaDescription.Value != null)
+           { %>
+        <meta name="description" content="<%: Html.AttributeLiteral(metaDescription) %>" />
+        <% } %>
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        // Fix for incorrect viewport width setting in IE 10 on Windows Phone 8.
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            msViewportStyle.appendChild(document.createTextNode("@-ms-viewport{width:auto!important}"));
+            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="Styles" runat="server">
+        <link href="~/css/dms/font-awesome-4.5.0/css/font-awesome.css" rel="stylesheet" />
+
+        <asp:ContentPlaceHolder ID="Header" runat="server">
+            <% Html.RenderPartialFromSetting("Head/Template"); %>
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="Head" runat="server" />
+        <%: Html.ContentStyles(except: new [] { "bootstrap.min.css" }) %>
+        <%: Html.StyleAttribute("adx_customcss") %>
+        <%= Html.SnippetLiteral("Head/Bottom") %>
+        <%= Html.SnippetLiteral("Head/Fonts") %>
+        <%: System.Web.Optimization.Styles.Render("~/css/default.bundle.css") %>
+        <%--      <%= Html.SnippetLiteral("Head/Bootstrap", Html.ContentStyles(only: new Dictionary<string, string>
+				{
+					{"bootstrap.min.css", Url.Content("~/css/bootstrap.min.css")}
+				})) %>--%>
+        <%-- <link href="~/css/dms/dms-template.css" rel="stylesheet" />
+                <link href="~/css/dms/_all-skins.css" rel="stylesheet" />--%>
+        <link href="~/css/dms/metro-bootstrap.css" rel="stylesheet" />
+        <link href="~/css/dms/dms-template.css" rel="stylesheet" />
+        <link href="~/css/dms/loader.css" rel="stylesheet" />
+        <link href="~/css/dms/ie-fixes.css" rel="stylesheet" />
+      <%--  <link href="~/css/dms/global-icons.css" rel="stylesheet" />--%>
+        <link href="~/css/dms/animate.css" rel="stylesheet" />
+
+        
+        
+
+        <%--<link href="~/css/dms/demo-files/demo.css" rel="stylesheet">--%>
+       <%-- <link href="~/css/dms/style.css" rel="stylesheet">--%>
+
+        <link href="~/<%:Html.AttributeLiteral(Html.PortalUser(), "gsc_themeurl")%>" rel="stylesheet" />
+        <!--[if IE]>
+	        <link rel="stylesheet" type="text/css" href="~/css/dms/loader.css"/>
+        <![endif]-->
+
+        <%-- HTML5 shim, for IE6-8 support of HTML elements --%>
+        <!--[if lt IE 9]>
+				<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<![endif]-->
+        <%-- HTML5 polyfill, for IE6-8 support of HTML FormData allowing to post upload file async --%>
+        <!--[if lt IE 10]>
+				<script src="~/js/formdata.js"></script>
+			<![endif]-->
+    </asp:ContentPlaceHolder>
+</head>
+<!--    class="hold-transition skin-blue sidebar-expanded-on-hover sidebar-mini" -->
+<body data-sitemap-state="<%: Html.SiteMapState() %>"
+    data-dateformat="<%= Html.Setting("DateTime/DateFormat", "M/d/yyyy") %>"
+    data-timeformat="<%= Html.Setting("DateTime/TimeFormat", "h:mm tt") %>"
+    data-datetimeformat="<%= Html.Setting("DateTime/DateTimeFormat") %>"
+    <% if (Html.BooleanSetting("Parature/Enabled").GetValueOrDefault(false))
+       { %>data-parature-case-deflection-url="<%: Html.GetPortalScopedRouteUrlByName("ParatureSearchArticles") %>"
+    <% } %>>
+
+
+    <asp:ContentPlaceHolder ID="HeaderNavbar" runat="server">
+        <%-- <% Html.RenderPartial("~/Areas/Portal/Views/Layout/Header.ascx"); %>--%>
+
+        <% if (Html.BooleanSetting("Header/OutputCache/Enabled").GetValueOrDefault(true))
+           { %>
+        <% Html.RenderAction("Header", "Layout", new { area = "Portal" }); %>
+        <% }
+           else
+           { %>
+        <% Html.RenderPartial("~/Areas/Portal/Views/Layout/Header.ascx"); %>
+        <% } %>
+    </asp:ContentPlaceHolder>
+
+    <%: System.Web.Optimization.Scripts.Render("~/js/default.preform.bundle.js") %> 
+    <script src="~/dms-plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="~/js/dms/global-js.js"></script>
+    <asp:ContentPlaceHolder ID="ContentContainer" runat="server">
+        <%--  <div class="content-wrapper">--%>
+        <asp:ContentPlaceHolder ID="ContentHeader" runat="server" />
+        <div id="content-container" class="content">
+            <div id="content" role="main">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+        </div>
+        <%--</div>--%>
+    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="Footer" runat="server">
+
+
+        <%-- <% Html.RenderPartial("~/Areas/Portal/Views/Layout/Footer.ascx"); %>--%>
+        <%-- <% if (Html.BooleanSetting("Footer/OutputCache/Enabled").GetValueOrDefault(true))
+           { %>
+        <% Html.RenderAction("Footer", "Layout", new { area = "Portal" }); %>
+        <% }
+           else
+           { %>
+        <% Html.RenderPartial("~/Areas/Portal/Views/Layout/Footer.ascx"); %>
+        <% } %>--%>
+    </asp:ContentPlaceHolder>
+
+    <%: Html.EntityEditingMetadata() %>
+    <%: Html.EditingStyles(new []
+			{
+				"~/xrm-adx/css/yui-skin-sam-2.9.0/skin.css",
+				"~/js/select2/select2.css"
+			}) %>
+    <script src="<%: Url.Content("~/xrm-adx/js/tinymce/tinymce.min.js") %>"></script>
+    <%: Html.EditingScripts(dependencyScriptPaths: new []
+			{
+                "~/xrm-adx/js/yui-2.9.0-combo.min.js",
+				"~/xrm-adx/js/jquery-ui-1.10.0.min.js",
+				"~/js/select2/select2.min.js"
+			}, extensionScriptPaths: new string[] {}) %>
+    <%: System.Web.Optimization.Scripts.Render("~/js/default.bundle.js") %>
+    <asp:ContentPlaceHolder ID="Scripts" runat="server" />
+    <%: Html.ScriptAttribute("adx_customjavascript") %>
+    <%= Html.SnippetLiteral("Tracking Code") %>
+    <script src="~/dms-plugins/fastclick/fastclick.min.js"></script>
+    <script src="~/js/dms/jquery.mask.js"></script>
+    <script src="~/js/dms/app.js"></script>
+    <script>         
+       
+        $(document).ready(function () {
+
+            $('.dropdown.menu-header').on('show.bs.dropdown', function () {
+                // do something…
+                console.log('hehe');
+            })
+
+            $('.tabs-left').slimScroll({
+                height: '140px',
+                size: '5px'
+            });          
+
+            $('.tabs-left > li a[data-toggle="tab"]').on('click', function (evt) {
+                var tabPane = $(this).data('target');
+                if (!$(this).parent().hasClass('active')) {
+                    $(this).parent().siblings('li').removeClass('active');                   
+                }
+                $(this).parent().addClass('active');
+                if (!$(tabPane).hasClass('active')) {
+                    $(tabPane).siblings('.tab-pane').removeClass('active');                  
+                }
+                $(tabPane).addClass('active');
+            });
+
+            $('.dropdown-menu').each(function () {
+                $(this).find('.nav-tabs > li:first').addClass('active');
+                //console.log($(this).find('tab-content').html());
+                $(this).find('.tab-content > .tab-pane:first').addClass('active');
+            });
+
+            $('.dropdown-menu div.col-xs-3 .nav-tabs > li:first').addClass('active');
+            $('.dropdown-menu div.col-xs-9 .tab-content .tab-pane:first').addClass('active');
+        });
+        function CloseDropDownFromToggle(elem) {
+            $(elem).find('div.col-md-2').find('.dropdown.open').removeClass('open');
+           
+        }
+        function CloseDropDown(nav, e) {
+            $(nav).toggleClass('open');
+            $(nav).parents('div').siblings().find('.dropdown.open').removeClass('open');
+            e.stopPropagation();
+        }       
+        function OpenReport(reportId) {
+            var param1var = DMS.Settings.User.dealerId;
+            var protocol = window.location.protocol;
+            var host = window.location.host;
+            var url = protocol + "//" + host + "/report/?reportname={" + reportId + "}&reportid=" + param1var;
+            window.open(url, 'blank', 'width=1000,height=850');
+        }
+    </script>
+
+</body>
+</html>
+<!-- Generated at <%: DateTime.UtcNow %> -->
+<!-- Page OK -->

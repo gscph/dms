@@ -1,0 +1,309 @@
+﻿.fa-input-submit, .fa-input-generate {
+    font-family: Segoe UI, FontAwesome, Arial !important;
+}
+
+.row.form-custom-actions button {
+    font-family: Segoe UI, FontAwesome, Arial !important;
+}
+
+/*.add-margin-right {
+    margin-left: 0px !important;
+    margin-right: 5px;
+}*/
+
+#ValidationSummaryEntityFormView {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 750;
+    max-height: 500px;
+    max-width: 300px;
+}
+
+.datetimepicker {
+    width: 100%;
+}
+
+.control .input-group {
+    width: 100%;
+}
+
+.btn-dialog {
+    color: #333333;
+    background-color: #ffffff;
+    border-color: #cccccc;
+}
+
+    .btn-dialog:hover,
+    .btn-dialog:focus,
+    .btn-dialog:active,
+    .btn-dialog.active,
+    .open > .dropdown-toggle.btn-dialog {
+        color: #333333;
+        background-color: #e6e6e6;
+        border-color: #adadad;
+    }
+
+    .btn-dialog:active,
+    .btn-dialog.active,
+    .open > .dropdown-toggle.btn-dialog {
+        background-image: none;
+    }
+
+    .btn-dialog.disabled,
+    .btn-dialog[disabled],
+    fieldset[disabled] .btn-dialog,
+    .btn-dialog.disabled:hover,
+    .btn-dialog[disabled]:hover,
+    fieldset[disabled] .btn-dialog:hover,
+    .btn-dialog.disabled:focus,
+    .btn-dialog[disabled]:focus,
+    fieldset[disabled] .btn-dialog:focus,
+    .btn-dialog.disabled:active,
+    .btn-dialog[disabled]:active,
+    fieldset[disabled] .btn-dialog:active,
+    .btn-dialog.disabled.active,
+    .btn-dialog[disabled].active,
+    fieldset[disabled] .btn-dialog.active {
+        background-color: #dddddd;
+        border-color: #cccccc;
+        color: #000;
+    }
+
+
+
+    .btn-dialog .badge {
+        color: #ffffff;
+        background-color: #333333;
+    }
+
+
+/*div.message.success {
+    background-color: #00e673;
+    border-color: #DFF0D8;
+    color: #468847;
+    margin-bottom: 5px;
+    padding: 9px 39px 9px 14px;
+    -ms-text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    max-height: 500px;
+    max-width: 500px;
+}
+
+div.message.error {
+    background-color: #e62700;
+    border-color: #F2DEDE;
+    color: #B94A48;
+    margin-bottom: 5px;
+    padding: 9px 39px 9px 14px;
+    -ms-text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+div.message.alert-info {
+    color: #fff !important;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    max-height: 500px;
+    max-width: 300px;
+    margin-bottom: 0px;
+}*/
+
+
+
+#MessageLabel {
+    margin-right: 10px;
+}
+
+div.notifications {
+    margin-top: 50px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 0px;
+}
+
+
+/*.form-title {
+    font-size: 32px;
+    margin-top: 60px;
+    font-weight: 100;
+    margin-right: 10px !important;
+    margin-bottom: -19px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}*/
+
+.form-title {
+    font-size: 36px;
+    margin-top: -8px;
+    font-weight: 100;
+    margin-right: 10px !important;
+    margin-bottom: -14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.entity-title {
+    font-size: 13px;
+    font-weight: 100;
+    color: #000;
+    padding-left: 3px;
+}
+
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+    background: #edfafd !important;
+}
+
+.table > tbody > tr.selected td {
+    background-color: #c4ffff !important;
+}
+
+/*div[data-name="Header"] {
+    position: fixed;
+    top: 30px;
+    z-index: 750;
+    background: #FAFAFA;
+    margin-left: -15px;
+    padding-left: 15px;
+    padding-bottom: 0px;
+}*/
+
+/*div[data-name="Footer"] {
+    position: fixed;
+    bottom: -10px;
+    /*padding-right: 70px;*/ /*
+    background: #FAFAFA;
+    z-index: 3;
+    text-align: right;
+    padding-right: 60px;
+    margin-left: -10px;
+}*/
+
+div[data-name="Footer"] table.section div.control {
+    background: inherit !important;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+    float: right;
+}
+
+.status-label {
+    width: 115% !important; /* This hides the arrow icon */
+    background-color: transparent /* This hides the background */;
+    background-image: none;
+    -webkit-appearance: none /* Webkit Fix */;
+    border: none;
+    box-shadow: none;
+    /*margin-right: 35px;*/
+    max-width: 200px;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+
+span.status-label {
+    width: 115% !important; /* This hides the arrow icon */
+    background-color: transparent /* This hides the background */;
+    background-image: none;
+    -webkit-appearance: none /* Webkit Fix */;
+    border: none;
+    box-shadow: none;
+}
+
+.account-image {
+    height: 55px;
+    width: 55px;
+    margin-top: -45px;
+    float: left;
+    position: absolute;
+    cursor: pointer;
+}
+
+.btn.btn-box-tool:focus, .btn.btn-box-tool:active:focus, .btn.btn-box-tool.active:focus {
+    outline: none;
+}
+
+.btn.btn-default {
+    text-transform: capitalize;
+}
+
+/*.box-with-header {
+    margin-top: 105px;
+}*/
+
+.btn-toggle {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    /*padding: 5px 10px;*/
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 0px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: none;
+    /*color: #97a0b3;*/
+    color: #000;
+    /*margin-bottom: 5px;
+    margin-top: 5px;*/
+    float: right;
+}
+
+    .btn-toggle:hover,
+    .btn-toggle:active,
+    .btn-toggle:focus,
+    .open > .dropdown-toggle.btn-toggle {
+        color: #000 !important;
+        background-color: transparent !important;
+        outline: none !important;
+    }
+
+.notification {
+    z-index: 740 !important;
+}
+
+.users-list {
+    padding-left: 0px;
+    list-style: none;
+}
+
+    .users-list > li {
+        width: 25%;
+        float: left;
+        padding-left: 5px;
+        padding-top: 5px;
+        text-align: center;
+    }
+
+        .users-list > li img {
+            border-radius: 50%;
+            height: 25px;
+            width: 25px;
+        }
+
+        .users-list > li > a:hover,
+        .users-list > li > a:hover .users-list-name {
+            color: #999;
+        }
+
+
+table[data-name=UserList] {
+    margin-left: 5px !important;
+}

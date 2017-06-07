@@ -1,0 +1,159 @@
+﻿.forgot-password {
+    padding-top: 10px;
+    text-align: right;
+    color: #e60026;
+    font-size: 16px;
+}
+
+    .forgot-password:hover {
+        color: #00ace6;
+    }
+
+.padding-left-0 {
+    padding-left: 0px;
+}
+
+.login-page {
+    background: #000;
+}
+
+.login-box-body {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+.login-button {
+    color: #fff;
+    background: #ed1c24;
+    font-weight: bold;
+}
+
+    .login-button:hover {
+        color: #fff !important;
+        background: #000;
+    }
+
+.validation-summary-errors li:first-child::before {
+    content: "\f071";
+    font-family: fontAwesome;
+    font-size: 14px;
+}
+
+.validation-summary-errors ul {
+    list-style: none;
+}
+
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+    color: white;
+    background-color: #ed1c24;
+    border-color: none;
+}
+
+.form-control {
+    border-radius: 0;
+    box-shadow: none;
+    border-color: #d2d6de;
+    background-color: #fff;
+}
+
+.input-sm,
+.form-horizontal .form-group-sm .form-control {
+    height: 30px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+    border-radius: 0px;
+    text-align: center;
+    color: black;
+}
+
+.login-box-msg,
+.register-box-msg {
+    margin: 0;
+    text-align: center;
+    padding: 0 20px 20px 20px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.login-box-body,
+.register-box-body {
+    background: black;
+    padding: 20px;
+    padding-top: 5px;
+    border-top: 0;
+    color: #fff;
+    margin-top: 50%;
+}
+
+p {
+    margin: -10px;
+}
+
+.login-box,
+.register-box {
+    width: 360px;
+    margin: 7% auto;
+}
+
+.login-logo,
+.register-logo {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.form-control {
+    border-radius: 0;
+    box-shadow: none;
+    border-color: #d2d6de;
+    background-color: #fff;
+    text-align: center;
+    font-weight: 500;
+}
+
+.btn-default {
+    color: #fff;
+    background-color: #ed1c24;
+    border-color: none;
+}
+
+.help-block {
+    color: #fff !important;
+    text-align: center;
+}
+
+/*new css*/
+
+.login-box-msg, .register-box-msg {
+    margin: 0;
+    text-align: center;
+    padding: 0 20px 30px 20px;
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.mmpc-logo-left {
+    height: 20px;
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+}
+
+.mmpc-logo-right {
+    height: 110px;
+    width: 100px;
+    float: right;
+    bottom: 1%;
+    position: absolute;
+    right: 0;
+}
