@@ -1882,7 +1882,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                         ? inventoryEntity.GetAttributeValue<String>("gsc_color")
                         : String.Empty;
 
-                    if (preferredColor1 != allocatedColor) { throw new InvalidPluginExecutionException("Allocated vehicle color doesn't match with the preferred color."); }
+                    if (preferredColor1 != allocatedColor) { throw new InvalidPluginExecutionException("Allocated vehicle color doesn't match with the preferred color 1."); }
 
                     var isAllocated = CheckifAllocated(inventoryEntity);
                     var vin = inventoryEntity.GetAttributeValue<String>("gsc_vin");
