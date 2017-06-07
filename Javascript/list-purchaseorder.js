@@ -1,6 +1,6 @@
 $(document).ready(function () { 
   $(document).trigger('createFilter', [[['gsc_vpodate', 'VPO Date']]]);
-  $(document).trigger('enableBulkDelete');
+  $(document).trigger("enableBulkDelete");
   var approverSetupId = filterApproverSetup();
   var message = '';
 
