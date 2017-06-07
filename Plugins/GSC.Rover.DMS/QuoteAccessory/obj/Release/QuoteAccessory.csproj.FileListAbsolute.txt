@@ -52,3 +52,17 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\bin\Release\GSC.Rover.DMS
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\obj\Release\QuoteAccessory.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteAccessory.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteAccessory.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteAccessory.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteAccessory.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceList.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\bin\Release\GSC.Rover.DMS.BusinessLogic.Quote.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceList.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\bin\Release\GSC.Rover.DMS.BusinessLogic.Quote.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\obj\Release\QuoteAccessory.csprojResolveAssemblyReference.cache
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteAccessory.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteAccessory\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteAccessory.pdb

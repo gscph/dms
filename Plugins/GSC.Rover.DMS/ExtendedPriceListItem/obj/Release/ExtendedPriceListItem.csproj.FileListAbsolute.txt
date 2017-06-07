@@ -34,3 +34,12 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\bin\Release\GSC.Ro
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\obj\Release\ExtendedPriceListItem.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\obj\Release\ExtendedPriceListItem.csprojResolveAssemblyReference.cache
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ExtendedPriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem.pdb

@@ -1,13 +1,14 @@
 $(document).ready(function () { 
   $(document).trigger('createFilter', [[['gsc_vpodate', 'VPO Date']]]);
-  $(document).trigger('enableBulkDelete');
+  $(document).trigger("enableBulkDelete");
   var approverSetupId = filterApproverSetup();
+  var message = '';
 
   //Submit Button
   var submitIcn = DMS.Helpers.CreateFontAwesomeIcon('fa-paper-plane');
   var submitBtn = DMS.Helpers.CreateButton('button', 'btn btn-primary cancel', '', ' SUBMIT', submitIcn);
   DMS.Helpers.AppendButtonToToolbar(submitBtn);
-  //For Apporval
+  //For Approval
   var approvalIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-files-o');
   var approvalBtn = DMS.Helpers.CreateButton('button', 'btn btn-primary post', '', ' FOR APPROVAL', approvalIcon);
   DMS.Helpers.AppendButtonToToolbar(approvalBtn);
@@ -24,58 +25,26 @@ $(document).ready(function () {
     var that = $(this);
     var html = that.html();
     var recordArrValidated = getSelectedRecords();
+    message = 'Record(s) submitted!';
     recordArr = GetModelForSelectedRecords(ordered, 'gsc_vpostatus');
     
     if (statusValidator(recordArrValidated, printed) > 0) {
       DMS.Notification.Error('Only records with printed vpo status can be submitted.', true, 5000);
       return false;
-    }
+    }   
     
-    if (recordArr.length > 0) {
-      that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
-      that.addClass('disabled');
-      
-      var url = '/api/EditableGrid/UpdateRecords';
-      var json = JSON.stringify(recordArr);
-      var service = Service('PUT', url, json, DMS.Helpers.DefaultErrorHandler);
-      
-      service.then(function () {
-        DMS.Helpers.RefreshEntityList();
-        DMS.Notification.Success('Record(s) submitted!');
-      }).always(function () {
-        that.html(html);
-        that.removeClass('disabled');
-      });
-      return;
-    }
-    DMS.Notification.Error('Select valid records.');
+    updateRecords(that, recordArr, message);  
   });
   
   approvalBtn.click(function() {
     var that = $(this);
     var html = that.html();
     var approverCount = filterApprovalCount(approverSetupId);
+    message = 'Record(s) submitted for approval!';
     recordArr = GetModelForSelectedRecords(forApproval, 'gsc_approvalstatus');
     
     if (approverCount > 0) {
-      if (recordArr.length > 0) {
-        that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
-        that.addClass('disabled');
-        
-        var url = '/api/EditableGrid/UpdateRecords';
-        var json = JSON.stringify(recordArr);
-        var service = Service('PUT', url, json, DMS.Helpers.DefaultErrorHandler);
-        
-        service.then(function () {
-          DMS.Helpers.RefreshEntityList();
-          DMS.Notification.Success('Record(s) submitted for approval!');
-        }).always(function () {
-          that.html(html);
-          that.removeClass('disabled');
-        });
-        return;
-      }
-      DMS.Notification.Error('Select valid records.');
+      updateRecords(that, recordArr, message);
     }
     else {
       DMS.Notification.Error('There is no approver maintained in approver setup. Transaction cannot proceed');
@@ -96,49 +65,18 @@ $(document).ready(function () {
       var that = $(this);
       var html = that.html();
       recordArr = GetModelForSelectedRecords(approve, 'gsc_approvalstatus');
+      message = 'Record(s) approved!';
       
-      if (recordArr.length > 0) {
-        that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
-        that.addClass('disabled');
-        
-        var url = '/api/EditableGrid/UpdateRecords';
-        var json = JSON.stringify(recordArr);
-        var service = Service('PUT', url, json, DMS.Helpers.DefaultErrorHandler);
-        
-        service.then(function () {
-          DMS.Helpers.RefreshEntityList();
-          DMS.Notification.Success('Record(s) approved!');
-        }).always(function () {
-          that.html(html);
-          that.removeClass('disabled');
-        });
-        return;
-      }
-      DMS.Notification.Error('Select valid records.');
+      updateRecords(that, recordArr, message);      
     });
     
     disapproveBtn.click(function() {
       var that = $(this);
       var html = that.html(); 
       recordArr = GetModelForSelectedRecords(disapprove, 'gsc_approvalstatus');
+      message = 'Records(s) disapproved!';
       
-      if (recordArr.length > 0) {
-        that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
-        that.addClass('disabled');
-        var url = '/api/EditableGrid/UpdateRecords';
-        var json = JSON.stringify(recordArr);
-        var service = Service('PUT', url, json, DMS.Helpers.DefaultErrorHandler);
-        
-        service.then(function () {
-          DMS.Helpers.RefreshEntityList();
-          DMS.Notification.Success('Record(s) disapproved!');
-        }).always(function () {
-          that.html(html);
-          that.removeClass('disabled');
-        });
-        return;
-      }
-      DMS.Notification.Error('Select valid records.');
+      updateRecords(that, recordArr, message);
     });
   }
   
@@ -158,8 +96,7 @@ $(document).ready(function () {
       // row is approved
       if (isRowSelected === 'true' && typeof status !== 'undefined' && typeof approvalStatus !== 'undefined') {
         if(optionSet === 'gsc_approvalstatus') {
-          //validation for approval status
-          
+          //validation for approval status          
           //for approval
           if (triggerStatus === '100000003' && (approvalStatus.Value === '100000002' || approvalStatus.Value === '100000001') && status.Value === '100000000') {
             isValid = true;            
@@ -182,7 +119,7 @@ $(document).ready(function () {
             Attr:  optionSet,
             Value: triggerStatus,
             Type: 'Microsoft.Xrm.Sdk.OptionSetValue'
-          }
+          };
           arr.Records.push(row);
           result.push(arr);
         }
@@ -219,7 +156,7 @@ $(document).ready(function () {
       async: true,
       url: odataUrl,
       success: function (approver) {
-        if (approver.value.length != 0 ) {
+        if (approver.value.length !== 0 ) {
           DrawApprovalButtons();
         }
       },
@@ -256,7 +193,7 @@ $(document).ready(function () {
       if (typeof td !== 'undefined') {
         status = td.data('value').Value;
         if(status !== vpoStatus) {
-          count++;
+          count = count + 1;
         }
       }
     }
@@ -274,5 +211,25 @@ $(document).ready(function () {
       }
     });
     return arr;
+  }
+  
+  function updateRecords(that, recordArr, message) {
+    if (recordArr.length > 0) {
+      that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
+      that.addClass('disabled');
+      var url = '/api/EditableGrid/UpdateRecords';
+      var json = JSON.stringify(recordArr);
+      var service = Service('PUT', url, json, DMS.Helpers.DefaultErrorHandler);
+      
+      service.then(function () {
+        DMS.Helpers.RefreshEntityList();
+        DMS.Notification.Success(message);
+      }).always(function () {
+        that.html(html);
+        that.removeClass('disabled');
+      });
+      return;
+    }
+    DMS.Notification.Error('Select valid records.');
   }
 });
