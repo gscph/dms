@@ -56,3 +56,17 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\Microsoft.Xrm.
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\obj\Release\PriceListItem.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\Microsoft.Xrm.Portal.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\Microsoft.Xrm.Client.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\AntiXssLibrary.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\Microsoft.Xrm.Sdk.Deployment.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\Microsoft.Xrm.Portal.xml
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\Microsoft.Xrm.Client.xml
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\bin\Release\Microsoft.Xrm.Sdk.Deployment.xml
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\obj\Release\PriceListItem.csprojResolveAssemblyReference.cache
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceListItem\obj\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb

@@ -27,3 +27,10 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ChargesItem\bin\Release\GSC.Rover.DMS.Bu
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ChargesItem\obj\Release\ChargesItem.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ChargesItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ChargesItem.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\ChargesItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ChargesItem.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ChargesItem\bin\Release\GSC.Rover.DMS.BusinessLogic.ChargesItem.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ChargesItem\bin\Release\GSC.Rover.DMS.BusinessLogic.ChargesItem.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ChargesItem\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ChargesItem\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ChargesItem\obj\Release\ChargesItem.csprojResolveAssemblyReference.cache
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ChargesItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ChargesItem.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\ChargesItem\obj\Release\GSC.Rover.DMS.BusinessLogic.ChargesItem.pdb

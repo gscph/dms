@@ -19,3 +19,10 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleTransferDetails\bin\Release\GSC.R
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleTransferDetails\obj\Release\VehicleTransferDetails.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleTransferDetails\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleTransferDetails.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleTransferDetails\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleTransferDetails.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransferDetails\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleTransferDetails.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransferDetails\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleTransferDetails.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransferDetails\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransferDetails\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransferDetails\obj\Release\VehicleTransferDetails.csprojResolveAssemblyReference.cache
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransferDetails\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleTransferDetails.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleTransferDetails\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleTransferDetails.pdb

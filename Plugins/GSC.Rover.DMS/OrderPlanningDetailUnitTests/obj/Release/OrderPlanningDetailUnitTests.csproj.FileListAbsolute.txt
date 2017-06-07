@@ -46,3 +46,15 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\obj\Release\OrderPlanningDetailUnitTests.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\obj\Release\OrderPlanningDetailUnitTests.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\obj\Release\OrderPlanningDetailUnitTests.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\OrderPlanningDetailUnitTests.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\OrderPlanningDetailUnitTests.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\Moq.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\Moq.xml
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\obj\Release\OrderPlanningDetailUnitTests.csprojResolveAssemblyReference.cache
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\obj\Release\OrderPlanningDetailUnitTests.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\obj\Release\OrderPlanningDetailUnitTests.pdb

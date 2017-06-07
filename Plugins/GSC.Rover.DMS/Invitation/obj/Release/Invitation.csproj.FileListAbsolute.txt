@@ -33,3 +33,12 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Invitation\bin\Release\Microsoft.Crm.Sdk
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Invitation\obj\Release\Invitation.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Invitation\obj\Release\GSC.Rover.DMS.BusinessLogic.Invitation.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Invitation\obj\Release\GSC.Rover.DMS.BusinessLogic.Invitation.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invitation\bin\Release\GSC.Rover.DMS.BusinessLogic.Invitation.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invitation\bin\Release\GSC.Rover.DMS.BusinessLogic.Invitation.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invitation\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invitation\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invitation\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invitation\bin\Release\Microsoft.Crm.Sdk.Proxy.xml
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invitation\obj\Release\Invitation.csprojResolveAssemblyReference.cache
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invitation\obj\Release\GSC.Rover.DMS.BusinessLogic.Invitation.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invitation\obj\Release\GSC.Rover.DMS.BusinessLogic.Invitation.pdb

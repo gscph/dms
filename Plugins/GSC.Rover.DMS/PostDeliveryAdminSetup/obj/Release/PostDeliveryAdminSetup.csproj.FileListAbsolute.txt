@@ -26,3 +26,10 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PostDeliveryAdminSetup\bin\Release\GSC.R
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PostDeliveryAdminSetup\obj\Release\PostDeliveryAdminSetup.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PostDeliveryAdminSetup\obj\Release\GSC.Rover.DMS.BusinessLogic.PostDeliveryAdminSetup.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\PostDeliveryAdminSetup\obj\Release\GSC.Rover.DMS.BusinessLogic.PostDeliveryAdminSetup.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PostDeliveryAdminSetup\bin\Release\GSC.Rover.DMS.BusinessLogic.PostDeliveryAdminSetup.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PostDeliveryAdminSetup\bin\Release\GSC.Rover.DMS.BusinessLogic.PostDeliveryAdminSetup.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PostDeliveryAdminSetup\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PostDeliveryAdminSetup\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PostDeliveryAdminSetup\obj\Release\PostDeliveryAdminSetup.csprojResolveAssemblyReference.cache
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PostDeliveryAdminSetup\obj\Release\GSC.Rover.DMS.BusinessLogic.PostDeliveryAdminSetup.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PostDeliveryAdminSetup\obj\Release\GSC.Rover.DMS.BusinessLogic.PostDeliveryAdminSetup.pdb

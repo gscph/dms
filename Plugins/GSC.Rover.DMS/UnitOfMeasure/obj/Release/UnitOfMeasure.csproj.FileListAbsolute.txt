@@ -19,3 +19,10 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\UnitOfMeasure\bin\Release\GSC.Rover.DMS.
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\UnitOfMeasure\obj\Release\UnitOfMeasure.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\UnitOfMeasure\obj\Release\GSC.Rover.DMS.BusinessLogic.UnitOfMeasure.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\UnitOfMeasure\obj\Release\GSC.Rover.DMS.BusinessLogic.UnitOfMeasure.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\UnitOfMeasure\bin\Release\GSC.Rover.DMS.BusinessLogic.UnitOfMeasure.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\UnitOfMeasure\bin\Release\GSC.Rover.DMS.BusinessLogic.UnitOfMeasure.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\UnitOfMeasure\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\UnitOfMeasure\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\UnitOfMeasure\obj\Release\UnitOfMeasure.csprojResolveAssemblyReference.cache
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\UnitOfMeasure\obj\Release\GSC.Rover.DMS.BusinessLogic.UnitOfMeasure.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\UnitOfMeasure\obj\Release\GSC.Rover.DMS.BusinessLogic.UnitOfMeasure.pdb

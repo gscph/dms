@@ -27,3 +27,10 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\bin\Release\GSC.Rove
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\obj\Release\OrderPlanningDetail.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\obj\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\obj\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\obj\Release\OrderPlanningDetail.csprojResolveAssemblyReference.cache
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\obj\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.dll
+C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\obj\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.pdb

@@ -54,7 +54,7 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
                 : String.Empty;
 
             QueryExpression queryInvoice = new QueryExpression("invoice");
-            queryInvoice.ColumnSet = new ColumnSet(new[] { "invoiceid", "gsc_salesinvoicestatus", "gsc_paymentmode", "gsc_downpaymentpercentage", "gsc_salesexecutiveid", "customerid", "gsc_invoicedate", "gsc_leadsourceid", "gsc_bankid", "gsc_cancelled" });
+            queryInvoice.ColumnSet = new ColumnSet(new[] { "invoiceid", "gsc_salesinvoicestatus", "gsc_paymentmode", "gsc_downpaymentpercentage", "gsc_salesexecutiveid", "customerid", "gsc_invoicedate", "gsc_leadsourceid", "gsc_bankid", "gsc_issalesreturned" });
 
             FilterExpression filter = new FilterExpression(LogicalOperator.And);
             FilterExpression filter1 = new FilterExpression(LogicalOperator.And);
@@ -127,7 +127,17 @@ namespace GSC.Rover.DMS.BusinessLogic.GVDReport
             gvdDetail["gsc_bankname"] = invoiceEntity.GetAttributeValue<EntityReference>("gsc_bankid") != null
                 ? invoiceEntity.GetAttributeValue<EntityReference>("gsc_bankid").Name
                 : String.Empty;
-            gvdDetail["gsc_cancelled"] = invoiceEntity.GetAttributeValue<Boolean>("gsc_cancelled");
+            var cancelled = false;
+            var invoiceStatus = invoiceEntity.Contains("gsc_salesinvoicestatus")
+                ? invoiceEntity.FormattedValues["gsc_salesinvoicestatus"]
+                : String.Empty;
+            var salesReturned = invoiceEntity.GetAttributeValue<Boolean>("gsc_issalesreturned");
+            if (invoiceStatus == "Cancelled" || salesReturned == true)
+            {
+                cancelled = true;
+            }
+
+            gvdDetail["gsc_cancelled"] = cancelled;
 
             gvdDetail = SetPaymentTerm(gvdDetail, invoiceEntity);
             gvdDetail = SetCustomerDetails(gvdDetail, invoiceEntity);
