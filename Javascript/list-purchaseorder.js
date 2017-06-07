@@ -1,6 +1,6 @@
 $(document).ready(function () { 
   $(document).trigger('createFilter', [[['gsc_vpodate', 'VPO Date']]]);
-  $(document).trigger("enableBulkDelete");
+  $(document).trigger('enableBulkDelete');
   var approverSetupId = filterApproverSetup();
   var message = '';
 
@@ -33,7 +33,7 @@ $(document).ready(function () {
       return false;
     }   
     
-    updateRecords(that, recordArr, message);  
+    updateRecords(that, html, recordArr, message);
   });
   
   approvalBtn.click(function() {
@@ -44,7 +44,7 @@ $(document).ready(function () {
     recordArr = GetModelForSelectedRecords(forApproval, 'gsc_approvalstatus');
     
     if (approverCount > 0) {
-      updateRecords(that, recordArr, message);
+      updateRecords(that, html, recordArr, message);
     }
     else {
       DMS.Notification.Error('There is no approver maintained in approver setup. Transaction cannot proceed');
@@ -67,7 +67,7 @@ $(document).ready(function () {
       recordArr = GetModelForSelectedRecords(approve, 'gsc_approvalstatus');
       message = 'Record(s) approved!';
       
-      updateRecords(that, recordArr, message);      
+      updateRecords(that, html, recordArr, message);
     });
     
     disapproveBtn.click(function() {
@@ -76,7 +76,7 @@ $(document).ready(function () {
       recordArr = GetModelForSelectedRecords(disapprove, 'gsc_approvalstatus');
       message = 'Records(s) disapproved!';
       
-      updateRecords(that, recordArr, message);
+      updateRecords(that, html, recordArr, message);
     });
   }
   
@@ -187,7 +187,7 @@ $(document).ready(function () {
   function statusValidator(records, vpoStatus) {
     var count = 0;
     
-    for(x=0; x<records.length; x++) {
+    for(x = 0; x < records.length; x+= 1) {
       var status, td = $('tr[data-id=' + records[x] + '] td[data-attribute="gsc_vpostatus"]');
       
       if (typeof td !== 'undefined') {
@@ -213,7 +213,7 @@ $(document).ready(function () {
     return arr;
   }
   
-  function updateRecords(that, recordArr, message) {
+  function updateRecords(that, html, recordArr, message) {
     if (recordArr.length > 0) {
       that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
       that.addClass('disabled');
