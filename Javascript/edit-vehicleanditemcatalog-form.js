@@ -2,9 +2,9 @@ $(document).ready(function () {
     $("#gsc_modelcode").attr("readonly", "readonly");
     $("#gsc_optioncode").attr("readonly", "readonly");
 
-    var bodyTypeId = $('#gsc_bodytypeid').val();
+    var bodyTypeId = $("#gsc_bodytypeid").val();
 
-    if (bodyTypeId != null || bodyTypeId != "") {
+    if (bodyTypeId !== null || bodyTypeId !== "") {
         var bodyTypeOdataUrl = "/_odata/bodytype?$filter=gsc_sls_bodytypeid eq (Guid'" + bodyTypeId + "')";
         $.ajax({
             type: "get",
@@ -13,7 +13,7 @@ $(document).ready(function () {
             success: function (data) {
                 var isCabChassis = data.value[0].gsc_cabchassis;
 
-                if (isCabChassis == true) {
+                if (isCabChassis === true) {
                     $("#CabChassis .btn-primary").removeClass("disabled");
                 }
                 else {
@@ -49,11 +49,12 @@ $(document).ready(function () {
 
             var matches = value.match(regex);
 
-            if (matches != null) {
+            if (matches !== null) {
                 return true;
             }
-            else
+            else {
                 return false;
+            }
         };
 
         var warrantyMileageValidator = document.createElement("span");
@@ -68,7 +69,7 @@ $(document).ready(function () {
             var regex = /^[\d]*$/;
             var matches = value.match(regex);
 
-            if (matches != null) {
+            if (matches !== null) {
                 return true;
             }
             else
