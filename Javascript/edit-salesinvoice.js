@@ -52,7 +52,7 @@ $(document).ready(function () {
                         success: function (data) {
                             var isCabChassis = data.value[0].gsc_cabchassis;
 
-                            if (isCabChassis == false) {
+                            if (isCabChassis === false) {
                                 $('[data-name="CAB CHASSIS Add-ons"').parent().hide();
                             }
                         },
@@ -226,7 +226,7 @@ $(document).ready(function () {
         $('#modalPostDate').data('DateTimePicker').setMaxDate(moment());
         checker = true;
         
-        if ($('#modalPostDateValue').val() == '')
+        if ($('#modalPostDateValue').val() === '')
         {
         //alert("test");
         checker = false; 
@@ -272,11 +272,11 @@ $(document).ready(function () {
         $('#printBtn').click(function (e) {
             e.preventDefault();
             var printCount = $('#gsc_print').val();
-            if (printCount == '')
+            if (printCount === '')
                 printCount = 0;
             var print = parseInt(printCount) + 1;
             var invoiceID = $('#name').val();
-            var button = $(this);
+            //var button = $(this);
             var fields = [{ key: 'gsc_print', value: print}, 
                           { key: 'gsc_isdeliveryreceiptandgatepass', value: true, type: 'System.Boolean'}, 
                           { key: 'name', value: invoiceID}];                
@@ -284,7 +284,7 @@ $(document).ready(function () {
             recordArr = GetModelForSelectedRecords(fields,entityId);
             var that = $(this);
             var print_ = $('#printBtn').html();
-        if(status != 'Open')
+        if(status !== 'Open')
         {
             PrintReport();
             $('#printMessageModal').modal('hide');
@@ -371,7 +371,7 @@ $(document).ready(function () {
                                     .text(value.gsc_reasonpn));
 
                 });
-                if(cancelCtr != 0)
+                if(cancelCtr !== 0)
                     $('#statusReason').append($('<option></option>')
                                 .attr('value', 'Others')
                                 .text('Others'));
@@ -397,16 +397,16 @@ $(document).ready(function () {
     });
 
     var invoiceStatusCopy = $('#gsc_invoicestatuscopy').val();
-    if (invoiceStatusCopy != '100000004') {
+    if (invoiceStatusCopy !== '100000004') {
         DMS.Helpers.AppendButtonToToolbar($printBtn);
 
     }
-    if (invoiceStatusCopy == '100000002') {
+    if (invoiceStatusCopy === '100000002') {
             DMS.Helpers.AppendButtonToToolbar($cancelInvoiceButton);
             
     }
         
-    if (invoiceStatusCopy == '100000003') {
+    if (invoiceStatusCopy === '100000003') {
         DMS.Helpers.AppendButtonToToolbar($postTransactionButton);
         DMS.Helpers.AppendButtonToToolbar($cancelInvoiceButton);
         
@@ -415,7 +415,7 @@ $(document).ready(function () {
     $('#statusReason').on('change', function () {
         var selectedStatusReasonText = $('#statusReason option:selected').text();
 
-        if (selectedStatusReasonText != 'Others') {
+        if (selectedStatusReasonText !== 'Others') {
             $('#cancelReason').hide();
         }
         else {
@@ -424,7 +424,7 @@ $(document).ready(function () {
     });
 
   //Modified by Ernest Sarmiento 02-02-2017
-    if (typeof (Page_Validators) == 'undefined') return;
+    if (typeof (Page_Validators) === 'undefined') return;
         
     var statusReasonRemarksValidator = document.createElement('span');
     statusReasonRemarksValidator.style.display = 'none';
@@ -433,7 +433,7 @@ $(document).ready(function () {
     statusReasonRemarksValidator.validationGroup = '';
     statusReasonRemarksValidator.initialvalue = '';
     statusReasonRemarksValidator.evaluationfunction = function () {
-        if ( $('#statusReason option:selected').text() == 'Others' && $('#disqualifyRemarks').val().length <= 0) {
+        if ( $('#statusReason option:selected').text() === 'Others' && $('#disqualifyRemarks').val().length <= 0) {
             return false;
         } else {
             return true;
