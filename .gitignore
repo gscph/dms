@@ -2,9 +2,6 @@
 *.pdb
 *.txt
 *.cache
-*.suo
-*.csproj
-*.vspscc
 *.vssscc
 *sln
 *.force
