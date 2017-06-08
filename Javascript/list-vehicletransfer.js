@@ -29,7 +29,6 @@ $(document).ready(function() {
       DMS.Notification.Error('You can only cancel record(s) with open status', true, 5000);
       return false;
     }
-    
     updateRecords(that, html, recordArr, message);
   });
   
@@ -44,7 +43,6 @@ $(document).ready(function() {
       DMS.Notification.Error('You can only post record(s) with open status', true, 5000);
       return false;
     }
-    
     updateRecords(that, html, recordArr, message);
   });
   
@@ -53,7 +51,6 @@ $(document).ready(function() {
     
     // get configuration from adx layout config.
     var _layouts = $('.entitylist[data-view-layouts]').data('view-layouts');
-    
     
     $('.entity-grid .view-grid table tbody tr').each(function () {
       var that = $(this);
@@ -69,7 +66,7 @@ $(document).ready(function() {
           Attr: 'gsc_transferstatus',
           Value: transferStatus,
           Type: 'Microsoft.Xrm.Sdk.OptionSetValue'
-        }
+        };
         arr.Records.push(row);
         result.push(arr);
       }
@@ -78,7 +75,7 @@ $(document).ready(function() {
   }
   
   function getSelectedRecords() {
-    var arr = []
+    var arr = [];
     
     $('.entity-grid .view-grid table tbody tr').each(function () {
       var isRowSelected = $(this).find('td:first').data('checked');
@@ -99,7 +96,7 @@ $(document).ready(function() {
         status = td.data('value').Value;
         
         if(status != transferStatus) {
-          count++;
+          count = count + 1;
         }
       }
       return count;
