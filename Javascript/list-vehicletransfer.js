@@ -1,6 +1,6 @@
 $(document).ready(function() {
-  $(document).trigger("createFilter", [[["gsc_transferdate", "Transfer Date"]]]);
-  $(document).trigger("enableBulkDelete");
+  $(document).trigger('createFilter', [[['gsc_transferdate', 'Transfer Date']]]);
+  $(document).trigger('enableBulkDelete');
   //Cancel Button
   var cancelIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-ban');
   var cancelBtn = DMS.Helpers.CreateButton('button', 'btn btn-primary cancel', '', ' CANCEL', cancelIcon);
@@ -16,31 +16,21 @@ $(document).ready(function() {
   var openStatus = '100000001';
   var recordArr = [];
   var recordValidator = [];
+  var message = '';
   
   cancelBtn.click(function () {
     var that = $(this);
     var html = that.html();
     recordArr = GetModelForSelectedRecords(cancel);
     recordValidator = getSelectedRecords();
-    if (statusValidator(recordValidator,openStatus) > 0) {DMS.Notification.Error("You can only cancel record(s) with open status",true,5000); return false;}   
-    if (recordArr.length > 0) {
-      that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
-      that.addClass('disabled');
-      
-      var url = "/api/EditableGrid/UpdateRecords";
-      var json = JSON.stringify(recordArr);
-      var service = Service('PUT', url, json, DMS.Helpers.DefaultErrorHandler);
-      
-      service.then(function () {
-        DMS.Helpers.RefreshEntityList();
-        DMS.Notification.Success('Record(s) cancelled!');
-      }).always(function () {
-        that.html(html);
-        that.removeClass('disabled');
-      });
-      return;
+    message = 'Record(s) cancelled!';
+    
+    if (statusValidator(recordValidator, openStatus) > 0) {
+      DMS.Notification.Error('You can only cancel record(s) with open status', true, 5000);
+      return false;
     }
-    DMS.Notification.Error('Please select a record first.');
+    
+    updateRecords(that, html, recordArr, message);
   });
   
   postBtn.click(function() {
@@ -48,32 +38,21 @@ $(document).ready(function() {
     var html = that.html();
     recordArr = GetModelForSelectedRecords(posted);
     recordValidator = getSelectedRecords();
-    if (statusValidator(recordValidator,openStatus) > 0) {DMS.Notification.Error("You can only post record(s) with open status",true,5000); return false;}
-    if (recordArr.length > 0) {
-      that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
-      that.addClass('disabled');
-      
-      var url = "/api/EditableGrid/UpdateRecords";
-      var json = JSON.stringify(recordArr);
-      var service = Service('PUT', url, json, DMS.Helpers.DefaultErrorHandler);
-      
-      service.then(function () {
-        DMS.Helpers.RefreshEntityList();
-        DMS.Notification.Success('Record(s) posted!');
-      }).always(function () {
-        that.html(html);
-        that.removeClass('disabled');
-      });
-      return;
+    message = 'Record(s) posted!';
+    
+    if (statusValidator(recordValidator, openStatus) > 0) {
+      DMS.Notification.Error('You can only post record(s) with open status', true, 5000);
+      return false;
     }
-    DMS.Notification.Error('Please select a record first.');
+    
+    updateRecords(that, html, recordArr, message);
   });
   
   function GetModelForSelectedRecords(transferStatus) {
     var result = [];
     
     // get configuration from adx layout config.
-    var _layouts = $('.entitylist[data-view-layouts]').data("view-layouts");
+    var _layouts = $('.entitylist[data-view-layouts]').data('view-layouts');
     
     
     $('.entity-grid .view-grid table tbody tr').each(function () {
@@ -81,7 +60,7 @@ $(document).ready(function() {
       var isRowSelected = that.find('td:first').data('checked');
       
       // row is approved
-      if (isRowSelected == "true") {
+      if (isRowSelected === 'true') {
         var arr = { Id: null, Entity: null, Records: [] };
         arr.Entity = _layouts[0].Configuration.EntityName;
         arr.Id = that.data('id');
@@ -104,7 +83,7 @@ $(document).ready(function() {
     $('.entity-grid .view-grid table tbody tr').each(function () {
       var isRowSelected = $(this).find('td:first').data('checked');
       
-      if (isRowSelected == "true") {
+      if (isRowSelected === 'true') {
         arr.push($(this).data('id'));
       }
     });
@@ -113,7 +92,7 @@ $(document).ready(function() {
   
   function statusValidator(records, transferStatus) {
     var count = 0;
-    for(x=0; x<records.length; x++) {
+    for(x = 0; x < records.length; x += 1) {
       var status, td = $('tr[data-id=' + records[x] + '] td[data-attribute="gsc_transferstatus"]');
       
       if (typeof td !== 'undefined') {
@@ -125,5 +104,25 @@ $(document).ready(function() {
       }
       return count;
     }
+  }
+  
+  function updateRecords(that, html, recordArr, message) {
+    if (recordArr.length > 0) {
+      that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
+      that.addClass('disabled');
+      var url = '/api/EditableGrid/UpdateRecords';
+      var json = JSON.stringify(recordArr);
+      var service = Service('PUT', url, json, DMS.Helpers.DefaultErrorHandler);
+      
+      service.then(function () {
+        DMS.Helpers.RefreshEntityList();
+        DMS.Notification.Success(message);
+      }).always(function () {
+        that.html(html);
+        that.removeClass('disabled');
+      });
+      return;
+    }
+    DMS.Notification.Error('Select valid records.');
   }
 });
