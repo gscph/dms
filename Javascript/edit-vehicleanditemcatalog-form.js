@@ -32,6 +32,9 @@ $(document).ready(function () {
 
     createValidators();
 
+    Page_Validators.push(expiryDaysValidator);
+    Page_Validators.push(warrantyMileageValidator);
+
     function createValidators() {
         var expiryDaysValidator = document.createElement("span");
         expiryDaysValidator.style.display = "none";
@@ -71,8 +74,5 @@ $(document).ready(function () {
             else
                 return false;
         };
-
-        Page_Validators.push(expiryDaysValidator);
-        Page_Validators.push(warrantyMileageValidator);
     }
 });
