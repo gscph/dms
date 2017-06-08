@@ -21,20 +21,17 @@ $(document).ready(function (e) {
     function CheckStatus() {
         setTimeout(function () {
             var stateCode = $(".record-status").html();
-            if (stateCode === 'Draft') 
-			{
+            if (stateCode == 'Draft') {
                 paymentModeOnChange("onload");
             }
-            else if (stateCode === "Active") 
-			{
+            else if (stateCode == "Active") {
                 $('#SubmitButton').attr("disabled", true);
                 $('.delete-link').attr("disabled", true);
                 $("#btnSaveCopy").attr("disabled", true);
                 $(".cancel").attr("disabled", true);
                 $(".addnew").attr("disabled", true);
             }
-            else if (stateCode === "Closed" || stateCode === "Won") 
-			{
+            else if (stateCode == "Closed" || stateCode == "Won") {
                 $('#SubmitButton').attr("disabled", true);
                 $('.delete-link').attr("disabled", true);
                 $('#btnRecalculate').attr("disabled", true);
@@ -76,7 +73,7 @@ $(document).ready(function (e) {
     }
 
     function CheckifGovernment() {
-        if ($("#customerid_entityname").val() === "account") {
+        if ($("#customerid_entityname").val() == "account") {
             var accountid = $("#customerid").val();
 
             var odataUrl = "/_odata/account?$filter=accountid eq (Guid'" + accountid + "')";
@@ -88,7 +85,7 @@ $(document).ready(function (e) {
                 success: function (data) {
                     for (var i = 0; i < data.value.length; i++) {
                         var obj = data.value[i];
-                        if (obj.gsc_customertype.Name === 'Corporate') {
+                        if (obj.gsc_customertype.Name == "Corporate") {
                             $("#customerid_name").closest("td").attr("colspan", 4);
                             $('label[for=gsc_markup], input#gsc_markup').hide();
                         }
@@ -100,7 +97,7 @@ $(document).ready(function (e) {
             });
         }
         else {
-            $('#customerid_name').closest('td').attr('colspan', 4);
+            $("#customerid_name").closest("td").attr("colspan", 4);
             $('label[for=gsc_markup], input#gsc_markup').hide();
         }
     }
@@ -109,18 +106,18 @@ $(document).ready(function (e) {
     $('#gsc_netdownpayment').attr('readonly', true);
     $('#gsc_amountfinanced').attr('readonly', true);
     $('#gsc_netamountfinanced').attr('readonly', true);
-    var status = $('.record-status').html();
+    var status = $(".record-status").html();
 
     //set page validators
-    if (typeof (Page_Validators) === 'undefined') return;
+    if (typeof (Page_Validators) == 'undefined') return;
 
     //Validator when valid until is not less than current date
     var validUntilValidator = document.createElement('span');
-    validUntilValidator.style.display = 'none';
-    validUntilValidator.id = 'RequiredFieldValidatorvaliduntil';
-    validUntilValidator.errormessage = 'Valid Until Date should not be less than the current date.';
-    validUntilValidator.validationGroup = '';
-    validUntilValidator.initialvalue = '';
+    validUntilValidator.style.display = "none";
+    validUntilValidator.id = "RequiredFieldValidatorvaliduntil";
+    validUntilValidator.errormessage = "Valid Until Date should not be less than the current date.";
+    validUntilValidator.validationGroup = "";
+    validUntilValidator.initialvalue = "";
     validUntilValidator.evaluationfunction = function () {
         var validDate = $("#gsc_validuntil").val() == "" ? 0 : $("#gsc_validuntil").val();
         var currentDate = new Date();
@@ -228,37 +225,37 @@ $(document).ready(function (e) {
     };
 
     // TBD !!! : Insurance validators Created By : Jerome Anthony Gerero, Created On : 1/26/2017
-   /* var rateValidator = document.createElement('span');
-    rateValidator.style.display = 'none';
-    rateValidator.id = 'RequiredFieldValidatorgsc_rate';
-    rateValidator.controltovalidate = 'gsc_rate';
-    rateValidator.errormessage = '<a href="#gsc_rate"> Rate % is a required field</a>';
-    rateValidator.validationGroup = '';
-    rateValidator.initialvalue = '';
-    rateValidator.evaluationfunction = function () {
-        var value = $('#gsc_rate').val();
-        if (value == null || value == '') {
-            return false;
-        } else {
-            return true;
-        }
-    };
-
-    var costValidator = document.createElement('span');
-    costValidator.style.display = 'none';
-    costValidator.id = 'RequiredFieldValidatorgsc_cost';
-    costValidator.controltovalidate = 'gsc_cost';
-    costValidator.errormessage = '<a href="#gsc_cost"> Cost is a required field</a>';
-    costValidator.validationGroup = '';
-    costValidator.initialvalue = '';
-    costValidator.evaluationfunction = function () {
-        var value = $('#gsc_cost').val();
-        if (value == null || value == '') {
-            return false;
-        } else {
-            return true;
-        }
-    }; */
+    /* var rateValidator = document.createElement('span');
+     rateValidator.style.display = 'none';
+     rateValidator.id = 'RequiredFieldValidatorgsc_rate';
+     rateValidator.controltovalidate = 'gsc_rate';
+     rateValidator.errormessage = '<a href="#gsc_rate"> Rate % is a required field</a>';
+     rateValidator.validationGroup = '';
+     rateValidator.initialvalue = '';
+     rateValidator.evaluationfunction = function () {
+         var value = $('#gsc_rate').val();
+         if (value == null || value == '') {
+             return false;
+         } else {
+             return true;
+         }
+     };
+ 
+     var costValidator = document.createElement('span');
+     costValidator.style.display = 'none';
+     costValidator.id = 'RequiredFieldValidatorgsc_cost';
+     costValidator.controltovalidate = 'gsc_cost';
+     costValidator.errormessage = '<a href="#gsc_cost"> Cost is a required field</a>';
+     costValidator.validationGroup = '';
+     costValidator.initialvalue = '';
+     costValidator.evaluationfunction = function () {
+         var value = $('#gsc_cost').val();
+         if (value == null || value == '') {
+             return false;
+         } else {
+             return true;
+         }
+     }; */
     //End Insurance validators
 
     //Enable/disable insurance fields
@@ -312,14 +309,14 @@ $(document).ready(function (e) {
         });
     }, 100);
 
-   /* function hideAutoFinancingTab() //when cash TBD!!!!
-    {
-        $(".nav.nav-tabs li:first").removeClass("active");
-        $(".nav.nav-tabs li:first").hide();
-        $("#tab-1-0").removeClass("active");
-        $("#tab-1-1").addClass("active");
-        $(".nav.nav-tabs li:nth-child(1)").addClass("active");
-    }*/
+    /* function hideAutoFinancingTab() //when cash TBD!!!!
+     {
+         $(".nav.nav-tabs li:first").removeClass("active");
+         $(".nav.nav-tabs li:first").hide();
+         $("#tab-1-0").removeClass("active");
+         $("#tab-1-1").addClass("active");
+         $(".nav.nav-tabs li:nth-child(1)").addClass("active");
+     }*/
 
     function paymentModeOnChange(action) {
         var paymentmode = $("#gsc_paymentmode").val();
@@ -503,17 +500,17 @@ $(document).ready(function (e) {
     }
 
     //retrieve product sell price and vehicle color additional price
-   /* var netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
-    var additional = parseFloat($('#gsc_colorprice').html().substr(1).replace(/,/g, ""));;
-    var unitprice = parseFloat($('#gsc_unitprice').html().substr(1).replace(/,/g, ""));;
-    var netamountfinanced = 0.00;
-    var netdp = 0.00;
-    var amountfinanced = 0.00;
-    var netdownpayment = 0.00;
-    var aflessdiscount = 0.00;
-    var downpayment = $("#gsc_downpaymentamount").val();
-    var dppercent = $("#gsc_downpaymentpercentage").val();
-    var lessdiscount = $("#gsc_lessdiscount").val(); */
+    /* var netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
+     var additional = parseFloat($('#gsc_colorprice').html().substr(1).replace(/,/g, ""));;
+     var unitprice = parseFloat($('#gsc_unitprice').html().substr(1).replace(/,/g, ""));;
+     var netamountfinanced = 0.00;
+     var netdp = 0.00;
+     var amountfinanced = 0.00;
+     var netdownpayment = 0.00;
+     var aflessdiscount = 0.00;
+     var downpayment = $("#gsc_downpaymentamount").val();
+     var dppercent = $("#gsc_downpaymentpercentage").val();
+     var lessdiscount = $("#gsc_lessdiscount").val(); */
 
     //validations
     setTimeout(function () {
@@ -525,28 +522,28 @@ $(document).ready(function (e) {
         $('#gsc_downpaymentpercentage').click(function () {
             $(this).get(0).type = 'number';
         });
-        
-      $('#gsc_downpaymentamount').blur(function () {
-			  var netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
-			  var dpAmount = parseFloat($('#gsc_downpaymentamount').val().replace(/,/g, ""));
+
+        $('#gsc_downpaymentamount').blur(function () {
+            var netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
+            var dpAmount = parseFloat($('#gsc_downpaymentamount').val().replace(/,/g, ""));
             if (dpAmount > netPrice) {
                 //do not allow greater than net price
-				        this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+                this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
                 $("#gsc_downpaymentamount").trigger('change');
             }
-		  });
-        
+        });
+
         //$('#gsc_downpaymentamount').blur(function () {
-            //if (this.value < 0) {
-                //do not allow less than 0 input
-             //   this.value = 0;
-            //}
-			//var dpamount = $('#gsc_downpaymentamount').val().replace(/,/g, '');
-            //if ((parseFloat(dpamount)) > (parseFloat(netPrice))) {
-                //do not allow greater than net price
-             //   this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-              //  $("#gsc_downpaymentamount").trigger('change');
-            //}
+        //if (this.value < 0) {
+        //do not allow less than 0 input
+        //   this.value = 0;
+        //}
+        //var dpamount = $('#gsc_downpaymentamount').val().replace(/,/g, '');
+        //if ((parseFloat(dpamount)) > (parseFloat(netPrice))) {
+        //do not allow greater than net price
+        //   this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+        //  $("#gsc_downpaymentamount").trigger('change');
+        //}
         //});
 
         $('#gsc_downpaymentpercentage').blur(function () {
@@ -590,109 +587,109 @@ $(document).ready(function (e) {
             $("#gsc_netamountfinanced").val("");
             $.cookie("productId", $("#gsc_productid").val(), { path: '/' });
 
-            getUnitPrice();
+            //getUnitPrice();
         });
 
-      /*  TBD!!! $('#gsc_vehiclecolorid1').on('change', function () {
-            //recompute everything
-            additional = 0.00;
-            netamountfinanced = 0.00;
-            netdp = 0.00;
-            amountfinanced = 0.00;
-            netdownpayment = 0.00;
-            aflessdiscount = 0.00;
-            additional = 0.0;
-
-            //$("#gsc_downpaymentamount").val("");
-            //$("#gsc_downpaymentpercentage").val("");
-            //$("#gsc_netdownpayment").val("");
-            //$("#gsc_amountfinanced").val("");
-            //$("#gsc_netamountfinanced").val("");
-
-            getAdditionalPrice();
-        }); */
+        /*  TBD!!! $('#gsc_vehiclecolorid1').on('change', function () {
+              //recompute everything
+              additional = 0.00;
+              netamountfinanced = 0.00;
+              netdp = 0.00;
+              amountfinanced = 0.00;
+              netdownpayment = 0.00;
+              aflessdiscount = 0.00;
+              additional = 0.0;
+  
+              //$("#gsc_downpaymentamount").val("");
+              //$("#gsc_downpaymentpercentage").val("");
+              //$("#gsc_netdownpayment").val("");
+              //$("#gsc_amountfinanced").val("");
+              //$("#gsc_netamountfinanced").val("");
+  
+              getAdditionalPrice();
+          }); */
 
     }, 300);
 
-   /* TBD //get unit price from vehicle and item catalog
-    function getUnitPrice() {
-        setTimeout(function () {
-            var vehicleid = $("#gsc_productid").val();
+    /* TBD //get unit price from vehicle and item catalog
+     function getUnitPrice() {
+         setTimeout(function () {
+             var vehicleid = $("#gsc_productid").val();
+ 
+             if (vehicleid != "" && vehicleid != "Nan" && vehicleid != "undefined") {
+                 var odataUrl = "/_odata/vehicleanditemcatalog?$filter=productid eq (Guid'" + vehicleid + "')";
+ 
+                 $.ajax({
+                     type: "get",
+                     async: true,
+                     url: odataUrl,
+                     success: function (data) {
+                         for (var i = 0; i < data.value.length; i++) {
+                             var obj = data.value[i];
+                             for (var key in obj) {
+                                 var attrName = key;
+                                 var attrValue = obj[key];
+                                 if (attrName == 'gsc_sellprice') {
+                                     unitprice = parseFloat(attrValue);
+ 
+                                     if (unitprice == 0 || unitprice == '') {
+                                         DMS.Notification.Error("WARNING! The vehicle you selected doesn't have sell price.", true, 5000);
+                                     }
+                                     getAdditionalPrice();
+                                 }
+                             }
+                         }
+                     },
+                     error: function (xhr, textStatus, errorMessage) {
+                         console.log(errorMessage);
+                     }
+                 });
+             }
+         }, 100);
+     }
+ 
+     //get additoinal price from vehiclecolor
+     function getAdditionalPrice() {
+         setTimeout(function () {
+ 
+             var vehiclecolorid = $("#gsc_vehiclecolorid1").val();
+ 
+             if ($('#gsc_vehiclecolorid1_name').val() == "") {
+                 vehiclecolorid = "";
+             }
+ 
+             if (vehiclecolorid != "" && vehiclecolorid != "Nan" && vehiclecolorid != "undefined") {
+                 var odataUrl = "/_odata/vehiclecolor?$filter=gsc_cmn_vehiclecolorid eq (Guid'" + vehiclecolorid + "')";
+ 
+                 $.ajax({
+                     type: "get",
+                     async: true,
+                     url: odataUrl,
+                     success: function (data) {
+                         for (var i = 0; i < data.value.length; i++) {
+                             var obj = data.value[i];
+                             for (var key in obj) {
+                                 var attrName = key;
+                                 var attrValue = obj[key];
+                                 if (attrName == 'gsc_additionalprice') {
+                                     additional = parseFloat(attrValue);
+                                 }
+                             }
+                         }
+                     },
+                     error: function (xhr, textStatus, errorMessage) {
+                         console.log(errorMessage);
+                     }
+                 });
+             }
+             else {
+                 additional = 0.00;
+             }
+ 
+         }, 1000);
+     }
+ */
 
-            if (vehicleid != "" && vehicleid != "Nan" && vehicleid != "undefined") {
-                var odataUrl = "/_odata/vehicleanditemcatalog?$filter=productid eq (Guid'" + vehicleid + "')";
-
-                $.ajax({
-                    type: "get",
-                    async: true,
-                    url: odataUrl,
-                    success: function (data) {
-                        for (var i = 0; i < data.value.length; i++) {
-                            var obj = data.value[i];
-                            for (var key in obj) {
-                                var attrName = key;
-                                var attrValue = obj[key];
-                                if (attrName == 'gsc_sellprice') {
-                                    unitprice = parseFloat(attrValue);
-
-                                    if (unitprice == 0 || unitprice == '') {
-                                        DMS.Notification.Error("WARNING! The vehicle you selected doesn't have sell price.", true, 5000);
-                                    }
-                                    getAdditionalPrice();
-                                }
-                            }
-                        }
-                    },
-                    error: function (xhr, textStatus, errorMessage) {
-                        console.log(errorMessage);
-                    }
-                });
-            }
-        }, 100);
-    }
-
-    //get additoinal price from vehiclecolor
-    function getAdditionalPrice() {
-        setTimeout(function () {
-
-            var vehiclecolorid = $("#gsc_vehiclecolorid1").val();
-
-            if ($('#gsc_vehiclecolorid1_name').val() == "") {
-                vehiclecolorid = "";
-            }
-
-            if (vehiclecolorid != "" && vehiclecolorid != "Nan" && vehiclecolorid != "undefined") {
-                var odataUrl = "/_odata/vehiclecolor?$filter=gsc_cmn_vehiclecolorid eq (Guid'" + vehiclecolorid + "')";
-
-                $.ajax({
-                    type: "get",
-                    async: true,
-                    url: odataUrl,
-                    success: function (data) {
-                        for (var i = 0; i < data.value.length; i++) {
-                            var obj = data.value[i];
-                            for (var key in obj) {
-                                var attrName = key;
-                                var attrValue = obj[key];
-                                if (attrName == 'gsc_additionalprice') {
-                                    additional = parseFloat(attrValue);
-                                }
-                            }
-                        }
-                    },
-                    error: function (xhr, textStatus, errorMessage) {
-                        console.log(errorMessage);
-                    }
-                });
-            }
-            else {
-                additional = 0.00;
-            }
-
-        }, 1000);
-    }
-*/	
-	
 
     //onchange events
     setTimeout(function () {
@@ -705,27 +702,28 @@ $(document).ready(function (e) {
         });
 
         $("#gsc_downpaymentamount").on('change', function () {
-			var netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
-			var dpAmount = parseFloat($('#gsc_downpaymentamount').val().replace(/,/g, ""));
+            var netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
+            var dpAmount = parseFloat($('#gsc_downpaymentamount').val().replace(/,/g, ""));
             computeDownPaymentPercent();
-			
+
             if (paymentMode == '100000001') {
                 if ($("#gsc_downpaymentamount").val() > 0) {
                     Page_Validators = jQuery.grep(Page_Validators, function (value) {
                         return value != downPaymentPercentageValidator;
                     });
                     $('#gsc_downpaymentpercentage_label').parent('div').removeClass('required');
-                } 
-				else if ($("#gsc_downpaymentamount").val() == 0 || $("#gsc_downpaymentamount").val() == '') {
+                }
+                else if ($("#gsc_downpaymentamount").val() == 0 || $("#gsc_downpaymentamount").val() == '') {
                     Page_Validators.push(downPaymentPercentageValidator);
                     $('#gsc_downpaymentpercentage_label').parent('div').addClass('required');
                 }
             }
-			
-			if ((parseFloat(dpAmount)) > (parseFloat(netPrice))) {
-              //do not allow greater than net price
-			this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');}
-			
+
+            if ((parseFloat(dpAmount)) > (parseFloat(netPrice))) {
+                //do not allow greater than net price
+                this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+            }
+
         });
 
         $("#gsc_downpaymentpercentage").on('change', function () {
@@ -745,8 +743,8 @@ $(document).ready(function (e) {
         });
 
         $('#gsc_netdownpayment').on('change', function () {
-			var netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
-			var additional = 0.00;
+            var netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
+            var additional = 0.00;
             if (paymentMode == '100000001' || (paymentMode == '100000002' && parseFloat(downpayment) != 0)) {
                 computeAmountFinanced(additional, netPrice);
             }
@@ -831,9 +829,9 @@ $(document).ready(function (e) {
         if (amountfinanced > 0) {
             netamountfinanced = parseFloat(amountfinanced) - parseFloat(aflessdiscount);
             $("#gsc_totalamountfinanced").val(netamountfinanced.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
-        } 
-		else {
-           // $("#gsc_totalamountfinanced").val(amountfinanced.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+        }
+        else {
+            // $("#gsc_totalamountfinanced").val(amountfinanced.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
         }
     }
 
@@ -1163,21 +1161,21 @@ $(document).ready(function (e) {
         var isDuplicate = false;
 
         if (colorNum == 1) {
-            if (color1 === color2 && color1 != '' && color2 != '')
+            if (color1 == color2 && color1 != "" && color2 != "")
                 isDuplicate = true;
-            else if (color1 === color3 && color3 != '')
+            else if (color1 == color3 && color3 != "")
                 isDuplicate = true;
         }
         else if (colorNum == 2) {
-            if (color2 === color1 && color1 != '' && color2 != '')
+            if (color2 == color1 && color1 != "" && color2 != "")
                 isDuplicate = true;
-            else if (color2 === color3 && color3 != '')
+            else if (color2 == color3 && color3 != "")
                 isDuplicate = true;
         }
         else if (colorNum == 3) {
-            if (color3 === color1 && color1 != '' && color3 != '')
+            if (color3 == color1 && color1 != "" && color3 != "")
                 isDuplicate = true;
-            else if (color3 === color2 && color2 != '')
+            else if (color3 == color2 && color2 != "")
                 isDuplicate = true;
         }
         else
