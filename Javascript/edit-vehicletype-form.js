@@ -1,13 +1,13 @@
 $(document).ready(function () {
     $(".section[data-name='hiddenfields']").closest("fieldset").hide();
-    $('#gsc_vehicletypepn').attr("readonly", true);
+    $("#gsc_vehicletypepn").attr("readonly", true);
 
-    if (typeof (Page_Validators) == 'undefined') return;
+    if (typeof (Page_Validators) === "undefined") return;
 
     createValidators();
 
     function createValidators() {
-        var vehicleTypeValidator = document.createElement('span');
+        var vehicleTypeValidator = document.createElement("span");
         vehicleTypeValidator.style.display = "none";
         vehicleTypeValidator.id = "RequiredFieldValidatorgsc_vehicletypepn";
         vehicleTypeValidator.controltovalidate = "gsc_vehicletypepn";
@@ -17,16 +17,16 @@ $(document).ready(function () {
         vehicleTypeValidator.evaluationfunction = function () {
             var value = $("#gsc_vehicletypepn").val();
             var regex = /[a-zA-Z]/;
-
             var matches = value.match(regex);
 
             if (matches != null) {
                 return true;
             }
-            else
+            else {
                 return false;
+            }
         };
-
-        Page_Validators.push(vehicleTypeValidator);
     }
+
+    Page_Validators.push(vehicleTypeValidator);
 });
