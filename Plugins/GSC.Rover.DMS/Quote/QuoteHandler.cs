@@ -1784,6 +1784,8 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
         */
         public Entity UpdateGovernmentTax(Entity quoteEntity, String message)
         {
+            _tracingService.Trace("Started UpdateGovernmentTax Method...");
+
             var productId = quoteEntity.GetAttributeValue<EntityReference>("gsc_productid") != null
                 ? quoteEntity.GetAttributeValue<EntityReference>("gsc_productid").Id
                 : Guid.Empty;
@@ -1823,31 +1825,30 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                     quoteEntity["gsc_totalamountfinanced"] = new Money(amountfinanced);
                 }
 
-                quoteEntity["gsc_totalcashoutlay"] = ComputeCashLayout(quoteEntity);
+                quoteEntity["gsc_totalcashoutlay"] = new Money(ComputeCashLayout(quoteEntity));
 
                 if (message == "Update")
                 {
                     Entity quoteToUpdate = _organizationService.Retrieve(quoteEntity.LogicalName, quoteEntity.Id, new ColumnSet("gsc_colorprice", "gsc_netprice",
                         "gsc_amountfinanced", "gsc_netprice", "gsc_vatablesales", "gsc_vehicleunitprice", "gsc_vatexemptsales", "gsc_zeroratedsales", "gsc_totalcashoutlay",
                         "gsc_vatamount", "gsc_totalamountdue", "gsc_totalamountfinanced", "gsc_totalsales", "gsc_unitprice", "gsc_downpaymentamount"));
-                    quoteToUpdate["gsc_unitprice"] = quoteEntity["gsc_vehicleunitprice"];
-                    quoteToUpdate["gsc_vehicleunitprice"] = quoteEntity["gsc_vehicleunitprice"];
-                    quoteToUpdate["gsc_netprice"] = new Money(netprice);
-                    quoteToUpdate["gsc_amountfinanced"] = amountfinanced == 0 ? null : new Money(amountfinanced);
+                    quoteToUpdate["gsc_unitprice"] = quoteEntity["gsc_vehicleunitprice"];                  
+                    quoteToUpdate["gsc_vehicleunitprice"] = quoteEntity["gsc_vehicleunitprice"];                  
+                    quoteToUpdate["gsc_netprice"] = new Money(netprice);                    
+                    quoteToUpdate["gsc_amountfinanced"] = amountfinanced == 0 ? null : new Money(amountfinanced);                   
                     quoteToUpdate["gsc_totalamountfinanced"] = new Money(amountfinanced);
-                    quoteToUpdate["gsc_vatablesales"] = quoteEntity["gsc_vatablesales"];
-                    quoteToUpdate["gsc_vatexemptsales"] = quoteEntity["gsc_vatexemptsales"];
-                    quoteToUpdate["gsc_zeroratedsales"] = quoteEntity["gsc_zeroratedsales"];
+                    quoteToUpdate["gsc_vatablesales"] = quoteEntity["gsc_vatablesales"];                  
+                    quoteToUpdate["gsc_vatexemptsales"] = quoteEntity["gsc_vatexemptsales"];                  
+                    quoteToUpdate["gsc_zeroratedsales"] = quoteEntity["gsc_zeroratedsales"];                   
                     quoteToUpdate["gsc_totalsales"] = quoteEntity["gsc_totalsales"];
                     quoteToUpdate["gsc_vatamount"] = quoteEntity["gsc_vatamount"];
-                    quoteToUpdate["gsc_totalamountdue"] = quoteEntity["gsc_totalamountdue"];
+                    quoteToUpdate["gsc_totalamountdue"] = quoteEntity["gsc_totalamountdue"];                   
                     quoteToUpdate["gsc_downpaymentamount"] = new Money(downPaymentAmount);
                     quoteToUpdate["gsc_downpaymentdisplay"] = new Money(downPaymentAmount);
                     quoteToUpdate["gsc_totalcashoutlay"] = quoteEntity["gsc_totalcashoutlay"];
-
                     _organizationService.Update(quoteToUpdate);
 
-                    _tracingService.Trace("Updated Color Price ...");
+                    _tracingService.Trace("Ended UpdateGovernmentTax Method...");
 
                     return quoteToUpdate;
                 }
