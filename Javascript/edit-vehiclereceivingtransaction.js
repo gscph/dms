@@ -11,7 +11,27 @@ $(document).ready(function () {
         $('#gsc_actualreceiptdate').next('.datetimepicker').data("DateTimePicker").setMinDate(e.date);
     });
     },100);
-    
+	
+    var actualReceiptValidator = document.createElement('span');
+    actualReceiptValidator.style.display = "none";
+    actualReceiptValidator.id = "RequiredFieldValidatorvaliduntil";
+    actualReceiptValidator.errormessage = "Actual Receipt Date should not be less than the In-Transit Receipt Date.";
+    actualReceiptValidator.validationGroup = "";
+    actualReceiptValidator.initialvalue = "";
+    actualReceiptValidator.evaluationfunction = function () {
+        var actualReceiptDate = $("#gsc_actualreceiptdate").val() == "" ? 0 : $("#gsc_actualreceiptdate").val();
+        var intransitReceiptDate = $("#gsc_intransitreceiptdate").val() == "" ? 0 : $("#gsc_intransitreceiptdate").val();
+
+        if ((actualReceiptDate) >= (intransitReceiptDate)) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+        Page_Validators.push(actualReceiptValidator);
+   
+	
+
     //Initialize editable grid
     $(document).trigger('initializeEditableGrid', vehicleComponentChecklistGridInstance);
     //Add readonly attribute to status fields
@@ -82,6 +102,8 @@ $(document).ready(function () {
     }
 
    setTimeout(function () {
+     $("#gsc_purchaseorderid").siblings(".input-group-btn").hide();
+     
         $('input[aria-describedby="gsc_actualreceiptdate_description"]').on('change', function () {
             $("#gsc_actualreceiptdate").val("");
         });
@@ -111,6 +133,9 @@ $(document).ready(function () {
             });
             Page_Validators = jQuery.grep(Page_Validators, function (value) {
                 return value != siteValidator;
+            });
+             Page_Validators = jQuery.grep(Page_Validators, function (value) {
+                return value != actualReceiptValidator;
             });
 
             cancelConfirmation.find('.confirmModal').on('click', function () {
