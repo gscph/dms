@@ -23,7 +23,7 @@
     </div>
     <div id="mainContents" class="body-container">
         <h1 id="EntityListTitle" class="hidden">
-            <adx:Property PropertyName="adx_title,adx_name" DataItem="<%$ CrmSiteMap: Current %>' runat="server" />
+            <adx:Property PropertyName="adx_title,adx_name" DataItem="<%$ CrmSiteMap: Current %>" runat="server" />
         </h1>
         <div class="notifications "></div>
          <div class="box box-primary">

@@ -348,5 +348,34 @@ namespace Site.Areas.DMSApi
             }
             return duplicateFound;
         }
+
+        public Privileges GetEditableGridEntityPermission(Guid webRoleId, String entityName)
+        {
+            //Retrieve Entity Permission
+            QueryExpression queryEntityPermission = new QueryExpression("adx_entitypermission");
+            queryEntityPermission.ColumnSet = new ColumnSet(true);
+            queryEntityPermission.LinkEntities.Add(new LinkEntity("adx_entitypermission", "adx_entitypermission_webrole", "adx_entitypermissionid", "adx_entitypermissionid", JoinOperator.Inner));
+            queryEntityPermission.LinkEntities[0].LinkCriteria.AddCondition("adx_webroleid", ConditionOperator.Equal, webRoleId);
+            queryEntityPermission.Criteria.AddCondition(new ConditionExpression("adx_entitylogicalname", ConditionOperator.Equal, entityName));
+            EntityCollection entityPermissionCollection = _service.ServiceContext.RetrieveMultiple(queryEntityPermission);
+
+            if (entityPermissionCollection != null && entityPermissionCollection.Entities.Count > 0)
+            {
+                Entity entityPermission = entityPermissionCollection.Entities[0];
+
+                Privileges privileges = new Privileges();
+
+                privileges.Read = entityPermission.GetAttributeValue<bool>("adx_read");
+                privileges.Create = entityPermission.GetAttributeValue<bool>("adx_create");
+                privileges.Update = entityPermission.GetAttributeValue<bool>("adx_write");
+                privileges.Delete = entityPermission.GetAttributeValue<bool>("adx_delete");
+                privileges.Append = entityPermission.GetAttributeValue<bool>("adx_append");
+                privileges.AppendTo = entityPermission.GetAttributeValue<bool>("adx_appendto");
+                privileges.Scope = (Scope)entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
+                return privileges;
+            }
+
+            return null;
+        }
     }
 }
