@@ -89,10 +89,13 @@ namespace Site.Areas.DMS_Api.XrmWebService
                     branchSettings.DealerName = dealer.Name;
 
                     branchSettings.DealerId = dealer.Id;
-                    
-                    branchSettings.Position.Id = position.Id;
 
-                    branchSettings.Position.Name = position.Name;
+                    if (position != null)
+                    {
+                        branchSettings.Position.Id = position.Id;
+
+                        branchSettings.Position.Name = position.Name;
+                    }
 
                     branchSettings.ReportsTo = entity.GetAttributeValue<AliasedValue>("Contact.gsc_reportsto") != null
                         ? ((EntityReference)entity.GetAttributeValue<AliasedValue>("Contact.gsc_reportsto").Value).Id
