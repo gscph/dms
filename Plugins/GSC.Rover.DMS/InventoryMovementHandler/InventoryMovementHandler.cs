@@ -183,12 +183,8 @@ namespace GSC.Rover.DMS.BusinessLogic.InventoryMovement
 
             if (onOrder != 0)
             {
-                var onOrderConditionList = new List<ConditionExpression>
-                {
-                    new ConditionExpression("gsc_status", ConditionOperator.Equal, 100000003),// On Order   
-                    new ConditionExpression("gsc_productquantityid", ConditionOperator.Equal, quantityEntity.Id)
-                };
-                quantityEntity["gsc_onorder"] = CountQuantity(quantityEntity, onOrderConditionList);
+                Int32 currentOnOrder = quantityEntity.Contains("gsc_onorder") ? quantityEntity.GetAttributeValue<Int32>("gsc_onorder") : 0;
+                quantityEntity["gsc_onorder"] = currentOnOrder + onOrder;
             }
 
             if (sold != 0)
