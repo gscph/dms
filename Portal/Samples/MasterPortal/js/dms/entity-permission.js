@@ -22,19 +22,24 @@
         }
 
         if (DMS.Settings.Permission.Create == false) {
-            $('.btn.action:first').remove();
+            if ($('.btn.action:first').html().indexOf("NEW") != -1)
+                $('.btn.action:first').remove()
         }
 
         if (DMS.Settings.Permission.Update == false) {
-            $('.btn.activate').remove();
-            $('.btn.deactivate').remove();
+            DisableFormByPermission();
+            $(".toolbar-right").find("button, a, input").each(function (a, b) {
+                var text = $(this).html();
+                if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") == -1) {
+                    $(this).remove();
+                }
+            });
         }
 
         if (DMS.Settings.Permission.Delete == false) {
-            $('.btn.delete').remove();
+            $('.delete-link').remove();
         }
 
+        $(".navbar-right.toolbar-right").removeClass("hidden");
     });
-
-
 });

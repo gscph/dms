@@ -26,6 +26,9 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">  
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="EntityControls" runat="server">     
+    <script>
+        $(".navbar-right.toolbar-right").addClass("hidden");
+    </script>
     <div id="loader">
         <span class="fa fa-spinner fa-spin fa-4x loader-color"></span>
     </div>
@@ -130,6 +133,32 @@
     <script>
         var userFullName = "<%: Html.AttributeLiteral(Html.PortalUser(), "fullname") ?? "" %>";
         var imgUrl = "<%: Html.AttributeLiteral(Html.PortalUser(), "gsc_userimageurl") ?? "~/css/images/default.png" %>";
+
+        $(document).ready(function () {
+            $("div.entity-grid.subgrid").each(function (a, b) {
+                $(this).find('.grid-actions').addClass("hidden");
+            });
+
+            var webPageId = $('#webPageId span').html();
+            var service = DMS.Service('GET', '~/api/Service/GetPrivilages',
+               { webPageId: webPageId }, DMS.Helpers.DefaultErrorHandler, null);
+
+            service.then(function (response) {
+                DMS.Settings.Permission = response;
+                if (response == null) return;
+
+                if (DMS.Settings.Permission.Update == false) {
+                    $(".toolbar-right").find("button, a").each(function (a, b) {
+                        var text = $(this).html();
+                        if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") == -1) {
+                            $(this).remove();
+                        }
+                    });
+                }
+            });
+
+            $(".navbar-right.toolbar-right").removeClass("hidden");
+        });
     </script>
     <script src="~/js/dms/form-locking.js"></script>
     <script src="~/js/dms/hot-renderers.js"></script>
@@ -144,6 +173,7 @@
     <script src="~/js/dms/primary-field.js"></script>
     <script src="~/js/dms/modal-customization.js"></script>
     <script src="~/js/dms/subgrid-counter.js"></script>
+    <script src="~/js/dms/subgrid-button-permission.js"></script>
 </asp:Content>
 
 

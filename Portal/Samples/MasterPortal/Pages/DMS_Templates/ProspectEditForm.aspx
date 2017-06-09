@@ -28,9 +28,11 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="EntityControls" runat="server">
+      <script>
+          $(".navbar-right.toolbar-right").addClass("hidden");
+    </script>
     <h1 class="hidden" id="webPageId">
         <adx:Property PropertyName="adx_webpageid" Editable="false" DataItem='<%$ CrmSiteMap: Current %>' runat="server" />
-
     </h1>
 
     <div id="loader">
@@ -40,8 +42,6 @@
         <adx:Property PropertyName="adx_title,adx_name" DataItem='<%$ CrmSiteMap: Current %>' runat="server" />
     </h1>
     <script type="text/javascript">
-
-
         function entityFormClientValidate() {
             // Custom client side validation. Method is called by the submit button's onclick event.
             // Must return true or false. Returning false will prevent the form from submitting.   
@@ -113,7 +113,7 @@
     <script src="~/js/dms/form-locking.js"></script>
     <script>
         $(function () {
-            $(document).on('hideLoader', function () {
+            $(document).ready(function () {
                 var webPageId = $('#webPageId span').html();
 
                 var service = DMS.Service('GET', '~/api/Service/GetPrivilages',
@@ -132,37 +132,53 @@
                         entityForm.html('');
                         var template = '<div class="alert alert-block alert-danger"><span class="fa fa-lock" aria-hidden="true"></span> Access denied. You do not have the appropriate permissions.</div>';
                         $(template).appendTo(entityForm);
-                        $('.toolbar-right').html('');
                         return;
                     }
 
                     if (DMS.Settings.Permission.Update == false) {
-                        $('.submit-btn').remove();
-                        $('.deactivate-link').remove();
-                        $('.activate-link').remove();
+                        DisableFormByPermission();
+                        $(".toolbar-right").find("button, a, input").each(function (a, b) {
+                            var text = $(this).html();
+                            if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") == -1) {
+                                $(this).remove();
+                            }
+                        });
                     }
 
                     if (DMS.Settings.Permission.Delete == false) {
                         $('.delete-link').remove();
                     }
 
+                    $(".navbar-right.toolbar-right").removeClass("hidden");
+
                     //Edit Prospect scripts
                     var reportsTo = $('#gsc_recordownerreportsto').val();
-                    var owner = $('#gsc_recordownerid').val();                   
+                    var owner = $('#gsc_recordownerid').val();
 
                     if (owner == userId || reportsTo == userId) {
                         return;
                     }
-                    
+
                     if (DMS.Settings.Permission.Scope == 756150000 && DMS.Settings.Permission.Read == true) {
                         return;
                     }
 
                     $('section.content').hide();
-                    window.location.href = '~/transactions/prospectinquiry/';                  
-                 
+                    window.location.href = '~/transactions/prospectinquiry/';
+
                 });
 
+                function DisableFormByPermission() {
+                    $("#EntityFormView").find("input, select").each(function (index, value) {
+                        $(this).attr("readonly", true);
+                        $(this).attr("disabled", true);
+                        $(this).addClass("permanent-disabled");
+                    });
+
+                    $("#EntityFormView").find(".input-group-btn").each(function (index, value) {
+                        $(this).addClass("hidden");
+                    });
+                }
             });
         });
 
