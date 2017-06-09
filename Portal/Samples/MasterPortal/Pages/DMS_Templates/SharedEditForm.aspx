@@ -129,54 +129,54 @@
 
         $(document).ready(function () {
             $("div.entity-grid.subgrid").each(function (a, b) {
-                $(this).find('.grid-actions').addClass("hidden");
+                $(this).find(".grid-actions").addClass("hidden");
             });
 
-            var webPageId = $('#webPageId span').html();
+            var webPageId = $("#webPageId span").html();
 
-            var service = DMS.Service('GET', '~/api/Service/GetPrivilages',
+            var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
                 { webPageId: webPageId }, DMS.Helpers.DefaultErrorHandler, null);
 
             service.then(function (response) {
                 DMS.Settings.Permission = response;
 
-                if (response == null) return;
-                if (DMS.Settings.Permission.Read == null) return;
+                if (response === null) return;
+                if (DMS.Settings.Permission.Read === null) return;
 
 
-                if (DMS.Settings.Permission.Read == false) {
-                    var entityForm = $('#EntityForm1');
-                    entityForm.html('');
-                    var template = '<div class="alert alert-block alert-danger"><span class="fa fa-lock" aria-hidden="true"></span> Access denied. You do not have the appropriate permissions.</div>';
+                if (DMS.Settings.Permission.Read === false) {
+                    var entityForm = $("#EntityForm1");
+                    entityForm.html("");
+                    var template = "<div class=\"alert alert-block alert-danger\"><span class=\"fa fa-lock\" aria-hidden=\"true\"></span> Access denied. You do not have the appropriate permissions.</div>";
                     $(template).appendTo(entityForm);
                     return;
                 }
 
-                if (DMS.Settings.Permission.Update == false) {
+                if (DMS.Settings.Permission.Update === false) {
                     DisableFormByPermission();
-                    $(".toolbar-right").find("button, a, input").each(function (a, b) {
+                    $(".toolbar-right").find("button, a, input").each(function () {
                         var text = $(this).html();
-                        if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") == -1) {
+                        if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") === -1) {
                             $(this).remove();
                         }
                     });
                 }
 
-                if (DMS.Settings.Permission.Delete == false) {
-                    $('.delete-link').remove();
+                if (DMS.Settings.Permission.Delete === false) {
+                    $(".delete-link").remove();
                 }
 
                 $(".navbar-right.toolbar-right").removeClass("hidden");
             });
 
             function DisableFormByPermission() {
-                $("#EntityFormView").find("input, select, textarea").each(function (index, value) {
+                $("#EntityFormView").find("input, select, textarea").each(function () {
                     $(this).attr("readonly", true);
                     $(this).attr("disabled", true);
                     $(this).addClass("permanent-disabled");
                 });
 
-                $("#EntityFormView").find(".input-group-btn").each(function (index, value) {
+                $("#EntityFormView").find(".input-group-btn").each(function () {
                     $(this).addClass("hidden");
                 });
             }

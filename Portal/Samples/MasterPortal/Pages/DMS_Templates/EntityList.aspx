@@ -64,37 +64,35 @@
     <script src="~/js/dms/update-statuscode.js"></script>
     <script src="~/js/dms/custom-button.js"></script>
     <script>
-        $(document).on('loaded', function () {
-            var webPageId = $('#webPageId span').html();
-            var service = DMS.Service('GET', '~/api/Service/GetPrivilages',
+        $(document).on("loaded", function () {
+            var webPageId = $("#webPageId span").html();
+            var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
                { webPageId: webPageId }, DMS.Helpers.DefaultErrorHandler, null);
 
             service.then(function (response) {
                 DMS.Settings.Permission = response;        
 
-                if (response == null) return;
-                if (DMS.Settings.Permission.Read == null) return;
+                if (response === null) return;
+                if (DMS.Settings.Permission.Read === null) return;
 
-                if (DMS.Settings.Permission.Read == false) {
-                    return;
-                }
+                if (DMS.Settings.Permission.Read === false) return;
 
-                if (DMS.Settings.Permission.Create == false) {
-                    if ($('.btn.action:first').html().indexOf("NEW") != -1)
-                        $('.btn.action:first').remove()
+                if (DMS.Settings.Permission.Create === false) {
+                    if ($(".btn.action:first").html().indexOf("NEW") !== -1)
+                        $(".btn.action:first").remove()
                 }
 
                 if (DMS.Settings.Permission.Update == false) {
-                    $(".toolbar-right").find("button, a").each(function (a, b) {
+                    $(".toolbar-right").find("button, a").each(function () {
                         var text = $(this).html();
-                        if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") == -1) {
+                        if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") === -1) {
                             $(this).remove();
                         }
                     });
                 }
 
-                if (DMS.Settings.Permission.Delete == false) {
-                    $('.btn.delete').remove();
+                if (DMS.Settings.Permission.Delete === false) {
+                    $(".btn.delete").remove();
                 }
 
                 $(".navbar-right.toolbar-right").removeClass("hidden");
