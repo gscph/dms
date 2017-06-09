@@ -719,10 +719,10 @@ $(document).ready(function (e) {
                 }
             }
 
-            if ((parseFloat(dpAmount)) > (parseFloat(netPrice))) {
+            //if ((parseFloat(dpAmount)) > (parseFloat(netPrice))) {
                 //do not allow greater than net price
-                this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-            }
+            //    this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+            //}
 
         });
 
@@ -780,12 +780,16 @@ $(document).ready(function (e) {
         netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
         downpayment = $("#gsc_downpaymentamount").val() == "" ? 0 : $("#gsc_downpaymentamount").val().replace(/,/g, "");
 
-        if (netPrice == 0) {
-            netPrice = odataComputeNetPrice();
-        }
+        //if (netPrice == 0) {
+        //    netPrice = odataComputeNetPrice();
+        //}
 
-        dppercent = (parseFloat(downpayment) / (parseFloat(netPrice))) * 100;
-        $("#gsc_downpaymentpercentage").val(parseFloat(dppercent).toFixed(2));
+        if (netPrice != 0) {
+            dppercent = (parseFloat(downpayment) / (parseFloat(netPrice))) * 100;
+            $("#gsc_downpaymentpercentage").val(parseFloat(dppercent).toFixed(2));
+        } else {
+            $("#gsc_downpaymentpercentage").val(0);
+        }
 
         computeNetDownpayment();
     }
