@@ -177,6 +177,45 @@ namespace Site.Areas.DMSApi.Controllers
             var service = new XrmServiceContext(_conn);
             return service.GetEntityPermission(webRoleId, webPageId);
         }
-      
+
+        [HttpGet]
+        public IHttpActionResult GetEntityGridPrivilages(String entityName)
+        {
+            try
+            {
+                var context = HttpContext.Current;
+                Guid webRoleId = new Guid();
+                if (context != null)
+                {
+                    var request = context.Request.RequestContext;
+                    var cookies = request.HttpContext.Request.Cookies;
+
+                    if (cookies != null)
+                    {
+                        if (cookies["Branch"] != null)
+                        {
+                            webRoleId = new Guid(cookies["Branch"]["webRoleId"]);
+                            var service = new XrmServiceContext(_conn);
+                            var result = service.GetEditableGridEntityPermission(webRoleId, entityName);
+                            return Ok(result);
+                        }
+                    }
+                }
+                return NotFound();
+
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+
+        }
+
+        [HttpGet]
+        public Privileges GetEditableGridEntityPermission(Guid webRoleId, String entityName)
+        {
+            var service = new XrmServiceContext(_conn);
+            return service.GetEditableGridEntityPermission(webRoleId, entityName);
+        }
     }
 }

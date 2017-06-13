@@ -136,21 +136,23 @@
 
         $(document).ready(function () {
             $("div.entity-grid.subgrid").each(function (a, b) {
-                $(this).find('.grid-actions').addClass("hidden");
+                $(this).find(".grid-actions").addClass("hidden");
             });
 
-            var webPageId = $('#webPageId span').html();
-            var service = DMS.Service('GET', '~/api/Service/GetPrivilages',
+            var webPageId = $("#webPageId span").html();
+            var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
                { webPageId: webPageId }, DMS.Helpers.DefaultErrorHandler, null);
 
             service.then(function (response) {
                 DMS.Settings.Permission = response;
-                if (response == null) return;
+                if (response === null) {
+                    return;
+                }
 
-                if (DMS.Settings.Permission.Update == false) {
-                    $(".toolbar-right").find("button, a").each(function (a, b) {
+                if (DMS.Settings.Permission.Update === false) {
+                    $(".toolbar-right").find("button, a").each(function () {
                         var text = $(this).html();
-                        if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") == -1) {
+                        if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") === -1) {
                             $(this).remove();
                         }
                     });

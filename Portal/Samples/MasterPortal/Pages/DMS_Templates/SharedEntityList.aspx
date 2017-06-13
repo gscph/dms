@@ -23,7 +23,7 @@
     </div>
     <div id="mainContents" class="body-container">
         <h1 id="EntityListTitle" class="hidden">
-            <adx:Property PropertyName="adx_title,adx_name" DataItem='<%$ CrmSiteMap: Current %>' runat="server" />
+            <adx:Property PropertyName="adx_title,adx_name" DataItem="<%$ CrmSiteMap: Current %>" runat="server" />
         </h1>
         <div class="notifications "></div>
          <div class="box box-primary">
@@ -61,48 +61,47 @@
     <script src="~/js/dms/update-statuscode.js"></script>
     <script src="~/js/dms/custom-button.js"></script>   
     <script>
-        $(document).on('loaded',function () {
-            var webPageId = $('#webPageId span').html();
+        $(document).on("loaded",function () {
+            var webPageId = $("#webPageId span").html();
 
-            var service = DMS.Service('GET', '~/api/Service/GetPrivilages',
+            var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
                { webPageId: webPageId }, DMS.Helpers.DefaultErrorHandler, null);
 
             service.then(function (response) {
                 DMS.Settings.Permission = response;                
 
-                if (response == null) return;
-                if (DMS.Settings.Permission.Read == null) return;
+                if (response === null) return;
+                if (DMS.Settings.Permission.Read === null) return;
 
-                if (DMS.Settings.Permission.Read == false) {
-                    $('.view-empty.message').hide();
-                    $('.view-error.message').hide();
-                    $('.view-loading.message').hide();
-                    $('.view-access-denied.message').show();
-                    $('.view-grid table tbody').html('');
-                    $('.toolbar-right').html('');
+                if (DMS.Settings.Permission.Read === false) {
+                    $(".view-empty.message").hide();
+                    $(".view-error.message").hide();
+                    $(".view-loading.message").hide();
+                    $(".view-access-denied.message").show();
+                    $(".view-grid table tbody").html("");
+                    $(".toolbar-right").html("");
                     return;
                 }
 
-                if (DMS.Settings.Permission.Create == false) {
-                    if ($('.btn.action:first').html().indexOf("NEW") != -1)
-                        $('.btn.action:first').remove()
+                if (DMS.Settings.Permission.Create === false) {
+                    if ($(".btn.action:first").html().indexOf("NEW") !== -1)
+                        $(".btn.action:first").remove()
                 }
 
-                if (DMS.Settings.Permission.Update == false) {
-                    $(".toolbar-right").find("button, a").each(function (a, b) {
+                if (DMS.Settings.Permission.Update === false) {
+                    $(".toolbar-right").find("button, a").each(function () {
                         var text = $(this).html();
-                        if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") == -1) {
+                        if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") === -1) {
                             $(this).remove();
                         }
                     });
                 }
 
-                if (DMS.Settings.Permission.Delete == false) {
-                    $('.btn.delete').remove();
+                if (DMS.Settings.Permission.Delete === false) {
+                    $(".btn.delete").remove();
                 }
 
                 $(".navbar-right.toolbar-right").removeClass("hidden");
-
             });
         });
     </script> 
