@@ -146,6 +146,8 @@ $(document).ready(function () {
 
     //Custom Create Order - Created By : Jerome Anthony Gerero, Created On : 10/26/2016
     $createOrderButton = DMS.Helpers.CreateAnchorButton("btn-primary btn", '', ' CREATE ORDER', DMS.Helpers.CreateFontAwesomeIcon('fa-file'));
+    $createOrderButton.addClass("hidden");
+    $createOrderButton.attr('id', 'convertToOrder');
     $createOrderButton.attr('data-toggle', 'modal');
     $createOrderButton.attr('data-target', '#createOrderModal');
     $createOrderButton.click(function (evt) {
@@ -154,6 +156,7 @@ $(document).ready(function () {
 
     if (stateCode == 'Active') {
         DMS.Helpers.AppendButtonToToolbar($createOrderButton);
+        CreateOrderButtonPermission();
     }
 
     var createOrderModal = document.createElement('div');
@@ -795,4 +798,20 @@ var monthlyAmortizationGridInstance = {
         });
 
     }
+}
+
+function CreateOrderButtonPermission() {
+    var webRoleId = DMS.Settings.User.webRoleId;
+    var service = DMS.Service('GET', '~/api/Service/GetEntityGridPrivilages',
+          { webRoleId: webRoleId, entityName: "salesorder" }, DMS.Helpers.DefaultErrorHandler, null);
+
+    service.then(function (response) {
+        if (response === null) return;
+        if (response.Read === null) return;
+        if (response.Read === false) return;
+
+        if (response.Create == true) {
+            $("#convertToOrder").removeClass("hidden");
+        }
+    });
 }
