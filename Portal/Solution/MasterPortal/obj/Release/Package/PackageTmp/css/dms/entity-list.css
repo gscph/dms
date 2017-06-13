@@ -1,0 +1,40 @@
+﻿.btn-entitylist-filter-submit {
+    margin-top: 5px;
+}
+
+.add-margin-right {
+    margin-left: 0px !important;
+    margin-right: 5px;
+}
+
+.loader-color {
+    color: #1b1b1b;
+}
+
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+    background: #dff3fe !important;
+}
+
+.table > tbody > tr.selected td {
+    background-color: #cbecfe !important;
+}
+
+.table > tbody > tr td:not(:first-child):hover {
+    cursor: default;
+}
+
+.list-title {
+    font-size: 32px;
+    font-weight: 100;
+}
+
+
+.toolbar {
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 9px;
+    padding-bottom: 9px;
+}
+
+.entitylist-search {
+    margin-top: 8px;
+}
