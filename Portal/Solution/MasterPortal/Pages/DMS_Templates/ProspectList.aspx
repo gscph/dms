@@ -12,7 +12,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="PageHeader" runat="server">
     <script>
        DMS.Settings.Prospect.setForceLoad(true);       
-       DMS.Settings.User.Id = "<%: Html.AttributeLiteral(Html.PortalUser(), "contactid") %>";        
+       DMS.Settings.User.Id = "<%: Html.AttributeLiteral(Html.PortalUser(), "contactid") %>";
+       $(".navbar-right.toolbar-right").addClass("hidden");
     </script>  
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">

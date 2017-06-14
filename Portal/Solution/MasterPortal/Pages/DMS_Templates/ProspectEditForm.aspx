@@ -28,6 +28,9 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="EntityControls" runat="server">
+      <script>
+          $(".navbar-right.toolbar-right").addClass("hidden");
+    </script>
     <h1 class="hidden" id="webPageId">
         <adx:Property PropertyName="adx_webpageid" Editable="false" DataItem='<%$ CrmSiteMap: Current %>' runat="server" />
 
@@ -113,59 +116,73 @@
     <script src="~/js/dms/form-locking.js"></script>
     <script>
         $(function () {
-            $(document).on('hideLoader', function () {
-                var webPageId = $('#webPageId span').html();
+            $(document).ready(function () {
+                var webPageId = $("#webPageId span").html();
 
-                var service = DMS.Service('GET', '~/api/Service/GetPrivilages',
+                var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
                    { webPageId: webPageId }, DMS.Helpers.DefaultErrorHandler, null);
 
                 service.then(function (response) {
                     DMS.Settings.Permission = response;
 
-                    if (response == null) return;
-                    if (DMS.Settings.Permission.Read == null) return;
+                    if (response === null) return;
+                    if (DMS.Settings.Permission.Read === null) return;
 
 
-                    if (DMS.Settings.Permission.Read == false) {
+                    if (DMS.Settings.Permission.Read === false) {
                         //window.location.href = "~/Pages/AccessDenied.aspx";
-                        var entityForm = $('#EntityForm1');
-                        entityForm.html('');
-                        var template = '<div class="alert alert-block alert-danger"><span class="fa fa-lock" aria-hidden="true"></span> Access denied. You do not have the appropriate permissions.</div>';
+                        var entityForm = $("#EntityForm1");
+                        entityForm.html("");
+                        var template = "<div class=\"alert alert-block alert-danger\"><span class=\"fa fa-lock\" aria-hidden=\"true\"></span> Access denied. You do not have the appropriate permissions.</div>";
                         $(template).appendTo(entityForm);
-                        $('.toolbar-right').html('');
                         return;
                     }
 
-                    if (DMS.Settings.Permission.Update == false) {
-                        $('.submit-btn').remove();
-                        $('.deactivate-link').remove();
-                        $('.activate-link').remove();
+                    if (DMS.Settings.Permission.Update === false) {
+                        DisableFormByPermission();
+                        $(".toolbar-right").find("button, a, input").each(function () {
+                            var text = $(this).html();
+                            if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") === -1) {
+                                $(this).remove();
+                            }
+                        });
                     }
 
-                    if (DMS.Settings.Permission.Delete == false) {
-                        $('.delete-link').remove();
+                    if (DMS.Settings.Permission.Delete === false) {
+                        $(".delete-link").remove();
                     }
+
+                    $(".navbar-right.toolbar-right").removeClass("hidden");
 
                     //Edit Prospect scripts
-                    var reportsTo = $('#gsc_recordownerreportsto').val();
-                    var owner = $('#gsc_recordownerid').val();                   
+                    var reportsTo = $("#gsc_recordownerreportsto").val();
+                    var owner = $("#gsc_recordownerid").val();
 
-                    if (owner == userId || reportsTo == userId) {
-                        return;
-                    }
-                    
-                    if (DMS.Settings.Permission.Scope == 756150000 && DMS.Settings.Permission.Read == true) {
+                    if (owner === userId || reportsTo === userId) {
                         return;
                     }
 
-                    $('section.content').hide();
-                    window.location.href = '~/transactions/prospectinquiry/';                  
-                 
+                    if (DMS.Settings.Permission.Scope === 756150000 && DMS.Settings.Permission.Read === true) {
+                        return;
+                    }
+
+                    $("section.content").hide();
+                    window.location.href = "~/transactions/prospectinquiry/";
                 });
 
+                function DisableFormByPermission() {
+                    $("#EntityFormView").find("input, select").each(function () {
+                        $(this).attr("readonly", true);
+                        $(this).attr("disabled", true);
+                        $(this).addClass("permanent-disabled");
+                    });
+
+                    $("#EntityFormView").find(".input-group-btn").each(function () {
+                        $(this).addClass("hidden");
+                    });
+                }
             });
         });
-
     </script>
 
 </asp:Content>

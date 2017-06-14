@@ -16,7 +16,8 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="EntityControls" runat="server">
     <script>
-        DMS.Settings.User.Id = "<%: Html.AttributeLiteral(Html.PortalUser(), "contactid") %>";     
+        DMS.Settings.User.Id = "<%: Html.AttributeLiteral(Html.PortalUser(), "contactid") %>";
+        $(".navbar-right.toolbar-right").addClass("hidden");
     </script>
     <div id="loader">
         <span class="fa fa-spinner fa-spin fa-4x loader-color"></span>
@@ -63,47 +64,40 @@
     <script src="~/js/dms/update-statuscode.js"></script>
     <script src="~/js/dms/custom-button.js"></script>
     <script>
-        $(document).on('loaded', function () {
-            var webPageId = $('#webPageId span').html();
-            console.log('web page id ');
-            console.log(webPageId);
-            var service = DMS.Service('GET', '~/api/Service/GetPrivilages',
+        $(document).on("loaded", function () {
+            var webPageId = $("#webPageId span").html();
+            var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
                { webPageId: webPageId }, DMS.Helpers.DefaultErrorHandler, null);
 
             service.then(function (response) {
-                DMS.Settings.Permission = response;        
+                DMS.Settings.Permission = response;
 
-                if (response == null) return;
-                if (DMS.Settings.Permission.Read == null) return;
+                if (response === null) return;
+                if (DMS.Settings.Permission.Read === null) return;
 
-                if (DMS.Settings.Permission.Read == false) {
-                    $('.view-empty.message').hide();
-                    $('.view-error.message').hide();
-                    $('.view-loading.message').hide();
-                    $('.view-access-denied.message').show();
-                    $('.view-grid table tbody').html('');
-                    $('.toolbar-right').html('');
-                    return;
+                if (DMS.Settings.Permission.Read === false) return;
+
+                if (DMS.Settings.Permission.Create === false) {
+                    if ($(".btn.action:first").html().indexOf("NEW") !== -1)
+                        $(".btn.action:first").remove()
                 }
-
-                if (DMS.Settings.Permission.Create == false) {
-                    $('.btn.action:first').remove();
-                }
-
 
                 if (DMS.Settings.Permission.Update == false) {
-                    $('.btn.activate').remove();
-                    $('.btn.deactivate').remove();
+                    $(".toolbar-right").find("button, a").each(function () {
+                        var text = $(this).html();
+                        if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") === -1) {
+                            $(this).remove();
+                        }
+                    });
                 }
 
-                if (DMS.Settings.Permission.Delete == false) {
-                    $('.btn.delete').remove();
+                if (DMS.Settings.Permission.Delete === false) {
+                    $(".btn.delete").remove();
                 }
 
+                $(".navbar-right.toolbar-right").removeClass("hidden");
             });
-
-
         });
-      
+
     </script>
 </asp:Content>
