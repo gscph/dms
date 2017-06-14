@@ -2890,6 +2890,7 @@
     <Content Include="js\dms\select2-editor.js" />
     <Content Include="js\dms\service.js" />
     <Content Include="js\dms\site-settings.js" />
+    <Content Include="js\dms\subgrid-button-permission.js" />
     <Content Include="js\dms\subgrid-counter.js" />
     <Content Include="js\dms\update-statuscode.js" />
     <Content Include="js\dms\ZeroClipboard.js" />
