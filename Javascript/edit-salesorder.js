@@ -134,6 +134,30 @@ $(document).ready(function () {
         $("#DocumentChecklistSubgrid .grid-actions .submit").attr("disabled", false);
     }
 
+    // on bank changed event hooked to auto populate related fields
+    setTimeout(function () {
+        $('#gsc_bankid').on('change', function () {
+            var bankId = $(this).val();
+            if (bankId !== "") {
+                var oDataUrl = '/_odata/chattelfee?$filter=gsc_bankid/Id%20eq%20(Guid%27' + bankId + '%27)';
+                $.ajax({
+                    type: 'get',
+                    async: true,
+                    url: oDataUrl,
+                    success: function (data) {               
+                        if (data.value.length > 0) {
+                            $('#gsc_chattelfeeeditable').val(eval(data.value[0].gsc_chattelfeeamount).toFixed(2));
+                        }
+                    },
+                    error: function (xhr, textStatus, errorMessage) {
+                        console.error(errorMessage);
+                    }
+                });
+            }
+        });
+
+    }, 100);
+
     // hide 
     $('#OrderMonthlyAmortizationSubgrid').html('');
     // end hide
