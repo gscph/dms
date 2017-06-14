@@ -322,7 +322,7 @@ namespace Site.Areas.Portal.ViewModels
             }
 
             QueryExpression queryEntityPermission = new QueryExpression("adx_entitypermission");
-            queryEntityPermission.ColumnSet = new ColumnSet("adx_scope");
+            queryEntityPermission.ColumnSet = new ColumnSet("adx_scope", "adx_contactrelationship");
             queryEntityPermission.Criteria.AddCondition("gsc_recordtype", ConditionOperator.Equal, recordType);
             queryEntityPermission.LinkEntities.Add(new LinkEntity("adx_entitypermission", "adx_entitypermission_webrole", "adx_entitypermissionid", "adx_entitypermissionid", JoinOperator.Inner));
             queryEntityPermission.LinkEntities[0].LinkCriteria.AddCondition("adx_webroleid", ConditionOperator.Equal, webRoleId);
@@ -343,7 +343,7 @@ namespace Site.Areas.Portal.ViewModels
             if (scope == "Global")
                 return result;
 
-            if (scope == "Account")
+            else if (scope == "Account")
             {
                 Guid branchId = Guid.Empty;
                 var context = HttpContext.Current;
@@ -380,7 +380,10 @@ namespace Site.Areas.Portal.ViewModels
                     }
                 }
             }
+            else if (scope == "Account")
+            {
 
+            }
             return result;
         }
 
