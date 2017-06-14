@@ -288,15 +288,15 @@ namespace Site.Areas.Portal.ViewModels
             return globalRecords;
         }
 
-        private String GetSharedEntityScope(IEnumerable<Entity> result)
+        private Entity GetSharedEntityScope(IEnumerable<Entity> result)
         {
             if (result.Count() == 0)
-                return String.Empty;
+                return null;
 
             Entity entity = result.First();
 
-            if (entity.LogicalName != "account")
-                return String.Empty;
+            if (entity.LogicalName != "account" && entity.LogicalName != "contact")
+                return null;
 
             int recordType = 0;
             Guid webRoleId = Guid.Empty;
@@ -312,7 +312,7 @@ namespace Site.Areas.Portal.ViewModels
             }
 
             QueryExpression queryRecordType = new QueryExpression(result.First().LogicalName);
-            queryRecordType.ColumnSet = new ColumnSet("gsc_recordtype", "name");
+            queryRecordType.ColumnSet = new ColumnSet("gsc_recordtype");
             queryRecordType.Criteria.AddCondition(result.First().LogicalName + "id", ConditionOperator.Equal, result.First().Attributes[result.First().LogicalName + "id"]);
             EntityCollection recordTypeCollection = _service.ServiceContext.RetrieveMultiple(queryRecordType);
 
@@ -330,15 +330,20 @@ namespace Site.Areas.Portal.ViewModels
 
             if (entityPermissionCollection != null && entityPermissionCollection.Entities.Count > 0)
             {
-                return entityPermissionCollection.Entities[0].FormattedValues["adx_scope"];
+                return entityPermissionCollection.Entities[0];
             }
 
-            return String.Empty;
+            return null;
         }
 
         public IEnumerable<Entity> FilterSharedEntityScope(IEnumerable<Entity> result)
         {
-            String scope = GetSharedEntityScope(result);
+            Entity entityPermission = GetSharedEntityScope(result);
+
+            if (entityPermission == null)
+                return result;
+
+            String scope = entityPermission.FormattedValues["adx_scope"];
 
             if (scope == "Global")
                 return result;
@@ -380,9 +385,44 @@ namespace Site.Areas.Portal.ViewModels
                     }
                 }
             }
-            else if (scope == "Account")
+            else if (scope == "Contact")
             {
+                Guid userId = Guid.Empty;
+                var context = HttpContext.Current;
+                var request = context.Request.RequestContext;
+                var cookies = request.HttpContext.Request.Cookies;
+                if (cookies != null)
+                {
+                    if (cookies["Branch"] != null)
+                    {
+                        userId = new Guid(cookies["Branch"]["userId"]);
+                    }
+                }
 
+                String contactRelationship = entityPermission.GetAttributeValue<String>("adx_contactrelationship");
+               
+                foreach (Entity item in result)
+                {
+                    foreach (var attribute in item.Attributes)
+                    {
+                        if (attribute.Key == item.LogicalName + "id")
+                        {
+                            //Check record's BranchId  = user's BranchId
+                            QueryExpression accountEntities = new QueryExpression(item.LogicalName);
+                            accountEntities.ColumnSet.AddColumns(attribute.Key);
+                            accountEntities.Criteria.AddCondition("gsc_recordownerid", ConditionOperator.Equal, userId);
+                            accountEntities.Criteria.AddCondition(attribute.Key, ConditionOperator.Equal, attribute.Value);
+
+                            EntityCollection accountEntitiesCollection = _service.ServiceContext.RetrieveMultiple(accountEntities);
+
+                            if (accountEntitiesCollection == null || accountEntitiesCollection.Entities.Count == 0)
+                            {
+                                result = result.Where(d => d.Attributes[attribute.Key].ToString() != attribute.Value.ToString());
+                            }
+                            break;
+                        }
+                    }
+                }
             }
             return result;
         }

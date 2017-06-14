@@ -20,6 +20,7 @@ namespace Site.Areas.Account.ViewModels
         public UserPosition Position { get; set; }
         public UserWebRole WebRole { get; set; }
         public bool IsVendorUser { get; set; }
+        public Guid UserId { get; set; }
     }
 
     public class UserPosition

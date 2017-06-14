@@ -431,9 +431,9 @@ namespace Site.Areas.Account.Controllers
                 var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ResetPassword", "Login", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 var parameters = new Dictionary<string, object> { { "UserId", user.Id }, { "Code", code }, { "UrlCode", Encoder.UrlEncode(code) }, { "CallbackUrl", callbackUrl }, { "Email", model.Email } };
-            //    await OrganizationManager.InvokeProcessAsync("adx_SendPasswordResetToContact", user.ContactId, parameters);
+                //    await OrganizationManager.InvokeProcessAsync("adx_SendPasswordResetToContact", user.ContactId, parameters);
                 await UserManager.SendEmailAsync(user.Id, user.Id, callbackUrl);
-                
+
 
                 if (ViewBag.Settings.IsDemoMode)
                 {
@@ -1028,7 +1028,7 @@ namespace Site.Areas.Account.Controllers
             var service = new Site.Areas.DMS_Api.XrmWebService.UserManager(_conn);
 
 
-            BranchSettingsViewModel userBranchVM = service.GetUserBranch(username);                   
+            BranchSettingsViewModel userBranchVM = service.GetUserBranch(username);
 
             if (ConfigurationManager.ConnectionStrings[userBranchVM.BranchName] == null)
             {
@@ -1057,6 +1057,7 @@ namespace Site.Areas.Account.Controllers
             userCookieCredentials["positionName"] = branchSettings.Position.Name;
             userCookieCredentials["webRoleId"] = branchSettings.WebRole.Id.ToString();
             userCookieCredentials["webRoleName"] = branchSettings.WebRole.Name;
+            userCookieCredentials["userId"] = branchSettings.UserId.ToString();
             HttpContext.Response.Cookies.Add(userCookieCredentials);
         }
 
