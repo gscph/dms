@@ -54,6 +54,7 @@ namespace Site.Areas.DMS_Api.XrmWebService
             queryWebRole.ColumnSet.AddColumns("adx_webroleid");
             queryWebRole.LinkEntities.Add(new LinkEntity("adx_webrole_contact", "contact", "contactid", "contactid", JoinOperator.Inner));
             queryWebRole.LinkEntities[0].LinkCriteria.AddCondition("adx_identity_username", ConditionOperator.Equal, username);
+            queryWebRole.LinkEntities[0].Columns.AddColumns("contactid");
             queryWebRole.LinkEntities[0].EntityAlias = "Contact";
             queryWebRole.LinkEntities.Add(new LinkEntity("adx_webrole_contact", "adx_webrole", "adx_webroleid", "adx_webroleid", JoinOperator.Inner));
             queryWebRole.LinkEntities[1].Columns.AddColumns("adx_name");
@@ -62,7 +63,8 @@ namespace Site.Areas.DMS_Api.XrmWebService
 
             if (entity != null)
             {
-                
+                Entity webRole = webRolesCollection.Entities[0];
+
                 var branch = entity.GetAttributeValue<AliasedValue>("Contact.gsc_contactbranchid") != null
                     ? (EntityReference)entity.GetAttributeValue<AliasedValue>("Contact.gsc_contactbranchid").Value
                     : null;
@@ -77,9 +79,9 @@ namespace Site.Areas.DMS_Api.XrmWebService
 
                 if (branch != null)
                 {
-                    branchSettings.WebRole = new UserWebRole() { 
-                        Id = webRolesCollection.Entities[0].GetAttributeValue<Guid>("adx_webroleid"),
-                        Name = webRolesCollection.Entities[0].GetAttributeValue<AliasedValue>("WebRole.adx_name").Value.ToString()  
+                    branchSettings.WebRole = new UserWebRole() {
+                        Id = webRole.GetAttributeValue<Guid>("adx_webroleid"),
+                        Name = webRole.GetAttributeValue<AliasedValue>("WebRole.adx_name").Value.ToString()  
                     };
 
                     branchSettings.BranchName = branch.Name;
@@ -89,10 +91,13 @@ namespace Site.Areas.DMS_Api.XrmWebService
                     branchSettings.DealerName = dealer.Name;
 
                     branchSettings.DealerId = dealer.Id;
-                    
-                    branchSettings.Position.Id = position.Id;
 
-                    branchSettings.Position.Name = position.Name;
+                    if (position != null)
+                    {
+                        branchSettings.Position.Id = position.Id;
+
+                        branchSettings.Position.Name = position.Name;
+                    }
 
                     branchSettings.ReportsTo = entity.GetAttributeValue<AliasedValue>("Contact.gsc_reportsto") != null
                         ? ((EntityReference)entity.GetAttributeValue<AliasedValue>("Contact.gsc_reportsto").Value).Id
@@ -113,6 +118,10 @@ namespace Site.Areas.DMS_Api.XrmWebService
                     branchSettings.AllowManagertoActivate = entity.Contains("gsc_managerstoactivatequote")
                         ? entity.GetAttributeValue<Boolean>("gsc_managerstoactivatequote")
                         : false;
+
+                    branchSettings.UserId = webRole.GetAttributeValue<AliasedValue>("Contact.contactid") != null
+                        ? (Guid)webRole.GetAttributeValue<AliasedValue>("Contact.contactid").Value
+                        : Guid.Empty;
                 }
 
                 // user exists but branch is empty
