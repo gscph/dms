@@ -40,6 +40,30 @@ $(document).ready(function () {
     }*/
     /*End - Revised by Christell Ann Mataac - 3/15/17 */
 
+    // on bank changed event hooked to auto populate related fields
+    setTimeout(function () {
+        $('#gsc_bankid').on('change', function () {
+            var bankId = $(this).val();
+            if (bankId !== "") {
+                var oDataUrl = '/_odata/chattelfee?$filter=gsc_bankid/Id%20eq%20(Guid%27' + bankId + '%27)';
+                $.ajax({
+                    type: 'get',
+                    async: true,
+                    url: oDataUrl,
+                    success: function (data) {               
+                        if (data.value.length > 0) {
+                            $('#gsc_chattelfeeeditable').val(eval(data.value[0].gsc_chattelfeeamount).toFixed(2));
+                        }
+                    },
+                    error: function (xhr, textStatus, errorMessage) {
+                        console.error(errorMessage);
+                    }
+                });
+            }
+        });
+
+    }, 100);
+
 
     if (typeof (Page_ClientValidate) == 'function') {
     }
@@ -93,7 +117,7 @@ $(document).ready(function () {
         e.preventDefault();
         var counter = 0;
         var count = $('#monthlyamortization-editablegrid .htCheckboxRendererInput').length;
-        for (var x = 0 ; x < count ; x++) {
+        for (var x = 0; x < count; x++) {
             if ($('#monthlyamortization-editablegrid .htCheckboxRendererInput')[x].checked == true)
                 counter++;
         }
@@ -156,7 +180,7 @@ $(document).ready(function () {
 
     if (stateCode == 'Active') {
         DMS.Helpers.AppendButtonToToolbar($createOrderButton);
-        CreateOrderButtonPermission();
+        CreateOrderButton();
     }
 
     var createOrderModal = document.createElement('div');
@@ -250,10 +274,10 @@ $(document).ready(function () {
                 url: "/api/Service/RunWorkFlow/?workflowName=" + workflowName + "&entityId=" + entityId,
                 success: function (response) {
                     var url = document.location.protocol + '//' +
-                          document.location.host + (document.location.host.indexOf("demo.adxstudio.com") != -1
-                              ? document.location.pathname.split("/").slice(0, 3).join("/")
-                              : "") + '/Cache.axd?Message=InvalidateAll&d=' +
-                          (new Date()).valueOf();
+                        document.location.host + (document.location.host.indexOf("demo.adxstudio.com") != -1
+                            ? document.location.pathname.split("/").slice(0, 3).join("/")
+                            : "") + '/Cache.axd?Message=InvalidateAll&d=' +
+                        (new Date()).valueOf();
                     var req = new XMLHttpRequest();
                     req.open('GET', url, false);
                     req.send(null); //window.location.reload(true);
@@ -337,9 +361,9 @@ $(document).ready(function () {
     //}
 
     var closeModalBody = '<center><p>This Quote will be closed. Please provide a reason for closing : </p>' +
-    '<div id="closeRemarksDiv"><textarea id="closeRemarks" style="height: 100px;" rows="2" cols="40"></textarea></center></div>' +
-    '<div id="closeOpportunityDiv" style="padding-left: 160px"><input type="radio" name="closeOpportunity" value="1"> Close Opportunity <br>' +
-    '<input type="radio" name="closeOpportunity" value="0" checked="checked"> Do not update Opportunity';
+        '<div id="closeRemarksDiv"><textarea id="closeRemarks" style="height: 100px;" rows="2" cols="40"></textarea></center></div>' +
+        '<div id="closeOpportunityDiv" style="padding-left: 160px"><input type="radio" name="closeOpportunity" value="1"> Close Opportunity <br>' +
+        '<input type="radio" name="closeOpportunity" value="0" checked="checked"> Do not update Opportunity';
 
     var $closeConfirmation = DMS.Helpers.CreateModalConfirmation({ id: 'closeQuoteModal', headerTitle: 'Close Quote', Body: closeModalBody });
     $closeConfirmation.find('.confirmModal').attr("data-dismiss", "modal");
@@ -771,14 +795,14 @@ var monthlyAmortizationGridInstance = {
                 gsc_quotemonthlyamortizationpn: null
             },
             colHeaders: [
-                            'Select Term *',
-                            'Financing Term',
-                            'Monthly Amortization'
+                'Select Term *',
+                'Financing Term',
+                'Monthly Amortization'
             ],
             columns: [
-               { data: 'gsc_isselected', type: 'checkbox', renderer: checkboxRenderer, className: "htCenter htMiddle", width: 50 },
-               { data: 'gsc_financingtermid.Name', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 100 },
-               { data: 'gsc_quotemonthlyamortizationpn', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 }
+                { data: 'gsc_isselected', type: 'checkbox', renderer: checkboxRenderer, className: "htCenter htMiddle", width: 50 },
+                { data: 'gsc_financingtermid.Name', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 100 },
+                { data: 'gsc_quotemonthlyamortizationpn', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 }
             ],
             columnSorting: {
                 column: 1,
@@ -800,10 +824,10 @@ var monthlyAmortizationGridInstance = {
     }
 }
 
-function CreateOrderButtonPermission() {
+function CreateOrderButton() {
     var webRoleId = DMS.Settings.User.webRoleId;
     var service = DMS.Service('GET', '~/api/Service/GetEntityGridPrivilages',
-          { webRoleId: webRoleId, entityName: "salesorder" }, DMS.Helpers.DefaultErrorHandler, null);
+        { webRoleId: webRoleId, entityName: "salesorder" }, DMS.Helpers.DefaultErrorHandler, null);
 
     service.then(function (response) {
         if (response === null) return;

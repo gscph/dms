@@ -1,14 +1,31 @@
-$(document).ready(function () {
+$(document).ready(function (e) {
 
     var totaldiscount = 0;
 
-    $('#gsc_recordownerid_name').siblings('.input-group-btn').addClass('hidden');
-    $('#gsc_dealerid_name').siblings('.input-group-btn').addClass('hidden');
-    $('#gsc_branchid_name').siblings('.input-group-btn').addClass('hidden');
+    $('#UpdateButton').click(function (event) {
+        event.preventDefault();
+        setTimeout(function () {
+            window.parent.$('#btnRecalculate').click();
+
+        }, 0);
+    });
+
+    var param1var = getQueryVariable("refid");
+    
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+    }
 
     var isFinancing = true;
-    var paymentMode = window.parent.$('#gsc_paymentmode_Value').val();
-
+    var paymentMode = window.parent.$('#gsc_paymentmode').val();
+    
     if (paymentMode != '100000001')
         isFinancing = false;
 
@@ -17,10 +34,11 @@ $(document).ready(function () {
         $('#gsc_applyamounttodp').attr('readonly', true);
     }
 
-    if (!isFinancing) {     
+    if (!isFinancing) {        
         $('#gsc_applypercentagetoaf').attr('readonly', true);      
         $('#gsc_applyamounttoaf').attr('readonly', true);
     }
+
 
     setTimeout(function () {
         $("#gsc_pricelistid").on('change', function () {
@@ -28,8 +46,28 @@ $(document).ready(function () {
             if (priceLevelid == "")
                 removeReadOnly();
             else {
+
                 var productId = window.parent.$("#gsc_productid").val();
                 var countryOdataQuery = "/_odata/productpricelevel?$filter=pricelevelid/Id eq (Guid'" + priceLevelid + "') and productid/Id eq (Guid'" + productId + "')";
+             
+                
+   var priceLevelOdataQuery = "/_odata/promo?$filter=pricelevelid%20eq%20(Guid'" + priceLevelid + "')";
+                
+                  $.ajax({
+                    type: 'get',
+                    async: true,
+                    url: priceLevelOdataQuery,
+                    success: function (data) {
+                        if (data.value.length != 0) {
+                            var data = data.value[0];
+                            $("#gsc_description").val(data.description);
+                        }
+                    },
+                    error: function (xhr, textStatus, errorMessage) {
+                        console.log(errorMessage);
+                    }
+                });
+                
                 $.ajax({
                     type: 'get',
                     async: true,
@@ -52,15 +90,14 @@ $(document).ready(function () {
     }, 100);
 
 
-
     function removeReadOnly() {
         $('#gsc_description').val("");
         $('#gsc_discountamount').val("");
-        $('#gsc_salesorderdiscountpn').val("");
+        $('#gsc_quotediscountpn').val("");
 
         $('#gsc_description').attr('readonly', false);
         $('#gsc_discountamount').attr('readonly', false);
-        $('#gsc_salesorderdiscountpn').attr('readonly', false);
+        $('#gsc_quotediscountpn').attr('readonly', false);
 
         if (isFinancing) {
             $('#gsc_applypercentagetodp').attr('readonly', false);
@@ -69,6 +106,7 @@ $(document).ready(function () {
             $('#gsc_applyamounttoaf').attr('readonly', false);
         }
     }
+
 
     function setReadOnly() {
         $('#gsc_description').val("");
@@ -79,24 +117,28 @@ $(document).ready(function () {
         $('#gsc_applyamounttodp').val("");
         $('#gsc_applyamounttoaf').val("");
         $('#gsc_applyamounttoup').val("");
-        $('#gsc_salesorderdiscountpn').val($('#gsc_pricelistid_name').val());
+        $('#gsc_quotediscountpn').val($('#gsc_pricelistid_name').val());
 
         $('#gsc_description').attr('readonly', true);
         $('#gsc_discountamount').attr('readonly', true);
         $('#gsc_quotediscountpn').attr('readonly', true);
 
+       
+
+
         if (!isFinancing) {
+            
             $('#gsc_applypercentagetoaf').attr('readonly', true);
             $('#gsc_applyamounttoaf').attr('readonly', true);
+
             if(paymentMode != '100000002')
             {
                 $('#gsc_applypercentagetodp').attr('readonly', true);
                 $('#gsc_applyamounttodp').attr('readonly', true); 
             }
+            
         }
-
     }
-
 
     setTimeout(function () {
         //Variables for discount computation
@@ -115,10 +157,10 @@ $(document).ready(function () {
         dscnt_uppercent = dscnt_uppercent == "" ? 0 : dscnt_uppercent;
         totaldiscount = totaldiscount == "" ? 0 : totaldiscount;
 
-
         $('#gsc_applyamounttodp').val(parseFloat(dscnt_dpamount).toFixed(2));
-        $('#gsc_applyamounttoaf').val(parseFloat(dscnt_dpamount).toFixed(2));
-        $('#gsc_applyamounttoup').val(parseFloat(dscnt_dpamount).toFixed(2));
+        $('#gsc_applyamounttoaf').val(parseFloat(dscnt_afamount).toFixed(2));
+        $('#gsc_applyamounttoup').val(parseFloat(dscnt_upamount).toFixed(2));
+        $("#gsc_discountamount").val(parseFloat(totaldiscount).toFixed(2));
 
 
         //change type from text to number; only allow numbers in textbox
@@ -168,7 +210,6 @@ $(document).ready(function () {
                 $("#gsc_applyamounttodp").trigger('change');
             }
             else if ((parseFloat(this.value) + parseFloat(dscnt_afamount) + parseFloat(dscnt_upamount)) > totaldiscount) {
-                this.value = totaldiscount - dscnt_afamount - dscnt_upamount;
                 $("#gsc_applyamounttodp").trigger('change');
             }
         });
@@ -283,9 +324,6 @@ $(document).ready(function () {
         }
     }
 
-    //set page validators
-    if (typeof (Page_Validators) == 'undefined') return;
-
     // Validator when the discounts are not equal to 100%
     var discountValidator = document.createElement('span');
     discountValidator.style.display = "none";
@@ -298,12 +336,42 @@ $(document).ready(function () {
         var dp = $("#gsc_applypercentagetodp").val() == "" ? 0 : $("#gsc_applypercentagetodp").val();
         var up = $("#gsc_applypercentagetoup").val() == "" ? 0 : $("#gsc_applypercentagetoup").val();
         var total = parseFloat(af) + parseFloat(dp) + parseFloat(up);
-        if (total < 100) {
+
+
+        if (af < 1 && dp < 1 && up < 1) {
             return false;
         } else {
-            return true;
+            var total = parseFloat(af) + parseFloat(dp) + parseFloat(up);
+            if (total < 100) {
+                return false;
+            } else {
+                return true;
+            }
         }
     };
 
+    // Validator when the Discount Amount has no value
+    var discountAmountValidator = document.createElement('span');
+    discountAmountValidator.style.display = "none";
+    discountAmountValidator.id = "RequiredFieldValidatoramounts";
+    discountAmountValidator.errormessage = "Discounts amount should have value.";
+    discountAmountValidator.validationGroup = "";
+    discountAmountValidator.initialvalue = "";
+    discountAmountValidator.evaluationfunction = function () {
+        var amount = $("#gsc_discountamount").val() == "" ? 0 : $("#gsc_discountamount").val();
+
+        if(amount == 0)
+        {
+            console.log("empty");
+            return false;
+        }
+
+        else
+            return true;
+    };
+
     Page_Validators.push(discountValidator);
+    Page_Validators.push(discountAmountValidator);
+
+
 });

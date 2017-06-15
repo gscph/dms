@@ -40,7 +40,7 @@ $(document).ready(function (e) {
     }
 
 
-    setTimeout(function () {
+      setTimeout(function () {
         $("#gsc_pricelistid").on('change', function () {
             var priceLevelid = $("#gsc_pricelistid").val();
             if (priceLevelid == "")
@@ -49,6 +49,25 @@ $(document).ready(function (e) {
 
                 var productId = window.parent.$("#gsc_productid").val();
                 var countryOdataQuery = "/_odata/productpricelevel?$filter=pricelevelid/Id eq (Guid'" + priceLevelid + "') and productid/Id eq (Guid'" + productId + "')";
+             
+                
+   var priceLevelOdataQuery = "/_odata/promo?$filter=pricelevelid%20eq%20(Guid'" + priceLevelid + "')";
+                
+                  $.ajax({
+                    type: 'get',
+                    async: true,
+                    url: priceLevelOdataQuery,
+                    success: function (data) {
+                        if (data.value.length != 0) {
+                            var data = data.value[0];
+                            $("#gsc_description").val(data.description);
+                        }
+                    },
+                    error: function (xhr, textStatus, errorMessage) {
+                        console.log(errorMessage);
+                    }
+                });
+                
                 $.ajax({
                     type: 'get',
                     async: true,
@@ -69,7 +88,6 @@ $(document).ready(function (e) {
         });
 
     }, 100);
-
 
     function removeReadOnly() {
         $('#gsc_description').val("");
