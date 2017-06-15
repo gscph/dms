@@ -1,21 +1,22 @@
 $(document).ready(function () {
-  $('.win-opportunity-link.btn.btn-primary').addClass("permanent-disabled disabled");
-  
-  $('#quote .entity-grid.subgrid').on('loaded', function () {
-    if ($('#quote tr').length > 1 && $('.record-status').html() == "Open") {
-      if ($('.win-opportunity-link.btn.btn-primary').length == 1)
-      $('.win-opportunity-link.btn.btn-primary').removeClass("permanent-disabled disabled");
-    }
-  });
-  
-  var status = $('.record-status').html();
-  
-  if (status != 'Open') {
-      checkSubgrid("tab_8_section_1"); // Activities
-      checkSubgrid("Quotations"); //Quote
-  };
-  
-  
+    $('.win-opportunity-link.btn.btn-primary').addClass("permanent-disabled disabled");
+
+    $('#quote .entity-grid.subgrid').on('loaded', function () {
+        if ($('#quote tr').length > 1 && $('.record-status').html() == "Open") {
+            if ($('.win-opportunity-link.btn.btn-primary').length == 1)
+                $('.win-opportunity-link.btn.btn-primary').removeClass("permanent-disabled disabled");
+            $('.delete-link').addClass('permanent-disabled disabled');
+        }
+    });
+
+    var status = $('.record-status').html();
+
+    if (status != 'Open') {
+        checkSubgrid("tab_8_section_1"); // Activities
+        checkSubgrid("Quotations"); //Quote
+    };
+
+
     var paymentmode = $("#gsc_paymentmode").val();
 
     if (paymentmode == '100000001') {
@@ -28,35 +29,30 @@ $(document).ready(function () {
         $('#gsc_financingtermid_label').parent("div").removeClass("required");
         $('#gsc_financingtermid_name').siblings('.input-group-btn').addClass('hidden');
     }
-    
+
     /*Start - Added by Christell Ann Mataac - 03/10/2017*/
-      /*Need to disabled Add Activities and Generate Quote on Opportunity (update), when not owned records*/
-     setTimeout(function () {
-       if (DMS.Settings.User.positionName == 'Sales Supervisor' || DMS.Settings.User.positionName == 'Sales Lead')
-       {
-        if(userId != $('#gsc_recordownerid').val())
-        {
-           $('div.view-toolbar.grid-actions.clearfix').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true); //Add Accessories
-           $('div.navbar.navbar-static-top.toolbar').find('button.btn.btn-primary').eq(3).attr('disabled', true); //Geenrate Quote
-           $('button.delete-link.btn.btn-primary').attr('disabled',true); // delete
+    /*Need to disabled Add Activities and Generate Quote on Opportunity (update), when not owned records*/
+    /*setTimeout(function () {
+        if (DMS.Settings.User.positionName == 'Sales Supervisor' || DMS.Settings.User.positionName == 'Sales Lead') {
+            if (userId != $('#gsc_recordownerid').val()) {
+                $('div.view-toolbar.grid-actions.clearfix').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true); //Add Accessories
+                $('div.navbar.navbar-static-top.toolbar').find('button.btn.btn-primary').eq(3).attr('disabled', true); //Geenrate Quote
+                $('button.delete-link.btn.btn-primary').attr('disabled', true); // delete
+            }
         }
-       }
-       else if (DMS.Settings.User.positionName == 'Sales Manager')
-       {
-         //3-21-2017 - Disable Delete button from opportunity form
-        if(userId != $('#gsc_recordownerid').val())
-        {
-           $('button.delete-link.btn.btn-primary').attr('disabled',true); // delete
+        else if (DMS.Settings.User.positionName == 'Sales Manager') {
+            //3-21-2017 - Disable Delete button from opportunity form
+            if (userId != $('#gsc_recordownerid').val()) {
+                $('button.delete-link.btn.btn-primary').attr('disabled', true); // delete
+            }
         }
-       }
-       else if (DMS.Settings.User.positionName == 'MMPC System Admin' || DMS.Settings.User.positionName == 'MMPC System Administrator')
-       {
-         //3-21-2017 - Disable Generate Quote from opportunity form
-           $('div.navbar.navbar-static-top.toolbar').find('button.btn.btn-primary').eq(3).attr('disabled', true);
-       }
-     }, 250);
+        else if (DMS.Settings.User.positionName == 'MMPC System Admin' || DMS.Settings.User.positionName == 'MMPC System Administrator') {
+            //3-21-2017 - Disable Generate Quote from opportunity form
+            $('div.navbar.navbar-static-top.toolbar').find('button.btn.btn-primary').eq(3).attr('disabled', true);
+        }
+    }, 250);*/
     /*End - Added by Christell Ann Mataac - 03/10/2017*/
-  
+
 
     function checkSubgrid(tableDataName) {
         if ($('table[data-name="' + tableDataName + '"]').is(":visible")) {
@@ -67,7 +63,7 @@ $(document).ready(function () {
             setTimeout(function () { checkSubgrid(tableDataName); }, 50);
         }
     }
-    
+
     var isFromClose = false;
     $("#quote section.modal button.close").on("click", function () {
         isFromClose = true;
@@ -88,11 +84,10 @@ $(document).ready(function () {
             location.reload();
         }
         isFromClose = false;
-        });
+    });
     setTimeout(disableTab, 3000);
 
-    function disableTab()
-    {
+    function disableTab() {
         $('.disabled').attr("tabindex", "-1");
         $('fieldset.permanent-disabled .btn').attr("tabindex", "-1");
     }
