@@ -50,7 +50,9 @@ $(document).ready(function () {
                     type: 'get',
                     async: true,
                     url: oDataUrl,
-                    success: function (data) {               
+                    success: function (data) {
+                        console.log('response');
+                        console.log(data.value);
                         if (data.value.length > 0) {
                             $('#gsc_chattelfeeeditable').val(eval(data.value[0].gsc_chattelfeeamount).toFixed(2));
                         }
@@ -826,8 +828,11 @@ var monthlyAmortizationGridInstance = {
 
 function CreateOrderButton() {
     var webRoleId = DMS.Settings.User.webRoleId;
-    var service = DMS.Service('GET', '~/api/Service/GetEntityGridPrivilages',
-        { webRoleId: webRoleId, entityName: "salesorder" }, DMS.Helpers.DefaultErrorHandler, null);
+    var recordOwnerId = $("#gsc_recordownerid").val();
+    var OwningBranchId = $("#gsc_branchid").val();
+
+    var service = DMS.Service("GET", "~/api/Service/GetEntityGridPrivilages",
+        { webRoleId: webRoleId, entityName: "salesorder", recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId }, DMS.Helpers.DefaultErrorHandler, null);
 
     service.then(function (response) {
         if (response === null) return;
