@@ -720,7 +720,7 @@ $(document).ready(function (e) {
             }
 
             //if ((parseFloat(dpAmount)) > (parseFloat(netPrice))) {
-                //do not allow greater than net price
+            //do not allow greater than net price
             //    this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
             //}
 
@@ -1136,7 +1136,7 @@ $(document).ready(function (e) {
 
     setTimeout(function () {
         /*Added: 3/17/2017 - Disable Add button in Discount and Charges Grid*/
-        if (DMS.Settings.User.positionName == 'MMPC System Admin' || DMS.Settings.User.positionName == 'MMPC System Administrator' || DMS.Settings.User.positionName == 'Sales Supervisor' || DMS.Settings.User.positionName == 'Sales Lead' && userId != $('#gsc_recordownerid').val()) {
+      /*  if (DMS.Settings.User.positionName == 'MMPC System Admin' || DMS.Settings.User.positionName == 'MMPC System Administrator' || DMS.Settings.User.positionName == 'Sales Supervisor' || DMS.Settings.User.positionName == 'Sales Lead' && userId != $('#gsc_recordownerid').val()) {
             $('#tab-1-1').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true);
             $('#tab-1-2').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true);
 
@@ -1153,7 +1153,7 @@ $(document).ready(function (e) {
             //remove disabled  button of the activate and print buttons
             $('.btn-primary.btn.permanent-disabled.disabled').removeClass('disabled');
             $('.activate-quote-link.btn.btn-primary.permanent-disabled.disabled').removeClass('disabled');
-        }
+        }*/
         //END Added: 3/17/2017 - Disable Add button in Discount and Charges Grid
     }, 7000);
 
