@@ -1,18 +1,17 @@
 //Created By : Raphael Herrera, Created On : 6/30/2016
 $(document).ready(function () {
-
     var vpostatus = $('#gsc_vpostatus option:selected').val();
     var approvalstatus = $('#gsc_approvalstatus').val();
     var branchId = $("#gsc_branchid").val();
-    
+
     //Hide CFO field
     if ($('#gsc_vpotype').val() != "100000000") {
         $('#gsc_cfonumber_label').hide();
         $('#gsc_cfonumber').hide();
     }
-    
-    setTimeout(function() {
-      hideDevField();
+
+    setTimeout(function () {
+        hideDevField();
     }, 1000);
 
     /*   != Cancel     */
@@ -50,18 +49,20 @@ $(document).ready(function () {
         createSubmitButton();
         DisableForm();
     }
-    
-    if(vpostatus == "100000002")
-    {
-      if(DMS.Settings.User.webRole.indexOf("MMPC") >= 0)
-      {
-        var receiptDate = $('#gsc_mmpcreceiptdate').siblings('.datetimepicker');
-        receiptDate.children('.form-control').removeAttr("readonly");
-        receiptDate.children('.form-control').removeAttr("disabled");
-        receiptDate.addClass("input-append input-group");
-        receiptDate.children('span').children('span').addClass("glyphicon glyphicon-calendar");
-        receiptDate.children('.input-group-addon').show();
-      }
+
+    if (vpostatus == "100000002") {
+        if (DMS.Settings.User.webRole.indexOf("MMPC") >= 0) {
+            var receiptDate = $('#gsc_mmpcreceiptdate').siblings('.datetimepicker');
+            receiptDate.children('.form-control').removeAttr("readonly");
+            receiptDate.children('.form-control').removeAttr("disabled");
+            receiptDate.addClass("input-append input-group");
+            receiptDate.children('span').children('span').addClass("glyphicon glyphicon-calendar");
+            receiptDate.children('.input-group-addon').show();
+            $("#gsc_mmpcreceiptdate").removeAttr("readonly");
+            $(".cancel").addClass("hidden");
+            $(".printPO").addClass("hidden");
+            $("#EntityFormView").removeClass("form-readonly");
+        }
     }
 
     function DisableForm() {
@@ -70,7 +71,7 @@ $(document).ready(function () {
         $('#PurchaseOrderItem .entity-grid.subgrid').on('loaded', function () { $('.btn-default.btn-xs').addClass("permanent-disabled disabled"); });
         $('.textarea.form-control').attr("disabled", "disabled");
         $('.delete-link').hide();
-        if(vpostatus != 100000002 || DMS.Settings.User.webRole != "MMPC System Administrator")
+        if (vpostatus != 100000002 || DMS.Settings.User.webRole != "MMPC System Administrator")
             $('.submit-btn').hide();
 
         $("#gsc_remarks").css('resize', 'none');
@@ -85,8 +86,7 @@ $(document).ready(function () {
     if (approvalstatus == 100000000)
         DMS.Helpers.DisableEntityForm();
 
-    if(vpostatus == 100000002 && DMS.Settings.User.webRole == "MMPC System Administrator")
-    {
+    if (vpostatus == 100000002 && DMS.Settings.User.webRole == "MMPC System Administrator") {
         $('.submit-btn').removeClass("hidden");
         $('.submit-btn').removeAttr("style");
     }
@@ -132,16 +132,16 @@ $(document).ready(function () {
             async: true,
             url: odataUrl,
             success: function (approver) {
-              var approverLevel = parseInt(approver.value[0].gsc_approverlevel.Value);
-              var approverName = approver.value[0].gsc_approverpn;
-              var vpoApproverLevel = $('#gsc_approverlevel').val();
-              
-              if (approver.value.length != 0) {
-                if (approverLevel == parseInt(vpoApproverLevel) + 1 || vpoApproverLevel == '') {
-                  createApproveButton(approverLevel, approverName);
-                  createDisapproveButton(approverLevel, approverName);
+                var approverLevel = parseInt(approver.value[0].gsc_approverlevel.Value);
+                var approverName = approver.value[0].gsc_approverpn;
+                var vpoApproverLevel = $('#gsc_approverlevel').val();
+
+                if (approver.value.length != 0) {
+                    if (approverLevel == parseInt(vpoApproverLevel) + 1 || vpoApproverLevel == '') {
+                        createApproveButton(approverLevel, approverName);
+                        createDisapproveButton(approverLevel, approverName);
+                    }
                 }
-              }
             },
             error: function (xhr, textStatus, errorMessage) {
                 console.log(errorMessage);
@@ -150,14 +150,14 @@ $(document).ready(function () {
     }
 
     function filterApprovalCount(approverSetupId) {
-      var odataUrl = "/_odata/approver?$filter=gsc_contactid/Id eq (guid'" + userId + "') and gsc_approversetupid/Id eq (Guid'" + approverSetupId + "')";
-      var approverCount;
+        var odataUrl = "/_odata/approver?$filter=gsc_approversetupid/Id eq (Guid'" + approverSetupId + "')";
+        var approverCount;
         $.ajax({
             type: "get",
             async: false,
             url: odataUrl,
             success: function (approver) {
-              approverCount = approver.value.length;                              
+                approverCount = approver.value.length;
             },
             error: function (xhr, textStatus, errorMessage) {
                 console.log(errorMessage);
@@ -178,21 +178,21 @@ $(document).ready(function () {
         });
         $('.crmEntityFormView').append(forApprovalModal);
         forApprovalBtn.on('click', function (evt) {
-          var approverCount = filterApprovalCount(approverSetupId);
+            var approverCount = filterApprovalCount(approverSetupId);
             forApprovalModal.find('.confirmModal').on('click', function () {
-              if (approverCount > 0) {
-                $('#gsc_approvalstatus').val('100000003');
-                $('#gsc_approverlevel').val('1');
-                $('#gsc_approverguid').val(approverSetupId);
-                $("#UpdateButton").click();
-                forApprovalModal.modal('hide');
-                showLoading();
-              }
-              else if (approverCount == 0) {
-                forApprovalModal.modal('hide');
-                DMS.Notification.Error('There is no approver maintained in Approver Setup. Transaction cannot proceed');
-              }
-                
+                if (approverCount > 0) {
+                    $('#gsc_approvalstatus').val('100000003');
+                    $('#gsc_approverlevel').val('1');
+                    $('#gsc_approverguid').val(approverSetupId);
+                    $("#UpdateButton").click();
+                    forApprovalModal.modal('hide');
+                    showLoading();
+                }
+                else if (approverCount == 0) {
+                    forApprovalModal.modal('hide');
+                    DMS.Notification.Error('There is no approver maintained in Approver Setup. Transaction cannot proceed');
+                }
+
             });
             forApprovalModal.modal('show');
         });
@@ -326,8 +326,8 @@ $(document).ready(function () {
         document.getElementById('gsc_mannerofpayment').style.pointerEvents = "none";
 
         //sets input, dates and ddl to readOnly
-        $('#gsc_vpotype').attr('readOnly', true);
-        $('#gsc_mannerofpayment').attr('readOnly', true);
+        $('.picklist ').addClass(".permanent-disabled");
+        $('.picklist ').attr('readOnly', true);
         $('.datetimepicker > .form-control').attr('readOnly', true);
         $('.control > .text').attr('readOnly', true);
 
@@ -431,15 +431,14 @@ $(document).ready(function () {
         div.appendChild(span);
         $(".content-wrapper").append(div);
     }
-    
+
     //for status copty add by Tom 4/18/2017
     var vpoStatusText = $('#gsc_vpostatus option:selected').text();
     $(".record-status").text(vpoStatusText);
 
     setTimeout(disableTab, 300);
 
-    function disableTab()
-    {
+    function disableTab() {
         $('.permanent-disabled').attr("tabindex", "-1");
     }
 });
