@@ -1,7 +1,7 @@
 //Created By : Leslie Baliguat, Created On : 3/16/2016
 $(document).ready(function (e) {
     var status = "";
-    
+
     //set status field readonly 
     $('table[data-name="hideSection"]').closest('fieldset').hide();
     CheckifGovernment();
@@ -226,38 +226,38 @@ $(document).ready(function (e) {
         //check order status if open or not
         paymentModeOnChange();
 
-       // $('#gsc_downpaymentamount').val(downpayment.replace(/,/g, ''));
+        // $('#gsc_downpaymentamount').val(downpayment.replace(/,/g, ''));
 
         //change type from text to number; only allow numbers in textbox
-      //  $('#gsc_downpaymentamount').click(function () {
-      //      $(this).get(0).type = 'number';
-      //  });
+        //  $('#gsc_downpaymentamount').click(function () {
+        //      $(this).get(0).type = 'number';
+        //  });
 
         $('#gsc_downpaymentpercentage').click(function () {
             $(this).get(0).type = 'number';
         });
-        
+
         $('#gsc_downpaymentamount').blur(function () {
-              var netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
-              var dpAmount = parseFloat($('#gsc_downpaymentamount').val().replace(/,/g, ""));
+            var netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
+            var dpAmount = parseFloat($('#gsc_downpaymentamount').val().replace(/,/g, ""));
             if (dpAmount > netPrice) {
                 //do not allow greater than net price
-                    this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+                this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
                 $("#gsc_downpaymentamount").trigger('change');
             }
         });
-          
-       /* $('#gsc_downpaymentamount').blur(function () {
-            if (this.value < 0) {
-                //do not allow less than 0 input
-                this.value = 0;
-            }
-            else if ((parseFloat(this.value)) > (parseFloat(unitprice) + parseFloat(additional))) {
-                //do not allow gearter than unitprice + additional price
-                this.value = unitprice + additional;
-                $("#gsc_downpaymentamount").trigger('change');
-            }
-        });*/
+
+        /* $('#gsc_downpaymentamount').blur(function () {
+             if (this.value < 0) {
+                 //do not allow less than 0 input
+                 this.value = 0;
+             }
+             else if ((parseFloat(this.value)) > (parseFloat(unitprice) + parseFloat(additional))) {
+                 //do not allow gearter than unitprice + additional price
+                 this.value = unitprice + additional;
+                 $("#gsc_downpaymentamount").trigger('change');
+             }
+         });*/
 
         $('#gsc_downpaymentpercentage').blur(function () {
             if (this.value < 0) {
@@ -273,66 +273,66 @@ $(document).ready(function (e) {
 
     }, 100);
 
-   /* setTimeout(function () {
-
-        $('#gsc_vehiclecolorid1').on('change', function () {
-            //recompute everything
-            additional = 0.00;
-            netamountfinanced = 0.00;
-            netdp = 0.00;
-            amountfinanced = 0.00;
-            netdownpayment = 0.00;
-            aflessdiscount = 0.00;
-            additional = 0.0;
-
-            $("#gsc_netdownpayment").val("");
-            $("#gsc_amountfinanced").val("");
-            $("#gsc_netamountfinanced").val("");
-
-            getAdditionalPrice();
-        });
-
-    }, 300);
-
-    //get additoinal price from vehiclecolor
-      function getAdditionalPrice() {
-        setTimeout(function () {
-
-            var vehiclecolorid = $("#gsc_vehiclecolorid1").val();
-
-            if ($('#gsc_vehiclecolorid1_name').val() == "") {
-                vehiclecolorid = "";
-            }
-
-            if (vehiclecolorid != "" && vehiclecolorid != "Nan" && vehiclecolorid != "undefined") {
-                var odataUrl = "/_odata/vehiclecolor?$filter=gsc_cmn_vehiclecolorid eq (Guid'" + vehiclecolorid + "')";
-
-                $.ajax({
-                    type: "get",
-                    async: true,
-                    url: odataUrl,
-                    success: function (data) {
-                        for (var i = 0; i < data.value.length; i++) {
-                            var obj = data.value[i];
-                            for (var key in obj) {
-                                var attrName = key;
-                                var attrValue = obj[key];
-                                if (attrName == 'gsc_additionalprice') {
-                                    additional = parseFloat(attrValue);
-                                }
-                            }
-                        }
-                    },
-                    error: function (xhr, textStatus, errorMessage) {
-                    }
-                });
-            }
-            else {
-                additional = 0.00;
-            }
-
-        }, 1000);
-    }*/
+    /* setTimeout(function () {
+ 
+         $('#gsc_vehiclecolorid1').on('change', function () {
+             //recompute everything
+             additional = 0.00;
+             netamountfinanced = 0.00;
+             netdp = 0.00;
+             amountfinanced = 0.00;
+             netdownpayment = 0.00;
+             aflessdiscount = 0.00;
+             additional = 0.0;
+ 
+             $("#gsc_netdownpayment").val("");
+             $("#gsc_amountfinanced").val("");
+             $("#gsc_netamountfinanced").val("");
+ 
+             getAdditionalPrice();
+         });
+ 
+     }, 300);
+ 
+     //get additoinal price from vehiclecolor
+       function getAdditionalPrice() {
+         setTimeout(function () {
+ 
+             var vehiclecolorid = $("#gsc_vehiclecolorid1").val();
+ 
+             if ($('#gsc_vehiclecolorid1_name').val() == "") {
+                 vehiclecolorid = "";
+             }
+ 
+             if (vehiclecolorid != "" && vehiclecolorid != "Nan" && vehiclecolorid != "undefined") {
+                 var odataUrl = "/_odata/vehiclecolor?$filter=gsc_cmn_vehiclecolorid eq (Guid'" + vehiclecolorid + "')";
+ 
+                 $.ajax({
+                     type: "get",
+                     async: true,
+                     url: odataUrl,
+                     success: function (data) {
+                         for (var i = 0; i < data.value.length; i++) {
+                             var obj = data.value[i];
+                             for (var key in obj) {
+                                 var attrName = key;
+                                 var attrValue = obj[key];
+                                 if (attrName == 'gsc_additionalprice') {
+                                     additional = parseFloat(attrValue);
+                                 }
+                             }
+                         }
+                     },
+                     error: function (xhr, textStatus, errorMessage) {
+                     }
+                 });
+             }
+             else {
+                 additional = 0.00;
+             }
+ 
+         }, 1000);
+     }*/
 
     function paymentModeOnChange() {
         var dpamountfield = $('#gsc_downpaymentamount');
@@ -389,9 +389,9 @@ $(document).ready(function (e) {
             schemeidfield.siblings('.input-group-btn').addClass('hidden');
             $('#gsc_financingschemeid_label').parent("div").removeClass("required");
             $('#gsc_bankid_label').parent("div").addClass('required');
-           
+
             Page_Validators.push(bankValidator);
-            
+
             Page_Validators = jQuery.grep(Page_Validators, function (value) {
                 return value != schemeValidator;
             });
@@ -443,7 +443,7 @@ $(document).ready(function (e) {
         dppercent = $("#gsc_downpaymentpercentage").val() == "" ? 0 : $("#gsc_downpaymentpercentage").val();
 
         downpayment = (parseFloat(netprice)) * (parseFloat(dppercent) / 100);
-        
+
         $("#gsc_downpaymentamount").val(downpayment.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
         computeNetDownpayment();
     }
@@ -501,7 +501,7 @@ $(document).ready(function (e) {
             netamountfinanced = amountfinanced - parseFloat(downPaymentDiscountAmount);
             $("#gsc_totalamountfinanced").val(netamountfinanced.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
         } else {
-           // $("#gsc_totalamountfinanced").val(amountfinanced.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+            // $("#gsc_totalamountfinanced").val(amountfinanced.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
         }
     }
 
@@ -701,7 +701,7 @@ $(document).ready(function (e) {
         DMS.Notification.Error("Error: Cannot select preferred color twice.", true, 5000);
     }
 
-     function checkPreferredColor(index) {
+    function checkPreferredColor(index) {
         var colorNum = index;
         var color1 = $('#gsc_vehiclecolorid1').val();
         var color2 = $('#gsc_vehiclecolorid2').val();
@@ -731,12 +731,12 @@ $(document).ready(function (e) {
 
         return isDuplicate;
     }
-    
+
     // CREATE INVOICE  by Artum Ramos
 
     $(".convert-order-link").click(function () {
         $("#gsc_status").val("100000007");
-       // $("#gsc_iscreateinvoice").prop("checked", true);
+        // $("#gsc_iscreateinvoice").prop("checked", true);
         $("#UpdateButton").click();
     });
 
@@ -783,9 +783,9 @@ $(document).ready(function (e) {
         }
 
         if (DMS.Settings.User.positionName == 'MMPC System Admin' || DMS.Settings.User.positionName == 'MMPC System Administrator' || DMS.Settings.User.positionName == 'MSD Manager' || DMS.Settings.User.positionName == 'Sales Supervisor' || DMS.Settings.User.positionName == 'Sales Lead' && userId != $('#gsc_recordownerid').val()) {
-            $("#EntityFormView").attr("disabled", true);
-            $('#tab-1-1').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true)
-            $('#tab-1-2').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true)
+            //   $("#EntityFormView").attr("disabled", true);
+            // $('#tab-1-1').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true)
+            //$('#tab-1-2').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true)
 
             if (DMS.Settings.User.positionName == 'MSD Manager') {
                 $(".allocate-link").attr('disabled', false);
