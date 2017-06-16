@@ -841,76 +841,86 @@ var CabChasisGridInstance = {
 
 
 var monthlyAmortizationGridInstance = {
-    initialize: function () {
-
-        $('<div id="monthlyamortization-editablegrid" class="editable-grid"></div>').appendTo('.content-wrapper');
-        var $container = document.getElementById('monthlyamortization-editablegrid');
-        var idQueryString = DMS.Helpers.GetUrlQueryString('id');
-        var odataQuery = '/_odata/gsc_sls_ordermonthlyamortization?$filter=gsc_orderid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
-        // var odataQuery = '/_odata/gsc_sls_ordermonthlyamortization?$filter=gsc_orderid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
-        var screenSize = ($(window).width() / 2) - 100;
-        /* - Read Only Permission for Cashier Role*/
-        if (DMS.Settings.User.positionName == 'Cashier')
-            var options = {
-                dataSchema: {
-                    gsc_selected: null, gsc_orderid: { Id: null, Name: null },
-                    gsc_financingtermid: { Id: null, Name: null }, gsc_ordermonthlyamortizationpn: null
-                },
-                colHeaders: [
-                    '', 'Financing Term',
-                    'Monthly Amortization'
-                ],
-                columns: [
-                    { data: 'gsc_selected', type: 'checkbox', renderer: checkboxRenderer, readOnly: true, className: "htCenter htMiddle", width: 50 },
-                    { data: 'gsc_financingtermid', renderer: multiPropertyRenderer, readOnly: true, className: "htCenter htMiddle", width: 200 },
-                    { data: 'gsc_ordermonthlyamortizationpn', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 }
-                ],
-                gridWidth: screenSize,
-                addNewRows: false,
-                deleteRows: false
-            }
-        else
-            var options = {
-                dataSchema: {
-                    gsc_selected: null, gsc_orderid: { Id: null, Name: null },
-                    gsc_financingtermid: { Id: null, Name: null }, gsc_ordermonthlyamortizationpn: null
-                },
-                colHeaders: [
-                    'Select Term *',
-                    'Financing Term',
-                    'Monthly Amortization'
-                ],
-                columns: [
-                    { data: 'gsc_selected', type: 'checkbox', renderer: checkboxRenderer, className: "htCenter htMiddle", width: 50 },
-                    { data: 'gsc_financingtermid', renderer: multiPropertyRenderer, readOnly: true, className: "htCenter htMiddle", width: 200 },
-                    { data: 'gsc_ordermonthlyamortizationpn', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 }
-                ],
-                gridWidth: screenSize,
-                addNewRows: false,
-                deleteRows: false
-            }
-
-        var sectionName = "OrderMonthlyAmortizationSubgrid";
-        var attributes = [{ key: 'gsc_selected', type: 'System.Boolean' }];
-        var model = { id: 'gsc_sls_ordermonthlyamortizationid', entity: 'gsc_sls_ordermonthlyamortization', attr: attributes };
-        var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model,
-            {
-                gsc_sls_ordermonthlyamortizationid: null, gsc_selected: false,
-                gsc_financingtermid: { Id: null, Name: null }, gsc_ordermonthlyamortizationpn: null
-                // gsc_orderid: { Id: null, Name: null },
-            }
-        );
-
-
-        hotInstance.addHook('afterLoadData', function () {
-            var status = $(".record-status").html();
-
-            if (hotInstance.countRows() > 1 && (status != "For Invoicing" && status != "Completed")) {
-                $("#btnSaveCopy").removeAttr("disabled");
-            }
-        });
-
+  initialize: function () {
+    $('<div id="monthlyamortization-editablegrid" class="editable-grid"></div>').appendTo('.content-wrapper');
+    var $container = document.getElementById('monthlyamortization-editablegrid');
+    var idQueryString = DMS.Helpers.GetUrlQueryString('id');
+    var odataQuery = '/_odata/gsc_sls_ordermonthlyamortization?$filter=gsc_orderid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
+    // var odataQuery = '/_odata/gsc_sls_ordermonthlyamortization?$filter=gsc_orderid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
+    var screenSize = ($(window).width() / 2) - 100;
+    /* - Read Only Permission for Cashier Role*/
+    if (DMS.Settings.User.positionName == 'Cashier') {
+      var options = {
+        dataSchema: {
+          gsc_selected: null, gsc_orderid: { Id: null, Name: null },
+          //gsc_financingtermid: { Id: null, Name: null },
+          gsc_financingtermid: null,
+          gsc_ordermonthlyamortizationpn: null
+        },
+        colHeaders: [
+          '', 'Financing Term',
+          'Monthly Amortization'
+        ],
+        columns: [
+          { data: 'gsc_selected', type: 'checkbox', renderer: checkboxRenderer, readOnly: true, className: "htCenter htMiddle", width: 50 },
+          { data: 'gsc_financingtermid.Name', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 100 },
+          { data: 'gsc_ordermonthlyamortizationpn', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 }
+        ],
+        columnSorting: {
+          column: 1,
+          sortOrder: true
+        },
+        gridWidth: screenSize,
+        addNewRows: false,
+        deleteRows: false
+      }
     }
+    else {
+      var options = {
+        dataSchema: {
+          gsc_selected: null, gsc_orderid: { Id: null, Name: null },
+          //gsc_financingtermid: { Id: null, Name: null },
+          gsc_financingtermid: null,
+          gsc_ordermonthlyamortizationpn: null
+        },
+        colHeaders: [
+          'Select Term *',
+          'Financing Term',
+          'Monthly Amortization'
+        ],
+        columns: [
+          { data: 'gsc_selected', type: 'checkbox', renderer: checkboxRenderer, className: "htCenter htMiddle", width: 50 },
+          { data: 'gsc_financingtermid.Name', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 100 },
+          { data: 'gsc_ordermonthlyamortizationpn', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 }
+        ],
+        columnSorting: {
+          column: 1,
+          sortOrder: true
+        },
+        gridWidth: screenSize,
+        addNewRows: false,
+        deleteRows: false
+      }      
+    }
+    
+    var sectionName = "OrderMonthlyAmortizationSubgrid";
+    var attributes = [{ key: 'gsc_selected', type: 'System.Boolean' }];
+    var model = { id: 'gsc_sls_ordermonthlyamortizationid', entity: 'gsc_sls_ordermonthlyamortization', attr: attributes };
+    var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model,
+      {
+        gsc_sls_ordermonthlyamortizationid: null, gsc_selected: false,
+        gsc_financingtermid: { Id: null, Name: null }, gsc_ordermonthlyamortizationpn: null
+        // gsc_orderid: { Id: null, Name: null },
+      }
+    );
+    
+    hotInstance.addHook('afterLoadData', function () {
+      var status = $(".record-status").html();
+      if (hotInstance.countRows() > 1 && (status != "For Invoicing" && status != "Completed")) {
+        $("#btnSaveCopy").removeAttr("disabled");
+      }
+    });
+  }
 }
 
 $(document).bind('DOMNodeInserted', function (evt) {
