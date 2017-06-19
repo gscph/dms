@@ -1,4 +1,15 @@
-$(document).ready(function (e) {
+$(document).ready(function () {
+    $(".view-toolbar .view-select .dropdown-menu > li a").on("click", function () {
+        //$(".view-toolbar ul.view-select li.dropdown .dropdown-menu > li > a").change(function(e) {
+        //$(".view-toolbar ul.view-select li.dropdown span.title").change(function(e) {
+        //alert($(this).text());
+        //var aVal = $(this).text();
+        //alert("Customer"+aVal);
+        //if ($(this).text() = "Individual" || $(this).text() = "Corporate"){
+        $("#customerid_lookupmodal .view-toolbar").addClass('col-md-6 col-xs-12 pull-right');
+        //}
+    });
+
     //JGC_04042017: Notify user if the selected customer is fraud
     setTimeout(function () {
         $("#customerid").on('change', function () {
@@ -32,7 +43,6 @@ $(document).ready(function (e) {
             }
         });
     }, 100);
-
 
     setTimeout(function () {
 
@@ -86,12 +96,13 @@ $(document).ready(function (e) {
                 }
             });
 
+
             $.ajax({
                 type: 'get',
                 async: true,
                 url: '~/api/Service/GetVehicleUnitPrice?productId=' + productId,
                 success: function (data) {
-                    $('#gsc_vehicleunitprice').val(data);
+                  $('#gsc_vehicleunitprice').val(data);
                 },
                 error: function (xhr, textStatus, errorMessage) {
                     console.error(errorMessage);
@@ -100,5 +111,4 @@ $(document).ready(function (e) {
         });
 
     }, 100);
-
 });
