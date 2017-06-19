@@ -139,7 +139,7 @@ namespace Site.Areas.DMSApi.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetPrivilages(Guid webPageId)
+        public IHttpActionResult GetPrivilages(Guid webPageId, Guid recordOwnerId, Guid OwningBranchId)
         {
             try
             {
@@ -156,7 +156,7 @@ namespace Site.Areas.DMSApi.Controllers
                         {
                             webRoleId = new Guid(cookies["Branch"]["webRoleId"]);
                             var service = new XrmServiceContext(_conn);
-                            var result = service.GetEntityPermission(webRoleId, webPageId);
+                            var result = service.GetEntityPermission(webRoleId, webPageId, recordOwnerId, OwningBranchId);
                             return Ok(result);
                         }
                     }
@@ -172,14 +172,14 @@ namespace Site.Areas.DMSApi.Controllers
         }
 
         [HttpGet]
-        public Privileges GetEntityPermission(Guid webRoleId, Guid webPageId)
+        public Privileges GetEntityPermission(Guid webRoleId, Guid webPageId, Guid recordOwnerId, Guid OwningBranchId)
         {
             var service = new XrmServiceContext(_conn);
-            return service.GetEntityPermission(webRoleId, webPageId);
+            return service.GetEntityPermission(webRoleId, webPageId, recordOwnerId, OwningBranchId);
         }
 
         [HttpGet]
-        public IHttpActionResult GetEntityGridPrivilages(String entityName)
+        public IHttpActionResult GetEntityGridPrivilages(String entityName, Guid recordOwnerId, Guid OwningBranchId)
         {
             try
             {
@@ -196,7 +196,7 @@ namespace Site.Areas.DMSApi.Controllers
                         {
                             webRoleId = new Guid(cookies["Branch"]["webRoleId"]);
                             var service = new XrmServiceContext(_conn);
-                            var result = service.GetEditableGridEntityPermission(webRoleId, entityName);
+                            var result = service.GetEditableGridEntityPermission(webRoleId, entityName, recordOwnerId, OwningBranchId);
                             return Ok(result);
                         }
                     }
@@ -212,10 +212,10 @@ namespace Site.Areas.DMSApi.Controllers
         }
 
         [HttpGet]
-        public Privileges GetEditableGridEntityPermission(Guid webRoleId, String entityName)
+        public Privileges GetEditableGridEntityPermission(Guid webRoleId, String entityName, Guid recordOwnerId, Guid OwningBranchId)
         {
             var service = new XrmServiceContext(_conn);
-            return service.GetEditableGridEntityPermission(webRoleId, entityName);
+            return service.GetEditableGridEntityPermission(webRoleId, entityName, recordOwnerId, OwningBranchId);
         }
     }
 }

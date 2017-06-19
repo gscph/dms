@@ -1,5 +1,5 @@
-﻿$(document).ready(function () {           
-   
+﻿$(document).ready(function () {
+
     //$('.row.form-custom-actions').attr('style', 'width:100%;top: 50px; background-color: #FAFAFA;');  
 
     $('.row.form-custom-actions .clearfix').removeClass('col-sm-6');
@@ -7,7 +7,7 @@
 
     // iconizing inputs
     $('.fa-input-submit').val($("<div>").html("&#xf0c7; ").text() + $('.fa-input-submit').val());
-    $('.fa-input-generate').val($("<div>").html("&#xf022; ").text() + $('.fa-input-generate').val());   
+    $('.fa-input-generate').val($("<div>").html("&#xf022; ").text() + $('.fa-input-generate').val());
 
     // remove modal from from toolbar to avoid position: fixed; conflict
     var modal = $('.row.form-custom-actions').find('section.modal.modal-delete').detach();
@@ -22,11 +22,11 @@
 
     // apply dms custom buttons to form toolbar buttons
     $('.form-custom-actions .btn.btn-default').addClass('btn-primary');
-    $('.form-custom-actions .btn.btn-default').removeClass('btn-default');   
-    
+    $('.form-custom-actions .btn.btn-default').removeClass('btn-default');
+
     //remove label for textbox status
-    $('div[data-name="Footer"] table.section div.info').remove();   
-    
+    $('div[data-name="Footer"] table.section div.info').remove();
+
     // add margin to the last box 
     $('div.box.box-dms:last').attr('style', 'margin-bottom: 25px');
 
@@ -35,7 +35,7 @@
     $('div[data-name="Footer"] table.section:last div.control select').addClass('status-label');
 
     $('div[data-name="Footer"] table.section:last div.control span').removeClass('state');
-    $('div[data-name="Footer"] table.section:last div.control span').addClass('status-label');   
+    $('div[data-name="Footer"] table.section:last div.control span').addClass('status-label');
 
     var closeBtn = '<button type="button" class="close" style="font-size: 12px; color:#333333;" data-dismiss="alert" aria-label="Close"> \
                         <span aria-hidden="true">&times;</span> \
@@ -59,11 +59,11 @@
 
     if (typeof value !== 'undefined') {
         $('.record-status').html(value);
-     //   .append('<span class="status-label">' + value + '</span>');
+        //   .append('<span class="status-label">' + value + '</span>');
         //$('div[data-name="Footer"] table.section div.control select.picklist').remove();
     }
     // crumbs
-    
+
     $('.form-custom-actions div.col-sm-12 .form-action-container-left').children().each(function () {
         var $li = $('<li></li>');
         $li.append($(this));
@@ -72,14 +72,14 @@
 
     $('.form-custom-actions').remove();
 
-   // $('.record-status').html($('.status-label').html());
+    // $('.record-status').html($('.status-label').html());
 
     $('div[data-name="Footer"]').addClass("hidden");
 
     $('.modal-lookup .modal-footer > button').each(function () {
         this.innerText = this.innerText.toUpperCase();
     });
-   
+
     //$('.submit-btn').click(duplicateDetect);
 
     function duplicateDetect() {
@@ -107,13 +107,13 @@
                     }
                 },
                 error: function (xhr, textStatus, errorMessage) {
-                   // alert(errorMessage);
+                    // alert(errorMessage);
                 }
             });
         }, 100);
 
     }
-    
+
     function getDuplicateFields(setupId) {
 
         var odataUrl = "/_odata/DuplicateDetectFields?$filter=gsc_duplicatedetectsetupid/Id eq (Guid'" + setupId + "')";
@@ -123,7 +123,7 @@
             async: true,
             url: odataUrl,
             success: function (data) {
-                
+
                 for (var i = 0; i < data.value.length; i++) {
                     var obj = data.value[i];
                     for (var key in obj) {
@@ -142,7 +142,7 @@
                 alert(errorMessage);
             }
         });
-       
+
     }
 });
 

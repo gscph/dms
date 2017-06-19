@@ -133,9 +133,11 @@
             });
 
             var webPageId = $("#webPageId span").html();
+            var recordOwnerId = $("#gsc_recordownerid").val();
+            var OwningBranchId = $("#gsc_branchid").val();
 
             var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
-                { webPageId: webPageId }, DMS.Helpers.DefaultErrorHandler, null);
+                { webPageId: webPageId, recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId }, DMS.Helpers.DefaultErrorHandler, null);
 
             service.then(function (response) {
                 DMS.Settings.Permission = response;
@@ -156,7 +158,7 @@
                     DisableFormByPermission();
                     $(".toolbar-right").find("button, a, input").each(function () {
                         var text = $(this).html();
-                        if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") === -1) {
+                        if (text.indexOf("NEW") === -1 && text.indexOf("DELETE") === -1 && text.indexOf("REMOVE") === -1 && text.indexOf("EXPORT") === -1) {
                             $(this).remove();
                         }
                     });

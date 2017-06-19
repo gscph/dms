@@ -66,8 +66,10 @@
     <script>
         $(document).on("loaded", function () {
             var webPageId = $("#webPageId span").html();
+            var guidEmpty = "00000000-0000-0000-0000-000000000000";
+
             var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
-               { webPageId: webPageId }, DMS.Helpers.DefaultErrorHandler, null);
+               { webPageId: webPageId, recordOwnerId: guidEmpty, OwningBranchId: guidEmpty }, DMS.Helpers.DefaultErrorHandler, null);
 
             service.then(function (response) {
                 DMS.Settings.Permission = response;
@@ -78,14 +80,18 @@
                 if (DMS.Settings.Permission.Read === false) return;
 
                 if (DMS.Settings.Permission.Create === false) {
-                    if ($(".btn.action:first").html().indexOf("NEW") !== -1)
-                        $(".btn.action:first").remove()
+                    $(".toolbar-right").find("button, a").each(function () {
+                        var text = $(this).html();
+                        if (text.indexOf("NEW") >= 0) {
+                            $(this).remove();
+                        }
+                    });
                 }
 
                 if (DMS.Settings.Permission.Update == false) {
                     $(".toolbar-right").find("button, a").each(function () {
                         var text = $(this).html();
-                        if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") === -1) {
+                        if (text.indexOf("NEW") === -1 && text.indexOf("DELETE") === -1 && text.indexOf("REMOVE") === -1 && text.indexOf("EXPORT") === -1) {
                             $(this).remove();
                         }
                     });

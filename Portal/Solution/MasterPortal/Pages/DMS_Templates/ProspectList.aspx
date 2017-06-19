@@ -77,6 +77,7 @@
                     (typeof isEntityList !== 'undefined')) {
 
                     $(document).on("dblclick", ".entity-grid.entitylist .view-grid table tbody tr td:not(:first)", function () {
+                        showLoading();
 
                         var that = $(this);
 
@@ -88,38 +89,68 @@
                         if (DMS.Settings.Permission != null) {
                             isAuthorized = DMS.Settings.Permission.Scope == 756150000 && DMS.Settings.Permission.Read == true;
                         }
-                         
-
-                        if (IsRecordOwner(that) || isAuthorized) {
-                            window.location.href = editUrl;
-                            return;
-                        }
-
-                        DMS.Notification.Error('You are unauthorized to open this record.', true, 3000);
+                        IsRecordOwner(that, isAuthorized, editUrl);
                     });
                 }
 
             });
 
           
-            function IsRecordOwner(element) {
+            function IsRecordOwner(element, isAuthorized, editUrl) {
+                var userId = DMS.Settings.User.Id;
 
                 var attribute = element.data('attribute');
                 var tdReportsTo = element.siblings('td[data-attribute="gsc_reportsto"]').data('value');
-                var createdBy, reportsTo;
+                var createdBy, reportsToId;
                 
                 if (attribute == 'gsc_recordownerid') createdBy = element.data('value') != null ? element.data('value').Id : null;
                 else if (typeof element.siblings('td[data-attribute="gsc_recordownerid"]').data('value') !== 'undefined') {
                     createdBy = element.siblings('td[data-attribute="gsc_recordownerid"]').data('value').Id;
                 }
-                if (attribute == 'gsc_reportsto') {
+             /*   if (attribute == 'gsc_reportsto') {
                     reportsTo = element.data('value').Id;                    
                 }
                 else if (typeof tdReportsTo !== 'undefined') {
                     reportsTo = tdReportsTo.Id;
-                }         
+                }         */
 
-                return (createdBy == DMS.Settings.User.Id || reportsTo == DMS.Settings.User.Id);
+                var oDataUrl = '/_odata/employee?$filter=contactid%20eq%20(Guid%27' + createdBy + '%27)&';
+                $.ajax({
+                    type: 'get',
+                    async: true,
+                    url: oDataUrl,
+                    success: function (data) {
+                        if (data.value.length !== 0) {
+                            var reportsTo = data.value[0].gsc_reportsto;
+                            if (reportsTo !== null && reportsTo !== undefined)
+                                reportsToId = reportsTo.Id;
+
+                            if (createdBy === userId || reportsToId === DMS.Settings.User.Id || isAuthorized) {
+                                window.location.href = editUrl;
+                                return;
+                            }
+
+                            $.unblockUI();
+                            $(".loadingDiv").remove();
+                            DMS.Notification.Error('You are unauthorized to open this record.', true, 3000);
+                        }
+                    },
+                    error: function (xhr, textStatus, errorMessage) {
+                        console.error(errorMessage);
+                    }
+                });
+            }
+
+            function showLoading() {
+                $.blockUI({ message: null, overlayCSS: { opacity: .3 } });
+
+                var div = document.createElement("DIV");
+                div.className = "view-loading message text-center";
+                div.style.cssText = 'position: absolute; top: 50%; left: 50%;margin-right: -50%;display: block;';
+                var span = document.createElement("SPAN");
+                span.className = "fa fa-2x fa-spinner fa-spin";
+                div.appendChild(span);
+                $(".content-wrapper").append(div);
             }
 
         }(jQuery));  

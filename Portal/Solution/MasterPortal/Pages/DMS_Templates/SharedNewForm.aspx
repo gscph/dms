@@ -105,9 +105,11 @@
         $(function () {
             $(document).on('hideLoader', function () {
                 var webPageId = $('#webPageId span').html();
+                var recordOwnerId = $("#gsc_recordownerid").val();
+                var OwningBranchId = $("#gsc_branchid").val();
 
                 var service = DMS.Service('GET', '~/api/Service/GetPrivilages',
-                   { webPageId: webPageId }, DMS.Helpers.DefaultErrorHandler, null);
+                   { webPageId: webPageId, recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId }, DMS.Helpers.DefaultErrorHandler, null);
 
                 service.then(function (response) {
                     DMS.Settings.Permission = response;

@@ -540,7 +540,7 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
     }
 
     this.run();
-
+    addEntityPermission(model, sectionDataname);
     return $hot;
 }
 
@@ -550,4 +550,54 @@ function addDefaultClass(button, isDisabled) {
     if (isDisabled) {
         button.addClass('disabled');
     }
+}
+
+function addEntityPermission(model, sectionDataname) {
+    var entity = model.entity;
+    var webRoleId = DMS.Settings.User.webRoleId;
+    var recordOwnerId = $("#gsc_recordownerid").val();
+    var OwningBranchId = $("#gsc_branchid").val();
+
+    var service = DMS.Service('GET', '~/api/Service/GetEntityGridPrivilages',
+      { webRoleId: webRoleId, entityName: entity, recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId }, DMS.Helpers.DefaultErrorHandler, null);
+
+    service.then(function (response) {
+        var isToolBarEmpty = 0;
+        var entityGridTable = $('table[data-name="' + sectionDataname + '"]');
+
+        if (entityGridTable.html() == undefined) {
+            entityGridTable = $('#' + sectionDataname);
+        }
+
+        if (response == null) return;
+        if (response.Read == null) return;
+
+        if (response.Read == false) {
+            entityGridTable.find('.editable-grid-toolbar').html('');
+            entityGridTable.addClass("disabledGrid");
+            return;
+        }
+
+        if (response.Create == false) {
+            entityGridTable.find('.editable-grid-toolbar .addnew').remove();
+            isToolBarEmpty++;
+        }
+
+        if (response.Update == false) {
+            entityGridTable.find('.editable-grid-toolbar .save').remove();
+            entityGridTable.find('.editable-grid-toolbar .btnSaveCopy').remove();
+            entityGridTable.find('.editable-grid-toolbar .cancel').remove();
+            isToolBarEmpty++;
+        }
+
+        if (response.Delete == false) {
+            entityGridTable.find('.editable-grid-toolbar .delete').remove();
+            isToolBarEmpty++;
+        }
+
+        if (isToolBarEmpty == 3)
+            entityGridTable.addClass("disabledGrid");
+
+        entityGridTable.find('.editable-grid-toolbar').removeClass("hidden");
+    });
 }

@@ -118,9 +118,11 @@
         $(function () {
             $(document).ready(function () {
                 var webPageId = $("#webPageId span").html();
+                var recordOwnerId = $("#gsc_recordownerid").val();
+                var OwningBranchId = $("#gsc_branchid").val();
 
                 var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
-                   { webPageId: webPageId }, DMS.Helpers.DefaultErrorHandler, null);
+                   { webPageId: webPageId, recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId }, DMS.Helpers.DefaultErrorHandler, null);
 
                 service.then(function (response) {
                     DMS.Settings.Permission = response;
@@ -142,7 +144,7 @@
                         DisableFormByPermission();
                         $(".toolbar-right").find("button, a, input").each(function () {
                             var text = $(this).html();
-                            if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") === -1) {
+                            if (text.indexOf("NEW") === -1 && text.indexOf("DELETE") === -1 && text.indexOf("REMOVE") === -1 && text.indexOf("EXPORT") === -1) {
                                 $(this).remove();
                             }
                         });
@@ -155,19 +157,36 @@
                     $(".navbar-right.toolbar-right").removeClass("hidden");
 
                     //Edit Prospect scripts
-                    var reportsTo = $("#gsc_recordownerreportsto").val();
+                   // var reportsTo = $("#gsc_recordownerreportsto").val();
                     var owner = $("#gsc_recordownerid").val();
 
-                    if (owner === userId || reportsTo === userId) {
-                        return;
-                    }
+                    var oDataUrl = '/_odata/employee?$filter=contactid%20eq%20(Guid%27' + owner + '%27)&';
+                    $.ajax({
+                        type: 'get',
+                        async: true,
+                        url: oDataUrl,
+                        success: function (data) {
+                            if (data.value.length !== 0) {
+                                var reportsTo = data.value[0].gsc_reportsto;
+                                if (reportsTo !== null && reportsTo !== undefined)
+                                    reportsToId = reportsTo.Id;
 
-                    if (DMS.Settings.Permission.Scope === 756150000 && DMS.Settings.Permission.Read === true) {
-                        return;
-                    }
+                                if (owner === userId || reportsToId === userId) {
+                                    return;
+                                }
 
-                    $("section.content").hide();
-                    window.location.href = "~/transactions/prospectinquiry/";
+                                if (DMS.Settings.Permission.Scope === 756150000 && DMS.Settings.Permission.Read === true) {
+                                    return;
+                                }
+
+                                $("section.content").hide();
+                                window.location.href = "~/transactions/prospectinquiry/";
+                            }
+                        },
+                        error: function (xhr, textStatus, errorMessage) {
+                            console.error(errorMessage);
+                        }
+                    });
                 });
 
                 function DisableFormByPermission() {
@@ -184,6 +203,7 @@
             });
         });
     </script>
+    <script src="~/js/dms/subgrid-button-permission.js"></script>
 
 </asp:Content>
 

@@ -1527,7 +1527,7 @@
                         }
                         //error = jqXhr.statusText;;
                         $modal.modal("hide");
-                        error = 'Opportunity cannot be closed since there\'s at least one quote record which is not \"Won\"';
+                        error = 'Opportunity cannot be closed as won since there\'s at least one quote record which is not \"Won\"';
                         displayErrorAlert(error, $parent);
                     }).always(function () {
                         $button.removeAttr("disabled", "disabled").find(".fa-spin").remove();
@@ -1561,7 +1561,7 @@
                         error = contentType.indexOf("json") > -1 ? $.parseJSON(jqXhr.responseText) : { Message: jqXhr.status, InnerError: { Message: jqXhr.statusText } };
                     }
                     //error = jqXhr.statusText;;
-                    error = 'Opportunity cannot be closed since there\'s at least one quote record which is not \"Won\".';
+                    error = 'Opportunity cannot be closed as won since there\'s at least one quote record which is not \"Won\".';
                     displayErrorAlert(error, $parent);
                 }).always(function () { });
             });
@@ -1623,7 +1623,7 @@
                             error = contentType.indexOf("json") > -1 ? $.parseJSON(jqXhr.responseText) : { Message: jqXhr.status, InnerError: { Message: jqXhr.statusText } };
                         }
                         //error = jqXhr.statusText;
-                        error = 'Opportunity cannot be closed since there\'s at least one quote record which is not \"Lost\"';
+                        error = 'Opportunity cannot be closed as lost since there\'s at least one quote record which is not \"Lost\"';
                         $modal.modal("hide");
                         displayErrorAlert(error, $parent);
                     }).always(function () {
@@ -1658,7 +1658,7 @@
                         error = contentType.indexOf("json") > -1 ? $.parseJSON(jqXhr.responseText) : { Message: jqXhr.status, InnerError: { Message: jqXhr.statusText } };
                     }
                     //error = jqXhr.statusText;
-                    error = 'Opportunity cannot be closed since there\'s at least one quote record which is not \"Closed\"';
+                    error = 'Opportunity cannot be closed as lost since there\'s at least one quote record which is not \"Closed\"';
                     displayErrorAlert(error, $parent);
                 }).always(function () { });
             });
@@ -1838,7 +1838,7 @@
             else {
                 message = error.Message;
             }
-           
+
             if (typeof message === 'undefined') {
                 message = error;
             }

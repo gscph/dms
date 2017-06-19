@@ -1,9 +1,10 @@
 ﻿$(document).on("loaded", function () {
     $("td[data-attribute=\"gsc_reportsto\"").hide();
     var webPageId = $("#webPageId span").html();
+    var guidEmpty = "00000000-0000-0000-0000-000000000000";
 
     var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
-       { webPageId: webPageId }, DMS.Helpers.DefaultErrorHandler, null);
+       { webPageId: webPageId, recordOwnerId: guidEmpty, OwningBranchId: guidEmpty }, DMS.Helpers.DefaultErrorHandler, null);
 
     service.then(function (response) {
         DMS.Settings.Permission = response;
@@ -27,16 +28,21 @@
         }
 
         if (DMS.Settings.Permission.Update === false) {
-            $(".toolbar-right").find("button, a, input").each(function () {
+            $(".toolbar-right").find("button, a").each(function () {
                 var text = $(this).html();
-                if (text !== "NEW" && text !== "DELETE" && text !== "REMOVE" && text.indexOf("EXPORT") === -1) {
+                if (text.indexOf("NEW") === -1 && text.indexOf("DELETE") === -1 && text.indexOf("REMOVE") === -1 && text.indexOf("EXPORT") === -1) {
                     $(this).remove();
                 }
             });
         }
 
         if (DMS.Settings.Permission.Delete === false) {
-            $(".delete-link").remove();
+            $(".toolbar-right").find("button, a").each(function () {
+                var text = $(this).html();
+                if (text.indexOf("DELETE") > -1) {
+                    $(this).remove();
+                }
+            });
         }
 
         $(".navbar-right.toolbar-right").removeClass("hidden");

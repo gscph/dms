@@ -243,11 +243,12 @@ namespace Site.Areas.DMSApi
             return isRoot;
         }
 
-        public Privileges GetEntityPermission(Guid webRoleId, Guid webPageId)
+        public Privileges GetEntityPermission(Guid webRoleId, Guid webPageId, Guid recordOwnerId, Guid OwningBranchId)
         {
             //Retrieve Entity Permission
             QueryExpression queryEntityPermission = new QueryExpression("adx_entitypermission");
             queryEntityPermission.ColumnSet = new ColumnSet(true);
+            queryEntityPermission.AddOrder("adx_scope", OrderType.Descending);
             queryEntityPermission.LinkEntities.Add(new LinkEntity("adx_entitypermission", "adx_entitypermission_webrole", "adx_entitypermissionid", "adx_entitypermissionid", JoinOperator.Inner));
             queryEntityPermission.LinkEntities[0].LinkCriteria.AddCondition("adx_webroleid", ConditionOperator.Equal, webRoleId);
             queryEntityPermission.LinkEntities.Add(new LinkEntity("adx_entitypermission", "gsc_adx_entitypermission_adx_webpage", "adx_entitypermissionid", "adx_entitypermissionid", JoinOperator.Inner));
@@ -256,21 +257,92 @@ namespace Site.Areas.DMSApi
 
             if (entityPermissionCollection != null && entityPermissionCollection.Entities.Count > 0)
             {
-                Entity entityPermission = entityPermissionCollection.Entities[0];
+                if (recordOwnerId == Guid.Empty && OwningBranchId == Guid.Empty)
+                {
+                    Privileges privileges = new Privileges();
+                    privileges.Read = false;
+                    privileges.Create = false;
+                    privileges.Update = false;
+                    privileges.Delete = false;
+                    privileges.Append = false;
+                    privileges.AppendTo = false;
 
-                Privileges privileges = new Privileges();
+                    foreach (Entity entityPermission in entityPermissionCollection.Entities)
+                    {
+                        if (entityPermission.GetAttributeValue<bool>("adx_read") == true)
+                            privileges.Read = true;
 
-                privileges.Read = entityPermission.GetAttributeValue<bool>("adx_read");
-                privileges.Create = entityPermission.GetAttributeValue<bool>("adx_create");
-                privileges.Update = entityPermission.GetAttributeValue<bool>("adx_write");
-                privileges.Delete = entityPermission.GetAttributeValue<bool>("adx_delete");
-                privileges.Append = entityPermission.GetAttributeValue<bool>("adx_append");
-                privileges.AppendTo = entityPermission.GetAttributeValue<bool>("adx_appendto");
-                privileges.Scope = (Scope)entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
-                return privileges;
+                        if (entityPermission.GetAttributeValue<bool>("adx_create") == true)
+                            privileges.Create = true;
+
+                        if (entityPermission.GetAttributeValue<bool>("adx_write") == true)
+                            privileges.Update = true;
+
+                        if (entityPermission.GetAttributeValue<bool>("adx_delete") == true)
+                            privileges.Delete = true;
+
+                        if (entityPermission.GetAttributeValue<bool>("adx_append") == true)
+                            privileges.Append = true;
+
+                        if (entityPermission.GetAttributeValue<bool>("adx_appendto") == true)
+                            privileges.AppendTo = true;
+
+                        privileges.Scope = (Scope)entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
+                    }
+                    return privileges;
+                }
+
+                else
+                {
+                    foreach (Entity entityPermission in entityPermissionCollection.Entities)
+                    {
+                        Guid userId = Guid.Empty;
+                        Guid branchId = Guid.Empty;
+                        var context = HttpContext.Current;
+                        var request = context.Request.RequestContext;
+                        var cookies = request.HttpContext.Request.Cookies;
+                        if (cookies != null)
+                        {
+                            if (cookies["Branch"] != null)
+                            {
+                                userId = new Guid(cookies["Branch"]["userId"]);
+                                branchId = new Guid(cookies["Branch"]["branchId"]);
+                            }
+                        }
+
+                        var scope = entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
+
+                        if (scope == 756150000)
+                        {
+                            return AssignPrivilegesValue(entityPermission);
+                        }
+                        else if (scope == 756150001 && userId == recordOwnerId)
+                        {
+                            return AssignPrivilegesValue(entityPermission);
+                        }
+                        else if (scope == 756150002 && branchId == OwningBranchId)
+                        {
+                            return AssignPrivilegesValue(entityPermission);
+                        }
+                    }
+                }
             }
 
             return null;
+        }
+
+        private Privileges AssignPrivilegesValue(Entity entityPermission)
+        {
+            Privileges privileges = new Privileges();
+
+            privileges.Read = entityPermission.GetAttributeValue<bool>("adx_read");
+            privileges.Create = entityPermission.GetAttributeValue<bool>("adx_create");
+            privileges.Update = entityPermission.GetAttributeValue<bool>("adx_write");
+            privileges.Delete = entityPermission.GetAttributeValue<bool>("adx_delete");
+            privileges.Append = entityPermission.GetAttributeValue<bool>("adx_append");
+            privileges.AppendTo = entityPermission.GetAttributeValue<bool>("adx_appendto");
+            privileges.Scope = (Scope)entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
+            return privileges;
         }
 
         public bool HasDuplicate(string entityName, IDictionary <string, object> valuesSaved, Guid entityId)
@@ -349,7 +421,7 @@ namespace Site.Areas.DMSApi
             return duplicateFound;
         }
 
-        public Privileges GetEditableGridEntityPermission(Guid webRoleId, String entityName)
+        public Privileges GetEditableGridEntityPermission(Guid webRoleId, String entityName, Guid recordOwnerId, Guid OwningBranchId)
         {
             //Retrieve Entity Permission
             QueryExpression queryEntityPermission = new QueryExpression("adx_entitypermission");
@@ -361,18 +433,77 @@ namespace Site.Areas.DMSApi
 
             if (entityPermissionCollection != null && entityPermissionCollection.Entities.Count > 0)
             {
-                Entity entityPermission = entityPermissionCollection.Entities[0];
-
                 Privileges privileges = new Privileges();
 
-                privileges.Read = entityPermission.GetAttributeValue<bool>("adx_read");
-                privileges.Create = entityPermission.GetAttributeValue<bool>("adx_create");
-                privileges.Update = entityPermission.GetAttributeValue<bool>("adx_write");
-                privileges.Delete = entityPermission.GetAttributeValue<bool>("adx_delete");
-                privileges.Append = entityPermission.GetAttributeValue<bool>("adx_append");
-                privileges.AppendTo = entityPermission.GetAttributeValue<bool>("adx_appendto");
-                privileges.Scope = (Scope)entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
-                return privileges;
+                if (entityPermissionCollection.Entities.Count > 1)
+                {
+                    foreach (Entity entityPermission in entityPermissionCollection.Entities)
+                    {
+                        if (entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value == 756150003)
+                        {
+                            privileges = GetParentEntityPermission(entityPermission, recordOwnerId, OwningBranchId);
+
+                            if (privileges != null)
+                                return privileges;
+                        }
+                    }
+                }
+                else
+                {
+                    Entity entityPermission = entityPermissionCollection.Entities[0];
+
+                    privileges.Read = entityPermission.GetAttributeValue<bool>("adx_read");
+                    privileges.Create = entityPermission.GetAttributeValue<bool>("adx_create");
+                    privileges.Update = entityPermission.GetAttributeValue<bool>("adx_write");
+                    privileges.Delete = entityPermission.GetAttributeValue<bool>("adx_delete");
+                    privileges.Append = entityPermission.GetAttributeValue<bool>("adx_append");
+                    privileges.AppendTo = entityPermission.GetAttributeValue<bool>("adx_appendto");
+                    privileges.Scope = (Scope)entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
+                    return privileges;
+                }
+            }
+
+            return null;
+        }
+
+        private Privileges GetParentEntityPermission(Entity entityPermission, Guid recordOwnerId, Guid OwningBranchId)
+        {
+            var parentEntityPermissionId = entityPermission.GetAttributeValue<EntityReference>("adx_parententitypermission") != null
+                ? entityPermission.GetAttributeValue<EntityReference>("adx_parententitypermission").Id
+                : Guid.Empty;
+
+            QueryExpression queryEntityPermission = new QueryExpression("adx_entitypermission");
+            queryEntityPermission.ColumnSet = new ColumnSet(true);
+            queryEntityPermission.Criteria.AddCondition(new ConditionExpression("adx_entitypermissionid", ConditionOperator.Equal, parentEntityPermissionId));
+            EntityCollection entityPermissionCollection = _service.ServiceContext.RetrieveMultiple(queryEntityPermission);
+
+            if (entityPermissionCollection != null && entityPermissionCollection.Entities.Count > 0)
+            {
+                Entity parentEntityPermission = entityPermissionCollection.Entities[0];
+                var scope = parentEntityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
+
+                Guid userId = Guid.Empty;
+                Guid branchId = Guid.Empty;
+                var context = HttpContext.Current;
+                var request = context.Request.RequestContext;
+                var cookies = request.HttpContext.Request.Cookies;
+                if (cookies != null)
+                {
+                    if (cookies["Branch"] != null)
+                    {
+                        userId = new Guid(cookies["Branch"]["userId"]);
+                        branchId = new Guid(cookies["Branch"]["branchId"]);
+                    }
+                }
+
+                if (scope == 756150001 && userId == recordOwnerId)
+                {
+                    return AssignPrivilegesValue(entityPermission);
+                }
+                else if (scope == 756150002 && branchId == OwningBranchId)
+                {
+                    return AssignPrivilegesValue(entityPermission);
+                }
             }
 
             return null;
