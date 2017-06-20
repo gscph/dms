@@ -77,7 +77,7 @@
                     (typeof isEntityList !== 'undefined')) {
 
                     $(document).on("dblclick", ".entity-grid.entitylist .view-grid table tbody tr td:not(:first)", function () {
-                    //    showLoading();
+                        showLoading();
 
                         var that = $(this);
 
@@ -87,7 +87,7 @@
                         var isAuthorized = false;
 
                         if (DMS.Settings.Permission != null) {
-                            isAuthorized = (DMS.Settings.Permission.Scope == 756150000 || DMS.Settings.Permission.Scope == 756150002) && DMS.Settings.Permission.Read == true;
+                            isAuthorized = DMS.Settings.Permission.Scope == 756150000 && DMS.Settings.Permission.Read == true;
                         }
                         IsRecordOwner(that, isAuthorized, editUrl);
                     });
@@ -107,13 +107,7 @@
                 else if (typeof element.siblings('td[data-attribute="gsc_recordownerid"]').data('value') !== 'undefined') {
                     createdBy = element.siblings('td[data-attribute="gsc_recordownerid"]').data('value').Id;
                 }
-             /*   if (attribute == 'gsc_reportsto') {
-                    reportsTo = element.data('value').Id;                    
-                }
-                else if (typeof tdReportsTo !== 'undefined') {
-                    reportsTo = tdReportsTo.Id;
-                }         */
-
+             
                 var oDataUrl = '/_odata/employee?$filter=contactid%20eq%20(Guid%27' + createdBy + '%27)&';
                 $.ajax({
                     type: 'get',
