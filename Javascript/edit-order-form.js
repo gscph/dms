@@ -62,7 +62,6 @@ $(document).ready(function (e) {
             $.cookie("productionNoValue", $("#gsc_productionno").val(), { path: '/' });
         });
 
-
         $('.btn-primary').on('click', function (e) {
 
             var $subgrid = $(this).closest(".subgrid");
@@ -226,13 +225,6 @@ $(document).ready(function (e) {
         //check order status if open or not
         paymentModeOnChange();
 
-        // $('#gsc_downpaymentamount').val(downpayment.replace(/,/g, ''));
-
-        //change type from text to number; only allow numbers in textbox
-        //  $('#gsc_downpaymentamount').click(function () {
-        //      $(this).get(0).type = 'number';
-        //  });
-
         $('#gsc_downpaymentpercentage').click(function () {
             $(this).get(0).type = 'number';
         });
@@ -272,67 +264,6 @@ $(document).ready(function (e) {
         });
 
     }, 100);
-
-    /* setTimeout(function () {
- 
-         $('#gsc_vehiclecolorid1').on('change', function () {
-             //recompute everything
-             additional = 0.00;
-             netamountfinanced = 0.00;
-             netdp = 0.00;
-             amountfinanced = 0.00;
-             netdownpayment = 0.00;
-             aflessdiscount = 0.00;
-             additional = 0.0;
- 
-             $("#gsc_netdownpayment").val("");
-             $("#gsc_amountfinanced").val("");
-             $("#gsc_netamountfinanced").val("");
- 
-             getAdditionalPrice();
-         });
- 
-     }, 300);
- 
-     //get additoinal price from vehiclecolor
-       function getAdditionalPrice() {
-         setTimeout(function () {
- 
-             var vehiclecolorid = $("#gsc_vehiclecolorid1").val();
- 
-             if ($('#gsc_vehiclecolorid1_name').val() == "") {
-                 vehiclecolorid = "";
-             }
- 
-             if (vehiclecolorid != "" && vehiclecolorid != "Nan" && vehiclecolorid != "undefined") {
-                 var odataUrl = "/_odata/vehiclecolor?$filter=gsc_cmn_vehiclecolorid eq (Guid'" + vehiclecolorid + "')";
- 
-                 $.ajax({
-                     type: "get",
-                     async: true,
-                     url: odataUrl,
-                     success: function (data) {
-                         for (var i = 0; i < data.value.length; i++) {
-                             var obj = data.value[i];
-                             for (var key in obj) {
-                                 var attrName = key;
-                                 var attrValue = obj[key];
-                                 if (attrName == 'gsc_additionalprice') {
-                                     additional = parseFloat(attrValue);
-                                 }
-                             }
-                         }
-                     },
-                     error: function (xhr, textStatus, errorMessage) {
-                     }
-                 });
-             }
-             else {
-                 additional = 0.00;
-             }
- 
-         }, 1000);
-     }*/
 
     function paymentModeOnChange() {
         var dpamountfield = $('#gsc_downpaymentamount');
@@ -753,7 +684,7 @@ $(document).ready(function (e) {
         /*Start - Added by Christell Ann Mataac - 03/10/2017*/
 
         /*Need to disable Add/Save/Cancel/Remove Buttons in Accessory and Cab Chassis on selected web roles*/
-        if (DMS.Settings.User.positionName == 'MMPC System Admin' || DMS.Settings.User.positionName == 'MMPC System Administrator' || DMS.Settings.User.positionName == 'Vehicle Allocator' || DMS.Settings.User.positionName == 'MSD Manager' || DMS.Settings.User.positionName == 'PDI Inspector' || DMS.Settings.User.positionName == 'Invoice Generator' || DMS.Settings.User.positionName == 'C and C Manager' || DMS.Settings.User.positionName == 'Sales Supervisor' && userId != $('#gsc_recordownerid').val()) {
+        /*if (DMS.Settings.User.positionName == 'MMPC System Admin' || DMS.Settings.User.positionName == 'MMPC System Administrator' || DMS.Settings.User.positionName == 'Vehicle Allocator' || DMS.Settings.User.positionName == 'MSD Manager' || DMS.Settings.User.positionName == 'PDI Inspector' || DMS.Settings.User.positionName == 'Invoice Generator' || DMS.Settings.User.positionName == 'C and C Manager' || DMS.Settings.User.positionName == 'Sales Supervisor' && userId != $('#gsc_recordownerid').val()) {
             $('button.addnew.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
             $('button.addnew.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
             $('button.save.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
@@ -762,7 +693,7 @@ $(document).ready(function (e) {
             $('button.delete.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
             $('button.cancel.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
             $('button.cancel.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
-        }
+        }*/
 
         if (DMS.Settings.User.positionName == 'C and C Manager' || DMS.Settings.User.positionName == 'Cashier' || DMS.Settings.User.positionName == 'Invoice Generator' || DMS.Settings.User.positionName == 'PDI Inspector') //show Create Invoice Button
         {
@@ -776,7 +707,7 @@ $(document).ready(function (e) {
 
         if (DMS.Settings.User.positionName == 'Sales Manager' || DMS.Settings.User.positionName == 'Vehicle Allocator') {
             //disabled "Transfer to Invoice" button from Sales Order Update
-            $('button.convert-order-link.btn.btn-primary').attr('disabled', true); // disabled "CREATE INVOICE"
+           // $('button.convert-order-link.btn.btn-primary').attr('disabled', true); // disabled "CREATE INVOICE"
             $("a:contains('READY FOR PDI')").attr("disabled", true); // disabled "READY FOR PDI"
             $("a:contains('TRANSFER FOR INVOICE')").attr("disabled", true); //disabled "TRANSFER FOR INVOICE"
 
@@ -794,4 +725,19 @@ $(document).ready(function (e) {
         /*End - Added by Christell Ann Mataac - 03/10/2017*/
 
     }, 7000);
+    
+    var webRole = DMS.Settings.User.webRole;
+    if (webRole == 'Cashier' || webRole == "Vehicle Allocator") 
+    {
+        $("#EntityFormView").find("input, select, textarea").each(function () {
+            $(this).attr("readonly", true);
+            $(this).attr("disabled", true);
+            $(this).addClass("permanent-disabled");
+        });
+
+        $("#EntityFormView").find(".input-group-btn").each(function () {
+            $(this).addClass("hidden");
+        });
+
+    }
 });

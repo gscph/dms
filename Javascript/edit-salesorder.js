@@ -43,22 +43,12 @@ $(document).ready(function () {
     }
 
     var webRole = DMS.Settings.User.webRole;
-    var canAllocate = false;
-    var canUpdate = true;
-    if (webRole == "MSD Manager" || webRole == "Vehicle Allocator" || ~webRole.indexOf("Administrator")) {
-        canAllocate = true;
-        //canUpdate = false;
-        // $('form fieldset').attr('disabled', true);
-        //$('form fieldset').addClass('permanent-disabled');
-        //$('#EntityFormView fieldset:eq(18)').attr('disabled', false);
-        // $('#EntityFormView fieldset:eq(17)').attr('disabled', false);
-        // $('#EntityFormView fieldset:eq(16)').attr('disabled', false);
-
-        if (webRole == "Vehicle Allocator") {
-            $('#UpdateButton').addClass("hidden");
-            $("a:contains('CANCEL')").attr("disabled", true); //disabled "Cancel" button
-        }
-
+    console.log(webRole);
+    if (webRole == 'Cashier' || webRole == "Vehicle Allocator") {
+        $(".btnCancel").addClass("hidden");
+        $(".printOrder").addClass("hidden");
+        $(".btnReCalculate").addClass("hidden");
+        $(".request-link").addClass("hidden");
     }
 
     //JGC DocumentChecklist
@@ -144,7 +134,7 @@ $(document).ready(function () {
                     type: 'get',
                     async: true,
                     url: oDataUrl,
-                    success: function (data) {               
+                    success: function (data) {
                         if (data.value.length > 0) {
                             $('#gsc_chattelfeeeditable').val(eval(data.value[0].gsc_chattelfeeamount).toFixed(2));
                         }
@@ -204,9 +194,6 @@ $(document).ready(function () {
     $btnRecalculate.click(function (evt) {
         location.reload();
     });
-    if (canUpdate) {
-        //  $btnRecalculate.addClass("permanent-disabled disabled");
-    }
     DMS.Helpers.AppendButtonToToolbar($btnRecalculate);
 
     //Print Order Button
@@ -281,7 +268,7 @@ $(document).ready(function () {
     allocateButton.className = "allocate-link btn btn-primary action disabled";
     allocateButton.addEventListener("click", AllocateVehicle);
 
-    if (status == 'For Allocation' && canAllocate == true) {
+    if (status == 'For Allocation') {
         $("#Inventory").find(".view-toolbar.grid-actions.clearfix").append(allocateButton);
     }
 
@@ -625,10 +612,6 @@ $(document).ready(function () {
         });
     }, 1000);
 
-
-    // $('li[role="presentation"]').on('click',  setTimeout(disableTab));
-
-
     setTimeout(disableTab, 3000);
 
     function disableTab() {
@@ -841,86 +824,86 @@ var CabChasisGridInstance = {
 
 
 var monthlyAmortizationGridInstance = {
-  initialize: function () {
-    $('<div id="monthlyamortization-editablegrid" class="editable-grid"></div>').appendTo('.content-wrapper');
-    var $container = document.getElementById('monthlyamortization-editablegrid');
-    var idQueryString = DMS.Helpers.GetUrlQueryString('id');
-    var odataQuery = '/_odata/gsc_sls_ordermonthlyamortization?$filter=gsc_orderid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
-    // var odataQuery = '/_odata/gsc_sls_ordermonthlyamortization?$filter=gsc_orderid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
-    var screenSize = ($(window).width() / 2) - 100;
-    /* - Read Only Permission for Cashier Role*/
-    if (DMS.Settings.User.positionName == 'Cashier') {
-      var options = {
-        dataSchema: {
-          gsc_selected: null, gsc_orderid: { Id: null, Name: null },
-          //gsc_financingtermid: { Id: null, Name: null },
-          gsc_financingtermid: null,
-          gsc_ordermonthlyamortizationpn: null
-        },
-        colHeaders: [
-          '', 'Financing Term',
-          'Monthly Amortization'
-        ],
-        columns: [
-          { data: 'gsc_selected', type: 'checkbox', renderer: checkboxRenderer, readOnly: true, className: "htCenter htMiddle", width: 50 },
-          { data: 'gsc_financingtermid.Name', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 100 },
-          { data: 'gsc_ordermonthlyamortizationpn', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 }
-        ],
-        columnSorting: {
-          column: 1,
-          sortOrder: true
-        },
-        gridWidth: screenSize,
-        addNewRows: false,
-        deleteRows: false
-      }
+    initialize: function () {
+        $('<div id="monthlyamortization-editablegrid" class="editable-grid"></div>').appendTo('.content-wrapper');
+        var $container = document.getElementById('monthlyamortization-editablegrid');
+        var idQueryString = DMS.Helpers.GetUrlQueryString('id');
+        var odataQuery = '/_odata/gsc_sls_ordermonthlyamortization?$filter=gsc_orderid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
+        // var odataQuery = '/_odata/gsc_sls_ordermonthlyamortization?$filter=gsc_orderid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
+        var screenSize = ($(window).width() / 2) - 100;
+        /* - Read Only Permission for Cashier Role*/
+        if (DMS.Settings.User.positionName == 'Cashier') {
+            var options = {
+                dataSchema: {
+                    gsc_selected: null, gsc_orderid: { Id: null, Name: null },
+                    //gsc_financingtermid: { Id: null, Name: null },
+                    gsc_financingtermid: null,
+                    gsc_ordermonthlyamortizationpn: null
+                },
+                colHeaders: [
+                  '', 'Financing Term',
+                  'Monthly Amortization'
+                ],
+                columns: [
+                  { data: 'gsc_selected', type: 'checkbox', renderer: checkboxRenderer, readOnly: true, className: "htCenter htMiddle", width: 50 },
+                  { data: 'gsc_financingtermid.Name', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 100 },
+                  { data: 'gsc_ordermonthlyamortizationpn', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 }
+                ],
+                columnSorting: {
+                    column: 1,
+                    sortOrder: true
+                },
+                gridWidth: screenSize,
+                addNewRows: false,
+                deleteRows: false
+            }
+        }
+        else {
+            var options = {
+                dataSchema: {
+                    gsc_selected: null, gsc_orderid: { Id: null, Name: null },
+                    //gsc_financingtermid: { Id: null, Name: null },
+                    gsc_financingtermid: null,
+                    gsc_ordermonthlyamortizationpn: null
+                },
+                colHeaders: [
+                  'Select Term *',
+                  'Financing Term',
+                  'Monthly Amortization'
+                ],
+                columns: [
+                  { data: 'gsc_selected', type: 'checkbox', renderer: checkboxRenderer, className: "htCenter htMiddle", width: 50 },
+                  { data: 'gsc_financingtermid.Name', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 100 },
+                  { data: 'gsc_ordermonthlyamortizationpn', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 }
+                ],
+                columnSorting: {
+                    column: 1,
+                    sortOrder: true
+                },
+                gridWidth: screenSize,
+                addNewRows: false,
+                deleteRows: false
+            }
+        }
+
+        var sectionName = "OrderMonthlyAmortizationSubgrid";
+        var attributes = [{ key: 'gsc_selected', type: 'System.Boolean' }];
+        var model = { id: 'gsc_sls_ordermonthlyamortizationid', entity: 'gsc_sls_ordermonthlyamortization', attr: attributes };
+        var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model,
+          {
+              gsc_sls_ordermonthlyamortizationid: null, gsc_selected: false,
+              gsc_financingtermid: { Id: null, Name: null }, gsc_ordermonthlyamortizationpn: null
+              // gsc_orderid: { Id: null, Name: null },
+          }
+        );
+
+        hotInstance.addHook('afterLoadData', function () {
+            var status = $(".record-status").html();
+            if (hotInstance.countRows() > 1 && (status != "For Invoicing" && status != "Completed")) {
+                $(".btnSaveCopy").removeAttr("disabled");
+            }
+        });
     }
-    else {
-      var options = {
-        dataSchema: {
-          gsc_selected: null, gsc_orderid: { Id: null, Name: null },
-          //gsc_financingtermid: { Id: null, Name: null },
-          gsc_financingtermid: null,
-          gsc_ordermonthlyamortizationpn: null
-        },
-        colHeaders: [
-          'Select Term *',
-          'Financing Term',
-          'Monthly Amortization'
-        ],
-        columns: [
-          { data: 'gsc_selected', type: 'checkbox', renderer: checkboxRenderer, className: "htCenter htMiddle", width: 50 },
-          { data: 'gsc_financingtermid.Name', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 100 },
-          { data: 'gsc_ordermonthlyamortizationpn', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 }
-        ],
-        columnSorting: {
-          column: 1,
-          sortOrder: true
-        },
-        gridWidth: screenSize,
-        addNewRows: false,
-        deleteRows: false
-      }      
-    }
-    
-    var sectionName = "OrderMonthlyAmortizationSubgrid";
-    var attributes = [{ key: 'gsc_selected', type: 'System.Boolean' }];
-    var model = { id: 'gsc_sls_ordermonthlyamortizationid', entity: 'gsc_sls_ordermonthlyamortization', attr: attributes };
-    var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model,
-      {
-        gsc_sls_ordermonthlyamortizationid: null, gsc_selected: false,
-        gsc_financingtermid: { Id: null, Name: null }, gsc_ordermonthlyamortizationpn: null
-        // gsc_orderid: { Id: null, Name: null },
-      }
-    );
-    
-    hotInstance.addHook('afterLoadData', function () {
-      var status = $(".record-status").html();
-      if (hotInstance.countRows() > 1 && (status != "For Invoicing" && status != "Completed")) {
-        $("#btnSaveCopy").removeAttr("disabled");
-      }
-    });
-  }
 }
 
 $(document).bind('DOMNodeInserted', function (evt) {
