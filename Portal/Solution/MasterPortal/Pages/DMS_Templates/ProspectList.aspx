@@ -77,7 +77,7 @@
                     (typeof isEntityList !== 'undefined')) {
 
                     $(document).on("dblclick", ".entity-grid.entitylist .view-grid table tbody tr td:not(:first)", function () {
-                        showLoading();
+                    //    showLoading();
 
                         var that = $(this);
 
@@ -87,7 +87,7 @@
                         var isAuthorized = false;
 
                         if (DMS.Settings.Permission != null) {
-                            isAuthorized = DMS.Settings.Permission.Scope == 756150000 && DMS.Settings.Permission.Read == true;
+                            isAuthorized = (DMS.Settings.Permission.Scope == 756150000 || DMS.Settings.Permission.Scope == 756150002) && DMS.Settings.Permission.Read == true;
                         }
                         IsRecordOwner(that, isAuthorized, editUrl);
                     });
@@ -157,9 +157,4 @@
     </script>
     <script src="~/js/dms/prospect.js"></script>
     <script src="~/js/dms/entity-permission.js"></script>
-    <script>      
-        $(document).ready(function () {
-            $('th:last').hide();            
-        })
-    </script>
 </asp:Content>
