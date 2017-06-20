@@ -15,7 +15,7 @@ $(document).ready(function () {
     }, 1000);
 
     /*   != Cancel     */
-    if (vpostatus === 100000005) {
+    if (vpostatus == 100000005) {
         $("#UpdateButton").addClass("permanent-disabled disabled");
         $("button.delete-link").addClass("permanent-disabled disabled");
         $("#EntityFormView fieldset").attr("disabled", "disabled");
@@ -40,17 +40,17 @@ $(document).ready(function () {
     }
 
     /* == Ordered || In Transit || Received   */
-    if (vpostatus === 100000002 || vpostatus === 100000003 || vpostatus === 100000004) {
+    if (vpostatus == 100000002 || vpostatus == 100000003 || vpostatus == 100000004) {
         DisableForm();
     }
 
     /*   == Printed     */
-    if (vpostatus === 100000001) {
+    if (vpostatus == 100000001) {
         createSubmitButton();
         DisableForm();
     }
 
-    if (vpostatus === "100000002") {
+    if (vpostatus == "100000002") {
         if (DMS.Settings.User.webRole.indexOf("MMPC") >= 0) {
             var receiptDate = $("#gsc_mmpcreceiptdate").siblings(".datetimepicker");
             receiptDate.children(".form-control").removeAttr("readonly");
@@ -70,8 +70,9 @@ $(document).ready(function () {
         $("#PurchaseOrderItem .entity-grid.subgrid").on("loaded", function () { $(".btn-default.btn-xs").addClass("permanent-disabled disabled"); });
         $(".textarea.form-control").attr("disabled", "disabled");
         $(".delete-link").hide();
-        if (vpostatus != 100000002 || DMS.Settings.User.webRole != "MMPC System Administrator")
+        if (vpostatus != 100000002 || DMS.Settings.User.webRole != "MMPC System Administrator") {
             $(".submit-btn").hide();
+        }
 
         $("#gsc_remarks").css("resize", "none");
         //END
@@ -125,7 +126,7 @@ $(document).ready(function () {
     }
 
     function filterApproval(approverSetupId) {
-        var odataUrl = "/_odata/approver?$filter=gsc_contactid/Id eq (guid"/" + userId + "/") and gsc_approversetupid/Id eq (Guid'" + approverSetupId + "')";
+        var odataUrl = "/_odata/approver?$filter=gsc_contactid/Id eq (guid" / " + userId + " / ") and gsc_approversetupid/Id eq (Guid'" + approverSetupId + "')";
         $.ajax({
             type: "get",
             async: true,
