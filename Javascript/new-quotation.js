@@ -95,6 +95,7 @@ $(document).ready(function (e) {
                     $('#gsc_vehicleunitprice').val(data);
                 },
                 error: function (xhr, textStatus, errorMessage) {
+                     $('#gsc_vehicleunitprice').val(0.00);
                     console.error(errorMessage);
                 }
             });
