@@ -837,6 +837,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             {
                 downPaymentAmount = ComputeDownpaymentAmount(quoteEntity);
                 quoteEntity["gsc_downpaymentamount"] = new Money(downPaymentAmount);
+                quoteEntity["gsc_downpaymentdisplay"] = new Money(downPaymentAmount);
 
                 netdp = ComputeNetDownPayment(quoteEntity);
                 quoteEntity["gsc_netdownpayment"] = new Money(netdp);
