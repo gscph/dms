@@ -27,11 +27,16 @@ namespace GSC.Rover.DMS.BusinessLogic.ApproverSetup
         {
             _tracingService.Trace("Started RestrictDuplicateSetup method...");
 
+            Int32 recordtype = approver.Contains("gsc_transactiontype")
+                ? approver.GetAttributeValue<OptionSetValue>("gsc_transactiontype").Value
+                : 0;
+
             var setupConditionList = new List<ConditionExpression>
                 {
                     new ConditionExpression("gsc_branchid", ConditionOperator.Equal, CommonHandler.GetEntityReferenceIdSafe(approver, "gsc_branchid")),
                     new ConditionExpression("statecode", ConditionOperator.Equal, 0),
-                    new ConditionExpression("gsc_cmn_approversetupid", ConditionOperator.NotEqual, approver.Id)
+                    new ConditionExpression("gsc_cmn_approversetupid", ConditionOperator.NotEqual, approver.Id),
+                    new ConditionExpression("gsc_transactiontype", ConditionOperator.Equal, recordtype)
                 };
 
             EntityCollection approverSetupCollection = CommonHandler.RetrieveRecordsByConditions("gsc_cmn_approversetup", setupConditionList, _organizationService, null, OrderType.Ascending,
