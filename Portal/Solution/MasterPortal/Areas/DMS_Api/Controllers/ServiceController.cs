@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Xrm.Sdk;
+using Newtonsoft.Json;
 using Site.Areas.DMS_Api;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
-
+using Microsoft.Xrm.Sdk.Query;
 
 namespace Site.Areas.DMSApi.Controllers
 {
@@ -216,6 +217,69 @@ namespace Site.Areas.DMSApi.Controllers
         {
             var service = new XrmServiceContext(_conn);
             return service.GetEditableGridEntityPermission(webRoleId, entityName, recordOwnerId, OwningBranchId);
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetVehicleUnitPrice(Guid productId, int markUp)
+        {
+            try
+            {
+                if (productId != Guid.Empty)
+                {
+                    decimal sellPrice = 0;
+                   
+                    PriceListHandler priceListHandler = new PriceListHandler(_conn.ServiceContext);
+                    priceListHandler.itemType = 0;
+                    priceListHandler.productFieldName = "gsc_productid";
+                    Entity quoteEntity = new Entity();
+                    quoteEntity["gsc_productid"] = new EntityReference("product", productId);
+
+                    Entity productEntity = _conn.ServiceContext.Retrieve("product", productId, new ColumnSet("gsc_taxrate"));
+
+                    List<Entity> latestPriceList = priceListHandler.RetrievePriceList(quoteEntity, 100000000, 100000003);
+
+                    if (latestPriceList.Count > 0)
+                    {
+                        Entity priceListItem = latestPriceList[0];
+                        Entity priceList = latestPriceList[1];
+
+                        sellPrice = priceListItem.GetAttributeValue<Money>("amount").Value;
+
+                        decimal taxStatus = priceList.GetAttributeValue<OptionSetValue>("gsc_taxstatus").Value;
+
+                        var taxRate = productEntity.Contains("gsc_taxrate")
+                            ? (Decimal)productEntity.GetAttributeValue<Double>("gsc_taxrate")
+                            : 0;
+
+                        if (markUp != 0)
+                        {
+                            markUp = markUp / 100;
+                        }
+
+                        if (taxRate != 0)
+                        {
+                            taxRate = taxRate / 100;
+                        }
+
+                        if (taxStatus == 100000001)
+                            sellPrice = (sellPrice * (1 + taxRate));
+
+                        sellPrice = sellPrice * (1 + markUp);
+                    }
+                    else
+                    {
+                        throw new Exception("There is no effective Price List for the selected Vehicle.");
+                    }
+
+                   
+                    return Ok(sellPrice);
+                }
+                return InternalServerError(new Exception("No Vehicle Price Found."));
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }      
         }
     }
 }

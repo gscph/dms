@@ -38,6 +38,7 @@ $(document).ready(function (e) {
 
         $('#gsc_productid').on('change', function () {
             var productId = $(this).val();
+            var markUpPercentage = $('#gsc_markup').val() != "" ? $('#gsc_markup').val() : 0;
 
             if (productId == "") return;
 
@@ -89,7 +90,7 @@ $(document).ready(function (e) {
             $.ajax({
                 type: 'get',
                 async: true,
-                url: '~/api/Service/GetVehicleUnitPrice?productId=' + productId,
+                url: '~/api/Service/GetVehicleUnitPrice?productId=' + productId + '&markUp=' + markUpPercentage,
                 success: function (data) {
                     $('#gsc_vehicleunitprice').val(data);
                 },

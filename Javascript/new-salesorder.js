@@ -48,6 +48,7 @@ $(document).ready(function () {
 
         $('#gsc_productid').on('change', function () {
             var productId = $(this).val();
+           var markUpPercentage = $('#gsc_markup').val() != "" ? $('#gsc_markup').val() : 0;
 
             if (productId == "") return;
 
@@ -97,12 +98,12 @@ $(document).ready(function () {
             });
 
 
-            $.ajax({
+           $.ajax({
                 type: 'get',
                 async: true,
-                url: '~/api/Service/GetVehicleUnitPrice?productId=' + productId,
+                url: '~/api/Service/GetVehicleUnitPrice?productId=' + productId + '&markUp=' + markUpPercentage,
                 success: function (data) {
-                  $('#gsc_vehicleunitprice').val(data);
+                    $('#gsc_vehicleunitprice').val(data);
                 },
                 error: function (xhr, textStatus, errorMessage) {
                     console.error(errorMessage);
