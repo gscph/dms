@@ -514,7 +514,9 @@ var monthlyAmortizationGridInstance = {
         var options = {
                 dataSchema: {
                     gsc_selected: null, gsc_invoiceid: { Id: null, Name: null },
-                    gsc_financingtermid: { Id: null, Name: null }, gsc_invoicemonthlyamortizationpn: null
+                    //gsc_financingtermid: { Id: null, Name: null },
+                    gsc_financingtermid: null,
+                    gsc_invoicemonthlyamortizationpn: null
                 },
                 colHeaders: [
                     'Select Term *',
@@ -523,9 +525,13 @@ var monthlyAmortizationGridInstance = {
                 ],
                 columns: [
                     { data: 'gsc_selected', type: 'checkbox', renderer: checkboxRenderer, readOnly: true, className: 'htCenter htMiddle', width: 50 },
-                    { data: 'gsc_financingtermid', renderer: multiPropertyRenderer, readOnly: true, className: 'htCenter htMiddle', width: 200 },
+                    { data: 'gsc_financingtermid.Name', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 100 },
                     { data: 'gsc_invoicemonthlyamortizationpn', renderer: stringRenderer, readOnly: true, className: 'htCenter htMiddle', width: 100 }
                 ],
+                columnSorting: {
+                    column: 1,
+                    sortOrder: true
+                },
                 gridWidth: screenSize,
                 addNewRows: false,
                 deleteRows: false
