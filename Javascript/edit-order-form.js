@@ -719,20 +719,22 @@ $(document).ready(function (e) {
     }, 7000);*/
 
     var webRole = DMS.Settings.User.webRole;
-    console.log(webRole);
     if (webRole == 'Cashier' || webRole == "Vehicle Allocator" || webRole == "Invoicer") {
-        console.log('a');
         $("#EntityFormView").find("input").each(function () {
+            if (webRole == "Invoicer") {
+                if ($(this).closest('table').data("name") === "tabbed-INSURANCECHARGES") {
+                    return true;
+                }
+            }
             $(this).attr("readonly", true);
         });
 
         $("#EntityFormView").find("select, textarea").each(function () {
             if (webRole == "Invoicer" ) {
-                if ($(this).closest('table').data("name") !== "tabbed-INSURANCECHARGES") {
+                if ($(this).closest('table').data("name") === "tabbed-INSURANCECHARGES") {
                     return true;
                 }
             }
-
             if ($(this).attr("id") !== "gsc_status" && $(this).attr("id") !== "gsc_statuscopy") {
                 $(this).attr("disabled", true);
                 $(this).addClass("permanent-disabled");
