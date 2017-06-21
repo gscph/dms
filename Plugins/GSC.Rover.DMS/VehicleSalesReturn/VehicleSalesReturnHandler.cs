@@ -335,7 +335,6 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn
             prodQuantity["gsc_allocated"] = 0;
             prodQuantity["gsc_onorder"] = 0;
             prodQuantity["gsc_sold"] = 0;
-            prodQuantity["gsc_unservedpo"] = 0;
             prodQuantity["gsc_siteid"] = siteId != Guid.Empty
                 ? new EntityReference("gsc_iv_site", siteId)
                 : null;
