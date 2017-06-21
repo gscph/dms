@@ -705,14 +705,6 @@ $(document).ready(function (e) {
             $("#EntityFormView :input").attr("disabled", true);
         }
 
-        if (DMS.Settings.User.positionName == 'Sales Manager' || DMS.Settings.User.positionName == 'Vehicle Allocator') {
-            //disabled "Transfer to Invoice" button from Sales Order Update
-            // $('button.convert-order-link.btn.btn-primary').attr('disabled', true); // disabled "CREATE INVOICE"
-            $("a:contains('READY FOR PDI')").attr("disabled", true); // disabled "READY FOR PDI"
-            $("a:contains('TRANSFER FOR INVOICE')").attr("disabled", true); //disabled "TRANSFER FOR INVOICE"
-
-        }
-
         if (DMS.Settings.User.positionName == 'MMPC System Admin' || DMS.Settings.User.positionName == 'MMPC System Administrator' || DMS.Settings.User.positionName == 'MSD Manager' || DMS.Settings.User.positionName == 'Sales Supervisor' || DMS.Settings.User.positionName == 'Sales Lead' && userId != $('#gsc_recordownerid').val()) {
             //   $("#EntityFormView").attr("disabled", true);
             // $('#tab-1-1').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true)
@@ -728,13 +720,15 @@ $(document).ready(function (e) {
 
     var webRole = DMS.Settings.User.webRole;
     if (webRole == 'Cashier' || webRole == "Vehicle Allocator") {
-        $("#EntityFormView").find("input, textarea").each(function () {
+        $("#EntityFormView").find("input").each(function () {
             $(this).attr("readonly", true);
         });
 
-        $("#EntityFormView").find("select").each(function () {
-            $(this).attr("disabled", true);
-            $(this).addClass("permanent-disabled");
+        $("#EntityFormView").find("select, textarea").each(function () {
+            if ($(this).attr("id") !== "gsc_status" && $(this).attr("id") !== "gsc_statuscopy") {
+                $(this).attr("disabled", true);
+                $(this).addClass("permanent-disabled");
+            }
         });
 
         $("#EntityFormView").find(".input-group-btn").each(function () {
