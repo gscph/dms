@@ -42,15 +42,6 @@ $(document).ready(function () {
         }
     }
 
-    var webRole = DMS.Settings.User.webRole;
-    console.log(webRole);
-    if (webRole == 'Cashier' || webRole == "Vehicle Allocator") {
-        $(".btnCancel").addClass("hidden");
-        $(".printOrder").addClass("hidden");
-        $(".btnReCalculate").addClass("hidden");
-        $(".request-link").addClass("hidden");
-    }
-
     //JGC DocumentChecklist
     //Create Submit Button
     $btnSubmit = DMS.Helpers.CreateButton('button', "btn-primary btn submit", 'margin-left:5px', ' SUBMIT', DMS.Helpers.CreateFontAwesomeIcon('fa-paper-plane'));
@@ -619,6 +610,16 @@ $(document).ready(function () {
         $('fieldset.permanent-disabled .btn').attr("tabindex", "-1");
     }
     //End
+
+    var webRole = DMS.Settings.User.webRole;
+    console.log(webRole);
+    if (webRole == 'Cashier' || webRole == "Vehicle Allocator") {
+        $("#UpdateButton").addClass("hidden");
+        $(".btnCancel").remove();
+        $(".printOrder").remove();
+        $(".btnReCalculate").remove();
+        $(".request-link").remove();
+    }
 });
 
 

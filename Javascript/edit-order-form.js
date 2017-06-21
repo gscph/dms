@@ -707,7 +707,7 @@ $(document).ready(function (e) {
 
         if (DMS.Settings.User.positionName == 'Sales Manager' || DMS.Settings.User.positionName == 'Vehicle Allocator') {
             //disabled "Transfer to Invoice" button from Sales Order Update
-           // $('button.convert-order-link.btn.btn-primary').attr('disabled', true); // disabled "CREATE INVOICE"
+            // $('button.convert-order-link.btn.btn-primary').attr('disabled', true); // disabled "CREATE INVOICE"
             $("a:contains('READY FOR PDI')").attr("disabled", true); // disabled "READY FOR PDI"
             $("a:contains('TRANSFER FOR INVOICE')").attr("disabled", true); //disabled "TRANSFER FOR INVOICE"
 
@@ -725,12 +725,14 @@ $(document).ready(function (e) {
         /*End - Added by Christell Ann Mataac - 03/10/2017*/
 
     }, 7000);
-    
+
     var webRole = DMS.Settings.User.webRole;
-    if (webRole == 'Cashier' || webRole == "Vehicle Allocator") 
-    {
-        $("#EntityFormView").find("input, select, textarea").each(function () {
+    if (webRole == 'Cashier' || webRole == "Vehicle Allocator") {
+        $("#EntityFormView").find("input, textarea").each(function () {
             $(this).attr("readonly", true);
+        });
+
+        $("#EntityFormView").find("select").each(function () {
             $(this).attr("disabled", true);
             $(this).addClass("permanent-disabled");
         });
