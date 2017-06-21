@@ -108,6 +108,11 @@ $(document).ready(function () {
     var scheme = $("gsc_financingschemeid").val();
     var payment = $("#gsc_paymentmode").val();
     var status = $(".record-status").html();
+    var webRole = DMS.Settings.User.webRole;
+
+    if (webRole == 'Cashier' || webRole == "Vehicle Allocator") {
+        $("#UpdateButton").addClass("hidden");
+    }
 
     if ((bank == "" || scheme == "") && payment == "100000001" && status == "Open") {
         $("#DocumentChecklistSubgrid .grid-actions .submit").attr("disabled", true);
@@ -185,7 +190,8 @@ $(document).ready(function () {
     $btnRecalculate.click(function (evt) {
         location.reload();
     });
-    DMS.Helpers.AppendButtonToToolbar($btnRecalculate);
+    if (webRole != 'Cashier' && webRole != "Vehicle Allocator")
+        DMS.Helpers.AppendButtonToToolbar($btnRecalculate);
 
     //Print Order Button
     $btnPrint = DMS.Helpers.CreateAnchorButton("btn-primary btn printOrder", '', ' PRINT ', DMS.Helpers.CreateFontAwesomeIcon('fa-print'));
@@ -199,7 +205,8 @@ $(document).ready(function () {
         window.open(url, 'blank', 'scrollbars=1,resizable=1,width=850,height=1000');
 
     });
-    DMS.Helpers.AppendButtonToToolbar($btnPrint);
+    if (webRole != 'Cashier' && webRole != "Vehicle Allocator")
+        DMS.Helpers.AppendButtonToToolbar($btnPrint);
 
     //Request for Vehicle Allocation Button
     var isrequest = $("#gsc_isrequestforallocation").is(":checked")
@@ -212,7 +219,7 @@ $(document).ready(function () {
             $("#UpdateButton").click();
         }
     });
-    if (status == 'For Allocation') {
+    if (status == 'For Allocation' && webRole != 'Cashier' && webRole != "Vehicle Allocator") {
         DMS.Helpers.AppendButtonToToolbar($vehicleAllocationButton);
     }
     if (status == 'For Allocation' && isrequest == true) {
@@ -273,7 +280,7 @@ $(document).ready(function () {
         $("#UpdateButton").click();
     });
 
-    if (status == 'Allocated' || status == 'For Invoicing' || status == 'Pro-forma Invoice' || status == 'Completed') {
+    if ((status == 'Allocated' || status == 'For Invoicing' || status == 'Pro-forma Invoice' || status == 'Completed') && webRole != "Cashier") {
         if (!$('#gsc_isreadyforpdi').is(":checked")) {
             DMS.Helpers.AppendButtonToToolbar($pdiButton);
         }
@@ -287,7 +294,7 @@ $(document).ready(function () {
     $btnCancel.attr('data-toggle', 'modal');
     $btnCancel.attr('data-target', '#cancelOrderModal');
 
-    if (status != 'Cancelled') {
+    if (status != 'Cancelled' && webRole != 'Cashier' && webRole != "Vehicle Allocator") {
         DMS.Helpers.AppendButtonToToolbar($btnCancel);
 
         var cancelOrderModal = document.createElement('div');
@@ -610,15 +617,6 @@ $(document).ready(function () {
         $('fieldset.permanent-disabled .btn').attr("tabindex", "-1");
     }
     //End
-
-    var webRole = DMS.Settings.User.webRole;
-    if (webRole == 'Cashier' || webRole == "Vehicle Allocator") {
-        $("#UpdateButton").addClass("hidden");
-        $(".btnCancel").remove();
-        $(".printOrder").remove();
-        $(".btnReCalculate").remove();
-        $(".request-link").remove();
-    }
 });
 
 

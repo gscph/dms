@@ -679,7 +679,7 @@ $(document).ready(function (e) {
     $("#gsc_applytoafamount").attr("min", 0);
     $("#gsc_applytodpamount").attr("min", 0);
 
-    setTimeout(function () {
+   /* setTimeout(function () {
 
         /*Start - Added by Christell Ann Mataac - 03/10/2017*/
 
@@ -693,16 +693,16 @@ $(document).ready(function (e) {
             $('button.delete.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
             $('button.cancel.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
             $('button.cancel.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
-        }*/
+        }
 
         if (DMS.Settings.User.positionName == 'C and C Manager' || DMS.Settings.User.positionName == 'Cashier' || DMS.Settings.User.positionName == 'Invoice Generator' || DMS.Settings.User.positionName == 'PDI Inspector') //show Create Invoice Button
         {
-            $("a:contains('READY FOR PDI')").attr("disabled", true); //disabled "READY FOR PDI" button
-            $('a.request-link.btn-primary.btn').attr("disabled", true); //disabled "Request Vehicle Allocation" button
+         //   $("a:contains('READY FOR PDI')").attr("disabled", true); //disabled "READY FOR PDI" button
+          //  $('a.request-link.btn-primary.btn').attr("disabled", true); //disabled "Request Vehicle Allocation" button
 
             //this function sets all field in sales order to readonly status to avoid editing the fields
-            $('#UpdateButton.btn.btn-primary.button.fa-input-submit.submit-btn').hide();
-            $("#EntityFormView :input").attr("disabled", true);
+        //    $('#UpdateButton.btn.btn-primary.button.fa-input-submit.submit-btn').hide();
+           // $("#EntityFormView :input").attr("disabled", true);
         }
 
         if (DMS.Settings.User.positionName == 'MMPC System Admin' || DMS.Settings.User.positionName == 'MMPC System Administrator' || DMS.Settings.User.positionName == 'MSD Manager' || DMS.Settings.User.positionName == 'Sales Supervisor' || DMS.Settings.User.positionName == 'Sales Lead' && userId != $('#gsc_recordownerid').val()) {
@@ -711,20 +711,30 @@ $(document).ready(function (e) {
             //$('#tab-1-2').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true)
 
             if (DMS.Settings.User.positionName == 'MSD Manager') {
-                $(".allocate-link").attr('disabled', false);
+              //  $(".allocate-link").attr('disabled', false);
             }
         }
-        /*End - Added by Christell Ann Mataac - 03/10/2017*/
+        /*End - Added by Christell Ann Mataac - 03/10/2017]
 
-    }, 7000);
+    }, 7000);*/
 
     var webRole = DMS.Settings.User.webRole;
-    if (webRole == 'Cashier' || webRole == "Vehicle Allocator") {
+    if (webRole == 'Cashier' || webRole == "Vehicle Allocator" || webRole == "Invoicer") {
         $("#EntityFormView").find("input").each(function () {
+            if (webRole == "Invoicer") {
+                if ($(this).closest('table').data("name") === "tabbed-INSURANCECHARGES") {
+                    return true;
+                }
+            }
             $(this).attr("readonly", true);
         });
 
         $("#EntityFormView").find("select, textarea").each(function () {
+            if (webRole == "Invoicer" ) {
+                if ($(this).closest('table').data("name") === "tabbed-INSURANCECHARGES") {
+                    return true;
+                }
+            }
             if ($(this).attr("id") !== "gsc_status" && $(this).attr("id") !== "gsc_statuscopy") {
                 $(this).attr("disabled", true);
                 $(this).addClass("permanent-disabled");
