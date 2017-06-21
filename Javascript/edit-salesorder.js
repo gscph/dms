@@ -382,7 +382,7 @@ $(document).ready(function () {
 
     //show convert order to invoice button if status = "For Invoicing"
     if (status != "For Invoicing") {
-        $(".convert-order-link").addClass("hidden");
+        $(".convert-order-link").remove();
     }
 
     function checkSubgrid(tableDataName) {
@@ -612,7 +612,6 @@ $(document).ready(function () {
     //End
 
     var webRole = DMS.Settings.User.webRole;
-    console.log(webRole);
     if (webRole == 'Cashier' || webRole == "Vehicle Allocator") {
         $("#UpdateButton").addClass("hidden");
         $(".btnCancel").remove();
