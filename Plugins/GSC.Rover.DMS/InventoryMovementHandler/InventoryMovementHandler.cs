@@ -426,5 +426,29 @@ namespace GSC.Rover.DMS.BusinessLogic.InventoryMovement
             _tracingService.Trace("Ending CreateInventoryQuantityAllocated Method...");
             return inventoryHistory;
         }
+
+        public EntityReference getSiteId(Guid inventoryid)
+        {
+            _tracingService.Trace("Starting getSiteId Method...");
+            EntityCollection inventorycollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryid, _organizationService, null, OrderType.Ascending,
+               new[] { "gsc_productquantityid" });
+
+           if(inventorycollection.Entities.Count > 0)
+           {
+                Entity inventory = inventorycollection.Entities[0];
+                Guid productquantityid = inventory.Contains("gsc_productquantityid") ? inventory.GetAttributeValue<EntityReference>("gsc_productquantityid").Id : Guid.Empty;
+                EntityCollection productquantitycollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_productquantity", "gsc_iv_productquantityid", productquantityid, _organizationService,null, OrderType.Ascending,
+                new[] { "gsc_siteid" });
+                    if (productquantitycollection.Entities.Count > 0)
+                    {
+                        Entity productquantity = productquantitycollection.Entities[0];
+                        EntityReference siteid = productquantity.Contains("gsc_siteid") ? productquantity.GetAttributeValue<EntityReference>("gsc_siteid") : null;
+                        return siteid;
+                    }
+           }
+            _tracingService.Trace("Ending getSiteId Method...");
+            return null;
+        }
+
     }
 }

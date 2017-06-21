@@ -193,12 +193,17 @@ namespace GSC.Rover.DMS.BusinessLogic.ReturnTransaction
                 _organizationService.Delete(returnDetails.LogicalName, returnDetails.Id);
             }
 
+            EntityReference siteid = null;
+            InventoryMovementHandler inventoryMovementHandler = new InventoryMovementHandler(_organizationService, _tracingService);
 
             //create return transaction details
             if (receivingDetailsCollection.Entities.Count > 0)
             {
                 foreach (Entity receivingDetailEntity in receivingDetailsCollection.Entities)
                 {
+                    Guid inventoryid = receivingDetailEntity.GetAttributeValue<EntityReference>("gsc_inventoryid").Id;
+                    siteid = inventoryMovementHandler.getSiteId(inventoryid);
+                    
                     Entity returnTransactionDetail = new Entity("gsc_cmn_returntransactiondetails");
 
                     returnTransactionDetail["gsc_returntransactionid"] = new EntityReference(returnTransaction.LogicalName, returnTransaction.Id);
@@ -221,7 +226,7 @@ namespace GSC.Rover.DMS.BusinessLogic.ReturnTransaction
                        : string.Empty;
                     returnTransactionDetail["gsc_engineno"] = receivingDetailEntity.Contains("gsc_engineno") ? receivingDetailEntity.GetAttributeValue<string>("gsc_engineno")
                         : string.Empty;
-                    returnTransactionDetail["gsc_inventoryid"] = new EntityReference("gsc_iv_inventory", receivingDetailEntity.GetAttributeValue<EntityReference>("gsc_inventoryid").Id);
+                    returnTransactionDetail["gsc_inventoryid"] = new EntityReference("gsc_iv_inventory", inventoryid);
                     
                     returnTransactionDetail["gsc_returntransactionpn"] = receivingDetailEntity.Contains("gsc_receivingtransactiondetailpn") ? receivingDetailEntity.GetAttributeValue<string>("gsc_receivingtransactiondetailpn")
                         : string.Empty;
@@ -244,8 +249,7 @@ namespace GSC.Rover.DMS.BusinessLogic.ReturnTransaction
                     : string.Empty;
                 returnTransaction["gsc_vpono"] = receivingTransaction.Contains("gsc_purchaseorderid") ? receivingTransaction.GetAttributeValue<EntityReference>("gsc_purchaseorderid").Name
                     : string.Empty;
-                returnTransaction["gsc_site"] = receivingTransaction.Contains("gsc_siteid") ? receivingTransaction.GetAttributeValue<EntityReference>("gsc_siteid").Name
-                    : string.Empty;
+                returnTransaction["gsc_site"] = siteid.Name;
 
                 //set returnstatus to Open
                 returnTransaction["gsc_returnstatus"] = new OptionSetValue(100000000);
