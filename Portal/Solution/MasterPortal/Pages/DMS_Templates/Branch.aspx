@@ -140,6 +140,7 @@
                     }
 
                     if (DMS.Settings.Permission.Update == false) {
+                        DisableFormByPermission();
                         $('.submit-btn').remove();
                         $('.deactivate-link').remove();
                         $('.activate-link').remove();
@@ -150,6 +151,18 @@
                     }
 
                 });
+
+                function DisableFormByPermission() {
+                    $("#EntityFormView").find("input, select, textarea").each(function () {
+                        $(this).attr("readonly", true);
+                        $(this).attr("disabled", true);
+                        $(this).addClass("permanent-disabled");
+                    });
+
+                    $("#EntityFormView").find(".input-group-btn").each(function () {
+                        $(this).addClass("hidden");
+                    });
+                }
 
             });
         });

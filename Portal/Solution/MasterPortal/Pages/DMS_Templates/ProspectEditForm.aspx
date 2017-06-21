@@ -117,6 +117,10 @@
     <script>
         $(function () {
             $(document).ready(function () {
+                $("div.entity-grid.subgrid").each(function (a, b) {
+                    $(this).find(".grid-actions").addClass("hidden");
+                });
+
                 var webPageId = $("#webPageId span").html();
                 var recordOwnerId = $("#gsc_recordownerid").val();
                 var OwningBranchId = $("#gsc_branchid").val();
@@ -205,7 +209,7 @@
             });
         });
     </script>
-    <script src="~/js/dms/subgrid-button-permission.js"></script>
+   <script src="~/js/dms/subgrid-button-permission.js"></script>
 
 </asp:Content>
 

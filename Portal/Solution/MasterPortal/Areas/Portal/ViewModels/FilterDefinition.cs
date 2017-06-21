@@ -294,8 +294,13 @@ namespace Site.Areas.Portal.ViewModels
                 return null;
 
             Entity entity = result.First();
+            var typeField = "";
 
-            if (entity.LogicalName != "account" && entity.LogicalName != "contact")
+            if (entity.LogicalName == "account" || entity.LogicalName == "contact")
+                typeField = "gsc_recordtype";
+            else if (entity.LogicalName == "product")
+                typeField = "gsc_producttype";
+            else
                 return null;
 
             int recordType = 0;
@@ -312,13 +317,13 @@ namespace Site.Areas.Portal.ViewModels
             }
 
             QueryExpression queryRecordType = new QueryExpression(result.First().LogicalName);
-            queryRecordType.ColumnSet = new ColumnSet("gsc_recordtype");
+            queryRecordType.ColumnSet = new ColumnSet(typeField);
             queryRecordType.Criteria.AddCondition(result.First().LogicalName + "id", ConditionOperator.Equal, result.First().Attributes[result.First().LogicalName + "id"]);
             EntityCollection recordTypeCollection = _service.ServiceContext.RetrieveMultiple(queryRecordType);
 
             if (recordTypeCollection != null && recordTypeCollection.Entities.Count > 0)
             {
-                recordType = GetOptionSetId("adx_entitypermission", "gsc_recordtype", recordTypeCollection.Entities[0].FormattedValues["gsc_recordtype"]);
+                recordType = GetOptionSetId("adx_entitypermission", "gsc_recordtype", recordTypeCollection.Entities[0].FormattedValues[typeField]);
             }
 
             QueryExpression queryEntityPermission = new QueryExpression("adx_entitypermission");
@@ -707,6 +712,7 @@ namespace Site.Areas.Portal.ViewModels
         {
             SavedQueryView queryView = _viewConfig.GetSavedQueryView(_serviceContext);
             string productId = string.Empty;
+            var currentUserBranch = string.Empty;
             var context = HttpContext.Current;
             var dateToday = DateTime.Now.ToShortDateString();
 
@@ -714,9 +720,16 @@ namespace Site.Areas.Portal.ViewModels
             {
                 var request = context.Request.RequestContext;
                 var cookies = request.HttpContext.Request.Cookies;
+                HttpCookie branchCookie = null;
 
                 if (cookies != null)
                 {
+                    branchCookie = cookies["Branch"];
+
+                    if (branchCookie != null)
+                    {
+                        currentUserBranch = branchCookie["branchId"];
+                    }
                     if (cookies["productId"] != null)
                     {
                         productId = cookies["productId"].Value;
@@ -733,11 +746,22 @@ namespace Site.Areas.Portal.ViewModels
                     <attribute name='description'/> 
                     <attribute name='pricelevelid'/> 
                     <filter type='and'>
-                        <condition attribute='statecode' operator='eq' value='0' />
-                        <condition attribute='gsc_promo' operator='eq' value='1' />
-                        <condition attribute='gsc_publish' operator='eq' value='1' />
-                        <condition attribute='begindate' operator='le' value='" + dateToday + @"' />
-                        <condition attribute='enddate' operator='ge' value='" + dateToday + @"' />
+                        <filter type='and'>
+                            <condition attribute='statecode' operator='eq' value='0' />
+                            <condition attribute='gsc_promo' operator='eq' value='1' />
+                            <condition attribute='begindate' operator='le' value='" + dateToday + @"' />
+                            <condition attribute='enddate' operator='ge' value='" + dateToday + @"' />
+                        </filter>
+                        <filter type='or'>
+                            <filter type='and'>
+                                <condition attribute='gsc_branchid' operator='eq' value='{"+currentUserBranch+@"}' />
+                                <condition attribute='gsc_publishenabled' operator='eq' value='0' />
+                            </filter>
+                            <filter type='and'>
+                            <condition attribute='gsc_publishenabled' operator='eq' value='1' />
+                            <condition attribute='gsc_publish' operator='eq' value='1' />
+                            </filter>
+                        </filter>
                     </filter>
                     <link-entity name='productpricelevel' from='pricelevelid' to='pricelevelid'> 
                        <filter type='and'> 

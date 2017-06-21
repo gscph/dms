@@ -180,12 +180,12 @@ namespace Site.Areas.Portal.Controllers
 
             var result = viewDataAdapter.FetchEntities();
 
+            var filteredRecords = converter.FilterSharedEntityScope(result.Records);
             var globalRecords = converter.FilterRootBusinessUnitRecords(viewConfiguration, filterEntityName, filterRelationshipName, filterValue, search);
 
-            var combinedResults = result.Records.Union(globalRecords);
+            var combinedResults = filteredRecords.Union(globalRecords);
 
             combinedResults = combinedResults.GroupBy(x => x.Id).Select(y => y.First());
-            combinedResults = converter.FilterSharedEntityScope(combinedResults);
 
             //Custom Order By
             string[] order = sortExpression.Split(' ');
