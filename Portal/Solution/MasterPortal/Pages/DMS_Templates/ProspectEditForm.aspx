@@ -156,37 +156,39 @@
 
                     $(".navbar-right.toolbar-right").removeClass("hidden");
 
-                    //Edit Prospect scripts
-                   // var reportsTo = $("#gsc_recordownerreportsto").val();
-                    var owner = $("#gsc_recordownerid").val();
+                    if (DMS.Settings.User.webRole == "Sales Supervisor" || DMS.Settings.User.webRole == "Sales Executive") {
+                        //Edit Prospect scripts
+                        // var reportsTo = $("#gsc_recordownerreportsto").val();
+                        var owner = $("#gsc_recordownerid").val();
 
-                    var oDataUrl = '/_odata/employee?$filter=contactid%20eq%20(Guid%27' + owner + '%27)&';
-                    $.ajax({
-                        type: 'get',
-                        async: true,
-                        url: oDataUrl,
-                        success: function (data) {
-                            if (data.value.length !== 0) {
-                                var reportsTo = data.value[0].gsc_reportsto;
-                                if (reportsTo !== null && reportsTo !== undefined)
-                                    reportsToId = reportsTo.Id;
+                        var oDataUrl = '/_odata/employee?$filter=contactid%20eq%20(Guid%27' + owner + '%27)&';
+                        $.ajax({
+                            type: 'get',
+                            async: true,
+                            url: oDataUrl,
+                            success: function (data) {
+                                if (data.value.length !== 0) {
+                                    var reportsTo = data.value[0].gsc_reportsto;
+                                    if (reportsTo !== null && reportsTo !== undefined)
+                                        reportsToId = reportsTo.Id;
 
-                                if (owner === userId || reportsToId === userId) {
-                                    return;
+                                    if (owner === userId || reportsToId === userId) {
+                                        return;
+                                    }
+
+                                    if (DMS.Settings.Permission.Scope === 756150000 && DMS.Settings.Permission.Read === true) {
+                                        return;
+                                    }
+
+                                    $("section.content").hide();
+                                    window.location.href = "~/transactions/prospectinquiry/";
                                 }
-
-                                if (DMS.Settings.Permission.Scope === 756150000 && DMS.Settings.Permission.Read === true) {
-                                    return;
-                                }
-
-                                $("section.content").hide();
-                                window.location.href = "~/transactions/prospectinquiry/";
+                            },
+                            error: function (xhr, textStatus, errorMessage) {
+                                console.error(errorMessage);
                             }
-                        },
-                        error: function (xhr, textStatus, errorMessage) {
-                            console.error(errorMessage);
-                        }
-                    });
+                        });
+                    }
                 });
 
                 function DisableFormByPermission() {

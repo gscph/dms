@@ -84,6 +84,11 @@
                         var _layouts = that.closest('div[data-view-layouts]').data("view-layouts")[0];
                         var path = _layouts.Configuration.DetailsActionLink.URL.PathWithQueryString;
                         var editUrl = path + "?id=" + that.parent('tr').data('id');
+
+                        if (DMS.Settings.User.webRole != "Sales Supervisor" && DMS.Settings.User.webRole != "Sales Executive") {
+                            window.location.href = editUrl;
+                            return;
+                        }
                         var isAuthorized = false;
 
                         if (DMS.Settings.Permission != null) {
