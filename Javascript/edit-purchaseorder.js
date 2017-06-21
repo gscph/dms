@@ -126,7 +126,7 @@ $(document).ready(function () {
     }
 
     function filterApproval(approverSetupId) {
-        var odataUrl = "/_odata/approver?$filter=gsc_contactid/Id eq (guid" / " + userId + " / ") and gsc_approversetupid/Id eq (Guid'" + approverSetupId + "')";
+        var odataUrl = "/_odata/approver?$filter=gsc_contactid/Id eq (Guid'" + userId + "') and gsc_approversetupid/Id eq (Guid'" + approverSetupId + "')";
         $.ajax({
             type: "get",
             async: true,
