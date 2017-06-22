@@ -58,8 +58,9 @@ namespace ComputeVehicleAllocationAgeDaily
                         : Guid.Empty;
 
                     QueryExpression invoiceQuery = new QueryExpression("invoice");
-                    //Status not equal to Released or Cancelled
-                    invoiceQuery.Criteria.AddCondition("gsc_salesinvoicestatus", ConditionOperator.NotIn, 100000004, 100000005);
+                    invoiceQuery.ColumnSet.AddColumn("gsc_salesinvoicestatus");
+                    
+                    //invoiceQuery.Criteria.AddCondition("gsc_salesinvoicestatus", ConditionOperator.NotIn, 100000004, 100000005);
                     invoiceQuery.Criteria.AddCondition("salesorderid", ConditionOperator.Equal, orderId);
 
                     //Retrieve invoice with status not Release or Cancelled and orderid == to that of allocated vehicle
@@ -68,20 +69,28 @@ namespace ComputeVehicleAllocationAgeDaily
                     Console.WriteLine("Invoice Records Retrieved: " + invoiceCollection.Entities.Count);
                     if (invoiceCollection.Entities.Count > 0)
                     {
+                        Entity invoiceEntity = invoiceCollection.Entities[0];
                         Console.WriteLine(allocatedVehicle.GetAttributeValue<string>("gsc_allocatedvehiclepn"));
-                        DateTime allocatedDate = allocatedVehicle.Contains("gsc_vehicleallocateddate") ? allocatedVehicle.GetAttributeValue<DateTime>("gsc_vehicleallocateddate")
-                            : DateTime.UtcNow;
 
-                        int allocationAge = (int)Math.Floor((DateTime.UtcNow - allocatedDate).TotalDays);
-                        allocatedVehicle["gsc_vehicleallocationage"] = allocationAge;
+                        var invoiceStatus = invoiceEntity.Contains("gsc_salesinvoicestatus") ? invoiceEntity.GetAttributeValue<OptionSetValue>("gsc_salesinvoicestatus").Value
+                            : 0;
 
-                        service.Update(allocatedVehicle);
-                        Console.WriteLine("Allocation Age updated to " + allocationAge);
+                        if (invoiceStatus != 100000004 && invoiceStatus != 100000005) //Status not equal to Released or Cancelled
+                        {
+                            ComputeAge(allocatedVehicle);
+                            service.Update(allocatedVehicle);
+                        }
+
                     }
-                        else
-                        Console.WriteLine("No Invoice Records Retrieved...");
+                    else //SO records with no invoice
+                    {
+                        ComputeAge(allocatedVehicle);
+                        service.Update(allocatedVehicle);
+                    }
+                        
 
                 }
+                Console.ReadKey();
             }
             catch (Exception ex)
             {
@@ -95,6 +104,18 @@ namespace ComputeVehicleAllocationAgeDaily
                 }
                 Console.WriteLine("Error");
             }
+        }
+
+        private static Entity ComputeAge(Entity allocatedVehicle)
+        {
+            DateTime allocatedDate = allocatedVehicle.Contains("gsc_vehicleallocateddate") ? allocatedVehicle.GetAttributeValue<DateTime>("gsc_vehicleallocateddate")
+                            : DateTime.UtcNow;
+            int allocationAge = (int)Math.Floor((DateTime.UtcNow - allocatedDate).TotalDays);
+            allocatedVehicle["gsc_vehicleallocationage"] = allocationAge;
+
+            Console.WriteLine("Updating allocation age to " + allocationAge);
+
+            return allocatedVehicle;
         }
     }
 }
