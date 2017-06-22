@@ -70,19 +70,15 @@ namespace GSC.Rover.DMS.Platform.Plugins
                 null, OrderType.Ascending, new[] { "accountid", "gsc_ispotential" });
                 AccountHandler accountHandler = new AccountHandler(service, trace);
                 Entity accountEntity = accountEC.Entities[0];
-                Boolean isProspect = accountEntity.GetAttributeValue<Boolean>("gsc_ispotential");
-                if (isProspect == true)
-                {
-                    if (accountHandler.IsUsedInTransaction(accountEntity) == true)
-                    {
-                        throw new InvalidPluginExecutionException("Unable to delete prospect record(s) used in transaction");
-                    }
-                }
 
+                if (accountHandler.IsUsedInTransaction(accountEntity) == true)
+                    {
+                        throw new InvalidPluginExecutionException("Unable to delete corporate record(s) used in transaction");
+                    }
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains("Unable to delete prospect record(s) used in transaction"))
+                if (ex.Message.Contains("Unable to delete corporate record(s) used in transaction"))
                     throw new InvalidPluginExecutionException(ex.Message);
                 else
                     throw new InvalidPluginExecutionException(String.Concat("(Exception)\n", ex.Message, Environment.NewLine, ex.StackTrace, Environment.NewLine, error));

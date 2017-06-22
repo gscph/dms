@@ -80,18 +80,15 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     contactHandler.ClearPrimaryContactDetails(contactEntity);
                 }
 
-                if (isProspect == false && (contactEntity.Contains("gsc_recordtype") && contactEntity.GetAttributeValue<OptionSetValue>("gsc_recordtype").Value == 100000001))
-                {
-                    if (contactHandler.IsUsedInTransaction(contactEntity) == true)
+                if (contactHandler.IsUsedInTransaction(contactEntity) == true)
                     {
-                        throw new InvalidPluginExecutionException("Unable to delete customer record(s) used in transaction");
+                        throw new InvalidPluginExecutionException("Unable to delete individual record(s) used in transaction");
                     }
-                }
             }
 
             catch (Exception ex)
             {
-                if (ex.Message.Contains("Unable to delete customer record(s) used in transaction"))
+                if (ex.Message.Contains("Unable to delete individual record(s) used in transaction"))
                     throw new InvalidPluginExecutionException(ex.Message);
                 else
                 throw new InvalidPluginExecutionException(String.Concat("(Exception)\n", ex.Message, Environment.NewLine, ex.StackTrace));
