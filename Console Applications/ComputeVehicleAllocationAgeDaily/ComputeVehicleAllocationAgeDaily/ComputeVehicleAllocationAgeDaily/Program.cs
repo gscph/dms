@@ -90,7 +90,6 @@ namespace ComputeVehicleAllocationAgeDaily
                         
 
                 }
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
