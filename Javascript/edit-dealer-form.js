@@ -1,9 +1,9 @@
 $(document).ready(function () {
-    $('#gsc_regionid_name').siblings('.input-group-btn').addClass('hidden');
-    $('#accountnumber').attr("readOnly", "readOnly");
+    $("#gsc_regionid_name").siblings(".input-group-btn").addClass("hidden");
+    $("#accountnumber").attr("readOnly", "readOnly");
     setTimeout(function () {
 
-    var salesContactValidator = document.createElement('span');
+    var salesContactValidator = document.createElement("span");
     salesContactValidator.style.display = "none";
     salesContactValidator.id = "RequiredFieldValidatoraddress2_telephone1";
     salesContactValidator.controltovalidate = "address2_telephone1";
@@ -20,11 +20,13 @@ $(document).ready(function () {
             return true;
         }
         else
+        {
             return false;
+        }
     };
     Page_Validators.push(salesContactValidator);
 
-    var serviceContactValidator = document.createElement('span');
+    var serviceContactValidator = document.createElement("span");
     serviceContactValidator.style.display = "none";
     serviceContactValidator.id = "RequiredFieldValidatoraddress2_telephone2";
     serviceContactValidator.controltovalidate = "address2_telephone2";
@@ -45,7 +47,7 @@ $(document).ready(function () {
     };
     Page_Validators.push(serviceContactValidator);
 
-    var faxOneValidator = document.createElement('span');
+    var faxOneValidator = document.createElement("span");
     faxOneValidator.style.display = "none";
     faxOneValidator.id = "RequiredFieldValidatorfax";
     faxOneValidator.controltovalidate = "fax";
@@ -66,7 +68,7 @@ $(document).ready(function () {
     };
     Page_Validators.push(faxOneValidator);
 
-    var faxTwoValidator = document.createElement('span');
+    var faxTwoValidator = document.createElement("span");
     faxTwoValidator.style.display = "none";
     faxTwoValidator.id = "RequiredFieldValidatorgsc_fax";
     faxTwoValidator.controltovalidate = "gsc_fax";
@@ -87,7 +89,7 @@ $(document).ready(function () {
     };
     Page_Validators.push(faxTwoValidator);
 
-    var phoneOneValidator = document.createElement('span');
+    var phoneOneValidator = document.createElement("span");
     phoneOneValidator.style.display = "none";
     phoneOneValidator.id = "RequiredFieldValidatoraddress1_telephone1";
     phoneOneValidator.controltovalidate = "address1_telephone1";
@@ -108,7 +110,7 @@ $(document).ready(function () {
     };
     Page_Validators.push(phoneOneValidator);
 
-   var phoneTwoValidator = document.createElement('span');
+   var phoneTwoValidator = document.createElement("span");
     phoneTwoValidator.style.display = "none";
     phoneTwoValidator.id = "RequiredFieldValidatoraddress1_telephone2";
     phoneTwoValidator.controltovalidate = "address2_telephone1";
@@ -129,7 +131,7 @@ $(document).ready(function () {
     };
     Page_Validators.push(phoneTwoValidator);
 
-    var phoneThreeValidator = document.createElement('span');
+    var phoneThreeValidator = document.createElement("span");
     phoneThreeValidator.style.display = "none";
     phoneThreeValidator.id = "RequiredFieldValidatoraddress1_telephone3";
     phoneThreeValidator.controltovalidate = "address1_telephone3";
@@ -153,14 +155,14 @@ $(document).ready(function () {
         $("#gsc_countryid").on('change', function () {
             $("#gsc_provinceid_name").val("");
             $("#gsc_provinceid").val("");
-            $("#gsc_provinceid").siblings('div.input-group-btn').children('.clearlookupfield').hide();
+            $("#gsc_provinceid").siblings("div.input-group-btn").children(".clearlookupfield").hide();
             $("#gsc_provinceid").trigger("change");
         });
         
-        $("#gsc_provinceid").on('change', function () {
+        $("#gsc_provinceid").on("change", function () {
             $("#gsc_cityid_name").val("");
             $("#gsc_cityid").val("");
-            $("#gsc_cityid").siblings('div.input-group-btn').children('.clearlookupfield').hide();
+            $("#gsc_cityid").siblings("div.input-group-btn").children(".clearlookupfield").hide();
             
             var provinceId = $("#gsc_provinceid").val();
             
