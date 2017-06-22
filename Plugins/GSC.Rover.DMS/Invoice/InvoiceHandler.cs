@@ -1576,7 +1576,8 @@ namespace GSC.Rover.DMS.BusinessLogic.Invoice
                 transactedVehicle["gsc_vehiclemakeid"] = product.GetAttributeValue<EntityReference>("gsc_vehiclemakeid") != null ? new EntityReference("gsc_iv_vehiclemake", product.GetAttributeValue<EntityReference>("gsc_vehiclemakeid").Id) : null;
                 transactedVehicle["gsc_vehiclebasemodelid"] = product.GetAttributeValue<EntityReference>("gsc_vehiclemodelid") != null ? new EntityReference("gsc_iv_vehiclebasemodel", product.GetAttributeValue<EntityReference>("gsc_vehiclemodelid").Id) : null;
                 transactedVehicle["gsc_modeldescriptionpn"] = product.Contains("name") ? product.GetAttributeValue<string>("name") : string.Empty;
-                transactedVehicle["gsc_warrantymileage"] =  product.Contains("gsc_warrantymileage") ? Int32.Parse(product.GetAttributeValue<string>("gsc_warrantymileage")) : 0;
+                transactedVehicle["gsc_warrantymileage"] = product.Contains("gsc_warrantymileage") ? Int32.Parse(product.GetAttributeValue<string>("gsc_warrantymileage").Replace(",", "")) : 0;
+                transactedVehicle["gsc_warrantyexpiryyears"] = product.Contains("gsc_warrantyexpirydays") ? Double.Parse(product.GetAttributeValue<string>("gsc_warrantyexpirydays")) : 0;
                 _tracingService.Trace("Product collection...");
             }
             else
