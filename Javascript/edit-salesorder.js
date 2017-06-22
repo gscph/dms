@@ -242,7 +242,7 @@ $(document).ready(function () {
         DMS.Helpers.AppendButtonToToolbar($btnTransfer);
     }
 
-    if (status == 'Open' || status == 'For Allocation' || status == 'Allocated' || status == 'Reserved') {
+    if ((status == 'Open' || status == 'For Allocation' || status == 'Allocated' || status == 'Reserved') && webRole != "CC Manager") {
         $('#gsc_placeofrelease').prop("readOnly", false);
         $('#gsc_deliverytermsremarks').prop("readOnly", false);
         $('#gsc_promiseddeliverydate').next().children().first().prop("disabled", false);
@@ -280,7 +280,7 @@ $(document).ready(function () {
         $("#UpdateButton").click();
     });
 
-    if ((status == 'Allocated' || status == 'For Invoicing' || status == 'Pro-forma Invoice' || status == 'Completed') && webRole != "Cashier") {
+    if ((status == 'Allocated' || status == 'For Invoicing' || status == 'Pro-forma Invoice' || status == 'Completed') && webRole != "Cashier" && webRole != "CC Manager") {
         if (!$('#gsc_isreadyforpdi').is(":checked")) {
             DMS.Helpers.AppendButtonToToolbar($pdiButton);
         }
