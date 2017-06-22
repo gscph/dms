@@ -59,7 +59,14 @@
         //        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
         //        </span>"></i>&nbsp;DELETING..');
         modalButton.addClass('disabled');
-        modalButton.siblings('.btn').addClass('disabled');    
+        modalButton.siblings('.btn').addClass('disabled');
+
+        recordArr = globalRecordValidator(recordArr);
+        if (recordArr.length <= 0) {
+            HideModal(modalButton, html);
+            DMS.Notification.Error('You are unauthorized to delete this record.');
+            return false;
+        }
 
         var json = DMS.Helpers.CreateModelWithoutFieldUpdate(recordArr, logicalName);                  
      
@@ -76,14 +83,33 @@
                 $('.entity-grid.entitylist').trigger('refresh');
             }, 100);
         }).always(function () {
-            modalButton.html(html);
-            modalButton.removeClass('disabled');
-            modalButton.siblings('.btn').removeClass('disabled');
-            $('.view-toolbar.grid-actions .activate').addClass('disabled');
-            $('.view-toolbar.grid-actions .deactivate').addClass('disabled');
-            $('.modal-delete').modal('hide');        
-          
+            HideModal(modalButton, html);
         });
+    }
+
+    function HideModal(modalButton, html)
+    {
+        modalButton.html(html);
+        modalButton.removeClass('disabled');
+        modalButton.siblings('.btn').removeClass('disabled');
+        $('.view-toolbar.grid-actions .activate').addClass('disabled');
+        $('.view-toolbar.grid-actions .deactivate').addClass('disabled');
+        $('.modal-delete').modal('hide');
+    }
+
+    function globalRecordValidator(records) {
+        if (DMS.Settings.Permission.DeleteScope !== 756150000) {
+            records.forEach(function (value, index) {
+                var $tr = $('tr[data-id=' + value + ']');
+                var td = $tr.find('td[data-attribute="gsc_isglobalrecord"]');
+
+                if (typeof td !== 'undefined') {
+                    if (td.data('value') == true)
+                        records.splice(index, 1);
+                }
+            });
+        }
+        return records;
     }
 
 })(jQuery);

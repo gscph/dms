@@ -134,7 +134,7 @@ namespace GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail
             //Retrieve In-Transit Site field from Receiving Transaction record
             Entity receivingTransaction = _organizationService.Retrieve("gsc_cmn_receivingtransaction", receivingTransactionId,
                 new ColumnSet("gsc_intransitsiteid", "gsc_receivingstatus", "gsc_receivingtransactionpn", "gsc_vendorid", 
-                    "gsc_vendorname", "gsc_intransitreceiptdate", "gsc_warrantybookletno"));
+                    "gsc_vendorname", "gsc_intransitreceiptdate", "gsc_warrantybookletno", "gsc_dealerid", "gsc_branchid"));
 
             if (!receivingTransaction.FormattedValues["gsc_receivingstatus"].Equals("Open"))
             {
@@ -200,6 +200,12 @@ namespace GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail
                 inventory["gsc_warrantybookletno"] = receivingTransaction.Contains("gsc_warrantybookletno")
                     ? receivingTransaction.GetAttributeValue<String>("gsc_warrantybookletno")
                     : String.Empty;
+                inventory["gsc_branchid"] = receivingTransaction.GetAttributeValue<EntityReference>("gsc_branchid") != null
+                    ? receivingTransaction.GetAttributeValue<EntityReference>("gsc_branchid")
+                    : null;
+                inventory["gsc_dealerid"] = receivingTransaction.GetAttributeValue<EntityReference>("gsc_dealerid") != null
+                    ? receivingTransaction.GetAttributeValue<EntityReference>("gsc_dealerid")
+                    : null;
 
                 Guid newInventory = _organizationService.Create(inventory);
 

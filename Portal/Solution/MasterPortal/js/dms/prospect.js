@@ -121,6 +121,9 @@
                 recordArr = statusValidatorSO(recordArr);
                 
                 if (recordArr.length <= 0) {
+                    modalButton.html(html);
+                    modalButton.removeClass('disabled');
+                    modalButton.siblings('.btn').removeClass('disabled');
                     $('.modal-delete').modal('hide');
                     DMS.Notification.Error('You can only delete record(s) with open status.');
                     return;

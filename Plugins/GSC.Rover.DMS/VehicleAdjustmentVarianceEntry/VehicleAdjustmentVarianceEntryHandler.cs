@@ -506,6 +506,12 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry
                         inventory["gsc_siteid"] = vehicleAdjustmentVarianceEntryDetail.GetAttributeValue<EntityReference>("gsc_siteid") != null
                             ? vehicleAdjustmentVarianceEntryDetail.GetAttributeValue<EntityReference>("gsc_siteid")
                             : null;
+                        inventory["gsc_branchid"] = vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_branchid") != null
+                            ? vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_branchid")
+                            : null;
+                        inventory["gsc_dealerid"] = vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_dealerid") != null
+                            ? vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_dealerid")
+                            : null;
 
                         Guid inventoryId = _organizationService.Create(inventory);
                         EntityCollection inventoryRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId, _organizationService, null, OrderType.Ascending,

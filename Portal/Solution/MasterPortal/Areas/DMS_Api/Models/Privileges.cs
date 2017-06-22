@@ -13,7 +13,8 @@ namespace Site.Areas.DMS_Api
         public bool Delete { get; set; }
         public bool Append { get; set; }
         public bool AppendTo { get; set; }
-        public Scope Scope { get; set; }
+        public Scope UpdateScope { get; set; }
+        public Scope DeleteScope { get; set; }
     }
 
     public enum Scope

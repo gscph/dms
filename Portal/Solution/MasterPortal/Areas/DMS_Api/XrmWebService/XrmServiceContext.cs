@@ -269,25 +269,7 @@ namespace Site.Areas.DMSApi
 
                     foreach (Entity entityPermission in entityPermissionCollection.Entities)
                     {
-                        if (entityPermission.GetAttributeValue<bool>("adx_read") == true)
-                            privileges.Read = true;
-
-                        if (entityPermission.GetAttributeValue<bool>("adx_create") == true)
-                            privileges.Create = true;
-
-                        if (entityPermission.GetAttributeValue<bool>("adx_write") == true)
-                            privileges.Update = true;
-
-                        if (entityPermission.GetAttributeValue<bool>("adx_delete") == true)
-                            privileges.Delete = true;
-
-                        if (entityPermission.GetAttributeValue<bool>("adx_append") == true)
-                            privileges.Append = true;
-
-                        if (entityPermission.GetAttributeValue<bool>("adx_appendto") == true)
-                            privileges.AppendTo = true;
-
-                        privileges.Scope = (Scope)entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
+                        privileges = MultipleEntityPermission(entityPermission, privileges);
                     }
                     return privileges;
                 }
@@ -331,6 +313,41 @@ namespace Site.Areas.DMSApi
             return null;
         }
 
+        private Privileges MultipleEntityPermission(Entity entityPermission, Privileges privileges)
+        {
+            if (entityPermission.GetAttributeValue<bool>("adx_read") == true)
+                privileges.Read = true;
+
+            if (entityPermission.GetAttributeValue<bool>("adx_create") == true)
+                privileges.Create = true;
+
+            if (entityPermission.GetAttributeValue<bool>("adx_write") == true)
+            {
+                if (privileges.DeleteScope != (Scope)756150000)
+                {
+                    privileges.UpdateScope = (Scope)entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
+                    privileges.Update = true;
+                }
+            }
+
+            if (entityPermission.GetAttributeValue<bool>("adx_delete") == true)
+            {
+                if (privileges.DeleteScope != (Scope)756150000)
+                {
+                    privileges.DeleteScope = (Scope)entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
+                    privileges.Delete = true;
+                }
+            }
+
+            if (entityPermission.GetAttributeValue<bool>("adx_append") == true)
+                privileges.Append = true;
+
+            if (entityPermission.GetAttributeValue<bool>("adx_appendto") == true)
+                privileges.AppendTo = true;
+
+            return privileges;
+        }
+
         private Privileges AssignPrivilegesValue(Entity entityPermission)
         {
             Privileges privileges = new Privileges();
@@ -341,7 +358,8 @@ namespace Site.Areas.DMSApi
             privileges.Delete = entityPermission.GetAttributeValue<bool>("adx_delete");
             privileges.Append = entityPermission.GetAttributeValue<bool>("adx_append");
             privileges.AppendTo = entityPermission.GetAttributeValue<bool>("adx_appendto");
-            privileges.Scope = (Scope)entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
+            privileges.UpdateScope = (Scope)entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
+            privileges.DeleteScope = (Scope)entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
             return privileges;
         }
 
@@ -446,20 +464,16 @@ namespace Site.Areas.DMSApi
                             if (privileges != null)
                                 return privileges;
                         }
+                        else
+                        {
+                            privileges = MultipleEntityPermission(entityPermission, privileges);
+                        }
                     }
+                    return privileges;
                 }
                 else
                 {
-                    Entity entityPermission = entityPermissionCollection.Entities[0];
-
-                    privileges.Read = entityPermission.GetAttributeValue<bool>("adx_read");
-                    privileges.Create = entityPermission.GetAttributeValue<bool>("adx_create");
-                    privileges.Update = entityPermission.GetAttributeValue<bool>("adx_write");
-                    privileges.Delete = entityPermission.GetAttributeValue<bool>("adx_delete");
-                    privileges.Append = entityPermission.GetAttributeValue<bool>("adx_append");
-                    privileges.AppendTo = entityPermission.GetAttributeValue<bool>("adx_appendto");
-                    privileges.Scope = (Scope)entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
-                    return privileges;
+                    return AssignPrivilegesValue(entityPermissionCollection.Entities[0]);
                 }
             }
 
