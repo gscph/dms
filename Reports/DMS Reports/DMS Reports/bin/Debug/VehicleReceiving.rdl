@@ -2239,7 +2239,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Encoded By:</Value>
+                    <Value>Received By:</Value>
                     <Style>
                       <FontFamily>Calibri</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -2255,7 +2255,7 @@
             <Top>0.15606in</Top>
             <Left>2.13613in</Left>
             <Height>0.25in</Height>
-            <Width>1in</Width>
+            <Width>1.0625in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2273,7 +2273,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Checked By:</Value>
+                    <Value>Acknowledged By:</Value>
                     <Style>
                       <FontFamily>Calibri</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -2289,7 +2289,7 @@
             <Top>0.13169in</Top>
             <Left>6.46138in</Left>
             <Height>0.25in</Height>
-            <Width>1in</Width>
+            <Width>1.32243in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
