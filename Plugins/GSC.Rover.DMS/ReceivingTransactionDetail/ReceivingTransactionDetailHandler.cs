@@ -284,6 +284,12 @@ namespace GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail
                     productQuantity["gsc_vehiclemodelid"] = receivingTransactionDetail.Contains("gsc_basemodelid")
                         ? receivingTransactionDetail.GetAttributeValue<EntityReference>("gsc_basemodelid")
                         : null;
+                    productQuantity["gsc_branchid"] = receivingTransaction.GetAttributeValue<EntityReference>("gsc_branchid") != null
+                        ? receivingTransaction.GetAttributeValue<EntityReference>("gsc_branchid")
+                        : null;
+                    productQuantity["gsc_dealerid"] = receivingTransaction.GetAttributeValue<EntityReference>("gsc_dealerid") != null
+                        ? receivingTransaction.GetAttributeValue<EntityReference>("gsc_dealerid")
+                        : null;
 
                     Guid newProductQuantity = _organizationService.Create(productQuantity);
 

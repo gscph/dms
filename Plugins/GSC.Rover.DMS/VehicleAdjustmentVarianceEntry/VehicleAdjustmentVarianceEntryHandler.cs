@@ -486,6 +486,12 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry
                             _tracingService.Trace("Set Product Name field");
                             productQuantity["gsc_productid"] = new EntityReference("product", productId);
                             productQuantity["gsc_productquantitypn"] = productName;
+                            productQuantity["gsc_branchid"] = vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_branchid") != null
+                                ? vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_branchid")
+                                : null;
+                            productQuantity["gsc_dealerid"] = vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_dealerid") != null
+                                ? vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_dealerid")
+                                : null;
 
                             Guid newProductQuantityId = _organizationService.Create(productQuantity);
 
