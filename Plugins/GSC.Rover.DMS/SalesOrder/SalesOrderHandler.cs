@@ -1291,12 +1291,17 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             _tracingService.Trace("Started DeleteExistingMonthlyAmortizationRecords method..");
 
             EntityCollection salesOrderMonthlyAmortizationRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_ordermonthlyamortization", "gsc_orderid", salesOrderEntity.Id, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_financingtermid" });
-
+                new[] { "gsc_financingtermid", "gsc_selected" });
+            Guid financingTermId = Guid.Empty;
             if (salesOrderMonthlyAmortizationRecords != null || salesOrderMonthlyAmortizationRecords.Entities.Count > 0)
             {
                 foreach (var salesOrderMonthlyAmortization in salesOrderMonthlyAmortizationRecords.Entities)
                 {
+                    Boolean isSelected = salesOrderMonthlyAmortization.Contains("gsc_selected") ? salesOrderMonthlyAmortization.GetAttributeValue<Boolean>("gsc_selected") : false;
+                    if (isSelected == true)
+                    {
+                        financingTermId = salesOrderMonthlyAmortization.Contains("gsc_financingtermid") ? salesOrderMonthlyAmortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
+                    }
                     _organizationService.Delete(salesOrderMonthlyAmortization.LogicalName, salesOrderMonthlyAmortization.Id);
                 }
                 salesOrderEntity["gsc_netmonthlyamortization"] = new Money(0);
@@ -1306,11 +1311,32 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             //Call CreateMonthlyAmortization method if Financing Scheme field is not null
             if (salesOrderEntity.GetAttributeValue<EntityReference>("gsc_financingschemeid") != null)
             {
-                return CreateMonthlyAmortization(salesOrderEntity);
+               CreateMonthlyAmortization(salesOrderEntity);
+               return UpdateMonthlyAmortization(salesOrderEntity, financingTermId);
             }
             _tracingService.Trace("Ended DeleteExistingMonthlyAmortizationRecords method..");
             return null;
         }
+
+        private Entity UpdateMonthlyAmortization(Entity salesOrderEntity, Guid financingTermId)
+        {
+            EntityCollection salesOrderMonthlyAmortizationRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_ordermonthlyamortization", "gsc_orderid", salesOrderEntity.Id, _organizationService, null, OrderType.Ascending,
+                new[] { "gsc_financingtermid", "gsc_selected" });
+            if (salesOrderMonthlyAmortizationRecords != null || salesOrderMonthlyAmortizationRecords.Entities.Count > 0)
+            {
+                foreach (var salesOrderMonthlyAmortization in salesOrderMonthlyAmortizationRecords.Entities)
+                {
+                    Guid financingTerm = salesOrderMonthlyAmortization.Contains("gsc_financingtermid") ? salesOrderMonthlyAmortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
+                    if (financingTerm == financingTermId)
+                    {
+                        salesOrderMonthlyAmortization["gsc_selected"] = true;
+                        _organizationService.Update(salesOrderMonthlyAmortization);
+                    }                    
+                }
+            }
+            return salesOrderEntity;
+        }
+
 
         //Created By : Jerome Anthony Gerero, Created On : 4/5/2016
         private Entity CreateMonthlyAmortization(Entity salesOrderEntity)
