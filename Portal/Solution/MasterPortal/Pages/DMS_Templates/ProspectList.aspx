@@ -92,7 +92,7 @@
                         var isAuthorized = false;
 
                         if (DMS.Settings.Permission != null) {
-                            isAuthorized = DMS.Settings.Permission.Scope == 756150000 && DMS.Settings.Permission.Read == true;
+                            isAuthorized = DMS.Settings.Permission.UpdateScope == 756150000 && DMS.Settings.Permission.Read == true;
                         }
                         IsRecordOwner(that, isAuthorized, editUrl);
                     });

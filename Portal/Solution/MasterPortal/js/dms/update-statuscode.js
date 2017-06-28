@@ -18,6 +18,13 @@
         if (statusValidator(recordArr, statusVal) > 0)
         { DMS.Notification.Error(statusValidator(recordArr, statusVal) +  " record(s) already active. Please select inactive records only.", true, 5000); return false; }
 
+
+        recordArr = updatePermissionValidator(recordArr);
+        if (recordArr.length <= 0) {
+            DMS.Notification.Error('You are unauthorized to delete this record.');
+            return false;
+        }
+
         updateStatus(recordArr, "enable", $(this), deActivateButton);
     });
     // identifier for activate button
@@ -30,6 +37,12 @@
 
         if (statusValidator(recordArr,statusVal) > 0) 
         { DMS.Notification.Error(statusValidator(recordArr, statusVal) + " record(s) already inactive. Please select active records only.", true, 5000); return false; }
+
+        recordArr = updatePermissionValidator(recordArr);
+        if (recordArr.length <= 0) {
+            DMS.Notification.Error('You are unauthorized to delete this record.');
+            return false;
+        }
 
         updateStatus(recordArr, "disable", $(this), activateButton);
     });
@@ -98,6 +111,48 @@ function updateStatus(records, status, button, sibling) {
     }).always(function () {
         button.html(html);      
     });
+}
+
+function updatePermissionValidator(records) {
+    if (DMS.Settings.Permission.UpdateScope !== 756150000) {
+        records.forEach(function (value, index) {
+            var $tr = $('tr[data-id=' + value + ']');
+            var tdGlobalRecord = $tr.find('td[data-attribute="gsc_isglobalrecord"]');
+
+            if (typeof tdGlobalRecord !== 'undefined') {
+                if (tdGlobalRecord.data('value') == true) {
+                    records.splice(index, 1);
+                    return true;
+                }
+            }
+
+            if (DMS.Settings.Permission.UpdateScope == 756150002) {
+                var tdBranchId = $tr.find('td[data-attribute="gsc_branchid"]');
+                if (typeof tdBranchId !== 'undefined') {
+                    var value = tdBranchId.data('value');
+                    if (value !== "undefined" && value != null) {
+                        if (value.Id != DMS.Settings.User.branchId)
+                            records.splice(index, 1);
+                    }
+                    return true;
+                }
+            }
+            else if(DMS.Settings.Permission.UpdateScope == 756150001)
+            {
+                var tdOwnerId = $tr.find('td[data-attribute="gsc_recordownerid"]');
+                if (typeof tdOwnerId !== 'undefined') {
+                    var value = tdOwnerId.data('value');
+                    if (value !== "undefined" && value != null) {
+                        if (value.Id != DMS.Settings.User.Id)
+                            records.splice(index, 1);
+                    }
+                    return true;
+                }
+            }
+
+        });
+    }
+    return records;
 }
 
 

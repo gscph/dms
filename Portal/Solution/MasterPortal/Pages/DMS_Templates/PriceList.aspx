@@ -203,11 +203,6 @@
                     return;
                 }
 
-                if (DMS.Settings.Permission.Scope === 756150002) {
-                    if (DMS.Settings.User.branchId != $("#gsc_branchid").val())
-                        $(".toolbar-right").html("");
-                }
-
                 if (DMS.Settings.Permission.Update === false) {
                     $(".toolbar-right").find("button, a, input").each(function () {
                         var text = $(this).html();

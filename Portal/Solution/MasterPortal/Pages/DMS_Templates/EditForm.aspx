@@ -27,7 +27,8 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="EntityControls" runat="server">      
     <script>
-        $(".navbar-right.toolbar-right").addClass("hidden");
+        if (DMS.Settings.User.webRole != "Purchase Approver") 
+            $(".navbar-right.toolbar-right").addClass("hidden");
     </script>
     <div id="loader">
         <span class="fa fa-spinner fa-spin fa-4x loader-color"></span>
@@ -135,45 +136,48 @@
         var imgUrl = "<%: Html.AttributeLiteral(Html.PortalUser(), "gsc_userimageurl") ?? "~/css/images/default.png" %>";
 
         $(document).ready(function () {
-            $("div.entity-grid.subgrid").each(function (a, b) {
-                $(this).find(".grid-actions").addClass("hidden");
-            });
 
-            var webPageId = $("#webPageId span").html();
-            var recordOwnerId = $("#gsc_recordownerid").val();
-            var OwningBranchId = $("#gsc_branchid").val();
+            if (DMS.Settings.User.webRole != "Purchase Approver") {
+                $("div.entity-grid.subgrid").each(function (a, b) {
+                    $(this).find(".grid-actions").addClass("hidden");
+                });
 
-            if (recordOwnerId === null || recordOwnerId === undefined)
-                recordOwnerId = "00000000-0000-0000-0000-000000000000";
+                var webPageId = $("#webPageId span").html();
+                var recordOwnerId = $("#gsc_recordownerid").val();
+                var OwningBranchId = $("#gsc_branchid").val();
 
-            if (OwningBranchId === null || OwningBranchId === undefined)
-                OwningBranchId = "00000000-0000-0000-0000-000000000000";
+                if (recordOwnerId == null || recordOwnerId == "undefined")
+                    recordOwnerId = "00000000-0000-0000-0000-000000000000";
 
-            var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
-               { webPageId: webPageId, recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId }, DMS.Helpers.DefaultErrorHandler, null);
+                if (OwningBranchId == null || OwningBranchId == "undefined")
+                    OwningBranchId = "00000000-0000-0000-0000-000000000000";
 
-            service.then(function (response) {
-                DMS.Settings.Permission = response;
-                if (response === null) {
-                    return;
-                }
+                var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
+                   { webPageId: webPageId, recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId }, DMS.Helpers.DefaultErrorHandler, null);
 
-                if (DMS.Settings.Permission.Scope === 756150002) {
-                    if (DMS.Settings.User.branchId != $("#gsc_branchid").val())
-                        $(".toolbar-right").html("");
-                }
+                service.then(function (response) {
+                    DMS.Settings.Permission = response;
+                    if (response === null) {
+                        return;
+                    }
 
-                if (DMS.Settings.Permission.Update === false) {
-                    $(".toolbar-right").find("button, a, input").each(function () {
-                        var text = $(this).html();
-                        if (text.indexOf("NEW") === -1 && text.indexOf("DELETE") === -1 && text.indexOf("REMOVE") === -1 && text.indexOf("EXPORT") === -1 && text.indexOf("ORDER") === -1) {
-                            $(this).remove();
-                        }
-                    });
-                }
+                    if (DMS.Settings.Permission.Scope === 756150002) {
+                        if (DMS.Settings.User.branchId != $("#gsc_branchid").val())
+                            $(".toolbar-right").html("");
+                    }
 
-                $(".navbar-right.toolbar-right").removeClass("hidden");
-            });
+                    if (DMS.Settings.Permission.Update === false) {
+                        $(".toolbar-right").find("button, a, input").each(function () {
+                            var text = $(this).html();
+                            if (text.indexOf("NEW") === -1 && text.indexOf("DELETE") === -1 && text.indexOf("REMOVE") === -1 && text.indexOf("EXPORT") === -1 && text.indexOf("ORDER") === -1) {
+                                $(this).remove();
+                            }
+                        });
+                    }
+
+                    $(".navbar-right.toolbar-right").removeClass("hidden");
+                });
+            }
         });
     </script>
     <script src="~/js/dms/form-locking.js"></script>

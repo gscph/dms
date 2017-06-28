@@ -98,14 +98,39 @@
     }
 
     function globalRecordValidator(records) {
-        if (DMS.Settings.Permission.DeleteScope !== 756150000) {
+        if (DMS.Settings.Permission.DeleteScope == 756150000) {
             records.forEach(function (value, index) {
                 var $tr = $('tr[data-id=' + value + ']');
-                var td = $tr.find('td[data-attribute="gsc_isglobalrecord"]');
+                var tdGlobalRecord = $tr.find('td[data-attribute="gsc_isglobalrecord"]');
 
-                if (typeof td !== 'undefined') {
-                    if (td.data('value') == true)
+                if (typeof tdGlobalRecord !== 'undefined') {
+                    if (tdGlobalRecord.data('value') == true) {
                         records.splice(index, 1);
+                        return true;
+                    }
+                }
+
+                if (DMS.Settings.Permission.UpdateScope == 756150002) {
+                    var tdBranchId = $tr.find('td[data-attribute="gsc_branchid"]');
+                    if (typeof tdBranchId !== 'undefined') {
+                        var value = tdBranchId.data('value');
+                        if (value !== "undefined" && value != null) {
+                            if (value.Id != DMS.Settings.User.branchId)
+                                records.splice(index, 1);
+                        }
+                        return true;
+                    }
+                }
+                else if (DMS.Settings.Permission.UpdateScope == 756150001) {
+                    var tdOwnerId = $tr.find('td[data-attribute="gsc_recordownerid"]');
+                    if (typeof tdOwnerId !== 'undefined') {
+                        var value = tdOwnerId.data('value');
+                        if (value !== "undefined" && value != null) {
+                            if (value.Id != DMS.Settings.User.Id)
+                                records.splice(index, 1);
+                        }
+                        return true;
+                    }
                 }
             });
         }

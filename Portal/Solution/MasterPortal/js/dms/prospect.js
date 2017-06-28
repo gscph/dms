@@ -252,9 +252,7 @@
 
         var recordArr = records;
 
-
         recordArr = buttonValidation.run(records);
-
 
         var somethingWasRemoved = recordArrLength == recordArr.length;
         var howMany = recordArrLength - recordArr.length;
@@ -263,7 +261,6 @@
             DMS.Notification.Error('You are unauthorized to modify this record.');
             return;
         }
-
         var html = button.html();
         var logicalName = $('.entity-grid.entitylist').data("view-layouts")[0].Configuration.EntityName;
 
@@ -289,8 +286,6 @@
         }).always(function () {
             button.html(html);
         });
-
-
 
     }
 

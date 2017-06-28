@@ -323,7 +323,12 @@ namespace Site.Areas.Portal.ViewModels
 
             if (recordTypeCollection != null && recordTypeCollection.Entities.Count > 0)
             {
-                recordType = GetOptionSetId("adx_entitypermission", "gsc_recordtype", recordTypeCollection.Entities[0].FormattedValues[typeField]);
+                if (recordTypeCollection.Entities[0].Contains(typeField))
+                {
+                    recordType = GetOptionSetId("adx_entitypermission", "gsc_recordtype", recordTypeCollection.Entities[0].FormattedValues[typeField]);
+                }
+                else
+                    return null;
             }
 
             QueryExpression queryEntityPermission = new QueryExpression("adx_entitypermission");

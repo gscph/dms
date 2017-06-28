@@ -257,16 +257,16 @@ namespace Site.Areas.DMSApi
 
             if (entityPermissionCollection != null && entityPermissionCollection.Entities.Count > 0)
             {
+                Privileges privileges = new Privileges();
+                privileges.Read = false;
+                privileges.Create = false;
+                privileges.Update = false;
+                privileges.Delete = false;
+                privileges.Append = false;
+                privileges.AppendTo = false;
+
                 if (recordOwnerId == Guid.Empty && OwningBranchId == Guid.Empty)
                 {
-                    Privileges privileges = new Privileges();
-                    privileges.Read = false;
-                    privileges.Create = false;
-                    privileges.Update = false;
-                    privileges.Delete = false;
-                    privileges.Append = false;
-                    privileges.AppendTo = false;
-
                     foreach (Entity entityPermission in entityPermissionCollection.Entities)
                     {
                         privileges = MultipleEntityPermission(entityPermission, privileges);
@@ -298,15 +298,18 @@ namespace Site.Areas.DMSApi
                         {
                             return AssignPrivilegesValue(entityPermission);
                         }
-                        else if (scope == 756150001 && userId == recordOwnerId)
+
+                        if (scope == 756150001 && userId == recordOwnerId)
                         {
                             return AssignPrivilegesValue(entityPermission);
                         }
+
                         else if (scope == 756150002 && branchId == OwningBranchId)
                         {
                             return AssignPrivilegesValue(entityPermission);
                         }
                     }
+                    return privileges;
                 }
             }
 
@@ -444,6 +447,7 @@ namespace Site.Areas.DMSApi
             //Retrieve Entity Permission
             QueryExpression queryEntityPermission = new QueryExpression("adx_entitypermission");
             queryEntityPermission.ColumnSet = new ColumnSet(true);
+            queryEntityPermission.AddOrder("adx_scope", OrderType.Descending);
             queryEntityPermission.LinkEntities.Add(new LinkEntity("adx_entitypermission", "adx_entitypermission_webrole", "adx_entitypermissionid", "adx_entitypermissionid", JoinOperator.Inner));
             queryEntityPermission.LinkEntities[0].LinkCriteria.AddCondition("adx_webroleid", ConditionOperator.Equal, webRoleId);
             queryEntityPermission.Criteria.AddCondition(new ConditionExpression("adx_entitylogicalname", ConditionOperator.Equal, entityName));
@@ -464,12 +468,10 @@ namespace Site.Areas.DMSApi
                             if (privileges != null)
                                 return privileges;
                         }
-                        else
-                        {
-                            privileges = MultipleEntityPermission(entityPermission, privileges);
-                        }
                     }
-                    return privileges;
+
+                    privileges = new Privileges();
+                    return MultipleEntityPermission(entityPermissionCollection.Entities[0], privileges);
                 }
                 else
                 {

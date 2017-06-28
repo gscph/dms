@@ -5,6 +5,12 @@
         var entityName = $(this).data("view-layouts")[0].Configuration.EntityName;
         var recordOwnerId = $("#gsc_recordownerid").val();
         var OwningBranchId = $("#gsc_branchid").val();
+        if (recordOwnerId == null || recordOwnerId == "undefined")
+            recordOwnerId = "00000000-0000-0000-0000-000000000000";
+
+        if (OwningBranchId == null || OwningBranchId == "undefined")
+            OwningBranchId = "00000000-0000-0000-0000-000000000000";
+
         var toolBar = $(this).find(".grid-actions");
 
         var service = DMS.Service("GET", "~/api/Service/GetEntityGridPrivilages",

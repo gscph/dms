@@ -14,6 +14,11 @@ if (typeof jQuery === "undefined") {
 function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, newRowModel) {
     var that = this;
 
+    var entityGridTable = $('table[data-name="' + sectionDataname + '"]');
+    if (entityGridTable.html() == undefined)
+        entityGridTable = $("#" + sectionDataname);
+    entityGridTable.addClass("disabledGrid");
+
     // initialize variables needed
     var changedRows = [], editedCells = [], odataList = [],
         rowDeleted = { index: null, amount: null, records: [] },
@@ -179,7 +184,7 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
 
     this.setupSubGrid = function (editableGridContainer) {
 
-        var $toolbar = $('<div class="editable-grid-toolbar"></div>')
+        var $toolbar = $('<div class="editable-grid-toolbar hidden"></div>')
         // setup subgrid section
         $section.addClass('subgrid-cell');
 
@@ -200,7 +205,7 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
             $toolbar.append($delete);
             $section.append($modal);
         }
-
+      
         $section.append($toolbar);
 
         $hot.updateSettings({ contextMenu: this.customContextMenu(opt.addNewRows, opt.deleteRows) });
@@ -249,7 +254,7 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
             url: odataQuery,
             cache: false
         }).then(function (response) {
-            $('.editable-grid').removeClass('hidden');
+            $('.editable-grid').not(".editable-grid-toolbar").removeClass('hidden');
             container.style.display = 'block';
             odataList = response.value;
 
@@ -283,6 +288,8 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
             $hot.origData = odataList;
 
             $section.append($(container).detach());
+
+            $('.editable-grid-toolbar').addClass('hidden');
 
             hookOnChangeEvent();           
         });
@@ -553,6 +560,8 @@ function addDefaultClass(button, isDisabled) {
 }
 
 function addEntityPermission(model, sectionDataname) {
+    var entityGridTable = $('table[data-name="' + sectionDataname + '"]');
+
     var entity = model.entity;
     var webRoleId = DMS.Settings.User.webRoleId;
     var recordOwnerId = $("#gsc_recordownerid").val();
@@ -563,7 +572,6 @@ function addEntityPermission(model, sectionDataname) {
 
     service.then(function (response) {
         var isToolBarEmpty = 0;
-        var entityGridTable = $('table[data-name="' + sectionDataname + '"]');
 
         if (entityGridTable.html() == undefined) {
             entityGridTable = $('#' + sectionDataname);
@@ -574,7 +582,6 @@ function addEntityPermission(model, sectionDataname) {
 
         if (response.Read == false) {
             entityGridTable.find('.editable-grid-toolbar').html('');
-            entityGridTable.addClass("disabledGrid");
             return;
         }
 
@@ -595,8 +602,8 @@ function addEntityPermission(model, sectionDataname) {
             isToolBarEmpty++;
         }
 
-        if (isToolBarEmpty == 3)
-            entityGridTable.addClass("disabledGrid");
+        if (isToolBarEmpty == 0)
+            entityGridTable.removeClass("disabledGrid");
 
         entityGridTable.find('.editable-grid-toolbar').removeClass("hidden");
     });

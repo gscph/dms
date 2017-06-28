@@ -307,3 +307,8 @@ span.status-label {
 table[data-name=UserList] {
     margin-left: 5px !important;
 }
+
+.disabledGrid
+{
+    pointer-events: none;
+}

@@ -62,6 +62,9 @@
     <script src="~/js/dms/custom-button.js"></script>   
     <script>
         $(document).on("loaded", function () {
+            if ($("table th:last-child").html().indexOf("Global") > 0)
+                $("table th:last-child, td:last-child").hide();
+
             var webPageId = $("#webPageId span").html();
             var guidEmpty = "00000000-0000-0000-0000-000000000000";
 
