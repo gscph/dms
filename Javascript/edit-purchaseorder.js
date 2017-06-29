@@ -176,7 +176,10 @@ $(document).ready(function () {
             Body: "<p>Set purchase order for approval?</p>",
             headerIcon: "fa fa-files-o"
         });
-        $(".crmEntityFormView").append(forApprovalModal);
+
+        if(DMS.Settings.Permission.Update == true)
+            $(".crmEntityFormView").append(forApprovalModal);
+
         forApprovalBtn.on("click", function (evt) {
             var approverCount = filterApprovalCount(approverSetupId);
             forApprovalModal.find(".confirmModal").on("click", function () {
