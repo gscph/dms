@@ -599,15 +599,16 @@ namespace GSC.Rover.DMS.BusinessLogic.ProspectInquiry
         public Entity RestrictProspectInquiryDelete(Entity prospectInquiryEntity)
         {
             _tracingService.Trace("Started RestrictProspectInquiryDelete Method...");
+            
+            if (prospectInquiryEntity.FormattedValues["statecode"].Equals("Disqualified"))
+            {
+                throw new InvalidPluginExecutionException("Unable to delete disqualified records.");
+            }
+            else if (prospectInquiryEntity.FormattedValues["statecode"].Equals("Qualified"))
+            {
+                throw new InvalidPluginExecutionException("Unable to delete qualified records.");
+            }
 
-            if (prospectInquiryEntity.GetAttributeValue<OptionSetValue>("statecode").Value == 1)
-            {
-                throw new InvalidPluginExecutionException("Cannot delete record associated to Opportunity/Won.");
-            }
-            else if (prospectInquiryEntity.FormattedValues["statecode"] == "Disqualified" || prospectInquiryEntity.FormattedValues["statuscode"] == "Qualified")
-            {
-                throw new InvalidPluginExecutionException("Unable to delete Qualified/Disqualified records.");
-            }
             _tracingService.Trace("Ended RestrictProspectInquiryDelete Method...");
             return prospectInquiryEntity;
         }
