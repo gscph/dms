@@ -25,7 +25,8 @@ $(document).ready(function () {
         $("#gsc_remarks").css("resize", "none");
     }
     else {
-        createCancelButton();
+        if (DMS.Settings.User.webRole.indexOf("MMPC") === -1)
+            createCancelButton();
     }
 
 
@@ -40,7 +41,7 @@ $(document).ready(function () {
     }
 
     /* == Ordered || In Transit || Received   */
-    if (vpostatus == 100000002 || vpostatus == 100000003 || vpostatus == 100000004) {
+    if (vpostatus == 100000002 || vpostatus == 100000003 || vpostatus == 100000004 || DMS.Settings.User.webRole.indexOf("MMPC") >= 0) {
         DisableForm();
     }
 
@@ -59,7 +60,6 @@ $(document).ready(function () {
             receiptDate.children("span").children("span").addClass("glyphicon glyphicon-calendar");
             receiptDate.children(".input-group-addon").show();
             $("#gsc_mmpcreceiptdate").removeAttr("readonly");
-            $(".cancel").addClass("hidden");
             $("#EntityFormView").removeClass("form-readonly");
         }
     }
@@ -79,8 +79,10 @@ $(document).ready(function () {
     }
 
     /*   == Unapproved / !Cancelled / == Open   */
-    if (approvalstatus == 100000003 || (vpostatus != 100000005 && approvalstatus == 100000002 || approvalstatus == 100000001) || (vpostatus != 100000005 && approvalstatus == 100000000))
-        filterApproverSetup();
+    if (approvalstatus == 100000003 || (vpostatus != 100000005 && approvalstatus == 100000002 || approvalstatus == 100000001) || (vpostatus != 100000005 && approvalstatus == 100000000)) {
+        if (DMS.Settings.User.webRole.indexOf("MMPC") == -1)
+            filterApproverSetup();
+    }
 
     /*  == Approved       */
     if (approvalstatus == 100000000)
@@ -176,9 +178,7 @@ $(document).ready(function () {
             Body: "<p>Set purchase order for approval?</p>",
             headerIcon: "fa fa-files-o"
         });
-
-        if(DMS.Settings.Permission.Update == true)
-            $(".crmEntityFormView").append(forApprovalModal);
+        $(".crmEntityFormView").append(forApprovalModal);
 
         forApprovalBtn.on("click", function (evt) {
             var approverCount = filterApprovalCount(approverSetupId);
@@ -254,7 +254,7 @@ $(document).ready(function () {
             printConfirmation.modal("show");
         });
 
-        if (DMS.Settings.User.webRole.indexOf("MMPC") === -1) {
+        if (DMS.Settings.User.webRole.indexOf("MMPC") == -1) {
             DMS.Helpers.AppendButtonToToolbar(printBtn);
         }
     };
