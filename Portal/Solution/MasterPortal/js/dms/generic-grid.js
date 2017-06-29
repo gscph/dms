@@ -208,6 +208,8 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
       
         $section.append($toolbar);
 
+        addEntityPermission(model, sectionDataname);
+
         $hot.updateSettings({ contextMenu: this.customContextMenu(opt.addNewRows, opt.deleteRows) });
     }
 
@@ -288,8 +290,6 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
             $hot.origData = odataList;
 
             $section.append($(container).detach());
-
-            $('.editable-grid-toolbar').addClass('hidden');
 
             hookOnChangeEvent();           
         });
@@ -547,7 +547,6 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
     }
 
     this.run();
-    addEntityPermission(model, sectionDataname);
     return $hot;
 }
 
@@ -571,8 +570,6 @@ function addEntityPermission(model, sectionDataname) {
       { webRoleId: webRoleId, entityName: entity, recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId }, DMS.Helpers.DefaultErrorHandler, null);
 
     service.then(function (response) {
-        var isToolBarEmpty = 0;
-
         if (entityGridTable.html() == undefined) {
             entityGridTable = $('#' + sectionDataname);
         }
@@ -587,22 +584,20 @@ function addEntityPermission(model, sectionDataname) {
 
         if (response.Create == false) {
             entityGridTable.find('.editable-grid-toolbar .addnew').remove();
-            isToolBarEmpty++;
         }
 
         if (response.Update == false) {
             entityGridTable.find('.editable-grid-toolbar .save').remove();
             entityGridTable.find('.editable-grid-toolbar .btnSaveCopy').remove();
-            entityGridTable.find('.editable-grid-toolbar .cancel').remove();
-            isToolBarEmpty++;
+            entityGridTable.find('.editable-grid-toolbar .delete').remove();
+            entityGridTable.find('.editable-grid-toolbar .cancelCopy').remove();
         }
 
         if (response.Delete == false) {
-            entityGridTable.find('.editable-grid-toolbar .delete').remove();
-            isToolBarEmpty++;
+            entityGridTable.find('.editable-grid-toolbar .cancel').remove();
         }
 
-        if (isToolBarEmpty == 0)
+        if (response.Update == true || response.Delete == true)
             entityGridTable.removeClass("disabledGrid");
 
         entityGridTable.find('.editable-grid-toolbar').removeClass("hidden");

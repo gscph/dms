@@ -226,7 +226,7 @@ namespace Site.Areas.DMSApi.Controllers
             {
                 if (productId != Guid.Empty)
                 {
-                  /*  decimal sellPrice = 0;
+                    decimal sellPrice = 0;
                    
                     PriceListHandler priceListHandler = new PriceListHandler(_conn.ServiceContext);
                     priceListHandler.itemType = 0;
@@ -271,8 +271,7 @@ namespace Site.Areas.DMSApi.Controllers
                         throw new Exception("There is no effective Price List for the selected Vehicle.");
                     }
 
-                   */
-                    return Ok(0.0);
+                    return Ok(sellPrice);
                 }
                 return InternalServerError(new Exception("No Vehicle Price Found."));
             }
