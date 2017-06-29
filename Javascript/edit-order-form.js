@@ -719,7 +719,7 @@ $(document).ready(function (e) {
 }, 7000);*/
 
     var webRole = DMS.Settings.User.webRole;
-    if (webRole == 'Cashier' || webRole == "Vehicle Allocator" || webRole == "Invoicer" || webRole == "CC Manager") {
+    if (webRole == 'Cashier' || webRole == "Vehicle Allocator" || webRole == "Invoicer" || webRole == "CC Manager" || webRole == "MSD Manager") {
         $("#EntityFormView").find("input").each(function () {
             if (webRole == "Invoicer") {
                 if ($(this).closest('table').data("name") === "tabbed-INSURANCECHARGES") {
