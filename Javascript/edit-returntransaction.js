@@ -1,65 +1,62 @@
 //Created By : Raphael Herrera, Created On : 7/18/2016
 $(document).ready(function () {
-    
-    setTimeout(function(){
-        
-    createPostButton();
-    hideDevField();
-    var status = $(".record-status").html();
-    if (status == 'Cancelled' || status == 'Returned')
-        {   $(".datetimepicker input").attr("disabled", "disabled");
+
+    setTimeout(function () {
+
+        hideDevField();
+        var status = $(".record-status").html();
+        if (status == 'Cancelled' || status == 'Returned' || DMS.Settings.Permission.Update == false) {
+            $(".datetimepicker input").attr("disabled", "disabled");
             $(".datetimepicker span").hide();
             setReadOnly();
         }
     }, 300);
     // if open show cancel
-    if($('#gsc_vrstatus').val() == 100000000) createCancelButton();
+    if ($('#gsc_vrstatus').val() == 100000000) createCancelButton();
     // if cancelled/return hide delete. disable form
-    if($('#gsc_vrstatus').val() == 100000002 || $('#gsc_vrstatus').val() == 100000001) {
-      $('.toolbar-right button.delete-link').remove();
-      DMS.Helpers.DisableEntityForm();
+    if ($('#gsc_vrstatus').val() == 100000002 || $('#gsc_vrstatus').val() == 100000001) {
+        $('.toolbar-right button.delete-link').remove();
+        DMS.Helpers.DisableEntityForm();
     }
-    
+
+    var postBtn = DMS.Helpers.CreateButton('button', 'btn btn-primary', '', ' POST', DMS.Helpers.CreateFontAwesomeIcon('fa-thumb-tack'));
+    postBtn.attr("id", "postButton");
+    postBtn.on('click', function (evt) {
+        postModal.find('.confirmModal').on('click', function () {
+            postTransaction();
+        });
+        postModal.modal('show');
+    });
+    DMS.Helpers.AppendButtonToToolbar(postBtn);
+
+    var postModal = DMS.Helpers.CreateModalConfirmation({
+        id: 'postModal',
+        headerTitle: ' Post - Return Transaction',
+        Body: '<p>Post this Return Transaction?</p>',
+        headerIcon: 'fa fa-thumb-tack'
+    });
+    $('.crmEntityFormView').append(postModal);
 
     function createCancelButton() {
-     var cancelIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-ban');
+        var cancelIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-ban');
         var cancelBtn = DMS.Helpers.CreateButton('button', 'btn btn-primary cancel', '', ' CANCEL', cancelIcon);
         var cancelConfirmation = DMS.Helpers.CreateModalConfirmation(
-          { id: 'cancelModal',
-          headerIcon: 'fa fa-ban', headerTitle: ' Cancel ', Body:'Are you sure you want to cancel this Purchase Order Return?'});
-           $(".crmEntityFormView").append(cancelConfirmation);
-                        cancelBtn.on('click', function(evt) {
-                        cancelConfirmation.find('.confirmModal').on('click', function() {
-                                  $('#gsc_vrstatus').val('100000002');
-                                $('#UpdateButton').click();
-                        });
-          cancelConfirmation.modal('show');
+          {
+              id: 'cancelModal',
+              headerIcon: 'fa fa-ban', headerTitle: ' Cancel ', Body: 'Are you sure you want to cancel this Purchase Order Return?'
+          });
+        $(".crmEntityFormView").append(cancelConfirmation);
+        cancelBtn.on('click', function (evt) {
+            cancelConfirmation.find('.confirmModal').on('click', function () {
+                $('#gsc_vrstatus').val('100000002');
+                $('#UpdateButton').click();
+            });
+            cancelConfirmation.modal('show');
         });
-        
+
         DMS.Helpers.AppendButtonToToolbar(cancelBtn);
     }
-    
-    
 
-    function createPostButton() {
-        var postBtn = DMS.Helpers.CreateButton('button', 'btn btn-primary', '', ' POST', DMS.Helpers.CreateFontAwesomeIcon('fa-thumb-tack'));
-        postBtn.attr("id", "postButton");
-        var postModal = DMS.Helpers.CreateModalConfirmation({
-            id: 'postModal',
-            headerTitle: ' Post - Return Transaction',
-            Body: '<p>Post this Return Transaction?</p>',
-            headerIcon: 'fa fa-thumb-tack'
-        });
-        $('.crmEntityFormView').append(postModal);
-        postBtn.on('click', function (evt) {
-            postModal.find('.confirmModal').on('click', function () {
-                postTransaction();
-            });
-            postModal.modal('show');
-        });
-        DMS.Helpers.AppendButtonToToolbar(postBtn);
-
-    }
 
     //Modified By : Jerome Anthony Gerero, Modified On : 7/28/2016
     $printBtn = DMS.Helpers.CreateAnchorButton("btn-primary btn", '', ' PRINT', DMS.Helpers.CreateFontAwesomeIcon('fa-print'));
@@ -82,7 +79,7 @@ $(document).ready(function () {
         $(".deactivate-link").addClass("permanent-disabled disabled");
         $("#UpdateButton").addClass("permanent-disabled disabled");
         $("#postButton").hide();
-        
+
         //disbale fieldset
         $("#EntityFormView fieldset").attr("disabled", "disabled");
         $("#EntityFormView fieldset").addClass("permanent-disabled");
@@ -102,7 +99,7 @@ $(document).ready(function () {
         $('.launchentitylookup').remove();
         $('.input-group-addon').remove();*/
     }
-    
+
     function postTransaction() {
         $('#gsc_vrstatus').val('100000001');
         $("#UpdateButton").click();
@@ -119,7 +116,7 @@ $(document).ready(function () {
         }
     }
 
-     function hideDevField() {
+    function hideDevField() {
 
         $('#gsc_vrstatus').css({ "pointer-events": "none", "cursor": "default" });
         $('#gsc_returnstatus').css({ "pointer-events": "none", "cursor": "default" });
@@ -129,8 +126,7 @@ $(document).ready(function () {
 
     setTimeout(disableTab, 300);
 
-    function disableTab()
-    {
+    function disableTab() {
         $('.permanent-disabled').attr("tabindex", "-1");
     }
 });
