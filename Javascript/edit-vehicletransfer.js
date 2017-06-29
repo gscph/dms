@@ -18,9 +18,18 @@ $(document).ready(function () {
         }
     }
 
-
-
-    drawAllocateButton();
+    checkPermission();
+    function checkPermission() {
+        if (DMS.Settings.Permission.Update == null) {
+            setTimeout(function () {
+                checkPermission();
+            }, 100);
+        }
+        else {
+            if (DMS.Settings.Permission.Update == true)
+                drawAllocateButton();
+        }
+    }
 
     if ($('a:contains("DISPLAY")').is(':visible'))
         $('a:contains("DISPLAY")').click();
