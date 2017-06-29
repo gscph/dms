@@ -167,6 +167,8 @@
                     }
 
                     if (DMS.Settings.Permission.Update === false) {
+                        $(".datetimepicker input").attr("disabled", "disabled");
+
                         $(".toolbar-right").find("button, a, input").each(function () {
                             var text = $(this).html();
                             if (text.indexOf("NEW") === -1 && text.indexOf("DELETE") === -1 && text.indexOf("REMOVE") === -1 && text.indexOf("EXPORT") === -1 && text.indexOf("ORDER") === -1) {
