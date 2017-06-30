@@ -474,13 +474,16 @@ $(document).ready(function (e) {
 
             dpDiscountfield.attr('readonly', true);
             afDiscountfield.attr('readonly', true);
-            chattelFeefield.attr('readonly', false);
-            dpamountfield.attr('readonly', false);
-            dppercentield.attr('readonly', false);
-            applytoafprcntfield.attr('readonly', false);
-            applytoafamntfield.attr('readonly', false);
-            applytodpprcntfield.attr('readonly', false);
-            applytodpamntfield.attr('readonly', false);
+
+            if (DMS.Settings.Permission.Update == true) {
+                chattelFeefield.attr('readonly', false);
+                dpamountfield.attr('readonly', false);
+                dppercentield.attr('readonly', false);
+                applytoafprcntfield.attr('readonly', false);
+                applytoafamntfield.attr('readonly', false);
+                applytodpprcntfield.attr('readonly', false);
+                applytodpamntfield.attr('readonly', false);
+            }
 
             bankidfield.siblings('.input-group-btn').removeClass('hidden');
 
@@ -1136,24 +1139,24 @@ $(document).ready(function (e) {
 
     setTimeout(function () {
         /*Added: 3/17/2017 - Disable Add button in Discount and Charges Grid*/
-      /*  if (DMS.Settings.User.positionName == 'MMPC System Admin' || DMS.Settings.User.positionName == 'MMPC System Administrator' || DMS.Settings.User.positionName == 'Sales Supervisor' || DMS.Settings.User.positionName == 'Sales Lead' && userId != $('#gsc_recordownerid').val()) {
-            $('#tab-1-1').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true);
-            $('#tab-1-2').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true);
-
-            $('button.addnew.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
-            $('button.addnew.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
-            $('button.save.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
-            $('button.save.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
-            $('button.delete.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
-            $('button.delete.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
-            $('button.cancel.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
-            $('button.cancel.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
-        }
-        else if (DMS.Settings.User.positionName == 'Sales Supervisor' || DMS.Settings.User.positionName == 'Sales Lead' && userId == $('#gsc_recordownerid').val()) {
-            //remove disabled  button of the activate and print buttons
-            $('.btn-primary.btn.permanent-disabled.disabled').removeClass('disabled');
-            $('.activate-quote-link.btn.btn-primary.permanent-disabled.disabled').removeClass('disabled');
-        }*/
+        /*  if (DMS.Settings.User.positionName == 'MMPC System Admin' || DMS.Settings.User.positionName == 'MMPC System Administrator' || DMS.Settings.User.positionName == 'Sales Supervisor' || DMS.Settings.User.positionName == 'Sales Lead' && userId != $('#gsc_recordownerid').val()) {
+              $('#tab-1-1').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true);
+              $('#tab-1-2').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true);
+  
+              $('button.addnew.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
+              $('button.addnew.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
+              $('button.save.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
+              $('button.save.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
+              $('button.delete.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
+              $('button.delete.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
+              $('button.cancel.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
+              $('button.cancel.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
+          }
+          else if (DMS.Settings.User.positionName == 'Sales Supervisor' || DMS.Settings.User.positionName == 'Sales Lead' && userId == $('#gsc_recordownerid').val()) {
+              //remove disabled  button of the activate and print buttons
+              $('.btn-primary.btn.permanent-disabled.disabled').removeClass('disabled');
+              $('.activate-quote-link.btn.btn-primary.permanent-disabled.disabled').removeClass('disabled');
+          }*/
         //END Added: 3/17/2017 - Disable Add button in Discount and Charges Grid
     }, 7000);
 
