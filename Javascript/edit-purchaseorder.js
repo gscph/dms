@@ -35,7 +35,7 @@ $(document).ready(function () {
         setReadOnly();
 
     /*   != Open     */
-    if (vpostatus !== 100000000 && approvalstatus !== 100000000) {
+    if (vpostatus != 100000000 && approvalstatus != 100000000) {
         $("button.delete-link").addClass("disabled");
         $("button.delete-link").addClass("permanent-disabled disabled");
     }
