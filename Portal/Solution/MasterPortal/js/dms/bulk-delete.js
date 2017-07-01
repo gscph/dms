@@ -110,7 +110,7 @@
                     }
                 }
 
-                if (DMS.Settings.Permission.UpdateScope == 756150002) {
+                if (DMS.Settings.Permission.DeleteScope == 756150002) {
                     var tdBranchId = $tr.find('td[data-attribute="gsc_branchid"]');
                     if (typeof tdBranchId !== 'undefined') {
                         var value = tdBranchId.data('value');
@@ -121,7 +121,7 @@
                         return true;
                     }
                 }
-                else if (DMS.Settings.Permission.UpdateScope == 756150001) {
+                else if (DMS.Settings.Permission.DeleteScope == 756150001) {
                     var tdOwnerId = $tr.find('td[data-attribute="gsc_recordownerid"]');
                     if (typeof tdOwnerId !== 'undefined') {
                         var value = tdOwnerId.data('value');
