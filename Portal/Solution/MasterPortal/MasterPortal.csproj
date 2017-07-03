@@ -710,9 +710,11 @@
     <Compile Include="Areas\Portal\ViewModels\FilterDefinition.cs" />
     <Compile Include="Areas\DMS_Api\Repositories\CurrentlyUsedWebPageRepository.cs" />
     <Compile Include="Areas\DMS_Api\Models\CurrentlyUsedWebPage.cs" />
+    <Compile Include="DMS_Customizations\CommonHandler.cs" />
     <Compile Include="DMS_Customizations\CustomCrmConfigurationProvider.cs" />
     <Compile Include="DMS_Customizations\Encrpytion.cs" />
     <Compile Include="DMS_Customizations\ListExtensions.cs" />
+    <Compile Include="DMS_Customizations\PriceListHandler.cs" />
     <Compile Include="MasterPages\DMS-FormsContentShared.master.cs">
       <DependentUpon>DMS-FormsContentShared.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

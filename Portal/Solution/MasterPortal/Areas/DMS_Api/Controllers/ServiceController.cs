@@ -227,7 +227,7 @@ namespace Site.Areas.DMSApi.Controllers
                 if (productId != Guid.Empty)
                 {
                     decimal sellPrice = 0;
-                   
+
                     PriceListHandler priceListHandler = new PriceListHandler(_conn.ServiceContext);
                     priceListHandler.itemType = 0;
                     priceListHandler.productFieldName = "gsc_productid";
