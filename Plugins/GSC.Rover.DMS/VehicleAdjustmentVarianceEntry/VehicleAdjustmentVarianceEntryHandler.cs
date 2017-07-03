@@ -492,7 +492,9 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry
                             productQuantity["gsc_dealerid"] = vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_dealerid") != null
                                 ? vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_dealerid")
                                 : null;
-
+                            productQuantity["gsc_recordownerid"] = vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_recordownerid") != null
+                            ? vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_recordownerid")
+                            : null;
                             Guid newProductQuantityId = _organizationService.Create(productQuantity);
 
                             inventory["gsc_productquantityid"] = new EntityReference("gsc_iv_productquantity", newProductQuantityId);
