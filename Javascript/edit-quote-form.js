@@ -1,6 +1,7 @@
 $(document).ready(function (e) {
     $('table[data-name="hideSection"]').closest('fieldset').hide();
     $("#gsc_lessdiscount").closest("td").height(57);
+    var paymentmode = "";
 
     //for custom filtering of views
     setTimeout(function () {
@@ -21,10 +22,7 @@ $(document).ready(function (e) {
     function CheckStatus() {
         setTimeout(function () {
             var stateCode = $(".record-status").html();
-            if (stateCode == 'Draft') {
-                paymentModeOnChange("onload");
-            }
-            else if (stateCode == "Active") {
+            if (stateCode == "Active") {
                 $('#SubmitButton').attr("disabled", true);
                 $('.delete-link').attr("disabled", true);
                 $("#btnSaveCopy").attr("disabled", true);
@@ -71,6 +69,46 @@ $(document).ready(function (e) {
         else {
             $("#customerid_name").closest("td").attr("colspan", 4);
             $('label[for=gsc_markup], input#gsc_markup').hide();
+        }
+    }
+
+    if ($("#gsc_paymentmode").val() == "") {
+        var opportunityId = $("#opportunityid").val();
+
+        if (opportunityId != "") {
+            //Loading Image
+            $.blockUI({ message: null, overlayCSS: { opacity: .3 } });
+
+            var div = document.createElement("DIV");
+            div.className = "view-loading message text-center loadingDiv";
+            div.style.cssText = 'position: absolute; top: 50%; left: 50%;margin-right: -50%;display: block;';
+            var span = document.createElement("SPAN");
+            span.className = "fa fa-2x fa-spinner fa-spin";
+            div.appendChild(span);
+            $(".content-wrapper").append(div);
+
+            var countryOdataQuery = "/_odata/opportunity?$filter=opportunityid eq (Guid'" + opportunityId + "')";
+            $.ajax({
+                type: 'get',
+                async: true,
+                url: countryOdataQuery,
+                success: function (data) {
+                    if (data.value.length != 0) {
+                        var paymentMode = data.value[0].gsc_paymentmode;
+                        if (paymentMode != null) {
+                            $("#gsc_paymentmode").val(paymentMode.Value);
+                            paymentmode = $("#gsc_paymentmode").val();
+                            console.log(paymentmode);
+                            paymentModeOnChange("onload");
+                        }
+                    }
+                    $.unblockUI();
+                    $(".loadingDiv").remove();
+                },
+                error: function (xhr, textStatus, errorMessage) {
+                    console.log(errorMessage);
+                }
+            });
         }
     }
 
@@ -196,102 +234,14 @@ $(document).ready(function (e) {
         }
     };
 
-    // TBD !!! : Insurance validators Created By : Jerome Anthony Gerero, Created On : 1/26/2017
-    /* var rateValidator = document.createElement('span');
-     rateValidator.style.display = 'none';
-     rateValidator.id = 'RequiredFieldValidatorgsc_rate';
-     rateValidator.controltovalidate = 'gsc_rate';
-     rateValidator.errormessage = '<a href="#gsc_rate"> Rate % is a required field</a>';
-     rateValidator.validationGroup = '';
-     rateValidator.initialvalue = '';
-     rateValidator.evaluationfunction = function () {
-         var value = $('#gsc_rate').val();
-         if (value == null || value == '') {
-             return false;
-         } else {
-             return true;
-         }
-     };
- 
-     var costValidator = document.createElement('span');
-     costValidator.style.display = 'none';
-     costValidator.id = 'RequiredFieldValidatorgsc_cost';
-     costValidator.controltovalidate = 'gsc_cost';
-     costValidator.errormessage = '<a href="#gsc_cost"> Cost is a required field</a>';
-     costValidator.validationGroup = '';
-     costValidator.initialvalue = '';
-     costValidator.evaluationfunction = function () {
-         var value = $('#gsc_cost').val();
-         if (value == null || value == '') {
-             return false;
-         } else {
-             return true;
-         }
-     }; */
-    //End Insurance validators
-
-    //Enable/disable insurance fields
-    /* setTimeout(function () {
-         $('#gsc_insuranceid').on('change', function () {
-             //insuranceOnChange();
-         });
-     }, 100 */
-
-    //Call insurance validator on form load
-    //insuranceOnChange();
-
-    /* function insuranceOnChange() {
-         var cost = $('#gsc_cost');
-         var rate = $('#gsc_rate');
- 
-         if ($('#gsc_insuranceid').val() != '') {
-             rate.attr('readonly', false);
-             cost.attr('readonly', false);
- 
-             $('#gsc_rate_label').parent("div").addClass('required');
-             $('#gsc_cost_label').parent("div").addClass('required');
- 
-             Page_Validators.push(rateValidator);
-             Page_Validators.push(costValidator);
-         } else {
-             rate.val(null);
-             cost.val(null);
- 
-             rate.attr('readonly', true);
-             cost.attr('readonly', true);
- 
-             $('#gsc_rate_label').parent("div").removeClass('required');
-             $('#gsc_cost_label').parent("div").removeClass('required');
- 
-             Page_Validators = jQuery.grep(Page_Validators, function (value) {
-                 return value != rateValidator;
-             });
-             Page_Validators = jQuery.grep(Page_Validators, function (value) {
-                 return value != costValidator;
-             });
-         }
-     } */
-    //End enable/disable insurance fields
-
-    //enable/disable fields according to payment mode selected
-
     setTimeout(function () {
         $("#gsc_paymentmode").on('change', function () {
+            paymentmode = $("#gsc_paymentmode").val();
             paymentModeOnChange("onchange");
         });
     }, 100);
 
-    /* function hideAutoFinancingTab() //when cash TBD!!!!
-     {
-         $(".nav.nav-tabs li:first").removeClass("active");
-         $(".nav.nav-tabs li:first").hide();
-         $("#tab-1-0").removeClass("active");
-         $("#tab-1-1").addClass("active");
-         $(".nav.nav-tabs li:nth-child(1)").addClass("active");
-     }*/
-
     function paymentModeOnChange(action) {
-        var paymentmode = $("#gsc_paymentmode").val();
         var dpamountfield = $('#gsc_downpaymentamount');
         var dppercentield = $('#gsc_downpaymentpercentage');
         var bankidfield = $('#gsc_bankid_name');
@@ -310,6 +260,7 @@ $(document).ready(function (e) {
 
         var totaldiscountamount = $("#totaldiscountamount").val().replace(/,/g, '');
 
+        console.log(paymentmode);
         if (paymentmode == '100000000' || paymentmode == '100000003' || paymentmode == '') {
 
             // hideAutoFinancingTab(); //hide auto financing tab
@@ -329,7 +280,6 @@ $(document).ready(function (e) {
             $('#gsc_financingschemeid_label').parent("div").removeClass("required");
             $('#gsc_downpaymentamount_label').parent('div').removeClass('required');
             $('#gsc_downpaymentpercentage_label').parent('div').removeClass('required');
-            console.log('b');
 
             // Remove the new validator to the page validators array:
             Page_Validators = jQuery.grep(Page_Validators, function (value) {
@@ -385,10 +335,18 @@ $(document).ready(function (e) {
             applytoafamntfield.attr('readonly', true);
             applytoafprcntfield.attr('readonly', true);
 
+            bankidfield.siblings('.input-group-btn').removeClass('hidden');
             schemeidfield.siblings('.input-group-btn').addClass('hidden');
 
             $('#gsc_bankid_label').parent("div").addClass('required');
             $('#gsc_financingschemeid_label').parent("div").removeClass("required");
+            $('#gsc_downpaymentamount_label').parent('div').addClass('required');
+            $('#gsc_downpaymentpercentage_label').parent('div').addClass('required');
+
+            if (DMS.Settings.Permission.Update == true) {
+                dpamountfield.attr('readonly', false);
+                dppercentield.attr('readonly', false);
+            }
 
             // Remove the new validator to the page validators array:          
             Page_Validators = jQuery.grep(Page_Validators, function (value) {
@@ -459,7 +417,6 @@ $(document).ready(function (e) {
             }
 
             bankidfield.siblings('.input-group-btn').removeClass('hidden');
-
             schemeidfield.siblings('.input-group-btn').removeClass('hidden');
 
             $('#gsc_bankid_label').parent("div").addClass('required');
@@ -556,8 +513,6 @@ $(document).ready(function (e) {
    
     //onchange events
     setTimeout(function () {
-        var paymentMode = $("#gsc_paymentmode").val();
-
         //reset value of financing scheme when bank was changed
         $("#gsc_bankid").on('change', function () {
             $("#gsc_financingschemeid_name").val("");
@@ -569,7 +524,8 @@ $(document).ready(function (e) {
             var dpAmount = parseFloat($('#gsc_downpaymentamount').val().replace(/,/g, ""));
             computeDownPaymentPercent();
 
-            if (paymentMode == '100000001') {
+            if (paymentmode == '100000001') {
+                console.log('a');
                 if ($("#gsc_downpaymentamount").val() > 0) {
                     Page_Validators = jQuery.grep(Page_Validators, function (value) {
                         return value != downPaymentPercentageValidator;
@@ -579,7 +535,6 @@ $(document).ready(function (e) {
                 else if ($("#gsc_downpaymentamount").val() == 0 || $("#gsc_downpaymentamount").val() == '') {
                     Page_Validators.push(downPaymentPercentageValidator);
                     $('#gsc_downpaymentpercentage_label').parent('div').addClass('required');
-                    console.log('a');
                 }
             }
 
@@ -588,7 +543,7 @@ $(document).ready(function (e) {
         $("#gsc_downpaymentpercentage").on('change', function () {
             computeDownpaymentAmount();
 
-            if (paymentMode == '100000001') {
+            if (paymentmode == '100000001') {
                 if ($("#gsc_downpaymentpercentage").val() > 0) {
                     Page_Validators = jQuery.grep(Page_Validators, function (value) {
                         return value != downPaymentAmountValidator;
@@ -604,10 +559,10 @@ $(document).ready(function (e) {
         $('#gsc_netdownpayment').on('change', function () {
             var netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
             var additional = 0.00;
-            if (paymentMode == '100000001' || (paymentMode == '100000002' && parseFloat(downpayment) != 0)) {
+            if (paymentmode == '100000001' || (paymentmode == '100000002' && parseFloat(downpayment) != 0)) {
                 computeAmountFinanced(additional, netPrice);
             }
-            else if (paymentMode == '100000002' && parseFloat(downpayment) == 0) {
+            else if (paymentmode == '100000002' && parseFloat(downpayment) == 0) {
                 $("#gsc_amountfinanced").val(null);
             }
         });
@@ -1047,42 +1002,4 @@ $(document).ready(function (e) {
         return isDuplicate;
     }
     /*END - Added by: Christell Ann Mataac - 2/23/2017*/
-
-    if ($("#gsc_paymentmode").val() == "") {
-        var opportunityId = $("#opportunityid").val();
-
-        if (opportunityId != "") {
-            //Loading Image
-            $.blockUI({ message: null, overlayCSS: { opacity: .3 } });
-
-            var div = document.createElement("DIV");
-            div.className = "view-loading message text-center loadingDiv";
-            div.style.cssText = 'position: absolute; top: 50%; left: 50%;margin-right: -50%;display: block;';
-            var span = document.createElement("SPAN");
-            span.className = "fa fa-2x fa-spinner fa-spin";
-            div.appendChild(span);
-            $(".content-wrapper").append(div);
-
-            var countryOdataQuery = "/_odata/opportunity?$filter=opportunityid eq (Guid'" + opportunityId + "')";
-            $.ajax({
-                type: 'get',
-                async: true,
-                url: countryOdataQuery,
-                success: function (data) {
-                    if (data.value.length != 0) {
-                        var paymentMode = data.value[0].gsc_paymentmode;
-                        if (paymentMode != null) {
-                            $("#gsc_paymentmode").val(paymentMode.Value);
-                            paymentModeOnChange("onload");
-                        }
-                    }
-                    $.unblockUI();
-                    $(".loadingDiv").remove();
-                },
-                error: function (xhr, textStatus, errorMessage) {
-                    console.log(errorMessage);
-                }
-            });
-        }
-    }
 });
