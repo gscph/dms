@@ -351,13 +351,13 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleTransfer
                                 prodQuantity["gsc_onorder"] = 0;
                                 prodQuantity["gsc_sold"] = 0;
                                 prodQuantity["gsc_branchid"] = vehicleTransfer.GetAttributeValue<EntityReference>("gsc_branchid") != null
-                                ? vehicleTransfer.GetAttributeValue<EntityReference>("gsc_branchid")
-                                : null;
+                               ? new EntityReference("account", vehicleTransfer.GetAttributeValue<EntityReference>("gsc_branchid").Id)
+                               : null;
                                 prodQuantity["gsc_dealerid"] = vehicleTransfer.GetAttributeValue<EntityReference>("gsc_dealerid") != null
-                                    ? vehicleTransfer.GetAttributeValue<EntityReference>("gsc_dealerid")
-                                    : null;
+                                ? new EntityReference("account", vehicleTransfer.GetAttributeValue<EntityReference>("gsc_dealerid").Id)
+                                : null;
                                 prodQuantity["gsc_recordownerid"] = vehicleTransfer.GetAttributeValue<EntityReference>("gsc_recordownerid") != null
-                                ? vehicleTransfer.GetAttributeValue<EntityReference>("gsc_recordownerid")
+                                ? new EntityReference("contact", vehicleTransfer.GetAttributeValue<EntityReference>("gsc_recordownerid").Id)
                                 : null;
 
                                 _tracingService.Trace("Set site field");
