@@ -41,34 +41,6 @@ $(document).ready(function (e) {
                 $(".cancel").attr("disabled", true);
                 $(".addnew").attr("disabled", true);
             }
-            else { }
-
-            //TBD: check if there is an error in tax setup
-            /*if ($("#MessageLabel").length != 0) {
-                if ($("#MessageLabel").html().contains("tax") && $("#MessageLabel").html().contains("Product")) {
-                }
-                else if ($("#MessageLabel").html().contains("effective Price List")) {
-                }
-                else {
-                    //disable product and payment mode
-                    if ($("#gsc_productid").val() != "")
-                        $('#gsc_productid_name').siblings('.input-group-btn').addClass('hidden')
-                    if ($("#gsc_paymentmode").val() != "") {
-                        $("#gsc_paymentmode").attr('readonly', true)
-                        $('#gsc_paymentmode').css({ "pointer-events": "none", "cursor": "default" });
-                    }
-                }
-            }
-            else {
-                //disable product and payment mode
-                if ($("#gsc_productid").val() != "")
-                    $('#gsc_productid_name').siblings('.input-group-btn').addClass('hidden')
-                if ($("#gsc_paymentmode").val() != "") {
-                    $("#gsc_paymentmode").attr('readonly', true)
-                    $('#gsc_paymentmode').css({ "pointer-events": "none", "cursor": "default" });
-                }
-            } */
-
         }, 100);
     }
 
@@ -357,6 +329,7 @@ $(document).ready(function (e) {
             $('#gsc_financingschemeid_label').parent("div").removeClass("required");
             $('#gsc_downpaymentamount_label').parent('div').removeClass('required');
             $('#gsc_downpaymentpercentage_label').parent('div').removeClass('required');
+            console.log('b');
 
             // Remove the new validator to the page validators array:
             Page_Validators = jQuery.grep(Page_Validators, function (value) {
@@ -536,19 +509,6 @@ $(document).ready(function (e) {
             }
         });
 
-        //$('#gsc_downpaymentamount').blur(function () {
-        //if (this.value < 0) {
-        //do not allow less than 0 input
-        //   this.value = 0;
-        //}
-        //var dpamount = $('#gsc_downpaymentamount').val().replace(/,/g, '');
-        //if ((parseFloat(dpamount)) > (parseFloat(netPrice))) {
-        //do not allow greater than net price
-        //   this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-        //  $("#gsc_downpaymentamount").trigger('change');
-        //}
-        //});
-
         $('#gsc_downpaymentpercentage').blur(function () {
             if (this.value < 0) {
                 //do not allow less than 0 input
@@ -589,111 +549,11 @@ $(document).ready(function (e) {
             $("#gsc_amountfinanced").val("");
             $("#gsc_netamountfinanced").val("");
             $.cookie("productId", $("#gsc_productid").val(), { path: '/' });
-
-            //getUnitPrice();
         });
-
-        /*  TBD!!! $('#gsc_vehiclecolorid1').on('change', function () {
-              //recompute everything
-              additional = 0.00;
-              netamountfinanced = 0.00;
-              netdp = 0.00;
-              amountfinanced = 0.00;
-              netdownpayment = 0.00;
-              aflessdiscount = 0.00;
-              additional = 0.0;
-  
-              //$("#gsc_downpaymentamount").val("");
-              //$("#gsc_downpaymentpercentage").val("");
-              //$("#gsc_netdownpayment").val("");
-              //$("#gsc_amountfinanced").val("");
-              //$("#gsc_netamountfinanced").val("");
-  
-              getAdditionalPrice();
-          }); */
 
     }, 300);
 
-    /* TBD //get unit price from vehicle and item catalog
-     function getUnitPrice() {
-         setTimeout(function () {
-             var vehicleid = $("#gsc_productid").val();
- 
-             if (vehicleid != "" && vehicleid != "Nan" && vehicleid != "undefined") {
-                 var odataUrl = "/_odata/vehicleanditemcatalog?$filter=productid eq (Guid'" + vehicleid + "')";
- 
-                 $.ajax({
-                     type: "get",
-                     async: true,
-                     url: odataUrl,
-                     success: function (data) {
-                         for (var i = 0; i < data.value.length; i++) {
-                             var obj = data.value[i];
-                             for (var key in obj) {
-                                 var attrName = key;
-                                 var attrValue = obj[key];
-                                 if (attrName == 'gsc_sellprice') {
-                                     unitprice = parseFloat(attrValue);
- 
-                                     if (unitprice == 0 || unitprice == '') {
-                                         DMS.Notification.Error("WARNING! The vehicle you selected doesn't have sell price.", true, 5000);
-                                     }
-                                     getAdditionalPrice();
-                                 }
-                             }
-                         }
-                     },
-                     error: function (xhr, textStatus, errorMessage) {
-                         console.log(errorMessage);
-                     }
-                 });
-             }
-         }, 100);
-     }
- 
-     //get additoinal price from vehiclecolor
-     function getAdditionalPrice() {
-         setTimeout(function () {
- 
-             var vehiclecolorid = $("#gsc_vehiclecolorid1").val();
- 
-             if ($('#gsc_vehiclecolorid1_name').val() == "") {
-                 vehiclecolorid = "";
-             }
- 
-             if (vehiclecolorid != "" && vehiclecolorid != "Nan" && vehiclecolorid != "undefined") {
-                 var odataUrl = "/_odata/vehiclecolor?$filter=gsc_cmn_vehiclecolorid eq (Guid'" + vehiclecolorid + "')";
- 
-                 $.ajax({
-                     type: "get",
-                     async: true,
-                     url: odataUrl,
-                     success: function (data) {
-                         for (var i = 0; i < data.value.length; i++) {
-                             var obj = data.value[i];
-                             for (var key in obj) {
-                                 var attrName = key;
-                                 var attrValue = obj[key];
-                                 if (attrName == 'gsc_additionalprice') {
-                                     additional = parseFloat(attrValue);
-                                 }
-                             }
-                         }
-                     },
-                     error: function (xhr, textStatus, errorMessage) {
-                         console.log(errorMessage);
-                     }
-                 });
-             }
-             else {
-                 additional = 0.00;
-             }
- 
-         }, 1000);
-     }
- */
-
-
+   
     //onchange events
     setTimeout(function () {
         var paymentMode = $("#gsc_paymentmode").val();
@@ -719,13 +579,9 @@ $(document).ready(function (e) {
                 else if ($("#gsc_downpaymentamount").val() == 0 || $("#gsc_downpaymentamount").val() == '') {
                     Page_Validators.push(downPaymentPercentageValidator);
                     $('#gsc_downpaymentpercentage_label').parent('div').addClass('required');
+                    console.log('a');
                 }
             }
-
-            //if ((parseFloat(dpAmount)) > (parseFloat(netPrice))) {
-            //do not allow greater than net price
-            //    this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-            //}
 
         });
 

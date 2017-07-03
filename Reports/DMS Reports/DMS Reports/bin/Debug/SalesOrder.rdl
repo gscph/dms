@@ -2469,7 +2469,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + First(Fie
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Microsoft.VisualBasic.Interaction.IIF(Sum(Fields!Total_Discount_Amount.Value, "SalesOrder") = Nothing, "-      ", Fields!Total_Discount_Amount.Value)</Value>
+                              <Value>=Microsoft.VisualBasic.Interaction.IIF(Sum(Fields!Total_Discount_Amount.Value, "SalesOrder") = Nothing, "-      ", Fields!Total_Discount_Amount.Value * -1)</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <Format>#,0.00;(#,0.00)</Format>
@@ -2491,6 +2491,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + First(Fie
                       </Style>
                     </Textbox>
                     <ColSpan>2</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />

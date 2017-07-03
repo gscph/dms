@@ -497,7 +497,6 @@
                         <PaddingTop>2pt</PaddingTop>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -1305,6 +1304,7 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
