@@ -200,11 +200,14 @@ namespace GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail
                 inventory["gsc_warrantybookletno"] = receivingTransaction.Contains("gsc_warrantybookletno")
                     ? receivingTransaction.GetAttributeValue<String>("gsc_warrantybookletno")
                     : String.Empty;
-                inventory["gsc_branchid"] = receivingTransaction.GetAttributeValue<EntityReference>("gsc_branchid") != null
+                inventory["gsc_branchid"] = receivingTransaction.Contains("gsc_branchid")
                     ? receivingTransaction.GetAttributeValue<EntityReference>("gsc_branchid")
                     : null;
-                inventory["gsc_dealerid"] = receivingTransaction.GetAttributeValue<EntityReference>("gsc_dealerid") != null
+                inventory["gsc_dealerid"] = receivingTransaction.Contains("gsc_dealerid")
                     ? receivingTransaction.GetAttributeValue<EntityReference>("gsc_dealerid")
+                    : null;
+                inventory["gsc_recordownerid"] = receivingTransaction.Contains("gsc_recordownerid")
+                    ? receivingTransaction.GetAttributeValue<EntityReference>("gsc_recordownerid")
                     : null;
 
                 Guid newInventory = _organizationService.Create(inventory);
@@ -284,15 +287,15 @@ namespace GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail
                     productQuantity["gsc_vehiclemodelid"] = receivingTransactionDetail.Contains("gsc_basemodelid")
                         ? receivingTransactionDetail.GetAttributeValue<EntityReference>("gsc_basemodelid")
                         : null;
-                    productQuantity["gsc_branchid"] = receivingTransaction.GetAttributeValue<EntityReference>("gsc_branchid") != null
+                    productQuantity["gsc_branchid"] = receivingTransaction.Contains("gsc_branchid") 
                         ? receivingTransaction.GetAttributeValue<EntityReference>("gsc_branchid")
                         : null;
-                    productQuantity["gsc_dealerid"] = receivingTransaction.GetAttributeValue<EntityReference>("gsc_dealerid") != null
+                    productQuantity["gsc_dealerid"] = receivingTransaction.Contains("gsc_dealerid")
                         ? receivingTransaction.GetAttributeValue<EntityReference>("gsc_dealerid")
                         : null;
-                    productQuantity["gsc_recordownerid"] = receivingTransaction.GetAttributeValue<EntityReference>("gsc_recordownerid") != null
-                            ? receivingTransaction.GetAttributeValue<EntityReference>("gsc_recordownerid")
-                            : null;
+                    productQuantity["gsc_recordownerid"] = receivingTransaction.Contains("gsc_recordownerid")
+                        ? receivingTransaction.GetAttributeValue<EntityReference>("gsc_recordownerid")
+                        : null;
 
                     Guid newProductQuantity = _organizationService.Create(productQuantity);
 

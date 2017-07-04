@@ -98,7 +98,7 @@
     }
 
     function globalRecordValidator(records) {
-        if (DMS.Settings.Permission.DeleteScope == 756150000) {
+        if (DMS.Settings.Permission.DeleteScope !== 756150000) {
             records.forEach(function (value, index) {
                 var $tr = $('tr[data-id=' + value + ']');
                 var tdGlobalRecord = $tr.find('td[data-attribute="gsc_isglobalrecord"]');
