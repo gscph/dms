@@ -356,6 +356,25 @@ namespace GSC.Rover.DMS.BusinessLogic.InventoryMovement
             ivHistory["gsc_siteid"] = site != Guid.Empty ? new EntityReference("gsc_iv_site", site) : null;
             ivHistory["gsc_isvimi"] = isVIMI;
             ivHistory["gsc_displayallsite"] = displayAllSite;
+            ivHistory["gsc_inventoryid"] = new EntityReference("gsc_iv_inventory", inventory.Id);
+
+
+            EntityCollection inventoryEC = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventory.Id, _organizationService, null, OrderType.Ascending,
+            new[] { "gsc_recordownerid", "gsc_dealerid", "gsc_branchid"});
+
+            if (inventoryEC != null && inventoryEC.Entities.Count > 0)
+            {
+                Entity inventoryE = inventoryEC.Entities[0];
+                ivHistory["gsc_recordownerid"] = inventoryE.Contains("gsc_recordownerid")
+                       ? inventoryE.GetAttributeValue<EntityReference>("gsc_recordownerid")
+                       : null;
+                ivHistory["gsc_dealerid"] = inventoryE.Contains("gsc_dealerid")
+                    ? inventoryE.GetAttributeValue<EntityReference>("gsc_dealerid")
+                    : null;
+                ivHistory["gsc_branchid"] = inventoryE.Contains("gsc_branchid")
+                    ? inventoryE.GetAttributeValue<EntityReference>("gsc_branchid")
+                    : null;
+            }
             _organizationService.Create(ivHistory);
 
             return ivHistory;

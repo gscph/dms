@@ -206,7 +206,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn
                
                 inventoryMovement.UpdateProductQuantityDirectly(productQuantity, 0, 0, 0, 0, -1, 0, 0, 0);
                 Int32 onHandFrom = productQuantity.GetAttributeValue<Int32>("gsc_onhand");
-                inventoryMovement.CreateInventoryHistory("Vehicle Sales Return", customerId, customerName, transactionNumber, transactionDate, 0, 1, onHandFrom, Guid.Empty, fromSite, fromSite, inventory, productQuantity, true, true);
+                inventoryMovement.CreateInventoryHistory("Vehicle Sales Return", customerId, customerName, transactionNumber, transactionDate, 1, 0, onHandFrom, siteId, fromSite, fromSite, inventory, productQuantity, true, true);
 
                 _tracingService.Trace("Inventory History Created.");
             }
