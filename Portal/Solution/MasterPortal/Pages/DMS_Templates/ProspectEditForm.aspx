@@ -152,6 +152,8 @@
                                 $(this).remove();
                             }
                         });
+
+                        $(".view-toolbar.grid-actions").remove();
                     }
 
                     if (DMS.Settings.Permission.Delete === false) {

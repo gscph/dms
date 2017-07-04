@@ -115,7 +115,7 @@
                 modalButton.removeClass('disabled');
                 modalButton.siblings('.btn').removeClass('disabled');
                 $('.modal-delete').modal('hide');
-                DMS.Notification.Error('You are unauthorized to modify this record.');
+                DMS.Notification.Error('Cannot delete other owner\'s record.');
                 return;
             }
 

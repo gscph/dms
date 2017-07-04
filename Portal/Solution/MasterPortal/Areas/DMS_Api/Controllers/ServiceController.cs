@@ -224,15 +224,41 @@ namespace Site.Areas.DMSApi.Controllers
         {
             try
             {
+
+                var context = HttpContext.Current;
+                Guid branchId = Guid.Empty;
+
+                if (context != null)
+                {
+                    var request = context.Request.RequestContext;
+                    var cookies = request.HttpContext.Request.Cookies;
+
+                    if (cookies != null)
+                    {
+                        if (cookies["Branch"] != null)
+                        {
+                            branchId = new Guid(cookies["Branch"]["branchId"]);
+                        }
+                    }
+                }
+
+                if (branchId == Guid.Empty)
+                {
+                    return InternalServerError(new Exception("Couldn't determine current branch."));
+                }
+
+
                 if (productId != Guid.Empty)
                 {
+
                     decimal sellPrice = 0;
-                   
+
                     PriceListHandler priceListHandler = new PriceListHandler(_conn.ServiceContext);
                     priceListHandler.itemType = 0;
                     priceListHandler.productFieldName = "gsc_productid";
                     Entity quoteEntity = new Entity();
-                    quoteEntity["gsc_productid"] = new EntityReference("product", productId);
+                    quoteEntity.Attributes.Add("gsc_branchid", new EntityReference("account", branchId));
+                    quoteEntity.Attributes.Add("gsc_productid", new EntityReference("product", productId));
 
                     Entity productEntity = _conn.ServiceContext.Retrieve("product", productId, new ColumnSet("gsc_taxrate"));
 
@@ -268,7 +294,7 @@ namespace Site.Areas.DMSApi.Controllers
                     }
                     else
                     {
-                        throw new Exception("There is no effective Price List for the selected Vehicle.");
+                        return InternalServerError(new Exception("There is no effective Price List for the selected Vehicle."));
                     }
 
                     return Ok(sellPrice);
@@ -278,7 +304,7 @@ namespace Site.Areas.DMSApi.Controllers
             catch (Exception ex)
             {
                 return InternalServerError(ex);
-            }      
+            }
         }
     }
 }
