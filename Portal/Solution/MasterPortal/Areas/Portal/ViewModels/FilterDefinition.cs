@@ -606,8 +606,68 @@ namespace Site.Areas.Portal.ViewModels
             {
                 _viewConfig = FilterProducts(_viewConfig);
             }
+            else if (objectName == "Price List Portal View")
+            {
+                _viewConfig = FilterPriceList(_viewConfig);
+            }
 
             return _viewConfig;
+        }
+
+        private ViewConfiguration FilterPriceList(ViewConfiguration _viewConfig)
+        {
+            SavedQueryView queryView = _viewConfig.GetSavedQueryView(_serviceContext);
+            String webRole = String.Empty;
+            Guid branchId = Guid.Empty;
+            var context = HttpContext.Current;
+
+            if (context != null)
+            {
+                var request = context.Request.RequestContext;
+                var cookies = request.HttpContext.Request.Cookies;
+
+                if (cookies != null)
+                {
+                    if (cookies["Branch"] != null)
+                    {
+                        webRole = String.Concat(cookies["Branch"]["webRoleName"]);
+                        branchId = new Guid(cookies["Branch"]["branchid"]);
+                    }
+                }
+            }
+
+            if (webRole != String.Empty && webRole.Equals("Branch Administrator"))
+            {
+                String newFetchXml = @"
+                    <fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>
+                        <entity name='pricelevel'>
+                            <attribute name='name' />
+                            <attribute name='begindate' />
+                            <attribute name='enddate' />
+                            <attribute name='description' />
+                            <attribute name='createdon' />
+                            <attribute name='gsc_transactiontype' />
+                            <attribute name='gsc_taxstatus' />
+                            <attribute name='statecode' />
+                            <attribute name='gsc_recordownerid' />
+                            <order attribute='createdon' descending='true' />
+                            <filter type='or'>
+                                <filter type='and'>
+                                    <condition attribute='gsc_promo' operator='eq' value='0' />
+                                    <condition attribute='gsc_branchid' operator='eq' value='{" + branchId + @"}' />
+                                </filter>                            
+                                <filter type='or'>
+                                    <condition attribute='gsc_isglobalrecord' operator='eq' value='1' />
+                                </filter>
+                            </filter>
+                            <attribute name='gsc_isglobalrecord' />
+                            <attribute name='pricelevelid' />
+                        </entity>
+                    </fetch>";
+                _viewConfig.FetchXml = newFetchXml;
+            }
+
+            return _viewConfig;        
         }
 
         private ViewConfiguration FilterInsurance(ViewConfiguration _viewConfig)
