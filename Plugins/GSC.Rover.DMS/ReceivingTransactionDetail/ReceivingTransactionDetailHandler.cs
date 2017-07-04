@@ -290,6 +290,9 @@ namespace GSC.Rover.DMS.BusinessLogic.ReceivingTransactionDetail
                     productQuantity["gsc_dealerid"] = receivingTransaction.GetAttributeValue<EntityReference>("gsc_dealerid") != null
                         ? receivingTransaction.GetAttributeValue<EntityReference>("gsc_dealerid")
                         : null;
+                    productQuantity["gsc_recordownerid"] = receivingTransaction.GetAttributeValue<EntityReference>("gsc_recordownerid") != null
+                            ? receivingTransaction.GetAttributeValue<EntityReference>("gsc_recordownerid")
+                            : null;
 
                     Guid newProductQuantity = _organizationService.Create(productQuantity);
 

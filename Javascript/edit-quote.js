@@ -828,11 +828,12 @@ var monthlyAmortizationGridInstance = {
 
 function CreateOrderButton() {
     var webRoleId = DMS.Settings.User.webRoleId;
+    var guidEmpty = "00000000-0000-0000-0000-000000000000";
     var recordOwnerId = $("#gsc_recordownerid").val();
     var OwningBranchId = $("#gsc_branchid").val();
 
     var service = DMS.Service("GET", "~/api/Service/GetEntityGridPrivilages",
-        { webRoleId: webRoleId, entityName: "salesorder", recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId }, DMS.Helpers.DefaultErrorHandler, null);
+        { webRoleId: webRoleId, entityName: "salesorder", recordOwnerId: guidEmpty, OwningBranchId: guidEmpty }, DMS.Helpers.DefaultErrorHandler, null);
 
     service.then(function (response) {
         if (response === null) return;

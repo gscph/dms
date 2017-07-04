@@ -103,7 +103,9 @@
             $.unblockUI();
             $(".loadingDiv").remove();
 
-            var recordArr = applySupervisorValidator(data, records);
+            if (DMS.Settings.User.webRole == "Sales Executive" || DMS.Settings.User.webRole == "Sales Supervisor") {
+                recordArr = applySupervisorValidator(data, records);
+            }
             
             var somethingWasRemoved = recordArrLength == recordArr.length;
             var howMany = recordArrLength - recordArr.length;
