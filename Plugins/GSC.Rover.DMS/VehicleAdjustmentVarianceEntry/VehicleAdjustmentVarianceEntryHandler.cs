@@ -486,15 +486,15 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry
                             _tracingService.Trace("Set Product Name field");
                             productQuantity["gsc_productid"] = new EntityReference("product", productId);
                             productQuantity["gsc_productquantitypn"] = productName;
-                            productQuantity["gsc_branchid"] = vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_branchid") != null
-                                ? vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_branchid")
-                                : null;
-                            productQuantity["gsc_dealerid"] = vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_dealerid") != null
+                            productQuantity["gsc_branchid"] = vehicleAdjustmentVarianceEntryEntity.Contains("gsc_branchid")
+                            ? vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_branchid")
+                            : null;
+                            productQuantity["gsc_dealerid"] = vehicleAdjustmentVarianceEntryEntity.Contains("gsc_dealerid")
                                 ? vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_dealerid")
                                 : null;
-                            productQuantity["gsc_recordownerid"] = vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_recordownerid") != null
-                            ? vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_recordownerid")
-                            : null;
+                            productQuantity["gsc_recordownerid"] = vehicleAdjustmentVarianceEntryEntity.Contains("gsc_recordownerid")
+                                ? vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_recordownerid")
+                                : null;
                             Guid newProductQuantityId = _organizationService.Create(productQuantity);
 
                             inventory["gsc_productquantityid"] = new EntityReference("gsc_iv_productquantity", newProductQuantityId);
@@ -514,11 +514,14 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry
                         inventory["gsc_siteid"] = vehicleAdjustmentVarianceEntryDetail.GetAttributeValue<EntityReference>("gsc_siteid") != null
                             ? vehicleAdjustmentVarianceEntryDetail.GetAttributeValue<EntityReference>("gsc_siteid")
                             : null;
-                        inventory["gsc_branchid"] = vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_branchid") != null
-                            ? vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_branchid")
-                            : null;
-                        inventory["gsc_dealerid"] = vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_dealerid") != null
+                        inventory["gsc_branchid"] = vehicleAdjustmentVarianceEntryEntity.Contains("gsc_branchid")
+                        ? vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_branchid")
+                        : null;
+                        inventory["gsc_dealerid"] = vehicleAdjustmentVarianceEntryEntity.Contains("gsc_dealerid")
                             ? vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_dealerid")
+                            : null;
+                        inventory["gsc_recordownerid"] = vehicleAdjustmentVarianceEntryEntity.Contains("gsc_recordownerid")
+                            ? vehicleAdjustmentVarianceEntryEntity.GetAttributeValue<EntityReference>("gsc_recordownerid")
                             : null;
 
                         Guid inventoryId = _organizationService.Create(inventory);

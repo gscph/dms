@@ -330,15 +330,15 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn
 
             _tracingService.Trace("Set product quantity count");
 
-            prodQuantity["gsc_branchid"] = vehicleSalesReturnEntity.GetAttributeValue<EntityReference>("gsc_branchid") != null
-                                ? vehicleSalesReturnEntity.GetAttributeValue<EntityReference>("gsc_branchid")
-                                : null;
-            prodQuantity["gsc_dealerid"] = vehicleSalesReturnEntity.GetAttributeValue<EntityReference>("gsc_dealerid") != null
+            prodQuantity["gsc_branchid"] = vehicleSalesReturnEntity.Contains("gsc_branchid")
+                ? vehicleSalesReturnEntity.GetAttributeValue<EntityReference>("gsc_branchid")
+                : null;
+            prodQuantity["gsc_dealerid"] = vehicleSalesReturnEntity.Contains("gsc_dealerid")
                 ? vehicleSalesReturnEntity.GetAttributeValue<EntityReference>("gsc_dealerid")
                 : null;
-            prodQuantity["gsc_recordownerid"] = vehicleSalesReturnEntity.GetAttributeValue<EntityReference>("gsc_recordownerid") != null
-            ? vehicleSalesReturnEntity.GetAttributeValue<EntityReference>("gsc_recordownerid")
-            : null;
+            prodQuantity["gsc_recordownerid"] = vehicleSalesReturnEntity.Contains("gsc_recordownerid")
+                ? vehicleSalesReturnEntity.GetAttributeValue<EntityReference>("gsc_recordownerid")
+                : null;
             prodQuantity["gsc_onhand"] = 1;
             prodQuantity["gsc_available"] = 1;
             prodQuantity["gsc_allocated"] = 0;

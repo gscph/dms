@@ -318,7 +318,7 @@ namespace Site.Areas.Portal.ViewModels
 
             QueryExpression queryRecordType = new QueryExpression(result.First().LogicalName);
             queryRecordType.ColumnSet = new ColumnSet(typeField);
-            queryRecordType.Criteria.AddCondition(result.First().LogicalName + "id", ConditionOperator.Equal, result.First().Attributes[result.First().LogicalName + "id"]);
+            queryRecordType.Criteria.AddCondition(result.First().LogicalName + "id", ConditionOperator.Equal, result.First().Id);
             EntityCollection recordTypeCollection = _service.ServiceContext.RetrieveMultiple(queryRecordType);
 
             if (recordTypeCollection != null && recordTypeCollection.Entities.Count > 0)
@@ -1546,6 +1546,9 @@ namespace Site.Areas.Portal.ViewModels
 
             if (priceListType != "")
             {
+                if (priceListType.Contains("Item"))
+                    priceListType = "Item";
+
                 var priceListTypeValue = GetOptionSetId(_viewConfig.EntityName, "gsc_producttype", priceListType);
                 filter.Conditions.Add(new Condition
                 {

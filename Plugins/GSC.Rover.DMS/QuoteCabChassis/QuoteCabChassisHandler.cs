@@ -216,7 +216,7 @@ namespace GSC.Rover.DMS.BusinessLogic.QuoteCabChassis
             }
             else
             {
-                throw new InvalidPluginExecutionException("There is no effecive Price List for the selected Vehicle.");
+                throw new InvalidPluginExecutionException("There is no effecive Price List for the selected Cab Chassis.");
             }
         }
 
