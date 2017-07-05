@@ -106,11 +106,16 @@
 
                 var attribute = element.data('attribute');
                 var tdReportsTo = element.siblings('td[data-attribute="gsc_reportsto"]').data('value');
-                var createdBy, reportsToId;
+                var createdBy, reportsToId, salesExecutive;
                 
                 if (attribute == 'gsc_recordownerid') createdBy = element.data('value') != null ? element.data('value').Id : null;
                 else if (typeof element.siblings('td[data-attribute="gsc_recordownerid"]').data('value') !== 'undefined') {
                     createdBy = element.siblings('td[data-attribute="gsc_recordownerid"]').data('value').Id;
+                }
+
+                if (attribute == 'gsc_salesexecutiveid') salesExecutive = element.data('value') != null ? element.data('value').Id : null;
+                else if (typeof element.siblings('td[data-attribute="gsc_salesexecutiveid"]').data('value') !== 'undefined') {
+                    salesExecutive = element.siblings('td[data-attribute="gsc_salesexecutiveid"]').data('value').Id;
                 }
              
                 var oDataUrl = '/_odata/employee?$filter=contactid%20eq%20(Guid%27' + createdBy + '%27)&';
@@ -124,7 +129,7 @@
                             if (reportsTo !== null && reportsTo !== undefined)
                                 reportsToId = reportsTo.Id;
 
-                            if (createdBy === userId || reportsToId === DMS.Settings.User.Id || isAuthorized) {
+                            if (salesExecutive === userId || createdBy === userId || reportsToId === DMS.Settings.User.Id || isAuthorized) {
                                 window.location.href = editUrl;
                                 return;
                             }

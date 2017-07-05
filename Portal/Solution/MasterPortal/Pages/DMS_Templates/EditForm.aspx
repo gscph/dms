@@ -146,10 +146,10 @@
                 var recordOwnerId = $("#gsc_recordownerid").val();
                 var OwningBranchId = $("#gsc_branchid").val();
 
-                if (recordOwnerId == null || recordOwnerId == "undefined")
+                if (recordOwnerId == null || recordOwnerId == "undefined" || recordOwnerId == "")
                     recordOwnerId = "00000000-0000-0000-0000-000000000000";
 
-                if (OwningBranchId == null || OwningBranchId == "undefined")
+                if (OwningBranchId == null || OwningBranchId == "undefined" || OwningBranchId == "")
                     OwningBranchId = "00000000-0000-0000-0000-000000000000";
 
                 var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
