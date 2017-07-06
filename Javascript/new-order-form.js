@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     setTimeout(function () {
 
-        if (DMS.Settings.User.positionName == "Sales Executive")
+        if (DMS.Settings.User.positionName == "Sales Executive" || DMS.Settings.User.webRole == "Sales Executive")
             SetSalesExecutive();
 
         $('#gsc_productid').on('change', function () {

@@ -4,29 +4,31 @@ var checker = false;
 $(document).ready(function () {
     var status = $(".record-status").html();
     $('#gsc_reasonforcancellation').attr("readonly", "readonly");
-
+    
     if (status != "Cancelled") {
         $('label[for=gsc_reasonforcancellation], input#gsc_reasonforcancellation').hide();
     }
-
-    if (status != "Open") {
-        $('#SubmitButton').hide();
-        $('#UpdateButton').hide();
-        $('.delete-link').hide();
-        $('#name').attr("readonly", "true");
+    
+    if(status != "Open")
+    {
+      $('#SubmitButton').hide();
+      $('#UpdateButton').hide();
+      $('.delete-link').hide();
+      $('#name').attr("readonly","true");
     }
-
+    
     $('#InvoiceMonthlyAmortization_Subgrid').html('');
     $(document).trigger("initializeEditableGrid", monthlyAmortizationGridInstance);
     $('#InvoiceMonthlyAmortization_Subgrid .editable-grid-toolbar').hide();
-
+    
     //Added By ARM_03172017
     var webRole = DMS.Settings.User.webRole;
     if (webRole == "Invoicer") {
-        $('#SubmitButton').addClass("hidden");
-        $('#UpdateButton').addClass("hidden");
+         $('#SubmitButton').addClass("hidden");
+         $('#UpdateButton').addClass("hidden");
+         $('#name').attr("readonly","true");
     }
-
+    
     setTimeout(function () {
         var productId = $('#gsc_productid').val();
 
@@ -69,40 +71,41 @@ $(document).ready(function () {
 
     //JGC_05302017
     //EXPORT BUTTON
-    var wordIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-file-word-o');
-    var exportWordBtn = DMS.Helpers.CreateButton('button', 'btn btn-primary exportWord', '', ' EXPORT TO WORD', wordIcon);
+      var wordIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-file-word-o');
+      var exportWordBtn = DMS.Helpers.CreateButton('button', 'btn btn-primary exportWord', '', ' EXPORT TO WORD', wordIcon);
     DMS.Helpers.AppendButtonToToolbar(exportWordBtn);
-
-    exportWordBtn.click(function (e) {
+    
+      exportWordBtn.click(function(e){
         e.preventDefault();
-        if (Page_ClientValidate("")) {
+        if (Page_ClientValidate(""))
+        {
             var invoiceId = $('#name').val();
             var param1var = DMS.Helpers.GetUrlQueryString('id');
-            var protocol = window.location.protocol;
-            var host = window.location.host;
-            var url = protocol + "//" + host + "/report/?reportname={5d57ff39-61d2-e611-80e7-00155d010e2c}&reportid=" + param1var
-              + "&recordId=" + invoiceId + "&exportToWord=" + 1;
-            window.location.href = url;
-            //exportWindow.document.write("<p> Successfully downloaded ! </p>");      
-        }
+        var protocol = window.location.protocol;
+        var host = window.location.host;
+        var url = protocol + "//" + host + "/report/?reportname={5d57ff39-61d2-e611-80e7-00155d010e2c}&reportid=" + param1var
+          +  "&recordId=" + invoiceId + "&exportToWord=" + 1;   
+        window.location.href = url; 
+          //exportWindow.document.write("<p> Successfully downloaded ! </p>");      
+        }   
     });
     //End
-
-    //Added by: JGC_12092016
-    /*    if (DMS.Settings.User.positionName != 'Sales Manager' && DMS.Settings.User.positionName != 'Sales Executive' && DMS.Settings.User.positionName != 'System Administrator') {
-            $(".nav.nav-tabs li:eq(3)").hide()
     
-        }
-        if (DMS.Settings.User.positionName != 'Sales Manager' && DMS.Settings.User.positionName != 'System Administrator') {
-            $('#gsc_rate_label').hide();
-            $('#gsc_rate').hide();
-            $('#gsc_cost_label').hide();
-            $('#gsc_cost').hide();
-            $('#gsc_originaltotalpremium_label').hide();
-            $('#gsc_originaltotalpremium').hide();
-            $('#basic-addon1_label').hide();
-            $('#basic-addon1').hide();
-        }*/
+    //Added by: JGC_12092016
+/*    if (DMS.Settings.User.positionName != 'Sales Manager' && DMS.Settings.User.positionName != 'Sales Executive' && DMS.Settings.User.positionName != 'System Administrator') {
+        $(".nav.nav-tabs li:eq(3)").hide()
+
+    }
+    if (DMS.Settings.User.positionName != 'Sales Manager' && DMS.Settings.User.positionName != 'System Administrator') {
+        $('#gsc_rate_label').hide();
+        $('#gsc_rate').hide();
+        $('#gsc_cost_label').hide();
+        $('#gsc_cost').hide();
+        $('#gsc_originaltotalpremium_label').hide();
+        $('#gsc_originaltotalpremium').hide();
+        $('#basic-addon1_label').hide();
+        $('#basic-addon1').hide();
+    }*/
     // end hide
 
     $(".section[data-name='HiddenSection']").closest("fieldset").hide();
@@ -223,107 +226,111 @@ $(document).ready(function () {
 
         $('#modalPostDate').data("DateTimePicker").setMaxDate(moment());
         checker = true;
-
-        if ($("#modalPostDateValue").val() == "") {
-            //alert("test");
-            checker = false;
+        
+        if ($("#modalPostDateValue").val() == "")
+        {
+        //alert("test");
+        checker = false; 
         }
     });
-
-
+    
+    
 
     $('td.datetime:nth-child(2) > div:nth-child(2)').css({ "pointer-events": "none", "cursor": "default" });
 
     //Print Button
-    $printBtn = DMS.Helpers.CreateAnchorButton("btn-primary btn", '', ' PRINT ', DMS.Helpers.CreateFontAwesomeIcon('fa-print'));
-    $printBtn.attr("id", "printButton");
-    $printBtn.attr("data-toggle", "modal");
-    $printBtn.attr("data-target", "#printMessageModal");
+        $printBtn = DMS.Helpers.CreateAnchorButton("btn-primary btn", '', ' PRINT ', DMS.Helpers.CreateFontAwesomeIcon('fa-print'));
+        $printBtn.attr("id", "printButton");
+        $printBtn.attr("data-toggle", "modal");
+        $printBtn.attr("data-target", "#printMessageModal");
 
-    //Modal construction
-    var printModal = document.createElement("div");
-    printModal.innerHTML = '<div class="modal-dialog">' +
-    '<div class="modal-content">' +
-    '<div class="modal-header">' +
-    '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
-    '<h4 class="modal-title">Print</h4>' +
-    '</div>' +
-    '<div class="modal-body">' +
-    '<center><p>You cannot change the sales invoice ID upon printing. Are you sure you want to print this record?</p>' +
-    '</center></div>' +
-    '<div class="modal-footer">' +
-    '<button type="button" class="primary btn btn-dialog btn-default" id="printBtn">PRINT</button>' +
-    '<button type="button" class="primary btn btn-dialog btn-default" data-dismiss="modal">CANCEL</button>' +
-    '</div>' +
-    '</div><!-- /.modal-content -->' +
-    '</div><!-- /.modal-dialog -->';
-    printModal.setAttribute("id", "printMessageModal");
-    printModal.setAttribute("class", "modal fade");
-    printModal.setAttribute("tabindex", "-1");
-    printModal.setAttribute("role", "dialog");
-    $(".crmEntityFormView").append(printModal);
+        //Modal construction
+        var printModal = document.createElement("div");
+        printModal.innerHTML = '<div class="modal-dialog">' +
+        '<div class="modal-content">' +
+        '<div class="modal-header">' +
+        '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+        '<h4 class="modal-title">Print</h4>' +
+        '</div>' +
+        '<div class="modal-body">' +
+        '<center><p>You cannot change the sales invoice ID upon printing. Are you sure you want to print this record?</p>' +
+        '</center></div>' +
+        '<div class="modal-footer">' +
+        '<button type="button" class="primary btn btn-dialog btn-default" id="printBtn">PRINT</button>' +
+        '<button type="button" class="primary btn btn-dialog btn-default" data-dismiss="modal">CANCEL</button>' +
+        '</div>' +
+        '</div><!-- /.modal-content -->' +
+        '</div><!-- /.modal-dialog -->';
+        printModal.setAttribute("id", "printMessageModal");
+        printModal.setAttribute("class", "modal fade");
+        printModal.setAttribute("tabindex", "-1");
+        printModal.setAttribute("role", "dialog");
+        $(".crmEntityFormView").append(printModal);
 
-    //$(".form-action-container-left").append(printBtn);
+        //$(".form-action-container-left").append(printBtn);
 
-    $('#printBtn').click(function (e) {
-        e.preventDefault();
-        var printCount = $("#gsc_print").val();
-        if (printCount == "")
-            printCount = 0;
-        var print = parseInt(printCount) + 1;
-        var invoiceID = $('#name').val();
-        var button = $(this);
-        var fields = [{ key: 'gsc_print', value: print },
-                      { key: 'gsc_isdeliveryreceiptandgatepass', value: true, type: 'System.Boolean' },
-                      { key: 'name', value: invoiceID }];
-        var entityId = DMS.Helpers.GetUrlQueryString('id');
-        recordArr = GetModelForSelectedRecords(fields, entityId);
-        var that = $(this);
-        var print_ = $('#printBtn').html();
-        if (status != "Open") {
+        $('#printBtn').click(function (e) {
+            e.preventDefault();
+            var printCount = $("#gsc_print").val();
+            if (printCount == "")
+                printCount = 0;
+            var print = parseInt(printCount) + 1;
+            var invoiceID = $('#name').val();
+            var button = $(this);
+            var fields = [{ key: 'gsc_print', value: print}, 
+                          { key: 'gsc_isdeliveryreceiptandgatepass', value: true, type: 'System.Boolean'}, 
+                          { key: 'name', value: invoiceID}];                
+            var entityId = DMS.Helpers.GetUrlQueryString('id');
+            recordArr = GetModelForSelectedRecords(fields,entityId);
+            var that = $(this);
+            var print_ = $('#printBtn').html();
+        if(status != "Open")
+        {
             PrintReport();
             $('#printMessageModal').modal('hide');
         }
-        else {
-            if (recordArr.length > 0) {
-                that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
-                that.addClass('disabled');
-                var url = "/api/EditableGrid/UpdateRecords";
-                var json = JSON.stringify(recordArr);
-                var service = Service('PUT', url, json, DMS.Helpers.DefaultErrorHandler);
-                service.then(function () {
-                    $("#UpdateButton").click();
-                    PrintReport();
-
-                }).always(function () {
-                    that.html(print_);
-                    that.removeClass('disabled');
-                    $('#printMessageModal').modal('hide');
-                });
-                return;
-            }
+        else
+        {
+        if (recordArr.length > 0) {
+            that.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;PROCESSING..');
+            that.addClass('disabled');
+            var url = "/api/EditableGrid/UpdateRecords";
+            var json = JSON.stringify(recordArr);
+            var service = Service('PUT', url, json, DMS.Helpers.DefaultErrorHandler);
+            service.then(function () {
+                $("#UpdateButton").click();
+                PrintReport();
+            
+            }).always(function () {
+                that.html(print_);
+                that.removeClass('disabled');
+                $('#printMessageModal').modal('hide');
+            });
+            return;
         }
-        function GetModelForSelectedRecords(fields, entityId) {
-            var result = [];
-            var arr = { Id: null, Entity: null, Records: [] };
-            arr.Entity = $('#EntityFormView_EntityLayoutConfig').data("form-layout").EntityName;
-            arr.Id = entityId;
-            for (x = 0 ; x < 3 ; x++) {
+        }
+        function GetModelForSelectedRecords(fields,entityId) {
+        var result = [];
+        var arr = { Id: null, Entity: null, Records: [] };
+        arr.Entity = $('#EntityFormView_EntityLayoutConfig').data("form-layout").EntityName;
+                arr.Id = entityId;
+                for (x = 0 ; x <3 ; x++)
+                {
                 var row = {
                     Attr: fields[x].key,
                     Value: fields[x].value,
                     Type: fields[x].type,
                     Reference: fields[x].reference
                 }
-                arr.Records.push(row);
-                result.push(arr);
-            }
-            return result;
+                 arr.Records.push(row);
+                 result.push(arr);
+                }
+        return result;
         }
     });
     //End Print Button
-
-
+    
+    
     function PrintReport() {
         $("#name").addClass('permanent-disabled');
         var param1var = getQueryVariable("id");
@@ -364,7 +371,7 @@ $(document).ready(function () {
                                     .text(value.gsc_reasonpn));
 
                 });
-                if (cancelCtr != 0)
+                if(cancelCtr != 0)
                     $('#statusReason').append($("<option></option>")
                                 .attr("value", "Others")
                                 .text("Others"));
@@ -390,15 +397,15 @@ $(document).ready(function () {
     });
 
     var invoiceStatusCopy = $("#gsc_invoicestatuscopy").val();
-
-    if (invoiceStatusCopy != '100000004' && webRole != "MSD Manager") {
+    
+    if (invoiceStatusCopy != '100000004' && webRole.indexOf("MSD Manager") < 0) {
         DMS.Helpers.AppendButtonToToolbar($printBtn);
 
     }
-    if ((invoiceStatusCopy == '100000002' || invoiceStatusCopy == '100000003') && webRole != "MSD Manager") {
-        DMS.Helpers.AppendButtonToToolbar($cancelInvoiceButton);
+    if ((invoiceStatusCopy == '100000002' || invoiceStatusCopy == '100000003') && webRole.indexOf("MSD Manager") < 0) {
+            DMS.Helpers.AppendButtonToToolbar($cancelInvoiceButton);
     }
-
+        
     if (invoiceStatusCopy == '100000003') {
         DMS.Helpers.AppendButtonToToolbar($postTransactionButton);
     }
@@ -414,9 +421,9 @@ $(document).ready(function () {
         }
     });
 
-    //Modified by Ernest Sarmiento 02-02-2017
+  //Modified by Ernest Sarmiento 02-02-2017
     if (typeof (Page_Validators) == 'undefined') return;
-
+        
     var statusReasonRemarksValidator = document.createElement('span');
     statusReasonRemarksValidator.style.display = "none";
     statusReasonRemarksValidator.id = "statusReasonRemarksValidator";
@@ -424,24 +431,24 @@ $(document).ready(function () {
     statusReasonRemarksValidator.validationGroup = "";
     statusReasonRemarksValidator.initialvalue = "";
     statusReasonRemarksValidator.evaluationfunction = function () {
-        if ($('#statusReason option:selected').text() == "Others" && $('#disqualifyRemarks').val().length <= 0) {
+        if ( $('#statusReason option:selected').text() == "Others" && $('#disqualifyRemarks').val().length <= 0) {
             return false;
         } else {
             return true;
         }
     };
-
+    
     $('#continueBtn').click(function () {
         var reason = $('#statusReason option:selected').text();
-        var disqualifyRemarks = $('#disqualifyRemarks').val();
-
-        if (reason == "Others" && disqualifyRemarks.length <= 0) {
-            Page_Validators.push(statusReasonRemarksValidator);
+        var disqualifyRemarks = $('#disqualifyRemarks').val();  
+        
+        if(reason == "Others" && disqualifyRemarks.length <= 0) 
+        {
+            Page_Validators.push(statusReasonRemarksValidator);   
         } else {
             $("#gsc_reasonforcancellation").val(disqualifyRemarks);
             Page_Validators = jQuery.grep(Page_Validators, function (value) {
-                return value != statusReasonRemarksValidator;
-            });
+            return value != statusReasonRemarksValidator; });
         }
     });
     // End of Continue Button
@@ -450,8 +457,8 @@ $(document).ready(function () {
         var cancelOrderCount = $("#gsc_cancelorder").val();
         if (cancelOrderCount == "")
             cancelOrderCount = 0;
-
-        //$("#gsc_invoicestatuscopy").val(100000005);    
+            
+       //$("#gsc_invoicestatuscopy").val(100000005);    
         $("#gsc_cancelorder").val(parseInt(cancelOrderCount) + 1);
 
         $("#UpdateButton").click();
@@ -487,44 +494,45 @@ $(document).ready(function () {
 
     setTimeout(disableTab, 3000);
 
-    function disableTab() {
+    function disableTab()
+    {
         $('.disabled').attr("tabindex", "-1");
         $('fieldset.permanent-disabled .btn').attr("tabindex", "-1");
     }
 });
 
 var monthlyAmortizationGridInstance = {
-    initialize: function () {
-        $('<div id="monthlyamortization-editablegrid" class="editable-grid"></div>').appendTo('.content-wrapper');
+  initialize: function () {
+    $('<div id="monthlyamortization-editablegrid" class="editable-grid"></div>').appendTo('.content-wrapper');
         var $container = document.getElementById('monthlyamortization-editablegrid');
         var idQueryString = DMS.Helpers.GetUrlQueryString('id');
         var odataQuery = '/_odata/invoiceMonthlyAmortization?$filter=gsc_invoiceid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
         var screenSize = ($(window).width() / 2) - 100;
         var options = {
-            dataSchema: {
-                gsc_selected: null, gsc_invoiceid: { Id: null, Name: null },
-                //gsc_financingtermid: { Id: null, Name: null },
-                gsc_financingtermid: null,
-                gsc_invoicemonthlyamortizationpn: null
-            },
-            colHeaders: [
-                'Select Term *',
-                'Financing Term',
-                'Monthly Amortization'
-            ],
-            columns: [
-                { data: 'gsc_selected', type: 'checkbox', renderer: checkboxRenderer, readOnly: true, className: "htCenter htMiddle", width: 50 },
-                { data: 'gsc_financingtermid.Name', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 100 },
-                { data: 'gsc_invoicemonthlyamortizationpn', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 }
-            ],
-            columnSorting: {
-                column: 1,
-                sortOrder: true
-            },
-            gridWidth: screenSize,
-            addNewRows: false,
-            deleteRows: false
-        }
+                dataSchema: {
+                    gsc_selected: null, gsc_invoiceid: { Id: null, Name: null },
+                    //gsc_financingtermid: { Id: null, Name: null },
+                    gsc_financingtermid: null,
+                    gsc_invoicemonthlyamortizationpn: null
+                },
+                colHeaders: [
+                    'Select Term *',
+                    'Financing Term',
+                    'Monthly Amortization'
+                ],
+                columns: [
+                    { data: 'gsc_selected', type: 'checkbox', renderer: checkboxRenderer, readOnly: true, className: "htCenter htMiddle", width: 50 },
+                    { data: 'gsc_financingtermid.Name', type: 'numeric', readOnly: true, className: "htCenter htMiddle", width: 100 },
+                    { data: 'gsc_invoicemonthlyamortizationpn', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 }
+                ],
+                columnSorting: {
+                    column: 1,
+                    sortOrder: true
+                },
+                gridWidth: screenSize,
+                addNewRows: false,
+                deleteRows: false
+            }
 
         var sectionName = "InvoiceMonthlyAmortization_Subgrid";
         var attributes = [{ key: 'gsc_selected', type: 'System.Boolean' }];
