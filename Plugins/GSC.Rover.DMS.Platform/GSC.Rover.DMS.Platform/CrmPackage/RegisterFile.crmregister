@@ -1471,6 +1471,16 @@
             </Step>
           </Steps>
         </Plugin>
+        <Plugin Description="Plug-in to PostBankCreate" FriendlyName="PostBankCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostBankCreate" Id="2b932f26-f161-e711-80f5-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostBankCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostBankCreate" Description="Post-Operation of Bank Create" Id="2c932f26-f161-e711-80f5-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_bank" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PostImage" Id="2f932f26-f161-e711-80f5-00155d010e2c" MessagePropertyName="id" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
       </PluginTypes>
     </Solution>
     <Solution Assembly="GSC.Rover.DMS.Platform.Workflow.dll" Id="55c58133-16c0-e511-80cb-00155d010e2c" IsolationMode="None" SourceType="Database">

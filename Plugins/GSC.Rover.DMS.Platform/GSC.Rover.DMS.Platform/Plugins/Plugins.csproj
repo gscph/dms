@@ -61,6 +61,9 @@
     <Reference Include="GSC.Rover.DMS.BusinessLogic.ApproverSetup">
       <HintPath>..\..\..\GSC.Rover.DMS\ApproverSetup\bin\Release\GSC.Rover.DMS.BusinessLogic.ApproverSetup.dll</HintPath>
     </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.Bank">
+      <HintPath>..\..\..\GSC.Rover.DMS\Bank\bin\Release\GSC.Rover.DMS.BusinessLogic.Bank.dll</HintPath>
+    </Reference>
     <Reference Include="GSC.Rover.DMS.BusinessLogic.CashReceipt, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7c9699a7e9c67cb1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\GSC.Rover.DMS\CashReceipt\bin\Release\GSC.Rover.DMS.BusinessLogic.CashReceipt.dll</HintPath>
@@ -298,6 +301,7 @@
     </Compile>
     <Compile Include="PostAccountUpdate.cs" />
     <Compile Include="PostApproverSetupUpdate.cs" />
+    <Compile Include="PostBankCreate.cs" />
     <Compile Include="PostCashReceiptCreate.cs" />
     <Compile Include="PostCashReceiptUpdate.cs" />
     <Compile Include="PostChargeItemCreate.cs" />

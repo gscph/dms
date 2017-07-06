@@ -208,3 +208,5 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Plugins\
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Plugins\obj\Release\Plugins.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Plugins\obj\Release\GSC.Rover.DMS.Platform.Plugins.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Plugins\obj\Release\GSC.Rover.DMS.Platform.Plugins.pdb
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Plugins\bin\Release\GSC.Rover.DMS.BusinessLogic.Bank.dll
+D:\DMS\Github\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\Plugins\bin\Release\GSC.Rover.DMS.BusinessLogic.Bank.pdb
