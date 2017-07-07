@@ -294,7 +294,7 @@ $(document).ready(function () {
     $btnCancel.attr('data-toggle', 'modal');
     $btnCancel.attr('data-target', '#cancelOrderModal');
 
-    if (status != 'Cancelled' && webRole != 'Cashier' && !webRole.contains("Vehicle Allocator") && webRole != "Invoicer" && webRole != "CC Manager") {
+    if (status != 'Cancelled' && webRole != 'Cashier' && !webRole.contains("Vehicle Allocator") && webRole != "Invoicer" && webRole != "Invoice Generator by Dealer" && webRole != "CC Manager") {
         DMS.Helpers.AppendButtonToToolbar($btnCancel);
 
         var cancelOrderModal = document.createElement('div');
