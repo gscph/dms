@@ -204,7 +204,7 @@ $(document).ready(function (e) {
         });
     }, 100);
 
-     function checkPreferredColor(index) {
+    function checkPreferredColor(index) {
         var colorNum = index;
         var color1 = $('#gsc_vehiclecolorid1').val();
         var color2 = $('#gsc_vehiclecolorid2').val();

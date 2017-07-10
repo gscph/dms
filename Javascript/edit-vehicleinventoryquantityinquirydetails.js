@@ -10,7 +10,7 @@ $(document).ready(function () {
     });
 
     //Purchase Approver Web Role Validations
-    if(DMS.Settings.User.webRole === "Purchase Approver")
+    if (DMS.Settings.User.webRole === "Purchase Approver")
         $('*[data-name="VIQI_Sold"]').prev().hide();
 
 
@@ -137,11 +137,11 @@ $(document).ready(function () {
 
     function PrintReport(reportName, dateFrom, dateTo) {
 
-        dateFrom = dateFrom != "" ? new Date(dateFrom) : ""; 
-        var dateFromString = dateFrom != "" ? dateFrom.getFullYear() + "-" + (dateFrom.getMonth() + 1) + "-" +  dateFrom.getDate() : "";
+        dateFrom = dateFrom != "" ? new Date(dateFrom) : "";
+        var dateFromString = dateFrom != "" ? dateFrom.getFullYear() + "-" + (dateFrom.getMonth() + 1) + "-" + dateFrom.getDate() : "";
 
-        dateTo = dateTo != "" ? new Date(dateTo) : ""; 
-        var dateToString = dateTo != "" ? dateTo.getFullYear() + "-" + (dateTo.getMonth() + 1) + "-" +  dateTo.getDate(): "";
+        dateTo = dateTo != "" ? new Date(dateTo) : "";
+        var dateToString = dateTo != "" ? dateTo.getFullYear() + "-" + (dateTo.getMonth() + 1) + "-" + dateTo.getDate() : "";
 
         var param1var = DMS.Helpers.GetUrlQueryString('id');
         var protocol = window.location.protocol;
