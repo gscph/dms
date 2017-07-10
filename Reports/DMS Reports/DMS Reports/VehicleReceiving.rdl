@@ -3420,7 +3420,7 @@ WHERE rt.gsc_DealerId = a.accountid </CommandText>
           </QueryParameter>
         </QueryParameters>
         <CommandText>SELECT 
-rtd.gsc_ModelCode as 'Code',
+CONCAT(rtd.gsc_ModelCode, '  ', rtd.gsc_OptionCode) as 'Code',
 rtd.gsc_ModelYear as 'Model Year',
 rtd.gsc_ProductIdName as 'Model Description', 
 rtd.gsc_VehicleColorIdName as 'Color',
