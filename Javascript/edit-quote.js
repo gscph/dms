@@ -152,21 +152,25 @@ $(document).ready(function () {
 
     function checkDiscountSubgrid() {
         if ($('table[data-name="tabbed-DISCOUNTS"]').is(":visible")) {
-            $('table[data-name="tabbed-DISCOUNTS"]').parent().addClass("permanent-disabled");
+           // $('table[data-name="tabbed-DISCOUNTS"]').parent().addClass("permanent-disabled");
+          // $('.disabled').attr("tabindex", "-1");
             $('table[data-name="tabbed-DISCOUNTS"]').parent().attr("disabled", "disabled");
+            $(".dropdown.action").hide();
         }
         else {
-            setTimeout(function () { checkDiscountSubgrid(); }, 50);
+            setTimeout(function () { checkDiscountSubgrid(); }, 10);
         }
     }
 
     function checkChargesSubgrid() {
         if ($('table[data-name="tabbed-CHARGES"]').is(":visible")) {
-            $('table[data-name="tabbed-CHARGES"]').parent().addClass("permanent-disabled");
+           // $('table[data-name="tabbed-CHARGES"]').parent().addClass("permanent-disabled");
+           // $('.disabled').attr("tabindex", "-1");
             $('table[data-name="tabbed-CHARGES"]').parent().attr("disabled", "disabled");
+            $(".dropdown.action").hide();
         }
         else {
-            setTimeout(function () { checkChargesSubgrid(); }, 50);
+            setTimeout(function () { checkChargesSubgrid(); }, 10);
         }
     }
 
@@ -272,6 +276,7 @@ $(document).ready(function () {
             $('#createOrderModal').modal('hide');
             showLoading();
             $.ajax({
+                async: false,
                 type: "PUT",
                 url: "/api/Service/RunWorkFlow/?workflowName=" + workflowName + "&entityId=" + entityId,
                 success: function (response) {
@@ -283,7 +288,7 @@ $(document).ready(function () {
                     var req = new XMLHttpRequest();
                     req.open('GET', url, false);
                     req.send(null); //window.location.reload(true);
-                    setTimeout(RedirecttoSalesOrder(), 10000);
+                    setTimeout(RedirecttoSalesOrder(), 1000);
                 }
             }).error(function (errormsg) { console.log(errormsg) });
         }
