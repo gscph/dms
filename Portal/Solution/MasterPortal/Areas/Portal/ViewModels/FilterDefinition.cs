@@ -288,7 +288,7 @@ namespace Site.Areas.Portal.ViewModels
             return globalRecords;
         }
 
-        private Entity GetSharedEntityScope(IEnumerable<Entity> result)
+        private EntityCollection GetSharedEntityScope(IEnumerable<Entity> result)
         {
             if (result.Count() == 0)
                 return null;
@@ -332,28 +332,62 @@ namespace Site.Areas.Portal.ViewModels
             }
 
             QueryExpression queryEntityPermission = new QueryExpression("adx_entitypermission");
-            queryEntityPermission.ColumnSet = new ColumnSet("adx_scope", "adx_contactrelationship");
+            queryEntityPermission.ColumnSet = new ColumnSet(true);
             queryEntityPermission.Criteria.AddCondition("gsc_recordtype", ConditionOperator.Equal, recordType);
+            queryEntityPermission.AddOrder("adx_scope", OrderType.Descending);
             queryEntityPermission.LinkEntities.Add(new LinkEntity("adx_entitypermission", "adx_entitypermission_webrole", "adx_entitypermissionid", "adx_entitypermissionid", JoinOperator.Inner));
             queryEntityPermission.LinkEntities[0].LinkCriteria.AddCondition("adx_webroleid", ConditionOperator.Equal, webRoleId);
             EntityCollection entityPermissionCollection = _service.ServiceContext.RetrieveMultiple(queryEntityPermission);
 
             if (entityPermissionCollection != null && entityPermissionCollection.Entities.Count > 0)
             {
-                return entityPermissionCollection.Entities[0];
+                return entityPermissionCollection;
             }
 
             return null;
         }
 
-        public IEnumerable<Entity> FilterSharedEntityScope(IEnumerable<Entity> result)
+        private String GetReadAppendScope(EntityCollection entityPermissionCollection, String fieldName)
         {
-            Entity entityPermission = GetSharedEntityScope(result);
+            var scopeString = "";
+            foreach (Entity entityPermission in entityPermissionCollection.Entities)
+            {
+                var scope = entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
+
+                if (scope == 756150000 && entityPermission.GetAttributeValue<bool>(fieldName) == true)
+                {
+                    return entityPermission.FormattedValues["adx_scope"];
+                }
+
+                if (scope == 756150001 && entityPermission.GetAttributeValue<bool>(fieldName) == true)
+                {
+                    scopeString = entityPermission.FormattedValues["adx_scope"];
+                }
+
+                else if (scope == 756150002 && entityPermission.GetAttributeValue<bool>(fieldName) == true)
+                {
+                    scopeString = entityPermission.FormattedValues["adx_scope"];
+                }
+            }
+
+            return scopeString;
+        }
+
+        public IEnumerable<Entity> FilterSharedEntityScope(ViewConfiguration _viewConfig, IEnumerable<Entity> result)
+        {
+            SavedQueryView queryView = _viewConfig.GetSavedQueryView(_serviceContext);
+            var objectName = queryView.Name;
+
+            EntityCollection entityPermission = GetSharedEntityScope(result);
 
             if (entityPermission == null)
                 return result;
 
-            String scope = entityPermission.FormattedValues["adx_scope"];
+            String scope = "";
+            if(objectName.Equals("Individual") || objectName.Equals("Corporate"))
+                scope = GetReadAppendScope(entityPermission, "adx_append");
+            else
+                scope = GetReadAppendScope(entityPermission, "adx_read");
 
             if (scope == "Global")
                 return result;
@@ -409,8 +443,6 @@ namespace Site.Areas.Portal.ViewModels
                     }
                 }
 
-                String contactRelationship = entityPermission.GetAttributeValue<String>("adx_contactrelationship");
-               
                 foreach (Entity item in result)
                 {
                     foreach (var attribute in item.Attributes)

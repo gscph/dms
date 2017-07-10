@@ -118,7 +118,6 @@ namespace Site.Areas.Portal.Controllers
 
             var dataAdapterDependencies = new PortalConfigurationDataAdapterDependencies(requestContext: Request.RequestContext, portalName: viewConfiguration.PortalName);
 
-
             #region - DMS Custom Filtering -
             CustomFetchXml converter = new CustomFetchXml(dataAdapterDependencies.GetServiceContext(), new XrmConnection());
 
@@ -180,7 +179,7 @@ namespace Site.Areas.Portal.Controllers
 
             var result = viewDataAdapter.FetchEntities();
 
-            var filteredRecords = converter.FilterSharedEntityScope(result.Records);
+            var filteredRecords = converter.FilterSharedEntityScope(viewConfiguration, result.Records);
             var globalRecords = converter.FilterRootBusinessUnitRecords(viewConfiguration, filterEntityName, filterRelationshipName, filterValue, search);
 
             var combinedResults = filteredRecords.Union(globalRecords);

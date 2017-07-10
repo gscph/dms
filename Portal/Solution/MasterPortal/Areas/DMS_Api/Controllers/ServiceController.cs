@@ -224,7 +224,6 @@ namespace Site.Areas.DMSApi.Controllers
         {
             try
             {
-
                 var context = HttpContext.Current;
                 Guid branchId = Guid.Empty;
 
@@ -247,12 +246,10 @@ namespace Site.Areas.DMSApi.Controllers
                     return InternalServerError(new Exception("Couldn't determine current branch."));
                 }
 
-
                 if (productId != Guid.Empty)
                 {
-
                     decimal sellPrice = 0;
-
+                   
                     PriceListHandler priceListHandler = new PriceListHandler(_conn.ServiceContext);
                     priceListHandler.itemType = 0;
                     priceListHandler.productFieldName = "gsc_productid";
@@ -304,7 +301,7 @@ namespace Site.Areas.DMSApi.Controllers
             catch (Exception ex)
             {
                 return InternalServerError(ex);
-            }
+            }      
         }
     }
 }
