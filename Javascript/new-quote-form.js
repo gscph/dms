@@ -14,7 +14,7 @@ $(document).ready(function (e) {
 
     setTimeout(function () {
 
-        if (DMS.Settings.User.positionName == "Sales Executive")
+        if (DMS.Settings.User.positionName == "Sales Executive" || DMS.Settings.User.webRole == "Sales Executive")
             SetSalesExecutive();
 
         $('#gsc_validuntil').next('.datetimepicker').on("dp.change", function (e) {

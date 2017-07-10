@@ -10,7 +10,7 @@ $(document).ready(function () {
     });
 
     //Purchase Approver Web Role Validations
-    if(DMS.Settings.User.positionName === "Purchase Approver")
+    if(DMS.Settings.User.webRole === "Purchase Approver")
         $('*[data-name="VIQI_Sold"]').prev().hide();
 
 

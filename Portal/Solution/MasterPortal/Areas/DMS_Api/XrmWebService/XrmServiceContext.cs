@@ -381,8 +381,36 @@ namespace Site.Areas.DMSApi
         {
             bool duplicateFound = false;
 
+<<<<<<< HEAD
             Entity duplicateSetupEntity = GetDuplicateSetup(entityName);
             if(duplicateSetupEntity != null)
+=======
+            //Additional validation only: Return false if parent product
+            if (entityName == "product")
+            {
+                foreach (var entry in valuesSaved)
+                {
+                    string key = entry.Key;
+                    object values = entry.Value;
+                    if (key == "gsc_producttype" && values.ToString() == "100000002")
+                    {
+                        return false;
+                    }
+                }
+            }
+             
+            //Query if there is existing setup
+            QueryExpression queryDuplicateDetectSetup = new QueryExpression("gsc_cmn_duplicatedetectsetup");
+            queryDuplicateDetectSetup.ColumnSet = new ColumnSet("gsc_cmn_duplicatedetectsetupid", "gsc_logicaloperator");
+
+            FilterExpression entityNameFilter = new FilterExpression();
+            entityNameFilter.Conditions.Add((new ConditionExpression("gsc_entityname", ConditionOperator.Equal, entityName)));
+            queryDuplicateDetectSetup.Criteria.AddFilter(entityNameFilter);
+
+            EntityCollection duplicateCollection = _service.ServiceContext.RetrieveMultiple(queryDuplicateDetectSetup);
+
+            if (duplicateCollection != null && duplicateCollection.Entities.Count > 0)//duplicate setup exists
+>>>>>>> origin/master
             {
                 //Additional validation only: Return false if parent product
                 if (entityName == "product")
@@ -419,6 +447,7 @@ namespace Site.Areas.DMSApi
                     duplicateSetupFilter.Conditions.Add(new ConditionExpression("gsc_duplicatedetectsetupid", ConditionOperator.Equal, duplicateSetupEntity.Id));
                     queryDuplicateFields.Criteria.AddFilter(duplicateSetupFilter);
 
+<<<<<<< HEAD
                     EntityCollection filterFieldsCollection = _service.ServiceContext.RetrieveMultiple(queryDuplicateFields);
 
                     if (filterFieldsCollection != null && filterFieldsCollection.Entities.Count > 0)
@@ -433,6 +462,12 @@ namespace Site.Areas.DMSApi
                         String field = "";
 
                         foreach (Entity filterFieldsEntity in filterFieldsCollection.Entities)//construct conditions of filtered expression based on duplicate field to check
+=======
+                    foreach (Entity filterFieldsEntity in filterFieldsCollection.Entities)//construct conditions of filtered expression for existing duplicates
+                    {                        
+                        field = filterFieldsEntity.GetAttributeValue<string>("gsc_targetfield");
+                        if(filterFieldsEntity.GetAttributeValue<bool>("gsc_islookup"))//adding condition if targer field is tagged as a lookup field
+>>>>>>> origin/master
                         {
                             field = filterFieldsEntity.GetAttributeValue<string>("gsc_targetfield");
                             if (filterFieldsEntity.GetAttributeValue<bool>("gsc_islookup"))//adding condition if target field is tagged as a lookup field

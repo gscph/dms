@@ -83,7 +83,7 @@ namespace GSC.Rover.DMS.BusinessLogic.City
                 }         
             }
             _organizationService.Update(parentEntityToUpdate);
-            _tracingService.Trace("Updated contact entity...");
+            _tracingService.Trace("Updated Parent entity...");
 
             _tracingService.Trace("Ending SetCity Method...");
             return parentEntityToUpdate;

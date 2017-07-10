@@ -72,7 +72,7 @@ $(document).ready(function () {
 
     setTimeout(function () {
 
-         if(DMS.Settings.User.positionName == "Sales Executive")
+         if(DMS.Settings.User.positionName == "Sales Executive" || DMS.Settings.User.webRole == "Sales Executive")
             SetSalesExecutive();
 
         $('#gsc_birthday').next('.datetimepicker').data("DateTimePicker").setMaxDate(new Date());
