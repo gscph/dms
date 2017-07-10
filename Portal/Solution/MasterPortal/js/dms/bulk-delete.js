@@ -64,7 +64,7 @@
         recordArr = globalRecordValidator(recordArr);
         if (recordArr.length <= 0) {
             HideModal(modalButton, html);
-            DMS.Notification.Error('You are unauthorized to delete this record.');
+            DMS.Notification.Error('Cannot delete other owner\'s record.');
             return false;
         }
 

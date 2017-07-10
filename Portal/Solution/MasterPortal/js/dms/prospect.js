@@ -40,6 +40,46 @@
         return records;
     }
 
+    function globalRecordValidator(records) {
+        if (DMS.Settings.Permission.DeleteScope !== 756150000) {
+            records.forEach(function (value, index) {
+                var $tr = $('tr[data-id=' + value + ']');
+                var tdGlobalRecord = $tr.find('td[data-attribute="gsc_isglobalrecord"]');
+
+                if (typeof tdGlobalRecord !== 'undefined') {
+                    if (tdGlobalRecord.data('value') == true) {
+                        records.splice(index, 1);
+                        return true;
+                    }
+                }
+
+                if (DMS.Settings.Permission.DeleteScope == 756150002) {
+                    var tdBranchId = $tr.find('td[data-attribute="gsc_branchid"]');
+                    if (typeof tdBranchId !== 'undefined') {
+                        var value = tdBranchId.data('value');
+                        if (value !== "undefined" && value != null) {
+                            if (value.Id != DMS.Settings.User.branchId)
+                                records.splice(index, 1);
+                        }
+                        return true;
+                    }
+                }
+                else if (DMS.Settings.Permission.DeleteScope == 756150001) {
+                    var tdOwnerId = $tr.find('td[data-attribute="gsc_recordownerid"]');
+                    if (typeof tdOwnerId !== 'undefined') {
+                        var value = tdOwnerId.data('value');
+                        if (value !== "undefined" && value != null) {
+                            if (value.Id != DMS.Settings.User.Id)
+                                records.splice(index, 1);
+                        }
+                        return true;
+                    }
+                }
+            });
+        }
+        return records;
+    }
+
     //delete 
     $(document).on("enableBulkDelete", function (eventContext) {
         $(document).bind('DOMNodeInserted', function (evt) {
@@ -105,6 +145,14 @@
 
             if (DMS.Settings.User.webRole == "Sales Executive" || DMS.Settings.User.webRole == "Sales Supervisor") {
                 recordArr = applySupervisorValidator(data, records);
+            }
+
+            recordArr = globalRecordValidator(recordArr);
+
+            if (recordArr.length <= 0) {
+                HideModal(modalButton, html);
+                DMS.Notification.Error('Cannot delete other owner\'s record.');
+                return false;
             }
             
             var somethingWasRemoved = recordArrLength == recordArr.length;
