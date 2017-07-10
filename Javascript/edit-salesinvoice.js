@@ -9,7 +9,9 @@ $(document).ready(function () {
         $('label[for=gsc_reasonforcancellation], input#gsc_reasonforcancellation').hide();
     }
 
-    if (status != "Open") {
+    var webRole = DMS.Settings.User.webRole;
+
+    if (status != "Open" || webRole.indexOf("MSD Manager") >= 0) {
         $('#SubmitButton').hide();
         $('#UpdateButton').hide();
         $('.delete-link').hide();
@@ -25,6 +27,7 @@ $(document).ready(function () {
     if (webRole == "Invoicer") {
         $('#SubmitButton').addClass("hidden");
         $('#UpdateButton').addClass("hidden");
+        $('#name').attr("readonly", "true");
     }
 
     setTimeout(function () {
@@ -391,11 +394,11 @@ $(document).ready(function () {
 
     var invoiceStatusCopy = $("#gsc_invoicestatuscopy").val();
 
-    if (invoiceStatusCopy != '100000004' && webRole != "MSD Manager") {
+    if (invoiceStatusCopy != '100000004' && webRole.indexOf("MSD Manager") < 0) {
         DMS.Helpers.AppendButtonToToolbar($printBtn);
 
     }
-    if ((invoiceStatusCopy == '100000002' || invoiceStatusCopy == '100000003') && webRole != "MSD Manager") {
+    if ((invoiceStatusCopy == '100000002' || invoiceStatusCopy == '100000003') && webRole.indexOf("MSD Manager") < 0) {
         DMS.Helpers.AppendButtonToToolbar($cancelInvoiceButton);
     }
 
