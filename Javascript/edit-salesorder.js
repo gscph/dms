@@ -110,7 +110,7 @@ $(document).ready(function () {
     var status = $(".record-status").html();
     var webRole = DMS.Settings.User.webRole;
 
-    if (webRole == 'Cashier' || webRole.contains("Vehicle Allocator") || webRole == "CC Manager") {
+    if (webRole == 'Cashier' || webRole.contains("Vehicle Allocator") || webRole == "CC Manager" || webRole.contains("MSD Manager")) {
         $("#UpdateButton").addClass("hidden");
     }
 
@@ -190,7 +190,7 @@ $(document).ready(function () {
     $btnRecalculate.click(function (evt) {
         location.reload();
     });
-    if (webRole != 'Cashier' && !webRole.contains("Vehicle Allocator") && webRole != "CC Manager")
+    if (webRole != 'Cashier' && !webRole.contains("Vehicle Allocator") && webRole != "CC Manager" && !webRole.contains("MSD Manager"))
         DMS.Helpers.AppendButtonToToolbar($btnRecalculate);
 
     //Print Order Button
@@ -205,7 +205,7 @@ $(document).ready(function () {
         window.open(url, 'blank', 'scrollbars=1,resizable=1,width=850,height=1000');
 
     });
-    if (webRole != 'Cashier' && !webRole.contains("Vehicle Allocator") && webRole != "CC Manager")
+    if (webRole != 'Cashier' && !webRole.contains("Vehicle Allocator") && webRole != "CC Manager" && !webRole.contains("MSD Manager"))
         DMS.Helpers.AppendButtonToToolbar($btnPrint);
 
     //Request for Vehicle Allocation Button
@@ -219,7 +219,7 @@ $(document).ready(function () {
             $("#UpdateButton").click();
         }
     });
-    if (status == 'For Allocation' && webRole != 'Cashier' && !webRole.contains("Vehicle Allocator") && webRole != "CC Manager") {
+    if (status == 'For Allocation' && webRole != 'Cashier' && !webRole.contains("Vehicle Allocator") && webRole != "CC Manager" && !webRole.contains("MSD Manager")) {
         DMS.Helpers.AppendButtonToToolbar($vehicleAllocationButton);
     }
     if (status == 'For Allocation' && isrequest == true) {
@@ -294,7 +294,7 @@ $(document).ready(function () {
     $btnCancel.attr('data-toggle', 'modal');
     $btnCancel.attr('data-target', '#cancelOrderModal');
 
-    if (status != 'Cancelled' && webRole != 'Cashier' && !webRole.contains("Vehicle Allocator") && webRole != "Invoicer" && webRole != "Invoice Generator by Dealer" && webRole != "CC Manager") {
+    if (status != 'Cancelled' && webRole != 'Cashier' && !webRole.contains("Vehicle Allocator") && webRole != "Invoicer" && webRole != "Invoice Generator by Dealer" && webRole != "CC Manager" && !webRole.contains("MSD Manager")) {
         DMS.Helpers.AppendButtonToToolbar($btnCancel);
 
         var cancelOrderModal = document.createElement('div');
