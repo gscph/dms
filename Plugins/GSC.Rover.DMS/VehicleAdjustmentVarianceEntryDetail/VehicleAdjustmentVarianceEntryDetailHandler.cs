@@ -168,7 +168,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail
 
             if (inventoryRecords != null && inventoryRecords.Entities.Count > 0)
             {
-                throw new InvalidPluginExecutionException("Vehicle already exists in inventory.");       
+                throw new InvalidPluginExecutionException("Vehicle already exists in inventory.");
             }
 
             if (message.Equals("Create"))
@@ -266,6 +266,76 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail
 
             _tracingService.Trace("Ended AdjustInventoryRecordOnDelete Method...");
             return vehicleAdjustmentVarianceEntryDetailEntity;        
+        }
+
+        //Created By : Jerome Anthony Gerero, Created On : 7/11/2017
+        /*Purpose: Validate import records
+         * Registration Details: 
+         * Event/Message:
+         *      Pre-Operation/Create: gsc_sls_adjustmentvariancedetailid
+         * Primary Entity: Vehicle Adjustment/Variance Entry Detail
+         */
+        public Entity ValidateImportRecord(Entity vehicleAdjustmentVarianceEntryDetailEntity)
+        {
+            _tracingService.Trace("Started ValidateImportRecord Method...");
+
+            //Return if record does not come from file import
+            if (vehicleAdjustmentVarianceEntryDetailEntity.GetAttributeValue<EntityReference>("gsc_productid") != null) { return null; }
+
+            String modelCode = vehicleAdjustmentVarianceEntryDetailEntity.Contains("gsc_modelcode")
+                ? vehicleAdjustmentVarianceEntryDetailEntity.GetAttributeValue<String>("gsc_modelcode")
+                : String.Empty;
+            String optionCode = vehicleAdjustmentVarianceEntryDetailEntity.Contains("gsc_optioncode")
+                ? vehicleAdjustmentVarianceEntryDetailEntity.GetAttributeValue<String>("gsc_optioncode")
+                : String.Empty;
+            String colorCode = vehicleAdjustmentVarianceEntryDetailEntity.Contains("gsc_colorcode")
+                ? vehicleAdjustmentVarianceEntryDetailEntity.GetAttributeValue<String>("gsc_colorcode")
+                : String.Empty;
+
+            //Create filter for Product in Product entity
+            var productConditionList = new List<ConditionExpression>
+            {
+                new ConditionExpression("gsc_modelcode", ConditionOperator.Equal, modelCode),
+                new ConditionExpression("gsc_optioncode", ConditionOperator.Equal, optionCode)
+            };
+
+            EntityCollection productRecords = CommonHandler.RetrieveRecordsByConditions("product", productConditionList, _organizationService, null, OrderType.Ascending,
+                new[] { "productid", "gsc_vehiclemodelid" });
+
+            if (productRecords != null && productRecords.Entities.Count > 0)
+            {
+                Entity product = productRecords.Entities[0];
+                vehicleAdjustmentVarianceEntryDetailEntity["gsc_productid"] = new EntityReference(product.LogicalName, product.Id);
+                vehicleAdjustmentVarianceEntryDetailEntity["gsc_vehiclebasemodelid"] = product.GetAttributeValue<EntityReference>("gsc_vehiclemodelid") != null
+                    ? product.GetAttributeValue<EntityReference>("gsc_vehiclemodelid")
+                    : null;
+
+                var vehicleColorConditionList = new List<ConditionExpression>
+                {
+                    new ConditionExpression("gsc_colorcode", ConditionOperator.Equal, colorCode),
+                    new ConditionExpression("gsc_productid", ConditionOperator.Equal, optionCode)
+                };
+
+                EntityCollection vehicleColorRecords = CommonHandler.RetrieveRecordsByConditions("gsc_cmn_vehiclecolor", vehicleColorConditionList, _organizationService, null, OrderType.Ascending,
+                    new[] { "gsc_vehiclecolorpn" });
+
+                if (vehicleColorRecords != null && vehicleColorRecords.Entities.Count > 0)
+                {
+                    Entity vehicleColor = vehicleColorRecords.Entities[0];
+                    vehicleAdjustmentVarianceEntryDetailEntity["gsc_vehiclecolorid"] = new EntityReference(vehicleColor.LogicalName, vehicleColor.Id);
+                }
+                else
+                {
+                    throw new InvalidPluginExecutionException("Vehicle color does not exist.");
+                }
+            }
+            else
+            {
+                throw new InvalidPluginExecutionException("Product does not exist.");
+            }
+
+            _tracingService.Trace("Ended ValidateImportRecord Method...");
+            return vehicleAdjustmentVarianceEntryDetailEntity;
         }
     }
 }

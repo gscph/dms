@@ -66,6 +66,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
             try
             {                
                 VehicleAdjustmentVarianceEntryDetailHandler vehicleAdjustmentVarianceEntryDetailHandler = new VehicleAdjustmentVarianceEntryDetailHandler(service, trace);
+                vehicleAdjustmentVarianceEntryDetailHandler.ValidateImportRecord(vehicleAdjustmentVarianceEntryDetailEntity);
                 vehicleAdjustmentVarianceEntryDetailHandler.CheckExistingInventoryRecord(vehicleAdjustmentVarianceEntryDetailEntity, message);
             }
             catch (Exception ex)

@@ -151,7 +151,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntry
 
                        // throw new InvalidPluginExecutionException("test" + (allocatedCount + 1).ToString() + " " + (availableCount - 1).ToString());
                         _organizationService.Update(productQuantity);                   
-                }               
+                }
 
                 _organizationService.Create(vehicleAdjustmentVarianceEntryDetail);
 
