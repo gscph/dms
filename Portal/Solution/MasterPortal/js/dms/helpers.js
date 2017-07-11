@@ -310,22 +310,30 @@ var Helpers = {
         var text1 = "";
 
         $.getJSON(url)
-         .done(function (response) {
-           
-             if (response.length <= 0) {
-                 return list;
-             }
+          .done(function (response) {
 
-             jQuery.each(response.value, function (i, val) {
+              if (response.length <= 0) {
+                  return list;
+              }
 
-                 var record = {
-                     id: id.indexOf('.') >= 0 ? val[id.split('.')[0]][id.split('.')[1]] : val[id],
-                     text: text.indexOf('.') >= 0 ? val[text.split('.')[0]][text.split('.')[1]] : val[text]
-                 }
+              jQuery.each(response.value, function (i, val) {
 
-                 list.push(record);
-             });
-         });
+                  //var record = {
+                  //    id: id.indexOf('.') >= 0 ? val[id.split('.')[0]][id.split('.')[1]] : val[id],
+                  //    text: text.indexOf('.') >= 0 ? val[text.split('.')[0]][text.split('.')[1]] : val[text]
+                  //}
+                  var concat = "";
+                  $.each(text, function (index, value) {
+                      var current = value.indexOf('.') >= 0 ? val[value.split('.')[0]][value.split('.')[1]] : val[value]
+                      concat = concat + current + " ";
+                  })
+                  var record = {
+                      id: id.indexOf('.') >= 0 ? val[id.split('.')[0]][id.split('.')[1]] : val[id],
+                      text: concat
+                  }
+                  list.push(record);
+              });
+          });
 
         return list;
     },
