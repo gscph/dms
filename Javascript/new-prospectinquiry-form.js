@@ -1,5 +1,5 @@
 $(document).ready(function () {
-   
+
     $('#gsc_recordownerid_name').siblings('.input-group-btn').addClass('hidden');
     $('#gsc_dealerid_name').siblings('.input-group-btn').addClass('hidden');
     $('#gsc_branchid_name').siblings('.input-group-btn').addClass('hidden');
@@ -65,14 +65,14 @@ $(document).ready(function () {
         }
     };
 
-    setTimeout(function () { 
-      requirementLevel() 
-       $('#gsc_birthday').next('.datetimepicker').children('input').mask('00/00/0000');
+    setTimeout(function () {
+        requirementLevel()
+        $('#gsc_birthday').next('.datetimepicker').children('input').mask('00/00/0000');
     }, 100);
 
     setTimeout(function () {
 
-         if(DMS.Settings.User.positionName == "Sales Executive" || DMS.Settings.User.webRole == "Sales Executive")
+        if (DMS.Settings.User.positionName == "Sales Executive" || DMS.Settings.User.webRole == "Sales Executive")
             SetSalesExecutive();
 
         $('#gsc_birthday').next('.datetimepicker').data("DateTimePicker").setMaxDate(new Date());
@@ -284,13 +284,13 @@ $(document).ready(function () {
             return false;
     };
 
-    function SetSalesExecutive(){
+    function SetSalesExecutive() {
         $("#gsc_salesexecutiveid_entityname").val("contact");
         $("#gsc_salesexecutiveid").val(DMS.Settings.User.Id);
         var fullName = $("#userFullname").html();
         $("#gsc_salesexecutiveid_name").val(fullName);
     }
-    
+
     //Set requirement level of fields according to selected prospect type
     function requirementLevel() {
         if ($('#gsc_prospecttype').val() == "100000001" || $('#gsc_prospecttype').val() == "100000002") {
