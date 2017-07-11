@@ -16,3 +16,4 @@ Plugins/GSC.Rover.DMS/CashReceipt/obj/Release/DesignTimeResolveAssemblyReference
 Plugins/GSC.Rover.DMS/AllocatedVehicle/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
 Plugins/GSC.Rover.DMS/Contact/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
 Plugins/GSC.Rover.DMS/ProspectInquiry/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
+*.cache
