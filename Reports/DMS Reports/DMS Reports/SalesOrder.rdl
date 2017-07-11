@@ -728,7 +728,6 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -6029,6 +6028,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
                       </Style>
                     </Textbox>
                     <ColSpan>2</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
