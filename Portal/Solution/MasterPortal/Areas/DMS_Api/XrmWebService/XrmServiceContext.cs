@@ -243,7 +243,7 @@ namespace Site.Areas.DMSApi
             return isRoot;
         }
 
-        public Privileges GetEntityPermission(Guid webRoleId, Guid webPageId, Guid recordOwnerId, Guid OwningBranchId)
+        public Privileges GetEntityPermission(Guid webRoleId, Guid webPageId, Guid recordOwnerId, Guid OwningBranchId, Guid salesExecutiveId)
         {
             //Retrieve Entity Permission
             QueryExpression queryEntityPermission = new QueryExpression("adx_entitypermission");
@@ -293,21 +293,34 @@ namespace Site.Areas.DMSApi
                         }
 
                         var scope = entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
-
+                            //global
                         if (scope == 756150000)
                         {
                             privileges = AssignPrivilegesValue(entityPermission);
                         }
-
-                        if (scope == 756150001 && userId == recordOwnerId)
+                            //contact
+                        if (scope == 756150001 && (userId == recordOwnerId || userId == salesExecutiveId))
                         {
                             privileges = AssignPrivilegesValue(entityPermission);
                         }
-
+                            //account
                         else if (scope == 756150002 && branchId == OwningBranchId)
                         {
                             privileges = AssignPrivilegesValue(entityPermission);
                         }
+                            //contact
+                       /* else if (scope == 756150001 && userId != recordOwnerId && userId == salesExecutiveId)
+                        {
+                            privileges.Read = true;
+                            privileges.Create = false;
+                            privileges.Update = false;
+                            privileges.Delete = false;
+                            privileges.Append = false;
+                            privileges.AppendTo = false;
+                          //  privileges.UpdateScope =
+                         //   privileges.DeleteScope = 
+                            return privileges;
+                        }*/
                     }
                     return privileges;
                 }

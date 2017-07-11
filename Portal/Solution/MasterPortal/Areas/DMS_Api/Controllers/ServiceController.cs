@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using Microsoft.Xrm.Sdk.Query;
+using GSC.Rover.DMS.BusinessLogic.PriceList;
 
 namespace Site.Areas.DMSApi.Controllers
 {
@@ -140,7 +141,7 @@ namespace Site.Areas.DMSApi.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetPrivilages(Guid webPageId, Guid recordOwnerId, Guid OwningBranchId)
+        public IHttpActionResult GetPrivilages(Guid webPageId, Guid recordOwnerId, Guid OwningBranchId, Guid salesExecutiveId)
         {
             try
             {
@@ -157,7 +158,7 @@ namespace Site.Areas.DMSApi.Controllers
                         {
                             webRoleId = new Guid(cookies["Branch"]["webRoleId"]);
                             var service = new XrmServiceContext(_conn);
-                            var result = service.GetEntityPermission(webRoleId, webPageId, recordOwnerId, OwningBranchId);
+                            var result = service.GetEntityPermission(webRoleId, webPageId, recordOwnerId, OwningBranchId, salesExecutiveId);
                             return Ok(result);
                         }
                     }
@@ -173,10 +174,10 @@ namespace Site.Areas.DMSApi.Controllers
         }
 
         [HttpGet]
-        public Privileges GetEntityPermission(Guid webRoleId, Guid webPageId, Guid recordOwnerId, Guid OwningBranchId)
+        public Privileges GetEntityPermission(Guid webRoleId, Guid webPageId, Guid recordOwnerId, Guid OwningBranchId, Guid salesExecutiveId)
         {
             var service = new XrmServiceContext(_conn);
-            return service.GetEntityPermission(webRoleId, webPageId, recordOwnerId, OwningBranchId);
+            return service.GetEntityPermission(webRoleId, webPageId, recordOwnerId, OwningBranchId, salesExecutiveId);
         }
 
         [HttpGet]

@@ -72,7 +72,7 @@
             var guidEmpty = "00000000-0000-0000-0000-000000000000";
 
             var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
-               { webPageId: webPageId, recordOwnerId: guidEmpty, OwningBranchId: guidEmpty }, DMS.Helpers.DefaultErrorHandler, null);
+               { webPageId: webPageId, recordOwnerId: guidEmpty, OwningBranchId: guidEmpty, salesExecutiveId: guidEmpty }, DMS.Helpers.DefaultErrorHandler, null);
 
             service.then(function (response) {
                 DMS.Settings.Permission = response;

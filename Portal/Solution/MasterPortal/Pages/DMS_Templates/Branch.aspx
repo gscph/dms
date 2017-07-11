@@ -119,9 +119,10 @@
                 var webPageId = $('#webPageId span').html();
                 var recordOwnerId = $("#gsc_recordownerid").val();
                 var OwningBranchId = $("#gsc_branchid").val();
+                var salesExecutiveId = "00000000-0000-0000-0000-000000000000"
 
                 var service = DMS.Service('GET', '~/api/Service/GetPrivilages',
-                   { webPageId: webPageId, recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId }, DMS.Helpers.DefaultErrorHandler, null);
+                   { webPageId: webPageId, recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId, salesExecutiveId: salesExecutiveId }, DMS.Helpers.DefaultErrorHandler, null);
 
                 service.then(function (response) {
                     DMS.Settings.Permission = response;

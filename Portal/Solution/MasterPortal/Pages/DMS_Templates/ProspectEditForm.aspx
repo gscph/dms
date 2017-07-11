@@ -124,15 +124,20 @@
                 var webPageId = $("#webPageId span").html();
                 var recordOwnerId = $("#gsc_recordownerid").val();
                 var OwningBranchId = $("#gsc_branchid").val();
+                var salesExecutiveId = $("#gsc_salesexecutiveid").val();
+                var guidEmpty = "00000000-0000-0000-0000-000000000000";
 
                 if (recordOwnerId == null || recordOwnerId == undefined || recordOwnerId == "")
-                    recordOwnerId = "00000000-0000-0000-0000-000000000000";
+                    recordOwnerId = guidEmpty;
 
                 if (OwningBranchId == null || OwningBranchId == undefined || OwningBranchId == "")
-                    OwningBranchId = "00000000-0000-0000-0000-000000000000";
+                    OwningBranchId = guidEmpty;
+
+                if (salesExecutiveId == null || salesExecutiveId == undefined || salesExecutiveId == "")
+                    salesExecutiveId = guidEmpty;
 
                 var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
-                   { webPageId: webPageId, recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId }, DMS.Helpers.DefaultErrorHandler, null);
+                   { webPageId: webPageId, recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId, salesExecutiveId: salesExecutiveId }, DMS.Helpers.DefaultErrorHandler, null);
 
                 service.then(function (response) {
                     DMS.Settings.Permission = response;
@@ -182,9 +187,9 @@
                                 if (data.value.length !== 0) {
                                     var reportsTo = data.value[0].gsc_reportsto;
                                     if (reportsTo !== null && reportsTo !== undefined)
-                                        reportsToId = reportsTo.Id;
+                                    var reportsToId = reportsTo.Id;
 
-                                    if (owner === userId || reportsToId === userId) {
+                                    if (owner === userId || reportsToId === userId || salesExecutiveId == userId) {
                                         return;
                                     }
 
@@ -193,7 +198,10 @@
                                     }
 
                                     $("section.content").hide();
-                                    window.location.href = "~/transactions/prospectinquiry/";
+                                    var entityForm = $("#EntityForm1");
+                                    entityForm.html("");
+                                    var template = "<div class=\"alert alert-block alert-danger\"><span class=\"fa fa-lock\" aria-hidden=\"true\"></span> Access denied. You do not have the appropriate permissions.</div>";
+                                    $(template).appendTo(entityForm);
                                 }
                             },
                             error: function (xhr, textStatus, errorMessage) {

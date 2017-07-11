@@ -21,18 +21,23 @@
         var recordArr = records;
 
         records.forEach(function (value, index) {
-            var tdReportsTo, reportsTo, createdBy, tdCreatedBy, tdAge;
+            var tdReportsTo, reportsTo, createdBy, tdCreatedBy, tdAge, tdSalesExecutive, salesExecutive;
             var $tr = $('tr[data-id="' + value + '"]');
               
             tdCreatedBy = $tr.find('td[data-attribute="gsc_recordownerid"]').data('value');
+            tdSalesExecutive = $tr.find('td[data-attribute="gsc_salesexecutiveid"]').data('value');
             tdAge = $tr.find('td[data-attribute="gsc_age"]');
 
             if (typeof tdCreatedBy !== 'undefined') {
-                createdBy = tdCreatedBy.Id;}
+                createdBy = tdCreatedBy.Id;
+            }
+            if (typeof tdSalesExecutive !== 'undefined') {
+                salesExecutive = tdSalesExecutive.Id;
+            }
 
-            var result = $.grep(data.value, function (e) { return e.contactid == createdBy; });
+            var result = $.grep(data.value, function (e) { return (e.contactid == createdBy || e.contactid == salesExecutive); });
 
-            if (!(createdBy == DMS.Settings.User.Id || result.length > 0)) {
+            if (!(createdBy == DMS.Settings.User.Id || salesExecutive == DMS.Settings.User.Id || result.length > 0)) {
                 records.splice(index, 1);
             }
         });
@@ -166,6 +171,7 @@
 
             status = $tr.find('td[data-attribute="gsc_status"]').attr('data-value');
             createdBy = JSON.parse($tr.find('td[data-attribute="gsc_recordownerid"]').attr('data-value')).Id;
+
             currentUser = DMS.Settings.User.Id;
 
             if (typeof status === 'undefined' || JSON.parse(status).Value != 100000000) {

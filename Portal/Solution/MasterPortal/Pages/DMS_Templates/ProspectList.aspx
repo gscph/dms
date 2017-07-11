@@ -127,7 +127,7 @@
                         if (data.value.length !== 0) {
                             var reportsTo = data.value[0].gsc_reportsto;
                             if (reportsTo !== null && reportsTo !== undefined)
-                                reportsToId = reportsTo.Id;
+                            var reportsToId = reportsTo.Id;
 
                             if (salesExecutive === userId || createdBy === userId || reportsToId === DMS.Settings.User.Id || isAuthorized) {
                                 window.location.href = editUrl;
