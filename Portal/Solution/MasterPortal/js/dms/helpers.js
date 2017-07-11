@@ -322,8 +322,9 @@ var Helpers = {
                   //    id: id.indexOf('.') >= 0 ? val[id.split('.')[0]][id.split('.')[1]] : val[id],
                   //    text: text.indexOf('.') >= 0 ? val[text.split('.')[0]][text.split('.')[1]] : val[text]
                   //}
+                  var fields = text.split(',');
                   var concat = "";
-                  $.each(text, function (index, value) {
+                  $.each(fields, function (index, value) {
                       var current = value.indexOf('.') >= 0 ? val[value.split('.')[0]][value.split('.')[1]] : val[value]
                       concat = concat + current + " ";
                   })
