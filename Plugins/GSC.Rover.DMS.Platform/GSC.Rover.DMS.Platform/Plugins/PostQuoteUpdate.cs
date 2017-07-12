@@ -355,9 +355,9 @@ namespace GSC.Rover.DMS.Platform.Plugins
                 }
                 catch (Exception ex)
                 {
-                    if (ex.Message.Contains("There are still active or draft quotes with the associated opportunity. These must be closed before the associated opportunity can be closed."))
+                    if (ex.Message.Contains("Cannot update opportunity status to lost since there's at least one quote record which is not closed."))
                     {
-                        throw new InvalidPluginExecutionException("There are still active or draft quotes with the associated opportunity. These must be closed before the associated opportunity can be closed.");
+                        throw new InvalidPluginExecutionException("Cannot update opportunity status to lost since there's at least one quote record which is not closed.");
                     }
                     else
                     {
