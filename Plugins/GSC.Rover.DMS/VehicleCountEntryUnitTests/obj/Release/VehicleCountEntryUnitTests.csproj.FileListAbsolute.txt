@@ -34,3 +34,15 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\bin\Release\G
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\obj\Release\VehicleCountEntryUnitTests.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\obj\Release\VehicleCountEntryUnitTests.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\obj\Release\VehicleCountEntryUnitTests.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\bin\Release\VehicleCountEntryUnitTests.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\bin\Release\VehicleCountEntryUnitTests.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountEntry.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\bin\Release\Moq.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountEntry.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\bin\Release\Moq.xml
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\obj\Release\VehicleCountEntryUnitTests.csprojResolveAssemblyReference.cache
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\obj\Release\VehicleCountEntryUnitTests.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryUnitTests\obj\Release\VehicleCountEntryUnitTests.pdb

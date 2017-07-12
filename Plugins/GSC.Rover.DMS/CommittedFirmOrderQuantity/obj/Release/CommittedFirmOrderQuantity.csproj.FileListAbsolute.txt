@@ -51,3 +51,14 @@ C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQua
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\obj\Release\CommittedFirmOrderQuantity.csprojResolveAssemblyReference.cache
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\obj\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.dll
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\obj\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantityDetail.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantityDetail.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\bin\Release\Microsoft.Crm.Sdk.Proxy.xml
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\obj\Release\CommittedFirmOrderQuantity.csprojResolveAssemblyReference.cache
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\obj\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\CommittedFirmOrderQuantity\obj\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrderQuantity.pdb

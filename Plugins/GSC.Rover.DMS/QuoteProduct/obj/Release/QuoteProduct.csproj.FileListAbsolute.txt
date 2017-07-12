@@ -20,3 +20,8 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteProduct\bin\Release\GSC.Rover.DMS.B
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteProduct\obj\Release\QuoteProduct.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteProduct\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteProduct\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProduct\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProduct\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProduct\obj\Release\QuoteProduct.csprojResolveAssemblyReference.cache
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProduct\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProduct\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.pdb

@@ -20,3 +20,10 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleClaim\bin\Release\Microsoft.Crm.S
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleClaim\obj\Release\VehicleClaim.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleClaim\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleClaim.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\VehicleClaim\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleClaim.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleClaim\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleClaim.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleClaim\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleClaim.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleClaim\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleClaim\bin\Release\Microsoft.Crm.Sdk.Proxy.xml
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleClaim\obj\Release\VehicleClaim.csprojResolveAssemblyReference.cache
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleClaim\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleClaim.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleClaim\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleClaim.pdb

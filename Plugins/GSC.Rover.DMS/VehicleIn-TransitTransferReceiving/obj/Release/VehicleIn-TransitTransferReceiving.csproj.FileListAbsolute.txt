@@ -29,3 +29,11 @@ C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTran
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\obj\Release\VehicleIn-TransitTransferReceiving.csprojResolveAssemblyReference.cache
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.dll
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\obj\Release\VehicleIn-TransitTransferReceiving.csprojResolveAssemblyReference.cache
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.pdb

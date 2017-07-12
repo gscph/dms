@@ -34,3 +34,10 @@ C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\b
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\obj\Release\OrderPlanningDetail.csprojResolveAssemblyReference.cache
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\obj\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.dll
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\obj\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\obj\Release\OrderPlanningDetail.csprojResolveAssemblyReference.cache
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\obj\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetail\obj\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.pdb

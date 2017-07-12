@@ -42,3 +42,14 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteProductUnitTest\bin\Release\Moq.xml
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteProductUnitTest\obj\Release\QuoteProductUnitTest.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteProductUnitTest\obj\Release\QuoteProductUnitTest.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\QuoteProductUnitTest\obj\Release\QuoteProductUnitTest.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProductUnitTest\bin\Release\QuoteProductUnitTest.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProductUnitTest\bin\Release\QuoteProductUnitTest.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProductUnitTest\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProductUnitTest\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProductUnitTest\bin\Release\Moq.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProductUnitTest\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteProduct.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProductUnitTest\bin\Release\Microsoft.Xrm.Sdk.xml
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProductUnitTest\bin\Release\Moq.xml
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProductUnitTest\obj\Release\QuoteProductUnitTest.csprojResolveAssemblyReference.cache
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProductUnitTest\obj\Release\QuoteProductUnitTest.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteProductUnitTest\obj\Release\QuoteProductUnitTest.pdb

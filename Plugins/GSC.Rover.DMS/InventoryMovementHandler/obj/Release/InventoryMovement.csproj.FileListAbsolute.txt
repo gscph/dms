@@ -27,3 +27,10 @@ C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InventoryMovementHand
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InventoryMovementHandler\obj\Release\InventoryMovement.csprojResolveAssemblyReference.cache
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InventoryMovementHandler\obj\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InventoryMovementHandler\obj\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InventoryMovementHandler\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InventoryMovementHandler\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InventoryMovementHandler\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InventoryMovementHandler\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InventoryMovementHandler\obj\Release\InventoryMovement.csprojResolveAssemblyReference.cache
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InventoryMovementHandler\obj\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InventoryMovementHandler\obj\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb

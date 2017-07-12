@@ -58,3 +58,15 @@ C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUn
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\obj\Release\OrderPlanningDetailUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\obj\Release\OrderPlanningDetailUnitTests.dll
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\obj\Release\OrderPlanningDetailUnitTests.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\OrderPlanningDetailUnitTests.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\OrderPlanningDetailUnitTests.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\Moq.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.OrderPlanningDetail.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\Moq.xml
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\obj\Release\OrderPlanningDetailUnitTests.csprojResolveAssemblyReference.cache
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\obj\Release\OrderPlanningDetailUnitTests.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\OrderPlanningDetailUnitTests\obj\Release\OrderPlanningDetailUnitTests.pdb

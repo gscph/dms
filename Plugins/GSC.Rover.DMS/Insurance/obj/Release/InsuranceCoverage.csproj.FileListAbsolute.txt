@@ -34,3 +34,10 @@ C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Insurance\bin\Release
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Insurance\obj\Release\InsuranceCoverage.csprojResolveAssemblyReference.cache
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Insurance\obj\Release\GSC.Rover.DMS.BusinessLogic.Insurance.dll
 C:\Users\aramos\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Insurance\obj\Release\GSC.Rover.DMS.BusinessLogic.Insurance.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Insurance\bin\Release\GSC.Rover.DMS.BusinessLogic.Insurance.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Insurance\bin\Release\GSC.Rover.DMS.BusinessLogic.Insurance.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Insurance\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Insurance\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Insurance\obj\Release\InsuranceCoverage.csprojResolveAssemblyReference.cache
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Insurance\obj\Release\GSC.Rover.DMS.BusinessLogic.Insurance.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Insurance\obj\Release\GSC.Rover.DMS.BusinessLogic.Insurance.pdb

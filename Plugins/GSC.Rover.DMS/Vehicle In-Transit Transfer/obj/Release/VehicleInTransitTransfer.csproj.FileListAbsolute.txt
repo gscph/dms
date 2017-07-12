@@ -22,3 +22,11 @@ D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\bin\Release\
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\obj\Release\VehicleInTransitTransfer.csprojResolveAssemblyReference.cache
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer.dll
 D:\DMS\Github\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\obj\Release\VehicleInTransitTransfer.csprojResolveAssemblyReference.cache
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer.pdb
