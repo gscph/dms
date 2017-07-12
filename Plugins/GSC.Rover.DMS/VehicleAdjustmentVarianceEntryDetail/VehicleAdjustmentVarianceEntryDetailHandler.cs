@@ -313,7 +313,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail
                 var vehicleColorConditionList = new List<ConditionExpression>
                 {
                     new ConditionExpression("gsc_colorcode", ConditionOperator.Equal, colorCode),
-                    new ConditionExpression("gsc_productid", ConditionOperator.Equal, optionCode)
+                    new ConditionExpression("gsc_productid", ConditionOperator.Equal, product.Id)
                 };
 
                 EntityCollection vehicleColorRecords = CommonHandler.RetrieveRecordsByConditions("gsc_cmn_vehiclecolor", vehicleColorConditionList, _organizationService, null, OrderType.Ascending,
