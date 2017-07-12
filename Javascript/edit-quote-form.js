@@ -235,6 +235,8 @@ $(document).ready(function (e) {
     };
 
     setTimeout(function () {
+        paymentmode = $("#gsc_paymentmode").val();
+        paymentModeOnChange("");
         $("#gsc_paymentmode").on('change', function () {
             paymentmode = $("#gsc_paymentmode").val();
             paymentModeOnChange("onchange");
