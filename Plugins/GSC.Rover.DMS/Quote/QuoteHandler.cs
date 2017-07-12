@@ -407,31 +407,57 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             _tracingService.Trace("Started CheckMonthlyAmortizationRecord method ...");
 
             EntityCollection MARecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_quotemonthlyamortization", "gsc_quoteid", quoteEntity.Id, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_quoteid" });
-
+                new[] { "gsc_quoteid", "gsc_financingtermid", "gsc_selected"  });
+            Guid financingTermId = Guid.Empty;
             if (MARecords != null || MARecords.Entities.Count > 0)
             {
                 foreach (var amortization in MARecords.Entities)
                 {
+                    Boolean isSelected = amortization.Contains("gsc_selected") ? amortization.GetAttributeValue<Boolean>("gsc_selected") : false;
+                    if (isSelected == true)
+                    {
+                        financingTermId = amortization.Contains("gsc_financingtermid") ? amortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
+                    }
                     _tracingService.Trace("Deleting Monthly Amortization Records...");
 
                     _organizationService.Delete(amortization.LogicalName, amortization.Id);
                 }
 
                 quoteEntity["gsc_netmonthlyamortization"] = new Money(0);
-
+                _organizationService.Update(quoteEntity);
                 _tracingService.Trace("Net monthly amortization Updated to 0 ...");
             }
 
             //Call CreateMonthlyAmortization method
             if (quoteEntity.Contains("gsc_financingschemeid") && quoteEntity.GetAttributeValue<EntityReference>("gsc_financingschemeid") != null)
             {
-                return CreateMonthlyAmortization(quoteEntity);
+                CreateMonthlyAmortization(quoteEntity);
+                return UpdateMonthlyAmortization(quoteEntity, financingTermId);
             }
 
             _tracingService.Trace("Ended CheckMonthlyAmortizationRecord method..");
 
             return null;
+        }
+
+
+        private Entity UpdateMonthlyAmortization(Entity quoteEntity, Guid financingTermId)
+        {
+            EntityCollection salesQuoteMonthlyAmortizationRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_quotemonthlyamortization", "gsc_quoteid", quoteEntity.Id, _organizationService, null, OrderType.Ascending,
+                new[] { "gsc_financingtermid", "gsc_selected" });
+            if (salesQuoteMonthlyAmortizationRecords != null || salesQuoteMonthlyAmortizationRecords.Entities.Count > 0)
+            {
+                foreach (var salesQuoteMonthlyAmortization in salesQuoteMonthlyAmortizationRecords.Entities)
+                {
+                    Guid financingTerm = salesQuoteMonthlyAmortization.Contains("gsc_financingtermid") ? salesQuoteMonthlyAmortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
+                    if (financingTerm == financingTermId)
+                    {
+                        salesQuoteMonthlyAmortization["gsc_selected"] = true;
+                        _organizationService.Update(salesQuoteMonthlyAmortization);
+                    }
+                }
+            }
+            return quoteEntity;
         }
 
         //Created By: Leslie G. Baliguat, Created On: 02/16/2016
