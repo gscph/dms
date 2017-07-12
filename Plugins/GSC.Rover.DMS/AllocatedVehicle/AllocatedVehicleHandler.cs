@@ -158,13 +158,19 @@ namespace GSC.Rover.DMS.BusinessLogic.AllocatedVehicle
             var orderId = CommonHandler.GetEntityReferenceIdSafe(allocatedEntity, "gsc_orderid");
 
             EntityCollection orderRecords = CommonHandler.RetrieveRecordsByOneValue("salesorder", "salesorderid", orderId, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_isreadyforpdi"});
+                new[] { "gsc_isreadyforpdi", "gsc_pdistatus", "gsc_completed"});
 
             if (orderRecords != null && orderRecords.Entities.Count > 0)
             {
                 Entity salesOrder = orderRecords.Entities[0];
-                if (salesOrder.GetAttributeValue<Boolean>("gsc_isreadyforpdi"))
+                Boolean readyforPDI = salesOrder.GetAttributeValue<Boolean>("gsc_isreadyforpdi");
+                Int32 pdiStatus = salesOrder.Contains("gsc_pdistatus") ? salesOrder.GetAttributeValue<OptionSetValue>("gsc_pdistatus").Value : 0;
+                Boolean completed = salesOrder.GetAttributeValue<Boolean>("gsc_completed");
+                                                                            //cancelled
+                if (readyforPDI == true && completed == false && pdiStatus != 100000001)
                     throw new InvalidPluginExecutionException("Allocated vehicle cannot be removed. It is already subject for PDI.");
+                else if (readyforPDI == true && completed == true && pdiStatus != 100000001)
+                    throw new InvalidPluginExecutionException("Allocated vehicle cannot be removed. It is already PDI completed, please cancel PDI first.");
             }
             return false;
         }
