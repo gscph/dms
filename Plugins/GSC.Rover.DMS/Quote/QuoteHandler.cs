@@ -407,13 +407,13 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             _tracingService.Trace("Started CheckMonthlyAmortizationRecord method ...");
 
             EntityCollection MARecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_quotemonthlyamortization", "gsc_quoteid", quoteEntity.Id, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_quoteid", "gsc_financingtermid", "gsc_selected"  });
+                new[] { "gsc_quoteid", "gsc_financingtermid", "gsc_isselected"  });
             Guid financingTermId = Guid.Empty;
             if (MARecords != null || MARecords.Entities.Count > 0)
             {
                 foreach (var amortization in MARecords.Entities)
                 {
-                    Boolean isSelected = amortization.Contains("gsc_selected") ? amortization.GetAttributeValue<Boolean>("gsc_selected") : false;
+                    Boolean isSelected = amortization.Contains("gsc_isselected") ? amortization.GetAttributeValue<Boolean>("gsc_isselected") : false;
                     if (isSelected == true)
                     {
                         financingTermId = amortization.Contains("gsc_financingtermid") ? amortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
@@ -444,7 +444,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
         private Entity UpdateMonthlyAmortization(Entity quoteEntity, Guid financingTermId)
         {
             EntityCollection salesQuoteMonthlyAmortizationRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_quotemonthlyamortization", "gsc_quoteid", quoteEntity.Id, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_financingtermid", "gsc_selected" });
+                new[] { "gsc_financingtermid", "gsc_isselected" });
             if (salesQuoteMonthlyAmortizationRecords != null || salesQuoteMonthlyAmortizationRecords.Entities.Count > 0)
             {
                 foreach (var salesQuoteMonthlyAmortization in salesQuoteMonthlyAmortizationRecords.Entities)
@@ -452,7 +452,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                     Guid financingTerm = salesQuoteMonthlyAmortization.Contains("gsc_financingtermid") ? salesQuoteMonthlyAmortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
                     if (financingTerm == financingTermId)
                     {
-                        salesQuoteMonthlyAmortization["gsc_selected"] = true;
+                        salesQuoteMonthlyAmortization["gsc_isselected"] = true;
                         _organizationService.Update(salesQuoteMonthlyAmortization);
                     }
                 }
