@@ -292,7 +292,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail
                 ? vehicleAdjustmentVarianceEntryDetailEntity.GetAttributeValue<String>("gsc_colorcode")
                 : String.Empty;
 
-            //Create filter for Product in Product entity
+            //Create filter for product
             var productConditionList = new List<ConditionExpression>
             {
                 new ConditionExpression("gsc_modelcode", ConditionOperator.Equal, modelCode),
@@ -310,6 +310,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail
                     ? product.GetAttributeValue<EntityReference>("gsc_vehiclemodelid")
                     : null;
 
+                //Create filter for vehicle color
                 var vehicleColorConditionList = new List<ConditionExpression>
                 {
                     new ConditionExpression("gsc_colorcode", ConditionOperator.Equal, colorCode),
