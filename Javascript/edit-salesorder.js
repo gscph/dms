@@ -230,7 +230,7 @@ $(document).ready(function () {
     }
 
     //For Invoicing Button
-    $btnTransfer = DMS.Helpers.CreateAnchorButton("btn-primary btn", '', ' TRANSFER FOR INVOICE', DMS.Helpers.CreateFontAwesomeIcon('fa-credit-card'));
+    $btnTransfer = DMS.Helpers.CreateAnchorButton("btn-primary btn transferInvoice", '', ' TRANSFER FOR INVOICE', DMS.Helpers.CreateFontAwesomeIcon('fa-credit-card'));
     $btnTransfer.click(function (evt) {
         evt.preventDefault();
 
@@ -241,6 +241,9 @@ $(document).ready(function () {
     if (status == 'Allocated') {
         DMS.Helpers.AppendButtonToToolbar($btnTransfer);
     }
+    
+    if($("#gsc_netmonthlyamortization").html() == "₱0.00" && $("#gsc_paymentmode").val() == "100000001")
+      $(".transferInvoice").attr("disabled", "disabled");
 
     if ((status == 'Open' || status == 'For Allocation' || status == 'Allocated' || status == 'Reserved') && webRole != "CC Manager") {
         $('#gsc_placeofrelease').prop("readOnly", false);
@@ -640,7 +643,7 @@ classData.then(function (data) {
 
 
 var productId = $("#gsc_productid").val();
-var accessoriesSelectData = DMS.Helpers.GetOptionListSet('/_odata/vehicleaccessory?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_itemid.Id", "gsc_itemid.Name");
+var accessoriesSelectData = DMS.Helpers.GetOptionListSet('/_odata/vehicleaccessory?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_itemid.Id", "gsc_itemid.Name,gsc_vehicleaccessorypn");
 
 
 var AccessroiessGridInstance = {
@@ -731,7 +734,7 @@ var AccessroiessGridInstance = {
     }
 }
 
-var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_sls_vehiclecabchassisid", "gsc_vehiclecabchassispn");
+var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_sls_vehiclecabchassisid", "gsc_vehiclecabchassispn,gsc_itemid.Name");
 
 var CabChasisGridInstance = {
     initialize: function () {
@@ -897,7 +900,7 @@ var monthlyAmortizationGridInstance = {
 
         hotInstance.addHook('afterLoadData', function () {
             var status = $(".record-status").html();
-            if (hotInstance.countRows() > 1 && (status != "For Invoicing" && status != "Completed")) {
+            if (hotInstance.countRows() > 0 && (status != "For Invoicing" && status != "Completed")) {
                 $(".btnSaveCopy").removeAttr("disabled");
             }
         });
