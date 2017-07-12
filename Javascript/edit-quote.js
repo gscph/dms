@@ -248,7 +248,7 @@ $(document).ready(function () {
                                     console.log(quoteStateCode.Name);
                                     if (quoteStateCode.Name == 'Draft' || quoteStateCode.Name == 'Active') {
                                         $('#createOrderModal').modal('hide');
-                                        DMS.Notification.Error('There are still active or draft quotes with the associated opportunity');
+                                        DMS.Notification.Error('Cannot update opportunity status to won since there\'s at least one draft/active quote.');
                                         isValidForCreateOrder = false;
                                     }
                                     else if (quoteStateCode.Name == 'Won') {

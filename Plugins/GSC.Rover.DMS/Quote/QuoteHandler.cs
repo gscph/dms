@@ -1936,7 +1936,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
 
                             if (quoteStateCode == 0 || quoteStateCode == 1)
                             {
-                                throw new InvalidPluginExecutionException("There are still active or draft quotes with the associated opportunity. These must be closed before the associated opportunity can be closed.");
+                                throw new InvalidPluginExecutionException("Cannot update opportunity status to lost since there's at least one quote record which is not closed.");
                             }
                             else if (quoteStateCode == 2)
                             {
