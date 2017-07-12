@@ -9,7 +9,6 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using Microsoft.Xrm.Sdk.Query;
-using GSC.Rover.DMS.BusinessLogic.PriceList;
 
 namespace Site.Areas.DMSApi.Controllers
 {

@@ -640,7 +640,7 @@ classData.then(function (data) {
 
 
 var productId = $("#gsc_productid").val();
-var accessoriesSelectData = DMS.Helpers.GetOptionListSet('/_odata/vehicleaccessory?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_itemid.Id", "gsc_itemid.Name");
+var accessoriesSelectData = DMS.Helpers.GetOptionListSet('/_odata/vehicleaccessory?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_itemid.Id", "gsc_itemid.Name,gsc_vehicleaccessorypn");
 
 
 var AccessroiessGridInstance = {
@@ -731,7 +731,7 @@ var AccessroiessGridInstance = {
     }
 }
 
-var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_sls_vehiclecabchassisid", "gsc_vehiclecabchassispn");
+var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_sls_vehiclecabchassisid", "gsc_vehiclecabchassispn,gsc_itemid.Name");
 
 var CabChasisGridInstance = {
     initialize: function () {
