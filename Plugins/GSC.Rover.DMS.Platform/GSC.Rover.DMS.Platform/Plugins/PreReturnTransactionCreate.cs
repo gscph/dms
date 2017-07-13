@@ -18,7 +18,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
     /// <summary>
     /// PreReturnTransactionCreate Plugin.
     /// </summary>    
-    public class PreReturnTransactionCreate: Plugin
+    public class PreReturnTransactionCreate : Plugin
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PreReturnTransactionCreate"/> class.
@@ -64,12 +64,12 @@ namespace GSC.Rover.DMS.Platform.Plugins
 
             try
             {
-
                 ReturnTransactionHandler returnTransactionHandler = new ReturnTransactionHandler(service, trace);
-
-                returnTransactionHandler.PopulateReturnTransactionFields(returnTransactionEntity);
+                if (returnTransactionHandler.CheckIfInventoryIsAvailable(returnTransactionEntity) == false)
+                {
+                    throw new InvalidPluginExecutionException("Cannot proceed with your transaction. Vehicle of this receiving record is already allocated.");
+                }
             }
-
 
             catch (Exception ex)
             {

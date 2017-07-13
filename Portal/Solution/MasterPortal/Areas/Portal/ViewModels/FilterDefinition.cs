@@ -642,7 +642,7 @@ namespace Site.Areas.Portal.ViewModels
             {
                 _viewConfig = FilterPriceList(_viewConfig);
             }
-            else if (objectName == "Inventory Subgrid Portal - Vehicle Transfer View")
+            else if (objectName == "Inventory Subgrid Portal - Vehicle Transfer View" || objectName == "Vehicle Adjustment/Variance Allocation Subgrid View")
             {
                 _viewConfig = FilterAvailableItems_VehicleTransfer(_viewConfig);
             }

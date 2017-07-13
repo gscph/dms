@@ -1481,6 +1481,14 @@
             </Step>
           </Steps>
         </Plugin>
+        <Plugin Description="Plug-in to PreReturnTransactionCreate" FriendlyName="PreReturnTransactionCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreReturnTransactionCreate" Id="a1ce96c1-bb67-e711-80f5-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreReturnTransactionCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreReturnTransactionCreate" Description="Pre-Operation of Return Transaction Create" Id="9127a2c7-bb67-e711-80f5-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_returntransaction" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
       </PluginTypes>
     </Solution>
     <Solution Assembly="GSC.Rover.DMS.Platform.Workflow.dll" Id="55c58133-16c0-e511-80cb-00155d010e2c" IsolationMode="None" SourceType="Database">
