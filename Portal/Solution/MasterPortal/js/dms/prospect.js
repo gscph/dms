@@ -212,6 +212,15 @@
         });
     }
 
+    function HideModal(modalButton, html) {
+        modalButton.html(html);
+        modalButton.removeClass('disabled');
+        modalButton.siblings('.btn').removeClass('disabled');
+        $('.view-toolbar.grid-actions .activate').addClass('disabled');
+        $('.view-toolbar.grid-actions .deactivate').addClass('disabled');
+        $('.modal-delete').modal('hide');
+    }
+
     function statusValidatorSO(records) {
         records.forEach(function (value, index) {
 
