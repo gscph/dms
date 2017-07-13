@@ -890,6 +890,7 @@ namespace Site.Areas.Portal.ViewModels
                 <attribute name='gsc_customertype'/>
                 <attribute name='emailaddress1'/>
                 <attribute name='telephone1'/>
+                <attribute name='gsc_recordtype'/>
                 <filter type='and'>
                     <condition attribute='statecode' operator='eq' value='0' />
                     <condition attribute='gsc_recordtype' operator='eq' value='100000003' />
@@ -907,6 +908,7 @@ namespace Site.Areas.Portal.ViewModels
                 <attribute name='gsc_customertype'/>
                 <attribute name='emailaddress1'/>
                 <attribute name='telephone1'/>
+                <attribute name='gsc_recordtype'/>
                 <filter type='and'>
                     <condition attribute='statecode' operator='eq' value='0' />
                     <condition attribute='gsc_recordtype' operator='eq' value='100000003' />
@@ -942,6 +944,7 @@ namespace Site.Areas.Portal.ViewModels
                 <attribute name='mobilephone'/>
                 <attribute name='emailaddress1'/>
                 <attribute name='gsc_customerid'/>
+                <attribute name='gsc_recordtype'/>
                 <filter type='and'>
                     <condition attribute='statecode' operator='eq' value='0' />
                     <condition attribute='gsc_recordtype' operator='eq' value='100000001' />
@@ -958,6 +961,7 @@ namespace Site.Areas.Portal.ViewModels
                 <attribute name='mobilephone'/>
                 <attribute name='emailaddress1'/>
                 <attribute name='gsc_customerid'/>
+                <attribute name='gsc_recordtype'/>
                 <filter type='and'>
                     <condition attribute='statecode' operator='eq' value='0' />
                     <condition attribute='gsc_recordtype' operator='eq' value='100000001' />

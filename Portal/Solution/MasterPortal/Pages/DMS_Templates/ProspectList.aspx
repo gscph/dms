@@ -82,6 +82,7 @@
                         var that = $(this);
 
                         var _layouts = that.closest('div[data-view-layouts]').data("view-layouts")[0];
+                        var entityName = _layouts.Configuration.EntityName;
                         var path = _layouts.Configuration.DetailsActionLink.URL.PathWithQueryString;
                         var editUrl = path + "?id=" + that.parent('tr').data('id');
 
@@ -94,14 +95,14 @@
                         if (DMS.Settings.Permission != null) {
                             isAuthorized = DMS.Settings.Permission.UpdateScope == 756150000 && DMS.Settings.Permission.Read == true;
                         }
-                        IsRecordOwner(that, isAuthorized, editUrl);
+                        IsRecordOwner(that, isAuthorized, editUrl, entityName);
                     });
                 }
 
             });
 
           
-            function IsRecordOwner(element, isAuthorized, editUrl) {
+            function IsRecordOwner(element, isAuthorized, editUrl, entityName) {
                 var userId = DMS.Settings.User.Id;
 
                 var attribute = element.data('attribute');
@@ -129,9 +130,17 @@
                             if (reportsTo !== null && reportsTo !== undefined)
                             var reportsToId = reportsTo.Id;
 
-                            if (salesExecutive === userId || createdBy === userId || reportsToId === DMS.Settings.User.Id || isAuthorized) {
+                            if (salesExecutive === userId || reportsToId === DMS.Settings.User.Id || isAuthorized) {
                                 window.location.href = editUrl;
                                 return;
+                            }
+
+                            if (entityName != "contact" && entityName != "account")
+                            {
+                                if (createdBy === userId) {
+                                    window.location.href = editUrl;
+                                    return;
+                                }
                             }
 
                             $.unblockUI();

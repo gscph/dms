@@ -48,9 +48,9 @@ $(document).ready(function () {
 
     setTimeout(function () {
         $.cookie("ProductQuantityId", DMS.Helpers.GetUrlQueryString("id"), { path: '/' });
-        RefreshGrid("AllocatedVehicle");
-        RefreshGrid("Unserved");
-        RefreshGrid("subgrid_soldvehicledetails");
+        // RefreshGrid("AllocatedVehicle");
+        //RefreshGrid("Unserved");
+        // RefreshGrid("subgrid_soldvehicledetails");
 
         //Allocated
         $('#AllocatedVehicle .btn-primary:eq(2)').click(function (e) {
