@@ -95,17 +95,25 @@ namespace Site.Reports
                         Response.BinaryWrite(wordData);
                         Response.End();
                     }
-
                     else
                     {
-                        byte[] data = ReportViewer1.ServerReport.Render("PDF");//, devinfo, out mimeType, out encoding, out extension, out streamIds, out warnings);
+                        if (reportname == "{fce6b184-5265-e711-80f5-00155d010e2c}")
+                        {
+                            string val = dssr.Value = "DSSR";
+                            ReportViewer1.ShowParameterPrompts = true;
+                            ReportViewer1.PromptAreaCollapsed = false;
+                        }
+                        else
+                        {
+                            byte[] data = ReportViewer1.ServerReport.Render("PDF");//, devinfo, out mimeType, out encoding, out extension, out streamIds, out warnings);
 
-                        Response.Clear();
-                        Response.ContentType = "application/pdf";
-                        Response.AddHeader("content-disposition", "inline; filename=report_" + reportname + ".pdf");
+                            Response.Clear();
+                            Response.ContentType = "application/pdf";
+                            Response.AddHeader("content-disposition", "inline; filename=report_" + reportname + ".pdf");
 
-                        Response.BinaryWrite(data);
-                        Response.Flush();
+                            Response.BinaryWrite(data);
+                            Response.Flush();
+                        }
                     }
                     ReportViewer1.ServerReport.Refresh();
                 }

@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Report.aspx.cs" Inherits="Site.Reports.RequirementChecklist" EnableEventValidation="false"%>
 
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 <!DOCTYPE html>
 
@@ -13,17 +13,17 @@
     
     <script type = "text/javascript">
         // Print function (require the reportviewer client ID)
-    
+        var reportType = '<% = dssr.Value %>';
         function printReport(report_ID) {
 
             //var prtContent = document.getElementById("ReportViewer1_ctl09");
             //var WinPrint = window.open('', '', 'left=100,top=100,width=600,height=600');
-            
+
             //WinPrint.document.write(prtContent.innerHTML);
             //WinPrint.document.close();
             //WinPrint.focus();
             //WinPrint.print();
-          
+
             //var rv1 = $('#' + report_ID);
             //alert("hi");
             //var iDoc = rv1.parents('html');
@@ -68,20 +68,27 @@
             //// newWin.close();
         };
 
-        function resizeWindow()
-        {
-            var WinPrint = window.open('', '', 'left=100,top=100,width=850,height=1000');
-            var width = 850;
-            var height = 1000;
-            window.resizeTo(width, height);     
-            
+        function resizeWindow() {
+            if (reportType == "DSSR") {
+                var prtContent = document.getElementById("ReportViewer1");
+                WinPrint.document.write(prtContent.innerHTML, 'left=0, top=100, width=1000,height=1000');
+                WinPrint.focus();
+            }
+            else {
+                var WinPrint = window.open('', '', 'left=100,top=100,width=850,height=1000');
+                var width = 850;
+                var height = 1000;
+                window.resizeTo(width, height);
+            }
+
+
         }
 
     </script>
     
     <div id="layout" style="margin: auto; width:850px;">
     <form id="form1" runat="server">
-
+        <asp:HiddenField ID="dssr" runat="server" Value="tom" />
         <asp:scriptmanager id="sm" runat="server" enablepartialrendering="true" scriptmode="release" enablepagemethods="true"></asp:scriptmanager>
        <%-- <asp:Button id="printreport" Text="Print" runat="server" OnClientClick="printReport(ReportViewer1)"/>--%>
            <rsweb:reportviewer ID="ReportViewer1" runat="server"  Font-Names="Verdana" Font-Size="8pt" Height="100%" ProcessingMode="Remote" Width="100%" ShowBackButton="True" PromptAreaCollapsed="True" SizeToReportContent="True"
@@ -92,5 +99,6 @@
     </div>
 
     <script src="~/js/jquery-1.11.1.min.js"></script>
+    <script src="~/dms-plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 </body>
 </html>
