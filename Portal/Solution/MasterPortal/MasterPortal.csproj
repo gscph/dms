@@ -707,6 +707,7 @@
     <Compile Include="Areas\DMS_Api\XrmWebService\XrmCommonHelper.cs" />
     <Compile Include="Areas\DMS_Api\XrmWebService\XrmConnection.cs" />
     <Compile Include="Areas\DMS_Api\XrmWebService\XrmMultipleRequestHelper.cs" />
+    <Compile Include="Areas\Portal\ViewModels\CustomViewAdapter.cs" />
     <Compile Include="Areas\Portal\ViewModels\FilterDefinition.cs" />
     <Compile Include="Areas\DMS_Api\Repositories\CurrentlyUsedWebPageRepository.cs" />
     <Compile Include="Areas\DMS_Api\Models\CurrentlyUsedWebPage.cs" />
