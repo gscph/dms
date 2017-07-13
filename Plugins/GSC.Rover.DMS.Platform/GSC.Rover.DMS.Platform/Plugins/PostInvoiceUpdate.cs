@@ -169,10 +169,10 @@ namespace GSC.Rover.DMS.Platform.Plugins
 
                         if (postImageSalesInvoiceStatus == 100000003) //If from DR and GatePass, status = Printed
                         {
-                            if (!invoiceHandler.ValidateSubmitDRandGatePass(postImageEntity))
-                            {
-                                throw new InvalidPluginExecutionException("Record cannot be printed because PDI has not yet been completed.");
-                            }
+                            //if (!invoiceHandler.ValidateSubmitDRandGatePass(postImageEntity))
+                            //{
+                            //    throw new InvalidPluginExecutionException("Record cannot be printed because PDI has not yet been completed.");
+                            //}
                         }
 
                         // Create Transacted Vehicle When Invoice Status Is Released
