@@ -135,7 +135,7 @@
                                 return;
                             }
 
-                            if (entityName != "contact" || entityName != "account")
+                            if (entityName != "contact" && entityName != "account")
                             {
                                 if (createdBy === userId) {
                                     window.location.href = editUrl;
