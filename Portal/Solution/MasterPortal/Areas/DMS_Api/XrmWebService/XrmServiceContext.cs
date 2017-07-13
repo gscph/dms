@@ -302,12 +302,12 @@ namespace Site.Areas.DMSApi
                         //contact
                         if (scope == 756150001 && (userId == recordOwnerId || userId == salesExecutiveId))
                         {
-                            privileges = AssignPrivilegesValue(entityPermission);
+                            return AssignPrivilegesValue(entityPermission);
                         }
                         //account
                         else if (scope == 756150002 && branchId == OwningBranchId)
                         {
-                            privileges = AssignPrivilegesValue(entityPermission);
+                            return AssignPrivilegesValue(entityPermission);
                         }
 
                     }
