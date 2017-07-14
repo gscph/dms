@@ -72,6 +72,30 @@
       <Name>DailySalesStocksReport.rdl</Name>
       <FullPath>DailySalesStocksReport.rdl</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>SalesInvoiceDetails.rdl</Name>
+      <FullPath>SalesInvoiceDetails.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>PurchaseOrderDetails.rdl</Name>
+      <FullPath>PurchaseOrderDetails.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>PurchaseOrderLayout.rdl</Name>
+      <FullPath>PurchaseOrderLayout.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>SalesInvoiceLayout.rdl</Name>
+      <FullPath>SalesInvoiceLayout.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>SalesOrderDetails.rdl</Name>
+      <FullPath>SalesOrderDetails.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>SalesOrderLayout.rdl</Name>
+      <FullPath>SalesOrderLayout.rdl</FullPath>
+    </ProjectItem>
   </Reports>
   <Configurations>
     <Configuration>

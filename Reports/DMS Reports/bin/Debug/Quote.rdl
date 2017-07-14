@@ -4610,8 +4610,8 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=First(Fields!ProductModel.Value, "QuoteDetails") + Microsoft.VisualBasic.Interaction.IIF(Microsoft.VisualBasic.Information.ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")), "", " w/" + Mid(First(Fields!CabChassis.Value, "CabChassis"),1,InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;" 
-+ Mid(First(Fields!CabChassis.Value, "CabChassis"),InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")+1,LEN(First(Fields!CabChassis.Value, "CabChassis")) ))</Value>
+                              <Value>=First(Fields!ProductModel.Value,"QuoteDetails") + 
+IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + First(Fields!CabChassis.Value, "CabChassis"))</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                               </Style>
@@ -7604,7 +7604,7 @@ IIF(First(Fields!BranchWebSiteURL.Value, "QuoteDetails") = NOTHING, NOTHING, Fir
     <DataSource Name="Quote">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=XRMDMSDB;Initial Catalog=MMPCDEV_MSCRM</ConnectString>
+        <ConnectString>Data Source=DMSUATDB2;Initial Catalog=MMPCUAT_MSCRM</ConnectString>
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>d6756ee6-ed10-46f1-bae4-aa9b2205e2de</rd:DataSourceID>
