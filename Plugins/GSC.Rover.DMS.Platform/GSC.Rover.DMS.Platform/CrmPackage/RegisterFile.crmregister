@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <Register xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/crm/2011/tools/pluginregistration">
   <Solutions>
     <Solution Assembly="GSC.Rover.DMS.Platform.Plugins.dll" Id="52c58133-16c0-e511-80cb-00155d010e2c" IsolationMode="None" SourceType="Database">
@@ -1477,6 +1477,25 @@
             <Step CustomConfiguration="" Name="PostBankCreate" Description="Post-Operation of Bank Create" Id="2c932f26-f161-e711-80f5-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_sls_bank" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
               <Images>
                 <Image EntityAlias="PostImage" Id="2f932f26-f161-e711-80f5-00155d010e2c" MessagePropertyName="id" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreReturnTransactionCreate" FriendlyName="PreReturnTransactionCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreReturnTransactionCreate" Id="a1ce96c1-bb67-e711-80f5-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreReturnTransactionCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreReturnTransactionCreate" Description="Pre-Operation of Return Transaction Create" Id="9127a2c7-bb67-e711-80f5-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_returntransaction" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PostExtendedPriceListItemUpdate" FriendlyName="PostExtendedPriceListItemUpdate" Name="GSC.Rover.DMS.Platform.Plugins.PostExtendedPriceListItemUpdate" Id="00000000-0000-0000-0000-000000000000" TypeName="GSC.Rover.DMS.Platform.Plugins.PostExtendedPriceListItemUpdate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostExtendedPriceListItemUpdate" Description="Post-Operation of Extended Price List Item Update" Id="00000000-0000-0000-0000-000000000000" MessageName="Update" Mode="Synchronous" PrimaryEntityName="gsc_cmn_extendedpricelistitem" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="preImage" Id="00000000-0000-0000-0000-000000000000" MessagePropertyName="Target" ImageType="PreImage" />
+                <Image EntityAlias="postImage" Id="00000000-0000-0000-0000-000000000000" MessagePropertyName="Target" ImageType="PostImage" />
               </Images>
             </Step>
           </Steps>

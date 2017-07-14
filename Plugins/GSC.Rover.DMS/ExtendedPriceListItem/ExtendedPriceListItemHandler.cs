@@ -270,13 +270,42 @@ namespace GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem
 
         public void DeleteAssociatedPriceListItem(Guid extendedPriceListId)
         {
+            Entity priceListItem = GetAssociatedPriceListItem(extendedPriceListId);
+
+            if(priceListItem != null)
+            {
+                _organizationService.Delete("productpricelevel", priceListItem.Id);
+            }
+        }
+
+        public Entity UpdatePriceListItem(Entity extendedEntity)
+        {
+            Entity priceListItem = GetAssociatedPriceListItem(extendedEntity.Id);
+
+            if(priceListItem != null)
+            {
+                priceListItem["amount"] = extendedEntity.Contains("gsc_amount")
+                    ? extendedEntity.GetAttributeValue<Money>("gsc_amount")
+                    : new Money(0);
+                priceListItem["uomscheduleid"] = extendedEntity.GetAttributeValue<EntityReference>("gsc_uomid") != null
+                    ? extendedEntity.GetAttributeValue<EntityReference>("gsc_uomid")
+                    : null;
+
+                _organizationService.Update(priceListItem);
+            }
+
+            return extendedEntity;
+        }
+
+        private Entity GetAssociatedPriceListItem(Guid extendedPriceListId)
+        {
             string entity1 = "productpricelevel";
             string entity2 = "gsc_cmn_extendedpricelistitem";
 
             string relationshipEntityName = "gsc_gsc_cmn_extendedpricelistitem_productpr";
 
             QueryExpression query = new QueryExpression(entity1);
-            query.ColumnSet = new ColumnSet("productpricelevelid");
+            query.ColumnSet = new ColumnSet("productpricelevelid", "amount", "uomscheduleid");
             LinkEntity linkEntity1 = new LinkEntity(entity1, relationshipEntityName, "productpricelevelid", "productpricelevelid", JoinOperator.Inner);
             LinkEntity linkEntity2 = new LinkEntity(relationshipEntityName, entity2, "gsc_cmn_extendedpricelistitemid", "gsc_cmn_extendedpricelistitemid", JoinOperator.Inner);
             linkEntity1.LinkEntities.Add(linkEntity2);
@@ -288,8 +317,10 @@ namespace GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem
 
             if (priceListItemCollection != null && priceListItemCollection.Entities.Count > 0)
             {
-                _organizationService.Delete("productpricelevel", priceListItemCollection.Entities[0].Id);
+                return priceListItemCollection.Entities[0];
             }
+
+            return null;
         }
     }
 }

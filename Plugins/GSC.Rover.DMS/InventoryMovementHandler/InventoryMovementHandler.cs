@@ -211,6 +211,7 @@ namespace GSC.Rover.DMS.BusinessLogic.InventoryMovement
 
         private int CountQuantity(Entity quantityEntity, List<ConditionExpression> countCondition)
         {
+            countCondition.Add(new ConditionExpression("statecode", ConditionOperator.Equal, 0));
 
             EntityCollection inventoryCollection = CommonHandler.RetrieveRecordsByConditions("gsc_iv_inventory", countCondition, _organizationService, null,
                 OrderType.Ascending, new[] { "gsc_inventorypn" });

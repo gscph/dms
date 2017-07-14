@@ -642,6 +642,10 @@ namespace Site.Areas.Portal.ViewModels
             {
                 _viewConfig = FilterPriceList(_viewConfig);
             }
+            else if (objectName == "Inventory Subgrid Portal - Vehicle Transfer View" || objectName == "Vehicle Adjustment/Variance Allocation Subgrid View")
+            {
+                _viewConfig = FilterAvailableItems_VehicleTransfer(_viewConfig);
+            }
 
             return _viewConfig;
         }
@@ -699,7 +703,7 @@ namespace Site.Areas.Portal.ViewModels
                 _viewConfig.FetchXml = newFetchXml;
             }
 
-            return _viewConfig;        
+            return _viewConfig;
         }
 
         private ViewConfiguration FilterInsurance(ViewConfiguration _viewConfig)
@@ -1183,6 +1187,129 @@ namespace Site.Areas.Portal.ViewModels
             return fetch;
         }
 
+        private ViewConfiguration FilterAvailableItems_VehicleTransfer(ViewConfiguration _viewConfig)
+        {
+            SavedQueryView queryView = _viewConfig.GetSavedQueryView(_serviceContext);
+            var objectName = queryView.Name;
+
+            Fetch fetch;
+
+            if (_viewConfig.FetchXml != null)
+                fetch = Fetch.Parse(_viewConfig.FetchXml);
+            else
+                fetch = Fetch.Parse(queryView.FetchXml);
+
+            var fetchXml = queryView.FetchXml;
+
+            string baseModelId = string.Empty;
+            string productId = string.Empty;
+            string siteId = string.Empty;
+            string colorName = string.Empty;
+            string modelCode = string.Empty;
+            string optionCode = string.Empty;
+
+            var context = HttpContext.Current;
+
+            if (context != null)
+            {
+                var request = context.Request.RequestContext;
+                var cookies = request.HttpContext.Request.Cookies;
+
+                if (cookies != null)
+                {
+                    if (cookies["productId"] != null)
+                    {
+                        productId = cookies["productId"].Value;
+                    }
+                    if (cookies["siteId"] != null)
+                    {
+                        siteId = cookies["siteId"].Value;
+                    }
+                    if (cookies["colorName"] != null)
+                    {
+                        colorName = cookies["colorName"].Value;
+                        colorName = colorName.Replace("%20", " ");
+                    }
+                    if (cookies["modelCode"] != null)
+                    {
+                        modelCode = cookies["modelCode"].Value;
+                    }
+                    if (cookies["optionCode"] != null)
+                    {
+                        optionCode = cookies["optionCode"].Value;
+                    }
+                    if (cookies["baseModelId"] != null)
+                    {
+                        baseModelId = cookies["baseModelId"].Value;
+                    }
+                }
+            }
+
+            Filter filter = new Filter { Type = LogicalOperator.And };
+            filter.Conditions = new List<Condition>();
+
+            if (baseModelId != String.Empty)
+            {
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_basemodelid",
+                    Operator = ConditionOperator.Equal,
+                    Value = baseModelId
+                });
+            }
+            if (productId != String.Empty)
+            {
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_productid",
+                    Operator = ConditionOperator.Equal,
+                    Value = productId
+                });
+            }
+            if (siteId != String.Empty)
+            {
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_siteid",
+                    Operator = ConditionOperator.Equal,
+                    Value = siteId
+                });
+            }
+            if (colorName != String.Empty)
+            {
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_color",
+                    Operator = ConditionOperator.Equal,
+                    Value = colorName
+                });
+            }
+            if (modelCode != String.Empty)
+            {
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_modelcode",
+                    Operator = ConditionOperator.Equal,
+                    Value = modelCode
+                });
+            }
+            if (optionCode != String.Empty)
+            {
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_optioncode",
+                    Operator = ConditionOperator.Equal,
+                    Value = optionCode
+                });
+            }
+
+            fetch.Entity.Filters.Add(filter);
+
+            _viewConfig.FetchXml = fetch.ToXml().ToString();
+
+            return _viewConfig;
+        }
+
         private ViewConfiguration FilterInvoices(ViewConfiguration _viewConfig)
         {
             SavedQueryView queryView = _viewConfig.GetSavedQueryView(_serviceContext);
@@ -1291,14 +1418,14 @@ namespace Site.Areas.Portal.ViewModels
                         <condition attribute='gsc_producttype' operator='eq' value='100000000' />
                         <condition attribute='statecode' operator='eq' value='0' />";
 
-                    if (parentProductId != "")
-                    {
-                        fetch = fetch + @"<condition attribute='parentproductid' operator='eq' value='" + parentProductId + @"' />";
-                    } 
-                    if (baseModelId != "")
-                    {
-                        fetch = fetch + @"<condition attribute='gsc_vehiclemodelid' operator='eq' value='" + baseModelId + @"' />";
-                    }
+            if (parentProductId != "")
+            {
+                fetch = fetch + @"<condition attribute='parentproductid' operator='eq' value='" + parentProductId + @"' />";
+            }
+            if (baseModelId != "")
+            {
+                fetch = fetch + @"<condition attribute='gsc_vehiclemodelid' operator='eq' value='" + baseModelId + @"' />";
+            }
 
             fetch = fetch + @"</filter> 
                  </entity> 
@@ -1349,7 +1476,7 @@ namespace Site.Areas.Portal.ViewModels
                 }
             }
 
-            Filter filter = new Filter { Type = LogicalOperator.Or };
+            Filter filter = new Filter { Type = LogicalOperator.And };
             filter.Conditions = new List<Condition>();
 
             if (dateFrom != "")
@@ -1419,7 +1546,7 @@ namespace Site.Areas.Portal.ViewModels
                 }
             }
 
-            Filter filter = new Filter { Type = LogicalOperator.Or };
+            Filter filter = new Filter { Type = LogicalOperator.And };
             filter.Conditions = new List<Condition>();
 
             if (dateFrom != "")
@@ -1487,7 +1614,7 @@ namespace Site.Areas.Portal.ViewModels
                 }
             }
 
-            Filter filter = new Filter { Type = LogicalOperator.Or };
+            Filter filter = new Filter { Type = LogicalOperator.And };
             filter.Conditions = new List<Condition>();
 
             if (dateFrom != "")
