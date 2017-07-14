@@ -221,7 +221,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     #endregion
 
                     if (preImageStreet != postImageStreet || preImageCityIdName != postImageCityIdName || preImageProvinceId != postImageProvinceId || preImageCountryId != postImageCountryId ||
-                        preImageZipCode != postImageZipCode || preImageMobile != postImageMobile || preImageTelephone != preImageTelephone || preImageTin != postImageTin)
+                        preImageZipCode != postImageZipCode || preImageMobile != postImageMobile || preImageTelephone != postImageTelephone || preImageTin != postImageTin)
                     {
                         contactHandler.UpdateCustomerInfo(postImageEntity);
                     }
