@@ -378,6 +378,10 @@ namespace GSC.Rover.DMS.BusinessLogic.ReturnTransaction
                         return true;
                     }
                 }
+                else
+                {
+                    throw new InvalidPluginExecutionException("Cannot proceed with your transaction. Vehicle of this receiving record is no longer existing.");
+                }
             }
 
             _tracingService.Trace("Ended CheckIfInventoryIsAvailable method..");
