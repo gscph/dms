@@ -39,7 +39,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
 
             //Retrieve Opportunity record from Opportunity ID field value
             EntityCollection opportunityRecords = CommonHandler.RetrieveRecordsByOneValue("opportunity", "opportunityid", opportunityId, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_salesexecutiveid", "gsc_vehiclebasemodelid", "gsc_colorid", "gsc_leadsourceid", "originatingleadid", "customerid", "gsc_dealerid", "gsc_branchid", "gsc_portaluserid", "name", "gsc_paymentmode", "gsc_financingtermid"});
+                new[] { "gsc_salesexecutiveid", "gsc_vehiclebasemodelid", "gsc_colorid", "gsc_leadsourceid", "originatingleadid", "customerid", "gsc_dealerid", "gsc_branchid", "gsc_portaluserid", "name", "gsc_paymentmode", "gsc_financingtermid" });
 
             if (opportunityRecords != null && opportunityRecords.Entities.Count > 0)
             {
@@ -180,22 +180,22 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                         ? product.GetAttributeValue<EntityReference>("gsc_bodytypeid").Name
                         : string.Empty;
                     var transmission = product.Contains("gsc_transmission")
-                        ? product.FormattedValues["gsc_transmission"] 
+                        ? product.FormattedValues["gsc_transmission"]
                         : string.Empty;
                     var gvw = product.Contains("gsc_grossvehicleweight")
-                        ? product["gsc_grossvehicleweight"] 
+                        ? product["gsc_grossvehicleweight"]
                         : string.Empty;
                     var piston = product.Contains("gsc_pistondisplacement")
                         ? product["gsc_pistondisplacement"]
                         : string.Empty;
                     var fuel = product.Contains("gsc_fueltype")
-                        ? product.FormattedValues["gsc_fueltype"] 
+                        ? product.FormattedValues["gsc_fueltype"]
                         : string.Empty;
                     var expirydays = product.Contains("gsc_warrantyexpirydays")
                         ? product["gsc_warrantyexpirydays"]
                         : string.Empty;
                     var warranty = product.Contains("gsc_warrantymileage")
-                        ? product["gsc_warrantymileage"] 
+                        ? product["gsc_warrantymileage"]
                         : string.Empty;
                     var others = product.Contains("gsc_othervehicledetails")
                         ? product["gsc_othervehicledetails"]
@@ -209,15 +209,15 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
 
                     String description = "Model Year:" + modelYear +
                         "\nModel Code: " + modelCode +
-                        "\nOption Code: " + optionCode + 
+                        "\nOption Code: " + optionCode +
                         "\nVehicle Type: " + vehicleType +
                         "\nBody Type: " + bodyType +
                         "\nGross Vehicle Weight: " + gvw +
                         "\nPiston Displacement: " + piston +
-                        "\nFuel Type: " + fuel + 
-                        "\nTransmission: " + transmission + 
-                        "\nWarranty Years: " + expirydays + 
-                        "\nWarranty Mileage: " + warranty + 
+                        "\nFuel Type: " + fuel +
+                        "\nTransmission: " + transmission +
+                        "\nWarranty Years: " + expirydays +
+                        "\nWarranty Mileage: " + warranty +
                         "\nOthers: " + others;
 
                     var sellprice = new Money(ComputeUnitPrice(product, quoteEntity));
@@ -248,7 +248,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
 
         //Created By: Leslie Baliguat, Created On: 2/12/2016
         //Modified By: Jessica Casupanan, Modified On: 04/10/2017
-                    //:Enhancement for insurance.
+        //:Enhancement for insurance.
         /*Purpose:  If Insurance Total Premium was updated, update Insurance Charges in Payment Summary.
          *         If free in Insurance was checked, update Insurance Charges in Payment Suammry to Zero(0).
          *         If free in Insurance was unchecked, update Insurance Charges in Payment Suammry to the value of Insurance Total Premium.
@@ -749,7 +749,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             {
                 amountfinanced = ComputeAmountFinanced(quoteEntity);
                 quoteEntity["gsc_amountfinanced"] = new Money(amountfinanced);
-                quoteEntity["gsc_totalamountfinanced"] = new Money(amountfinanced);              
+                quoteEntity["gsc_totalamountfinanced"] = new Money(amountfinanced);
             }
 
             var cashoutlay = ComputeCashLayout(quoteEntity);
@@ -814,13 +814,13 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
 
             quoteEntity["gsc_totaldiscount"] = new Money(unitPrice);
             quoteEntity["gsc_lessdiscountaf"] = new Money(amountFinanced);
-            quoteEntity["gsc_lessdiscount"] = new Money(downpayment);          
+            quoteEntity["gsc_lessdiscount"] = new Money(downpayment);
             //Recompute related fields
             Decimal downPaymentAmount = ComputeDownpaymentAmount(quoteEntity);
             quoteEntity["gsc_downpaymentamount"] = new Money(downPaymentAmount);
 
             var netprice = ComputeNetPrice(quoteEntity);
-            quoteEntity["gsc_netprice"] = new Money(netprice);            
+            quoteEntity["gsc_netprice"] = new Money(netprice);
 
             quoteEntity = ComputeVAT(quoteEntity);
 
@@ -854,7 +854,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             cashoutlay = ComputeCashLayout(quoteEntity);
             quoteEntity["gsc_totalcashoutlay"] = new Money(cashoutlay);
 
-            Entity quoteToUpdate = _organizationService.Retrieve(quoteEntity.LogicalName, quoteEntity.Id, 
+            Entity quoteToUpdate = _organizationService.Retrieve(quoteEntity.LogicalName, quoteEntity.Id,
                            new ColumnSet(true));
 
             quoteToUpdate["gsc_lessdiscount"] = quoteEntity["gsc_lessdiscount"];
@@ -862,7 +862,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             quoteToUpdate["gsc_lessdiscountaf"] = quoteEntity["gsc_lessdiscountaf"];
             quoteToUpdate["gsc_totaldiscount"] = quoteEntity["gsc_totaldiscount"];
             quoteToUpdate["gsc_netdownpayment"] = new Money(netdp);
-            quoteToUpdate["gsc_downpayment"] = new Money(netdp);           
+            quoteToUpdate["gsc_downpayment"] = new Money(netdp);
             quoteToUpdate["gsc_netprice"] = new Money(netprice);
             quoteToUpdate["gsc_totalcashoutlay"] = new Money(cashoutlay);
             quoteToUpdate["gsc_amountfinanced"] = amountfinanced == 0 ? null : new Money(amountfinanced);
@@ -915,7 +915,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
         /*Purpose: Compute Down Payment Amount = downpayment - discount
          * Being called by the public methods when net downpayment needs to be recomputed */
         private Decimal ComputeDownpaymentAmount(Entity quoteEntity)
-        {           
+        {
             Decimal netPrice = quoteEntity.Contains("gsc_netprice")
                 ? quoteEntity.GetAttributeValue<Money>("gsc_netprice").Value
                 : Decimal.Zero;
@@ -1792,7 +1792,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                 : Guid.Empty;
 
             EntityCollection productRecords = CommonHandler.RetrieveRecordsByOneValue("product", "productid", productId, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_sellprice", "pricelevelid"});
+                new[] { "gsc_sellprice", "pricelevelid" });
 
             if (productRecords != null && productRecords.Entities.Count > 0)
             {
@@ -1833,17 +1833,17 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                     Entity quoteToUpdate = _organizationService.Retrieve(quoteEntity.LogicalName, quoteEntity.Id, new ColumnSet("gsc_colorprice", "gsc_netprice",
                         "gsc_amountfinanced", "gsc_netprice", "gsc_vatablesales", "gsc_vehicleunitprice", "gsc_vatexemptsales", "gsc_zeroratedsales", "gsc_totalcashoutlay",
                         "gsc_vatamount", "gsc_totalamountdue", "gsc_totalamountfinanced", "gsc_totalsales", "gsc_unitprice", "gsc_downpaymentamount"));
-                    quoteToUpdate["gsc_unitprice"] = quoteEntity["gsc_vehicleunitprice"];                  
-                    quoteToUpdate["gsc_vehicleunitprice"] = quoteEntity["gsc_vehicleunitprice"];                  
-                    quoteToUpdate["gsc_netprice"] = new Money(netprice);                    
-                    quoteToUpdate["gsc_amountfinanced"] = amountfinanced == 0 ? null : new Money(amountfinanced);                   
+                    quoteToUpdate["gsc_unitprice"] = quoteEntity["gsc_vehicleunitprice"];
+                    quoteToUpdate["gsc_vehicleunitprice"] = quoteEntity["gsc_vehicleunitprice"];
+                    quoteToUpdate["gsc_netprice"] = new Money(netprice);
+                    quoteToUpdate["gsc_amountfinanced"] = amountfinanced == 0 ? null : new Money(amountfinanced);
                     quoteToUpdate["gsc_totalamountfinanced"] = new Money(amountfinanced);
-                    quoteToUpdate["gsc_vatablesales"] = quoteEntity["gsc_vatablesales"];                  
-                    quoteToUpdate["gsc_vatexemptsales"] = quoteEntity["gsc_vatexemptsales"];                  
-                    quoteToUpdate["gsc_zeroratedsales"] = quoteEntity["gsc_zeroratedsales"];                   
+                    quoteToUpdate["gsc_vatablesales"] = quoteEntity["gsc_vatablesales"];
+                    quoteToUpdate["gsc_vatexemptsales"] = quoteEntity["gsc_vatexemptsales"];
+                    quoteToUpdate["gsc_zeroratedsales"] = quoteEntity["gsc_zeroratedsales"];
                     quoteToUpdate["gsc_totalsales"] = quoteEntity["gsc_totalsales"];
                     quoteToUpdate["gsc_vatamount"] = quoteEntity["gsc_vatamount"];
-                    quoteToUpdate["gsc_totalamountdue"] = quoteEntity["gsc_totalamountdue"];                   
+                    quoteToUpdate["gsc_totalamountdue"] = quoteEntity["gsc_totalamountdue"];
                     quoteToUpdate["gsc_downpaymentamount"] = new Money(downPaymentAmount);
                     quoteToUpdate["gsc_downpaymentdisplay"] = new Money(downPaymentAmount);
                     quoteToUpdate["gsc_totalcashoutlay"] = quoteEntity["gsc_totalcashoutlay"];
@@ -1965,7 +1965,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                         LoseOpportunityResponse resp = (LoseOpportunityResponse)_organizationService.Execute(req);
                     }
                 }
-            }            
+            }
             else
             {
                 if (closeQuote == true)
@@ -2125,7 +2125,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
 
                 Entity product = productCollection.Entities[0];
                 Guid priceLevelId = product.Contains("pricelevelid") ? product.GetAttributeValue<EntityReference>("pricelevelid").Id
-               :Guid.Empty;
+               : Guid.Empty;
 
                 if (!product.Contains("gsc_sellprice"))
                 {
@@ -2195,4 +2195,3 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
         }
     }
 }
-

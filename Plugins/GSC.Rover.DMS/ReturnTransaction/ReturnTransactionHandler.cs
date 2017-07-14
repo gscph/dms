@@ -330,5 +330,70 @@ namespace GSC.Rover.DMS.BusinessLogic.ReturnTransaction
                  : 0;
             return (returnTransactionStatus == 100000000);          
         }
+
+        //Created By: Leslie G. Baliguat, Created On: 07/11/2017
+        /*Purpose: Validate if vehicle is still available before creating receiving record
+         * Registration Details: 
+         * Event/Message:
+         *      Pre/Create: Receiving Transaction
+         * Primary Entity: Receiving Transaction
+         */
+        public Boolean CheckIfInventoryIsAvailable(Entity returnTransaction)
+        {
+            _tracingService.Trace("Started CheckIfInventoryIsAvailable method..");
+
+            var recevingId = returnTransaction.GetAttributeValue<EntityReference>("gsc_receivingtransactionid") != null
+                ? returnTransaction.GetAttributeValue<EntityReference>("gsc_receivingtransactionid").Id
+                : Guid.Empty;
+
+            EntityCollection receivingTransactionDetailRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_cmn_receivingtransactiondetail", "gsc_receivingtransactionid", recevingId, _organizationService, null, OrderType.Ascending,
+                new[] { "gsc_inventoryid" });
+
+            _tracingService.Trace("Receiving Transaction Details: " + receivingTransactionDetailRecords.Entities.Count);
+
+            if (receivingTransactionDetailRecords != null && receivingTransactionDetailRecords.Entities.Count > 0)
+            {
+                _tracingService.Trace("Retrieve transaction detail.");
+
+                Entity receivingDetail = receivingTransactionDetailRecords.Entities[0];
+                Guid entityId = receivingDetail.GetAttributeValue<EntityReference>("gsc_inventoryid") != null
+                    ? receivingDetail.GetAttributeValue<EntityReference>("gsc_inventoryid").Id
+                    : Guid.Empty;
+
+                EntityCollection inventoryRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", entityId, _organizationService, null, OrderType.Ascending,
+                new[] { "gsc_status", "statecode" });
+
+                if (inventoryRecords != null && inventoryRecords.Entities.Count > 0)
+                {
+                    _tracingService.Trace("Retrieve Inventory.");
+
+                    Entity inventory = inventoryRecords.Entities[0];
+                    var status = inventory.Contains("gsc_status")
+                        ? inventory.GetAttributeValue<OptionSetValue>("gsc_status").Value
+                        : 0;
+                    var statecode = inventory.Contains("statecode")
+                        ? inventory.GetAttributeValue<OptionSetValue>("statecode").Value
+                        : 0;
+
+                    _tracingService.Trace("Inventory Stratus." + status);
+
+                    //If Inventory is iunactive
+                    if(statecode == 1)
+                    {
+                        throw new InvalidPluginExecutionException("Cannot proceed with your transactoion. Vehicle of this record is already inactive.");
+                    }
+
+                    if (status == 100000000)
+                    {
+                        return true;
+                    }
+                   
+                }
+            }
+
+            _tracingService.Trace("Ended CheckIfInventoryIsAvailable method..");
+
+            return false;
+        }
     }
 }

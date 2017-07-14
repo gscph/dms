@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/DMS-FormsContent.master" AutoEventWireup="true" CodeBehind="PriceList.aspx.cs" Inherits="Site.Pages.DMS_Templates.PriceList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/DMS-FormsContent.master" AutoEventWireup="true" CodeBehind="PriceList.aspx.cs" Inherits="Site.Pages.DMS_Templates.PriceList"%>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="Adxstudio.Xrm.Web.Mvc.Html" %>

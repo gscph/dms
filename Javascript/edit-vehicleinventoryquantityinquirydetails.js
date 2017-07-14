@@ -10,8 +10,12 @@ $(document).ready(function () {
     });
 
     //Purchase Approver Web Role Validations
-    if (DMS.Settings.User.webRole === "Purchase Approver")
+    if(DMS.Settings.User.webRole === "Purchase Approver")
         $('*[data-name="VIQI_Sold"]').prev().hide();
+
+    //Warehouse Manager Web Role Validations
+    if(DMS.Settings.User.webRole === "Warehouse Manager")
+        $('.datetimepicker > input').attr('disabled', 'disabled');
 
 
     //Available
@@ -48,9 +52,9 @@ $(document).ready(function () {
 
     setTimeout(function () {
         $.cookie("ProductQuantityId", DMS.Helpers.GetUrlQueryString("id"), { path: '/' });
-        RefreshGrid("AllocatedVehicle");
-        RefreshGrid("Unserved");
-        RefreshGrid("subgrid_soldvehicledetails");
+       // RefreshGrid("AllocatedVehicle");
+        //RefreshGrid("Unserved");
+       // RefreshGrid("subgrid_soldvehicledetails");
 
         //Allocated
         $('#AllocatedVehicle .btn-primary:eq(2)').click(function (e) {
@@ -137,11 +141,11 @@ $(document).ready(function () {
 
     function PrintReport(reportName, dateFrom, dateTo) {
 
-        dateFrom = dateFrom != "" ? new Date(dateFrom) : "";
-        var dateFromString = dateFrom != "" ? dateFrom.getFullYear() + "-" + (dateFrom.getMonth() + 1) + "-" + dateFrom.getDate() : "";
+        dateFrom = dateFrom != "" ? new Date(dateFrom) : ""; 
+        var dateFromString = dateFrom != "" ? dateFrom.getFullYear() + "-" + (dateFrom.getMonth() + 1) + "-" +  dateFrom.getDate() : "";
 
-        dateTo = dateTo != "" ? new Date(dateTo) : "";
-        var dateToString = dateTo != "" ? dateTo.getFullYear() + "-" + (dateTo.getMonth() + 1) + "-" + dateTo.getDate() : "";
+        dateTo = dateTo != "" ? new Date(dateTo) : ""; 
+        var dateToString = dateTo != "" ? dateTo.getFullYear() + "-" + (dateTo.getMonth() + 1) + "-" +  dateTo.getDate(): "";
 
         var param1var = DMS.Helpers.GetUrlQueryString('id');
         var protocol = window.location.protocol;

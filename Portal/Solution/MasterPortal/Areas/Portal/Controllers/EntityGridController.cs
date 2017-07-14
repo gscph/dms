@@ -170,14 +170,14 @@ namespace Site.Areas.Portal.Controllers
                 applyRecordLevelFilters = false;
 
             var viewDataAdapter = applyRelatedRecordFilter &&
-                                  (!string.IsNullOrWhiteSpace(filterRelationshipName) &&
-                                   !string.IsNullOrWhiteSpace(filterEntityName))
-                ? new ViewDataAdapter(viewConfiguration, dataAdapterDependencies, filterRelationshipName, filterEntityName,
-                    filterAttributeName, filterValue ?? Guid.Empty, page, search, sortExpression, filter, metaFilter, applyRecordLevelFilters)
-                : new ViewDataAdapter(viewConfiguration, dataAdapterDependencies, page, search, sortExpression, filter, metaFilter,
-                    applyRecordLevelFilters);
+                                     (!string.IsNullOrWhiteSpace(filterRelationshipName) &&
+                                     !string.IsNullOrWhiteSpace(filterEntityName))
+                 ? new CustomViewAdapter(viewConfiguration, dataAdapterDependencies, filterRelationshipName, filterEntityName,
+                     filterAttributeName, filterValue ?? Guid.Empty, page, search, sortExpression, filter, metaFilter, applyRecordLevelFilters)
+                 : new CustomViewAdapter(viewConfiguration, dataAdapterDependencies, page, search, sortExpression, filter, metaFilter,
+                     applyRecordLevelFilters);
 
-            var result = viewDataAdapter.FetchEntities();
+            var result = viewDataAdapter.CustomFetchEntities(viewConfiguration);
 
             var filteredRecords = converter.FilterSharedEntityScope(viewConfiguration, result.Records);
             var globalRecords = converter.FilterRootBusinessUnitRecords(viewConfiguration, filterEntityName, filterRelationshipName, filterValue, search);

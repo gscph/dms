@@ -66,274 +66,45 @@ $(document).ready(function () {
     if (status != "Open")
         disableFields();
 
-    setTimeout(function () {
-        RefreshAvailableItems($(".btn-primary").closest("div #Inventory"), 1, 4);
 
-        $('.btn-primary').on('click', function (e) {
+    checkRefreshButton();
 
-            var $subgrid = $(this).closest(".subgrid");
-            var $subgridId = $subgrid.parent().attr("id");
+    function checkRefreshButton() {
 
-            if ($subgridId == "Inventory") {
+        if ($('a:contains("REFRESH")').is(':visible')) {
+            $('a:contains("REFRESH")').attr("id", "refresh");
+            document.getElementById('refresh').addEventListener('click', DMS.Helpers.Debounce(function (e) {
                 e.preventDefault();
-                e.stopPropagation();
-
-                RefreshAvailableItems($subgrid.parent(), 1, 4);
-            }
-        });
-
-    }, 3000);
-
-
-    function RefreshAvailableItems($parent, page, PageSize) {
-        var $subgrid = $parent.children(".subgrid");
-        var $table = $subgrid.children(".view-grid").find("table");
-        var $tbody = $("<tbody></tbody>");
-        var $errorMessage = $subgrid.children(".view-error");
-        var $emptyMessage = $subgrid.children(".view-empty");
-        var $accessDeniedMessage = $subgrid.children(".view-access-denied");
-        var $loadingMessage = $subgrid.children(".view-loading");
-        var $pagination = $subgrid.children(".view-pagination");
-        var url = $subgrid.data("get-url");
-        var layout = $subgrid.data("view-layouts");
-        var configuration = layout[0].Configuration;
-        var base64SecureConfiguration = layout[0].Base64SecureConfiguration;
-        var sortExpression = $table.data("sort-expression");
-
-        $subgrid.children(".view-grid").find("tbody").remove();
-
-        $errorMessage.hide().prop("aria-hidden", true);
-        $emptyMessage.hide().prop("aria-hidden", true);
-        $accessDeniedMessage.hide().prop("aria-hidden", true);
-
-        $loadingMessage.show().prop("aria-hidden", false);
-
-        $pagination.hide();
-
-        var odataUrl = "/_odata/inventory?$filter=gsc_status/Value eq 100000000";
-        $.ajax({
-            type: "get",
-            async: true,
-            url: odataUrl,
-            success: function (inventory) {
-
-                var filteredInventory = inventory.value.filter(FilterInventory);
-
-                ReCreateInventoryTable($parent, filteredInventory, page, PageSize);
-            }
-        });
-
-    }
-
-    //filtered inventory of the filter criteria
-    function FilterInventory(data) {
-
-        var colorIdFilter = $("#gsc_colorid_name").val();
-        var siteIdFilter = $("#gsc_sitecriteriaid").val();
-        var modelDescriptionFilter = $("#gsc_productid").val();
-        var modelCodeFilter = $("#gsc_modelcode").val();
-        var optionCodeFilter = $("#gsc_optioncode").val();
-        var baseModelFilter = $('#gsc_vehiclebasemodelid').val();
-
-        var colorId = data["gsc_color"];
-        var siteId = data["gsc_iv_productquantity-gsc_siteid"];
-        var productId = data["gsc_iv_productquantity-gsc_productid"];
-        var modelCode = data["gsc_modelcode"];
-        var optionCode = data["gsc_optioncode"];
-        var baseModel = data["gsc_iv_productquantity-gsc_vehiclemodelid"];
-
-        var removeData = false;
-
-        if (colorIdFilter != null && colorIdFilter != "")
-            if (colorId != colorIdFilter)
-                removeData = true;
-
-        if (siteIdFilter != null && siteIdFilter != "")
-            if (siteId != null) {
-                if (siteId.Id != siteIdFilter)
-                    removeData = true;
-            }
-            else
-                removeData = true;
-
-        if (modelDescriptionFilter != null && modelDescriptionFilter != "")
-            if (productId != null) {
-                if (productId.Id != modelDescriptionFilter)
-                    removeData = true;
-            }
-            else
-                removeData = true;
-
-        if (baseModelFilter != null && baseModelFilter != "")
-            if (baseModel != null) {
-                if (baseModel.Id != baseModelFilter)
-                    removeData = true;
-            }
-            else
-                removeData = true;
-
-        if (modelCodeFilter != null && modelCodeFilter != "")
-            if (modelCodeFilter != modelCode)
-                removeData = true;
-
-        if (optionCodeFilter != null && optionCodeFilter != "")
-            if (optionCodeFilter != optionCode)
-                removeData = true;
-
-        if (removeData == false)
-            return data;
-
-    }
-
-    function ReCreateInventoryTable($parent, data, page, PageSize) {
-        var $subgrid = $parent.children(".subgrid");
-        var $table = $subgrid.children(".view-grid").find("table");
-        var $tbody = $("<tbody></tbody>");
-        var $errorMessage = $subgrid.children(".view-error");
-        var $emptyMessage = $subgrid.children(".view-empty");
-        var $accessDeniedMessage = $subgrid.children(".view-access-denied");
-        var $loadingMessage = $subgrid.children(".view-loading");
-        var $pagination = $subgrid.children(".view-pagination");
-        var url = $subgrid.data("get-url");
-        var layout = $subgrid.data("view-layouts");
-        var configuration = layout[0].Configuration;
-        var base64SecureConfiguration = layout[0].Base64SecureConfiguration;
-        var sortExpression = $table.data("sort-expression");
-
-        $subgrid.children(".view-grid").find("tbody").remove();
-
-        $errorMessage.hide().prop("aria-hidden", true);
-        $emptyMessage.hide().prop("aria-hidden", true);
-        $accessDeniedMessage.hide().prop("aria-hidden", true);
-
-        $loadingMessage.show().prop("aria-hidden", false);
-
-
-        if (typeof data !== typeof undefined && data !== false && (data == null || data.length == 0)) {
-            $emptyMessage.fadeIn().prop("aria-hidden", false);
-            $loadingMessage.hide().prop("aria-hidden", true);
-            return;
+                $(document).on('click', '#Inventory tbody tr', AddEventInventory);
+                $("#Inventory").children(".subgrid").trigger("refresh");
+                checkTDColumn();
+            }, 500));
+            ClearFirstData();
+        } else {
+            setTimeout(checkRefreshButton, 50);
         }
-
-        var columns = $.map($table.find("th"), function (e) {
-            return $(e).data('field');
-        });
-
-        var nameColumn = columns.length == 0 ? "" : columns[0] == "col-select" ? columns[1] : columns[0];
-
-        $subgrid.data("total-record-count", data.length);
-
-        var pageStart = (parseInt(page) - 1) * parseInt(PageSize);
-        var pageEnd = parseInt(pageStart) + (parseInt(PageSize - 1));
-
-        data.forEach(function (item, index) {
-
-            if ((index < pageStart)) {
-                return true;
-            }
-            else if ((index > pageEnd)) {
-                return false;
-            }
-
-            var record = item;
-            var name = record.gsc_inventorypn;
-
-            var $tr = $("<tr></tr>")
-                .attr("data-id", record.gsc_iv_inventoryid)
-                .attr("data-entity", configuration.EntityName)
-                .attr("data-name", name)
-                .on("focus", function () {
-                    $(this).addClass("active");
-                })
-                .on("blur", function () {
-                    $(this).removeClass("active");
-                });
-
-            for (var j = 0; j < columns.length; j++) {
-                var found = false;
-
-                $.each(item, function (key, value) {
-                    if (key == columns[j]) {
-                        var html = value;
-                        if (typeof value === 'object') {
-                            var $td = $("<td></td>").attr('data-value', JSON.stringify(value));
-                            if (value != null && typeof value.Name !== 'undefined') {
-                                $td.html(value.Name);
-                            }
-                            $tr.append($td);
-                            found = true;
-                            return false;
-                        }
-
-                        var $td = $("<td></td>")
-                            .attr("data-attribute", value)
-                            .attr("data-value", value)
-                            .html(html);
-                        $tr.append($td);
-                        found = true;
-                        return false;
-                    }
-                });
-                if (!found) {
-                    var typeColumn = columns[j];
-
-                    var $td = $("<td></td>")
-                        .attr("data-attribute", columns[j]);
-
-                    $tr.append($td);
-                };
-            }
-
-            $tbody.append($tr);
-        });
-
-        $subgrid.children(".view-grid").children("table").append($tbody.show());
-        $subgrid.fadeIn();
-        initializePagination(data, $parent, page);
-        $loadingMessage.hide().prop("aria-hidden", true);
-
     }
 
-    function initializePagination(data, $parent, PageNumber) {
-        // requires ~/js/jquery.bootstrap-pagination.js
-
-        var $subgrid = $parent.children(".subgrid");
-        var $pagination = $subgrid.children(".view-pagination");
-        var ItemCount = data.length;
-        var PageSize = 4;
-        var PageCount = Math.round(ItemCount / PageSize); //Add by ARM
-
-        if (typeof data === typeof undefined || data === false || data == null) {
-            $pagination.hide();
-            return;
+    function ClearFirstData() {
+        if ($('#Inventory tbody tr td:first-child').is(':visible')) {
+            $('#Inventory table tbody').html('');
+            $('#Inventory .btn-primary')[0].click();
         }
-
-        if (PageCount <= 1) {
-            $pagination.hide();
-            return;
+        else {
+            setTimeout(ClearFirstData, 50);
         }
-
-        $pagination
-            .data("pagesize", PageSize)
-            .data("pages", PageCount)
-            .data("current-page", PageNumber)
-            .data("count", ItemCount)
-            .off("click")
-            .pagination({
-                total_pages: $pagination.data("pages"),
-                current_page: $pagination.data("current-page"),
-                callback: function (event, pg) {
-                    var $li = $(event.target).closest("li");
-                    if ($li.not(".disabled").length > 0 && $li.not(".active").length > 0) {
-                        $pagination.show();
-                        RefreshAvailableItems($parent, pg, PageSize);
-                    }
-                    event.preventDefault();
-                }
-            })
-            .show();
     }
 
+    function checkTDColumn() {
+        if ($('#Inventory tbody tr td:first-child').is(':visible')) {
+            $('#Inventory tbody tr td:first-child').click(function () {
+                AddEventInventory();
+            });
+        }
+        else {
+            setTimeout(checkTDColumn, 50);
+        }
+    }
 
     //Create Print Button By: Artum Ramos
     $printBtn = DMS.Helpers.CreateAnchorButton("btn-primary btn", '', ' PRINT', DMS.Helpers.CreateFontAwesomeIcon('fa-print'));
@@ -459,14 +230,14 @@ $(document).ready(function () {
         DMS.Helpers.AppendButtonToToolbar(cancelBtn);
     }
 
-    $(document).on('click', '#Inventory .view-grid table tbody tr', AddEventInventory);
+    //    $(document).on('click', '#Inventory .view-grid table tbody tr', AddEventInventory);
 
-    setTimeout(function () {
-        //$('#Inventory .allocate-link').addClass('disabled');
-        $('#Inventory .view-grid table tbody td.multi-select-cbx').click(function () {
-            AddEventInventory();
-        });
-    }, 3000);
+    /* setTimeout(function () {
+         //$('#Inventory .allocate-link').addClass('disabled');
+         $('#Inventory .view-grid table tbody td.multi-select-cbx').click(function () {
+             AddEventInventory();
+         });
+     }, 3000);*/
 
     function AddEventInventory() {
         var id;

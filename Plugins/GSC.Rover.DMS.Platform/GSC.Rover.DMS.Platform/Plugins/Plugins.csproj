@@ -315,6 +315,7 @@
     <Compile Include="PostContactUpdate.cs" />
     <Compile Include="PostDocumentChecklistUpdate.cs" />
     <Compile Include="PostExtendedPriceListItemCreate.cs" />
+    <Compile Include="PostExtendedPriceListItemUpdate.cs" />
     <Compile Include="PostGeneralVehicleDataCreate.cs" />
     <Compile Include="PostGeneralVehicleDataUpdate.cs" />
     <Compile Include="PostIDRequestCreate.cs" />
@@ -418,6 +419,7 @@
     <Compile Include="PreQuoteDiscountCreate.cs" />
     <Compile Include="PreReceivingTransactionCreate.cs" />
     <Compile Include="PreReceivingTransactionDetailCreate.cs" />
+    <Compile Include="PreReturnTransactionCreate.cs" />
     <Compile Include="PreShippingClaimCreate.cs" />
     <Compile Include="PreUnitCreate.cs" />
     <Compile Include="PreValidateAccountCreate.cs" />

@@ -642,6 +642,10 @@ namespace Site.Areas.Portal.ViewModels
             {
                 _viewConfig = FilterPriceList(_viewConfig);
             }
+            else if (objectName == "Inventory Subgrid Portal - Vehicle Transfer View" || objectName == "Vehicle Adjustment/Variance Allocation Subgrid View")
+            {
+                _viewConfig = FilterAvailableItems_VehicleTransfer(_viewConfig);
+            }
 
             return _viewConfig;
         }
@@ -699,7 +703,7 @@ namespace Site.Areas.Portal.ViewModels
                 _viewConfig.FetchXml = newFetchXml;
             }
 
-            return _viewConfig;        
+            return _viewConfig;
         }
 
         private ViewConfiguration FilterInsurance(ViewConfiguration _viewConfig)
@@ -890,6 +894,7 @@ namespace Site.Areas.Portal.ViewModels
                 <attribute name='gsc_customertype'/>
                 <attribute name='emailaddress1'/>
                 <attribute name='telephone1'/>
+                <attribute name='gsc_recordtype'/>
                 <filter type='and'>
                     <condition attribute='statecode' operator='eq' value='0' />
                     <condition attribute='gsc_recordtype' operator='eq' value='100000003' />
@@ -907,6 +912,7 @@ namespace Site.Areas.Portal.ViewModels
                 <attribute name='gsc_customertype'/>
                 <attribute name='emailaddress1'/>
                 <attribute name='telephone1'/>
+                <attribute name='gsc_recordtype'/>
                 <filter type='and'>
                     <condition attribute='statecode' operator='eq' value='0' />
                     <condition attribute='gsc_recordtype' operator='eq' value='100000003' />
@@ -942,6 +948,7 @@ namespace Site.Areas.Portal.ViewModels
                 <attribute name='mobilephone'/>
                 <attribute name='emailaddress1'/>
                 <attribute name='gsc_customerid'/>
+                <attribute name='gsc_recordtype'/>
                 <filter type='and'>
                     <condition attribute='statecode' operator='eq' value='0' />
                     <condition attribute='gsc_recordtype' operator='eq' value='100000001' />
@@ -958,6 +965,7 @@ namespace Site.Areas.Portal.ViewModels
                 <attribute name='mobilephone'/>
                 <attribute name='emailaddress1'/>
                 <attribute name='gsc_customerid'/>
+                <attribute name='gsc_recordtype'/>
                 <filter type='and'>
                     <condition attribute='statecode' operator='eq' value='0' />
                     <condition attribute='gsc_recordtype' operator='eq' value='100000001' />
@@ -1179,6 +1187,129 @@ namespace Site.Areas.Portal.ViewModels
             return fetch;
         }
 
+        private ViewConfiguration FilterAvailableItems_VehicleTransfer(ViewConfiguration _viewConfig)
+        {
+            SavedQueryView queryView = _viewConfig.GetSavedQueryView(_serviceContext);
+            var objectName = queryView.Name;
+
+            Fetch fetch;
+
+            if (_viewConfig.FetchXml != null)
+                fetch = Fetch.Parse(_viewConfig.FetchXml);
+            else
+                fetch = Fetch.Parse(queryView.FetchXml);
+
+            var fetchXml = queryView.FetchXml;
+
+            string baseModelId = string.Empty;
+            string productId = string.Empty;
+            string siteId = string.Empty;
+            string colorName = string.Empty;
+            string modelCode = string.Empty;
+            string optionCode = string.Empty;
+
+            var context = HttpContext.Current;
+
+            if (context != null)
+            {
+                var request = context.Request.RequestContext;
+                var cookies = request.HttpContext.Request.Cookies;
+
+                if (cookies != null)
+                {
+                    if (cookies["productId"] != null)
+                    {
+                        productId = cookies["productId"].Value;
+                    }
+                    if (cookies["siteId"] != null)
+                    {
+                        siteId = cookies["siteId"].Value;
+                    }
+                    if (cookies["colorName"] != null)
+                    {
+                        colorName = cookies["colorName"].Value;
+                        colorName = colorName.Replace("%20", " ");
+                    }
+                    if (cookies["modelCode"] != null)
+                    {
+                        modelCode = cookies["modelCode"].Value;
+                    }
+                    if (cookies["optionCode"] != null)
+                    {
+                        optionCode = cookies["optionCode"].Value;
+                    }
+                    if (cookies["baseModelId"] != null)
+                    {
+                        baseModelId = cookies["baseModelId"].Value;
+                    }
+                }
+            }
+
+            Filter filter = new Filter { Type = LogicalOperator.And };
+            filter.Conditions = new List<Condition>();
+
+            if (baseModelId != String.Empty)
+            {
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_basemodelid",
+                    Operator = ConditionOperator.Equal,
+                    Value = baseModelId
+                });
+            }
+            if (productId != String.Empty)
+            {
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_productid",
+                    Operator = ConditionOperator.Equal,
+                    Value = productId
+                });
+            }
+            if (siteId != String.Empty)
+            {
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_siteid",
+                    Operator = ConditionOperator.Equal,
+                    Value = siteId
+                });
+            }
+            if (colorName != String.Empty)
+            {
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_color",
+                    Operator = ConditionOperator.Equal,
+                    Value = colorName
+                });
+            }
+            if (modelCode != String.Empty)
+            {
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_modelcode",
+                    Operator = ConditionOperator.Equal,
+                    Value = modelCode
+                });
+            }
+            if (optionCode != String.Empty)
+            {
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_optioncode",
+                    Operator = ConditionOperator.Equal,
+                    Value = optionCode
+                });
+            }
+
+            fetch.Entity.Filters.Add(filter);
+
+            _viewConfig.FetchXml = fetch.ToXml().ToString();
+
+            return _viewConfig;
+        }
+
         private ViewConfiguration FilterInvoices(ViewConfiguration _viewConfig)
         {
             SavedQueryView queryView = _viewConfig.GetSavedQueryView(_serviceContext);
@@ -1287,14 +1418,14 @@ namespace Site.Areas.Portal.ViewModels
                         <condition attribute='gsc_producttype' operator='eq' value='100000000' />
                         <condition attribute='statecode' operator='eq' value='0' />";
 
-                    if (parentProductId != "")
-                    {
-                        fetch = fetch + @"<condition attribute='parentproductid' operator='eq' value='" + parentProductId + @"' />";
-                    } 
-                    if (baseModelId != "")
-                    {
-                        fetch = fetch + @"<condition attribute='gsc_vehiclemodelid' operator='eq' value='" + baseModelId + @"' />";
-                    }
+            if (parentProductId != "")
+            {
+                fetch = fetch + @"<condition attribute='parentproductid' operator='eq' value='" + parentProductId + @"' />";
+            }
+            if (baseModelId != "")
+            {
+                fetch = fetch + @"<condition attribute='gsc_vehiclemodelid' operator='eq' value='" + baseModelId + @"' />";
+            }
 
             fetch = fetch + @"</filter> 
                  </entity> 
@@ -1308,8 +1439,14 @@ namespace Site.Areas.Portal.ViewModels
         private ViewConfiguration FilterAllocatedHistory(ViewConfiguration _viewConfig)
         {
             SavedQueryView queryView = _viewConfig.GetSavedQueryView(_serviceContext);
+            var objectName = queryView.Name;
 
-            var fetchXml = queryView.FetchXml;
+            Fetch fetch;
+
+            if (_viewConfig.FetchXml != null)
+                fetch = Fetch.Parse(_viewConfig.FetchXml);
+            else
+                fetch = Fetch.Parse(queryView.FetchXml);
 
             string dateFrom = "";
             string dateTo = "";
@@ -1337,54 +1474,33 @@ namespace Site.Areas.Portal.ViewModels
                         productQuantityId = cookies["ProductQuantityId"].Value;
                     }
                 }
-            } 
-            
-            string fetch = @"
-               <fetch version='1.0' distinct='true' mapping='logical'>
-                 <entity name='gsc_iv_inventoryhistory'> 
-                    <attribute name='gsc_vin'/> 
-                    <attribute name='gsc_transactiontype'/> 
-                    <attribute name='gsc_transactionstatus'/> 
-                    <attribute name='gsc_transactiondate'/> 
-                    <attribute name='gsc_siteid'/> 
-                    <attribute name='gsc_optioncode'/> 
-                    <attribute name='gsc_productid'/> 
-                    <attribute name='gsc_modelcode'/> 
-                    <attribute name='gsc_engineno'/> 
-                    <attribute name='gsc_csno'/> 
-                    <attribute name='gsc_vehiclebasemodelid'/> 
-                    <attribute name='gsc_allocationage'/> 
-                    <attribute name='gsc_productionno'/> 
-                    <attribute name='gsc_modelyear'/> 
-                    <attribute name='gsc_vehiclecolorid'/> 
-                    <attribute name='gsc_transactionnumber'/> 
-                    <attribute name='gsc_destinationsiteid'/> 
-                    <attribute name='gsc_iv_inventoryhistoryid'/> 
-                    <order attribute='gsc_vehiclebasemodelid' descending='false'/> 
-                    <filter type='and'>
-                        <condition attribute='gsc_latest' operator='eq' value='1'/>
-                        <condition attribute='gsc_quantitytype' operator='eq' value='100000001'/>
-                        <condition attribute='gsc_productquantityid' operator='eq' value='" + productQuantityId + "'/>";
+            }
+
+            Filter filter = new Filter { Type = LogicalOperator.And };
+            filter.Conditions = new List<Condition>();
 
             if (dateFrom != "")
             {
-                dateFrom = String.Format("{0:d}", dateFrom);
-                dateFrom = dateFrom.Remove(10);
-                fetch = fetch + @"<condition attribute='gsc_transactiondate' operator='on-or-after' value='" + dateFrom + @"' />";
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_transactiondate",
+                    Operator = ConditionOperator.OnOrAfter,
+                    Value = dateFrom
+                });
             }
-
             if (dateTo != "")
             {
-                dateTo = String.Format("{0:d}", dateTo);
-                dateTo = dateTo.Remove(10);
-                fetch = fetch + @"<condition attribute='gsc_transactiondate' operator='on-or-before' value='" + dateTo + @"' />";
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_transactiondate",
+                    Operator = ConditionOperator.OnOrBefore,
+                    Value = dateTo
+                });
             }
 
-            fetch = fetch + @"</filter> 
-                 </entity> 
-               </fetch> ";
+            fetch.Entity.Filters.Add(filter);
 
-            _viewConfig.FetchXml = fetch;
+            _viewConfig.FetchXml = fetch.ToXml().ToString();
 
             return _viewConfig;
         }
@@ -1392,6 +1508,13 @@ namespace Site.Areas.Portal.ViewModels
         private ViewConfiguration FilterUnservedPOHistory(ViewConfiguration _viewConfig)
         {
             SavedQueryView queryView = _viewConfig.GetSavedQueryView(_serviceContext);
+            var objectName = queryView.Name;
+
+            Fetch fetch;
+            if (_viewConfig.FetchXml != null)
+                fetch = Fetch.Parse(_viewConfig.FetchXml);
+            else
+                fetch = Fetch.Parse(queryView.FetchXml);
 
             var fetchXml = queryView.FetchXml;
 
@@ -1423,46 +1546,31 @@ namespace Site.Areas.Portal.ViewModels
                 }
             }
 
-            string fetch = @"
-               <fetch version='1.0' distinct='true' mapping='logical'>
-                 <entity name='gsc_iv_inventoryhistory'> 
-                    <attribute name='gsc_transactiontype'/> 
-                    <attribute name='gsc_transactionstatus'/> 
-                    <attribute name='gsc_transactiondate'/> 
-                    <attribute name='gsc_transactionnumber'/> 
-                    <attribute name='gsc_optioncode'/> 
-                    <attribute name='gsc_modelyear'/> 
-                    <attribute name='gsc_modelcode'/> 
-                    <attribute name='gsc_siteid'/> 
-                    <attribute name='gsc_productid'/> 
-                    <attribute name='gsc_vehiclecolorid'/> 
-                    <attribute name='gsc_vehiclebasemodelid'/> 
-                    <attribute name='gsc_iv_inventoryhistoryid'/> 
-                    <order attribute='gsc_modelcode' descending='false'/> 
-                    <filter type='and'>
-                        <condition attribute='gsc_latest' operator='eq' value='1'/>
-                        <condition attribute='gsc_quantitytype' operator='eq' value='100000000'/>
-                        <condition attribute='gsc_productquantityid' operator='eq' value='" + productQuantityId + "'/>";
+            Filter filter = new Filter { Type = LogicalOperator.And };
+            filter.Conditions = new List<Condition>();
 
             if (dateFrom != "")
             {
-                dateFrom = String.Format("{0:d}", dateFrom);
-                dateFrom = dateFrom.Remove(10);
-                fetch = fetch + @"<condition attribute='gsc_transactiondate' operator='on-or-after' value='" + dateFrom + @"' />";
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_transactiondate",
+                    Operator = ConditionOperator.OnOrAfter,
+                    Value = dateFrom
+                });
             }
-
             if (dateTo != "")
             {
-                dateTo = String.Format("{0:d}", dateTo);
-                dateTo = dateTo.Remove(10);
-                fetch = fetch + @"<condition attribute='gsc_transactiondate' operator='on-or-before' value='" + dateTo + @"' />";
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_transactiondate",
+                    Operator = ConditionOperator.OnOrBefore,
+                    Value = dateTo
+                });
             }
 
-            fetch = fetch + @"</filter> 
-                 </entity> 
-               </fetch> ";
+            fetch.Entity.Filters.Add(filter);
 
-            _viewConfig.FetchXml = fetch;
+            _viewConfig.FetchXml = fetch.ToXml().ToString();
 
             return _viewConfig;
         }
@@ -1470,8 +1578,13 @@ namespace Site.Areas.Portal.ViewModels
         private ViewConfiguration FilterSoldHistory(ViewConfiguration _viewConfig)
         {
             SavedQueryView queryView = _viewConfig.GetSavedQueryView(_serviceContext);
+            var objectName = queryView.Name;
 
-            var fetchXml = queryView.FetchXml;
+            Fetch fetch;
+            if (_viewConfig.FetchXml != null)
+                fetch = Fetch.Parse(_viewConfig.FetchXml);
+            else
+                fetch = Fetch.Parse(queryView.FetchXml);
 
             string dateFrom = "";
             string dateTo = "";
@@ -1501,49 +1614,31 @@ namespace Site.Areas.Portal.ViewModels
                 }
             }
 
-            string fetch = @"
-               <fetch version='1.0' distinct='true' mapping='logical'>
-                 <entity name='gsc_iv_inventoryhistory'> 
-                    <attribute name='gsc_vsidate'/> 
-                    <attribute name='gsc_vin'/> 
-                    <attribute name='gsc_siteid'/> 
-                    <attribute name='gsc_releaseddate'/> 
-                    <attribute name='gsc_productionno'/> 
-                    <attribute name='gsc_optioncode'/> 
-                    <attribute name='gsc_modelyear'/> 
-                    <attribute name='gsc_productid'/> 
-                    <attribute name='gsc_modelcode'/> 
-                    <attribute name='gsc_engineno'/> 
-                    <attribute name='gsc_customername'/> 
-                    <attribute name='gsc_csno'/> 
-                    <attribute name='gsc_vehiclecolorid'/> 
-                    <attribute name='gsc_transactionnumber'/> 
-                    <attribute name='gsc_iv_inventoryhistoryid'/> 
-                    <order attribute='gsc_customername' descending='false'/> 
-                    <filter type='and'>
-                        <condition attribute='gsc_latest' operator='eq' value='1'/>
-                        <condition attribute='gsc_quantitytype' operator='eq' value='100000002'/>
-                        <condition attribute='gsc_productquantityid' operator='eq' value='" + productQuantityId + "'/>";
+            Filter filter = new Filter { Type = LogicalOperator.And };
+            filter.Conditions = new List<Condition>();
 
             if (dateFrom != "")
             {
-                dateFrom = String.Format("{0:d}", dateFrom);
-                dateFrom = dateFrom.Remove(10);
-                fetch = fetch + @"<condition attribute='gsc_vsidate' operator='on-or-after' value='" + dateFrom + @"' />";
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_transactiondate",
+                    Operator = ConditionOperator.OnOrAfter,
+                    Value = dateFrom
+                });
             }
-
             if (dateTo != "")
             {
-                dateTo = String.Format("{0:d}", dateTo);
-                dateTo = dateTo.Remove(10);
-                fetch = fetch + @"<condition attribute='gsc_vsidate' operator='on-or-before' value='" + dateTo + @"' />";
+                filter.Conditions.Add(new Condition
+                {
+                    Attribute = "gsc_transactiondate",
+                    Operator = ConditionOperator.OnOrBefore,
+                    Value = dateTo
+                });
             }
 
-            fetch = fetch + @"</filter> 
-                 </entity> 
-               </fetch> ";
+            fetch.Entity.Filters.Add(filter);
 
-            _viewConfig.FetchXml = fetch;
+            _viewConfig.FetchXml = fetch.ToXml().ToString();
 
             return _viewConfig;
         }
