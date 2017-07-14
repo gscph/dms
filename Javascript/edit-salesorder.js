@@ -241,9 +241,9 @@ $(document).ready(function () {
     if (status == 'Allocated') {
         DMS.Helpers.AppendButtonToToolbar($btnTransfer);
     }
-    
-    if($("#gsc_netmonthlyamortization").html() == "₱0.00" && $("#gsc_paymentmode").val() == "100000001")
-      $(".transferInvoice").attr("disabled", "disabled");
+
+    if ($("#gsc_netmonthlyamortization").html() == "₱0.00" && $("#gsc_paymentmode").val() == "100000001")
+        $(".transferInvoice").attr("disabled", "disabled");
 
     if ((status == 'Open' || status == 'For Allocation' || status == 'Allocated' || status == 'Reserved') && webRole != "CC Manager") {
         $('#gsc_placeofrelease').prop("readOnly", false);
@@ -643,7 +643,8 @@ classData.then(function (data) {
 
 
 var productId = $("#gsc_productid").val();
-var accessoriesSelectData = DMS.Helpers.GetOptionListSet('/_odata/vehicleaccessory?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_itemid.Id", "gsc_itemid.Name,gsc_vehicleaccessorypn");
+var branchId = $("#gsc_branchid").val();
+var accessoriesSelectData = DMS.Helpers.GetOptionListSet('/_odata/vehicleaccessory?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27) and ( gsc_branchid/Id%20eq%20(Guid%27' + branchId + '%27) or gsc_isglobalrecord eq true)', "gsc_itemid.Id", "gsc_itemid.Name,gsc_vehicleaccessorypn");
 
 
 var AccessroiessGridInstance = {
@@ -734,7 +735,7 @@ var AccessroiessGridInstance = {
     }
 }
 
-var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_sls_vehiclecabchassisid", "gsc_vehiclecabchassispn,gsc_itemid.Name");
+var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27) and ( gsc_branchid/Id%20eq%20(Guid%27' + branchId + '%27) or gsc_isglobalrecord eq true)', "gsc_vehiclecabchassispn,gsc_itemnumber");
 
 var CabChasisGridInstance = {
     initialize: function () {
