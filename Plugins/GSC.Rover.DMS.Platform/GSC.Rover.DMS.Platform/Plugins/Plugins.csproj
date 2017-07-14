@@ -315,6 +315,7 @@
     <Compile Include="PostContactUpdate.cs" />
     <Compile Include="PostDocumentChecklistUpdate.cs" />
     <Compile Include="PostExtendedPriceListItemCreate.cs" />
+    <Compile Include="PostExtendedPriceListItemUpdate.cs" />
     <Compile Include="PostGeneralVehicleDataCreate.cs" />
     <Compile Include="PostGeneralVehicleDataUpdate.cs" />
     <Compile Include="PostIDRequestCreate.cs" />
