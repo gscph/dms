@@ -96,6 +96,33 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     AccountHandler accountHandler = new AccountHandler(service, trace);
 
                     #region pre-Image
+                    String preImageStreet = preImageEntity.Contains("address1_line1")
+                        ? preImageEntity.GetAttributeValue<String>("address1_line1")
+                        : String.Empty;
+
+                    Guid preImageProvinceId = preImageEntity.GetAttributeValue<EntityReference>("gsc_provinceid") != null
+                        ? preImageEntity.GetAttributeValue<EntityReference>("gsc_provinceid").Id
+                        : Guid.Empty;
+
+                    Guid preImageCountryId = preImageEntity.GetAttributeValue<EntityReference>("gsc_countryid") != null
+                        ? preImageEntity.GetAttributeValue<EntityReference>("gsc_countryid").Id
+                        : Guid.Empty;
+
+                    String preImageZipCode = preImageEntity.Contains("address1_postalcode")
+                        ? preImageEntity.GetAttributeValue<String>("address1_postalcode")
+                        : String.Empty;
+
+                    String preImageTelephone = preImageEntity.Contains("telephone1")
+                        ? preImageEntity.GetAttributeValue<String>("telephone1")
+                        : String.Empty;
+
+                    String preImageTin = preImageEntity.Contains("gsc_tin")
+                        ? preImageEntity.GetAttributeValue<String>("gsc_tin")
+                        : String.Empty;
+
+                    var preImageMobile = preImageEntity.Contains("mobilephone")
+                        ? preImageEntity.GetAttributeValue<String>("mobilephone")
+                        : String.Empty;
 
                     var preImageDealer = preImageEntity.GetAttributeValue<EntityReference>("parentaccountid") != null
                         ? preImageEntity.GetAttributeValue<EntityReference>("parentaccountid").Id
@@ -126,6 +153,33 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     #endregion
 
                     #region post-Image
+                    String postImageStreet = postImageEntity.Contains("address1_line1")
+                        ? postImageEntity.GetAttributeValue<String>("address1_line1")
+                        : String.Empty;
+
+                    Guid postImageProvinceId = postImageEntity.GetAttributeValue<EntityReference>("gsc_provinceid") != null
+                        ? postImageEntity.GetAttributeValue<EntityReference>("gsc_provinceid").Id
+                        : Guid.Empty;
+
+                    Guid postImageCountryId = postImageEntity.GetAttributeValue<EntityReference>("gsc_countryid") != null
+                        ? postImageEntity.GetAttributeValue<EntityReference>("gsc_countryid").Id
+                        : Guid.Empty;
+
+                    String postImageZipCode = postImageEntity.Contains("address1_postalcode")
+                        ? postImageEntity.GetAttributeValue<String>("address1_postalcode")
+                        : String.Empty;
+
+                    String postImageTelephone = postImageEntity.Contains("telephone1")
+                        ? postImageEntity.GetAttributeValue<String>("telephone1")
+                        : String.Empty;
+
+                    String postImageTin = postImageEntity.Contains("gsc_tin")
+                        ? postImageEntity.GetAttributeValue<String>("gsc_tin")
+                        : String.Empty;
+
+                    var postImageMobile = postImageEntity.Contains("mobilephone")
+                        ? postImageEntity.GetAttributeValue<String>("mobilephone")
+                        : String.Empty;
 
                     var postImageDealer = postImageEntity.GetAttributeValue<EntityReference>("parentaccountid") != null
                         ? postImageEntity.GetAttributeValue<EntityReference>("parentaccountid").Id
@@ -154,6 +208,12 @@ namespace GSC.Rover.DMS.Platform.Plugins
                         : String.Empty;
 
                     #endregion
+
+                    if (preImageStreet != postImageStreet || preImageCityIdName != postImageCityIdName || preImageProvinceId != postImageProvinceId || preImageCountryId != postImageCountryId ||
+                        preImageZipCode != postImageZipCode || preImageMobile != postImageMobile || preImageTelephone != postImageTelephone || preImageTin != postImageTin)
+                    {
+                        accountHandler.UpdateCustomerInfo(postImageEntity);
+                    }
 
                     if (preImageAccountName != postImageAccountName)
                     {

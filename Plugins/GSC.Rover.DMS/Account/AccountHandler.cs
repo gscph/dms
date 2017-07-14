@@ -386,6 +386,97 @@ namespace GSC.Rover.DMS.BusinessLogic.Account
             CityHandler cityHandler = new CityHandler(_organizationService, _tracingService);
             return cityHandler.SetCity(accountEntity);
         }
+
+        //Created By: Jerome Anthony Gerero, Created On: 7/14/2017
+        /* Purpose: Replicate customer details on all open quote, sales order, sales invoice records.
+         * Registration Details:
+         * Event/Message: 
+         *      Post/Update: 
+         * Primary Entity: Account
+         */
+        public Entity UpdateCustomerInfo(Entity accountEntity)
+        {
+            _tracingService.Trace("Started UpdateCustomerInfo Method...");
+
+            String street = accountEntity.Contains("address1_line1")
+                ? accountEntity.GetAttributeValue<String>("address1_line1")
+                : String.Empty;
+            String cityName = accountEntity.Contains("gsc_cityid")
+                ? accountEntity.GetAttributeValue<EntityReference>("gsc_cityid").Name
+                : String.Empty;
+            String provinceName = accountEntity.Contains("gsc_provinceid") != null
+                ? accountEntity.GetAttributeValue<EntityReference>("gsc_provinceid").Name
+                : String.Empty;
+            String countryName = accountEntity.Contains("gsc_countryid") != null
+                ? accountEntity.GetAttributeValue<EntityReference>("gsc_countryid").Name
+                : String.Empty;
+            String zipCode = accountEntity.Contains("address1_postalcode")
+                ? accountEntity.GetAttributeValue<String>("address1_postalcode")
+                : String.Empty;
+            String mobilePhone = accountEntity.Contains("mobilephone")
+                ? accountEntity.GetAttributeValue<String>("mobilephone")
+                : String.Empty;
+            String telephone = accountEntity.Contains("telephone1")
+                ? accountEntity.GetAttributeValue<String>("telephone1")
+                : String.Empty;
+            String tin = accountEntity.Contains("gsc_tin")
+                ? accountEntity.GetAttributeValue<String>("gsc_tin")
+                : String.Empty;
+
+            EntityCollection quoteRecords = CommonHandler.RetrieveRecordsByOneValue("quote", "customerid", accountEntity.Id, _organizationService, null, OrderType.Ascending,
+                new[] { "gsc_address", "gsc_contactno", "gsc_alternatecontactno", "statecode" });
+
+            if (quoteRecords != null && quoteRecords.Entities.Count > 0)
+            {
+                foreach (Entity quote in quoteRecords.Entities)
+                {
+                    if (quote.GetAttributeValue<OptionSetValue>("statecode").Value == 0)
+                    {
+                        quote["gsc_address"] = street + " " + cityName + " " + provinceName + " " + countryName + " " + zipCode;
+                        quote["gsc_contactno"] = telephone;
+
+                        _organizationService.Update(quote);
+                    }
+                }
+            }
+
+            EntityCollection salesOrderRecords = CommonHandler.RetrieveRecordsByOneValue("salesorder", "customerid", accountEntity.Id, _organizationService, null, OrderType.Ascending,
+                new[] { "statecode" });
+
+            if (salesOrderRecords != null && salesOrderRecords.Entities.Count > 0)
+            {
+                foreach (Entity salesOrder in salesOrderRecords.Entities)
+                {
+                    if (salesOrder.GetAttributeValue<OptionSetValue>("statecode").Value == 0)
+                    {
+                        salesOrder["gsc_address"] = street + " " + cityName + " " + provinceName + " " + countryName + " " + zipCode;
+                        salesOrder["gsc_tin"] = tin;
+
+                        _organizationService.Update(salesOrder);
+                    }
+                }
+            }
+
+            EntityCollection invoiceRecords = CommonHandler.RetrieveRecordsByOneValue("invoice", "customerid", accountEntity.Id, _organizationService, null, OrderType.Ascending,
+                new[] { "statecode" });
+
+            if (invoiceRecords != null && invoiceRecords.Entities.Count > 0)
+            {
+                foreach (Entity invoice in invoiceRecords.Entities)
+                {
+                    if (invoice.GetAttributeValue<OptionSetValue>("statecode").Value == 0)
+                    {
+                        invoice["shipto_composite"] = street + " " + cityName + " " + provinceName + " " + countryName + " " + zipCode;
+                        invoice["gsc_tin"] = tin;
+
+                        _organizationService.Update(invoice);
+                    }
+                }
+            }
+
+            _tracingService.Trace("Ended UpdateCustomerInfo Method...");
+            return accountEntity;
+        }
     }
 
 }

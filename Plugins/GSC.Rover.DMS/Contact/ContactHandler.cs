@@ -403,7 +403,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Contact
         /* Purpose: Replicate customer details on all open quote, sales order, sales invoice records.
          * Registration Details:
          * Event/Message: 
-         *      PostOperation/Update: 
+         *      Post/Update: 
          * Primary Entity: Contact
          */
         public Entity UpdateCustomerInfo(Entity contactEntity)
