@@ -152,8 +152,8 @@ $(document).ready(function () {
 
     function checkDiscountSubgrid() {
         if ($('table[data-name="tabbed-DISCOUNTS"]').is(":visible")) {
-           // $('table[data-name="tabbed-DISCOUNTS"]').parent().addClass("permanent-disabled");
-          // $('.disabled').attr("tabindex", "-1");
+            // $('table[data-name="tabbed-DISCOUNTS"]').parent().addClass("permanent-disabled");
+            // $('.disabled').attr("tabindex", "-1");
             $('table[data-name="tabbed-DISCOUNTS"]').parent().attr("disabled", "disabled");
             $(".dropdown.action").hide();
         }
@@ -164,8 +164,8 @@ $(document).ready(function () {
 
     function checkChargesSubgrid() {
         if ($('table[data-name="tabbed-CHARGES"]').is(":visible")) {
-           // $('table[data-name="tabbed-CHARGES"]').parent().addClass("permanent-disabled");
-           // $('.disabled').attr("tabindex", "-1");
+            // $('table[data-name="tabbed-CHARGES"]').parent().addClass("permanent-disabled");
+            // $('.disabled').attr("tabindex", "-1");
             $('table[data-name="tabbed-CHARGES"]').parent().attr("disabled", "disabled");
             $(".dropdown.action").hide();
         }
@@ -655,7 +655,8 @@ var classId = "";
 var accessoriesSelectData;
 
 var productId = $("#gsc_productid").val();
-accessoriesSelectData = DMS.Helpers.GetOptionListSet('/_odata/vehicleaccessory?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_itemid.Id", "gsc_itemid.Name,gsc_vehicleaccessorypn");
+var branchId = $("#gsc_branchid").val();
+accessoriesSelectData = DMS.Helpers.GetOptionListSet('/_odata/vehicleaccessory?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27) and ( gsc_branchid/Id%20eq%20(Guid%27' + branchId + '%27) or gsc_isglobalrecord eq true)', "gsc_itemid.Id", "gsc_itemid.Name,gsc_vehicleaccessorypn");
 
 var AccessroiessGridInstance = {
     initialize: function () {
@@ -719,7 +720,7 @@ var AccessroiessGridInstance = {
     }
 }
 
-var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_sls_vehiclecabchassisid", "gsc_vehiclecabchassispn,gsc_itemid.Name");
+var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27) and ( gsc_branchid/Id%20eq%20(Guid%27' + branchId + '%27) or gsc_isglobalrecord eq true)', "gsc_sls_vehiclecabchassisid", "gsc_vehiclecabchassispn,gsc_itemnumber");
 
 var CabChasisGridInstance = {
     initialize: function () {
