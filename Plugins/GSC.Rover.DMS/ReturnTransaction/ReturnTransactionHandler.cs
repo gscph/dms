@@ -361,7 +361,7 @@ namespace GSC.Rover.DMS.BusinessLogic.ReturnTransaction
                     : Guid.Empty;
 
                 EntityCollection inventoryRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", entityId, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_status" });
+                new[] { "gsc_status", "statecode" });
 
                 if (inventoryRecords != null && inventoryRecords.Entities.Count > 0)
                 {
@@ -371,16 +371,23 @@ namespace GSC.Rover.DMS.BusinessLogic.ReturnTransaction
                     var status = inventory.Contains("gsc_status")
                         ? inventory.GetAttributeValue<OptionSetValue>("gsc_status").Value
                         : 0;
+                    var statecode = inventory.Contains("statecode")
+                        ? inventory.GetAttributeValue<OptionSetValue>("statecode").Value
+                        : 0;
+
                     _tracingService.Trace("Inventory Stratus." + status);
+
+                    //If Inventory is iunactive
+                    if(statecode == 1)
+                    {
+                        throw new InvalidPluginExecutionException("Cannot proceed with your transactoion. Vehicle of this record is already inactive.");
+                    }
 
                     if (status == 100000000)
                     {
                         return true;
                     }
-                }
-                else
-                {
-                    throw new InvalidPluginExecutionException("Cannot proceed with your transaction. Vehicle of this receiving record is no longer existing.");
+                   
                 }
             }
 
