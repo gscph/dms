@@ -245,6 +245,7 @@ namespace GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem
             priceListItem["amount"] = entity.Contains("gsc_amount")
                 ? entity.GetAttributeValue<Money>("gsc_amount")
                 : new Money(0);
+
             Guid priceListItemId = _organizationService.Create(priceListItem);
 
             _tracingService.Trace("Price List Created.." + priceListItemId.ToString());
@@ -287,7 +288,7 @@ namespace GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem
                 priceListItem["amount"] = extendedEntity.Contains("gsc_amount")
                     ? extendedEntity.GetAttributeValue<Money>("gsc_amount")
                     : new Money(0);
-                priceListItem["uomscheduleid"] = extendedEntity.GetAttributeValue<EntityReference>("gsc_uomid") != null
+                priceListItem["uomid"] = extendedEntity.GetAttributeValue<EntityReference>("gsc_uomid") != null
                     ? extendedEntity.GetAttributeValue<EntityReference>("gsc_uomid")
                     : null;
 
@@ -305,7 +306,7 @@ namespace GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem
             string relationshipEntityName = "gsc_gsc_cmn_extendedpricelistitem_productpr";
 
             QueryExpression query = new QueryExpression(entity1);
-            query.ColumnSet = new ColumnSet("productpricelevelid", "amount", "uomscheduleid");
+            query.ColumnSet = new ColumnSet("productpricelevelid", "amount", "uomid");
             LinkEntity linkEntity1 = new LinkEntity(entity1, relationshipEntityName, "productpricelevelid", "productpricelevelid", JoinOperator.Inner);
             LinkEntity linkEntity2 = new LinkEntity(relationshipEntityName, entity2, "gsc_cmn_extendedpricelistitemid", "gsc_cmn_extendedpricelistitemid", JoinOperator.Inner);
             linkEntity1.LinkEntities.Add(linkEntity2);
