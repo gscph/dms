@@ -71,6 +71,10 @@
     <Reference Include="GSC.Rover.DMS.BusinessLogic.ChargesItem">
       <HintPath>..\..\..\GSC.Rover.DMS\ChargesItem\bin\Release\GSC.Rover.DMS.BusinessLogic.ChargesItem.dll</HintPath>
     </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.City, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GSC.Rover.DMS\City\bin\Release\GSC.Rover.DMS.BusinessLogic.City.dll</HintPath>
+    </Reference>
     <Reference Include="GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder">
       <HintPath>..\..\..\GSC.Rover.DMS\CommittedFirmOrder\bin\Release\GSC.Rover.DMS.BusinessLogic.CommittedFirmOrder.dll</HintPath>
     </Reference>
@@ -371,6 +375,7 @@
     <Compile Include="PostSalesDocumentUpdate.cs" />
     <Compile Include="PostShippingClaimCreate.cs" />
     <Compile Include="PostShippingClaimUpdate.cs" />
+    <Compile Include="PostSiteWarehouseCreate.cs" />
     <Compile Include="PostTaxMaintenanceCreate.cs" />
     <Compile Include="PostTaxMaintenanceUpdate.cs" />
     <Compile Include="PostTransactedVehicleUpdate.cs" />

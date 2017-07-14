@@ -1500,6 +1500,16 @@
             </Step>
           </Steps>
         </Plugin>
+        <Plugin Description="Plug-in to PostSiteWarehouseCreate" FriendlyName="PostSiteWarehouseCreate" Name="GSC.Rover.DMS.Platform.Plugins.PostSiteWarehouseCreate" Id="35ec240d-6668-e711-80f5-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PostSiteWarehouseCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostSiteWarehouseCreate" Description="Post-Operation of Site/Warehouse Create" Id="36ec240d-6668-e711-80f5-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_iv_site" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images>
+                <Image EntityAlias="PostImage" Id="39ec240d-6668-e711-80f5-00155d010e2c" MessagePropertyName="id" ImageType="PostImage" />
+              </Images>
+            </Step>
+          </Steps>
+        </Plugin>
       </PluginTypes>
     </Solution>
     <Solution Assembly="GSC.Rover.DMS.Platform.Workflow.dll" Id="55c58133-16c0-e511-80cb-00155d010e2c" IsolationMode="None" SourceType="Database">
