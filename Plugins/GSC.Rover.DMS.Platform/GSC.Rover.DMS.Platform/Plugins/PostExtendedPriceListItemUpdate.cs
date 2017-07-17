@@ -94,8 +94,27 @@ namespace GSC.Rover.DMS.Platform.Plugins
 
                 try
                 {
-                    ExtendedPriceListItemHandler entityHandler = new ExtendedPriceListItemHandler(service, trace);
-                    entityHandler.UpdatePriceListItem(extendedEntity);
+                    var preImageUOM = preImageEntity.GetAttributeValue<EntityReference>("gsc_uomid") != null
+                        ? preImageEntity.GetAttributeValue<EntityReference>("gsc_uomid").Id
+                        : Guid.Empty;
+
+                    var postImageUOM = postImageEntity.GetAttributeValue<EntityReference>("gsc_uomid") != null
+                        ? postImageEntity.GetAttributeValue<EntityReference>("gsc_uomid").Id
+                        : Guid.Empty;
+
+                    var preImageAmount = preImageEntity.Contains("gsc_amount")
+                        ? preImageEntity.GetAttributeValue<Money>("gsc_amount").Value
+                        : 0;
+
+                    var postImageAmount = postImageEntity.Contains("gsc_amount")
+                        ? postImageEntity.GetAttributeValue<Money>("gsc_amount").Value
+                        : 0;
+
+                    if (preImageUOM != postImageUOM || preImageAmount != postImageAmount)
+                    {
+                        ExtendedPriceListItemHandler entityHandler = new ExtendedPriceListItemHandler(service, trace);
+                        entityHandler.UpdatePriceListItem(extendedEntity);
+                    }
 
                 }
 

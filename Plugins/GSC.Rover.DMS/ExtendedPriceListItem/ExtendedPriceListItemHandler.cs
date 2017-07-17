@@ -234,7 +234,9 @@ namespace GSC.Rover.DMS.BusinessLogic.ExtendedPriceListItem
             _tracingService.Trace("Started CreatePriceLisItem Method..");
 
             _tracingService.Trace("Entity Price List Item..");
+
             Entity priceListItem = new Entity("productpricelevel");
+
             priceListItem["pricelevelid"] = entity.GetAttributeValue<EntityReference>("gsc_pricelistid") != null
                 ? entity.GetAttributeValue<EntityReference>("gsc_pricelistid")
                 : null;
