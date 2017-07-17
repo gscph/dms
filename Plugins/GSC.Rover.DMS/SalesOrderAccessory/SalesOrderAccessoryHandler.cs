@@ -1,5 +1,6 @@
 ﻿using GSC.Rover.DMS.BusinessLogic.Common;
 using GSC.Rover.DMS.BusinessLogic.SalesOrder;
+using GSC.Rover.DMS.BusinessLogic.PriceList;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
 using System;
@@ -49,7 +50,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrderAccessory
                 salesOrderAccessory["gsc_itemnumber"] = itemEntity.Contains("productnumber")
                     ? itemEntity.GetAttributeValue<String>("productnumber")
                     : String.Empty;
-
+                RetrivePrice(salesOrderAccessory);
                 if (message.Equals("Update"))
                 {
                     Entity accessoryToUpdate = _organizationService.Retrieve(salesOrderAccessory.LogicalName, salesOrderAccessory.Id,
@@ -101,6 +102,30 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrderAccessory
             }
             _tracingService.Trace("Ending HasExistingAccessory Method...");
             return false;
+        }
+
+        //Retrieve Price from the Latest Price List
+        private Money RetrivePrice(Entity orderAccessory)
+        {
+            /* Legend: 
+             * itemType = 0 : Accessory
+             * itemType = 1 : Cab Chassis*/
+
+            PriceListHandler priceListHandler = new PriceListHandler(_organizationService, _tracingService);
+            priceListHandler.itemType = 1;
+            priceListHandler.productFieldName = "gsc_productid";
+            List<Entity> latestPriceList = priceListHandler.RetrievePriceList(orderAccessory, 100000000, 100000002);
+            if (latestPriceList.Count > 0)
+            {
+                Entity priceListItem = latestPriceList[0];
+                Entity priceList = latestPriceList[1];
+
+                return priceListItem.GetAttributeValue<Money>("amount");
+            }
+            else
+            {
+                throw new InvalidPluginExecutionException("There is no effecive Price List for the vehicle accessories.");
+            }
         }
     }
 }
