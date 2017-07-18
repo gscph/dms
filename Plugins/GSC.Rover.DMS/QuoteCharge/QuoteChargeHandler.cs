@@ -195,7 +195,7 @@ namespace GSC.Rover.DMS.BusinessLogic.QuoteCharge
 
                 //Retrieve Quote Charges record
                 EntityCollection chargesRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_cmn_charges", "gsc_cmn_chargesid", chargesId, _organizationService, null, OrderType.Ascending,
-                    new[] { "gsc_description", "gsc_chargeamount", "gsc_chargetype"});
+                    new[] { "gsc_description", "gsc_chargeamount", "gsc_chargetype", "gsc_actulcost"});
 
                 if (chargesRecords != null && chargesRecords.Entities.Count > 0)
                 {
@@ -206,12 +206,16 @@ namespace GSC.Rover.DMS.BusinessLogic.QuoteCharge
                     var chargeAmount = chargeEntity.Contains("gsc_chargeamount")
                         ? chargeEntity.GetAttributeValue<Money>("gsc_chargeamount")
                         : new Money(0);
+                    var actualCost = chargeEntity.Contains("gsc_actulcost") ? chargeEntity.GetAttributeValue<Money>("gsc_actualcost")
+                        : new Money(0);
+                    if (actualCost.Value == 0)
+                        actualCost = chargeAmount;
 
                     quoteChargeEntity["gsc_description"] = chargeEntity.GetAttributeValue<String>("gsc_description");
                     quoteChargeEntity["gsc_chargeamount"] = chargeAmount;
                     quoteChargeEntity["gsc_actualcost"] = quoteChargeEntity.GetAttributeValue<Boolean>("gsc_free")
                         ? new Money(0)
-                        : chargeAmount;
+                        : actualCost;
                     quoteChargeEntity["gsc_chargetype"] = chargeEntity.GetAttributeValue<OptionSetValue>("gsc_chargetype");
                    
                     if (message == "Update")

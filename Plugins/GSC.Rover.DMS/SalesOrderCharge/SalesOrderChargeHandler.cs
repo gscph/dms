@@ -182,7 +182,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrderCharge
 
             //Retrieve Charge Record from Charge ID field
             EntityCollection chargeRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_cmn_charges", "gsc_cmn_chargesid", chargesId, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_description", "gsc_chargeamount", "gsc_chargetype" });
+                new[] { "gsc_description", "gsc_chargeamount", "gsc_chargetype", "gsc_actualcost" });
 
             if (chargeRecords != null && chargeRecords.Entities.Count > 0)
             {
@@ -191,6 +191,10 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrderCharge
                 var chargeAmount = charge.Contains("gsc_chargeamount")
                     ? charge.GetAttributeValue<Money>("gsc_chargeamount")
                     : new Money(0);
+                var actualCost = charge.Contains("gsc_actulcost") ? charge.GetAttributeValue<Money>("gsc_actualcost")
+                        : new Money(0);
+                if (actualCost.Value == 0)
+                    actualCost = chargeAmount;
 
                 salesOrderChargeEntity["gsc_description"] = charge.Contains("gsc_description")
                     ? charge.GetAttributeValue<String>("gsc_description")
@@ -198,7 +202,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrderCharge
                 salesOrderChargeEntity["gsc_amount"] = chargeAmount;
                 salesOrderChargeEntity["gsc_actualcost"] = salesOrderChargeEntity.GetAttributeValue<Boolean>("gsc_free")
                             ? new Money(0)
-                            : chargeAmount;
+                            : actualCost;
                 salesOrderChargeEntity["gsc_chargetype"] = charge.Contains("gsc_chargetype")
                     ? charge.GetAttributeValue<OptionSetValue>("gsc_chargetype")
                     : null;
