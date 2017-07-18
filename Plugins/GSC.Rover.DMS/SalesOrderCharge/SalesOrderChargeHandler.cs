@@ -191,7 +191,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrderCharge
                 var chargeAmount = charge.Contains("gsc_chargeamount")
                     ? charge.GetAttributeValue<Money>("gsc_chargeamount")
                     : new Money(0);
-                var actualCost = charge.Contains("gsc_actulcost") ? charge.GetAttributeValue<Money>("gsc_actualcost")
+                var actualCost = charge.Contains("gsc_actualcost") ? charge.GetAttributeValue<Money>("gsc_actualcost")
                         : new Money(0);
                 if (actualCost.Value == 0)
                     actualCost = chargeAmount;
