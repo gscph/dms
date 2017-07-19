@@ -1648,6 +1648,8 @@ namespace Site.Areas.Portal.ViewModels
             SavedQueryView queryView = _viewConfig.GetSavedQueryView(_serviceContext);
 
             string priceListType = "";
+            var priceListTypeValue = 0;
+            var priceListTypeClass = "";
 
             var context = HttpContext.Current;
 
@@ -1662,6 +1664,14 @@ namespace Site.Areas.Portal.ViewModels
                     {
                         priceListType = cookies["PriceListType"].Value;
                     }
+                    if (cookies["PriceListTypeClass"] != null)
+                    {
+                        priceListTypeClass = cookies["PriceListTypeClass"].Value;
+                        if (priceListTypeClass.Contains("Item"))
+                            priceListTypeClass = "Item";
+                        else if (priceListTypeClass.Contains("Chassis"))
+                            priceListTypeClass = "Chassis";
+                    }
                 }
             }
 
@@ -1670,13 +1680,42 @@ namespace Site.Areas.Portal.ViewModels
             Filter filter = new Filter { Type = LogicalOperator.And };
 
             filter.Conditions = new List<Condition>();
-
+            
             if (priceListType != "")
             {
-                if (priceListType.Contains("Item"))
-                    priceListType = "Item";
+                switch(priceListType)
+                {
+                    case "Vehicle":
+                        priceListTypeValue = 100000000;
+                        break;
+                    case "Part%2FItem":
+                        priceListTypeValue = 100000001;
 
-                var priceListTypeValue = GetOptionSetId(_viewConfig.EntityName, "gsc_producttype", priceListType);
+                        Link relatedEntity = new Link();
+                        relatedEntity.Alias = "gsc_cmn_classmaintenance";
+                        relatedEntity.FromAttribute = "gsc_cmn_classmaintenanceid";
+                        relatedEntity.Name = "gsc_cmn_classmaintenance";
+                        relatedEntity.ToAttribute = "gsc_classmaintenanceid";
+
+                        Filter linkfilter = new Filter { Type = LogicalOperator.And };
+                        linkfilter.Conditions = new List<Condition>();
+
+                        linkfilter.Conditions.Add(new Condition
+                        {
+                            Attribute = "gsc_classmaintenancepn",
+                            Operator = ConditionOperator.Contains,
+                            Value = priceListTypeClass
+                        });
+                        
+                        List<Filter> linkfilters = new List<Filter>();
+                        linkfilters.Add(linkfilter);
+
+                        relatedEntity.Filters = linkfilters;
+                        fetch.Entity.Links.Add(relatedEntity);
+
+                        break;
+                }
+
                 filter.Conditions.Add(new Condition
                 {
                     Attribute = "gsc_producttype",
