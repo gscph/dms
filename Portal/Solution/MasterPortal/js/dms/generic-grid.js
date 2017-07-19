@@ -85,8 +85,8 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
         this.setupSubGrid();
 
         // get subgrid data
-        this.getSubgridData(odataUrl);
-
+        this.getSubgridData(odataUrl, true);
+       
         // add click event for save button
         this.hookSaveEvent();
 
@@ -248,7 +248,7 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
         }
     }
 
-    this.getSubgridData = function (odataQuery) {
+    this.getSubgridData = function (odataQuery, fromInitialize) {
         $.ajax({
             type: 'GET',
             dataType: "json",
@@ -274,22 +274,24 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
                 }
             }
 
-            opt.data = odataList;
-            opt.maxRows = odataList.length;
-            opt.height = (odataList.length * 35) + 50;
+            if (fromInitialize == true) {
+                opt.data = odataList;
+                opt.maxRows = odataList.length;
+                opt.height = (odataList.length * 35) + 50;
 
-            if (odataList.length <= 1) {
-                opt.height = 100;
+                if (odataList.length <= 1) {
+                    opt.height = 100;
+                }
+
+                if (odataList.length > 10) {
+                    opt.height = 390;
+                }
+
+                $hot.updateSettings(opt);
+                $hot.origData = odataList;
+
+                $section.append($(container).detach());
             }
-
-            if (odataList.length > 10) {
-                opt.height = 390;
-            }
-
-            $hot.updateSettings(opt);
-            $hot.origData = odataList;
-
-            $section.append($(container).detach());
 
             hookOnChangeEvent();           
         });
@@ -351,7 +353,7 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
             $saveButton.html('<span class="fa fa-spinner fa-spin"></span>&nbsp;SAVING..');
             $saveButton.addClass('disabled');
             $cancel.addClass('disabled');
-
+            
             var clientData = [];
 
             var dataRows = [];
@@ -415,7 +417,7 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
             }).always(function () {
                 $saveButton.html('<span class="fa fa-floppy-o"></span> SAVE');
 
-                that.getSubgridData(odataUrl);
+                that.getSubgridData(odataUrl, false);
 
                 $hot.clearUndo();
 
