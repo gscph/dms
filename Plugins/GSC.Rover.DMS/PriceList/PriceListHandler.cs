@@ -300,6 +300,11 @@ namespace GSC.Rover.DMS.BusinessLogic.PriceList
 
         public List<Entity> RetrievePriceList(Entity entity, Int32 transactionType, Int32 priceListType)
         {
+            /* Legend: 
+             * transactionType = 100000000 : Vehicle Sales
+             * priceListType = 100000003 : Vehicles
+             * priceListType = 100000002 : Item*/
+
             _tracingService.Trace("Started RetrievePriceList Method.");
             _tracingService.Trace("Item Type: " + itemType);
 
@@ -345,7 +350,7 @@ namespace GSC.Rover.DMS.BusinessLogic.PriceList
                     if (CheckifDefaultPriceListIsLatest(defaultPriceList))
                         effectivePriceList.Add(defaultPriceList);
                     else
-                        throw new InvalidPluginExecutionException("Default Price List effectivity date is out of date.");
+                        throw new InvalidPluginExecutionException("Default Price List of effectivity date is out of date.");
                 }
 
                 else
