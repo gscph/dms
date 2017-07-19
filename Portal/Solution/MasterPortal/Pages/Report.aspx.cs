@@ -142,9 +142,13 @@ namespace Site.Reports
             {
                 get
                 {
-                    string userName = "administrator";
-                    string password = "*StopUsingWeakPasswords!";
-                    string domain = "xrm";
+                    string UserName = ConfigurationManager.AppSettings["UserName"].ToString();
+                    string Password = ConfigurationManager.AppSettings["Password"].ToString();
+                    string Domain = ConfigurationManager.AppSettings["Domain"].ToString();
+
+                    string userName = UserName;
+                    string password = Password;
+                    string domain = Domain;
 
                     return new NetworkCredential(userName, password, domain);
                 }
