@@ -326,6 +326,12 @@ $(document).ready(function (e) {
             Page_Validators = jQuery.grep(Page_Validators, function (value) {
                 return value != schemeValidator;
             });
+			Page_Validators = jQuery.grep(Page_Validators, function (value) {
+                return value != downPaymentAmountValidator;
+            });
+			Page_Validators = jQuery.grep(Page_Validators, function (value) {
+                return value != downPaymentPercentageValidator;
+            });
         }
         else if (paymentmode == '100000001') {
             $('#gsc_bankid_label').parent("div").addClass('required');
@@ -720,14 +726,14 @@ $(document).ready(function (e) {
 
     var webRole = DMS.Settings.User.webRole;
     if (webRole == 'Cashier' || webRole == "Vehicle Allocator" || webRole == "Invoicer" || webRole == "Invoice Generator by Dealer" || webRole == "CC Manager" || webRole.indexOf("MSD Manager") >= 0) {
-
-        $("input").parent("span.checkbox").each(function () {
-            if ($(this).closest("table").data("name") != "hideSection") {
-                $inputId = $(this).children("input").attr("id");
-                $('input[id="' + $inputId + '"], label[for="' + $inputId + '"]').css({ "pointer-events": "none", "cursor": "default" });
+      
+      $("input").parent("span.checkbox").each(function() {
+            if($(this).closest("table").data("name") != "hideSection"){
+              $inputId = $(this).children("input").attr("id");
+              $('input[id="'+$inputId+'"], label[for="'+$inputId+'"]').css({ "pointer-events": "none", "cursor": "default" });
             }
-        });
-
+      });
+      
         $("#EntityFormView").find("input").each(function () {
             if (webRole == "Invoicer") {
                 if ($(this).closest('table').data("name") === "tabbed-INSURANCECHARGES") {

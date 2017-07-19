@@ -342,8 +342,8 @@ $(document).ready(function (e) {
 
             $('#gsc_bankid_label').parent("div").addClass('required');
             $('#gsc_financingschemeid_label').parent("div").removeClass("required");
-            $('#gsc_downpaymentamount_label').parent('div').addClass('required');
-            $('#gsc_downpaymentpercentage_label').parent('div').addClass('required');
+            //$('#gsc_downpaymentamount_label').parent('div').addClass('required');
+            //$('#gsc_downpaymentpercentage_label').parent('div').addClass('required');
 
             if (DMS.Settings.Permission.Update == true) {
                 dpamountfield.attr('readonly', false);
@@ -353,6 +353,12 @@ $(document).ready(function (e) {
             // Remove the new validator to the page validators array:          
             Page_Validators = jQuery.grep(Page_Validators, function (value) {
                 return value != schemeValidator;
+            });
+			Page_Validators = jQuery.grep(Page_Validators, function (value) {
+                return value != downPaymentAmountValidator;
+            });
+			Page_Validators = jQuery.grep(Page_Validators, function (value) {
+                return value != downPaymentPercentageValidator;
             });
 
             // Add Validator
