@@ -399,6 +399,7 @@ namespace GSC.Rover.DMS.BusinessLogic.PriceList
             var branchId = entity.GetAttributeValue<EntityReference>("gsc_branchid") != null
                 ? entity.GetAttributeValue<EntityReference>("gsc_branchid").Id
                 : Guid.Empty;
+            var productType = "vehicle";
 
             _tracingService.Trace("Branch - " + branchId.ToString());
 
@@ -419,27 +420,18 @@ namespace GSC.Rover.DMS.BusinessLogic.PriceList
                 retrievePriceList.LinkEntities[0].LinkCriteria.AddCondition(new ConditionExpression("gsc_type", ConditionOperator.Equal, priceListType));
 
                 if (itemType == 1)
+                {
+                    productType = "cab chassis";
                     retrievePriceList.LinkEntities[0].LinkCriteria.AddCondition(new ConditionExpression("gsc_classmaintenancepn", ConditionOperator.Like, "%Accessory"));
+                }
                 else if (itemType == 2)
-                    retrievePriceList.LinkEntities[0].LinkCriteria.AddCondition(new ConditionExpression("gsc_classmaintenancepn" , ConditionOperator.Like, "%Chassis"));
+                {
+                    productType = "accessories";
+                    retrievePriceList.LinkEntities[0].LinkCriteria.AddCondition(new ConditionExpression("gsc_classmaintenancepn", ConditionOperator.Like, "%Chassis"));
+                }
             }
             
             EntityCollection priceListCollection = _organizationService.RetrieveMultiple(retrievePriceList);
-
-            //Get Price List where begin date is less than or equal to current date and end date is greater than than or equal to current date
-            /*var priceListConditionList = new List<ConditionExpression>
-                 {
-                     new ConditionExpression("gsc_promo", ConditionOperator.Equal, false),
-                     new ConditionExpression("gsc_transactiontype", ConditionOperator.Equal, transactionType),
-                     new ConditionExpression("begindate", ConditionOperator.LessEqual, dateToday),
-                     new ConditionExpression("enddate", ConditionOperator.GreaterEqual, dateToday),
-                     new ConditionExpression("gsc_default", ConditionOperator.LessEqual, false),
-                     new ConditionExpression("statecode", ConditionOperator.Equal, 0),
-                     new ConditionExpression("gsc_branchid", ConditionOperator.Equal, branchId)
-                 };
-
-            EntityCollection priceListCollection = CommonHandler.RetrieveRecordsByConditions("pricelevel", priceListConditionList, _organizationService, "createdon", OrderType.Ascending,
-                        new[] { "gsc_transactiontype", "begindate", "enddate", "gsc_taxstatus" });*/
 
             _tracingService.Trace(priceListCollection.Entities.Count + " price list records retrieved...");
 
@@ -457,7 +449,18 @@ namespace GSC.Rover.DMS.BusinessLogic.PriceList
                     effectivePriceList.Add(priceList);
             }
             else
-                throw new InvalidPluginExecutionException("There is no effecive Price List for the selected Vehicle.");
+            {
+                var errormsg = "";
+
+                if (itemType == 1)
+                    errormsg = "Atleast one of the accessories associated to this vehicle has no effective price list.";
+                else if (itemType == 2)
+                    errormsg = "Atleast one of the cab chassis associated to this vehicle has no effective price list.";
+                else
+                    errormsg = "There is no effecive price list for the selected vehicle.";
+
+                throw new InvalidPluginExecutionException(errormsg);
+            }
 
             _tracingService.Trace("Retrieve Latest Price List Ended.");
 
