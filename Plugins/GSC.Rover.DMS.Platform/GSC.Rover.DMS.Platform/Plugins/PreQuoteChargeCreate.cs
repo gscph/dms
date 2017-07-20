@@ -66,6 +66,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
                 QuoteChargeHandler quoteChargeHandler = new QuoteChargeHandler(service, trace);
                 quoteChargeHandler.CheckifChargeExists(quoteChargeEntity);
                 quoteChargeHandler.ReplicateChargeAmount(quoteChargeEntity, message);
+                
             }
             catch (Exception ex)
             {
