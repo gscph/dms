@@ -516,6 +516,7 @@ namespace GSC.Rover.DMS.BusinessLogic.PriceList
                 Entity priceListToUpdate = _organizationService.Retrieve(priceList.LogicalName, priceList.Id,
                     new ColumnSet("gsc_isglobalrecord"));
                 priceListToUpdate["gsc_isglobalrecord"] = true;
+                priceListToUpdate["gsc_publishenabled"] = true;
                 _organizationService.Update(priceListToUpdate);
 
                 return priceListToUpdate;
