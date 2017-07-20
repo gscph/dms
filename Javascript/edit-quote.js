@@ -152,8 +152,8 @@ $(document).ready(function () {
 
     function checkDiscountSubgrid() {
         if ($('table[data-name="tabbed-DISCOUNTS"]').is(":visible")) {
-            // $('table[data-name="tabbed-DISCOUNTS"]').parent().addClass("permanent-disabled");
-            // $('.disabled').attr("tabindex", "-1");
+           // $('table[data-name="tabbed-DISCOUNTS"]').parent().addClass("permanent-disabled");
+          // $('.disabled').attr("tabindex", "-1");
             $('table[data-name="tabbed-DISCOUNTS"]').parent().attr("disabled", "disabled");
             $(".dropdown.action").hide();
         }
@@ -164,8 +164,8 @@ $(document).ready(function () {
 
     function checkChargesSubgrid() {
         if ($('table[data-name="tabbed-CHARGES"]').is(":visible")) {
-            // $('table[data-name="tabbed-CHARGES"]').parent().addClass("permanent-disabled");
-            // $('.disabled').attr("tabindex", "-1");
+           // $('table[data-name="tabbed-CHARGES"]').parent().addClass("permanent-disabled");
+           // $('.disabled').attr("tabindex", "-1");
             $('table[data-name="tabbed-CHARGES"]').parent().attr("disabled", "disabled");
             $(".dropdown.action").hide();
         }
@@ -647,6 +647,75 @@ $(document).ready(function () {
         $(".content-wrapper").append(div);
     }
 
+ setTimeout(function () {
+
+        $('#gsc_productid').on('change', function () {
+            var productId = $(this).val();
+            var markUpPercentage = $('#gsc_markup').val() != "" ? $('#gsc_markup').val() : 0;
+
+            if (productId == "") return;
+
+            var productOdataQuery = "/_odata/product?$filter=productid eq (Guid'" + productId + "')";
+
+            $.ajax({
+                type: 'get',
+                async: true,
+                url: productOdataQuery,
+                success: function (data) {
+
+                    if (data.value.length > 0) {
+                        var product = data.value[0];
+
+                        var modelYear = product.gsc_modelyear != null ? product.gsc_modelyear : "";
+                        var modelCode = product.gsc_modelcode != null ? product.gsc_modelcode : "";
+                        var optionCode = product.gsc_optioncode != null ? product.gsc_optioncode : "";
+                        var grossWeight = product.gsc_grossvehicleweight != null ? product.gsc_grossvehicleweight : "";
+                        var pistonDisplacement = product.gsc_pistondisplacement != null ? product.gsc_pistondisplacement : "";
+                        var warrantyYears = product.gsc_warrantyexpirydays != null ? product.gsc_warrantyexpirydays : "";
+                        var warrantyMilage = product.gsc_warrantymileage != null ? product.gsc_warrantymileage : "";
+                        var otherDetails = product.gsc_othervehicledetails != null ? product.gsc_othervehicledetails : "";
+                        var vehicleType = product.gsc_vehicletypeid != null ? product.gsc_vehicletypeid.Name : "";
+                        var bodyType = product.gsc_bodytypeid != null ? product.gsc_bodytypeid.Name : "";
+                        var fuelType = product.gsc_fueltype != null ? product.gsc_fueltype.Name : "";
+                        var transmission = product.gsc_transmission != null ? product.gsc_transmission.Name : "";
+
+                        var result = "Model Year: " + modelYear + "\n" +
+                            "Model Code: " + modelCode + "\n" +
+                            "Option Code: " + optionCode + "\n" +
+                            "Vehicle Type: " + vehicleType + "\n" +
+                            "Body Type: " + bodyType + "\n" +
+                            "Gross Vehicle Weight: " + grossWeight + "\n" +
+                            "Piston Displacement: " + pistonDisplacement + "\n" +
+                            "Fuel Type: " + fuelType + "\n" +
+                            "Transmission: " + transmission + "\n" +
+                            "Warranty Years: " + warrantyYears + "\n" +
+                            "Warranty Mileage: " + warrantyMilage + "\n" +
+                            "Others: " + otherDetails + "\n";
+
+                        $('#gsc_vehicledetails').val(result);
+                    }
+                },
+                error: function (xhr, textStatus, errorMessage) {
+                    console.error(errorMessage);
+                }
+            });
+
+            $.ajax({
+                type: 'get',
+                async: true,
+                url: '~/api/Service/GetVehicleUnitPrice?productId=' + productId + '&markUp=' + markUpPercentage,
+                success: function (data) {
+                    $('#gsc_vehicleunitprice').val(data);
+                },
+                error: function (xhr, textStatus, errorMessage) {
+                     $('#gsc_vehicleunitprice').val(0.00);
+                    console.error(errorMessage);
+                }
+            });
+        });
+
+    }, 100);
+
 });
 
 var classOdataUrl = "/_odata/gsc_class?$filter=gsc_classmaintenancepn eq 'Accessory'";
@@ -655,8 +724,7 @@ var classId = "";
 var accessoriesSelectData;
 
 var productId = $("#gsc_productid").val();
-var branchId = $("#gsc_branchid").val();
-accessoriesSelectData = DMS.Helpers.GetOptionListSet('/_odata/vehicleaccessory?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27) and ( gsc_branchid/Id%20eq%20(Guid%27' + branchId + '%27) or gsc_isglobalrecord eq true)', "gsc_itemid.Id", "gsc_itemid.Name,gsc_vehicleaccessorypn");
+accessoriesSelectData = DMS.Helpers.GetOptionListSet('/_odata/vehicleaccessory?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_itemid.Id", "gsc_itemid.Name,gsc_vehicleaccessorypn");
 
 var AccessroiessGridInstance = {
     initialize: function () {
@@ -720,11 +788,7 @@ var AccessroiessGridInstance = {
     }
 }
 
-<<<<<<< HEAD
 var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_sls_vehiclecabchassisid", "gsc_vehiclecabchassispn,gsc_itemnumber");
-=======
-var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27) and ( gsc_branchid/Id%20eq%20(Guid%27' + branchId + '%27) or gsc_isglobalrecord eq true)', "gsc_sls_vehiclecabchassisid", "gsc_vehiclecabchassispn,gsc_itemnumber");
->>>>>>> d867f0af3464072e951db37bedde23ede2f1abfa
 
 var CabChasisGridInstance = {
     initialize: function () {
