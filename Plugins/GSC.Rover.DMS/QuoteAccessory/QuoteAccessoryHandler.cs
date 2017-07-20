@@ -35,6 +35,7 @@ namespace GSC.Rover.DMS.BusinessLogic.QuoteAccessory
             _tracingService.Trace("Started PopulateDetails Method...");
             if (HasExistingAccessory(quoteAccessory) == true)
                 throw new InvalidPluginExecutionException("Accessory already exists...");
+
             Entity quoteEntity = RetrieveBranchDealer(quoteAccessory);
             Entity itemEntity = RetrieveAccessory(quoteAccessory);
 

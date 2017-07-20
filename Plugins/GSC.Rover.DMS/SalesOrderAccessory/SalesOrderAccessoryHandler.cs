@@ -38,6 +38,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrderAccessory
             var itemId = salesOrderAccessory.Contains("gsc_productid") ? salesOrderAccessory.GetAttributeValue<EntityReference>("gsc_productid").Id
                 : Guid.Empty;
 
+            Entity orderEntity = RetrieveBranchDealer(salesOrderAccessory);
             EntityCollection itemCollection = CommonHandler.RetrieveRecordsByOneValue("product", "productid", itemId, _organizationService, null, OrderType.Ascending,
                 new[] { "productnumber"});
 
@@ -50,6 +51,13 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrderAccessory
                 salesOrderAccessory["gsc_itemnumber"] = itemEntity.Contains("productnumber")
                     ? itemEntity.GetAttributeValue<String>("productnumber")
                     : String.Empty;
+                salesOrderAccessory["gsc_branchid"] = orderEntity.GetAttributeValue<EntityReference>("gsc_branchid") != null
+                    ? orderEntity.GetAttributeValue<EntityReference>("gsc_branchid")
+                    : null;
+                salesOrderAccessory["gsc_dealerid"] = orderEntity.GetAttributeValue<EntityReference>("gsc_dealerid") != null
+                    ? orderEntity.GetAttributeValue<EntityReference>("gsc_dealerid")
+                    : null;
+
                 RetrivePrice(salesOrderAccessory);
                 if (message.Equals("Update"))
                 {
@@ -61,6 +69,23 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrderAccessory
             }
             _tracingService.Trace("Ended PopulateDetails Method...");
             return salesOrderAccessory;
+        }
+
+        //Retrieve Dealer and Branch from Parent Entity (Dealer)
+        private Entity RetrieveBranchDealer(Entity orderAccessory)
+        {
+            var orderId = orderAccessory.Contains("gsc_orderid")
+                ? orderAccessory.GetAttributeValue<EntityReference>("gsc_orderid").Id
+                : Guid.Empty;
+
+            EntityCollection orderCollection = CommonHandler.RetrieveRecordsByOneValue("salesorder", "salesorderid", orderId, _organizationService, null, OrderType.Ascending,
+                 new[] { "gsc_branchid", "gsc_dealerid" });
+
+            if (orderCollection != null && orderCollection.Entities.Count > 0)
+            {
+                return orderCollection.Entities[0];
+            }
+            return null;
         }
 
         //Created By: Leslie Baliguat, Created On: 4/17/2017
