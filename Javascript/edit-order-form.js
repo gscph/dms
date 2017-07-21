@@ -725,7 +725,7 @@ $(document).ready(function (e) {
 }, 7000);*/
 
     var webRole = DMS.Settings.User.webRole;
-    if (webRole == 'Cashier' || webRole == "Vehicle Allocator" || webRole == "Invoicer" || webRole == "Invoice Generator by Dealer" || webRole == "CC Manager" || webRole.indexOf("MSD Manager") >= 0) {
+    if (webRole == 'Cashier' ||  webRole.contains("Vehicle Allocator") || webRole == "Invoicer" || webRole == "Invoice Generator by Dealer" || webRole == "CC Manager" || webRole.indexOf("MSD Manager") >= 0) {
       
       $("input").parent("span.checkbox").each(function() {
             if($(this).closest("table").data("name") != "hideSection"){
@@ -733,7 +733,20 @@ $(document).ready(function (e) {
               $('input[id="'+$inputId+'"], label[for="'+$inputId+'"]').css({ "pointer-events": "none", "cursor": "default" });
             }
       });
-      
+
+
+    setTimeout(function () {
+        //Vehicle Allocators able to access criteria filters
+         if(webRole.contains("Vehicle Allocator"))
+            {
+              $("input", '*[data-name="VEHICLECRITERIA"]').removeAttr("readonly");
+              $("select", '*[data-name="VEHICLECRITERIA"]').removeAttr("disabled").removeClass("permanent-disabled");
+
+            }
+    }, 200);
+    
+   
+
         $("#EntityFormView").find("input").each(function () {
             if (webRole == "Invoicer") {
                 if ($(this).closest('table').data("name") === "tabbed-INSURANCECHARGES") {

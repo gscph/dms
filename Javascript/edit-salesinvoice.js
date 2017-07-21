@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     var webRole = DMS.Settings.User.webRole;
 
-    if (status != "Open" || webRole.indexOf("MSD Manager") >= 0) {
+    if (status != "Open" ||  webRole.indexOf("MSD Manager") >= 0) {
         $('#SubmitButton').hide();
         $('#UpdateButton').hide();
         $('.delete-link').hide();
@@ -27,7 +27,9 @@ $(document).ready(function () {
     if (webRole == "Invoicer") {
         $('#SubmitButton').addClass("hidden");
         $('#UpdateButton').addClass("hidden");
-        $('#name').attr("readonly", "true");
+        // Exception: Invoicer can only update sales invoice number (name)
+        if(status == "Open")
+        $('#name').attr("readonly", false);
     }
 
     setTimeout(function () {
