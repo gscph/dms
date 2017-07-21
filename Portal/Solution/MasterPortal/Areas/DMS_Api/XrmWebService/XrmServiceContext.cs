@@ -44,6 +44,7 @@ namespace Site.Areas.DMSApi
 
         public EntityForm GetEntityPrimaryFieldValue(string logicalName, Guid Id)
         {
+            List<string> fields = new List<string>();
             EntityForm result = new EntityForm();
             result.EntityDisplayName = this.GetEntityDisplayName(logicalName);
             result.PrimaryFieldVal = "New ";
@@ -51,7 +52,9 @@ namespace Site.Areas.DMSApi
             if (Id != Guid.Empty)
             {
                 Entity currentEntity = _service.ServiceContext.Retrieve(logicalName, Id, new ColumnSet(true));
-                result.PrimaryFieldVal = this.TryGetFieldAttributes(currentEntity, this.PushFieldAttributes(currentEntity)) ?? string.Empty;
+                fields = this.PushFieldAttributes(currentEntity);
+                result.PrimaryField = fields;
+                result.PrimaryFieldVal = this.TryGetFieldAttributes(currentEntity, fields) ?? String.Empty;
             }
             return result;
         }
@@ -200,7 +203,8 @@ namespace Site.Areas.DMSApi
         }
         private string TryGetFieldAttributes(Entity entity, List<string> attributes)
         {
-            string value = null;
+            string value = "";
+
             foreach (string item in attributes)
             {
                 value = entity.GetAttributeValue<string>(item);
