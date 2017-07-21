@@ -121,6 +121,51 @@
                     $(this).find(".grid-actions").addClass("hidden");
                 });
 
+                if (DMS.Settings.User.webRole == "Sales Supervisor" || DMS.Settings.User.webRole == "Sales Executive") {
+                    //Edit Prospect scripts
+                    // var reportsTo = $("#gsc_recordownerreportsto").val();
+                    var owner = $("#gsc_recordownerid").val();
+                    var salesExecutive = $("#gsc_salesexecutiveid").val();
+
+                    var oDataUrl = '/_odata/employee?$filter=contactid%20eq%20(Guid%27' + salesExecutive + '%27)&';
+                    $.ajax({
+                        type: 'get',
+                        async: true,
+                        url: oDataUrl,
+                        success: function (data) {
+                            if (data.value.length !== 0) {
+                                var reportsTo = data.value[0].gsc_reportsto;
+                                if (reportsTo !== null && reportsTo !== undefined)
+                                    var reportsToId = reportsTo.Id;
+
+                                if (DMS.Settings.Permission.Scope === 756150000 && DMS.Settings.Permission.Read === true) {
+                                    return;
+                                }
+
+                                if (reportsToId == userId || salesExecutive == userId) {
+                                    return;
+                                }
+
+                                if (entityName != "contact" && entityName != "account") {
+                                    if (owner === userId) {
+                                        window.location.href = editUrl;
+                                        return;
+                                    }
+                                }
+
+                                $("section.content").hide();
+                                var entityForm = $("#EntityForm1");
+                                entityForm.html("");
+                                var template = "<div class=\"alert alert-block alert-danger\"><span class=\"fa fa-lock\" aria-hidden=\"true\"></span> Access denied. You do not have the appropriate permissions.</div>";
+                                $(template).appendTo(entityForm);
+                            }
+                        },
+                        error: function (xhr, textStatus, errorMessage) {
+                            console.error(errorMessage);
+                        }
+                    });
+                }
+
                 var webPageId = $("#webPageId span").html();
                 var recordOwnerId = $("#gsc_recordownerid").val();
                 var OwningBranchId = $("#gsc_branchid").val();
@@ -173,42 +218,6 @@
 
                     $(".navbar-right.toolbar-right").removeClass("hidden");
 
-                    if (DMS.Settings.User.webRole == "Sales Supervisor" || DMS.Settings.User.webRole == "Sales Executive") {
-                        //Edit Prospect scripts
-                        // var reportsTo = $("#gsc_recordownerreportsto").val();
-                        var owner = $("#gsc_recordownerid").val();
-
-                        var oDataUrl = '/_odata/employee?$filter=contactid%20eq%20(Guid%27' + owner + '%27)&';
-                        $.ajax({
-                            type: 'get',
-                            async: true,
-                            url: oDataUrl,
-                            success: function (data) {
-                                if (data.value.length !== 0) {
-                                    var reportsTo = data.value[0].gsc_reportsto;
-                                    if (reportsTo !== null && reportsTo !== undefined)
-                                    var reportsToId = reportsTo.Id;
-
-                                    if (owner === userId || reportsToId === userId || salesExecutiveId == userId) {
-                                        return;
-                                    }
-
-                                    if (DMS.Settings.Permission.Scope === 756150000 && DMS.Settings.Permission.Read === true) {
-                                        return;
-                                    }
-
-                                    $("section.content").hide();
-                                    var entityForm = $("#EntityForm1");
-                                    entityForm.html("");
-                                    var template = "<div class=\"alert alert-block alert-danger\"><span class=\"fa fa-lock\" aria-hidden=\"true\"></span> Access denied. You do not have the appropriate permissions.</div>";
-                                    $(template).appendTo(entityForm);
-                                }
-                            },
-                            error: function (xhr, textStatus, errorMessage) {
-                                console.error(errorMessage);
-                            }
-                        });
-                    }
                 });
 
                 function DisableFormByPermission() {
