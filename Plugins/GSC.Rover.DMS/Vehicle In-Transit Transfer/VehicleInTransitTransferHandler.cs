@@ -117,18 +117,16 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                         allocatedVehicle["gsc_optioncode"] = inventoryEntity.GetAttributeValue<String>("gsc_optioncode");
                         allocatedVehicle["gsc_productionno"] = inventoryEntity.GetAttributeValue<String>("gsc_productionno");
                         allocatedVehicle["gsc_vin"] = inventoryEntity.GetAttributeValue<String>("gsc_vin");
-                        allocatedVehicle["gsc_vehicleallocateddate"] = DateTime.Today;
                         allocatedVehicle["gsc_basemodel"] = baseModelName;
                         allocatedVehicle["gsc_modeldescription"] = productName;
                         allocatedVehicle["gsc_modelyear"] = inventoryEntity.GetAttributeValue<String>("gsc_modelyear");
                         allocatedVehicle["gsc_inventoryid"] = new EntityReference(inventoryEntity.LogicalName, inventoryEntity.Id);
                         allocatedVehicle["gsc_vehicleintransittransferid"] = new EntityReference(vehicleInTransitTransfer.LogicalName, vehicleInTransitTransfer.Id);
-                        if (destinationSiteId != Guid.Empty)
-                            allocatedVehicle["gsc_destinationsiteid"] = new EntityReference("gsc_iv_site", destinationSiteId);
+                        allocatedVehicle["gsc_destinationsiteid"] = new EntityReference("gsc_iv_site", destinationSiteId);
                         allocatedVehicle["gsc_sourcesiteid"] = new EntityReference("gsc_iv_site", sourceSiteId);
                         allocatedVehicle["gsc_viasiteid"] = new EntityReference("gsc_iv_site", viaSiteId);
+                        
                         _organizationService.Create(allocatedVehicle);
-
                         _tracingService.Trace("Created vehicle allocation record...");
 
                         #endregion
@@ -141,6 +139,9 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                 else
                     throw new InvalidPluginExecutionException("The inventory for entered vehicle is not available.");
             }
+
+            vehicleInTransitTransfer["gsc_inventoryidtoallocate"] = String.Empty;
+            _organizationService.Update(vehicleInTransitTransfer);
 
             _tracingService.Trace("Ending AllocateVehicle method...");
         }
