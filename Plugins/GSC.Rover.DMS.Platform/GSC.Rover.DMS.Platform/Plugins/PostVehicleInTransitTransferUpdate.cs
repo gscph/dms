@@ -101,11 +101,17 @@ namespace GSC.Rover.DMS.Platform.Plugins
                         : String.Empty;
                     var preTransferStatus = preImageEntity.Contains("gsc_intransittransferstatus") ? preImageEntity.GetAttributeValue<OptionSetValue>("gsc_intransittransferstatus").Value
                         : 0;
+                    String preImageAllocatedItemsToDelete = preImageEntity.Contains("gsc_allocateditemstodelete")
+                        ? preImageEntity.GetAttributeValue<String>("gsc_allocateditemstodelete")
+                        : String.Empty;
 
                     string postInventoryId = postImageEntity.Contains("gsc_inventoryidtoallocate") ? postImageEntity.GetAttributeValue<string>("gsc_inventoryidtoallocate")
                         : String.Empty;
                     var postTransferStatus = postImageEntity.Contains("gsc_intransittransferstatus") ? postImageEntity.GetAttributeValue<OptionSetValue>("gsc_intransittransferstatus").Value
                         : 0;
+                    String postImageAllocatedItemsToDelete = postImageEntity.Contains("gsc_allocateditemstodelete")
+                        ? postImageEntity.GetAttributeValue<String>("gsc_allocateditemstodelete")
+                        : String.Empty;
 
 
                     VehicleInTransitTransferHandler vehicleInTransitHandler = new VehicleInTransitTransferHandler(service, trace);
@@ -125,6 +131,10 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     if (preTransferStatus != postTransferStatus && postTransferStatus == 100000001)
                     {
                         vehicleInTransitHandler.ShipVehicle(preImageEntity);
+                    }
+                    if (preImageAllocatedItemsToDelete != postImageAllocatedItemsToDelete && postImageAllocatedItemsToDelete != String.Empty)
+                    {
+                        vehicleInTransitHandler.DeleteInTransitTransferVehicle(postImageEntity);
                     }
                 }
 
