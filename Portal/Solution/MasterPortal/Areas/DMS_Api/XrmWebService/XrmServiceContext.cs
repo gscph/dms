@@ -479,19 +479,52 @@ namespace Site.Areas.DMSApi
 
                 if (entityPermissionCollection.Entities.Count > 1)
                 {
+                    var isParent = false;
+                    Guid userId = Guid.Empty;
+                    Guid branchId = Guid.Empty;
+                    var context = HttpContext.Current;
+                    var request = context.Request.RequestContext;
+                    var cookies = request.HttpContext.Request.Cookies;
+                    if (cookies != null)
+                    {
+                        if (cookies["Branch"] != null)
+                        {
+                            userId = new Guid(cookies["Branch"]["userId"]);
+                            branchId = new Guid(cookies["Branch"]["branchId"]);
+                        }
+                    }
+
                     foreach (Entity entityPermission in entityPermissionCollection.Entities)
                     {
                         if (entityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value == 756150003)
                         {
-                            privileges = GetParentEntityPermission(entityPermission, recordOwnerId, OwningBranchId);
+                            var scope = GetParentEntityPermission(entityPermission, recordOwnerId, OwningBranchId);
 
-                            if (privileges != null)
-                                return privileges;
+                            if (scope == 756150000)
+                            {
+                                isParent = true;
+                                privileges = AssignPrivilegesValue(entityPermission);
+                            }
+                            if (scope == 756150001 && userId == recordOwnerId)
+                            {
+                                isParent = true;
+                                return AssignPrivilegesValue(entityPermission);
+                            }
+                            else if (scope == 756150002 && branchId == OwningBranchId)
+                            {
+                                isParent = true;
+                                return AssignPrivilegesValue(entityPermission);
+                            }
                         }
                     }
 
-                    privileges = new Privileges();
-                    return MultipleEntityPermission(entityPermissionCollection.Entities[0], privileges);
+                    if (isParent == true)
+                        return privileges;
+                    else
+                    {
+                        privileges = new Privileges();
+                        return MultipleEntityPermission(entityPermissionCollection.Entities[0], privileges);
+                    }
                 }
                 else
                 {
@@ -502,7 +535,7 @@ namespace Site.Areas.DMSApi
             return null;
         }
 
-        private Privileges GetParentEntityPermission(Entity entityPermission, Guid recordOwnerId, Guid OwningBranchId)
+        private int GetParentEntityPermission(Entity entityPermission, Guid recordOwnerId, Guid OwningBranchId)
         {
             var parentEntityPermissionId = entityPermission.GetAttributeValue<EntityReference>("adx_parententitypermission") != null
                 ? entityPermission.GetAttributeValue<EntityReference>("adx_parententitypermission").Id
@@ -516,33 +549,10 @@ namespace Site.Areas.DMSApi
             if (entityPermissionCollection != null && entityPermissionCollection.Entities.Count > 0)
             {
                 Entity parentEntityPermission = entityPermissionCollection.Entities[0];
-                var scope = parentEntityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
-
-                Guid userId = Guid.Empty;
-                Guid branchId = Guid.Empty;
-                var context = HttpContext.Current;
-                var request = context.Request.RequestContext;
-                var cookies = request.HttpContext.Request.Cookies;
-                if (cookies != null)
-                {
-                    if (cookies["Branch"] != null)
-                    {
-                        userId = new Guid(cookies["Branch"]["userId"]);
-                        branchId = new Guid(cookies["Branch"]["branchId"]);
-                    }
-                }
-
-                if (scope == 756150001 && userId == recordOwnerId)
-                {
-                    return AssignPrivilegesValue(entityPermission);
-                }
-                else if (scope == 756150002 && branchId == OwningBranchId)
-                {
-                    return AssignPrivilegesValue(entityPermission);
-                }
+                return parentEntityPermission.GetAttributeValue<OptionSetValue>("adx_scope").Value;
             }
 
-            return null;
+            return 0;
         }
     }
 }

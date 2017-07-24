@@ -178,19 +178,20 @@ namespace Site.Areas.Portal.Controllers
                      applyRecordLevelFilters);
 
             var result = viewDataAdapter.CustomFetchEntities(viewConfiguration);
+            var resultRecords = result.Records;
 
-            var filteredRecords = converter.FilterSharedEntityScope(viewConfiguration, result.Records);
-            var globalRecords = converter.FilterRootBusinessUnitRecords(viewConfiguration, filterEntityName, filterRelationshipName, filterValue, search);
+         //   var filteredRecords = converter.FilterSharedEntityScope(viewConfiguration, result.Records);
+           // var globalRecords = converter.FilterRootBusinessUnitRecords(viewConfiguration, filterEntityName, filterRelationshipName, filterValue, search);
 
-            var combinedResults = filteredRecords.Union(globalRecords);
+            //var combinedResults = filteredRecords.Union(globalRecords);
 
-            combinedResults = combinedResults.GroupBy(x => x.Id).Select(y => y.First());
+           // combinedResults = combinedResults.GroupBy(x => x.Id).Select(y => y.First());
 
             //Custom Order By
-            string[] order = sortExpression.Split(' ');
+          /*  string[] order = sortExpression.Split(' ');
             var count = 0;
 
-            foreach (var combinedResult in combinedResults)
+            foreach (var combinedResult in resultRecords)
             {
                 foreach (var attributes in combinedResult.Attributes)
                 {
@@ -204,30 +205,30 @@ namespace Site.Areas.Portal.Controllers
                         if (valueType == "String")
                         {
                             if (order[1] == "DESC")
-                                combinedResults = combinedResults.OrderByDescending(x => x.Contains(order[0]) ? x.Attributes[order[0]] : "");
+                                resultRecords = resultRecords.OrderByDescending(x => x.Contains(order[0]) ? x.Attributes[order[0]] : "");
                             else
-                                combinedResults = combinedResults.OrderBy(x => x.Contains(order[0]) ? x.Attributes[order[0]] : "");
+                                resultRecords = resultRecords.OrderBy(x => x.Contains(order[0]) ? x.Attributes[order[0]] : "");
                         }
                         else if (valueType == "Money")
                         {
                             if (order[1] == "DESC")
-                                combinedResults = combinedResults.OrderByDescending(x => x.Contains(order[0]) ? x.GetAttributeValue<Money>(order[0]).ToString() : "");
+                                resultRecords = resultRecords.OrderByDescending(x => x.Contains(order[0]) ? x.GetAttributeValue<Money>(order[0]).ToString() : "");
                             else
-                                combinedResults = combinedResults.OrderBy(x => x.Contains(order[0]) ? x.GetAttributeValue<Money>(order[0]).ToString() : "");
+                                resultRecords = resultRecords.OrderBy(x => x.Contains(order[0]) ? x.GetAttributeValue<Money>(order[0]).ToString() : "");
                         }
                         else if (valueType == "OptionSetValue")
                         {
                             if (order[1] == "DESC")
-                                combinedResults = combinedResults.OrderByDescending(x => x.Contains(order[0]) ? x.FormattedValues[order[0]] : "");
+                                resultRecords = resultRecords.OrderByDescending(x => x.Contains(order[0]) ? x.FormattedValues[order[0]] : "");
                             else
-                                combinedResults = combinedResults.OrderBy(x => x.Contains(order[0]) ? x.FormattedValues[order[0]] : "");
+                                resultRecords = resultRecords.OrderBy(x => x.Contains(order[0]) ? x.FormattedValues[order[0]] : "");
                         }
                         else if (valueType == "EntityReference")
                         {
                             if (order[1] == "DESC")
-                                combinedResults = combinedResults.OrderByDescending(x => x.GetAttributeValue<EntityReference>(order[0]) != null ? x.GetAttributeValue<EntityReference>(order[0]).Name : "");
+                                resultRecords = resultRecords.OrderByDescending(x => x.GetAttributeValue<EntityReference>(order[0]) != null ? x.GetAttributeValue<EntityReference>(order[0]).Name : "");
                             else
-                                combinedResults = combinedResults.OrderBy(x => x.GetAttributeValue<EntityReference>(order[0]) != null ? x.GetAttributeValue<EntityReference>(order[0]).Name : "");
+                                resultRecords = resultRecords.OrderBy(x => x.GetAttributeValue<EntityReference>(order[0]) != null ? x.GetAttributeValue<EntityReference>(order[0]).Name : "");
                         }
                         break;
                     }
@@ -236,7 +237,7 @@ namespace Site.Areas.Portal.Controllers
                 if (count > 0)
                     break;
             }
-            //Custom Order By Ends Here
+            //Custom Order By Ends Here*/
 
             if (result.EntityPermissionDenied)
             {
@@ -251,11 +252,11 @@ namespace Site.Areas.Portal.Controllers
                 var serviceContext = dataAdapterDependencies.GetServiceContext();
                 var crmEntityPermissionProvider = new CrmEntityPermissionProvider();
 
-                records = combinedResults.Select(e => new EntityRecord(e, serviceContext, crmEntityPermissionProvider, viewDataAdapter.EntityMetadata, true));
+                records = resultRecords.Select(e => new EntityRecord(e, serviceContext, crmEntityPermissionProvider, viewDataAdapter.EntityMetadata, true));
             }
             else
             {
-                records = combinedResults.Select(e => new EntityRecord(e, viewDataAdapter.EntityMetadata));
+                records = resultRecords.Select(e => new EntityRecord(e, viewDataAdapter.EntityMetadata));
             }
 
             var totalRecordCount = result.TotalRecordCount;

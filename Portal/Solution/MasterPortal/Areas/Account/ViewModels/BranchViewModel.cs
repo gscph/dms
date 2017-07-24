@@ -21,6 +21,8 @@ namespace Site.Areas.Account.ViewModels
         public UserWebRole WebRole { get; set; }
         public bool IsVendorUser { get; set; }
         public Guid UserId { get; set; }
+        public Guid ParentCustomerId { get; set; }
+        public String ParentCustomerType { get; set; }
     }
 
     public class UserPosition

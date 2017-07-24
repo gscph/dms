@@ -62,7 +62,8 @@ namespace Site
             viewConfiguration = converter.CustomFilterViews(viewConfiguration);
 
             OrganizationServiceContext serviceContext = this.Dependencies.GetServiceContext();
-            Fetch fetch = FilterSharedEntityScope(viewConfiguration);
+            Fetch fetch = FilterGlobalRecords(viewConfiguration);
+            fetch = FilterSharedEntityScope(fetch, viewConfiguration);
             this.AddSelectableFilterToFetchEntity(fetch.Entity, this.Configuration, this.Filter);
             this.AddWebsiteFilterToFetchEntity(fetch.Entity, this.Configuration);
             this.AddOrderToFetch(fetch.Entity, this.Order);
@@ -95,9 +96,9 @@ namespace Site
                 });
             }
 
-            ViewDataAdapter.FetchResult hey = base.FetchEntities(_dependencies.GetServiceContext(), fetch);
+            ViewDataAdapter.FetchResult records = base.FetchEntities(_dependencies.GetServiceContext(), fetch);
 
-            return hey;
+            return records;
         }
 
         private EntityCollection GetSharedEntityScope(Fetch fetch)
@@ -183,17 +184,32 @@ namespace Site
             return scopeString;
         }
 
-        private Fetch FilterSharedEntityScope(ViewConfiguration viewConfiguration)
+        private int GetOptionSetId(String entityName, String fieldname, String optionSetName)
+        {
+            RetrieveAttributeRequest raRequest = new RetrieveAttributeRequest
+            {
+                EntityLogicalName = entityName,
+                LogicalName = fieldname,
+                RetrieveAsIfPublished = true
+            };
+            RetrieveAttributeResponse raResponse = (RetrieveAttributeResponse)_dependencies.GetServiceContext().Execute(raRequest);
+            PicklistAttributeMetadata paMetadata = (PicklistAttributeMetadata)raResponse.AttributeMetadata;
+            OptionMetadata[] optionList = paMetadata.OptionSet.Options.ToArray();
+            foreach (OptionMetadata oMD in optionList)
+            {
+                var a = oMD.Label.LocalizedLabels[0].Label;
+                var b = optionSetName;
+                if (oMD.Label.LocalizedLabels[0].Label == optionSetName)
+                    return oMD.Value.Value;
+            }
+
+            return 0;
+        }
+
+        private Fetch FilterSharedEntityScope(Fetch fetch, ViewConfiguration viewConfiguration)
         {
             SavedQueryView queryView = viewConfiguration.GetSavedQueryView(_serviceContext);
             var objectName = queryView.Name;
-
-            Fetch fetch;
-
-            if (viewConfiguration.FetchXml != null)
-                fetch = Fetch.Parse(viewConfiguration.FetchXml);
-            else
-                fetch = Fetch.Parse(queryView.FetchXml);
 
             EntityCollection entityPermission = GetSharedEntityScope(fetch);
 
@@ -315,26 +331,86 @@ namespace Site
             return fetch;
         }
 
-        private int GetOptionSetId(String entityName, String fieldname, String optionSetName)
+        private Boolean CheckIfGlobalEntity(SavedQueryView queryView)
         {
-            RetrieveAttributeRequest raRequest = new RetrieveAttributeRequest
+            //Check if entity is a global entity
+            QueryExpression queryGlobalEntities = new QueryExpression("gsc_globalentities");
+            queryGlobalEntities.ColumnSet.AddColumns("gsc_name");
+            queryGlobalEntities.Criteria.AddCondition("gsc_name", ConditionOperator.Equal, queryView.EntityLogicalName);
+
+            EntityCollection globalEntitiesCollection = _service.ServiceContext.RetrieveMultiple(queryGlobalEntities);
+
+            if (globalEntitiesCollection != null && globalEntitiesCollection.Entities.Count > 0)
             {
-                EntityLogicalName = entityName,
-                LogicalName = fieldname,
-                RetrieveAsIfPublished = true
-            };
-            RetrieveAttributeResponse raResponse = (RetrieveAttributeResponse)_dependencies.GetServiceContext().Execute(raRequest);
-            PicklistAttributeMetadata paMetadata = (PicklistAttributeMetadata)raResponse.AttributeMetadata;
-            OptionMetadata[] optionList = paMetadata.OptionSet.Options.ToArray();
-            foreach (OptionMetadata oMD in optionList)
-            {
-                var a = oMD.Label.LocalizedLabels[0].Label;
-                var b = optionSetName;
-                if (oMD.Label.LocalizedLabels[0].Label == optionSetName)
-                    return oMD.Value.Value;
+                return true;
             }
 
-            return 0;
+            return false;
+        }
+
+        private Fetch FilterGlobalRecords(ViewConfiguration viewConfiguration)
+        { SavedQueryView queryView = viewConfiguration.GetSavedQueryView(_serviceContext);
+            var objectName = queryView.Name;
+
+            Fetch fetch;
+
+            if (viewConfiguration.FetchXml != null)
+                fetch = Fetch.Parse(viewConfiguration.FetchXml);
+            else
+                fetch = Fetch.Parse(queryView.FetchXml);
+
+            String webRole = String.Empty;
+            String parentustomerId = String.Empty;
+            String parentustomerType = String.Empty;
+            var accountField = String.Empty;
+            var context = HttpContext.Current;
+            var request = context.Request.RequestContext;
+            var cookies = request.HttpContext.Request.Cookies;
+            if (cookies != null)
+            {
+                if (cookies["Branch"] != null)
+                {
+                    webRole = cookies["Branch"]["webRoleName"];
+                    parentustomerId = cookies["Branch"]["parentCustomerId"];
+                    parentustomerType = cookies["Branch"]["parentCustomerType"];
+                    if(parentustomerType == "100000000")
+                        accountField = "gsc_dealerid";
+                    else if (parentustomerType == "100000001")
+                        accountField = "gsc_branchid";
+                }
+            }
+
+            if(!webRole.Contains("MMPC") && webRole != "Administrators")
+            {
+                //Check if entity is a global entity 
+                if (!CheckIfGlobalEntity(queryView))
+                {
+                    return fetch;
+                }
+                else
+                {
+                    Filter filter = new Filter { Type = LogicalOperator.Or };
+                    filter.Conditions = new List<Condition>();
+               
+                    filter.Conditions.Add(new Condition
+                    {
+                        Attribute = accountField,
+                        Operator = ConditionOperator.Equal,
+                        Value = parentustomerId
+                    });
+
+                     filter.Conditions.Add(new Condition
+                    {
+                        Attribute = "gsc_isglobalrecord",
+                        Operator = ConditionOperator.Equal,
+                        Value = true
+                    });
+
+                    fetch.Entity.Filters.Add(filter);
+                }
+            }
+
+           return fetch;
         }
     }
 }

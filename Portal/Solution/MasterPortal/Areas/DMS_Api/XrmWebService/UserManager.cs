@@ -44,10 +44,18 @@ namespace Site.Areas.DMS_Api.XrmWebService
             QueryExpression query = new QueryExpression("account");
             query.ColumnSet.AddColumns("gsc_allowdraftprinting", "gsc_owningusertoactivatequote", "gsc_managerstoactivatequote", "gsc_supervisorstoactivatequote");
             query.LinkEntities.Add(new LinkEntity("account", "contact", "accountid", "gsc_contactbranchid", JoinOperator.Inner));
-            query.LinkEntities[0].Columns.AddColumns("gsc_contactbranchid", "gsc_contactdealerid", "gsc_reportsto", "gsc_positionid");
+            query.LinkEntities[0].Columns.AddColumns("gsc_contactbranchid", "gsc_contactdealerid", "gsc_reportsto", "gsc_positionid", "parentcustomerid");
             query.LinkEntities[0].LinkCriteria.AddCondition("adx_identity_username", ConditionOperator.Equal, username);
             query.LinkEntities[0].EntityAlias = "Contact";
             Entity entity = _service.ServiceContext.RetrieveMultiple(query).Entities.FirstOrDefault();
+
+            QueryExpression queryParentCustomer = new QueryExpression("account");
+            queryParentCustomer.ColumnSet.AddColumns("gsc_recordtype");
+            queryParentCustomer.LinkEntities.Add(new LinkEntity("account", "contact", "accountid", "parentcustomerid", JoinOperator.Inner));
+            queryParentCustomer.LinkEntities[0].Columns.AddColumns("parentcustomerid");
+            queryParentCustomer.LinkEntities[0].LinkCriteria.AddCondition("adx_identity_username", ConditionOperator.Equal, username);
+            queryParentCustomer.LinkEntities[0].EntityAlias = "Contact";
+            Entity entityParentCustomer = _service.ServiceContext.RetrieveMultiple(queryParentCustomer).Entities.FirstOrDefault();
 
             //Retrieve Web Roles Associated to Contact
             QueryExpression queryWebRole = new QueryExpression("adx_webrole_contact");
@@ -77,6 +85,14 @@ namespace Site.Areas.DMS_Api.XrmWebService
                    ? (EntityReference)entity.GetAttributeValue<AliasedValue>("Contact.gsc_positionid").Value
                    : null;
 
+                var parentCustomerId = entityParentCustomer.GetAttributeValue<AliasedValue>("Contact.parentcustomerid") != null
+                   ? ((EntityReference)entity.GetAttributeValue<AliasedValue>("Contact.parentcustomerid").Value).Id
+                   : Guid.Empty;
+
+                var parentCustomerType = entityParentCustomer.Contains("gsc_recordtype") 
+                   ? entityParentCustomer.GetAttributeValue<OptionSetValue>("gsc_recordtype").Value.ToString()
+                   : String.Empty;
+
                 if (branch != null)
                 {
                     branchSettings.WebRole = new UserWebRole() {
@@ -91,6 +107,10 @@ namespace Site.Areas.DMS_Api.XrmWebService
                     branchSettings.DealerName = dealer.Name;
 
                     branchSettings.DealerId = dealer.Id;
+
+                    branchSettings.ParentCustomerId = parentCustomerId;
+
+                    branchSettings.ParentCustomerType = parentCustomerType;
 
                     if (position != null)
                     {
