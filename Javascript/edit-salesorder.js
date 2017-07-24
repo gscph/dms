@@ -735,9 +735,11 @@ var AccessroiessGridInstance = {
 }
 
 
-var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27) and ( gsc_branchid/Id%20eq%20(Guid%27' + branchId + '%27) or gsc_isglobalrecord eq true)', "gsc_vehiclecabchassispn,gsc_itemnumber");
+console.log(productId);
+console.log(branchId);
+var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27) and ( gsc_branchid/Id%20eq%20(Guid%27' + branchId + '%27) or gsc_isglobalrecord eq true)', "gsc_sls_vehiclecabchassisid", "gsc_vehiclecabchassispn,gsc_itemnumber");
 
-
+console.log(cabChassisSelectData);
 var CabChasisGridInstance = {
     initialize: function () {
         $('<div id="cabchassis-editablegrid" class="editable-grid"></div>').appendTo('.content-wrapper');
