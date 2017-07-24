@@ -6719,8 +6719,14 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
 				Invoice.gsc_DrNo AS 'DR No', 
                 Invoice.gsc_LeadSourceIdName AS 'Lead Source', 
 				Invoice.gsc_PaymentMode AS 'Payment Mode', 
-				InvoiceMonthlyAmortization.gsc_Selected AS 'Selected Financing Term', 
-				InvoiceMonthlyAmortization.gsc_FinancingTermIdName AS 'Financing Term', 
+				InvoiceMonthlyAmortization.gsc_Selected AS 'Selected Financing Term',
+				CASE WHEN Invoice.gsc_PaymentMode = '100000001' THEN
+								(SELECT  
+								gsc_FinancingTermIdName 
+								FROM	
+								gsc_sls_InvoiceMonthlyAmortization
+								WHERE gsc_Selected = '1' AND Invoice.InvoiceId = gsc_InvoiceId) ELSE
+								'' END AS 'Financing Term', 
                 Invoice.gsc_SalesExecutiveIdName AS 'Sales Executive', 
 				(SELECT gsc_Name FROM gsc_sls_bank WHERE gsc_sls_bankid = Invoice.gsc_BankId) AS 'Bank', 
 				Invoice.gsc_ProductIdName AS 'Model Description', 
@@ -6767,7 +6773,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
 				Invoice.gsc_VATAmount AS 'VAT Amount', 
                 Invoice.TotalAmount AS 'Total Amount Due', 
 				Invoice.gsc_TotalCashOutlay AS 'Total Cash Outlay', 
-				Invoice.gsc_DownPaymentDisplay AS 'Down Payment', 
+				Invoice.gsc_DownPaymentAmount AS 'Down Payment', 
 				Invoice.gsc_NetDownPayment AS 'Net Down Payment', 
                 Invoice.gsc_AmountFinanced AS 'Total Amount Financed', 
 				Invoice.gsc_NetMonthlyAmortization AS 'Net MonthlyAmortization', 
@@ -6797,7 +6803,7 @@ FROM            Invoice LEFT OUTER JOIN
                          gsc_iv_InvoicedVehicle AS InvoicedVehicle ON Invoice.InvoiceId = InvoicedVehicle.gsc_InvoiceId LEFT OUTER JOIN
                          gsc_sls_InvoiceMonthlyAmortization AS InvoiceMonthlyAmortization ON Invoice.InvoiceId = InvoiceMonthlyAmortization.gsc_InvoiceId LEFT OUTER JOIN
                          Contact AS Contact_1 ON Invoice.gsc_SalesExecutiveId = Contact_1.ContactId
-WHERE        (InvoiceMonthlyAmortization.gsc_Selected = '1' AND Invoice.InvoiceId = @reportid)</CommandText>
+WHERE        (Invoice.InvoiceId = @reportid)</CommandText>
       </Query>
       <Fields>
         <Field Name="Sales_Invoice_Number">
