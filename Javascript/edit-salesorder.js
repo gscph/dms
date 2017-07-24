@@ -167,13 +167,11 @@ $(document).ready(function () {
                 counter++;
         }
         if (counter > 1 || counter == 0) {
-            DMS.Notification.Error(" You can only select one financing term", true, 5000);
-            //$btnSaveCopy.addClass("disabled");
+            DMS.Notification.Error(" You can only select one financing term", true, 5000);           
         }
         else {
             $('#OrderMonthlyAmortizationSubgrid .save').click();
-            location.reload();
-            //$btnSaveCopy.addClass("disabled");
+            location.reload();           
         }
     });
     //END
@@ -448,11 +446,6 @@ $(document).ready(function () {
         event.preventDefault();
     }
 
-    /*if (DMS.Settings.User.positionName == 'Sales Executive') {
-        $('#gsc_originaltotalpremium_label').hide();
-        $('#gsc_originaltotalpremium').hide();
-    }*/
-
     function showLoading() {
         $.blockUI({ message: null, overlayCSS: { opacity: .3 } });
 
@@ -623,24 +616,7 @@ $(document).ready(function () {
 });
 
 
-var optionsList = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_financingterm', 'gsc_sls_financingtermid', 'gsc_financingtermpn');;
-
-
-/*var classOdataUrl = "/_odata/gsc_class?$filter=gsc_classmaintenancepn eq 'Accessory'";
-var classData = Service('GET', classOdataUrl, null, DMS.Helpers.DefaultErrorHandler);
-var classId = "";
-var accessoriesSelectData;
-
-classData.then(function (data) {
-    if (data != null) {
-        classId = data.value[0].gsc_cmn_classmaintenanceid;
-
-        accessoriesSelectData = DMS.Helpers.GetOptionListSet('/_odata/item?$filter=gsc_classmaintenanceid/Id%20eq%20(Guid%27' + classId + '%27)', "productid", "name");
-        console.log(accessoriesSelectData);
-        $(document).trigger("initializeEditableGrid", AccessroiessGridInstance);
-    }
-});*/
-
+var optionsList = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_financingterm', 'gsc_sls_financingtermid', 'gsc_financingtermpn');
 
 var productId = $("#gsc_productid").val();
 var branchId = $("#gsc_branchid").val();
@@ -726,20 +702,18 @@ var AccessroiessGridInstance = {
         { key: 'gsc_productid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'product' },
         { key: 'gsc_orderid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'salesorder', value: idQueryString }];
         var model = { id: 'gsc_sls_orderaccessoryid', entity: 'gsc_sls_orderaccessory', attr: attributes };
-        var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model,
+        var hotInstance = new EditableGrid(options, $container, sectionName, odataQuery, model,
             {
                 gsc_sls_orderaccessoryid: null, gsc_free: false,
                 gsc_itemnumber: '', gsc_productid: { Id: null, Name: null }
             }
         );
+
+     
     }
 }
 
-<<<<<<< HEAD
-var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_sls_vehiclecabchassisid", "gsc_vehiclecabchassispn,gsc_itemnumber");
-=======
 var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27) and ( gsc_branchid/Id%20eq%20(Guid%27' + branchId + '%27) or gsc_isglobalrecord eq true)', "gsc_vehiclecabchassispn,gsc_itemnumber");
->>>>>>> d867f0af3464072e951db37bedde23ede2f1abfa
 
 var CabChasisGridInstance = {
     initialize: function () {
@@ -819,7 +793,7 @@ var CabChasisGridInstance = {
         { key: 'gsc_orderid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'salesorder', value: idQueryString },
         { key: 'gsc_vehiclecabchassisid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'gsc_sls_vehiclecabchassis' }];
         var model = { id: 'gsc_sls_ordercabchassisid', entity: 'gsc_sls_ordercabchassis', attr: attributes };
-        var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model,
+        var hotInstance = new EditableGrid(options, $container, sectionName, odataQuery, model,
             {
                 gsc_sls_quotecabchassisid: null, gsc_financing: false,
                 gsc_itemnumber: '', gsc_vehiclecabchassisid: { Id: null, Name: null }
@@ -834,15 +808,13 @@ var monthlyAmortizationGridInstance = {
         $('<div id="monthlyamortization-editablegrid" class="editable-grid"></div>').appendTo('.content-wrapper');
         var $container = document.getElementById('monthlyamortization-editablegrid');
         var idQueryString = DMS.Helpers.GetUrlQueryString('id');
-        var odataQuery = '/_odata/gsc_sls_ordermonthlyamortization?$filter=gsc_orderid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
-        // var odataQuery = '/_odata/gsc_sls_ordermonthlyamortization?$filter=gsc_orderid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
+        var odataQuery = '/_odata/gsc_sls_ordermonthlyamortization?$filter=gsc_orderid/Id%20eq%20(Guid%27' + idQueryString + '%27)';       
         var screenSize = ($(window).width() / 2) - 100;
         /* - Read Only Permission for Cashier Role*/
         if (DMS.Settings.User.positionName == 'Cashier') {
             var options = {
                 dataSchema: {
-                    gsc_selected: null, gsc_orderid: { Id: null, Name: null },
-                    //gsc_financingtermid: { Id: null, Name: null },
+                    gsc_selected: null, gsc_orderid: { Id: null, Name: null },                 
                     gsc_financingtermid: null,
                     gsc_ordermonthlyamortizationpn: null
                 },
@@ -867,8 +839,7 @@ var monthlyAmortizationGridInstance = {
         else {
             var options = {
                 dataSchema: {
-                    gsc_selected: null, gsc_orderid: { Id: null, Name: null },
-                    //gsc_financingtermid: { Id: null, Name: null },
+                    gsc_selected: null, gsc_orderid: { Id: null, Name: null },                  
                     gsc_financingtermid: null,
                     gsc_ordermonthlyamortizationpn: null
                 },
@@ -895,11 +866,10 @@ var monthlyAmortizationGridInstance = {
         var sectionName = "OrderMonthlyAmortizationSubgrid";
         var attributes = [{ key: 'gsc_selected', type: 'System.Boolean' }];
         var model = { id: 'gsc_sls_ordermonthlyamortizationid', entity: 'gsc_sls_ordermonthlyamortization', attr: attributes };
-        var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model,
+        var hotInstance = new EditableGrid(options, $container, sectionName, odataQuery, model,
           {
               gsc_sls_ordermonthlyamortizationid: null, gsc_selected: false,
-              gsc_financingtermid: { Id: null, Name: null }, gsc_ordermonthlyamortizationpn: null
-              // gsc_orderid: { Id: null, Name: null },
+              gsc_financingtermid: { Id: null, Name: null }, gsc_ordermonthlyamortizationpn: null          
           }
         );
 

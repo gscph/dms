@@ -23,22 +23,10 @@ $(document).ready(function () {
 
     if (vehicleModel == "" || color1 == "" || paymentMode == "") {
         $(".activate-quote-link").addClass("permanent-disabled disabled");
-
     }
 
     //Added by: JGC_12092016
     var Userposition = DMS.Settings.User.positionName;
-
-    /*Start - Revised by Christell Ann Mataac - 3/15/17 */
-    /*if (Userposition != 'System Administrator' && Userposition != 'Branch Administrator' && Userposition != 'Sales Executive' && Userposition != 'Sales Supervisor' && Userposition != 'Sales Lead' && Userposition != 'Sales Manager' && Userposition != 'MMPC System Admin' && Userposition != 'MMPC System Administrator') 
-    {
-        $(".nav.nav-tabs li:eq(3)").hide();
-        $("#gsc_totalpremium").prop("readonly", true);
-        $('#gsc_rate_label').closest('td').addClass("hidden");
-        $('#gsc_cost_label').closest('td').addClass("hidden");
-        $('#gsc_originaltotalpremium_label').closest('td').addClass("hidden");
-    }*/
-    /*End - Revised by Christell Ann Mataac - 3/15/17 */
 
     // on bank changed event hooked to auto populate related fields
     setTimeout(function () {
@@ -77,28 +65,7 @@ $(document).ready(function () {
     $('#MonthlyAmortization').html('');
     //End
 
-    /* function DisableTotalPremium() {
-         if ($("#gsc_free").prop("checked")) {
-             $("#gsc_totalpremium").prop("readonly", true);
-         }
-         else {
-             if (Userposition == 'Sales Manager' || Userposition == 'System Administrator') {
-                 var originalPremium = $("#gsc_originaltotalpremium").val();
-                 if (originalPremium == "" || originalPremium == 0) {
-                     $("#gsc_totalpremium").prop("readonly", true);
-                 } else {
-                     $("#gsc_totalpremium").prop("readonly", false);
-                 }
-             }
-         }
-     }
- 
-     DisableTotalPremium();
- 
-     $("#gsc_free").change(function () {
-         DisableTotalPremium();
-     }); */
-
+    
     $(document).trigger("initializeEditableGrid", AccessroiessGridInstance);
     $(document).trigger("initializeEditableGrid", CabChasisGridInstance);
     $(document).trigger("initializeEditableGrid", monthlyAmortizationGridInstance);
@@ -151,9 +118,7 @@ $(document).ready(function () {
     }
 
     function checkDiscountSubgrid() {
-        if ($('table[data-name="tabbed-DISCOUNTS"]').is(":visible")) {
-           // $('table[data-name="tabbed-DISCOUNTS"]').parent().addClass("permanent-disabled");
-          // $('.disabled').attr("tabindex", "-1");
+        if ($('table[data-name="tabbed-DISCOUNTS"]').is(":visible")) {         
             $('table[data-name="tabbed-DISCOUNTS"]').parent().attr("disabled", "disabled");
             $(".dropdown.action").hide();
         }
@@ -163,9 +128,7 @@ $(document).ready(function () {
     }
 
     function checkChargesSubgrid() {
-        if ($('table[data-name="tabbed-CHARGES"]').is(":visible")) {
-           // $('table[data-name="tabbed-CHARGES"]').parent().addClass("permanent-disabled");
-           // $('.disabled').attr("tabindex", "-1");
+        if ($('table[data-name="tabbed-CHARGES"]').is(":visible")) {           
             $('table[data-name="tabbed-CHARGES"]').parent().attr("disabled", "disabled");
             $(".dropdown.action").hide();
         }
@@ -198,8 +161,7 @@ $(document).ready(function () {
         '</div>' +
         '<div id="modal-body" class="modal-body">' +
         '<center><p>Use this quote to create an order.<br>' +
-        '<i>Note: This will convert prospect record to customer.</i></p></center>' +
-        //'<div id="closeRemarksDiv2"><textarea id="closeRemarks2" style="height: 100px;" rows="2" cols="40"></textarea></center></div>' +
+        '<i>Note: This will convert prospect record to customer.</i></p></center>' +       
         '<div id="closeOpportunityDiv2" style="padding-left: 210px"><input type="radio" name="closeOpportunity2" value="1"> Close Opportunity <br>' +
         '<input type="radio" name="closeOpportunity2" value="0" checked="checked"> Do not update Opportunity</div>' +
         '<div class="modal-footer">' +
@@ -287,7 +249,7 @@ $(document).ready(function () {
                         (new Date()).valueOf();
                     var req = new XMLHttpRequest();
                     req.open('GET', url, false);
-                    req.send(null); //window.location.reload(true);
+                    req.send(null); 
                     setTimeout(RedirecttoSalesOrder(), 1000);
                 }
             }).error(function (errormsg) { console.log(errormsg) });
@@ -359,13 +321,7 @@ $(document).ready(function () {
     DMS.Helpers.AppendButtonToToolbar($btnRecalculate);
 
     //Close Quote - Created By : Jerome Anthony Gerero, Created On : 10/3/2016
-    $closeButton = DMS.Helpers.CreateAnchorButton("close-quote btn-primary btn", '', ' CLOSE QUOTE', DMS.Helpers.CreateFontAwesomeIcon('fa-ban'));
-
-    //Added by Ernest Sarmiento 02-21-2017 
-    //Commented by Artum Ramos 04-12-2017
-    //if ($(".record-status").html() != "Draft") {
-    //    $closeButton.addClass('hidden');
-    //}
+    $closeButton = DMS.Helpers.CreateAnchorButton("close-quote btn-primary btn", '', ' CLOSE QUOTE', DMS.Helpers.CreateFontAwesomeIcon('fa-ban'));    
 
     var closeModalBody = '<center><p>This Quote will be closed. Please provide a reason for closing : </p>' +
         '<div id="closeRemarksDiv"><textarea id="closeRemarks" style="height: 100px;" rows="2" cols="40"></textarea></center></div>' +
@@ -389,15 +345,7 @@ $(document).ready(function () {
 
                 $('#UpdateButton').click();
             }
-            else if (stateCode == "Active") {
-                /* var workflowName = "";
- 
-                 if (closeOpportunityValue == 1)
-                     workflowName = 'Quote Won - Close Opportunity';
-                 else
-                     workflowName = 'Quote Won - Do Not Close Opportunity';
- 
-                 callCloseQuoteWorkflow(workflowName);*/
+            else if (stateCode == "Active") {              
             }
         });
 
@@ -425,30 +373,7 @@ $(document).ready(function () {
         else {
             e.preventDefault();
         }
-    });
-
-    //Added By: Jerome Anthony Gerero
-    //Purpose : Disable 'Add' button on Cab Chassis Subgrid
-    /* setTimeout(function () {
-         var idQueryString = DMS.Helpers.GetUrlQueryString('id');
-         var quoteCabChassisOdataQuery = '/_odata/gsc_sls_quotecabchassis?$filter=gsc_quoteid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
-         $.ajax({
-             type: 'get',
-             async: true,
-             url: quoteCabChassisOdataQuery,
-             success: function (data) {
-                 if (data.value.length >= 1) {
-                     $('table[data-name="CABCHASSIS"] button.addnew').prop('disabled', true);
-                 }
-                 else if (data.value.length == 0) {
-                     $('table[data-name="CABCHASSIS"] button.addnew').prop('disabled', false);
-                 }
-             },
-             error: function (xhr, textStatus, errorMessage) {
-                 console.log(errorMessage);
-             }
-         });
-     }, 2000);*/
+    });  
 
     //Added By: Jerome Anthony Gerero
     //Purpose : Hide Cab Chassis Subgrid
@@ -781,10 +706,10 @@ var AccessroiessGridInstance = {
         { key: 'gsc_productid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'product' },
         { key: 'gsc_quoteid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'quote', value: idQueryString }];
         var model = { id: 'gsc_sls_quoteaccessoryid', entity: 'gsc_sls_quoteaccessory', attr: attributes };
-        var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model, {
+        var hotInstance = new EditableGrid(options, $container, sectionName, odataQuery, model, {
             gsc_sls_quoteaccessoryid: null, gsc_free: false,
             gsc_itemnumber: '', gsc_productid: { Id: null, Name: '' }
-        });
+        });     
     }
 }
 
@@ -834,21 +759,10 @@ var CabChasisGridInstance = {
         { key: 'gsc_vehiclecabchassisid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'product' },
         { key: 'gsc_quoteid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'quote', value: idQueryString }];
         var model = { id: 'gsc_sls_quotecabchassisid', entity: 'gsc_sls_quotecabchassis', attr: attributes };
-        var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model, {
+        var hotInstance = new EditableGrid(options, $container, sectionName, odataQuery, model, {
             gsc_sls_quotecabchassisid: null, gsc_financing: false,
             gsc_itemnumber: '', gsc_vehiclecabchassisid: { Id: null, Name: null }
-        });
-
-        // hotInstance.updateSettings({
-        //     afterCreateRow: function (index, amount) {
-        //         $('table[data-name="CABCHASSIS"] button.addnew').prop('disabled', true);
-        //     }
-        // });
-        // hotInstance.updateSettings({
-        //     afterRemoveRow: function (index, amount) {
-        //         $('table[data-name="CABCHASSIS"] button.addnew').prop('disabled', false);
-        //     }
-        // });    
+        });    
 
     }
 }
@@ -865,8 +779,7 @@ var monthlyAmortizationGridInstance = {
         var screenSize = ($(window).width() / 2) - 100;
         var options = {
             dataSchema: {
-                gsc_isselected: null, gsc_quoteid: { Id: null, Name: null },
-                //gsc_financingtermid: { Id: null, Name: null },
+                gsc_isselected: null, gsc_quoteid: { Id: null, Name: null },     
                 gsc_financingtermid: null,
                 gsc_quotemonthlyamortizationpn: null
             },
@@ -892,11 +805,13 @@ var monthlyAmortizationGridInstance = {
         var sectionName = "MonthlyAmortization";
         var attributes = [{ key: 'gsc_isselected', type: 'System.Boolean' }];
         var model = { id: 'gsc_sls_quotemonthlyamortizationid', entity: 'gsc_sls_quotemonthlyamortization', attr: attributes };
-        var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model, {
+        var hotInstance = new EditableGrid(options, $container, sectionName, odataQuery, model, {
             gsc_sls_quotemonthlyamortizationid: null, gsc_isselected: false,
             gsc_financingtermid: { Id: null, Name: '' }, gsc_quotemonthlyamortizationpn: ''
         });
 
+         console.log('amort instance');
+           console.log(hotInstance);
     }
 }
 
