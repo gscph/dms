@@ -462,6 +462,10 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                     }
                 }
             }
+
+            vehicleInTransitTransferEntity["gsc_allocateditemstodelete"] = String.Empty;
+            _organizationService.Update(vehicleInTransitTransferEntity);
+
             _tracingService.Trace("Ending DeleteInTransitTransferVehicle method...");
             return vehicleInTransitTransferEntity;
         }
