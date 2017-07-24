@@ -117,8 +117,6 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                         allocatedVehicle["gsc_optioncode"] = inventoryEntity.GetAttributeValue<String>("gsc_optioncode");
                         allocatedVehicle["gsc_productionno"] = inventoryEntity.GetAttributeValue<String>("gsc_productionno");
                         allocatedVehicle["gsc_vin"] = inventoryEntity.GetAttributeValue<String>("gsc_vin");
-                        //Set transaction type to In-Transit Transfer
-                        allocatedVehicle["gsc_transactiontype"] = new OptionSetValue(100000001);
                         allocatedVehicle["gsc_vehicleallocateddate"] = DateTime.Today;
                         allocatedVehicle["gsc_basemodel"] = baseModelName;
                         allocatedVehicle["gsc_modeldescription"] = productName;
