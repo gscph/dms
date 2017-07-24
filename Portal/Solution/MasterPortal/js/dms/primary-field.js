@@ -12,7 +12,6 @@
     var url = "/api/Service/GetPrimaryFieldValue?Id=" + Id + "&logicalName=" + logicalName;
 
     $.ajax(url).then(function (data) {
-        console.log('b');
         SetPrimaryFieldEnabled(data.PrimaryField);
 
         var $div = $('<div></div>');
@@ -68,15 +67,16 @@
 
     function SetPrimaryFieldEnabled(primaryFields)
     {
-        $.each(primaryFields, function(index, value){
-            if ($("#" + value).val() != "undefined")
-            {
-                if ($("#" + value).val() != "" && $("#" + value).hasClass("permanent-enabled") == false) {
-                    $("#" + value).attr("readonly", true);
+        if (primaryFields != null) {
+            $.each(primaryFields, function (index, value) {
+                if ($("#" + value).val() != "undefined" || $("#" + value).val() != null) {
+                    if ($("#" + value).val() != "" && $("#" + value).hasClass("permanent-enabled") == false) {
+                        $("#" + value).attr("readonly", true);
+                    }
+                    return;
                 }
-                return;
-            }
-        });
+            });
+        }
     }
 
 
