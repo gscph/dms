@@ -65,6 +65,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
             {
                 QuoteAccessoryHandler quoteAccessoryHandler = new QuoteAccessoryHandler(service, trace);
                 Entity quoteAccessory = quoteAccessoryHandler.PopulateDetails(accessoryEntity, message);
+                quoteAccessoryHandler.PopulateDetails(quoteAccessory, message);
                 quoteAccessoryHandler.SetTotalAccessories(quoteAccessory, message);
             }
 
