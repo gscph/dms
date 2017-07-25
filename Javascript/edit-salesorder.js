@@ -3,6 +3,10 @@ var hasAllocatedItems = false;
 
 $(document).ready(function () {
 
+    //hide fields
+    $("#gsc_precisedownpaymentpercentage").hide();
+    $("#gsc_precisedownpaymentpercentage_label").hide();
+
     checkRefreshButton();
 
     function checkRefreshButton() {

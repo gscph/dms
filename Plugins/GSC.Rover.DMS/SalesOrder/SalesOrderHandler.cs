@@ -52,7 +52,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                    "gsc_vehiclecolorid2", "gsc_vehiclecolorid3", "gsc_remarks", "gsc_vehicleunitprice", "gsc_vehicledetails", "customerid", "gsc_address",
                    "gsc_leadsourceid", "gsc_financingschemeid", "gsc_bankid", "gsc_freechattelfee", "gsc_insuranceid", "gsc_free",
                    "gsc_downpaymentamount", "gsc_downpaymentpercentage", "gsc_applytodppercentage", "gsc_applytouppercentage", "gsc_applytoafpercentage",
-                   "gsc_applytodpamount", "gsc_applytoupamount", "gsc_applytoafamount", "gsc_netmonthlyamortization", "gsc_portaluserid",
+                   "gsc_applytodpamount", "gsc_applytoupamount", "gsc_applytoafamount", "gsc_netmonthlyamortization", "gsc_portaluserid", "gsc_precisedownpaymentpercentage",
                    "opportunityid", "gsc_vehicletype", "gsc_vehicleuse", "gsc_lessdiscount", "gsc_netdownpayment", "gsc_lessdiscountaf", "gsc_totalamountfinanced"});
 
             _tracingService.Trace("Quote records count " + String.Concat(quoteRecords.Entities.Count));
@@ -99,6 +99,9 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                 salesOrderEntity["gsc_downpaymentpercentage"] = quote.Contains("gsc_downpaymentpercentage")
                     ? quote.GetAttributeValue<Double>("gsc_downpaymentpercentage")
                     : 0.0;
+                salesOrderEntity["gsc_precisedownpaymentpercentage"] = quote.Contains("gsc_precisedownpaymentpercentage")
+                    ? quote.GetAttributeValue<Decimal>("gsc_precisedownpaymentpercentage")
+                    : 0;
                 salesOrderEntity["gsc_downpaymentdiscount"] = quote.Contains("gsc_lessdiscount")
                     ? quote.GetAttributeValue<Money>("gsc_lessdiscount")
                     : new Money(0);
@@ -1411,9 +1414,9 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             {
                 _tracingService.Trace("Zip = Yes");
 
-                var dpPercent = salesOrderEntity.Contains("gsc_downpaymentpercentage")
-                ? salesOrderEntity.GetAttributeValue<double>("gsc_downpaymentpercentage")
-                : 0.0;
+                var dpPercent = salesOrderEntity.Contains("gsc_precisedownpaymentpercentage")
+                ? salesOrderEntity.GetAttributeValue<Decimal>("gsc_precisedownpaymentpercentage")
+                : 0;
 
                 var dpFrom = schemeEntity.Contains("gsc_downpaymentfrom")
                 ? schemeEntity.GetAttributeValue<double>("gsc_downpaymentfrom")
@@ -1423,7 +1426,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                 ? schemeEntity.GetAttributeValue<double>("gsc_downpaymentto")
                 : 0.0;
 
-                if (dpPercent >= dpFrom && dpPercent <= dpTo)
+                if (dpPercent >= (Decimal)dpFrom && dpPercent <= (Decimal)dpTo)
                 {
                     _tracingService.Trace("DownPayment with in the range.");
                     return true;
@@ -2176,14 +2179,14 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             Decimal netPrice = salesOrderEntity.Contains("gsc_netprice")
                 ? salesOrderEntity.GetAttributeValue<Money>("gsc_netprice").Value
                 : 0;
-            Double downPaymentPercentage = salesOrderEntity.Contains("gsc_downpaymentpercentage")
-                ? salesOrderEntity.GetAttributeValue<Double>("gsc_downpaymentpercentage")
-                : 0.0;
+            Decimal downPaymentPercentage = salesOrderEntity.Contains("gsc_precisedownpaymentpercentage")
+                ? salesOrderEntity.GetAttributeValue<Decimal>("gsc_precisedownpaymentpercentage")
+                : 0;
             Decimal downPaymentAmount = Decimal.Zero;
 
-            if (downPaymentPercentage != 0.0 || downPaymentPercentage != null)
+            if (downPaymentPercentage != 0 || downPaymentPercentage != null)
             {
-                downPaymentAmount = netPrice * ((Decimal)downPaymentPercentage / 100);
+                downPaymentAmount = netPrice * (downPaymentPercentage / 100);
             }
 
             _tracingService.Trace("Started ComputeDownPaymentAmount method...");

@@ -1,6 +1,11 @@
 $(document).ready(function () {
     $('form fieldset').attr('disabled', true);
 
+    //hide field
+    $('#gsc_precisedownpaymentpercentage').hide();
+    $('#gsc_precisedownpaymentpercentage_label').hide();
+
+
     //JGC_01192017 : Disabled Activate Button
     var paymentMode = $('#gsc_paymentmode').val();
     var bank = $('#gsc_bankid').val();
