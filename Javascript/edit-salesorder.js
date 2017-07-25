@@ -725,7 +725,7 @@ var AccessroiessGridInstance = {
         { key: 'gsc_productid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'product' },
         { key: 'gsc_orderid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'salesorder', value: idQueryString }];
         var model = { id: 'gsc_sls_orderaccessoryid', entity: 'gsc_sls_orderaccessory', attr: attributes };
-        var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model,
+        var hotInstance = new EditableGrid(options, $container, sectionName, odataQuery, model,
             {
                 gsc_sls_orderaccessoryid: null, gsc_free: false,
                 gsc_itemnumber: '', gsc_productid: { Id: null, Name: null }
@@ -734,12 +734,8 @@ var AccessroiessGridInstance = {
     }
 }
 
-
-console.log(productId);
-console.log(branchId);
 var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27) and ( gsc_branchid/Id%20eq%20(Guid%27' + branchId + '%27) or gsc_isglobalrecord eq true)', "gsc_sls_vehiclecabchassisid", "gsc_vehiclecabchassispn,gsc_itemnumber");
 
-console.log(cabChassisSelectData);
 var CabChasisGridInstance = {
     initialize: function () {
         $('<div id="cabchassis-editablegrid" class="editable-grid"></div>').appendTo('.content-wrapper');
@@ -818,7 +814,7 @@ var CabChasisGridInstance = {
         { key: 'gsc_orderid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'salesorder', value: idQueryString },
         { key: 'gsc_vehiclecabchassisid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'gsc_sls_vehiclecabchassis' }];
         var model = { id: 'gsc_sls_ordercabchassisid', entity: 'gsc_sls_ordercabchassis', attr: attributes };
-        var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model,
+        var hotInstance = new EditableGrid(options, $container, sectionName, odataQuery, model,
             {
                 gsc_sls_quotecabchassisid: null, gsc_financing: false,
                 gsc_itemnumber: '', gsc_vehiclecabchassisid: { Id: null, Name: null }
@@ -894,7 +890,7 @@ var monthlyAmortizationGridInstance = {
         var sectionName = "OrderMonthlyAmortizationSubgrid";
         var attributes = [{ key: 'gsc_selected', type: 'System.Boolean' }];
         var model = { id: 'gsc_sls_ordermonthlyamortizationid', entity: 'gsc_sls_ordermonthlyamortization', attr: attributes };
-        var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model,
+        var hotInstance = new EditableGrid(options, $container, sectionName, odataQuery, model,
           {
               gsc_sls_ordermonthlyamortizationid: null, gsc_selected: false,
               gsc_financingtermid: { Id: null, Name: null }, gsc_ordermonthlyamortizationpn: null
