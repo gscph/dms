@@ -406,6 +406,8 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
         {
             _tracingService.Trace("Started CheckMonthlyAmortizationRecord method ...");
 
+            Guid financingTermId = Guid.Empty;
+
             EntityCollection MARecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_quotemonthlyamortization", "gsc_quoteid", quoteEntity.Id, _organizationService, null, OrderType.Ascending,
                 new[] { "gsc_quoteid" });
 
@@ -414,6 +416,12 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                 foreach (var amortization in MARecords.Entities)
                 {
                     _tracingService.Trace("Deleting Monthly Amortization Records...");
+
+                    Boolean isSelected = amortization.Contains("gsc_selected") ? amortization.GetAttributeValue<Boolean>("gsc_selected") : false;
+                    if (isSelected == true)
+                    {
+                        financingTermId = amortization.Contains("gsc_financingtermid") ? amortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
+                    }
 
                     _organizationService.Delete(amortization.LogicalName, amortization.Id);
                 }
@@ -426,7 +434,8 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             //Call CreateMonthlyAmortization method
             if (quoteEntity.Contains("gsc_financingschemeid") && quoteEntity.GetAttributeValue<EntityReference>("gsc_financingschemeid") != null)
             {
-                return CreateMonthlyAmortization(quoteEntity);
+                CreateMonthlyAmortization(quoteEntity);
+                return UpdateMonthlyAmortization(quoteEntity, financingTermId);
             }
 
             _tracingService.Trace("Ended CheckMonthlyAmortizationRecord method..");
@@ -608,6 +617,29 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
 
             _tracingService.Trace("ZIP_ZeroAOR_NoAFDiscount Computed.");
             return (amountfinanced * (1 + (aor / 100))) / term;
+        }
+
+        //Set already selected Financing Term
+        private Entity UpdateMonthlyAmortization(Entity salesOrderEntity, Guid financingTermId)
+        {
+            if (financingTermId != Guid.Empty)
+            {
+                EntityCollection salesOrderMonthlyAmortizationRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_ordermonthlyamortization", "gsc_orderid", salesOrderEntity.Id, _organizationService, null, OrderType.Ascending,
+                    new[] { "gsc_financingtermid", "gsc_selected" });
+                if (salesOrderMonthlyAmortizationRecords != null || salesOrderMonthlyAmortizationRecords.Entities.Count > 0)
+                {
+                    foreach (var salesOrderMonthlyAmortization in salesOrderMonthlyAmortizationRecords.Entities)
+                    {
+                        Guid financingTerm = salesOrderMonthlyAmortization.Contains("gsc_financingtermid") ? salesOrderMonthlyAmortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
+                        if (financingTerm == financingTermId)
+                        {
+                            salesOrderMonthlyAmortization["gsc_selected"] = true;
+                            _organizationService.Update(salesOrderMonthlyAmortization);
+                        }
+                    }
+                }
+            }
+            return salesOrderEntity;
         }
 
         //Created By: Leslie Baliguat, Created On: 3/3/2016
