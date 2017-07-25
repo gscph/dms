@@ -23,22 +23,10 @@ $(document).ready(function () {
 
     if (vehicleModel == "" || color1 == "" || paymentMode == "") {
         $(".activate-quote-link").addClass("permanent-disabled disabled");
-
     }
 
     //Added by: JGC_12092016
     var Userposition = DMS.Settings.User.positionName;
-
-    /*Start - Revised by Christell Ann Mataac - 3/15/17 */
-    /*if (Userposition != 'System Administrator' && Userposition != 'Branch Administrator' && Userposition != 'Sales Executive' && Userposition != 'Sales Supervisor' && Userposition != 'Sales Lead' && Userposition != 'Sales Manager' && Userposition != 'MMPC System Admin' && Userposition != 'MMPC System Administrator') 
-    {
-        $(".nav.nav-tabs li:eq(3)").hide();
-        $("#gsc_totalpremium").prop("readonly", true);
-        $('#gsc_rate_label').closest('td').addClass("hidden");
-        $('#gsc_cost_label').closest('td').addClass("hidden");
-        $('#gsc_originaltotalpremium_label').closest('td').addClass("hidden");
-    }*/
-    /*End - Revised by Christell Ann Mataac - 3/15/17 */
 
     // on bank changed event hooked to auto populate related fields
     setTimeout(function () {
@@ -51,8 +39,6 @@ $(document).ready(function () {
                     async: true,
                     url: oDataUrl,
                     success: function (data) {
-                        console.log('response');
-                        console.log(data.value);
                         if (data.value.length > 0) {
                             $('#gsc_chattelfeeeditable').val(eval(data.value[0].gsc_chattelfeeamount).toFixed(2));
                         }
@@ -77,27 +63,6 @@ $(document).ready(function () {
     $('#MonthlyAmortization').html('');
     //End
 
-    /* function DisableTotalPremium() {
-         if ($("#gsc_free").prop("checked")) {
-             $("#gsc_totalpremium").prop("readonly", true);
-         }
-         else {
-             if (Userposition == 'Sales Manager' || Userposition == 'System Administrator') {
-                 var originalPremium = $("#gsc_originaltotalpremium").val();
-                 if (originalPremium == "" || originalPremium == 0) {
-                     $("#gsc_totalpremium").prop("readonly", true);
-                 } else {
-                     $("#gsc_totalpremium").prop("readonly", false);
-                 }
-             }
-         }
-     }
- 
-     DisableTotalPremium();
- 
-     $("#gsc_free").change(function () {
-         DisableTotalPremium();
-     }); */
 
     $(document).trigger("initializeEditableGrid", AccessroiessGridInstance);
     $(document).trigger("initializeEditableGrid", CabChasisGridInstance);
@@ -152,8 +117,6 @@ $(document).ready(function () {
 
     function checkDiscountSubgrid() {
         if ($('table[data-name="tabbed-DISCOUNTS"]').is(":visible")) {
-           // $('table[data-name="tabbed-DISCOUNTS"]').parent().addClass("permanent-disabled");
-          // $('.disabled').attr("tabindex", "-1");
             $('table[data-name="tabbed-DISCOUNTS"]').parent().attr("disabled", "disabled");
             $(".dropdown.action").hide();
         }
@@ -164,8 +127,6 @@ $(document).ready(function () {
 
     function checkChargesSubgrid() {
         if ($('table[data-name="tabbed-CHARGES"]').is(":visible")) {
-           // $('table[data-name="tabbed-CHARGES"]').parent().addClass("permanent-disabled");
-           // $('.disabled').attr("tabindex", "-1");
             $('table[data-name="tabbed-CHARGES"]').parent().attr("disabled", "disabled");
             $(".dropdown.action").hide();
         }
@@ -199,7 +160,6 @@ $(document).ready(function () {
         '<div id="modal-body" class="modal-body">' +
         '<center><p>Use this quote to create an order.<br>' +
         '<i>Note: This will convert prospect record to customer.</i></p></center>' +
-        //'<div id="closeRemarksDiv2"><textarea id="closeRemarks2" style="height: 100px;" rows="2" cols="40"></textarea></center></div>' +
         '<div id="closeOpportunityDiv2" style="padding-left: 210px"><input type="radio" name="closeOpportunity2" value="1"> Close Opportunity <br>' +
         '<input type="radio" name="closeOpportunity2" value="0" checked="checked"> Do not update Opportunity</div>' +
         '<div class="modal-footer">' +
@@ -236,7 +196,6 @@ $(document).ready(function () {
                 async: false,
                 url: opportunityOdataUrl,
                 success: function (data) {
-                    console.log(data.value[0].quoteid);
                     for (var i = 0; i < data.value.length; i++) {
                         var obj = data.value[i];
                         if (quoteId != data.value[i].quoteid) {
@@ -245,7 +204,6 @@ $(document).ready(function () {
                                 var attrValue = obj[key];
                                 if (attrName == 'statecode') {
                                     var quoteStateCode = attrValue;
-                                    console.log(quoteStateCode.Name);
                                     if (quoteStateCode.Name == 'Draft' || quoteStateCode.Name == 'Active') {
                                         $('#createOrderModal').modal('hide');
                                         DMS.Notification.Error('Cannot update opportunity status to won since there\'s at least one draft/active quote.');
@@ -287,7 +245,7 @@ $(document).ready(function () {
                         (new Date()).valueOf();
                     var req = new XMLHttpRequest();
                     req.open('GET', url, false);
-                    req.send(null); //window.location.reload(true);
+                    req.send(null);
                     setTimeout(RedirecttoSalesOrder(), 1000);
                 }
             }).error(function (errormsg) { console.log(errormsg) });
@@ -361,12 +319,6 @@ $(document).ready(function () {
     //Close Quote - Created By : Jerome Anthony Gerero, Created On : 10/3/2016
     $closeButton = DMS.Helpers.CreateAnchorButton("close-quote btn-primary btn", '', ' CLOSE QUOTE', DMS.Helpers.CreateFontAwesomeIcon('fa-ban'));
 
-    //Added by Ernest Sarmiento 02-21-2017 
-    //Commented by Artum Ramos 04-12-2017
-    //if ($(".record-status").html() != "Draft") {
-    //    $closeButton.addClass('hidden');
-    //}
-
     var closeModalBody = '<center><p>This Quote will be closed. Please provide a reason for closing : </p>' +
         '<div id="closeRemarksDiv"><textarea id="closeRemarks" style="height: 100px;" rows="2" cols="40"></textarea></center></div>' +
         '<div id="closeOpportunityDiv" style="padding-left: 160px"><input type="radio" name="closeOpportunity" value="1"> Close Opportunity <br>' +
@@ -390,14 +342,6 @@ $(document).ready(function () {
                 $('#UpdateButton').click();
             }
             else if (stateCode == "Active") {
-                /* var workflowName = "";
- 
-                 if (closeOpportunityValue == 1)
-                     workflowName = 'Quote Won - Close Opportunity';
-                 else
-                     workflowName = 'Quote Won - Do Not Close Opportunity';
- 
-                 callCloseQuoteWorkflow(workflowName);*/
             }
         });
 
@@ -426,29 +370,6 @@ $(document).ready(function () {
             e.preventDefault();
         }
     });
-
-    //Added By: Jerome Anthony Gerero
-    //Purpose : Disable 'Add' button on Cab Chassis Subgrid
-    /* setTimeout(function () {
-         var idQueryString = DMS.Helpers.GetUrlQueryString('id');
-         var quoteCabChassisOdataQuery = '/_odata/gsc_sls_quotecabchassis?$filter=gsc_quoteid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
-         $.ajax({
-             type: 'get',
-             async: true,
-             url: quoteCabChassisOdataQuery,
-             success: function (data) {
-                 if (data.value.length >= 1) {
-                     $('table[data-name="CABCHASSIS"] button.addnew').prop('disabled', true);
-                 }
-                 else if (data.value.length == 0) {
-                     $('table[data-name="CABCHASSIS"] button.addnew').prop('disabled', false);
-                 }
-             },
-             error: function (xhr, textStatus, errorMessage) {
-                 console.log(errorMessage);
-             }
-         });
-     }, 2000);*/
 
     //Added By: Jerome Anthony Gerero
     //Purpose : Hide Cab Chassis Subgrid
@@ -647,7 +568,7 @@ $(document).ready(function () {
         $(".content-wrapper").append(div);
     }
 
- setTimeout(function () {
+    setTimeout(function () {
 
         $('#gsc_productid').on('change', function () {
             var productId = $(this).val();
@@ -708,7 +629,7 @@ $(document).ready(function () {
                     $('#gsc_vehicleunitprice').val(data);
                 },
                 error: function (xhr, textStatus, errorMessage) {
-                     $('#gsc_vehicleunitprice').val(0.00);
+                    $('#gsc_vehicleunitprice').val(0.00);
                     console.error(errorMessage);
                 }
             });
@@ -724,7 +645,9 @@ var classId = "";
 var accessoriesSelectData;
 
 var productId = $("#gsc_productid").val();
-accessoriesSelectData = DMS.Helpers.GetOptionListSet('/_odata/vehicleaccessory?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_itemid.Id", "gsc_itemid.Name,gsc_vehicleaccessorypn");
+var branchId = $("#gsc_branchid").val();
+
+accessoriesSelectData = DMS.Helpers.GetOptionListSet('/_odata/vehicleaccessory?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27) and ( gsc_branchid/Id%20eq%20(Guid%27' + branchId + '%27) or gsc_isglobalrecord eq true)', "gsc_itemid.Id", "gsc_itemid.Name,gsc_vehicleaccessorypn");
 
 var AccessroiessGridInstance = {
     initialize: function () {
@@ -746,18 +669,7 @@ var AccessroiessGridInstance = {
             ],
             columns: [
                 { data: 'gsc_free', type: 'checkbox', renderer: checkboxRenderer, className: "htCenter htMiddle", width: 50 },
-                {
-                    data: 'gsc_itemnumber', className: "htCenter htMiddle", width: 100, renderer: function (instance, td, row, col, prop, value, cellProperties) {
-                        return lookupRenderer(accessoriesSelectData, instance, td, row, col, prop, value, cellProperties);
-                    },
-                    editor: 'select2',
-                    select2Options: { // these options are the select2 initialization options 
-                        data: accessoriesSelectData,
-                        dropdownAutoWidth: true,
-                        allowClear: true,
-                        width: 'resolve'
-                    }
-                },
+                { data: 'gsc_itemnumber', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 },
                 {
                     data: 'gsc_productid', className: "htCenter htMiddle", width: 100, renderer: function (instance, td, row, col, prop, value, cellProperties) {
                         return lookupRenderer(accessoriesSelectData, instance, td, row, col, prop, value, cellProperties);
@@ -781,14 +693,14 @@ var AccessroiessGridInstance = {
         { key: 'gsc_productid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'product' },
         { key: 'gsc_quoteid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'quote', value: idQueryString }];
         var model = { id: 'gsc_sls_quoteaccessoryid', entity: 'gsc_sls_quoteaccessory', attr: attributes };
-        var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model, {
+        var hotInstance = new EditableGrid(options, $container, sectionName, odataQuery, model, {
             gsc_sls_quoteaccessoryid: null, gsc_free: false,
             gsc_itemnumber: '', gsc_productid: { Id: null, Name: '' }
         });
     }
 }
 
-var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)', "gsc_sls_vehiclecabchassisid", "gsc_vehiclecabchassispn,gsc_itemnumber");
+var cabChassisSelectData = DMS.Helpers.GetOptionListSet('/_odata/gsc_sls_vehiclecabchassis?$filter=gsc_productid/Id%20eq%20(Guid%27' + productId + '%27)  and ( gsc_branchid/Id%20eq%20(Guid%27' + branchId + '%27) or gsc_isglobalrecord eq true)', "gsc_sls_vehiclecabchassisid", "gsc_vehiclecabchassispn,gsc_itemnumber");
 
 var CabChasisGridInstance = {
     initialize: function () {
@@ -839,17 +751,6 @@ var CabChasisGridInstance = {
             gsc_itemnumber: '', gsc_vehiclecabchassisid: { Id: null, Name: null }
         });
 
-        // hotInstance.updateSettings({
-        //     afterCreateRow: function (index, amount) {
-        //         $('table[data-name="CABCHASSIS"] button.addnew').prop('disabled', true);
-        //     }
-        // });
-        // hotInstance.updateSettings({
-        //     afterRemoveRow: function (index, amount) {
-        //         $('table[data-name="CABCHASSIS"] button.addnew').prop('disabled', false);
-        //     }
-        // });    
-
     }
 }
 
@@ -866,7 +767,6 @@ var monthlyAmortizationGridInstance = {
         var options = {
             dataSchema: {
                 gsc_isselected: null, gsc_quoteid: { Id: null, Name: null },
-                //gsc_financingtermid: { Id: null, Name: null },
                 gsc_financingtermid: null,
                 gsc_quotemonthlyamortizationpn: null
             },
@@ -892,11 +792,10 @@ var monthlyAmortizationGridInstance = {
         var sectionName = "MonthlyAmortization";
         var attributes = [{ key: 'gsc_isselected', type: 'System.Boolean' }];
         var model = { id: 'gsc_sls_quotemonthlyamortizationid', entity: 'gsc_sls_quotemonthlyamortization', attr: attributes };
-        var hotInstance = EditableGrid(options, $container, sectionName, odataQuery, model, {
+        var hotInstance = new EditableGrid(options, $container, sectionName, odataQuery, model, {
             gsc_sls_quotemonthlyamortizationid: null, gsc_isselected: false,
             gsc_financingtermid: { Id: null, Name: '' }, gsc_quotemonthlyamortizationpn: ''
         });
-
     }
 }
 
