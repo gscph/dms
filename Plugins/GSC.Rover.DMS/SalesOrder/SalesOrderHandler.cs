@@ -53,7 +53,8 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                    "gsc_leadsourceid", "gsc_financingschemeid", "gsc_bankid", "gsc_freechattelfee", "gsc_insuranceid", "gsc_free",
                    "gsc_downpaymentamount", "gsc_downpaymentpercentage", "gsc_applytodppercentage", "gsc_applytouppercentage", "gsc_applytoafpercentage",
                    "gsc_applytodpamount", "gsc_applytoupamount", "gsc_applytoafamount", "gsc_netmonthlyamortization", "gsc_portaluserid", "gsc_precisedownpaymentpercentage",
-                   "opportunityid", "gsc_vehicletype", "gsc_vehicleuse", "gsc_lessdiscount", "gsc_netdownpayment", "gsc_lessdiscountaf", "gsc_totalamountfinanced"});
+                   "opportunityid", "gsc_vehicletype", "gsc_vehicleuse", "gsc_lessdiscount", "gsc_netdownpayment", "gsc_lessdiscountaf", "gsc_totalamountfinanced",
+                   "gsc_provider", "gsc_insurancecoverage", "gsc_totalpremium", "gsc_ctpl", "gsc_totalinsurancecharges" });
 
             _tracingService.Trace("Quote records count " + String.Concat(quoteRecords.Entities.Count));
 
@@ -159,6 +160,23 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                 salesOrderEntity["gsc_recordownerid"] = quote.Contains("gsc_portaluserid")
                     ? new EntityReference(quote.GetAttributeValue<EntityReference>("gsc_recordownerid").LogicalName, new Guid(quote.GetAttributeValue<String>("gsc_portaluserid")))
                     : null;
+
+                //Insurance Charges
+                salesOrderEntity["gsc_providercompanyid"] = quote.GetAttributeValue<EntityReference>("gsc_provider") != null
+                    ? quote.GetAttributeValue<EntityReference>("gsc_provider")
+                    : null;
+                salesOrderEntity["gsc_insurancecoverage"] = quote.Contains("gsc_insurancecoverage")
+                    ? quote.GetAttributeValue<OptionSetValue>("gsc_insurancecoverage")
+                    : null;
+                salesOrderEntity["gsc_totalpremium"] = quote.Contains("gsc_totalpremium")
+                    ? quote.GetAttributeValue<Money>("gsc_totalpremium")
+                    : new Money(Decimal.Zero);
+                salesOrderEntity["gsc_ctpl"] = quote.Contains("gsc_ctpl")
+                    ? quote.GetAttributeValue<Money>("gsc_ctpl")
+                    : new Money(Decimal.Zero);
+                salesOrderEntity["gsc_totalinsurancecharges"] = quote.Contains("gsc_totalinsurancecharges")
+                    ? quote.GetAttributeValue<Money>("gsc_totalinsurancecharges")
+                    : new Money(Decimal.Zero);
             }
 
             //Populate Customer Information
