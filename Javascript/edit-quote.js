@@ -669,18 +669,7 @@ var AccessroiessGridInstance = {
             ],
             columns: [
                 { data: 'gsc_free', type: 'checkbox', renderer: checkboxRenderer, className: "htCenter htMiddle", width: 50 },
-                {
-                    data: 'gsc_itemnumber', className: "htCenter htMiddle", width: 100, renderer: function (instance, td, row, col, prop, value, cellProperties) {
-                        return lookupRenderer(accessoriesSelectData, instance, td, row, col, prop, value, cellProperties);
-                    },
-                    editor: 'select2',
-                    select2Options: { // these options are the select2 initialization options 
-                        data: accessoriesSelectData,
-                        dropdownAutoWidth: true,
-                        allowClear: true,
-                        width: 'resolve'
-                    }
-                },
+                { data: 'gsc_itemnumber', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 },
                 {
                     data: 'gsc_productid', className: "htCenter htMiddle", width: 100, renderer: function (instance, td, row, col, prop, value, cellProperties) {
                         return lookupRenderer(accessoriesSelectData, instance, td, row, col, prop, value, cellProperties);
