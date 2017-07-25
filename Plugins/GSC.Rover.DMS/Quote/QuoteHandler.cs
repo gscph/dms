@@ -534,9 +534,9 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             {
                 _tracingService.Trace("Zip = Yes");
 
-                var dpPercent = quoteEntity.Contains("gsc_downpaymentpercentage")
-                ? quoteEntity.GetAttributeValue<double>("gsc_downpaymentpercentage")
-                : 0.0;
+                var dpPercent = quoteEntity.Contains("gsc_precisedownpaymentpercentage")
+                ? quoteEntity.GetAttributeValue<Decimal>("gsc_precisedownpaymentpercentage")
+                : 0;
 
                 var dpFrom = schemeEntity.Contains("gsc_downpaymentfrom")
                 ? schemeEntity.GetAttributeValue<double>("gsc_downpaymentfrom")
@@ -546,7 +546,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                 ? schemeEntity.GetAttributeValue<double>("gsc_downpaymentto")
                 : 0.0;
 
-                if (dpPercent >= dpFrom && dpPercent <= dpTo)
+                if (dpPercent >= (decimal)dpFrom && dpPercent <= (decimal)dpTo)
                 {
                     _tracingService.Trace("DownPayment with in the range.");
                     return true;
@@ -962,12 +962,12 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             Decimal netPrice = quoteEntity.Contains("gsc_netprice")
                 ? quoteEntity.GetAttributeValue<Money>("gsc_netprice").Value
                 : Decimal.Zero;
-            Double downPaymentPercentage = quoteEntity.Contains("gsc_downpaymentpercentage")
-                ? quoteEntity.GetAttributeValue<Double>("gsc_downpaymentpercentage")
+            Decimal downPaymentPercentage = quoteEntity.Contains("gsc_precisedownpaymentpercentage")
+                ? quoteEntity.GetAttributeValue<Decimal>("gsc_precisedownpaymentpercentage")
                 : 0;
             Decimal downPaymentAmount = Decimal.Zero;
 
-            downPaymentAmount = netPrice * (Decimal)(downPaymentPercentage / 100);
+            downPaymentAmount = netPrice * (downPaymentPercentage / 100);
 
             return downPaymentAmount;
         }
