@@ -44,12 +44,15 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
          *      Post/Update: gsc_inventoryidtoallocate
          * Primary Entity: gsc_iv_vehicleintransittransfer
          */
-        public void AllocateVehicle(Entity vehicleInTransitTransfer)
+        public Entity AllocateVehicle(Entity vehicleInTransitTransfer)
         {
             _tracingService.Trace("Started AllocateVehicle method...");
 
-            var inventoryId = vehicleInTransitTransfer.Contains("gsc_inventoryidtoallocate") ? vehicleInTransitTransfer.GetAttributeValue<string>("gsc_inventoryidtoallocate")
-                : String.Empty;
+            Guid inventoryId = vehicleInTransitTransfer.Contains("gsc_inventoryidtoallocate")
+                ? new Guid(vehicleInTransitTransfer.GetAttributeValue<String>("gsc_inventoryidtoallocate"))
+                : Guid.Empty;
+
+            if (inventoryId == Guid.Empty) { return null; }
 
             EntityCollection inventoryCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId, _organizationService, null, OrderType.Ascending,
                 new[] { "gsc_status", "gsc_color", "gsc_csno", "gsc_engineno", "gsc_modelcode", "gsc_optioncode", "gsc_productionno", "gsc_vin", "gsc_productquantityid", "gsc_modelyear" });
@@ -128,22 +131,17 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                         
                         _organizationService.Create(allocatedVehicle);
                         _tracingService.Trace("Created vehicle allocation record...");
-
                         #endregion
                     }
-
                     #endregion
-
                 }
-
-                else
-                    throw new InvalidPluginExecutionException("The inventory for entered vehicle is not available.");
             }
 
             vehicleInTransitTransfer["gsc_inventoryidtoallocate"] = String.Empty;
             _organizationService.Update(vehicleInTransitTransfer);
 
             _tracingService.Trace("Ending AllocateVehicle method...");
+            return vehicleInTransitTransfer;
         }
 
         //Created By: Raphael Herrera, Created On: 8/24/2016
