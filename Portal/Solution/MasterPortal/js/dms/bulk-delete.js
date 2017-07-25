@@ -89,7 +89,7 @@
 
     function HideModal(modalButton, html)
     {
-        modalButton.html(html);
+        modalButton.html(" DELETE");
         modalButton.removeClass('disabled');
         modalButton.siblings('.btn').removeClass('disabled');
         $('.view-toolbar.grid-actions .activate').addClass('disabled');
