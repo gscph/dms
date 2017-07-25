@@ -620,26 +620,28 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
         }
 
         //Set already selected Financing Term
-        private Entity UpdateMonthlyAmortization(Entity salesOrderEntity, Guid financingTermId)
+        private Entity UpdateMonthlyAmortization(Entity quoteEntity, Guid financingTermId)
         {
             if (financingTermId != Guid.Empty)
             {
-                EntityCollection salesOrderMonthlyAmortizationRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_ordermonthlyamortization", "gsc_orderid", salesOrderEntity.Id, _organizationService, null, OrderType.Ascending,
+                EntityCollection quoteMonthlyAmortizationRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_quotemonthlyamortization", "gsc_quoteid", quoteEntity.Id, _organizationService, null, OrderType.Ascending,
                     new[] { "gsc_financingtermid", "gsc_selected" });
-                if (salesOrderMonthlyAmortizationRecords != null || salesOrderMonthlyAmortizationRecords.Entities.Count > 0)
+
+                if (quoteMonthlyAmortizationRecords != null && quoteMonthlyAmortizationRecords.Entities.Count > 0)
                 {
-                    foreach (var salesOrderMonthlyAmortization in salesOrderMonthlyAmortizationRecords.Entities)
+                    foreach (var quoteMonthlyAmortization in quoteMonthlyAmortizationRecords.Entities)
                     {
-                        Guid financingTerm = salesOrderMonthlyAmortization.Contains("gsc_financingtermid") ? salesOrderMonthlyAmortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
+                        Guid financingTerm = quoteMonthlyAmortization.Contains("gsc_financingtermid") ? quoteMonthlyAmortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
+                     
                         if (financingTerm == financingTermId)
                         {
-                            salesOrderMonthlyAmortization["gsc_selected"] = true;
-                            _organizationService.Update(salesOrderMonthlyAmortization);
+                            quoteMonthlyAmortization["gsc_selected"] = true;
+                            _organizationService.Update(quoteMonthlyAmortization);
                         }
                     }
                 }
             }
-            return salesOrderEntity;
+            return quoteEntity;
         }
 
         //Created By: Leslie Baliguat, Created On: 3/3/2016
