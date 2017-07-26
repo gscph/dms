@@ -9,6 +9,8 @@ using GSC.Rover.DMS.BusinessLogic.Common;
 using GSC.Rover.DMS.BusinessLogic.InventoryMovement;
 using GSC.Rover.DMS.BusinessLogic.RequirementChecklist;
 using GSC.Rover.DMS.BusinessLogic.PriceList;
+using System.Threading;
+using System.Data.SqlClient;
 
 namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
 {
@@ -17,6 +19,19 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
         private readonly IOrganizationService _organizationService;
         private readonly ITracingService _tracingService;
         private static readonly Object thisLock = new Object();
+        private const int MAX_RETRY = 2;
+        private const double LONG_WAIT_SECONDS = 5;
+        private const double SHORT_WAIT_SECONDS = 0.5;
+        private static readonly TimeSpan longWait = TimeSpan.FromSeconds(LONG_WAIT_SECONDS);
+        private static readonly TimeSpan shortWait = TimeSpan.FromSeconds(SHORT_WAIT_SECONDS);
+
+        private enum RetryableSqlErrors
+        {
+            Timeout = -2,
+            NoLock = 1204,
+            Deadlock = 1205,
+            WordbreakerTimeout = 30053,
+        }
 
         public SalesOrderHandler(IOrganizationService service, ITracingService trace)
         {
