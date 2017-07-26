@@ -21,7 +21,7 @@
 
         recordArr = updatePermissionValidator(recordArr);
         if (recordArr.length <= 0) {
-            DMS.Notification.Error('You are unauthorized to delete this record.');
+            DMS.Notification.Error('You are unauthorized to modify this record.');
             return false;
         }
 
@@ -40,7 +40,7 @@
 
         recordArr = updatePermissionValidator(recordArr);
         if (recordArr.length <= 0) {
-            DMS.Notification.Error('You are unauthorized to delete this record.');
+            DMS.Notification.Error('You are unauthorized to modify this record.');
             return false;
         }
 
