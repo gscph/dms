@@ -1040,7 +1040,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=CDate(Fields!VPO_Date.Value).ToString("MMMM dd, yyyy")</Value>
+                                  <Value>=Format(DateAdd(DateInterval.Hour, 8 ,Fields!VPO_Date.Value),"MMMM dd, yyyy")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1195,7 +1195,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=CDate(Fields!In_Transit_Receipt_Date.Value).ToString("MMMM dd, yyyy")</Value>
+                                  <Value>=Format(DateAdd(DateInterval.Hour, 8 ,Fields!In_Transit_Receipt_Date.Value),"MMMM dd, yyyy")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3023,20 +3023,12 @@ IIF(First(Fields!Dealer_Fax.Value, "Dealer") = NOTHING, NOTHING, "Fax No.: " + F
             <Value>=Parameters!reportid.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT vp.gsc_PurchaseOrderPn as 'VPO Number', 
-		vp.gsc_VPODate as 'VPO Date',
-		rt.gsc_InTransitReceiptDate as 'In Transit Receipt Date',
-		rt.gsc_InvoiceDate as 'Invoice Date',
-		rt.gsc_InvoiceNo as 'Invoice Number',
-		rt.gsc_Remarks as 'Remarks',
-		rt.gsc_ReceivingTransactionPn as 'Receiving Name',
-		rt.gsc_ReceivingStatus as 'Receiving Status',
-		rt.gsc_DealerIdName as 'Dealer Name',
-		rt.gsc_VendorIdName as 'Vendor Name',
-		rt.gsc_ActualReceiptDate as 'Date'			  
-FROM gsc_cmn_receivingtransaction  rt, gsc_cmn_purchaseorder vp 
-WHERE rt.gsc_purchaseorderid = vp.gsc_cmn_purchaseorderid
-AND (rt.gsc_cmn_ReceivingTransactionId = @reportid)</CommandText>
+        <CommandText>SELECT        vp.gsc_PurchaseOrderPn AS 'VPO Number', vp.gsc_VPODate AS 'VPO Date', rt.gsc_InTransitReceiptDate AS 'In Transit Receipt Date', rt.gsc_InvoiceDate AS 'Invoice Date', rt.gsc_InvoiceNo AS 'Invoice Number', 
+                         rt.gsc_Remarks AS 'Remarks', rt.gsc_ReceivingTransactionPn AS 'Receiving Name', rt.gsc_ReceivingStatus AS 'Receiving Status', rt.gsc_DealerIdName AS 'Dealer Name', 
+                         rt.gsc_VendorIdName AS 'Vendor Name', rt.gsc_ActualReceiptDate AS 'Date'
+FROM            gsc_cmn_ReceivingTransaction AS rt INNER JOIN
+                         gsc_cmn_PurchaseOrder AS vp ON rt.gsc_PurchaseOrderId = vp.gsc_cmn_PurchaseOrderId
+WHERE        (rt.gsc_cmn_ReceivingTransactionId = @reportid)</CommandText>
       </Query>
       <Fields>
         <Field Name="VPO_Number">
@@ -3088,20 +3080,17 @@ AND (rt.gsc_cmn_ReceivingTransactionId = @reportid)</CommandText>
     <DataSet Name="Vendor">
       <Query>
         <DataSourceName>VehicleReceiving</DataSourceName>
-        <CommandText>SELECT a.gsc_Tin as 'Vendor TIN',
-	   rt.gsc_VendorIdName as 'Vendor Name',	  
-	   a.Telephone1 AS 'Vendor Telephone', 
-	a.Fax AS 'Vendor Fax', 
-	a.gsc_VATReg AS 'Vendor VAT Reg', 
-	a.WebSiteURL AS 'Vendor WebSite Url', 		
-	a.Address1_Line1 AS 'Branch Address', 
-	a.gsc_CityIdName AS 'Branch City', 
-	a.gsc_ProvinceIdName AS 'Branch Province', 
-	a.Address1_PostalCode AS 'Branch Postal Code', 
-	a.address2_telephone2 AS 'Branch Service Number', 
-	a.address2_telephone1 AS 'Branch Sales Number'
-FROM gsc_cmn_receivingtransaction rt, account a 
-WHERE rt.gsc_VendorId = a.accountid </CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@reportid">
+            <Value>=Parameters!reportid.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT        a.gsc_Tin AS 'Vendor TIN', rt.gsc_VendorIdName AS 'Vendor Name', a.Telephone1 AS 'Vendor Telephone', a.Fax AS 'Vendor Fax', a.gsc_VATReg AS 'Vendor VAT Reg', a.WebSiteURL AS 'Vendor WebSite Url', 
+                         a.Address1_Line1 AS 'Branch Address', a.gsc_CityIdName AS 'Branch City', a.gsc_ProvinceIdName AS 'Branch Province', a.Address1_PostalCode AS 'Branch Postal Code', 
+                         a.Address2_Telephone2 AS 'Branch Service Number', a.Address2_Telephone1 AS 'Branch Sales Number'
+FROM            gsc_cmn_ReceivingTransaction AS rt INNER JOIN
+                         Account AS a ON rt.gsc_VendorId = a.AccountId
+WHERE        (rt.gsc_cmn_ReceivingTransactionId = @reportid)</CommandText>
       </Query>
       <Fields>
         <Field Name="Vendor_TIN">
@@ -3157,19 +3146,17 @@ WHERE rt.gsc_VendorId = a.accountid </CommandText>
     <DataSet Name="Dealer">
       <Query>
         <DataSourceName>VehicleReceiving</DataSourceName>
-        <CommandText>SELECT a.gsc_Tin as 'Dealer TIN',
-	   rt.gsc_DealerIdName as 'Dealer Name',	  
-	   a.Telephone1 AS 'Dealer Telephone', 
-	a.Fax AS 'Dealer Fax', 
-	a.gsc_VATReg AS 'Dealer VAT Reg', 		
-	a.Address1_Line1 AS 'Dealer Address', 
-	a.gsc_CityIdName AS 'Dealer City', 
-	a.gsc_ProvinceIdName AS 'Dealer Province', 
-	a.Address1_PostalCode AS 'Dealer Postal Code', 
-	a.address2_telephone2 AS 'Dealer Service Number', 
-	a.address2_telephone1 AS 'Dealer Sales Number'
-FROM gsc_cmn_receivingtransaction rt, account a 
-WHERE rt.gsc_DealerId = a.accountid </CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@reportid">
+            <Value>=Parameters!reportid.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT        a.gsc_Tin AS 'Dealer TIN', rt.gsc_DealerIdName AS 'Dealer Name', a.Telephone1 AS 'Dealer Telephone', a.Fax AS 'Dealer Fax', a.gsc_VATReg AS 'Dealer VAT Reg', a.Address1_Line1 AS 'Dealer Address', 
+                         a.gsc_CityIdName AS 'Dealer City', a.gsc_ProvinceIdName AS 'Dealer Province', a.Address1_PostalCode AS 'Dealer Postal Code', a.Address2_Telephone2 AS 'Dealer Service Number', 
+                         a.Address2_Telephone1 AS 'Dealer Sales Number'
+FROM            gsc_cmn_ReceivingTransaction AS rt INNER JOIN
+                         Account AS a ON rt.gsc_DealerId = a.AccountId
+WHERE        (rt.gsc_cmn_ReceivingTransactionId = @reportid)</CommandText>
       </Query>
       <Fields>
         <Field Name="Dealer_TIN">
