@@ -101,14 +101,6 @@
         if (DMS.Settings.Permission.DeleteScope !== 756150000) {
             records.forEach(function (value, index) {
                 var $tr = $('tr[data-id=' + value + ']');
-                var tdGlobalRecord = $tr.find('td[data-attribute="gsc_isglobalrecord"]');
-
-                if (typeof tdGlobalRecord !== 'undefined') {
-                    if (tdGlobalRecord.data('value') == true) {
-                        records.splice(index, 1);
-                        return true;
-                    }
-                }
 
                 if (DMS.Settings.Permission.DeleteScope == 756150002) {
                     var tdBranchId = $tr.find('td[data-attribute="gsc_branchid"]');
@@ -134,7 +126,7 @@
                 }
             });
         }
-        return records;
+        return records;bul
     }
 
 })(jQuery);
