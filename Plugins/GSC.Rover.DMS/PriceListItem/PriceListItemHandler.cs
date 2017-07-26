@@ -166,7 +166,7 @@ namespace GSC.Rover.DMS.BusinessLogic.PriceListItem
                 : Guid.Empty;
 
             EntityCollection priceListCollection = CommonHandler.RetrieveRecordsByOneValue("pricelevel", "pricelevelid", priceListID, _organizationService, null, OrderType.Ascending,
-               new[] { "gsc_default" });
+               new[] { "gsc_default", "gsc_transactiontype" });
 
             if (priceListCollection != null && priceListCollection.Entities.Count > 0)
             {
@@ -174,7 +174,7 @@ namespace GSC.Rover.DMS.BusinessLogic.PriceListItem
 
                 Entity priceList = priceListCollection.Entities.FirstOrDefault();
 
-                if (priceList.GetAttributeValue<Boolean>("gsc_default"))
+                if (priceList.GetAttributeValue<Boolean>("gsc_default") && priceList.GetAttributeValue<OptionSetValue>("gsc_transactiontype").Value == 100000000)//Vehicle Sales
                 {
                     UpdateVehicleSellPrice(priceListItem);
                 }

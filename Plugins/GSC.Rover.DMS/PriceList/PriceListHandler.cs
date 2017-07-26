@@ -67,7 +67,7 @@ namespace GSC.Rover.DMS.BusinessLogic.PriceList
             }
             //productpricelevel
 
-            if (transactionType == 100000000)
+            if (transactionType == 100000000)//Vehicle Sales
             {
                 EntityCollection priceListItemCollection = CommonHandler.RetrieveRecordsByOneValue("productpricelevel", "pricelevelid", priceList.Id, _organizationService, null, OrderType.Ascending,
                    new[] { "amount", "productid", "pricelevelid" });
