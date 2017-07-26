@@ -137,9 +137,6 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                 salesOrderEntity["gsc_applytoafamount"] = quote.Contains("gsc_applytoafamount")
                     ? quote.GetAttributeValue<Money>("gsc_applytoafamount")
                     : new Money(0);
-                salesOrderEntity["gsc_insuranceid"] = quote.GetAttributeValue<EntityReference>("gsc_insuranceid") != null
-                    ? quote.GetAttributeValue<EntityReference>("gsc_insuranceid")
-                    : null;
                 salesOrderEntity["gsc_vehicletypeid"] = quote.GetAttributeValue<EntityReference>("gsc_vehicletype") != null
                     ? quote.GetAttributeValue<EntityReference>("gsc_vehicletype")
                     : null;
@@ -161,10 +158,10 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                     ? new EntityReference(quote.GetAttributeValue<EntityReference>("gsc_recordownerid").LogicalName, new Guid(quote.GetAttributeValue<String>("gsc_portaluserid")))
                     : null;
 
-                //Insurance Charges
+                //Insurance Details
                 salesOrderEntity["gsc_providercompanyid"] = quote.GetAttributeValue<EntityReference>("gsc_provider") != null
-                    ? quote.GetAttributeValue<EntityReference>("gsc_provider")
-                    : null;
+                ? quote.GetAttributeValue<EntityReference>("gsc_provider")
+                : null;
                 salesOrderEntity["gsc_insurancecoverage"] = quote.Contains("gsc_insurancecoverage")
                     ? quote.GetAttributeValue<OptionSetValue>("gsc_insurancecoverage")
                     : null;
@@ -990,7 +987,9 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
         {
             _tracingService.Trace("Started ReplicateInsuranceDetails method ...");
 
-            if (salesOrderEntity.Contains("gsc_insuranceid") && salesOrderEntity.GetAttributeValue<EntityReference>("gsc_insuranceid") != null)
+            
+
+            if (salesOrderEntity.Contains("gsc_providercompanyid") && salesOrderEntity.GetAttributeValue<EntityReference>("gsc_insuranceid") != null)
             {
                 var insuranceid = salesOrderEntity.GetAttributeValue<EntityReference>("gsc_insuranceid").Id;
                 var isfree = salesOrderEntity.GetAttributeValue<Boolean>("gsc_free");
