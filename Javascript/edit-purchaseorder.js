@@ -3,6 +3,8 @@ $(document).ready(function () {
     var vpostatus = $("#gsc_vpostatus option:selected").val();
     var approvalstatus = $("#gsc_approvalstatus").val();
     var branchId = $("#gsc_branchid").val();
+    $("[data-name=\"hideSection\"]").hide();
+
 
     //Hide CFO field
     if ($("#gsc_vpotype").val() != "100000000") {
@@ -12,7 +14,7 @@ $(document).ready(function () {
 
     setTimeout(function () {
         hideDevField();
-    }, 1000);
+    }, 100);
 
     /*   != Cancel     */
     if (vpostatus == 100000005) {
@@ -31,7 +33,7 @@ $(document).ready(function () {
 
 
     /*   != Open     */
-    if (vpostatus !== 100000000 || approvalstatus === 100000000)
+    if (vpostatus != 100000000 || approvalstatus == 100000000)
         setReadOnly();
 
     /*   != Open     */
@@ -315,10 +317,6 @@ $(document).ready(function () {
     //End Submit Button
 
     function hideDevField() {
-        $("[data-name=\"hideSection\"]").hide();
-        //$("#gsc_approverguid_label").hide();
-        //$("#gsc_approverguid").hide();
-
         $("#gsc_approvalstatus").css({ "pointer-events": "none", "cursor": "default" });
         $("#gsc_vpostatus").css({ "pointer-events": "none", "cursor": "default" });
         $("#gsc_approvalstatus").attr("readOnly", true);

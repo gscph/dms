@@ -12,9 +12,15 @@ $(document).ready(function (e) {
         $('#gsc_validuntil').next('.datetimepicker').on("dp.change", function (e) {
             $(this).data("DateTimePicker").setMinDate(new Date());
         });
-
     }, 100);
 
+    // //Save precise dp% value
+    //     $("#UpdateButton").on("click", function(e){
+    //         e.preventDefault();
+    //         //$('#gsc_downpaymentpercentage').val(extendedDownPaymentPercentage);
+    //         $('#gsc_downpaymentpercentage').attr('value', extendedDownPaymentPercentage);
+    //     });
+        
     //check quote status if open or not
     CheckStatus();
     CheckifGovernment();
@@ -354,10 +360,10 @@ $(document).ready(function (e) {
             Page_Validators = jQuery.grep(Page_Validators, function (value) {
                 return value != schemeValidator;
             });
-			Page_Validators = jQuery.grep(Page_Validators, function (value) {
+            Page_Validators = jQuery.grep(Page_Validators, function (value) {
                 return value != downPaymentAmountValidator;
             });
-			Page_Validators = jQuery.grep(Page_Validators, function (value) {
+            Page_Validators = jQuery.grep(Page_Validators, function (value) {
                 return value != downPaymentPercentageValidator;
             });
 
@@ -549,6 +555,7 @@ $(document).ready(function (e) {
         });
 
         $("#gsc_downpaymentpercentage").on('change', function () {
+            $("#gsc_precisedownpaymentpercentage").val($("#gsc_downpaymentpercentage").val());
             computeDownpaymentAmount();
 
             if (paymentmode == '100000001') {
@@ -584,7 +591,7 @@ $(document).ready(function (e) {
     //compute downpayment amount from the percentage input
     function computeDownpaymentAmount() {
         netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
-        dppercent = $("#gsc_downpaymentpercentage").val() == "" ? 0 : $("#gsc_downpaymentpercentage").val();
+        dppercent = $("#gsc_precisedownpaymentpercentage").val() == "" ? 0 : $("#gsc_precisedownpaymentpercentage").val();
 
         if (netPrice == 0) {
             netPrice = odataComputeNetPrice();
@@ -608,9 +615,12 @@ $(document).ready(function (e) {
 
         if (netPrice != 0) {
             dppercent = (parseFloat(downpayment) / (parseFloat(netPrice))) * 100;
-            $("#gsc_downpaymentpercentage").val(parseFloat(dppercent).toFixed(2));
+
+            $("#gsc_downpaymentpercentage").val(parseFloat(dppercent.toFixed(2)));
+            $("#gsc_precisedownpaymentpercentage").val(parseFloat(dppercent));
         } else {
             $("#gsc_downpaymentpercentage").val(0);
+            $("#gsc_precisedownpaymentpercentage").val(0);
         }
 
         computeNetDownpayment();

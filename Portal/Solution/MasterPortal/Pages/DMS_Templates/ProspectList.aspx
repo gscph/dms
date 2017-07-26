@@ -119,7 +119,7 @@
                     salesExecutive = element.siblings('td[data-attribute="gsc_salesexecutiveid"]').data('value').Id;
                 }
              
-                var oDataUrl = '/_odata/employee?$filter=contactid%20eq%20(Guid%27' + createdBy + '%27)&';
+                var oDataUrl = '/_odata/employee?$filter=contactid%20eq%20(Guid%27' + salesExecutive + '%27)&';
                 $.ajax({
                     type: 'get',
                     async: true,

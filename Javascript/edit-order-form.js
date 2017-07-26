@@ -354,6 +354,7 @@ $(document).ready(function (e) {
         });
 
         $("#gsc_downpaymentpercentage").on('change', function () {
+            $("#gsc_precisedownpaymentpercentage").val($("#gsc_downpaymentpercentage").val());
             computeDownpaymentAmount();
         });
 
@@ -377,7 +378,7 @@ $(document).ready(function (e) {
     function computeDownpaymentAmount() {
         //unitprice = parseFloat($('#gsc_unitprice').html().substr(1).replace(/,/g, ""));
         netprice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
-        dppercent = $("#gsc_downpaymentpercentage").val() == "" ? 0 : $("#gsc_downpaymentpercentage").val();
+        dppercent = $("#gsc_precisedownpaymentpercentage").val() == "" ? 0 : $("#gsc_precisedownpaymentpercentage").val();
 
         downpayment = (parseFloat(netprice)) * (parseFloat(dppercent) / 100);
 
@@ -394,6 +395,8 @@ $(document).ready(function (e) {
 
         if (netprice != 0) {
             dppercent = (parseFloat(downpayment) / (parseFloat(netprice))) * 100;
+
+            $("#gsc_precisedownpaymentpercentage").val(parseFloat(dppercent));
             $("#gsc_downpaymentpercentage").val(parseFloat(dppercent).toFixed(2));
         } else {
             $("#gsc_downpaymentpercentage").val(0);
@@ -725,7 +728,7 @@ $(document).ready(function (e) {
 }, 7000);*/
 
     var webRole = DMS.Settings.User.webRole;
-    if (webRole == 'Cashier' || webRole == "Vehicle Allocator" || webRole == "Invoicer" || webRole == "Invoice Generator by Dealer" || webRole == "CC Manager" || webRole.indexOf("MSD Manager") >= 0) {
+    if (webRole == 'Cashier' ||  webRole.contains("Vehicle Allocator") || webRole == "Invoicer" || webRole == "Invoice Generator by Dealer" || webRole == "CC Manager" || webRole.indexOf("MSD Manager") >= 0) {
       
       $("input").parent("span.checkbox").each(function() {
             if($(this).closest("table").data("name") != "hideSection"){
@@ -733,7 +736,20 @@ $(document).ready(function (e) {
               $('input[id="'+$inputId+'"], label[for="'+$inputId+'"]').css({ "pointer-events": "none", "cursor": "default" });
             }
       });
-      
+
+
+    setTimeout(function () {
+        //Vehicle Allocators able to access criteria filters
+         if(webRole.contains("Vehicle Allocator"))
+            {
+              $("input", '*[data-name="VEHICLECRITERIA"]').removeAttr("readonly");
+              $("select", '*[data-name="VEHICLECRITERIA"]').removeAttr("disabled").removeClass("permanent-disabled");
+
+            }
+    }, 200);
+    
+   
+
         $("#EntityFormView").find("input").each(function () {
             if (webRole == "Invoicer") {
                 if ($(this).closest('table').data("name") === "tabbed-INSURANCECHARGES") {

@@ -52,8 +52,9 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                    "gsc_vehiclecolorid2", "gsc_vehiclecolorid3", "gsc_remarks", "gsc_vehicleunitprice", "gsc_vehicledetails", "customerid", "gsc_address",
                    "gsc_leadsourceid", "gsc_financingschemeid", "gsc_bankid", "gsc_freechattelfee", "gsc_insuranceid", "gsc_free",
                    "gsc_downpaymentamount", "gsc_downpaymentpercentage", "gsc_applytodppercentage", "gsc_applytouppercentage", "gsc_applytoafpercentage",
-                   "gsc_applytodpamount", "gsc_applytoupamount", "gsc_applytoafamount", "gsc_netmonthlyamortization", "gsc_portaluserid",
-                   "opportunityid", "gsc_vehicletype", "gsc_vehicleuse", "gsc_lessdiscount", "gsc_netdownpayment", "gsc_lessdiscountaf", "gsc_totalamountfinanced"});
+                   "gsc_applytodpamount", "gsc_applytoupamount", "gsc_applytoafamount", "gsc_netmonthlyamortization", "gsc_portaluserid", "gsc_precisedownpaymentpercentage",
+                   "opportunityid", "gsc_vehicletype", "gsc_vehicleuse", "gsc_lessdiscount", "gsc_netdownpayment", "gsc_lessdiscountaf", "gsc_totalamountfinanced",
+                   "gsc_provider", "gsc_insurancecoverage", "gsc_totalpremium", "gsc_ctpl", "gsc_totalinsurancecharges" });
 
             _tracingService.Trace("Quote records count " + String.Concat(quoteRecords.Entities.Count));
 
@@ -99,6 +100,9 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                 salesOrderEntity["gsc_downpaymentpercentage"] = quote.Contains("gsc_downpaymentpercentage")
                     ? quote.GetAttributeValue<Double>("gsc_downpaymentpercentage")
                     : 0.0;
+                salesOrderEntity["gsc_precisedownpaymentpercentage"] = quote.Contains("gsc_precisedownpaymentpercentage")
+                    ? quote.GetAttributeValue<Decimal>("gsc_precisedownpaymentpercentage")
+                    : 0;
                 salesOrderEntity["gsc_downpaymentdiscount"] = quote.Contains("gsc_lessdiscount")
                     ? quote.GetAttributeValue<Money>("gsc_lessdiscount")
                     : new Money(0);
@@ -133,9 +137,6 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                 salesOrderEntity["gsc_applytoafamount"] = quote.Contains("gsc_applytoafamount")
                     ? quote.GetAttributeValue<Money>("gsc_applytoafamount")
                     : new Money(0);
-                salesOrderEntity["gsc_insuranceid"] = quote.GetAttributeValue<EntityReference>("gsc_insuranceid") != null
-                    ? quote.GetAttributeValue<EntityReference>("gsc_insuranceid")
-                    : null;
                 salesOrderEntity["gsc_vehicletypeid"] = quote.GetAttributeValue<EntityReference>("gsc_vehicletype") != null
                     ? quote.GetAttributeValue<EntityReference>("gsc_vehicletype")
                     : null;
@@ -156,6 +157,23 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                 salesOrderEntity["gsc_recordownerid"] = quote.Contains("gsc_portaluserid")
                     ? new EntityReference(quote.GetAttributeValue<EntityReference>("gsc_recordownerid").LogicalName, new Guid(quote.GetAttributeValue<String>("gsc_portaluserid")))
                     : null;
+
+                //Insurance Details
+                salesOrderEntity["gsc_providercompanyid"] = quote.GetAttributeValue<EntityReference>("gsc_provider") != null
+                ? quote.GetAttributeValue<EntityReference>("gsc_provider")
+                : null;
+                salesOrderEntity["gsc_insurancecoverage"] = quote.Contains("gsc_insurancecoverage")
+                    ? quote.GetAttributeValue<OptionSetValue>("gsc_insurancecoverage")
+                    : null;
+                salesOrderEntity["gsc_totalpremium"] = quote.Contains("gsc_totalpremium")
+                    ? quote.GetAttributeValue<Money>("gsc_totalpremium")
+                    : new Money(Decimal.Zero);
+                salesOrderEntity["gsc_ctpl"] = quote.Contains("gsc_ctpl")
+                    ? quote.GetAttributeValue<Money>("gsc_ctpl")
+                    : new Money(Decimal.Zero);
+                salesOrderEntity["gsc_totalinsurancecharges"] = quote.Contains("gsc_totalinsurancecharges")
+                    ? quote.GetAttributeValue<Money>("gsc_totalinsurancecharges")
+                    : new Money(Decimal.Zero);
             }
 
             //Populate Customer Information
@@ -969,7 +987,9 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
         {
             _tracingService.Trace("Started ReplicateInsuranceDetails method ...");
 
-            if (salesOrderEntity.Contains("gsc_insuranceid") && salesOrderEntity.GetAttributeValue<EntityReference>("gsc_insuranceid") != null)
+            
+
+            if (salesOrderEntity.Contains("gsc_providercompanyid") && salesOrderEntity.GetAttributeValue<EntityReference>("gsc_insuranceid") != null)
             {
                 var insuranceid = salesOrderEntity.GetAttributeValue<EntityReference>("gsc_insuranceid").Id;
                 var isfree = salesOrderEntity.GetAttributeValue<Boolean>("gsc_free");
@@ -1411,9 +1431,9 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             {
                 _tracingService.Trace("Zip = Yes");
 
-                var dpPercent = salesOrderEntity.Contains("gsc_downpaymentpercentage")
-                ? salesOrderEntity.GetAttributeValue<double>("gsc_downpaymentpercentage")
-                : 0.0;
+                var dpPercent = salesOrderEntity.Contains("gsc_precisedownpaymentpercentage")
+                ? salesOrderEntity.GetAttributeValue<Decimal>("gsc_precisedownpaymentpercentage")
+                : 0;
 
                 var dpFrom = schemeEntity.Contains("gsc_downpaymentfrom")
                 ? schemeEntity.GetAttributeValue<double>("gsc_downpaymentfrom")
@@ -1423,7 +1443,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                 ? schemeEntity.GetAttributeValue<double>("gsc_downpaymentto")
                 : 0.0;
 
-                if (dpPercent >= dpFrom && dpPercent <= dpTo)
+                if (dpPercent >= (Decimal)dpFrom && dpPercent <= (Decimal)dpTo)
                 {
                     _tracingService.Trace("DownPayment with in the range.");
                     return true;
@@ -2176,14 +2196,14 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             Decimal netPrice = salesOrderEntity.Contains("gsc_netprice")
                 ? salesOrderEntity.GetAttributeValue<Money>("gsc_netprice").Value
                 : 0;
-            Double downPaymentPercentage = salesOrderEntity.Contains("gsc_downpaymentpercentage")
-                ? salesOrderEntity.GetAttributeValue<Double>("gsc_downpaymentpercentage")
-                : 0.0;
+            Decimal downPaymentPercentage = salesOrderEntity.Contains("gsc_precisedownpaymentpercentage")
+                ? salesOrderEntity.GetAttributeValue<Decimal>("gsc_precisedownpaymentpercentage")
+                : 0;
             Decimal downPaymentAmount = Decimal.Zero;
 
-            if (downPaymentPercentage != 0.0 || downPaymentPercentage != null)
+            if (downPaymentPercentage != 0 || downPaymentPercentage != null)
             {
-                downPaymentAmount = netPrice * ((Decimal)downPaymentPercentage / 100);
+                downPaymentAmount = netPrice * (downPaymentPercentage / 100);
             }
 
             _tracingService.Trace("Started ComputeDownPaymentAmount method...");

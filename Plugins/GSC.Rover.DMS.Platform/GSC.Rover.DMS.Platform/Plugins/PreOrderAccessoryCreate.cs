@@ -64,7 +64,6 @@ namespace GSC.Rover.DMS.Platform.Plugins
             {
                 SalesOrderAccessoryHandler salesOrderAccessory = new SalesOrderAccessoryHandler(service, trace);
                 salesOrderAccessory.PopulateDetails(accessoryEntity, message);
-
             }
 
             catch (Exception ex)

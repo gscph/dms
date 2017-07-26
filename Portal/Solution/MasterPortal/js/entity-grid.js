@@ -1361,12 +1361,20 @@
 		}
 		var url = getUrlFromActionLink(layout.Configuration.DeleteActionLink);
 		$table.find(".delete-link").on("click", function (e) {
-			e.preventDefault();
+		    e.preventDefault();
 			var link = $(this);
 			var $tr = $(this).closest("tr");
 			var id = $tr.data("id");
 			var $modal = $element.children(".modal-delete");
 			var $button = $modal.find("button.primary");
+
+			var quoteSatecode = $tr.find("td[data-attribute='statecode']").data("value") == undefined ? 0 : $tr.find("td[data-attribute='statecode']").data("value").Value;
+			if (quoteSatecode != 0) {
+			    error = "Cannot delete this record.";
+			    DMS.Notification.Error(error, true, 1000);
+			    return;
+			}
+
 			$button.off("click");
 			$button.on("click", function (ev) {
 				ev.preventDefault();

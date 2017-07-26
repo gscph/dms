@@ -1058,6 +1058,8 @@ namespace Site.Areas.Account.Controllers
             userCookieCredentials["webRoleId"] = branchSettings.WebRole.Id.ToString();
             userCookieCredentials["webRoleName"] = branchSettings.WebRole.Name;
             userCookieCredentials["userId"] = branchSettings.UserId.ToString();
+            userCookieCredentials["parentCustomerId"] = branchSettings.ParentCustomerId.ToString();
+            userCookieCredentials["parentCustomerType"] = branchSettings.ParentCustomerType;
             HttpContext.Response.Cookies.Add(userCookieCredentials);
         }
 

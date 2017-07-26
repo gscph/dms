@@ -406,14 +406,25 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
         {
             _tracingService.Trace("Started CheckMonthlyAmortizationRecord method ...");
 
+            Guid financingTermId = Guid.Empty;
+
             EntityCollection MARecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_quotemonthlyamortization", "gsc_quoteid", quoteEntity.Id, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_quoteid" });
+                new[] { "gsc_quoteid", "gsc_isselected", "gsc_financingtermid" });
 
             if (MARecords != null || MARecords.Entities.Count > 0)
             {
                 foreach (var amortization in MARecords.Entities)
                 {
                     _tracingService.Trace("Deleting Monthly Amortization Records...");
+
+                    Boolean isSelected = amortization.GetAttributeValue<Boolean>("gsc_isselected");
+                    _tracingService.Trace(isSelected.ToString());
+
+                    if (isSelected == true)
+                    {
+                        _tracingService.Trace(financingTermId.ToString());
+                        financingTermId = amortization.Contains("gsc_financingtermid") ? amortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
+                    }
 
                     _organizationService.Delete(amortization.LogicalName, amortization.Id);
                 }
@@ -423,10 +434,13 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                 _tracingService.Trace("Net monthly amortization Updated to 0 ...");
             }
 
+            _tracingService.Trace(financingTermId.ToString());
+
             //Call CreateMonthlyAmortization method
             if (quoteEntity.Contains("gsc_financingschemeid") && quoteEntity.GetAttributeValue<EntityReference>("gsc_financingschemeid") != null)
             {
-                return CreateMonthlyAmortization(quoteEntity);
+                CreateMonthlyAmortization(quoteEntity);
+                return UpdateMonthlyAmortization(quoteEntity, financingTermId);
             }
 
             _tracingService.Trace("Ended CheckMonthlyAmortizationRecord method..");
@@ -520,9 +534,9 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             {
                 _tracingService.Trace("Zip = Yes");
 
-                var dpPercent = quoteEntity.Contains("gsc_downpaymentpercentage")
-                ? quoteEntity.GetAttributeValue<double>("gsc_downpaymentpercentage")
-                : 0.0;
+                var dpPercent = quoteEntity.Contains("gsc_precisedownpaymentpercentage")
+                ? quoteEntity.GetAttributeValue<Decimal>("gsc_precisedownpaymentpercentage")
+                : 0;
 
                 var dpFrom = schemeEntity.Contains("gsc_downpaymentfrom")
                 ? schemeEntity.GetAttributeValue<double>("gsc_downpaymentfrom")
@@ -532,7 +546,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                 ? schemeEntity.GetAttributeValue<double>("gsc_downpaymentto")
                 : 0.0;
 
-                if (dpPercent >= dpFrom && dpPercent <= dpTo)
+                if (dpPercent >= (decimal)dpFrom && dpPercent <= (decimal)dpTo)
                 {
                     _tracingService.Trace("DownPayment with in the range.");
                     return true;
@@ -608,6 +622,35 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
 
             _tracingService.Trace("ZIP_ZeroAOR_NoAFDiscount Computed.");
             return (amountfinanced * (1 + (aor / 100))) / term;
+        }
+
+        //Set already selected Financing Term
+        private Entity UpdateMonthlyAmortization(Entity quoteEntity, Guid financingTermId)
+        {
+            if (financingTermId != Guid.Empty)
+            {
+                EntityCollection quoteMonthlyAmortizationRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_quotemonthlyamortization", "gsc_quoteid", quoteEntity.Id, _organizationService, null, OrderType.Ascending,
+                    new[] { "gsc_financingtermid", "gsc_isselected" });
+
+                _tracingService.Trace(quoteMonthlyAmortizationRecords.Entities.Count.ToString());
+
+                if (quoteMonthlyAmortizationRecords != null && quoteMonthlyAmortizationRecords.Entities.Count > 0)
+                {
+                    foreach (var quoteMonthlyAmortization in quoteMonthlyAmortizationRecords.Entities)
+                    {
+                        Guid financingTerm = quoteMonthlyAmortization.Contains("gsc_financingtermid") ? quoteMonthlyAmortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
+                     
+                        if (financingTerm == financingTermId)
+                        {
+                            _tracingService.Trace("Update Fianncing Term");
+
+                            quoteMonthlyAmortization["gsc_isselected"] = true;
+                            _organizationService.Update(quoteMonthlyAmortization);
+                        }
+                    }
+                }
+            }
+            return quoteEntity;
         }
 
         //Created By: Leslie Baliguat, Created On: 3/3/2016
@@ -919,12 +962,12 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             Decimal netPrice = quoteEntity.Contains("gsc_netprice")
                 ? quoteEntity.GetAttributeValue<Money>("gsc_netprice").Value
                 : Decimal.Zero;
-            Double downPaymentPercentage = quoteEntity.Contains("gsc_downpaymentpercentage")
-                ? quoteEntity.GetAttributeValue<Double>("gsc_downpaymentpercentage")
+            Decimal downPaymentPercentage = quoteEntity.Contains("gsc_precisedownpaymentpercentage")
+                ? quoteEntity.GetAttributeValue<Decimal>("gsc_precisedownpaymentpercentage")
                 : 0;
             Decimal downPaymentAmount = Decimal.Zero;
 
-            downPaymentAmount = netPrice * (Decimal)(downPaymentPercentage / 100);
+            downPaymentAmount = netPrice * (downPaymentPercentage / 100);
 
             return downPaymentAmount;
         }

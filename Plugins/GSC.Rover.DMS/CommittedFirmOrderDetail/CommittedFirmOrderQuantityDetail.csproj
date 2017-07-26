@@ -25,7 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\I-RHER~1\AppData\Local\Temp\vs644A.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\jgerero\AppData\Local\Temp\vs3C9.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,7 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\I-RHER~1\AppData\Local\Temp\vs644A.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\jgerero\AppData\Local\Temp\vs3C9.tmp\Release\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
