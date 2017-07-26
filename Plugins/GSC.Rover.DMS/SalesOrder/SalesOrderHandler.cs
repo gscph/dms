@@ -1898,88 +1898,154 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
          */
         public Entity AllocateVehicle(Entity salesOrderEntity)
         {
+            int retryCount = 0;
+
             _tracingService.Trace("Started AllocateVehicle Method.");
 
-            lock (thisLock)
-            {
-                _tracingService.Trace("Object not locked");
+            Guid inventoryId = salesOrderEntity.Contains("gsc_inventoryidtoallocate")
+                ? new Guid(salesOrderEntity.GetAttributeValue<String>("gsc_inventoryidtoallocate"))
+                : Guid.Empty;
 
-                Guid inventoryId = salesOrderEntity.Contains("gsc_inventoryidtoallocate")
-                    ? new Guid(salesOrderEntity.GetAttributeValue<String>("gsc_inventoryidtoallocate"))
-                    : Guid.Empty;
+            String preferredColor1 = salesOrderEntity.Contains("gsc_vehiclecolorid1")
+                ? salesOrderEntity.GetAttributeValue<EntityReference>("gsc_vehiclecolorid1").Name
+                : String.Empty;
 
-                String preferredColor1 = salesOrderEntity.Contains("gsc_vehiclecolorid1")
-                    ? salesOrderEntity.GetAttributeValue<EntityReference>("gsc_vehiclecolorid1").Name
-                    : String.Empty;
+            String today = DateTime.Today.ToString("MM-dd-yyyy");
 
-                String today = DateTime.Today.ToString("MM-dd-yyyy");
-
-                EntityCollection inventoryRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId,
-                    _organizationService, null, OrderType.Ascending, new[] { "gsc_color", "gsc_csno", "gsc_engineno", "gsc_modelcode", "gsc_modelyear", "gsc_warrantybookletno",
+            EntityCollection inventoryRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId,
+                _organizationService, null, OrderType.Ascending, new[] { "gsc_color", "gsc_csno", "gsc_engineno", "gsc_modelcode", "gsc_modelyear", "gsc_warrantybookletno",
                         "gsc_optioncode", "gsc_productionno", "gsc_vin", "gsc_productquantityid", "gsc_status", "gsc_siteid", "gsc_productid", "gsc_basemodelid"});
 
-                if (inventoryRecords != null && inventoryRecords.Entities.Count > 0)
+            if (inventoryRecords != null && inventoryRecords.Entities.Count > 0)
+            {
+                _tracingService.Trace("Retrieved Inventory Details");
+
+                Entity inventoryEntity = inventoryRecords.Entities[0];
+                var inventoryEntityId = inventoryEntity.Id;
+
+                for (; ; )
                 {
-                    _tracingService.Trace("Retrieved Inventory Details");
+                    try
+                    {
+                        LockInventory(inventoryEntityId);
 
-                    Entity inventoryEntity = inventoryRecords.Entities[0];
+                        if (IsInventoryRecordAvailable(inventoryEntityId))
+                        {
+                            String allocatedColor = inventoryEntity.Contains("gsc_color")
+                                ? inventoryEntity.GetAttributeValue<String>("gsc_color")
+                                : String.Empty;
 
-                    String allocatedColor = inventoryEntity.Contains("gsc_color")
-                        ? inventoryEntity.GetAttributeValue<String>("gsc_color")
-                        : String.Empty;
+                            if (preferredColor1 != allocatedColor)
+                            {
+                                throw new InvalidPluginExecutionException("Allocated vehicle color doesn't match with the preferred color 1.");
+                            }
 
-                    if (preferredColor1 != allocatedColor) { throw new InvalidPluginExecutionException("Allocated vehicle color doesn't match with the preferred color 1."); }
+                            //var isAllocated = CheckifAllocated(inventoryEntity);
+                            var vin = inventoryEntity.GetAttributeValue<String>("gsc_vin");
+                            var cs = inventoryEntity.GetAttributeValue<String>("gsc_csno");
+                            var prod = inventoryEntity.GetAttributeValue<String>("gsc_productionno");
+                            var engine = inventoryEntity.GetAttributeValue<String>("gsc_engineno");
 
-                    var isAllocated = CheckifAllocated(inventoryEntity);
-                    var vin = inventoryEntity.GetAttributeValue<String>("gsc_vin");
-                    var cs = inventoryEntity.GetAttributeValue<String>("gsc_csno");
-                    var prod = inventoryEntity.GetAttributeValue<String>("gsc_productionno");
-                    var engine = inventoryEntity.GetAttributeValue<String>("gsc_engineno");
+                            _tracingService.Trace("Proceed in Allocation ...");
 
-                    _tracingService.Trace("Proceed in Allocation ...");
+                            Entity allocatedVehicle = new Entity("gsc_iv_allocatedvehicle");
 
-                    Entity allocatedVehicle = new Entity("gsc_iv_allocatedvehicle");
+                            allocatedVehicle["gsc_modelyear"] = inventoryEntity.GetAttributeValue<String>("gsc_modelyear");
+                            allocatedVehicle["gsc_color"] = inventoryEntity.GetAttributeValue<String>("gsc_color");
+                            allocatedVehicle["gsc_modelcode"] = inventoryEntity.GetAttributeValue<String>("gsc_modelcode");
+                            allocatedVehicle["gsc_optioncode"] = inventoryEntity.GetAttributeValue<String>("gsc_optioncode");
+                            allocatedVehicle["gsc_csno"] = cs;
+                            allocatedVehicle["gsc_engineno"] = engine;
+                            allocatedVehicle["gsc_productionno"] = prod;
+                            allocatedVehicle["gsc_vin"] = vin;
+                            allocatedVehicle["gsc_vehicleallocateddate"] = Convert.ToDateTime(today);
+                            allocatedVehicle["gsc_vehicleallocationage"] = 0;
+                            allocatedVehicle["gsc_inventoryid"] = new EntityReference(inventoryEntity.LogicalName, inventoryEntity.Id);
+                            allocatedVehicle["gsc_orderid"] = new EntityReference(salesOrderEntity.LogicalName, salesOrderEntity.Id);
+                            allocatedVehicle["gsc_warrantybookletno"] = inventoryEntity.Contains("gsc_warrantybookletno")
+                                ? inventoryEntity.GetAttributeValue<String>("gsc_warrantybookletno")
+                                : String.Empty;
+                            _organizationService.Create(allocatedVehicle);
 
-                    allocatedVehicle["gsc_modelyear"] = inventoryEntity.GetAttributeValue<String>("gsc_modelyear");
-                    allocatedVehicle["gsc_color"] = inventoryEntity.GetAttributeValue<String>("gsc_color");
-                    allocatedVehicle["gsc_modelcode"] = inventoryEntity.GetAttributeValue<String>("gsc_modelcode");
-                    allocatedVehicle["gsc_optioncode"] = inventoryEntity.GetAttributeValue<String>("gsc_optioncode");
-                    allocatedVehicle["gsc_csno"] = cs;
-                    allocatedVehicle["gsc_engineno"] = engine;
-                    allocatedVehicle["gsc_productionno"] = prod;
-                    allocatedVehicle["gsc_vin"] = vin;
-                    allocatedVehicle["gsc_vehicleallocateddate"] = Convert.ToDateTime(today);
-                    allocatedVehicle["gsc_vehicleallocationage"] = 0;
-                    allocatedVehicle["gsc_inventoryid"] = new EntityReference(inventoryEntity.LogicalName, inventoryEntity.Id);
-                    allocatedVehicle["gsc_orderid"] = new EntityReference(salesOrderEntity.LogicalName, salesOrderEntity.Id);
-                    allocatedVehicle["gsc_warrantybookletno"] = inventoryEntity.Contains("gsc_warrantybookletno")
-                        ? inventoryEntity.GetAttributeValue<String>("gsc_warrantybookletno")
-                        : String.Empty;
-                    _organizationService.Create(allocatedVehicle);
+                            _tracingService.Trace("Allocated Vehicle Created ...");
 
-                    _tracingService.Trace("Allocated Vehicle Created ...");
+                            InventoryMovementHandler inventoryMovementHandler = new InventoryMovementHandler(_organizationService, _tracingService);
+                            inventoryMovementHandler.UpdateInventoryStatus(inventoryEntity, 100000001);
+                            Entity productQuantityEntity = inventoryMovementHandler.UpdateProductQuantity(inventoryEntity, 0, -1, 1, 0, 0, 0, 0, 0);
 
-                    InventoryMovementHandler inventoryMovementHandler = new InventoryMovementHandler(_organizationService, _tracingService);
-                    inventoryMovementHandler.UpdateInventoryStatus(inventoryEntity, 100000001);
-                    Entity productQuantityEntity = inventoryMovementHandler.UpdateProductQuantity(inventoryEntity, 0, -1, 1, 0, 0, 0, 0, 0);
+                            Entity salesOrderToUpdate = _organizationService.Retrieve(salesOrderEntity.LogicalName, salesOrderEntity.Id,
+                              new ColumnSet("gsc_status", "gsc_vehicleallocateddate", "name", "gsc_status"));
+                            salesOrderToUpdate["gsc_status"] = new OptionSetValue(100000003);
+                            salesOrderToUpdate["gsc_vehicleallocateddate"] = Convert.ToDateTime(today);
+                            _organizationService.Update(salesOrderToUpdate);
 
-                    Entity salesOrderToUpdate = _organizationService.Retrieve(salesOrderEntity.LogicalName, salesOrderEntity.Id,
-                      new ColumnSet("gsc_status", "gsc_vehicleallocateddate", "name", "gsc_status"));
-                    salesOrderToUpdate["gsc_status"] = new OptionSetValue(100000003);
-                    salesOrderToUpdate["gsc_vehicleallocateddate"] = Convert.ToDateTime(today);
-                    _organizationService.Update(salesOrderToUpdate);
+                            _tracingService.Trace("Sales Order Updated ...");
 
-                    _tracingService.Trace("Sales Order Updated ...");
+                            // Create Inventory History Log
+                            inventoryMovementHandler.CreateInventoryQuantityAllocated(salesOrderToUpdate, inventoryEntity, productQuantityEntity, salesOrderToUpdate.GetAttributeValue<string>("name"),
+                                DateTime.UtcNow, "Allocated", Guid.Empty, 100000001);
 
-                    // Create Inventory History Log
-                    inventoryMovementHandler.CreateInventoryQuantityAllocated(salesOrderToUpdate, inventoryEntity, productQuantityEntity, salesOrderToUpdate.GetAttributeValue<string>("name"),
-                        DateTime.UtcNow, "Allocated", Guid.Empty, 100000001);
+                            _tracingService.Trace("Ended AllocateVehicle Method.");
+                            return allocatedVehicle;
 
-                    _tracingService.Trace("Ended AllocateVehicle Method.");
-                    return allocatedVehicle;
+                        }
+                        else
+                            throw new InvalidPluginExecutionException("Cannot proceed with allocation. Inventory is no longer available.");
+
+                        UnLockInventory(inventoryEntityId);
+                    }
+
+                    catch (SqlException ex)
+                    {
+                        if (!Enum.IsDefined(typeof(RetryableSqlErrors), ex.Number))
+                            throw;
+
+                        retryCount++;
+                        if (retryCount > MAX_RETRY) throw;
+
+                        Thread.Sleep(ex.Number == (int)RetryableSqlErrors.Timeout ?
+                                                                longWait : shortWait);
+                    }
                 }
             }
             return null;
+        }
+
+        private void LockInventory(Guid inventoryId)
+        {
+            _tracingService.Trace("Started RecordLock Mehod.");
+
+            var recordtoLock = new Entity("gsc_iv_inventory");
+            recordtoLock.Id = inventoryId;
+            recordtoLock["gsc_lock"] = true;
+            _organizationService.Update(recordtoLock);
+
+            _tracingService.Trace("Ended RecordLock Mehod.");
+        }
+
+        private Boolean IsInventoryRecordAvailable(Guid inventoryId)
+        {
+            EntityCollection inventoryRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId,
+                    _organizationService, null, OrderType.Ascending, new[] { "gsc_status" });
+
+            if (inventoryRecords != null && inventoryRecords.Entities.Count > 0)
+            {
+                if (inventoryRecords.Entities[0].GetAttributeValue<OptionSetValue>("gsc_status").Value == 100000000)
+                    return true;
+            }
+            return false;
+        }
+
+        private void UnLockInventory(Guid inventoryId)
+        {
+            _tracingService.Trace("Started RecordUnlock Method.");
+
+            var recordtoUnLock = new Entity("gsc_iv_inventory");
+            recordtoUnLock.Id = inventoryId;
+            recordtoUnLock["gsc_lock"] = false;
+            _organizationService.Update(recordtoUnLock);
+
+            _tracingService.Trace("Ended RecordUnlock Method.");
         }
 
         //Check if Inventory Item Selected was already allocated/still available
