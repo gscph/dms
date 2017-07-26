@@ -5,6 +5,10 @@
   <DataSets />
   <Reports>
     <ProjectItem>
+      <Name>DailySalesStocksReport.rdl</Name>
+      <FullPath>DailySalesStocksReport.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>DeliveryReceiptandGatePass.rdl</Name>
       <FullPath>DeliveryReceiptandGatePass.rdl</FullPath>
     </ProjectItem>
@@ -17,6 +21,14 @@
       <FullPath>PurchaseOrder.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>PurchaseOrderDetails.rdl</Name>
+      <FullPath>PurchaseOrderDetails.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>PurchaseOrderLayout.rdl</Name>
+      <FullPath>PurchaseOrderLayout.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>Quote.rdl</Name>
       <FullPath>Quote.rdl</FullPath>
     </ProjectItem>
@@ -25,8 +37,24 @@
       <FullPath>SalesInvoice.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>SalesInvoiceLayout.rdl</Name>
+      <FullPath>SalesInvoiceLayout.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>SalesOrder.rdl</Name>
       <FullPath>SalesOrder.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>SalesOrderDetails.rdl</Name>
+      <FullPath>SalesOrderDetails.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>SalesOrderDetailsAdjusted.rdl</Name>
+      <FullPath>SalesOrderDetailsAdjusted.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>SalesOrderLayout.rdl</Name>
+      <FullPath>SalesOrderLayout.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>VehicleAdjustment.rdl</Name>
@@ -69,32 +97,16 @@
       <FullPath>VehicleTransfer.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>DailySalesStocksReport.rdl</Name>
-      <FullPath>DailySalesStocksReport.rdl</FullPath>
+      <Name>PurchaseOrderDetailsAdjusted.rdl</Name>
+      <FullPath>PurchaseOrderDetailsAdjusted.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>SalesInvoiceDetailsAdjusted.rdl</Name>
+      <FullPath>SalesInvoiceDetailsAdjusted.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>SalesInvoiceDetails.rdl</Name>
       <FullPath>SalesInvoiceDetails.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>PurchaseOrderDetails.rdl</Name>
-      <FullPath>PurchaseOrderDetails.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>PurchaseOrderLayout.rdl</Name>
-      <FullPath>PurchaseOrderLayout.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>SalesInvoiceLayout.rdl</Name>
-      <FullPath>SalesInvoiceLayout.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>SalesOrderDetails.rdl</Name>
-      <FullPath>SalesOrderDetails.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>SalesOrderLayout.rdl</Name>
-      <FullPath>SalesOrderLayout.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>

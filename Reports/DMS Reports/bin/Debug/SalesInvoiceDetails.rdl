@@ -97,7 +97,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.21in</Height>
+              <Height>0.43917in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -148,6 +148,7 @@
                   <CellContents>
                     <Textbox Name="Customer">
                       <CanGrow>true</CanGrow>
+                      <CanShrink>true</CanShrink>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -656,146 +657,6 @@
                 </TablixCell>
               </TablixCells>
             </TablixRow>
-            <TablixRow>
-              <Height>0.21in</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox14">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>TIN:</Value>
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox8</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </RightBorder>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Tin">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!Tin.Value</Value>
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Tin</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </RightBorder>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox22">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox22</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </RightBorder>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
@@ -812,13 +673,12 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
-            <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>SalesInvoice</DataSetName>
         <Top>0.07in</Top>
         <Left>0.35in</Left>
-        <Height>1.68in</Height>
+        <Height>1.69917in</Height>
         <Width>4.54495in</Width>
         <Style>
           <Border>
@@ -1361,6 +1221,187 @@
                 </TablixCell>
               </TablixCells>
             </TablixRow>
+            <TablixRow>
+              <Height>0.21in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox113">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>TIN:</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox113</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Silver</Color>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Tin1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Tin.Value</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Tin1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.21in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox115">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Birthdate:</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox115</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Silver</Color>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Birthday">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Birthday.Value</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <Format>MMMM d, yyyy</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Birthday</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
@@ -1377,12 +1418,14 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>SalesInvoice</DataSetName>
         <Top>0.07in</Top>
         <Left>4.87833in</Left>
-        <Height>1.26in</Height>
+        <Height>1.68in</Height>
         <Width>3.11167in</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -1515,7 +1558,9 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=First(Fields!Model_Description.Value, "SalesInvoice") + Microsoft.VisualBasic.Interaction.IIF(Microsoft.VisualBasic.Information.ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")), "", " w/" + First(Fields!CabChassis.Value, "CabChassis"))</Value>
+                              <Value>=First(Fields!Model_Description.Value,"SalesInvoice") + 
+IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First(Fields!CabChassis.Value, "CabChassis"),1,InStrRev(First(Fields!CabChassis.Value, "CabChassis") , "")) + " &amp;" 
++ Mid(First(Fields!CabChassis.Value, "CabChassis"),InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")+1,LEN(First(Fields!CabChassis.Value, "CabChassis")) ))</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                               </Style>
@@ -2336,7 +2381,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Gross_Vehicle.Value</Value>
+                              <Value>=IIF(Fields!WB_.Value is Nothing, "",Fields!WB_.Value)</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                               </Style>
@@ -2426,14 +2471,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="WB_">
+                    <Textbox Name="Gross_Vehicle">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!WB_.Value</Value>
+                              <Value>=Fields!Gross_Vehicle.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                               </Style>
@@ -2444,7 +2489,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>WB_</rd:DefaultName>
+                      <rd:DefaultName>Gross_Vehicle</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -4692,7 +4737,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Microsoft.VisualBasic.Interaction.IIF(Fields!Net_Down_Payment.Value = Nothing, Nothing, "₱")</Value>
+                              <Value>=Microsoft.VisualBasic.Interaction.IIF(Fields!Down_Payment.Value = Nothing, Nothing, "₱")</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                               </Style>
@@ -4722,7 +4767,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Microsoft.VisualBasic.Interaction.IIF(Sum(Fields!Net_Downpayment.Value, "SalesInvoice") = Nothing, "-      ", Fields!Net_Downpayment.Value)</Value>
+                              <Value>=Microsoft.VisualBasic.Interaction.IIF(Sum(Fields!Down_Payment.Value, "SalesInvoice") = Nothing, "-      ", Fields!Down_Payment.Value)</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <Format>#,0.00;(#,0.00)</Format>
@@ -6253,7 +6298,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox248</rd:DefaultName>
-        <Top>8.37in</Top>
+        <Top>8.35in</Top>
         <Left>0.35in</Left>
         <Height>0.37in</Height>
         <Width>1.7987in</Width>
@@ -6287,7 +6332,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox249</rd:DefaultName>
-        <Top>8.37in</Top>
+        <Top>8.35in</Top>
         <Left>2.28in</Left>
         <Height>0.37in</Height>
         <Width>1.8in</Width>
@@ -6321,7 +6366,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox250</rd:DefaultName>
-        <Top>8.37in</Top>
+        <Top>8.35in</Top>
         <Left>4.22in</Left>
         <Height>0.37in</Height>
         <Width>1.8in</Width>
@@ -6355,7 +6400,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox251</rd:DefaultName>
-        <Top>8.37in</Top>
+        <Top>8.35in</Top>
         <Left>6.15in</Left>
         <Height>0.37in</Height>
         <Width>1.85277in</Width>
@@ -6429,7 +6474,7 @@ IIF(First(Fields!Branch_Telephone.Value, "SalesInvoice") = NOTHING, NOTHING, Fir
 IIF(First(Fields!Branch_Service_Number.Value, "SalesInvoice") = NOTHING, NOTHING, "Service DL: " + First(Fields!Branch_Service_Number.Value, "SalesInvoice") +" " &amp; vbcrlf) &amp;
 IIF(First(Fields!Branch_Sales_Number.Value, "SalesInvoice") = NOTHING, NOTHING, "Sales Direct Line: "+ First(Fields!Branch_Sales_Number.Value, "SalesInvoice") + "&lt;br&gt;" &amp; vbcrlf) &amp;
 IIF(First(Fields!Branch_Email_Address.Value, "SalesInvoice") = NOTHING, NOTHING, "Email: "+ First(Fields!Branch_Email_Address.Value, "SalesInvoice") + "&lt;br&gt;" &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_VAT_Reg.Value, "SalesInvoice") =NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!Branch_VAT_Reg.Value, "SalesInvoice") &amp; vbcrlf) &amp;
+IIF(First(Fields!Tin.Value, "SalesInvoice") =NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!Tin.Value, "SalesInvoice") &amp; vbcrlf) &amp;
 IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, First(Fields!Branch_WebSite_Url.Value, "SalesInvoice"))</Value>
                   <MarkupType>HTML</MarkupType>
                   <Style>
@@ -6446,7 +6491,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
           <Top>0.59722in</Top>
           <Left>1.78076in</Left>
           <Height>1.01737in</Height>
-          <Width>4.12221in</Width>
+          <Width>4.23924in</Width>
           <ZIndex>1</ZIndex>
           <Visibility>
             <Hidden>true</Hidden>
@@ -6484,7 +6529,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
           <Top>0.34376in</Top>
           <Left>1.78076in</Left>
           <Height>0.25347in</Height>
-          <Width>4.12221in</Width>
+          <Width>4.23924in</Width>
           <ZIndex>2</ZIndex>
           <Visibility>
             <Hidden>true</Hidden>
@@ -6506,7 +6551,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Vehicle Sales Invoice #</Value>
+                  <Value>Sales Invoice #</Value>
                   <Style>
                     <FontFamily>Segoe UI</FontFamily>
                     <FontWeight>Bold</FontWeight>
@@ -6625,7 +6670,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Date</rd:DefaultName>
-          <Top>1.87in</Top>
+          <Top>1.9in</Top>
           <Left>6.95697in</Left>
           <Height>0.21in</Height>
           <Width>1in</Width>
@@ -6689,38 +6734,118 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
             <Value>=Parameters!reportid.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT        Invoice.Name AS 'Sales Invoice Number', Invoice.CustomerIdName AS 'Customer', CASE WHEN Invoice.CustomerIdType = '1' THEN
+        <CommandText>SELECT			Invoice.Name AS 'Sales Invoice Number', 
+				CASE WHEN Invoice.CustomerIdType = '1' THEN
+                             (SELECT        name
+                               FROM            Account
+                               WHERE        AccountId = Invoice.CustomerId) ELSE
+                             (SELECT        (FirstName + ' ' + MiddleName + ' ' + LastName)
+                               FROM            Contact
+                               WHERE        contactid = Invoice.CustomerId) END AS 'Customer', 
+				CASE WHEN Invoice.CustomerIdType = '1' THEN
                              (SELECT        Telephone1
                                FROM            Account
                                WHERE        AccountId = Invoice.CustomerId) ELSE
                              (SELECT        MobilePhone
                                FROM            Contact
-                               WHERE        contactid = Invoice.CustomerId) END AS 'Mobile Number', CASE WHEN Invoice.CustomerIdType = '1' THEN
+                               WHERE        contactid = Invoice.CustomerId) END AS 'Mobile Number', 
+				CASE WHEN Invoice.CustomerIdType = '1' THEN
                              (SELECT        EMailAddress1
                                FROM            Account
                                WHERE        AccountId = Invoice.CustomerId) ELSE
                              (SELECT        EMailAddress1
                                FROM            Contact
-                               WHERE        contactid = Invoice.CustomerId) END AS 'Email Address', Invoice.ShipTo_Composite AS 'Address', Invoice.gsc_Tin AS 'Tin', Invoice.CreatedOn AS 'Date', Invoice.gsc_DrNo AS 'DR No', 
-                         Invoice.gsc_LeadSourceIdName AS 'Lead Source', Invoice.gsc_PaymentMode AS 'Payment Mode', InvoiceMonthlyAmortization.gsc_FinancingTermIdName AS 'Financing Term', 
-                         Invoice.gsc_SalesExecutiveIdName AS 'Sales Executive', Invoice.gsc_BankIdName AS 'Bank', Invoice.gsc_ProductIdName AS 'Model Description', Product.gsc_ModelYear AS 'Model Year', 
-                         InvoicedVehicle.gsc_ModelCode AS 'Model Code', InvoicedVehicle.gsc_OptionCode AS 'Option Code', InvoicedVehicle.gsc_EngineNo AS 'Engine No.', InvoicedVehicle.gsc_VIN AS 'VIN', 
-                         Invoice.gsc_VehicleColorId1Name AS 'Color', InvoicedVehicle.gsc_ProductionNo AS 'Production No.', InvoicedVehicle.gsc_CSNo AS 'CS No.', InvoicedVehicle.gsc_WarrantyBookletNo AS 'WB#', 
-                         Product.gsc_GrossVehicleWeight AS 'Gross Vehicle', Product.gsc_PistonDisplacement AS 'Piston Displacement', 
-                         CASE WHEN Product .gsc_FuelType = '100000000' THEN 'Gasoline' WHEN Product .gsc_FuelType = '100000001' THEN 'Diesel' ELSE '' END AS 'Fuel Used', Invoice.gsc_VehicleDetails AS 'Vehicle Details', 
-                         Product.gsc_VehicleTypeIdName AS 'Vehicle Type', Product.gsc_BodyTypeIdName AS 'Body Type', Product.gsc_Transmission AS 'Transmission', Product.gsc_WarrantyExpiryDays AS 'Warranty Years', 
-                         Product.gsc_WarrantyMileage AS 'Warranty Mileage', Product.gsc_OtherVehicleDetails AS 'Others', Invoice.gsc_UnitPrice AS 'Unit Price', Invoice.gsc_CCAddons AS 'CC AddOns', 
-                         Invoice.gsc_ColorPrice AS 'Color Price', Invoice.gsc_FreightandHandling AS 'Freight and Handling', Invoice.gsc_ApplyToUpAmount AS 'Total Discount Amount', Invoice.gsc_NetPrice AS 'Net Price', 
-                         Invoice.gsc_Accessories AS 'Accessories', Invoice.gsc_ChattelFee AS 'Chattel fee', Invoice.gsc_Insurance AS 'Insurance Charge', OrderCharge.gsc_ChargesIdName AS 'Charges', 
-                         OrderCharge.gsc_ActualCost AS 'Actual Cost', Invoice.gsc_Reservation AS 'Reservation', Invoice.gsc_NetDownPayment AS 'Net Downpayment', Invoice.gsc_VATableSales AS 'VATable Sales', 
-                         Invoice.gsc_VATEXEMPTSales AS 'VATEXEMPT Sales', Invoice.gsc_ZERORATEDSales AS 'ZERORATED Sales', Invoice.gsc_TotalSales AS 'Total Sales', Invoice.gsc_VATAmount AS 'VAT Amount', 
-                         Invoice.TotalAmount AS 'Total Amount Due', Invoice.gsc_TotalCashOutlay AS 'Total Cash Outlay', Invoice.gsc_DownPaymentDisplay AS 'Down Payment', Invoice.gsc_NetDownPayment AS 'Net Down Payment', 
-                         Invoice.gsc_AmountFinanced AS 'Total Amount Financed', Invoice.gsc_NetMonthlyAmortization AS 'Net MonthlyAmortization', Invoice.gsc_Remarks AS 'Remarks', Account.gsc_VSOTermsandAgreement AS 'TaA', 
-                         Account.Telephone1 AS 'Branch Telephone', Account.Fax AS 'Branch Fax', Account.gsc_VATReg AS 'Branch VAT Reg', Account.WebSiteURL AS 'Branch WebSite Url', Account.EntityImage AS 'Branch Entity Image', 
-                         Account.Name AS 'Branch Name', Account.EMailAddress1 AS 'Branch Email Address', Account.Address1_Line1 AS 'Branch Address', Account.gsc_CityIdName AS 'Branch City', 
-                         Account.gsc_ProvinceIdName AS 'Branch Province', Account.Address1_PostalCode AS 'Branch Postal Code', Account.Address2_Telephone2 AS 'Branch Service Number', 
-                         Account.Address2_Telephone1 AS 'Branch Sales Number', Invoice.gsc_RecordOwnerIdName AS 'PreparedBy', Contact_1.gsc_ReportsToName AS 'VerifyBy', Account.gsc_ApprovedBy AS 'ApprovedBy', 
-                         Invoice.gsc_Discount
+                               WHERE        contactid = Invoice.CustomerId) END AS 'Email Address', 
+				CASE WHEN Invoice.CustomerIdType = '1' THEN
+                             (SELECT        gsc_birthdate
+                               FROM            Account
+                               WHERE        AccountId = Invoice.CustomerId) ELSE
+                             (SELECT        birthdate 
+                               FROM         Contact
+                               WHERE        contactid = Invoice.CustomerId) END AS 'Birthday', 
+				Invoice.ShipTo_Composite AS 'Address', 
+				Invoice.gsc_Tin AS 'Tin', 
+				Invoice.CreatedOn AS 'Date', 
+				Invoice.gsc_DrNo AS 'DR No', 
+                Invoice.gsc_LeadSourceIdName AS 'Lead Source', 
+				Invoice.gsc_PaymentMode AS 'Payment Mode', 
+				InvoiceMonthlyAmortization.gsc_Selected AS 'Selected Financing Term',
+				CASE WHEN Invoice.gsc_PaymentMode = '100000001' THEN
+								(SELECT  
+								gsc_FinancingTermIdName 
+								FROM	
+								gsc_sls_InvoiceMonthlyAmortization
+								WHERE gsc_Selected = '1' AND Invoice.InvoiceId = gsc_InvoiceId) ELSE
+								'' END AS 'Financing Term', 
+                Invoice.gsc_SalesExecutiveIdName AS 'Sales Executive', 
+				(SELECT gsc_Name FROM gsc_sls_bank WHERE gsc_sls_bankid = Invoice.gsc_BankId) AS 'Bank', 
+				Invoice.gsc_ProductIdName AS 'Model Description', 
+				Product.gsc_ModelYear AS 'Model Year', 
+                InvoicedVehicle.gsc_ModelCode AS 'Model Code', 
+				InvoicedVehicle.gsc_OptionCode AS 'Option Code', 
+				InvoicedVehicle.gsc_EngineNo AS 'Engine No.', 
+				InvoicedVehicle.gsc_VIN AS 'VIN', 
+                Invoice.gsc_VehicleColorId1Name AS 'Color', 
+				InvoicedVehicle.gsc_ProductionNo AS 'Production No.', 
+				InvoicedVehicle.gsc_CSNo AS 'CS No.', 
+				InvoicedVehicle.gsc_WarrantyBookletNo AS 'WB#', 
+                Product.gsc_GrossVehicleWeight AS 'Gross Vehicle', 
+				Product.gsc_PistonDisplacement AS 'Piston Displacement', 
+                CASE WHEN Product .gsc_FuelType = '100000000' THEN 
+							'Gasoline' 
+							WHEN Product .gsc_FuelType = '100000001' THEN 
+							'Diesel' 
+							ELSE '' END AS 'Fuel Used', 
+				Invoice.gsc_VehicleDetails AS 'Vehicle Details', 
+                Product.gsc_VehicleTypeIdName AS 'Vehicle Type', 
+				Product.gsc_BodyTypeIdName AS 'Body Type', 
+				Product.gsc_Transmission AS 'Transmission', 
+				Product.gsc_WarrantyExpiryDays AS 'Warranty Years', 
+                Product.gsc_WarrantyMileage AS 'Warranty Mileage', 
+				Product.gsc_OtherVehicleDetails AS 'Others', 
+				Invoice.gsc_UnitPrice AS 'Unit Price', 
+				Invoice.gsc_CCAddons AS 'CC AddOns', 
+                Invoice.gsc_ColorPrice AS 'Color Price', 
+				Invoice.gsc_FreightandHandling AS 'Freight and Handling', 
+				Invoice.gsc_ApplyToUpAmount AS 'Total Discount Amount', 
+				Invoice.gsc_NetPrice AS 'Net Price', 
+                Invoice.gsc_Accessories AS 'Accessories', 
+				Invoice.gsc_ChattelFee AS 'Chattel fee', 
+				Invoice.gsc_Insurance AS 'Insurance Charge', 
+				OrderCharge.gsc_ChargesIdName AS 'Charges', 
+                OrderCharge.gsc_ActualCost AS 'Actual Cost', 
+				Invoice.gsc_Reservation AS 'Reservation', 
+				Invoice.gsc_NetDownPayment AS 'Net Downpayment', 
+				Invoice.gsc_VATableSales AS 'VATable Sales', 
+                Invoice.gsc_VATEXEMPTSales AS 'VATEXEMPT Sales', 
+				Invoice.gsc_ZERORATEDSales AS 'ZERORATED Sales', 
+				Invoice.gsc_TotalSales AS 'Total Sales', 
+				Invoice.gsc_VATAmount AS 'VAT Amount', 
+                Invoice.TotalAmount AS 'Total Amount Due', 
+				Invoice.gsc_TotalCashOutlay AS 'Total Cash Outlay', 
+				Invoice.gsc_DownPaymentAmount AS 'Down Payment', 
+				Invoice.gsc_NetDownPayment AS 'Net Down Payment', 
+                Invoice.gsc_AmountFinanced AS 'Total Amount Financed', 
+				Invoice.gsc_NetMonthlyAmortization AS 'Net MonthlyAmortization', 
+				Invoice.gsc_Remarks AS 'Remarks', 
+				Account.gsc_VSOTermsandAgreement AS 'TaA', 
+                Account.Telephone1 AS 'Branch Telephone', 
+				Account.Fax AS 'Branch Fax', 
+				Account.gsc_VATReg AS 'Branch VAT Reg', 
+				Account.WebSiteURL AS 'Branch WebSite Url', 
+				Account.EntityImage AS 'Branch Entity Image', 
+                Account.Name AS 'Branch Name', 
+				Account.EMailAddress1 AS 'Branch Email Address', 
+				Account.Address1_Line1 AS 'Branch Address', 
+				Account.gsc_CityIdName AS 'Branch City', 
+                Account.gsc_ProvinceIdName AS 'Branch Province', 
+				Account.Address1_PostalCode AS 'Branch Postal Code', 
+				Account.Address2_Telephone2 AS 'Branch Service Number', 
+                Account.Address2_Telephone1 AS 'Branch Sales Number', 
+				Invoice.gsc_RecordOwnerIdName AS 'PreparedBy', 
+				Contact_1.gsc_ReportsToName AS 'VerifyBy', 
+				Account.gsc_ApprovedBy AS 'ApprovedBy', 
+                Invoice.gsc_Discount
 FROM            Invoice LEFT OUTER JOIN
                          gsc_cmn_OrderCharge AS OrderCharge ON Invoice.gsc_ProductId = OrderCharge.gsc_OrderId LEFT OUTER JOIN
                          Account ON Invoice.gsc_BranchId = Account.AccountId LEFT OUTER JOIN
@@ -6747,6 +6872,10 @@ WHERE        (Invoice.InvoiceId = @reportid)</CommandText>
           <DataField>Email Address</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Birthday">
+          <DataField>Birthday</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
         <Field Name="Address">
           <DataField>Address</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -6770,6 +6899,10 @@ WHERE        (Invoice.InvoiceId = @reportid)</CommandText>
         <Field Name="Payment_Mode">
           <DataField>Payment Mode</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Selected_Financing_Term">
+          <DataField>Selected Financing Term</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
         <Field Name="Financing_Term">
           <DataField>Financing Term</DataField>

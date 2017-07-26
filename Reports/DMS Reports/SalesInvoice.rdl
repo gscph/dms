@@ -1521,7 +1521,7 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=First(Fields!Model_Description.Value,"SalesInvoice") + 
-IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First(Fields!CabChassis.Value, "CabChassis"),1,InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;" 
+IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First(Fields!CabChassis.Value, "CabChassis"),1,InStrRev(First(Fields!CabChassis.Value, "CabChassis") , "")) + " &amp;" 
 + Mid(First(Fields!CabChassis.Value, "CabChassis"),InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")+1,LEN(First(Fields!CabChassis.Value, "CabChassis")) ))</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
@@ -2343,7 +2343,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Gross_Vehicle.Value</Value>
+                              <Value>=Fields!WB_.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                               </Style>
@@ -2433,14 +2433,14 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="WB_">
+                    <Textbox Name="Gross_Vehicle">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!WB_.Value</Value>
+                              <Value>=Fields!Gross_Vehicle.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                               </Style>
@@ -2451,7 +2451,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>WB_</rd:DefaultName>
+                      <rd:DefaultName>Gross_Vehicle</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -6365,6 +6365,15 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>4c3244d0-705d-4300-963b-98a10e9c52da</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="SalesInvoiceUAT">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=DMSUATDB2;Initial Catalog=MMPCUAT_MSCRM</ConnectString>
+        <Prompt>Specify a user name and password for data source SalesInvoiceUAT:</Prompt>
+      </ConnectionProperties>
+      <rd:SecurityType>DataBase</rd:SecurityType>
+      <rd:DataSourceID>f8572b90-5f5f-4b7d-8305-2caa3da70ed2</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>

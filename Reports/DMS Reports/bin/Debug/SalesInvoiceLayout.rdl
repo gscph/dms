@@ -544,13 +544,16 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>    Received the vehicle/s described above in good order and condition. Price just and reasonable and for value received, I promised to pay the full amount on the due date appearing above. For failure to pay this invoice within the period specified above, an interest of 4% per month plus 4% penalty per month will be charged. in case of litigation, the parties agree that the jurisdiction shall be Makati City and an additional amount equivalent to 25% of the outstanding amount will be charged for attorney's fee. No payment against this invoice shall be valid unless evidenced by an Official REceipt duly signed by our authorized representative. MAKE ALL CHECKS PAYABLE TO CITIMOTORS, INC.</Value>
+                              <Value>    RECEIVED THE ABOVE MENTIONED MERCHANDISE IN GOOD ORDER AND CONDITIONS. PRICE JUST AND REASONABLE AND FOR VALUE RECEIVED. I PROMISE TO PAY THE AMOUNT HEREIN GIVEN IN FULL ON DUE DATE ABOVE APPEARING WITHOUT NEED OF PREVIOUS DEMAND IN DEFAULT IN WHICH I BIND MYSELF TO PAY FURTHER INTEREST THEREON AT 12% PER ANNUM UNTIL DATE OF PAYMENT. 25% OF THE WHOLE AMOUNT DUE AS PENALTY SHOULD COLLECTION HEREOF BE ENDORSED TO AN ATTORNEY WHETHER OR NOT JUDICIAL PROCEEDING IS INSTITUTED. ANY COURT ACTION IN CONNECTION WITH THIS TRANSACTION MAY BE BROUGHT BEFORE THE COURT OF COMPETENT JURISDICTION IN SAN PABLO AT THE OPTION OF SFM SALES CORPORATION.</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox1</rd:DefaultName>
@@ -854,7 +857,7 @@ IIF(First(Fields!Branch_Telephone.Value, "SalesInvoice") = NOTHING, NOTHING, Fir
 IIF(First(Fields!Branch_Service_Number.Value, "SalesInvoice") = NOTHING, NOTHING, "Service DL: " + First(Fields!Branch_Service_Number.Value, "SalesInvoice") +" " &amp; vbcrlf) &amp;
 IIF(First(Fields!Branch_Sales_Number.Value, "SalesInvoice") = NOTHING, NOTHING, "Sales Direct Line: "+ First(Fields!Branch_Sales_Number.Value, "SalesInvoice") + "&lt;br&gt;" &amp; vbcrlf) &amp;
 IIF(First(Fields!Branch_Email_Address.Value, "SalesInvoice") = NOTHING, NOTHING, "Email: "+ First(Fields!Branch_Email_Address.Value, "SalesInvoice") + "&lt;br&gt;" &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_VAT_Reg.Value, "SalesInvoice") =NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!Branch_VAT_Reg.Value, "SalesInvoice") &amp; vbcrlf) &amp;
+IIF(First(Fields!Tin.Value, "SalesInvoice") =NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!Tin.Value, "SalesInvoice") &amp; vbcrlf) &amp;
 IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, First(Fields!Branch_WebSite_Url.Value, "SalesInvoice"))</Value>
                   <MarkupType>HTML</MarkupType>
                   <Style>
@@ -871,7 +874,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
           <Top>0.59722in</Top>
           <Left>1.78076in</Left>
           <Height>1.01737in</Height>
-          <Width>4.12221in</Width>
+          <Width>4.23924in</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -906,7 +909,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
           <Top>0.34376in</Top>
           <Left>1.78076in</Left>
           <Height>0.25347in</Height>
-          <Width>4.12221in</Width>
+          <Width>4.23924in</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -940,7 +943,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Vehicle Sales Invoice #</Value>
+                  <Value>Sales Invoice #</Value>
                   <Style>
                     <FontFamily>Segoe UI</FontFamily>
                     <FontWeight>Bold</FontWeight>
@@ -954,7 +957,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
           <Top>1.92757in</Top>
           <Left>0.35in</Left>
           <Height>0.21in</Height>
-          <Width>1.52555in</Width>
+          <Width>1.43076in</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -1019,9 +1022,9 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
           </Paragraphs>
           <rd:DefaultName>Sales_Invoice_Number</rd:DefaultName>
           <Top>1.92757in</Top>
-          <Left>1.88in</Left>
+          <Left>1.78076in</Left>
           <Height>0.21in</Height>
-          <Width>3.60727in</Width>
+          <Width>3.70651in</Width>
           <ZIndex>6</ZIndex>
           <Style>
             <Border>

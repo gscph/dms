@@ -498,7 +498,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Please enter our firm order for the unit specified subject to the terms and conditions of our Dealership Agreement and as indicator below.</Value>
+                <Value>Please enter our firm order for the unit specified subject to the terms and conditions of our Dealership Agreement and as indicated below.</Value>
                 <Style>
                   <FontFamily>Segoe UI Light</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -3938,6 +3938,9 @@
         <Height>1.16792in</Height>
         <Width>7.66265in</Width>
         <ZIndex>9</ZIndex>
+        <Visibility>
+          <Hidden>true</Hidden>
+        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
@@ -4018,9 +4021,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox69</rd:DefaultName>
-          <Top>0.75768in</Top>
+          <Top>0.8in</Top>
           <Left>1.87211in</Left>
-          <Height>0.20278in</Height>
+          <Height>0.21in</Height>
           <Width>4.12221in</Width>
           <ZIndex>1</ZIndex>
           <Style>
@@ -4056,7 +4059,7 @@
           <rd:DefaultName>Textbox69</rd:DefaultName>
           <Top>0.57573in</Top>
           <Left>1.87211in</Left>
-          <Height>0.18195in</Height>
+          <Height>0.21in</Height>
           <Width>4.12221in</Width>
           <ZIndex>2</ZIndex>
           <Style>
@@ -4098,9 +4101,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox69</rd:DefaultName>
-          <Top>0.96046in</Top>
+          <Top>1.02in</Top>
           <Left>1.87211in</Left>
-          <Height>0.17708in</Height>
+          <Height>0.21in</Height>
           <Width>4.12221in</Width>
           <ZIndex>3</ZIndex>
           <Style>

@@ -594,7 +594,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>As a matter of policy. Sales personnel are not allowed to receive payments. All payments should be remitted to our duly authorized cashier. All checks should be made payable to ____________________________________________________________________________ only.</Value>
+                              <Value>As a matter of policy, Sales Personnel are not allowed to receive payments. All payments should be remitted to our duly authorized cashier. All checks should be made payable to ____________________________________________________________________________ only.</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>Segoe UI</FontFamily>
@@ -615,7 +615,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>All additions, substitutions. Deletions in this Vehicle Sales order must be properly signed by the Approving Authority.</Value>
+                              <Value>All additions, substitutions, deletions in this Vehicle Sales Order must be properly signed by the Approving Authority.</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>Segoe UI</FontFamily>
@@ -1006,10 +1006,10 @@ First(Fields!Branch_Province.Value, "SalesOrder") + " " +
 First(Fields!Branch_Postal_Code.Value, "SalesOrder")+ "&lt;br&gt;" +
 IIF(First(Fields!Branch_Fax.Value, "SalesOrder") = NOTHING, NOTHING, "Telefax: " + First(Fields!Branch_Fax.Value, "SalesOrder") +"/" &amp; vbcrlf) &amp;
 IIF(First(Fields!Branch_Telephone.Value, "SalesOrder") = NOTHING, NOTHING, First(Fields!Branch_Telephone.Value, "SalesOrder") + "&lt;br&gt;" &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_Business_Phone.Value, "SalesOrder") = NOTHING, NOTHING, "Service DL: " + First(Fields!Branch_Business_Phone.Value, "SalesOrder") +" " &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_Mobile_Number.Value, "SalesOrder") = NOTHING, NOTHING, "Sales Direct Line: "+ First(Fields!Branch_Mobile_Number.Value, "SalesOrder") + "&lt;br&gt;" &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_Service_Number.Value, "SalesOrder") = NOTHING, NOTHING, "Service DL: " + First(Fields!Branch_Service_Number.Value, "SalesOrder") +" " &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_Sales_Number.Value, "SalesOrder") = NOTHING, NOTHING, "Sales Direct Line: "+ First(Fields!Branch_Sales_Number.Value, "SalesOrder") + "&lt;br&gt;" &amp; vbcrlf) &amp;
 IIF(First(Fields!Branch_Email_Address.Value, "SalesOrder") = NOTHING, NOTHING, "Email: "+ First(Fields!Branch_Email_Address.Value, "SalesOrder") + "&lt;br&gt;" &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_VAT_Reg.Value, "SalesOrder") =NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!Branch_VAT_Reg.Value, "SalesOrder") &amp; vbcrlf) &amp;
+IIF(First(Fields!Tin.Value, "SalesOrder") =NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!Tin.Value, "SalesOrder") &amp; vbcrlf) &amp;
 IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, First(Fields!Branch_WebSite_Url.Value, "SalesOrder"))</Value>
                   <MarkupType>HTML</MarkupType>
                   <Style>
@@ -1026,7 +1026,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
           <Top>0.59722in</Top>
           <Left>1.78076in</Left>
           <Height>1.01737in</Height>
-          <Width>4.12221in</Width>
+          <Width>4.23924in</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -1061,7 +1061,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
           <Top>0.34376in</Top>
           <Left>1.78076in</Left>
           <Height>0.25347in</Height>
-          <Width>4.12221in</Width>
+          <Width>4.23924in</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -1109,7 +1109,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
           <Top>1.92757in</Top>
           <Left>0.35in</Left>
           <Height>0.21in</Height>
-          <Width>1.63142in</Width>
+          <Width>1.5002in</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -1170,13 +1170,10 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
           </Paragraphs>
           <rd:DefaultName>Sale_Order_Number</rd:DefaultName>
           <Top>1.92757in</Top>
-          <Left>2.0092in</Left>
+          <Left>1.8502in</Left>
           <Height>0.21in</Height>
-          <Width>3.73808in</Width>
+          <Width>3.89708in</Width>
           <ZIndex>6</ZIndex>
-          <Visibility>
-            <Hidden>true</Hidden>
-          </Visibility>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1278,8 +1275,8 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
 		Account.gsc_CityIdName AS 'Branch City', 
         Account.gsc_ProvinceIdName AS 'Branch Province', 
 		Account.Address1_PostalCode AS 'Branch Postal Code', 
-		Account.Address1_Telephone1 AS 'Branch Mobile Number', 
-        Account.Address1_Telephone2 AS 'Branch Business Phone', 
+		Account.address2_telephone1 AS 'Branch Sales Number', 
+        Account.address2_telephone2 AS 'Branch Service Number', 
 		OrderCharge.gsc_ChargesIdName AS 'Charges', 
 		OrderCharge.gsc_ActualCost AS 'Actual Cost', 
 		SalesOrder.CustomerIdType AS 'Customer Type', 
@@ -1568,6 +1565,10 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Branch Postal Code</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Branch_Sales_Number">
+          <DataField>Branch Sales Number</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Charges">
           <DataField>Charges</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1576,20 +1577,16 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Actual Cost</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="Branch_Service_Number">
+          <DataField>Branch Service Number</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Mobile_Number">
           <DataField>Mobile Number</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Branch_Mobile_Number">
-          <DataField>Branch Mobile Number</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Email_Address">
           <DataField>Email Address</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Branch_Business_Phone">
-          <DataField>Branch Business Phone</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Model_Code">

@@ -4676,6 +4676,7 @@
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
         <ConnectString>Data Source=XRMDMSDB;Initial Catalog=MMPCDEV_MSCRM</ConnectString>
+        <Prompt>Specify a user name and password for data source DSSR:</Prompt>
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>b68762ee-562c-46cc-8e03-3129476b9076</rd:DataSourceID>
