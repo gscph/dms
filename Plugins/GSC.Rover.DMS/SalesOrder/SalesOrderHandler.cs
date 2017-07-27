@@ -2930,10 +2930,11 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             var status = salesOrder.Contains("gsc_status")
                 ? salesOrder.GetAttributeValue<OptionSetValue>("gsc_status").Value
                 : 0;
-
-            salesOrder["gsc_reservation"] = salesOrder.Contains("gsc_reservationfee")
+            var reservation = salesOrder.Contains("gsc_reservationfee")
                 ? salesOrder.GetAttributeValue<Money>("gsc_reservationfee")
-                : null;
+                : new Money(0);
+
+            salesOrder["gsc_reservation"] = reservation;
             salesOrder = SetTotalCashOutlayAmount(salesOrder, "create");
 
             //_organizationService.Update(salesOrder);
@@ -2944,8 +2945,14 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             orderToUpdate["gsc_totalcashoutlay"] = salesOrder["gsc_totalcashoutlay"];
             orderToUpdate["gsc_reservation"] = salesOrder["gsc_reservation"];
 
-            if (status != 100000002 && status != 100000003)
-                orderToUpdate["gsc_status"] = new OptionSetValue(100000001);
+            if (status != 100000002 && status != 100000003) // !=For Allocation && Allocated
+            {
+                if (status == 100000001 && reservation.Value == 0)//Reserved
+                    orderToUpdate["gsc_status"] = new OptionSetValue(100000000);//Open
+                else
+                    orderToUpdate["gsc_status"] = new OptionSetValue(100000001);//Reserved
+
+            }
 
             _organizationService.Update(orderToUpdate);
         }
