@@ -116,7 +116,6 @@ $(document).ready(function (e) {
 
     //set variables
     var additional = 0.00;
-    var unitprice = $("#gsc_vehicleunitprice").val().replace(/,/g, '');
     var netamountfinanced = 0.00;
     var netdp = 0.00;
     var amountfinanced = 0.00;
@@ -239,18 +238,6 @@ $(document).ready(function (e) {
             }
         });
 
-        /* $('#gsc_downpaymentamount').blur(function () {
-             if (this.value < 0) {
-                 //do not allow less than 0 input
-                 this.value = 0;
-             }
-             else if ((parseFloat(this.value)) > (parseFloat(unitprice) + parseFloat(additional))) {
-                 //do not allow gearter than unitprice + additional price
-                 this.value = unitprice + additional;
-                 $("#gsc_downpaymentamount").trigger('change');
-             }
-         });*/
-
         $('#gsc_downpaymentpercentage').blur(function () {
             if (this.value < 0) {
                 //do not allow less than 0 input
@@ -326,10 +313,10 @@ $(document).ready(function (e) {
             Page_Validators = jQuery.grep(Page_Validators, function (value) {
                 return value != schemeValidator;
             });
-			Page_Validators = jQuery.grep(Page_Validators, function (value) {
+            Page_Validators = jQuery.grep(Page_Validators, function (value) {
                 return value != downPaymentAmountValidator;
             });
-			Page_Validators = jQuery.grep(Page_Validators, function (value) {
+            Page_Validators = jQuery.grep(Page_Validators, function (value) {
                 return value != downPaymentPercentageValidator;
             });
         }
@@ -376,7 +363,6 @@ $(document).ready(function (e) {
     //Modified By : Jerome Anthony Gerero, Modified On : 12/15/2016
     //Purpose : Change computation to Unit Price * Down Payment Percentage
     function computeDownpaymentAmount() {
-        //unitprice = parseFloat($('#gsc_unitprice').html().substr(1).replace(/,/g, ""));
         netprice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
         dppercent = $("#gsc_precisedownpaymentpercentage").val() == "" ? 0 : $("#gsc_precisedownpaymentpercentage").val();
 
@@ -422,7 +408,7 @@ $(document).ready(function (e) {
         $("#gsc_netdownpayment").trigger("change");
     }
 
-    //compute amount financed = unitprice + additional price - netdownpayment
+    //compute amount financed = netprice + additional price - netdownpayment
     function computeAmountFinanced() {
         netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
         grossDownpayment = $("#gsc_downpaymentamount").val() == "" ? 0 : $("#gsc_downpaymentamount").val().replace(/,/g, "");
@@ -688,67 +674,25 @@ $(document).ready(function (e) {
     $("#gsc_applytoafamount").attr("min", 0);
     $("#gsc_applytodpamount").attr("min", 0);
 
-    /* setTimeout(function () {
- 
-         /*Start - Added by Christell Ann Mataac - 03/10/2017*/
-
-    /*Need to disable Add/Save/Cancel/Remove Buttons in Accessory and Cab Chassis on selected web roles*/
-    /*if (DMS.Settings.User.positionName == 'MMPC System Admin' || DMS.Settings.User.positionName == 'MMPC System Administrator' || DMS.Settings.User.positionName == 'Vehicle Allocator' || DMS.Settings.User.positionName == 'MSD Manager' || DMS.Settings.User.positionName == 'PDI Inspector' || DMS.Settings.User.positionName == 'Invoice Generator' || DMS.Settings.User.positionName == 'C and C Manager' || DMS.Settings.User.positionName == 'Sales Supervisor' && userId != $('#gsc_recordownerid').val()) {
-        $('button.addnew.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
-        $('button.addnew.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
-        $('button.save.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
-        $('button.save.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
-        $('button.delete.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
-        $('button.delete.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
-        $('button.cancel.btn.btn-default.btn-sm.btn-primary').eq(0).attr('disabled', true);
-        $('button.cancel.btn.btn-default.btn-sm.btn-primary').eq(1).attr('disabled', true);
-    }
-
-    if (DMS.Settings.User.positionName == 'C and C Manager' || DMS.Settings.User.positionName == 'Cashier' || DMS.Settings.User.positionName == 'Invoice Generator' || DMS.Settings.User.positionName == 'PDI Inspector') //show Create Invoice Button
-    {
-     //   $("a:contains('READY FOR PDI')").attr("disabled", true); //disabled "READY FOR PDI" button
-      //  $('a.request-link.btn-primary.btn').attr("disabled", true); //disabled "Request Vehicle Allocation" button
-
-        //this function sets all field in sales order to readonly status to avoid editing the fields
-    //    $('#UpdateButton.btn.btn-primary.button.fa-input-submit.submit-btn').hide();
-       // $("#EntityFormView :input").attr("disabled", true);
-    }
-
-    if (DMS.Settings.User.positionName == 'MMPC System Admin' || DMS.Settings.User.positionName == 'MMPC System Administrator' || DMS.Settings.User.positionName == 'MSD Manager' || DMS.Settings.User.positionName == 'Sales Supervisor' || DMS.Settings.User.positionName == 'Sales Lead' && userId != $('#gsc_recordownerid').val()) {
-        //   $("#EntityFormView").attr("disabled", true);
-        // $('#tab-1-1').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true)
-        //$('#tab-1-2').find('a.btn.btn-primary.action.add-margin-right').attr('disabled', true)
-
-        if (DMS.Settings.User.positionName == 'MSD Manager') {
-          //  $(".allocate-link").attr('disabled', false);
-        }
-    }
-    /*End - Added by Christell Ann Mataac - 03/10/2017]
-
-}, 7000);*/
 
     var webRole = DMS.Settings.User.webRole;
-    if (webRole == 'Cashier' ||  webRole.contains("Vehicle Allocator") || webRole == "Invoicer" || webRole == "Invoice Generator by Dealer" || webRole == "CC Manager" || webRole.indexOf("MSD Manager") >= 0) {
-      
-      $("input").parent("span.checkbox").each(function() {
-            if($(this).closest("table").data("name") != "hideSection"){
-              $inputId = $(this).children("input").attr("id");
-              $('input[id="'+$inputId+'"], label[for="'+$inputId+'"]').css({ "pointer-events": "none", "cursor": "default" });
+    if (webRole == 'Cashier' || webRole.contains("Vehicle Allocator") || webRole == "Invoicer" || webRole == "Invoice Generator by Dealer" || webRole == "CC Manager" || webRole.indexOf("MSD Manager") >= 0) {
+
+        $("input").parent("span.checkbox").each(function () {
+            if ($(this).closest("table").data("name") != "hideSection") {
+                $inputId = $(this).children("input").attr("id");
+                $('input[id="' + $inputId + '"], label[for="' + $inputId + '"]').css({ "pointer-events": "none", "cursor": "default" });
             }
-      });
+        });
 
-
-    setTimeout(function () {
-        //Vehicle Allocators able to access criteria filters
-         if(webRole.contains("Vehicle Allocator"))
-            {
-              $("input", '*[data-name="VEHICLECRITERIA"]').removeAttr("readonly");
-              $("select", '*[data-name="VEHICLECRITERIA"]').removeAttr("disabled").removeClass("permanent-disabled");
+        setTimeout(function () {
+            //Vehicle Allocators able to access criteria filters
+            if (webRole.contains("Vehicle Allocator")) {
+                $("input", '*[data-name="VEHICLECRITERIA"]').removeAttr("readonly");
+                $("select", '*[data-name="VEHICLECRITERIA"]').removeAttr("disabled").removeClass("permanent-disabled");
 
             }
-    }, 200);
-    
-   
+        }, 200);
 
         $("#EntityFormView").find("input").each(function () {
             if (webRole == "Invoicer") {
