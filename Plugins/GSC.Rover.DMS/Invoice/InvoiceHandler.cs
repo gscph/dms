@@ -2036,7 +2036,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Invoice
             var invoiceConditionList = new List<ConditionExpression>
                 {
                     new ConditionExpression("salesorderid", ConditionOperator.Equal, salesOrderId),
-                    new ConditionExpression("gsc_status", ConditionOperator.NotEqual, 100000005)
+                    new ConditionExpression("gsc_salesinvoicestatus", ConditionOperator.NotEqual, 100000005)
                 };
 
             EntityCollection invoiceRecords = CommonHandler.RetrieveRecordsByConditions("invoice", invoiceConditionList, _organizationService, null, OrderType.Ascending,
@@ -2048,6 +2048,26 @@ namespace GSC.Rover.DMS.BusinessLogic.Invoice
             }
 
             return false;
+        }
+
+        public Entity UpdateSOStatus(Entity salesInvoice)
+        {
+            var salesOrderId = salesInvoice.GetAttributeValue<EntityReference>("salesorderid") != null
+               ? salesInvoice.GetAttributeValue<EntityReference>("salesorderid").Id
+               : Guid.Empty;
+
+            //Retrieve Sales Order record
+            EntityCollection orderRecords = CommonHandler.RetrieveRecordsByOneValue("salesorder", "salesorderid", salesOrderId, _organizationService, null, OrderType.Ascending,
+                new[] { "gsc_status"});
+
+            if (orderRecords != null || orderRecords.Entities.Count > 0)
+            {
+                Entity order = orderRecords.Entities[0];
+                order["gsc_status"] = new OptionSetValue(100000007);
+                _organizationService.Update(order);
+            }
+
+            return salesInvoice;
         }
     }
 }

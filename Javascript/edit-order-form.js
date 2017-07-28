@@ -658,14 +658,6 @@ $(document).ready(function (e) {
         return isDuplicate;
     }
 
-    // CREATE INVOICE  by Artum Ramos
-
-    $(".convert-order-link").click(function () {
-        $("#gsc_status").val("100000007");
-        // $("#gsc_iscreateinvoice").prop("checked", true);
-        $("#UpdateButton").click();
-    });
-
     //Negative values validation. Added by Christell Ann Mataac
     $("#gsc_applytouppercentage").attr("min", 0);
     $("#gsc_applytoafpercentage").attr("min", 0);

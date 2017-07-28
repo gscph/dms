@@ -68,10 +68,10 @@ namespace GSC.Rover.DMS.Platform.Plugins
 
                 if (invoiceHandler.IsInvoiceExists(invoiceEntity))
                 {
-                    throw new InvalidPluginExecutionException("There is already Invoice created for this Sales Orer.");
+                    throw new InvalidPluginExecutionException("There is already Invoice created for this Sales Order.");
                 }
-
                 invoiceHandler.ReplicateOrderInfo(invoiceEntity);
+
             }
             catch (Exception ex)
             {
