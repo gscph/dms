@@ -439,7 +439,6 @@
     <Compile Include="PreValidateIDSequenceDelete.cs" />
     <Compile Include="PreValidateInsuranceCoverageDelete.cs" />
     <Compile Include="PreValidateInventoryCreate.cs" />
-    <Compile Include="PreValidateInvoiceCreate.cs" />
     <Compile Include="PreValidateInvoiceDelete.cs" />
     <Compile Include="PreValidateOpportunityDelete.cs" />
     <Compile Include="PreValidateOrderAccessoryDelete.cs" />

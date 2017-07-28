@@ -2040,7 +2040,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Invoice
                 };
 
             EntityCollection invoiceRecords = CommonHandler.RetrieveRecordsByConditions("invoice", invoiceConditionList, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_description", "gsc_discountamount" });
+                new[] { "salesorderid"});
 
             if (invoiceRecords != null && invoiceRecords.Entities.Count > 0)
             {
