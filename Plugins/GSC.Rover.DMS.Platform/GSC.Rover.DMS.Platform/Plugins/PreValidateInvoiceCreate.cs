@@ -64,7 +64,10 @@ namespace GSC.Rover.DMS.Platform.Plugins
             try
             {
                 InvoiceHandler handler = new InvoiceHandler(service, trace);
-                handler.IsInvoiceExists(invoiceEntity);
+                if (handler.IsInvoiceExists(invoiceEntity))
+                {
+                    throw new InvalidPluginExecutionException("There is already Invoice created for this Sales Orer.");
+                }
             }
             catch (Exception ex)
             {
