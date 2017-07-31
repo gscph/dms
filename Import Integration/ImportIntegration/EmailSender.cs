@@ -64,8 +64,7 @@ namespace ImportIntegration
 
         public void Send(int successRecordCount, int failedRecordCount)
         {
-            string subject = "Import Integration - No Reply";
-            string receipients = LogManager.Configuration.Variables["email"].Text;
+            string subject = "Import Integration - No Reply";         
 
             string body = string.Format(@"Dear User, <br/><br/>
                             An Import request has been sent in the DMS Application. <br/>

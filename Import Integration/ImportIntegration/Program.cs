@@ -43,7 +43,8 @@ namespace ImportIntegration
             }
 
             string fileName = ConfigurationManager.AppSettings["FileName"].ToString();
-            string excelPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\" + fileName;
+            string currentPath =  Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string excelPath = currentPath + "\\" + fileName;
             logger.Log(LogLevel.Info, "Trying to open {0}..", fileName);
 
             if (!System.IO.File.Exists(excelPath))
@@ -56,25 +57,27 @@ namespace ImportIntegration
             {
                 DataReader _reader = new DataReader(excelPath);
                 ServiceProvider _provider = new ServiceProvider(service, logger);
-                logger.Log(LogLevel.Info, "Starting to read and validate the data..");
-
+                logger.Log(LogLevel.Info, "Starting to read the data..");
                 List<ReceivingTransaction> rtList = _reader.Read();
-
-                _provider.MassUploadReceiving(rtList);
-
+                logger.Log(LogLevel.Info, "{0} records found..", rtList.Count);
+                logger.Log(LogLevel.Info, "Starting to read the data..");
+                _provider.MassUploadReceiving(rtList);               
                 EmailSender emailSender = new EmailSender(service);
+                logger.Log(LogLevel.Info, "Trying to send email..");
                 emailSender.Send(_provider.RecordsUploaded, _provider.RecordsFailedUpload);
 
-                logger.Log(LogLevel.Info, "Import request has been processed. There were {0} records uploaded to the DMS Application", _provider.RecordsUploaded);
+                logger.Log(LogLevel.Info, "Import request has been processed. There were {0}/{1} records uploaded to the DMS Application", _provider.RecordsUploaded, rtList.Count);
             }
             catch (Exception ex)
             {
                 logger.Log(LogLevel.Error, "An unexpected error occured during the execution of import: Message : \"{0}\" ", ex.Message);
+                logger.Log(LogLevel.Fatal, " Message:{0} Stack Trace: {1}", ex.Message, ex.StackTrace);
             }
             finally
             {
                 if (System.IO.File.Exists(excelPath))
-                {                    
+                {
+                    System.IO.File.Copy(excelPath, currentPath + "\\history\\Vehicle Receiving " + DateTime.Now.ToString("yyyy-MM-dd hh-mm-tt") + ".xlsx");
                     System.IO.File.Delete(excelPath);
                     logger.Log(LogLevel.Info, "Import file {0} has been deleted in the directory", excelPath);
                 }

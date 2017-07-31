@@ -27,8 +27,7 @@ namespace ImportIntegration
         {
             int counter = 1;
             foreach (ReceivingTransaction item in receivingTransactions)
-            {
-                
+            {                
                 Entity rt = new Entity("gsc_cmn_receivingtransaction");
 
                 List<ConditionExpression> vpoConditionExp = new List<ConditionExpression>();

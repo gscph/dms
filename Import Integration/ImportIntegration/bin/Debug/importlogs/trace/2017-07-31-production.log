@@ -1,0 +1,37 @@
+2017-07-31 10:56:30.5760 INFO ******** Import Integration Tool ********
+2017-07-31 10:56:30.6010 INFO ******** Started : 20170731 10:56 AM ********
+2017-07-31 10:56:30.6010 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-31 10:56:30.6352 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-31 10:56:30.6352 INFO Checking configuration for file name..
+2017-07-31 10:56:30.6352 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-31 10:57:58.1903 INFO ******** Import Integration Tool ********
+2017-07-31 10:57:58.2108 INFO ******** Started : 20170731 10:57 AM ********
+2017-07-31 10:57:58.2108 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-31 10:57:58.2429 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-31 10:57:58.2429 INFO Checking configuration for file name..
+2017-07-31 10:57:58.2429 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-31 10:59:13.0930 INFO ******** Import Integration Tool ********
+2017-07-31 10:59:13.1135 INFO ******** Started : 20170731 10:59 AM ********
+2017-07-31 10:59:13.1186 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-31 10:59:13.1451 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-31 10:59:13.1491 INFO Checking configuration for file name..
+2017-07-31 10:59:13.1491 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-31 10:59:58.7080 INFO ******** Import Integration Tool ********
+2017-07-31 10:59:58.7275 INFO ******** Started : 20170731 10:59 AM ********
+2017-07-31 10:59:58.7275 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-31 10:59:58.7603 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-31 10:59:58.7603 INFO Checking configuration for file name..
+2017-07-31 10:59:58.7603 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-31 11:01:15.2679 INFO ******** Import Integration Tool ********
+2017-07-31 11:01:15.2879 INFO ******** Started : 20170731 11:01 AM ********
+2017-07-31 11:01:15.2930 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-31 11:01:15.3204 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-31 11:01:15.3204 INFO Checking configuration for file name..
+2017-07-31 11:01:15.3204 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-31 11:01:44.4108 INFO ******** Import Integration Tool ********
+2017-07-31 11:01:44.4294 INFO ******** Started : 20170731 11:01 AM ********
+2017-07-31 11:01:44.4294 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-31 11:01:44.4601 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-31 11:01:44.4601 INFO Checking configuration for file name..
+2017-07-31 11:01:44.4601 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-31 11:01:48.5919 INFO Import file C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\Vehicle Receiving.xlsx has been deleted in the directory
