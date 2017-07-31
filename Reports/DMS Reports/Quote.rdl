@@ -445,9 +445,10 @@
                               </Style>
                             </TextRun>
                             <TextRun>
-                              <Value>=Microsoft.VisualBasic.Interaction.Switch(Sum(Fields!PaymentMode.Value, "QuoteDetails") = 100000000, "CASH",
- Sum(Fields!PaymentMode.Value, "QuoteDetails") = 100000001, "FINANCING",
- Sum(Fields!PaymentMode.Value, "QuoteDetails") = 100000002, "BANK PO")</Value>
+                              <Value>=Microsoft.VisualBasic.Interaction.Switch(First(Fields!PaymentMode.Value, "QuoteDetails") = 100000000, "CASH",
+First(Fields!PaymentMode.Value, "QuoteDetails") = 100000001, "FINANCING",
+ First(Fields!PaymentMode.Value, "QuoteDetails") = 100000002, "BANK PO",
+  First(Fields!PaymentMode.Value, "QuoteDetails") = 100000003, "COMPANY PO")</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -6621,11 +6622,12 @@
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <BackgroundColor>#ed0000</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
                       </Style>
                     </Textbox>
                   </CellContents>

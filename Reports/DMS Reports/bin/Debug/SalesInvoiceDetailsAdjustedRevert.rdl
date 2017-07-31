@@ -5477,36 +5477,6 @@ Mid(First(Fields!CabChassis.Value, "CabChassis"),1, InStrRev(First(Fields!CabCha
           <PaddingRight>2pt</PaddingRight>
         </Style>
       </Textbox>
-      <Textbox Name="ItemCount">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=IIF(Sum(Fields!ItemCount.Value, "CCItemCount") &lt;= 1 , "TEST", "FALSE")</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>ItemCount</rd:DefaultName>
-        <Top>7.17875in</Top>
-        <Left>2.13417in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
-        <ZIndex>12</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
     </ReportItems>
     <Height>9.52465in</Height>
     <Style />
@@ -5743,11 +5713,13 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
                   </Style>
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Date</rd:DefaultName>
-          <Top>1.72in</Top>
+          <Top>1.74in</Top>
           <Left>7.19308in</Left>
           <Height>0.21in</Height>
           <Width>1in</Width>
