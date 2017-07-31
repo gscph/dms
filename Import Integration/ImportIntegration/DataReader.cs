@@ -256,6 +256,9 @@ namespace ImportIntegration
             {
                 return doc.WorkbookPart.SharedStringTablePart.SharedStringTable.ChildElements.GetItem(int.Parse(value)).InnerText;
             }
+
+            value = value.Trim();
+
             return value;
         }
     }

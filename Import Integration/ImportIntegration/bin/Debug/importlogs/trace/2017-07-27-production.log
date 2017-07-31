@@ -1,0 +1,81 @@
+2017-07-27 14:09:19.8529 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-27 14:09:19.9101 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-27 14:09:19.9151 INFO Checking configuration for file name to be parsed..
+2017-07-27 14:09:19.9151 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-27 14:09:19.9151 INFO Starting to read and validate the data..
+2017-07-27 14:09:20.1086 ERROR An unexpected error occured during the execution of import: Message : "Input string was not in a correct format." 
+2017-07-27 14:09:20.1086 INFO Import file C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\Vehicle Receiving.xlsx has been deleted in the directory
+2017-07-27 14:09:32.9398 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-27 14:09:32.9869 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-27 14:09:32.9934 INFO Checking configuration for file name to be parsed..
+2017-07-27 14:09:32.9934 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-27 14:09:33.0080 INFO Starting to read and validate the data..
+2017-07-27 14:11:13.5306 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-27 14:11:13.5817 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-27 14:11:13.5872 INFO Checking configuration for file name to be parsed..
+2017-07-27 14:11:13.5872 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-27 14:11:13.5872 INFO Import file C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\Vehicle Receiving.xlsx does not exist in the directory.. Exiting Application
+2017-07-27 14:11:16.6524 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-27 14:11:16.7165 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-27 14:11:16.7165 INFO Checking configuration for file name to be parsed..
+2017-07-27 14:11:16.7296 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-27 14:12:32.9237 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-27 14:12:32.9768 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-27 14:12:32.9768 INFO Checking configuration for file name to be parsed..
+2017-07-27 14:12:32.9768 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-27 14:12:32.9939 INFO Starting to read and validate the data..
+2017-07-27 14:12:56.8372 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-27 14:12:56.8898 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-27 14:12:56.8898 INFO Checking configuration for file name to be parsed..
+2017-07-27 14:12:56.9013 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-27 14:12:56.9013 INFO Starting to read and validate the data..
+2017-07-27 14:13:37.8425 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-27 14:13:37.8996 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-27 14:13:37.8996 INFO Checking configuration for file name to be parsed..
+2017-07-27 14:13:37.8996 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-27 14:13:37.9187 INFO Starting to read and validate the data..
+2017-07-27 14:18:19.8348 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-27 14:18:19.8829 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-27 14:18:19.8829 INFO Checking configuration for file name to be parsed..
+2017-07-27 14:18:19.8829 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-27 14:18:19.9010 INFO Starting to read and validate the data..
+2017-07-27 14:18:31.1195 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-27 14:18:31.1856 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-27 14:18:31.1856 INFO Checking configuration for file name to be parsed..
+2017-07-27 14:18:31.1947 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-27 14:18:31.1947 INFO Starting to read and validate the data..
+2017-07-27 14:19:29.5065 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-27 14:19:29.5542 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-27 14:19:29.5542 INFO Checking configuration for file name to be parsed..
+2017-07-27 14:19:29.5542 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-27 14:19:29.5697 INFO Starting to read and validate the data..
+2017-07-27 14:49:41.0552 INFO *******************************************
+2017-07-27 14:49:41.0808 INFO *******************************************
+2017-07-27 14:49:41.0868 INFO Import Integration Tool Started : 20170727 02:49 TT
+2017-07-27 14:49:41.0868 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-27 14:49:41.1239 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-27 14:49:41.1239 INFO Checking configuration for file name to be parsed..
+2017-07-27 14:49:41.1360 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-27 14:49:41.1360 INFO Starting to read and validate the data..
+2017-07-27 14:49:41.1991 ERROR An unexpected error occured during the execution of import: Message : "The process cannot access the file 'C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\Vehicle Receiving.xlsx' because it is being used by another process." 
+2017-07-27 14:51:27.9537 INFO ******************************************* Import Integration Tool
+2017-07-27 14:51:27.9767 INFO ******************************************* Started : 20170727 02:51 PM
+2017-07-27 14:51:27.9767 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-27 14:51:28.0125 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-27 14:51:28.0125 INFO Checking configuration for file name to be parsed..
+2017-07-27 14:51:28.0230 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-27 14:51:28.0230 INFO Import file C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\Vehicle Receiving.xlsx has been deleted in the directory
+2017-07-27 14:52:14.4386 INFO ******** Import Integration Tool ********
+2017-07-27 14:52:14.4617 INFO ******** Started : 20170727 02:52 PM ********
+2017-07-27 14:52:14.4617 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-27 14:52:14.5028 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-27 14:52:14.5073 INFO Checking configuration for file name to be parsed..
+2017-07-27 14:52:14.5073 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-27 14:52:14.5073 INFO Import file C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\Vehicle Receiving.xlsx does not exist in the directory.. Exiting Application
+2017-07-27 14:52:23.8947 INFO ******** Import Integration Tool ********
+2017-07-27 14:52:23.9197 INFO ******** Started : 20170727 02:52 PM ********
+2017-07-27 14:52:23.9197 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-27 14:52:23.9578 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-27 14:52:23.9639 INFO Checking configuration for file name to be parsed..
+2017-07-27 14:52:23.9639 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-27 14:52:23.9759 INFO Import file C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\Vehicle Receiving.xlsx does not exist in the directory.. Exiting Application

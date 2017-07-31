@@ -25,12 +25,16 @@ namespace ImportIntegration
         private static Logger logger = LogManager.GetCurrentClassLogger();
         static void Main(string[] args)
         {
+            logger.Log(LogLevel.Info, "******** Import Integration Tool ********");
+            logger.Log(LogLevel.Info, "******** Started : {0} ********", DateTime.Now.ToString("yyyyMMdd hh:mm tt"));
+
             ConfigurationReader reader = new ConfigurationReader("Xrm", logger);
 
             IOrganizationService service = new OrganizationService(CrmConnection.Parse(reader.ConnectionString));
+            
             logger.Log(LogLevel.Info, "Successfully connected to DMS Dynamics CRM!");
 
-            logger.Log(LogLevel.Info, "Checking configuration for file name to be parsed..");
+            logger.Log(LogLevel.Info, "Checking configuration for file name..");
 
             if (ConfigurationManager.AppSettings["FileName"] == null)
             {
@@ -40,7 +44,13 @@ namespace ImportIntegration
 
             string fileName = ConfigurationManager.AppSettings["FileName"].ToString();
             string excelPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\" + fileName;
-            logger.Log(LogLevel.Info, "Trying to open {0}..", fileName);                      
+            logger.Log(LogLevel.Info, "Trying to open {0}..", fileName);
+
+            if (!System.IO.File.Exists(excelPath))
+            {                
+                logger.Log(LogLevel.Info, "Import file {0} does not exist in the directory.. Exiting Application", excelPath);            
+                Environment.Exit(0);
+            }
 
             try
             {
@@ -64,7 +74,7 @@ namespace ImportIntegration
             finally
             {
                 if (System.IO.File.Exists(excelPath))
-                {
+                {                    
                     System.IO.File.Delete(excelPath);
                     logger.Log(LogLevel.Info, "Import file {0} has been deleted in the directory", excelPath);
                 }

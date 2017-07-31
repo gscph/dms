@@ -23,7 +23,7 @@ namespace ImportIntegration
             _logger = logger;
         }
 
-        public async void MassUploadReceiving(IEnumerable<ReceivingTransaction> receivingTransactions)
+        public void MassUploadReceiving(IEnumerable<ReceivingTransaction> receivingTransactions)
         {
             int counter = 1;
             foreach (ReceivingTransaction item in receivingTransactions)
@@ -62,7 +62,7 @@ namespace ImportIntegration
 
                 if (vpoId == Guid.Empty)
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} Vehicle Purchase Purchase Order Number \"{1}\" does not exist in the DMS.", counter, item.VehiclePurchaseOrderNumber);
+                    _logger.Log(LogLevel.Error, "Unable to save row {0} Vehicle Purchase Order Number:[{1}] does not exist in the DMS.", counter, item.VehiclePurchaseOrderNumber);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -70,7 +70,7 @@ namespace ImportIntegration
 
                 if (siteId == Guid.Empty)
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} In-Transit Site \"{1}\" does not exist in the DMS.", counter, item.VehiclePurchaseOrderNumber);
+                    _logger.Log(LogLevel.Error, "Unable to save row {0} In-Transit Site:[{1}] does not exist in the DMS.", counter, item.InTransitSite);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -78,7 +78,7 @@ namespace ImportIntegration
 
                 if (!CheckIfNullOrValidString(item.InvoiceNumber))
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} Invoice Number \"{1}\" cannot be empty or null.", counter, item.VehiclePurchaseOrderNumber);
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}], Invoice Number cannot be empty or null.", counter, item.VehiclePurchaseOrderNumber);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -86,7 +86,7 @@ namespace ImportIntegration
 
                 if (!CheckIfNullOrValidString(item.MMPCStatus))
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} MMPC Status \"{1}\" cannot be empty or null.", counter, item.VehiclePurchaseOrderNumber);
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}] MMPC Status cannot be empty or null.", counter, item.VehiclePurchaseOrderNumber);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -94,7 +94,7 @@ namespace ImportIntegration
 
                 if (!CheckIfNullOrValidString(item.InTransitReceiptDate))
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} In-Transit Receipt Date cannot be empty or null and has to be in valid format.", counter);
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}] In-Transit Receipt Date cannot be empty or null and has to be in valid format.", counter, item.VehiclePurchaseOrderNumber);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -102,7 +102,7 @@ namespace ImportIntegration
 
                 if (!CheckIfValidStringDateTime(item.InvoiceDate))
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} Invoice Date cannot be empty or null and has to be in valid format.", counter);
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}] Invoice Date cannot be empty or null and has to be in valid format.", counter, item.VehiclePurchaseOrderNumber);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -110,7 +110,7 @@ namespace ImportIntegration
 
                 if (!CheckIfNullOrValidString(item.ReceivingDetails.ModelCode))
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} Model Code cannot be empty or null.", counter);
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}] Model Code cannot be empty or null.", counter, item.VehiclePurchaseOrderNumber);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -118,7 +118,7 @@ namespace ImportIntegration
 
                 if (!CheckIfNullOrValidString(item.ReceivingDetails.OptionCode))
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} Option Code cannot be empty or null.", counter);
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}] Option Code cannot be empty or null.", counter, item.VehiclePurchaseOrderNumber);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -126,7 +126,7 @@ namespace ImportIntegration
 
                 if (!CheckIfNullOrValidString(item.ReceivingDetails.ModelYear))
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} Model Year cannot be empty or null.", counter);
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}] Model Year cannot be empty or null.", counter, item.VehiclePurchaseOrderNumber);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -134,10 +134,8 @@ namespace ImportIntegration
 
                 if (productId == Guid.Empty)
                 {
-                    _logger.Log(LogLevel.Error, @"Unable to save row {0} 
-                                                  Product Item with Model Code : {1}, Option Code : {2}, Model Year {3}
-                                                  does not exist in DMS.",
-                                                  counter, item.ReceivingDetails.ModelCode, item.ReceivingDetails.OptionCode, item.ReceivingDetails.ModelYear);
+                    _logger.Log(LogLevel.Error, @"Unable to save row:[{0}], vpo:[{1}]. Product Item with Model Code : {2}, Option Code : {3}, Model Year {4} does not exist in DMS.",
+                                                  counter, item.VehiclePurchaseOrderNumber, item.ReceivingDetails.ModelCode, item.ReceivingDetails.OptionCode, item.ReceivingDetails.ModelYear);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -145,7 +143,7 @@ namespace ImportIntegration
 
                 if (!CheckIfNullOrValidString(item.ReceivingDetails.ColorCode))
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} Color Code cannot be empty or null.", counter);
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}] Color Code cannot be empty or null.", counter);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -153,7 +151,7 @@ namespace ImportIntegration
 
                 if (vehicleColorId == Guid.Empty)
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} Color Code \"{1}\" does not exist in the DMS..", counter, item.ReceivingDetails.ColorCode);
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}]. Color Code:[{2}]  does not exist in the DMS..", counter, item.VehiclePurchaseOrderNumber, item.ReceivingDetails.ColorCode);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -161,9 +159,8 @@ namespace ImportIntegration
 
                 if (vehicleProductColorId == Guid.Empty)
                 {
-                    _logger.Log(LogLevel.Error, @"Unable to save row {0}
-                                                  Vehicle Id {1} with Color {2}
-                                                  does not exist in the DMS..", counter, productId, item.ReceivingDetails.ColorCode);
+                    _logger.Log(LogLevel.Error, @"Unable to save row:[{0}], vpo:[{1}]. Vehicle Id {2} with Color {3} does not exist in the DMS..", 
+                                        counter, item.VehiclePurchaseOrderNumber, productId, item.ReceivingDetails.ColorCode);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -171,7 +168,7 @@ namespace ImportIntegration
 
                 if (!CheckIfNullOrValidString(item.ReceivingDetails.EngineNumber))
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} Engine Number cannot be empty or null.", counter);
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}] Engine Number cannot be empty or null.", counter, item.VehiclePurchaseOrderNumber);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -179,7 +176,7 @@ namespace ImportIntegration
 
                 if (!CheckIfNullOrValidString(item.ReceivingDetails.CSNumber))
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} CS Number cannot be empty or null.", counter);
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}] CS Number cannot be empty or null.", counter, item.VehiclePurchaseOrderNumber);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -187,7 +184,7 @@ namespace ImportIntegration
 
                 if (!CheckIfNullOrValidString(item.ReceivingDetails.ProductionNumber))
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} Production Number cannot be empty or null.", counter);
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}] Production Number cannot be empty or null.", counter, item.VehiclePurchaseOrderNumber);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -195,7 +192,7 @@ namespace ImportIntegration
 
                 if (!CheckIfNullOrValidString(item.ReceivingDetails.VIN))
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} VIN cannot be empty or null.", counter);
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}] VIN cannot be empty or null.", counter, item.VehiclePurchaseOrderNumber);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -221,14 +218,13 @@ namespace ImportIntegration
 
                 Guid rtId = _service.Create(rt);
 
-                _logger.Log(LogLevel.Info, @"Row {0} with Vehicle Purchase Number {1}
-                                             was successfully created in Receiving Transaction
-                                             with record id {2}", counter, item.VehiclePurchaseOrderNumber, rtId);
+                _logger.Log(LogLevel.Info, @"Row {0} with Vehicle Purchase Number {1} was successfully created in Receiving Transaction with record id {2}",
+                    counter,
+                    item.VehiclePurchaseOrderNumber,
+                    rtId);
 
 
-                Entity rtDetails = new Entity("gsc_cmn_receivingtransactiondetail");
-
-              //  await Task.Delay(2500);
+                Entity rtDetails = new Entity("gsc_cmn_receivingtransactiondetail");           
 
                 rtDetails = GetEntityRecord("gsc_cmn_receivingtransactiondetail",
                     GetEntityConditionExpression("gsc_receivingtransactionid", rtId),
@@ -245,9 +241,8 @@ namespace ImportIntegration
 
                 _service.Update(rtDetails);
                
-                _logger.Log(LogLevel.Info, @"Row {0} with Vehicle Purchase Number {1}
-                                             successfully created a record in Receiving Transaction Detail
-                                             with Id {2}", counter, item.VehiclePurchaseOrderNumber, rtDetails.Id);
+                _logger.Log(LogLevel.Info, @"Row {0} with Vehicle Purchase Number {1} successfully created a record in Receiving Transaction Detail with Id {2}", 
+                    counter, item.VehiclePurchaseOrderNumber, rtDetails.Id);
                 counter++;
                 this.RecordsUploaded++;
             }
