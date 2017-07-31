@@ -36,7 +36,7 @@ namespace ImportIntegration
                 vpoConditionExp.Add(new ConditionExpression("gsc_vpostatus", ConditionOperator.Equal, 100000002));
 
                 Entity vpo = GetEntityRecord("gsc_cmn_purchaseorder", vpoConditionExp,
-                         new string[] { "gsc_branchid", "gsc_dealerid", "gsc_recordownerid" });
+                         new string[] { "gsc_recordownerid" });
 
                 Guid vpoId = vpo.Id;
 
@@ -58,6 +58,12 @@ namespace ImportIntegration
                 productColorConditionExp.Add(new ConditionExpression("gsc_productid", ConditionOperator.Equal, productId));
 
                 Guid vehicleProductColorId = GetEntityReferenceId("gsc_cmn_vehiclecolor", productColorConditionExp);
+
+                Guid dealerId = GetEntityReferenceId("account",
+                  GetEntityConditionExpression("accountnumber", item.DealerCode));
+
+                Guid branchId = GetEntityReferenceId("account",
+                  GetEntityConditionExpression("accountnumber", item.BranchCode));
 
                 if (vpoId == Guid.Empty)
                 {
@@ -197,6 +203,22 @@ namespace ImportIntegration
                     continue;
                 }
 
+                if (dealerId == Guid.Empty)
+                {
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}]. Dealer Code:[{2}]  does not exist in the DMS..", counter, item.VehiclePurchaseOrderNumber, item.DealerCode);
+                    counter++;
+                    this.RecordsFailedUpload++;
+                    continue;
+                }
+
+                if (branchId == Guid.Empty)
+                {
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}]. Branch Code:[{2}]  does not exist in the DMS..", counter, item.VehiclePurchaseOrderNumber, item.BranchCode);
+                    counter++;
+                    this.RecordsFailedUpload++;
+                    continue;
+                }
+
                 rt.Attributes.Add("gsc_recordtype", new OptionSetValue(100000000));
                 rt.Attributes.Add("gsc_purchaseorderid", new EntityReference("gsc_cmn_purchaseorder", vpoId));              
                 rt.Attributes.Add("gsc_intransitsiteid", new EntityReference("gsc_iv_site", siteId));
@@ -211,8 +233,8 @@ namespace ImportIntegration
                 DateTime.TryParse(item.InvoiceDate, out invoiceDate);
                 rt.Attributes.Add("gsc_invoicedate", invoiceDate);
                 rt.Attributes.Add("gsc_mmpcstatus", item.MMPCStatus);
-                rt.Attributes.Add("gsc_branchid", vpo.GetAttributeValue<EntityReference>("gsc_branchid"));
-                rt.Attributes.Add("gsc_dealerid", vpo.GetAttributeValue<EntityReference>("gsc_dealerid"));
+                rt.Attributes.Add("gsc_branchid", new EntityReference("account", branchId));
+                rt.Attributes.Add("gsc_dealerid", new EntityReference("account", dealerId));
                 rt.Attributes.Add("gsc_recordownerid", vpo.GetAttributeValue<EntityReference>("gsc_recordownerid"));
 
                 Guid rtId = _service.Create(rt);

@@ -70,7 +70,21 @@ namespace ImportIntegration
         {
             get { return _MMPCStatus; }
             set { _MMPCStatus = value.Trim(); }
-        }          
+        }
+
+        private string _dealerCode;
+        public string DealerCode
+        {
+            get { return _dealerCode; }
+            set { _dealerCode = value.Trim(); }
+        }
+
+        private string _branchCode;
+        public string BranchCode
+        {
+            get { return _branchCode; }
+            set { _branchCode = value.Trim(); }
+        }
 
         public ReceivingTransactionDetails ReceivingDetails { get; set; }
       
@@ -129,6 +143,6 @@ namespace ImportIntegration
         {
             get { return _VIN; }
             set { _VIN = value.Trim(); }
-        }        
+        }
     }
 }

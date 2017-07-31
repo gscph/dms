@@ -107,6 +107,14 @@ namespace ImportIntegration
                                     {
                                         rt.ReceivingDetails.VIN = string.Empty;
                                     }
+                                    if (columnIndex == 15)
+                                    {
+                                        rt.DealerCode = string.Empty;
+                                    }
+                                    if (columnIndex == 16)
+                                    {
+                                        rt.BranchCode = string.Empty;
+                                    }
                                     columnIndex++;
                                 }
                                 while (columnIndex < cellColumnIndex);
@@ -171,6 +179,14 @@ namespace ImportIntegration
                             if (columnIndex == 14)
                             {
                                 rt.ReceivingDetails.VIN = GetCellValue(doc, cell);
+                            }
+                            if (columnIndex == 15)
+                            {
+                                rt.DealerCode = GetCellValue(doc, cell);
+                            }
+                            if (columnIndex == 16)
+                            {
+                                rt.BranchCode = GetCellValue(doc, cell);
                             }
 
                             columnIndex++;
