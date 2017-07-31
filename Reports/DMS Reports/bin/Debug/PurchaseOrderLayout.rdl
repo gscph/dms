@@ -3976,6 +3976,144 @@
             </Border>
           </Style>
         </Image>
+        <Textbox Name="Textbox21">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>VEHICLE PURCHASE ORDER</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>20pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <Color>White</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox21</rd:DefaultName>
+          <Top>1.63535in</Top>
+          <Left>0.35in</Left>
+          <Height>0.53in</Height>
+          <Width>4.66533in</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <TopBorder>
+              <Style>Solid</Style>
+            </TopBorder>
+            <LeftBorder>
+              <Style>Solid</Style>
+            </LeftBorder>
+            <RightBorder>
+              <Style>Solid</Style>
+            </RightBorder>
+            <BackgroundColor>#ed0000</BackgroundColor>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox22">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>VPO NO:</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox21</rd:DefaultName>
+          <Top>1.63535in</Top>
+          <Left>5.01534in</Left>
+          <Height>0.53in</Height>
+          <Width>0.6873in</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <TopBorder>
+              <Style>Solid</Style>
+            </TopBorder>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Image Name="Image8">
+          <Source>Embedded</Source>
+          <Value>SFM1</Value>
+          <Sizing>FitProportional</Sizing>
+          <Top>0.3937in</Top>
+          <Left>6.83334in</Left>
+          <Height>0.94792in</Height>
+          <Width>1.00265in</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Image>
+        <Textbox Name="gsc_purchaseorderpn">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!VPO_No.Value, "VehiclePurchaseOrder")</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>gsc_purchaseorderpn</rd:DefaultName>
+          <Top>1.63535in</Top>
+          <Left>5.70264in</Left>
+          <Height>0.51611in</Height>
+          <Width>2.31in</Width>
+          <ZIndex>4</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <TopBorder>
+              <Style>Solid</Style>
+            </TopBorder>
+            <RightBorder>
+              <Style>Solid</Style>
+            </RightBorder>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
         <Textbox Name="Textbox72">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
@@ -4021,11 +4159,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox69</rd:DefaultName>
-          <Top>0.8in</Top>
+          <Top>0.77157in</Top>
           <Left>1.87211in</Left>
-          <Height>0.21in</Height>
+          <Height>0.20278in</Height>
           <Width>4.12221in</Width>
-          <ZIndex>1</ZIndex>
+          <ZIndex>5</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -4059,9 +4197,9 @@
           <rd:DefaultName>Textbox69</rd:DefaultName>
           <Top>0.57573in</Top>
           <Left>1.87211in</Left>
-          <Height>0.21in</Height>
+          <Height>0.18195in</Height>
           <Width>4.12221in</Width>
-          <ZIndex>2</ZIndex>
+          <ZIndex>6</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -4101,99 +4239,15 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox69</rd:DefaultName>
-          <Top>1.02in</Top>
+          <Top>0.96046in</Top>
           <Left>1.87211in</Left>
-          <Height>0.21in</Height>
+          <Height>0.17708in</Height>
           <Width>4.12221in</Width>
-          <ZIndex>3</ZIndex>
+          <ZIndex>7</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
             </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox21">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>VEHICLE PURCHASE ORDER</Value>
-                  <Style>
-                    <FontFamily>Segoe UI</FontFamily>
-                    <FontSize>20pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                    <Color>White</Color>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox21</rd:DefaultName>
-          <Top>1.63535in</Top>
-          <Left>0.35in</Left>
-          <Height>0.53in</Height>
-          <Width>4.66533in</Width>
-          <ZIndex>4</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <TopBorder>
-              <Style>Solid</Style>
-            </TopBorder>
-            <LeftBorder>
-              <Style>Solid</Style>
-            </LeftBorder>
-            <RightBorder>
-              <Style>Solid</Style>
-            </RightBorder>
-            <BackgroundColor>#ed0000</BackgroundColor>
-            <VerticalAlign>Middle</VerticalAlign>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox22">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>VPO NO:</Value>
-                  <Style>
-                    <FontFamily>Segoe UI</FontFamily>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox21</rd:DefaultName>
-          <Top>1.63535in</Top>
-          <Left>5.01534in</Left>
-          <Height>0.53in</Height>
-          <Width>0.6873in</Width>
-          <ZIndex>5</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <TopBorder>
-              <Style>Solid</Style>
-            </TopBorder>
-            <VerticalAlign>Middle</VerticalAlign>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -4223,65 +4277,11 @@
           <Left>1.87211in</Left>
           <Height>0.25in</Height>
           <Width>4.12221in</Width>
-          <ZIndex>6</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Image Name="Image8">
-          <Source>Embedded</Source>
-          <Value>SFM1</Value>
-          <Sizing>FitProportional</Sizing>
-          <Top>0.3937in</Top>
-          <Left>6.83334in</Left>
-          <Height>0.94792in</Height>
-          <Width>1.00265in</Width>
-          <ZIndex>7</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </Image>
-        <Textbox Name="gsc_purchaseorderpn">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=First(Fields!VPO_No.Value, "VehiclePurchaseOrder")</Value>
-                  <Style />
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Left</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>gsc_purchaseorderpn</rd:DefaultName>
-          <Top>1.63535in</Top>
-          <Left>5.70264in</Left>
-          <Height>0.51611in</Height>
-          <Width>2.31in</Width>
           <ZIndex>8</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
             </Border>
-            <TopBorder>
-              <Style>Solid</Style>
-            </TopBorder>
-            <RightBorder>
-              <Style>Solid</Style>
-            </RightBorder>
-            <VerticalAlign>Middle</VerticalAlign>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -4346,6 +4346,7 @@
 	   P.gsc_remarks AS 'Remarks',	  
 	   I.gsc_cmn_PurchaseOrderItemDetailsId AS 'PO Item',
 	   I.gsc_modelcode AS 'Model Code',
+	   I.gsc_OptionCode AS 'Option Code',
 	   I.gsc_modelyear AS 'Model Year',
 	   I.gsc_productidname AS 'Production Name',
 	   I.gsc_vehiclecoloridname AS 'Vehicle Color',
@@ -4362,7 +4363,7 @@
 	   AA.gsc_CityIdName AS 'City',
 	   AA.gsc_ProvinceIdName AS 'Province',
 	   AA.Address1_Line1 AS 'Street',
-	   AA.Telephone1 AS 'Telephone',
+	   AA.Address2_Telephone1 AS 'Telephone',
 	   AA.Fax AS 'Fax',
 	   AA.EntityImage AS 'BranchImage'
 
@@ -4370,7 +4371,7 @@ FROM gsc_cmn_PurchaseOrder P
 	   INNER JOIN gsc_cmn_PurchaseOrderItemDetails I ON P.gsc_cmn_PurchaseOrderId = I.gsc_PurchaseOrderId
 	   INNER JOIN gsc_cmn_VehicleColor VC ON I.gsc_VehicleColorId = VC.gsc_cmn_VehicleColorId
 	   INNER JOIN StringMap S ON S.AttributeValue = P.gsc_mannerofpayment
-	   INNER JOIN Account AA ON AA.AccountId = P.gsc_DealerId
+	   INNER JOIN Account AA ON AA.AccountId = P.gsc_BranchId
 	   INNER JOIN Account AB ON AB.AccountId = P.gsc_ToBranchId	   
 
 WHERE S.ATTRIBUTENAME = 'gsc_mannerofpayment' AND
@@ -4447,6 +4448,10 @@ WHERE S.ATTRIBUTENAME = 'gsc_mannerofpayment' AND
         </Field>
         <Field Name="Model_Year">
           <DataField>Model Year</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Option_Code">
+          <DataField>Option Code</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Production_Name">

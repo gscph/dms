@@ -993,6 +993,117 @@
             </Border>
           </Style>
         </Image>
+        <Image Name="Image4">
+          <Source>Embedded</Source>
+          <Value>SFM1</Value>
+          <Sizing>FitProportional</Sizing>
+          <Top>0.34376in</Top>
+          <Left>6.95834in</Left>
+          <Height>0.94792in</Height>
+          <Width>1.00265in</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Image>
+        <Textbox Name="Textbox1">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Vehicle Sales Order #</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox1</rd:DefaultName>
+          <Top>1.92757in</Top>
+          <Left>0.35in</Left>
+          <Height>0.21in</Height>
+          <Width>1.5002in</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox34">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>VSO Date:</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox28</rd:DefaultName>
+          <Top>1.92757in</Top>
+          <Left>6.12207in</Left>
+          <Height>0.21in</Height>
+          <Width>0.7839in</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Textbox>
+        <Textbox Name="Sale_Order_Number">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!Sale_Order_Number.Value, "SalesOrder")</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Sale_Order_Number</rd:DefaultName>
+          <Top>1.92757in</Top>
+          <Left>1.8502in</Left>
+          <Height>0.21in</Height>
+          <Width>3.89708in</Width>
+          <ZIndex>4</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
         <Textbox Name="Textbox18">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
@@ -1024,10 +1135,10 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
           <Top>0.59722in</Top>
-          <Left>1.78076in</Left>
+          <Left>1.84779in</Left>
           <Height>1.01737in</Height>
-          <Width>4.23924in</Width>
-          <ZIndex>1</ZIndex>
+          <Width>4.37221in</Width>
+          <ZIndex>5</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1059,120 +1170,9 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
           </Paragraphs>
           <rd:DefaultName>Textbox10</rd:DefaultName>
           <Top>0.34376in</Top>
-          <Left>1.78076in</Left>
+          <Left>1.84779in</Left>
           <Height>0.25347in</Height>
-          <Width>4.23924in</Width>
-          <ZIndex>2</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Image Name="Image4">
-          <Source>Embedded</Source>
-          <Value>SFM1</Value>
-          <Sizing>FitProportional</Sizing>
-          <Top>0.34376in</Top>
-          <Left>6.95834in</Left>
-          <Height>0.94792in</Height>
-          <Width>1.00265in</Width>
-          <ZIndex>3</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </Image>
-        <Textbox Name="Textbox1">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>Vehicle Sales Order #</Value>
-                  <Style>
-                    <FontFamily>Segoe UI</FontFamily>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>1.92757in</Top>
-          <Left>0.35in</Left>
-          <Height>0.21in</Height>
-          <Width>1.5002in</Width>
-          <ZIndex>4</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox34">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>VSO Date:</Value>
-                  <Style>
-                    <FontFamily>Segoe UI</FontFamily>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox28</rd:DefaultName>
-          <Top>1.92757in</Top>
-          <Left>6.49707in</Left>
-          <Height>0.21in</Height>
-          <Width>0.7839in</Width>
-          <ZIndex>5</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </Textbox>
-        <Textbox Name="Sale_Order_Number">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=First(Fields!Sale_Order_Number.Value, "SalesOrder")</Value>
-                  <Style>
-                    <FontFamily>Segoe UI</FontFamily>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Left</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Sale_Order_Number</rd:DefaultName>
-          <Top>1.92757in</Top>
-          <Left>1.8502in</Left>
-          <Height>0.21in</Height>
-          <Width>3.89708in</Width>
+          <Width>4.37221in</Width>
           <ZIndex>6</ZIndex>
           <Style>
             <Border>
@@ -1214,7 +1214,8 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
             <Value>=Parameters!reportid.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT  SalesOrder.CreatedOn, 
+        <CommandText>
+SELECT  SalesOrder.CreatedOn, 
 		SalesOrder.gsc_SalesExecutiveIdName AS 'Sales Executive', 
 		SalesOrder.gsc_RecordOwnerIdName AS 'PreparedBy', 
 		SalesOrder.gsc_VehicleColorId1Name AS 'Vehicle Color', 
@@ -1224,7 +1225,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
 		SalesOrder.CustomerIdName AS 'Customer', 
         SalesOrder.gsc_PaymentMode AS 'Payment Mode', 
 		SalesOrder.gsc_Address AS 'Address', 
-		SalesOrder.gsc_Tin AS 'Tin', 
+		Account.gsc_Tin AS 'Tin', 
 		SalesOrder.gsc_VehicleDetails AS 'Vehicle Details', 
         SalesOrder.gsc_UnitPrice AS 'Unit Price', 
 		SalesOrder.gsc_CcAddons AS 'CC AddOns',
@@ -1263,7 +1264,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
         Account.gsc_VSOTermsandAgreement AS 'TaA', 
 		Account.gsc_VSOOtherRemarks AS 'SORemarks', 
 		Account.gsc_ApprovedBy AS 'ApprovedBy', 
-		SalesOrder.gsc_BankIdName, 
+		Bank.gsc_Name AS 'Bank',
         Account.Telephone1 AS 'Branch Telephone', 
 		Account.Fax AS 'Branch Fax', 
 		Account.gsc_VATReg AS 'Branch VAT Reg', 
@@ -1275,8 +1276,8 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
 		Account.gsc_CityIdName AS 'Branch City', 
         Account.gsc_ProvinceIdName AS 'Branch Province', 
 		Account.Address1_PostalCode AS 'Branch Postal Code', 
-		Account.address2_telephone1 AS 'Branch Sales Number', 
-        Account.address2_telephone2 AS 'Branch Service Number', 
+		Account.Address2_Telephone1 AS 'Branch Sales Number', 
+        Account.Address2_Telephone2 AS 'Branch Service Number', 
 		OrderCharge.gsc_ChargesIdName AS 'Charges', 
 		OrderCharge.gsc_ActualCost AS 'Actual Cost', 
 		SalesOrder.CustomerIdType AS 'Customer Type', 
@@ -1317,8 +1318,10 @@ FROM            Account RIGHT OUTER JOIN
         gsc_sls_OrderMonthlyAmortization AS OrderMontlyAmortization ON SalesOrder.SalesOrderId = OrderMontlyAmortization.gsc_OrderId AND OrderMontlyAmortization.gsc_Selected = '1' LEFT OUTER JOIN
         gsc_cmn_OrderCharge AS OrderCharge ON SalesOrder.SalesOrderId = OrderCharge.gsc_OrderId LEFT OUTER JOIN
         Product ON SalesOrder.gsc_ProductId = Product.ProductId LEFT OUTER JOIN
-        gsc_iv_AllocatedVehicle AS Allocated ON SalesOrder.SalesOrderId = Allocated.gsc_OrderId
-WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
+        gsc_iv_AllocatedVehicle AS Allocated ON SalesOrder.SalesOrderId = Allocated.gsc_OrderId LEFT OUTER JOIN
+		gsc_sls_Bank AS Bank ON SalesOrder.gsc_BankId = gsc_sls_BankId
+
+WHERE        (SalesOrder.SalesOrderId =@reportid)</CommandText>
       </Query>
       <Fields>
         <Field Name="CreatedOn">
@@ -1341,12 +1344,12 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Branch Site</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Lead_Source">
-          <DataField>Lead Source</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Dealer">
           <DataField>Dealer</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Lead_Source">
+          <DataField>Lead Source</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Customer">
@@ -1405,17 +1408,21 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>DP Discount</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="DPPercentage">
+          <DataField>DPPercentage</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
         <Field Name="Net_Price">
           <DataField>Net Price</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Insurance">
+          <DataField>Insurance</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="Chattel_Fee">
           <DataField>Chattel Fee</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="DPPercentage">
-          <DataField>DPPercentage</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="Total_Cash_Outlay">
           <DataField>Total Cash Outlay</DataField>
@@ -1423,10 +1430,6 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
         </Field>
         <Field Name="VATable_Sales">
           <DataField>VATable Sales</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="Insurance">
-          <DataField>Insurance</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="Total_Amount_Due">
@@ -1441,29 +1444,33 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Product</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="VIN">
-          <DataField>VIN</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Order_Number">
           <DataField>Order Number</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VIN">
+          <DataField>VIN</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Color_Price">
           <DataField>Color Price</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="Reservation">
-          <DataField>Reservation</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
         <Field Name="Vehicle_Unit_Price">
           <DataField>Vehicle Unit Price</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Reservation">
+          <DataField>Reservation</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="VAT_Amount">
           <DataField>VAT Amount</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Created_On">
+          <DataField>Created On</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="Freight_and_Handling">
           <DataField>Freight and Handling</DataField>
@@ -1472,10 +1479,6 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
         <Field Name="Total_Discount_Amount">
           <DataField>Total Discount Amount</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="Created_On">
-          <DataField>Created On</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="VATEXEMPT_Sales">
           <DataField>VATEXEMPT Sales</DataField>
@@ -1493,24 +1496,32 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Net MonthlyAmortization</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="Remarks">
-          <DataField>Remarks</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Sale_Order_Number">
           <DataField>Sale Order Number</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="TaA">
-          <DataField>TaA</DataField>
+        <Field Name="Remarks">
+          <DataField>Remarks</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="CCAddons">
           <DataField>CCAddons</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="TaA">
+          <DataField>TaA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SORemarks">
+          <DataField>SORemarks</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="ApprovedBy">
           <DataField>ApprovedBy</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Bank">
+          <DataField>Bank</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Branch_Telephone">
@@ -1521,20 +1532,12 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Branch Fax</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="SORemarks">
-          <DataField>SORemarks</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Branch_VAT_Reg">
           <DataField>Branch VAT Reg</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Branch_WebSite_Url">
           <DataField>Branch WebSite Url</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="gsc_BankIdName">
-          <DataField>gsc_BankIdName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Branch_Entity_Image">
@@ -1569,6 +1572,10 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Branch Sales Number</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Branch_Service_Number">
+          <DataField>Branch Service Number</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Charges">
           <DataField>Charges</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1577,9 +1584,9 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Actual Cost</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="Branch_Service_Number">
-          <DataField>Branch Service Number</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="Customer_Type">
+          <DataField>Customer Type</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="Mobile_Number">
           <DataField>Mobile Number</DataField>
@@ -1589,6 +1596,10 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Email Address</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Birthdate">
+          <DataField>Birthdate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
         <Field Name="Model_Code">
           <DataField>Model Code</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1596,10 +1607,6 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
         <Field Name="Option_Code">
           <DataField>Option Code</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Customer_Type">
-          <DataField>Customer Type</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="Model_Year">
           <DataField>Model Year</DataField>
@@ -1613,10 +1620,6 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Gross Vehicle</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Birthdate">
-          <DataField>Birthdate</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
         <Field Name="Piston_Displacement">
           <DataField>Piston Displacement</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1624,14 +1627,6 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
         <Field Name="Fuel_Type">
           <DataField>Fuel Type</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Transmission">
-          <DataField>Transmission</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Others">
-          <DataField>Others</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="VehicleType">
           <DataField>VehicleType</DataField>
@@ -1641,12 +1636,20 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>BodyType</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Transmission">
+          <DataField>Transmission</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
         <Field Name="WarrantyYears">
           <DataField>WarrantyYears</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="WarrantyMileage">
           <DataField>WarrantyMileage</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Others">
+          <DataField>Others</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="FinancingTerm">

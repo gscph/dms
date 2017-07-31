@@ -25,6 +25,10 @@
       <FullPath>PurchaseOrderDetails.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>PurchaseOrderDetailsAdjusted.rdl</Name>
+      <FullPath>PurchaseOrderDetailsAdjusted.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>PurchaseOrderLayout.rdl</Name>
       <FullPath>PurchaseOrderLayout.rdl</FullPath>
     </ProjectItem>
@@ -35,6 +39,14 @@
     <ProjectItem>
       <Name>SalesInvoice.rdl</Name>
       <FullPath>SalesInvoice.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>SalesInvoiceDetails.rdl</Name>
+      <FullPath>SalesInvoiceDetails.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>SalesInvoiceDetailsAdjusted.rdl</Name>
+      <FullPath>SalesInvoiceDetailsAdjusted.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>SalesInvoiceLayout.rdl</Name>
@@ -97,16 +109,12 @@
       <FullPath>VehicleTransfer.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>PurchaseOrderDetailsAdjusted.rdl</Name>
-      <FullPath>PurchaseOrderDetailsAdjusted.rdl</FullPath>
+      <Name>SalesInvoiceDetailsAdjustedRevert.rdl</Name>
+      <FullPath>SalesInvoiceDetailsAdjustedRevert.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>SalesInvoiceDetailsAdjusted.rdl</Name>
-      <FullPath>SalesInvoiceDetailsAdjusted.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>SalesInvoiceDetails.rdl</Name>
-      <FullPath>SalesInvoiceDetails.rdl</FullPath>
+      <Name>SalesOrderDetailsAdjustedRevert.rdl</Name>
+      <FullPath>SalesOrderDetailsAdjustedRevert.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>

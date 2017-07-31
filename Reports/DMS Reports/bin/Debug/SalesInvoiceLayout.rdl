@@ -841,95 +841,15 @@
             </Border>
           </Style>
         </Image>
-        <Textbox Name="Textbox18">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=IIF(First(Fields!Branch_Address.Value, "SalesInvoice") = NOTHING, NOTHING, First(Fields!Branch_Address.Value, "SalesInvoice") + ", " &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_City.Value, "SalesInvoice") = NOTHING, NOTHING, First(Fields!Branch_City.Value, "SalesInvoice") + ", " &amp; vbcrlf) &amp;
-First(Fields!Branch_Province.Value, "SalesInvoice") + " " +
-First(Fields!Branch_Postal_Code.Value, "SalesInvoice")+ "&lt;br&gt;" +
-IIF(First(Fields!Branch_Fax.Value, "SalesInvoice") = NOTHING, NOTHING, "Telefax: " + First(Fields!Branch_Fax.Value, "SalesInvoice") +"/" &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_Telephone.Value, "SalesInvoice") = NOTHING, NOTHING, First(Fields!Branch_Telephone.Value, "SalesInvoice") + "&lt;br&gt;" &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_Service_Number.Value, "SalesInvoice") = NOTHING, NOTHING, "Service DL: " + First(Fields!Branch_Service_Number.Value, "SalesInvoice") +" " &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_Sales_Number.Value, "SalesInvoice") = NOTHING, NOTHING, "Sales Direct Line: "+ First(Fields!Branch_Sales_Number.Value, "SalesInvoice") + "&lt;br&gt;" &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_Email_Address.Value, "SalesInvoice") = NOTHING, NOTHING, "Email: "+ First(Fields!Branch_Email_Address.Value, "SalesInvoice") + "&lt;br&gt;" &amp; vbcrlf) &amp;
-IIF(First(Fields!Tin.Value, "SalesInvoice") =NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!Tin.Value, "SalesInvoice") &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, First(Fields!Branch_WebSite_Url.Value, "SalesInvoice"))</Value>
-                  <MarkupType>HTML</MarkupType>
-                  <Style>
-                    <FontFamily>Segoe UI</FontFamily>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>0.59722in</Top>
-          <Left>1.78076in</Left>
-          <Height>1.01737in</Height>
-          <Width>4.23924in</Width>
-          <ZIndex>1</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox10">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=First(Fields!Branch_Name.Value, "SalesInvoice")</Value>
-                  <Style>
-                    <FontFamily>Segoe UI</FontFamily>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox10</rd:DefaultName>
-          <Top>0.34376in</Top>
-          <Left>1.78076in</Left>
-          <Height>0.25347in</Height>
-          <Width>4.23924in</Width>
-          <ZIndex>2</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
         <Image Name="Image4">
           <Source>Embedded</Source>
           <Value>SFM1</Value>
           <Sizing>FitProportional</Sizing>
-          <Top>0.3937in</Top>
+          <Top>0.34376in</Top>
           <Left>6.83334in</Left>
           <Height>0.94792in</Height>
           <Width>1.00265in</Width>
-          <ZIndex>3</ZIndex>
+          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -958,7 +878,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
           <Left>0.35in</Left>
           <Height>0.21in</Height>
           <Width>1.43076in</Width>
-          <ZIndex>4</ZIndex>
+          <ZIndex>2</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -991,7 +911,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
           <Left>5.93001in</Left>
           <Height>0.21in</Height>
           <Width>1.01307in</Width>
-          <ZIndex>5</ZIndex>
+          <ZIndex>3</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1025,6 +945,86 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
           <Left>1.78076in</Left>
           <Height>0.21in</Height>
           <Width>3.70651in</Width>
+          <ZIndex>4</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox18">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=IIF(First(Fields!Branch_Address.Value, "SalesInvoice") = NOTHING, NOTHING, First(Fields!Branch_Address.Value, "SalesInvoice") + ", " &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_City.Value, "SalesInvoice") = NOTHING, NOTHING, First(Fields!Branch_City.Value, "SalesInvoice") + ", " &amp; vbcrlf) &amp;
+First(Fields!Branch_Province.Value, "SalesInvoice") + " " +
+First(Fields!Branch_Postal_Code.Value, "SalesInvoice")+ "&lt;br&gt;" +
+IIF(First(Fields!Branch_Fax.Value, "SalesInvoice") = NOTHING, NOTHING, "Telefax: " + First(Fields!Branch_Fax.Value, "SalesInvoice") +"/" &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_Telephone.Value, "SalesInvoice") = NOTHING, NOTHING, First(Fields!Branch_Telephone.Value, "SalesInvoice") + "&lt;br&gt;" &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_Service_Number.Value, "SalesInvoice") = NOTHING, NOTHING, "Service DL: " + First(Fields!Branch_Service_Number.Value, "SalesInvoice") +" " &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_Sales_Number.Value, "SalesInvoice") = NOTHING, NOTHING, "Sales Direct Line: "+ First(Fields!Branch_Sales_Number.Value, "SalesInvoice") + "&lt;br&gt;" &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_Email_Address.Value, "SalesInvoice") = NOTHING, NOTHING, "Email: "+ First(Fields!Branch_Email_Address.Value, "SalesInvoice") + "&lt;br&gt;" &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_VAT_Reg.Value, "SalesInvoice") =NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!Branch_VAT_Reg.Value, "SalesInvoice") &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, First(Fields!Branch_WebSite_Url.Value, "SalesInvoice"))</Value>
+                  <MarkupType>HTML</MarkupType>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox18</rd:DefaultName>
+          <Top>0.59722in</Top>
+          <Left>1.77649in</Left>
+          <Height>1.01737in</Height>
+          <Width>4.37221in</Width>
+          <ZIndex>5</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox10">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!Branch_Name.Value, "SalesInvoice")</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox10</rd:DefaultName>
+          <Top>0.34376in</Top>
+          <Left>1.77649in</Left>
+          <Height>0.25347in</Height>
+          <Width>4.37221in</Width>
           <ZIndex>6</ZIndex>
           <Style>
             <Border>
@@ -1067,120 +1067,126 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
             <Value>=Parameters!reportid.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT
-	--Information 	   
-	Invoice.name AS 'Sales Invoice Number',
-	Invoice.CustomerIdName AS 'Customer',
-	CASE WHEN Invoice.CustomerIdType = '1' THEN
-            (SELECT        Telephone1
-            FROM            Account
-            WHERE        AccountId = Invoice.CustomerId) ELSE
-            (SELECT        MobilePhone
-            FROM            Contact
-            WHERE        contactid = Invoice.CustomerId) END AS 'Mobile Number', CASE WHEN Invoice.CustomerIdType = '1' THEN
-            (SELECT        EMailAddress1
-            FROM            Account
-            WHERE        AccountId = Invoice.CustomerId) ELSE
-            (SELECT        EMailAddress1
-            FROM            Contact
-            WHERE        contactid = Invoice.CustomerId) END AS 'Email Address',
-	Invoice.ShipTo_Composite AS 'Address',
-	Invoice.gsc_Tin AS 'Tin',
-	Invoice.CreatedOn AS 'Date',
-	Invoice.gsc_DrNo AS 'DR No',
-	Invoice.gsc_LeadSourceIdName AS 'Lead Source',
-	Invoice.gsc_PaymentMode AS 'Payment Mode',
-	InvoiceMonthlyAmortization.gsc_FinancingTermIdName AS 'Financing Term',
-	Invoice.gsc_SalesExecutiveIdName AS 'Sales Executive',
-	Invoice.gsc_BankIdName AS 'Bank',
-	--Vehicle Details
-	
-	Invoice.gsc_ProductIdName AS 'Model Description',
-	Product.gsc_ModelYear AS 'Model Year',
-	InvoicedVehicle.gsc_ModelCode AS 'Model Code',
-	InvoicedVehicle.gsc_OptionCode AS 'Option Code',
-	InvoicedVehicle.gsc_EngineNo AS 'Engine No.',
-	InvoicedVehicle.gsc_Vin AS 'VIN',
-	Invoice.gsc_VehicleColorId1Name AS 'Color',
-	InvoicedVehicle.gsc_ProductionNo AS 'Production No.',
-    InvoicedVehicle.gsc_CsNo AS 'CS No.',
-	InvoicedVehicle.gsc_WarrantyBookletNo AS 'WB#',
-	Product.gsc_GrossVehicleWeight AS 'Gross Vehicle',
-	Product.gsc_PistonDisplacement AS 'Piston Displacement',
-	Case 
-	           WHEN Product.gsc_FuelType = '100000000'
-		THEN 'Gasoline'
-	           WHEN Product.gsc_FuelType = '100000001'
-		THEN 'Diesel'
-		ELSE
-			''
-	END AS 'Fuel Used',
-	Invoice.gsc_VehicleDetails AS 'Vehicle Details',
-	Product.gsc_VehicleTypeIdName AS 'Vehicle Type',
-	Product.gsc_BodyTypeIdName AS 'Body Type',
-	Product.gsc_Transmission AS 'Transmission',
-	Product.gsc_WarrantyExpiryDays AS 'Warranty Years',
-	Product.gsc_WarrantyMileage AS 'Warranty Mileage',
-	Product.gsc_OtherVehicleDetails AS 'Others', 
-	--Description
-	Invoice.gsc_UnitPrice AS 'Unit Price',
-	Invoice.gsc_ColorPrice AS 'Color Price',
-	Invoice.gsc_freightandhandling AS 'Freight and Handling',
-	Invoice.gsc_TotalDiscountAmount AS 'Total Discount Amount',
-	Invoice.gsc_NetPrice AS 'Net Price',
-
-	--add
-	Invoice.gsc_Accessories AS 'Accessories',
-	Invoice.gsc_ChattelFee AS 'Chattel fee',
-	Invoice.gsc_Insurance AS 'Insurance Charge',
-	OrderCharge.gsc_ChargesIdName AS 'Charges', 
-	OrderCharge.gsc_ActualCost AS 'Actual Cost',
-
-	--less
-	Invoice.gsc_Reservation AS 'Reservation',
-	Invoice.gsc_NetDownPayment AS 'Net Downpayment',
-	
-	--Summary
-	Invoice.gsc_VATableSales AS 'VATable Sales',
-	Invoice.gsc_VATEXEMPTSales AS 'VATEXEMPT Sales',
-	Invoice.gsc_ZERORATEDSales AS 'ZERORATED Sales',
-	Invoice.gsc_TotalSales AS 'Total Sales',
-	Invoice.gsc_VATAmount AS 'VAT Amount',
-	Invoice.TotalAmount AS 'Total Amount Due',
-	Invoice.gsc_TotalCashOutlay AS 'Total Cash Outlay',
-	Invoice.gsc_AmountFinanced AS 'Total Amount Financed',
-	Invoice.gsc_NetMonthlyAmortization AS 'Net MonthlyAmortization',
-    Invoice.gsc_Remarks AS 'Remarks',
-	Account.gsc_VSOTermsandAgreement AS 'TaA',
-    
-	--Branch Details
-	Account.Telephone1 AS 'Branch Telephone', 
-	Account.Fax AS 'Branch Fax', 
-	Account.gsc_VATReg AS 'Branch VAT Reg', 
-	Account.WebSiteURL AS 'Branch WebSite Url', 
-	Account.EntityImage AS 'Branch Entity Image', 
-	Account.Name AS 'Branch Name', 
-	Account.EMailAddress1 AS 'Branch Email Address', 
-	Account.Address1_Line1 AS 'Branch Address', 
-	Account.gsc_CityIdName AS 'Branch City', 
-	Account.gsc_ProvinceIdName AS 'Branch Province', 
-	Account.Address1_PostalCode AS 'Branch Postal Code', 
-	Account.address2_telephone2 AS 'Branch Service Number', 
-	Account.address2_telephone1 AS 'Branch Sales Number',
-
-	--Footer
-	Invoice.gsc_RecordOwnerIdName AS 'PreparedBy',
-	Contact_1.gsc_ReportsToName AS 'VerifyBy',
-	Account.gsc_ApprovedBy AS 'ApprovedBy'
-	
-FROM Invoice
-LEFT JOIN gsc_cmn_OrderCharge AS OrderCharge ON Invoice.gsc_ProductId = OrderCharge.gsc_OrderId
-LEFT JOIN Account ON Invoice.gsc_BranchId = Account.AccountId
-LEFT JOIN Product ON Invoice.gsc_ProductId = Product.ProductId
-LEFT JOIN gsc_iv_invoicedvehicle AS InvoicedVehicle ON Invoice.invoiceid = InvoicedVehicle.gsc_invoiceid
-LEFT JOIN gsc_sls_InvoiceMonthlyAmortization AS InvoiceMonthlyAmortization ON Invoice.InvoiceId = InvoiceMonthlyAmortization.gsc_InvoiceId
-LEFT JOIN Contact AS Contact_1 ON Invoice.gsc_SalesExecutiveId = Contact_1.ContactId
-WHERE (InvoiceId = @reportid)</CommandText>
+        <CommandText>SELECT			Invoice.Name AS 'Sales Invoice Number', 
+				CASE WHEN Invoice.CustomerIdType = '1' THEN
+                             (SELECT        name
+                               FROM            Account
+                               WHERE        AccountId = Invoice.CustomerId) ELSE
+                             (SELECT        (FirstName + ' ' + MiddleName + ' ' + LastName)
+                               FROM            Contact
+                               WHERE        contactid = Invoice.CustomerId) END AS 'Customer', 
+				CASE WHEN Invoice.CustomerIdType = '1' THEN
+                             (SELECT        Telephone1
+                               FROM            Account
+                               WHERE        AccountId = Invoice.CustomerId) ELSE
+                             (SELECT        MobilePhone
+                               FROM            Contact
+                               WHERE        contactid = Invoice.CustomerId) END AS 'Mobile Number', 
+				CASE WHEN Invoice.CustomerIdType = '1' THEN
+                             (SELECT        EMailAddress1
+                               FROM            Account
+                               WHERE        AccountId = Invoice.CustomerId) ELSE
+                             (SELECT        EMailAddress1
+                               FROM            Contact
+                               WHERE        contactid = Invoice.CustomerId) END AS 'Email Address', 
+				CASE WHEN Invoice.CustomerIdType = '1' THEN
+                             (SELECT        gsc_birthdate
+                               FROM            Account
+                               WHERE        AccountId = Invoice.CustomerId) ELSE
+                             (SELECT        birthdate 
+                               FROM         Contact
+                               WHERE        contactid = Invoice.CustomerId) END AS 'Birthday', 
+				Invoice.ShipTo_Composite AS 'Address', 
+				Account.gsc_Tin AS 'Tin', 
+				Invoice.CreatedOn AS 'Date', 
+				Invoice.gsc_DrNo AS 'DR No', 
+                Invoice.gsc_LeadSourceIdName AS 'Lead Source', 
+				Invoice.gsc_PaymentMode AS 'Payment Mode', 
+				InvoiceMonthlyAmortization.gsc_Selected AS 'Selected Financing Term',
+				CASE WHEN Invoice.gsc_PaymentMode = '100000001' THEN
+								(SELECT  
+								gsc_FinancingTermIdName 
+								FROM	
+								gsc_sls_InvoiceMonthlyAmortization
+								WHERE gsc_Selected = '1' AND Invoice.InvoiceId = gsc_InvoiceId) ELSE
+								'' END AS 'Financing Term', 
+                Invoice.gsc_SalesExecutiveIdName AS 'Sales Executive', 
+				(SELECT gsc_Name FROM gsc_sls_bank WHERE gsc_sls_bankid = Invoice.gsc_BankId) AS 'Bank', 
+				Invoice.gsc_ProductIdName AS 'Model Description', 
+				Product.gsc_ModelYear AS 'Model Year', 
+                InvoicedVehicle.gsc_ModelCode AS 'Model Code', 
+				InvoicedVehicle.gsc_OptionCode AS 'Option Code', 
+				InvoicedVehicle.gsc_EngineNo AS 'Engine No.', 
+				InvoicedVehicle.gsc_VIN AS 'VIN', 
+                Invoice.gsc_VehicleColorId1Name AS 'Color', 
+				InvoicedVehicle.gsc_ProductionNo AS 'Production No.', 
+				InvoicedVehicle.gsc_CSNo AS 'CS No.', 
+				InvoicedVehicle.gsc_WarrantyBookletNo AS 'WB#', 
+                Product.gsc_GrossVehicleWeight AS 'Gross Vehicle', 
+				Product.gsc_PistonDisplacement AS 'Piston Displacement', 
+                CASE WHEN Product .gsc_FuelType = '100000000' THEN 
+							'Gasoline' 
+							WHEN Product .gsc_FuelType = '100000001' THEN 
+							'Diesel' 
+							ELSE '' END AS 'Fuel Used', 
+				Invoice.gsc_VehicleDetails AS 'Vehicle Details', 
+                Product.gsc_VehicleTypeIdName AS 'Vehicle Type', 
+				Product.gsc_BodyTypeIdName AS 'Body Type', 
+				Product.gsc_Transmission AS 'Transmission', 
+				Product.gsc_WarrantyExpiryDays AS 'Warranty Years', 
+                Product.gsc_WarrantyMileage AS 'Warranty Mileage', 
+				Product.gsc_OtherVehicleDetails AS 'Others', 
+				Invoice.gsc_UnitPrice AS 'Unit Price', 
+				Invoice.gsc_CCAddons AS 'CC AddOns', 
+                Invoice.gsc_ColorPrice AS 'Color Price', 
+				Invoice.gsc_FreightandHandling AS 'Freight and Handling', 
+				Invoice.gsc_ApplyToUpAmount AS 'Total Discount Amount', 
+				Invoice.gsc_NetPrice AS 'Net Price', 
+                Invoice.gsc_Accessories AS 'Accessories', 
+				Invoice.gsc_ChattelFee AS 'Chattel fee', 
+				Invoice.gsc_Insurance AS 'Insurance Charge', 
+				OrderCharge.gsc_ChargesIdName AS 'Charges', 
+                OrderCharge.gsc_ActualCost AS 'Actual Cost', 
+				Invoice.gsc_Reservation AS 'Reservation', 
+				Invoice.gsc_NetDownPayment AS 'Net Downpayment', 
+				Invoice.gsc_VATableSales AS 'VATable Sales', 
+                Invoice.gsc_VATEXEMPTSales AS 'VATEXEMPT Sales', 
+				Invoice.gsc_ZERORATEDSales AS 'ZERORATED Sales', 
+				Invoice.gsc_TotalSales AS 'Total Sales', 
+				Invoice.gsc_VATAmount AS 'VAT Amount', 
+                Invoice.TotalAmount AS 'Total Amount Due', 
+				Invoice.gsc_TotalCashOutlay AS 'Total Cash Outlay', 
+				Invoice.gsc_DownPaymentAmount AS 'Down Payment', 
+				Invoice.gsc_NetDownPayment AS 'Net Down Payment', 
+                Invoice.gsc_AmountFinanced AS 'Total Amount Financed', 
+				Invoice.gsc_NetMonthlyAmortization AS 'Net MonthlyAmortization', 
+				Invoice.gsc_Remarks AS 'Remarks', 
+				Account.gsc_VSOTermsandAgreement AS 'TaA', 
+                Account.Telephone1 AS 'Branch Telephone', 
+				Account.Fax AS 'Branch Fax', 
+				Account.gsc_VATReg AS 'Branch VAT Reg', 
+				Account.WebSiteURL AS 'Branch WebSite Url', 
+				Account.EntityImage AS 'Branch Entity Image', 
+                Account.Name AS 'Branch Name', 
+				Account.EMailAddress1 AS 'Branch Email Address', 
+				Account.Address1_Line1 AS 'Branch Address', 
+				Account.gsc_CityIdName AS 'Branch City', 
+                Account.gsc_ProvinceIdName AS 'Branch Province', 
+				Account.Address1_PostalCode AS 'Branch Postal Code', 
+				Account.Address2_Telephone2 AS 'Branch Service Number', 
+                Account.Address2_Telephone1 AS 'Branch Sales Number', 
+				Invoice.gsc_RecordOwnerIdName AS 'PreparedBy', 
+				Contact_1.gsc_ReportsToName AS 'VerifyBy', 
+				Account.gsc_ApprovedBy AS 'ApprovedBy', 
+                Invoice.gsc_Discount
+FROM            Invoice LEFT OUTER JOIN
+                         gsc_cmn_OrderCharge AS OrderCharge ON Invoice.gsc_ProductId = OrderCharge.gsc_OrderId LEFT OUTER JOIN
+                         Account ON Invoice.gsc_BranchId = Account.AccountId LEFT OUTER JOIN
+                         Product ON Invoice.gsc_ProductId = Product.ProductId LEFT OUTER JOIN
+                         gsc_iv_InvoicedVehicle AS InvoicedVehicle ON Invoice.InvoiceId = InvoicedVehicle.gsc_InvoiceId LEFT OUTER JOIN
+                         gsc_sls_InvoiceMonthlyAmortization AS InvoiceMonthlyAmortization ON Invoice.InvoiceId = InvoiceMonthlyAmortization.gsc_InvoiceId LEFT OUTER JOIN
+                         Contact AS Contact_1 ON Invoice.gsc_SalesExecutiveId = Contact_1.ContactId
+WHERE        (Invoice.InvoiceId =@reportid)</CommandText>
       </Query>
       <Fields>
         <Field Name="Sales_Invoice_Number">
@@ -1198,6 +1204,10 @@ WHERE (InvoiceId = @reportid)</CommandText>
         <Field Name="Email_Address">
           <DataField>Email Address</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Birthday">
+          <DataField>Birthday</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="Address">
           <DataField>Address</DataField>
@@ -1226,6 +1236,10 @@ WHERE (InvoiceId = @reportid)</CommandText>
         <Field Name="Financing_Term">
           <DataField>Financing Term</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Selected_Financing_Term">
+          <DataField>Selected Financing Term</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
         <Field Name="Sales_Executive">
           <DataField>Sales Executive</DataField>
@@ -1331,6 +1345,10 @@ WHERE (InvoiceId = @reportid)</CommandText>
           <DataField>Total Discount Amount</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="CC_AddOns">
+          <DataField>CC AddOns</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
         <Field Name="Net_Price">
           <DataField>Net Price</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
@@ -1403,6 +1421,10 @@ WHERE (InvoiceId = @reportid)</CommandText>
           <DataField>Remarks</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Down_Payment">
+          <DataField>Down Payment</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
         <Field Name="TaA">
           <DataField>TaA</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1410,6 +1432,10 @@ WHERE (InvoiceId = @reportid)</CommandText>
         <Field Name="Branch_Telephone">
           <DataField>Branch Telephone</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Net_Down_Payment">
+          <DataField>Net Down Payment</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="Branch_Fax">
           <DataField>Branch Fax</DataField>
@@ -1470,6 +1496,10 @@ WHERE (InvoiceId = @reportid)</CommandText>
         <Field Name="ApprovedBy">
           <DataField>ApprovedBy</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="gsc_Discount">
+          <DataField>gsc_Discount</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>

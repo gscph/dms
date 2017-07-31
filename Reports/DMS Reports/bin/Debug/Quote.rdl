@@ -417,7 +417,10 @@
               <Width>0.35978in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.12601in</Width>
+              <Width>0.40601in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.72in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -433,7 +436,18 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>COMPUTATION</Value>
+                              <Value>COMPUTATION BASED ON </Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>=Microsoft.VisualBasic.Interaction.Switch(Sum(Fields!PaymentMode.Value, "QuoteDetails") = 100000000, "CASH",
+ Sum(Fields!PaymentMode.Value, "QuoteDetails") = 100000001, "FINANCING",
+ Sum(Fields!PaymentMode.Value, "QuoteDetails") = 100000002, "BANK PO")</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -456,9 +470,10 @@
                         <PaddingTop>2pt</PaddingTop>
                       </Style>
                     </Textbox>
-                    <ColSpan>5</ColSpan>
+                    <ColSpan>6</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
                 <TablixCell />
                 <TablixCell />
                 <TablixCell />
@@ -630,7 +645,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="UnitPrice">
+                    <Textbox Name="UnitPrice2">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -658,8 +673,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -819,8 +836,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -980,8 +999,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -1141,8 +1162,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -1304,8 +1327,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -1470,8 +1495,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -1621,6 +1648,37 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox161</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox16">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontWeight>Normal</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox16</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1824,8 +1882,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -1985,8 +2045,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -2148,8 +2210,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -2312,6 +2376,37 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox21">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontWeight>Normal</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox21</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox173">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -2404,9 +2499,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
-                    <ColSpan>5</ColSpan>
+                    <ColSpan>6</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
                 <TablixCell />
                 <TablixCell />
                 <TablixCell />
@@ -2570,8 +2666,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -2731,8 +2829,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -2892,8 +2992,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -3021,9 +3123,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
-                    <ColSpan>2</ColSpan>
+                    <ColSpan>3</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
                 <TablixCell />
               </TablixCells>
             </TablixRow>
@@ -3213,8 +3316,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -3364,6 +3469,37 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox179</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox27">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontWeight>Normal</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox27</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -3568,8 +3704,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -3719,6 +3857,37 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox187</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox33">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontWeight>Normal</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox33</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -3923,8 +4092,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -4087,8 +4258,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -4251,8 +4424,10 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -4415,14 +4590,17 @@
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
           <TablixMembers>
+            <TablixMember />
             <TablixMember />
             <TablixMember />
             <TablixMember />
@@ -7076,10 +7254,10 @@ First(Fields!BranchProvince.Value, "QuoteDetails") + " " +
 First(Fields!BranchPostalCode.Value, "QuoteDetails")+ "&lt;br&gt;" +
 IIF(First(Fields!BranchFax.Value, "QuoteDetails") = NOTHING, NOTHING, "Telefax: " + First(Fields!BranchFax.Value, "QuoteDetails") +"/" &amp; vbcrlf) &amp;
 IIF(First(Fields!BranchTelephone.Value, "QuoteDetails") = NOTHING, NOTHING, First(Fields!BranchTelephone.Value, "QuoteDetails") + "&lt;br&gt;" &amp; vbcrlf) &amp;
-IIF(First(Fields!BranchBusinessPhone.Value, "QuoteDetails") = NOTHING, NOTHING, "Service DL: " + First(Fields!BranchBusinessPhone.Value, "QuoteDetails") +" " &amp; vbcrlf) &amp;
-IIF(First(Fields!BranchMobileNumber.Value, "QuoteDetails") = NOTHING, NOTHING, "Sales Direct Line: "+ First(Fields!BranchMobileNumber.Value, "QuoteDetails") + "&lt;br&gt;" &amp; vbcrlf) &amp;
+IIF(First(Fields!BranchServiceNumber.Value, "QuoteDetails") = NOTHING, NOTHING, "Service DL: " + First(Fields!BranchServiceNumber.Value, "QuoteDetails") +" " &amp; vbcrlf) &amp;
+IIF(First(Fields!BranchSalesNumber.Value, "QuoteDetails") = NOTHING, NOTHING, "Sales Direct Line: "+ First(Fields!BranchSalesNumber.Value, "QuoteDetails") + "&lt;br&gt;" &amp; vbcrlf) &amp;
 IIF(First(Fields!BranchEmailAddress.Value, "QuoteDetails") = NOTHING, NOTHING, "Email: "+ First(Fields!BranchEmailAddress.Value, "QuoteDetails") + "&lt;br&gt;" &amp; vbcrlf) &amp;
-IIF(First(Fields!VATReg.Value, "QuoteDetails") =NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!VATReg.Value, "QuoteDetails") &amp; vbcrlf) &amp;
+IIF(First(Fields!Tin.Value, "QuoteDetails") =NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!Tin.Value, "QuoteDetails") &amp; vbcrlf) &amp;
 IIF(First(Fields!BranchWebSiteURL.Value, "QuoteDetails") = NOTHING, NOTHING, First(Fields!BranchWebSiteURL.Value, "QuoteDetails"))</Value>
                   <MarkupType>HTML</MarkupType>
                   <Style>
@@ -7526,9 +7704,9 @@ SELECT			Quote.CreatedOn AS DateCreated,
 				Quote.gsc_SalesExecutiveIdName AS SalesExecutive, 
 				Quote.gsc_ProductIdName AS ProductModel,
                 Quote.gsc_BranchIdName AS BranchSite,
-				 Quote.gsc_VehicleColorId1Name AS VehicleColor, 
-				 Quote.QuoteId, Quote.Name AS QuoteNumber, 
-				 Quote.CustomerIdName AS CustomerName, 
+				Quote.gsc_VehicleColorId1Name AS VehicleColor, 
+				Quote.QuoteId, Quote.Name AS QuoteNumber, 
+				Quote.CustomerIdName AS CustomerName, 
                 Quote.gsc_Address AS CustomerAddress, 
 				Quote.gsc_ContactNo AS ContactNumber, 
 				Quote.gsc_AlternateContactNo AS AlternativeContactNumber, 
@@ -7563,7 +7741,7 @@ SELECT			Quote.CreatedOn AS DateCreated,
 				Quote.gsc_Remarks AS Remarks, 
 				Account.Telephone1 AS BranchTelephone, 
 				Account.Fax AS BranchFax, 
-				Account.gsc_VATReg AS VATReg, 
+				Account.gsc_Tin AS Tin, 
                 Account.WebSiteURL AS BranchWebSiteURL, 
 				Account.EntityImage AS BranchEntityImage, 
 				Account.Name AS BranchName, 
@@ -7572,8 +7750,8 @@ SELECT			Quote.CreatedOn AS DateCreated,
 				Account.gsc_CityIdName AS BranchCity, 
 				Account.gsc_ProvinceIdName AS BranchProvince, 
 				Account.Address1_PostalCode AS BranchPostalCode, 
-                Account.Address1_Telephone1 AS BranchMobileNumber, 
-				Account.Address1_Telephone1 AS BranchBusinessPhone, 
+                Account.Address2_Telephone2 AS BranchServiceNumber, 
+                Account.Address2_Telephone1 AS BranchSalesNumber, 
 				Account.gsc_VSQTermsandAgreement AS TaA, 
                 QuoteMontlyAmortization.gsc_FinancingTermIdName AS FinancingTerm, 
 				QuoteCharge.gsc_ChargesIdName AS Charges, 
@@ -7783,8 +7961,8 @@ WHERE        (Quote.QuoteId = @reportid)</CommandText>
           <DataField>BranchFax</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="VATReg">
-          <DataField>VATReg</DataField>
+        <Field Name="Tin">
+          <DataField>Tin</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="BranchWebSiteURL">
@@ -7819,12 +7997,12 @@ WHERE        (Quote.QuoteId = @reportid)</CommandText>
           <DataField>BranchPostalCode</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="BranchMobileNumber">
-          <DataField>BranchMobileNumber</DataField>
+        <Field Name="BranchServiceNumber">
+          <DataField>BranchServiceNumber</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="BranchBusinessPhone">
-          <DataField>BranchBusinessPhone</DataField>
+        <Field Name="BranchSalesNumber">
+          <DataField>BranchSalesNumber</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TaA">

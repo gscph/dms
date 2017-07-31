@@ -6476,7 +6476,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
           </Paragraphs>
           <rd:DefaultName>Textbox28</rd:DefaultName>
           <Top>1.92757in</Top>
-          <Left>6.49707in</Left>
+          <Left>6.12207in</Left>
           <Height>0.21in</Height>
           <Width>0.7839in</Width>
           <ZIndex>5</ZIndex>
@@ -6646,7 +6646,7 @@ SELECT  SalesOrder.CreatedOn,
 		SalesOrder.gsc_VATAmount AS 'VAT Amount', 
         SalesOrder.CreatedOn AS 'Created On', 
 		SalesOrder.gsc_FreightAndHandling AS 'Freight and Handling', 
-		SalesOrder.gsc_TotalDiscountAmount AS 'Total Discount Amount', 
+		SalesOrder.gsc_ApplyToUpAmount AS 'Total Discount Amount', 
         SalesOrder.gsc_VATEXEMPTSales AS 'VATEXEMPT Sales', 
 		SalesOrder.gsc_ZERORATEDSales AS 'ZERORATED Sales', 
 		SalesOrder.gsc_TotalSales AS 'Total Sales', 
@@ -6729,6 +6729,10 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>PreparedBy</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Vehicle_Color">
+          <DataField>Vehicle Color</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Branch_Site">
           <DataField>Branch Site</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -6768,6 +6772,22 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
         <Field Name="CC_AddOns">
           <DataField>CC AddOns</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Model_Description">
+          <DataField>Model Description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CS_No_">
+          <DataField>CS No.</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Engine_No_">
+          <DataField>Engine No.</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Production_No_">
+          <DataField>Production No.</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Down_Payment">
           <DataField>Down Payment</DataField>
@@ -6819,6 +6839,10 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
         </Field>
         <Field Name="Order_Number">
           <DataField>Order Number</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VIN">
+          <DataField>VIN</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Color_Price">
@@ -6889,6 +6913,10 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>ApprovedBy</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Bank">
+          <DataField>Bank</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Branch_Telephone">
           <DataField>Branch Telephone</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -6913,10 +6941,6 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Branch Name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Bank">
-          <DataField>Bank</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Branch_Email_Address">
           <DataField>Branch Email Address</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -6937,6 +6961,14 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Branch Postal Code</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Branch_Sales_Number">
+          <DataField>Branch Sales Number</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Branch_Service_Number">
+          <DataField>Branch Service Number</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Charges">
           <DataField>Charges</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -6953,29 +6985,13 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Mobile Number</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Branch_Sales_Number">
-          <DataField>Branch Sales Number</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Email_Address">
           <DataField>Email Address</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Branch_Service_Number">
-          <DataField>Branch Service Number</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Birthdate">
           <DataField>Birthdate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="Model_Description">
-          <DataField>Model Description</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Model_Year">
-          <DataField>Model Year</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Model_Code">
           <DataField>Model Code</DataField>
@@ -6985,24 +7001,8 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Option Code</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Engine_No_">
-          <DataField>Engine No.</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="VIN">
-          <DataField>VIN</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Vehicle_Color">
-          <DataField>Vehicle Color</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Production_No_">
-          <DataField>Production No.</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="CS_No_">
-          <DataField>CS No.</DataField>
+        <Field Name="Model_Year">
+          <DataField>Model Year</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="WB_">

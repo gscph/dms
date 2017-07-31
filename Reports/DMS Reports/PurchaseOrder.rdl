@@ -4102,7 +4102,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox69</rd:DefaultName>
-          <Top>0.75768in</Top>
+          <Top>0.77157in</Top>
           <Left>1.87211in</Left>
           <Height>0.20278in</Height>
           <Width>4.12221in</Width>
@@ -4390,7 +4390,7 @@
     <DataSource Name="DataSource1">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=XRMDMSDB;Initial Catalog=MMPCDEV_MSCRM</ConnectString>
+        <ConnectString>Data Source=DMSUATDB2;Initial Catalog=MMPCUAT_MSCRM</ConnectString>
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>26e271ad-9dbe-4b3c-8056-a798f7a64df6</rd:DataSourceID>
@@ -4405,20 +4405,58 @@
             <Value>=Parameters!reportid.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT        AB.gsc_VPOBIRStamp1 AS 'Stamp 1', AB.gsc_VPOTermsandAgreement AS 'VPO TERMS', AB.gsc_AuthorizedDealerName AS 'Authorized Dealer Name', AB.gsc_MMPCSalesManager AS 'MMPC SM', 
-                         AB.gsc_VPOBIRStamp2 AS 'Stamp 2', P.gsc_TaxInclusiveDNP AS 'DNP', P.gsc_DealerIdName AS 'Dealer', P.gsc_Reference AS 'Reference', VC.gsc_ColorCode AS 'Color Code', 
-                         P.gsc_PurchaseOrderPn AS 'VPO No', P.gsc_ToBranchIdName AS 'TO BRANCH', AB.gsc_Tin AS 'To TIN', AB.gsc_BusinessStyle AS 'Business Style', P.gsc_VPODate AS 'VPO Date', P.gsc_Remarks AS 'Remarks', 
-                         I.gsc_cmn_PurchaseOrderItemDetailsId AS 'PO Item', I.gsc_ModelCode AS 'Model Code', I.gsc_OptionCode AS 'Option Code', I.gsc_ModelYear AS 'Model Year', I.gsc_ProductIdName AS 'Production Name', 
-                         I.gsc_VehicleColorIdName AS 'Vehicle Color', I.gsc_DNPAmount AS 'DNP Amount', P.gsc_WTaxAmount AS 'WTax Amount', P.gsc_NetofWTaxAmount AS 'Net WTax Amount', S.Value AS 'Manner of Payment', 
-                         P.gsc_LCNo AS 'LC No', P.gsc_BankName AS 'Bank Name', P.gsc_BankIdName AS 'BankId Name', P.gsc_BranchIdName AS 'Branch', AA.gsc_Tin AS 'Tin', AA.gsc_CityIdName AS 'City', 
-                         AA.gsc_ProvinceIdName AS 'Province', AA.Address1_Line1 AS 'Street', AA.Telephone1 AS 'Telephone', AA.Fax, AA.EntityImage AS 'BranchImage'
-FROM            gsc_cmn_PurchaseOrder AS P INNER JOIN
-                         gsc_cmn_PurchaseOrderItemDetails AS I ON P.gsc_cmn_PurchaseOrderId = I.gsc_PurchaseOrderId INNER JOIN
-                         gsc_cmn_VehicleColor AS VC ON I.gsc_VehicleColorId = VC.gsc_cmn_VehicleColorId INNER JOIN
-                         StringMap AS S ON S.AttributeValue = P.gsc_MannerOfPayment INNER JOIN
-                         Account AS AA ON AA.AccountId = P.gsc_DealerId INNER JOIN
-                         Account AS AB ON AB.AccountId = P.gsc_ToBranchId
-WHERE        (S.AttributeName = 'gsc_mannerofpayment') AND (P.gsc_cmn_PurchaseOrderId = @reportid)</CommandText>
+        <CommandText>SELECT 		
+	   --P.gsc_cmn_purchaseorderid,
+	   AB.gsc_VPOBIRStamp1 AS 'Stamp 1',
+	   AB.gsc_VPOTermsandAgreement AS 'VPO TERMS',
+	   AB.gsc_AuthorizedDealerName AS 'Authorized Dealer Name',
+	   AB.gsc_MMPCSalesManager AS 'MMPC SM',
+	  -- AB.gsc_vpotermsandagreement
+	   AB.gsc_VPOBIRStamp2 AS 'Stamp 2',
+	   P.gsc_TaxInclusiveDNP AS 'DNP',
+	   P.gsc_DealerIdName AS 'Dealer',
+	   P.gsc_Reference AS 'Reference',
+	   VC.gsc_ColorCode AS 'Color Code',
+	   P.gsc_purchaseorderpn AS 'VPO No',
+	   --P.gsc_todealeridname,
+	   P.gsc_tobranchidname AS 'TO BRANCH',
+	   AB.gsc_Tin AS 'To TIN',
+	   AB.gsc_BusinessStyle  AS 'Business Style',
+	   --P.gsc_siteidname,
+	   P.gsc_vpodate AS 'VPO Date',
+	   P.gsc_remarks AS 'Remarks',	  
+	   I.gsc_cmn_PurchaseOrderItemDetailsId AS 'PO Item',
+	   I.gsc_modelcode AS 'Model Code',
+	   I.gsc_OptionCode AS 'Option Code',
+	   I.gsc_modelyear AS 'Model Year',
+	   I.gsc_productidname AS 'Production Name',
+	   I.gsc_vehiclecoloridname AS 'Vehicle Color',
+	   I.gsc_dnpamount AS 'DNP Amount',
+	   P.gsc_wtaxamount AS 'WTax Amount',
+	   P.gsc_netofwtaxamount AS 'Net WTax Amount',
+	   S.value AS 'Manner of Payment',
+	   P.gsc_lcno AS 'LC No',
+	   P.gsc_bankname AS 'Bank Name',
+	   P.gsc_bankidname AS 'BankId Name',
+
+	   P.gsc_branchidName AS 'Branch',
+	   AA.gsc_Tin AS 'Tin',
+	   AA.gsc_CityIdName AS 'City',
+	   AA.gsc_ProvinceIdName AS 'Province',
+	   AA.Address1_Line1 AS 'Street',
+	   AA.Address2_Telephone1 AS 'Telephone',
+	   AA.Fax AS 'Fax',
+	   AA.EntityImage AS 'BranchImage'
+
+FROM gsc_cmn_PurchaseOrder P 
+	   INNER JOIN gsc_cmn_PurchaseOrderItemDetails I ON P.gsc_cmn_PurchaseOrderId = I.gsc_PurchaseOrderId
+	   INNER JOIN gsc_cmn_VehicleColor VC ON I.gsc_VehicleColorId = VC.gsc_cmn_VehicleColorId
+	   INNER JOIN StringMap S ON S.AttributeValue = P.gsc_mannerofpayment
+	   INNER JOIN Account AA ON AA.AccountId = P.gsc_BranchId
+	   INNER JOIN Account AB ON AB.AccountId = P.gsc_ToBranchId	   
+
+WHERE S.ATTRIBUTENAME = 'gsc_mannerofpayment' AND
+	(P.gsc_cmn_purchaseorderid = @reportid) </CommandText>
       </Query>
       <Fields>
         <Field Name="Stamp_1">

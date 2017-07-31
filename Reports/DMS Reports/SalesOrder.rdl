@@ -4938,7 +4938,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!gsc_BankIdName.Value</Value>
+                              <Value>=Fields!Bank.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                               </Style>
@@ -6693,10 +6693,10 @@ First(Fields!Branch_Province.Value, "SalesOrder") + " " +
 First(Fields!Branch_Postal_Code.Value, "SalesOrder")+ "&lt;br&gt;" +
 IIF(First(Fields!Branch_Fax.Value, "SalesOrder") = NOTHING, NOTHING, "Telefax: " + First(Fields!Branch_Fax.Value, "SalesOrder") +"/" &amp; vbcrlf) &amp;
 IIF(First(Fields!Branch_Telephone.Value, "SalesOrder") = NOTHING, NOTHING, First(Fields!Branch_Telephone.Value, "SalesOrder") + "&lt;br&gt;" &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_Business_Phone.Value, "SalesOrder") = NOTHING, NOTHING, "Service DL: " + First(Fields!Branch_Business_Phone.Value, "SalesOrder") +" " &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_Mobile_Number.Value, "SalesOrder") = NOTHING, NOTHING, "Sales Direct Line: "+ First(Fields!Branch_Mobile_Number.Value, "SalesOrder") + "&lt;br&gt;" &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_Service_Number.Value, "SalesOrder") = NOTHING, NOTHING, "Service DL: " + First(Fields!Branch_Service_Number.Value, "SalesOrder") +" " &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_Sales_Number.Value, "SalesOrder") = NOTHING, NOTHING, "Sales Direct Line: "+ First(Fields!Branch_Sales_Number.Value, "SalesOrder") + "&lt;br&gt;" &amp; vbcrlf) &amp;
 IIF(First(Fields!Branch_Email_Address.Value, "SalesOrder") = NOTHING, NOTHING, "Email: "+ First(Fields!Branch_Email_Address.Value, "SalesOrder") + "&lt;br&gt;" &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_VAT_Reg.Value, "SalesOrder") =NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!Branch_VAT_Reg.Value, "SalesOrder") &amp; vbcrlf) &amp;
+IIF(First(Fields!Tin.Value, "SalesOrder") =NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!Tin.Value, "SalesOrder") &amp; vbcrlf) &amp;
 IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, First(Fields!Branch_WebSite_Url.Value, "SalesOrder"))</Value>
                   <MarkupType>HTML</MarkupType>
                   <Style>
@@ -6846,7 +6846,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
           </Paragraphs>
           <rd:DefaultName>Textbox28</rd:DefaultName>
           <Top>1.92757in</Top>
-          <Left>6.49707in</Left>
+          <Left>6.12207in</Left>
           <Height>0.21in</Height>
           <Width>0.7839in</Width>
           <ZIndex>5</ZIndex>
@@ -6916,7 +6916,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
     <DataSource Name="SalesOrder">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=XRMDMSDB;Initial Catalog=MMPCDEV_MSCRM</ConnectString>
+        <ConnectString>Data Source=DMSUATDB2;Initial Catalog=MMPCUAT_MSCRM</ConnectString>
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>18d40055-7ad2-47e3-873e-d54deece7de4</rd:DataSourceID>
@@ -6972,10 +6972,11 @@ SELECT        REPLACE(STUFF
             <Value>=Parameters!reportid.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT  
-		SalesOrder.CreatedOn, 
+        <CommandText>
+SELECT  SalesOrder.CreatedOn, 
 		SalesOrder.gsc_SalesExecutiveIdName AS 'Sales Executive', 
 		SalesOrder.gsc_RecordOwnerIdName AS 'PreparedBy', 
+		SalesOrder.gsc_VehicleColorId1Name AS 'Vehicle Color', 
         SalesOrder.gsc_BranchIdName AS 'Branch Site', 
 		SalesOrder.gsc_DealerIdName AS 'Dealer', 
 		SalesOrder.gsc_LeadSourceIdName AS 'Lead Source', 
@@ -6986,26 +6987,31 @@ SELECT        REPLACE(STUFF
 		SalesOrder.gsc_VehicleDetails AS 'Vehicle Details', 
         SalesOrder.gsc_UnitPrice AS 'Unit Price', 
 		SalesOrder.gsc_CcAddons AS 'CC AddOns',
-		SalesOrder.gsc_DownPaymentDisplay AS 'Down Payment', 
+		SalesOrder.gsc_ProductIdName AS 'Model Description', 
+		SalesOrder.gsc_CSNo AS 'CS No.', 
+		SalesOrder.gsc_EngineNo AS 'Engine No.', 
+        SalesOrder.gsc_ProductionNo AS 'Production No.', 
+		SalesOrder.gsc_DownPayment AS 'Down Payment', 
 		SalesOrder.gsc_NetDownPayment AS 'Net Down Payment', 
         SalesOrder.gsc_DownPaymentDiscount AS 'DP Discount', 
 		SalesOrder.gsc_DownPaymentPercentage AS 'DPPercentage', 
 		SalesOrder.gsc_NetPrice AS 'Net Price', 
 		SalesOrder.gsc_Insurance AS 'Insurance', 
         SalesOrder.gsc_ChattelFee AS 'Chattel Fee', 
-		SalesOrder.gsc_Reservation AS 'Reservation',
 		SalesOrder.gsc_TotalCashOutlay AS 'Total Cash Outlay', 
 		SalesOrder.gsc_VATableSales AS 'VATable Sales', 
 		SalesOrder.gsc_TotalAmountDue AS 'Total Amount Due', 
         SalesOrder.gsc_TotalAmountFinanced AS 'Total Amount Financed', 
 		SalesOrder.gsc_ProductIdName AS 'Product', 
 		SalesOrder.OrderNumber AS 'Order Number', 
+		SalesOrder.gsc_VIN AS 'VIN', 
         SalesOrder.gsc_ColorPrice AS 'Color Price', 
 		SalesOrder.gsc_VehicleUnitPrice AS 'Vehicle Unit Price', 
+		SalesOrder.gsc_Reservation AS 'Reservation', 
 		SalesOrder.gsc_VATAmount AS 'VAT Amount', 
         SalesOrder.CreatedOn AS 'Created On', 
 		SalesOrder.gsc_FreightAndHandling AS 'Freight and Handling', 
-		SalesOrder.gsc_Applytoupamount AS 'Total Discount Amount', 
+		SalesOrder.gsc_ApplyToUpAmount AS 'Total Discount Amount', 
         SalesOrder.gsc_VATEXEMPTSales AS 'VATEXEMPT Sales', 
 		SalesOrder.gsc_ZERORATEDSales AS 'ZERORATED Sales', 
 		SalesOrder.gsc_TotalSales AS 'Total Sales', 
@@ -7016,7 +7022,7 @@ SELECT        REPLACE(STUFF
         Account.gsc_VSOTermsandAgreement AS 'TaA', 
 		Account.gsc_VSOOtherRemarks AS 'SORemarks', 
 		Account.gsc_ApprovedBy AS 'ApprovedBy', 
-		SalesOrder.gsc_BankIdName, 
+		Bank.gsc_Name AS 'Bank',
         Account.Telephone1 AS 'Branch Telephone', 
 		Account.Fax AS 'Branch Fax', 
 		Account.gsc_VATReg AS 'Branch VAT Reg', 
@@ -7028,8 +7034,8 @@ SELECT        REPLACE(STUFF
 		Account.gsc_CityIdName AS 'Branch City', 
         Account.gsc_ProvinceIdName AS 'Branch Province', 
 		Account.Address1_PostalCode AS 'Branch Postal Code', 
-		Account.Address1_Telephone1 AS 'Branch Mobile Number', 
-        Account.Address1_Telephone2 AS 'Branch Business Phone', 
+		Account.Address1_Telephone1 AS 'Branch Sales Number', 
+        Account.Address1_Telephone2 AS 'Branch Service Number', 
 		OrderCharge.gsc_ChargesIdName AS 'Charges', 
 		OrderCharge.gsc_ActualCost AS 'Actual Cost', 
 		SalesOrder.CustomerIdType AS 'Customer Type', 
@@ -7049,17 +7055,10 @@ SELECT        REPLACE(STUFF
             (SELECT        Contact_1.BirthDate
             FROM            Contact
             WHERE        (ContactId = SalesOrder.CustomerId)) AS Birthdate, 
-		
-		SalesOrder.gsc_ProductIdName AS 'Model Description',
-		Allocated.gsc_ModelYear  AS 'Model Year', 
-		Allocated.gsc_ModelCode AS 'Model Code',  
-		Allocated.gsc_OptionCode AS 'Option Code',	
-		Allocated.gsc_EngineNo AS 'Engine No.',
-		Allocated.gsc_VIN AS 'VIN',  
-		Allocated.gsc_Color AS 'Vehicle Color',
-        Allocated.gsc_ProductionNo AS 'Production No.',
-		Allocated.gsc_CSNo AS 'CS No.', 
-		Allocated.gsc_WarrantyBookletNo AS 'WB#', 
+		Product.gsc_ModelCode AS 'Model Code', 
+		Product.gsc_OptionCode AS 'Option Code', 
+		Allocated.gsc_ModelYear AS 'Model Year', 
+        Allocated.gsc_WarrantyBookletNo AS 'WB#', 
 		Product.gsc_GrossVehicleWeight AS 'Gross Vehicle', 
 		Product.gsc_PistonDisplacement AS 'Piston Displacement', 
         Product .gsc_FuelType AS 'Fuel Type', 
@@ -7077,7 +7076,9 @@ FROM            Account RIGHT OUTER JOIN
         gsc_sls_OrderMonthlyAmortization AS OrderMontlyAmortization ON SalesOrder.SalesOrderId = OrderMontlyAmortization.gsc_OrderId AND OrderMontlyAmortization.gsc_Selected = '1' LEFT OUTER JOIN
         gsc_cmn_OrderCharge AS OrderCharge ON SalesOrder.SalesOrderId = OrderCharge.gsc_OrderId LEFT OUTER JOIN
         Product ON SalesOrder.gsc_ProductId = Product.ProductId LEFT OUTER JOIN
-        gsc_iv_AllocatedVehicle AS Allocated ON SalesOrder.SalesOrderId = Allocated.gsc_OrderId
+        gsc_iv_AllocatedVehicle AS Allocated ON SalesOrder.SalesOrderId = Allocated.gsc_OrderId LEFT OUTER JOIN
+		gsc_sls_Bank AS Bank ON SalesOrder.gsc_BankId = gsc_sls_BankId
+
 WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
       </Query>
       <Fields>
@@ -7091,6 +7092,10 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
         </Field>
         <Field Name="PreparedBy">
           <DataField>PreparedBy</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Vehicle_Color">
+          <DataField>Vehicle Color</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Branch_Site">
@@ -7132,6 +7137,22 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
         <Field Name="CC_AddOns">
           <DataField>CC AddOns</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Model_Description">
+          <DataField>Model Description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CS_No_">
+          <DataField>CS No.</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Engine_No_">
+          <DataField>Engine No.</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Production_No_">
+          <DataField>Production No.</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Down_Payment">
           <DataField>Down Payment</DataField>
@@ -7183,6 +7204,10 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
         </Field>
         <Field Name="Order_Number">
           <DataField>Order Number</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VIN">
+          <DataField>VIN</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Color_Price">
@@ -7253,8 +7278,8 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>ApprovedBy</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="gsc_BankIdName">
-          <DataField>gsc_BankIdName</DataField>
+        <Field Name="Bank">
+          <DataField>Bank</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Branch_Telephone">
@@ -7301,12 +7326,12 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Branch Postal Code</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Branch_Mobile_Number">
-          <DataField>Branch Mobile Number</DataField>
+        <Field Name="Branch_Sales_Number">
+          <DataField>Branch Sales Number</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Branch_Business_Phone">
-          <DataField>Branch Business Phone</DataField>
+        <Field Name="Branch_Service_Number">
+          <DataField>Branch Service Number</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Charges">
@@ -7333,14 +7358,6 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Birthdate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="Model_Description">
-          <DataField>Model Description</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Model_Year">
-          <DataField>Model Year</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Model_Code">
           <DataField>Model Code</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -7349,24 +7366,8 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Option Code</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Engine_No_">
-          <DataField>Engine No.</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="VIN">
-          <DataField>VIN</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Vehicle_Color">
-          <DataField>Vehicle Color</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Production_No_">
-          <DataField>Production No.</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="CS_No_">
-          <DataField>CS No.</DataField>
+        <Field Name="Model_Year">
+          <DataField>Model Year</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="WB_">

@@ -6385,38 +6385,118 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
             <Value>=Parameters!reportid.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT        Invoice.Name AS 'Sales Invoice Number', Invoice.CustomerIdName AS 'Customer', CASE WHEN Invoice.CustomerIdType = '1' THEN
+        <CommandText>SELECT			Invoice.Name AS 'Sales Invoice Number', 
+				CASE WHEN Invoice.CustomerIdType = '1' THEN
+                             (SELECT        name
+                               FROM            Account
+                               WHERE        AccountId = Invoice.CustomerId) ELSE
+                             (SELECT        (FirstName + ' ' + ISNULL(MiddleName,'')  + ' ' + LastName)
+                               FROM            Contact
+                               WHERE        contactid = Invoice.CustomerId) END AS 'Customer', 
+				CASE WHEN Invoice.CustomerIdType = '1' THEN
                              (SELECT        Telephone1
                                FROM            Account
                                WHERE        AccountId = Invoice.CustomerId) ELSE
                              (SELECT        MobilePhone
                                FROM            Contact
-                               WHERE        contactid = Invoice.CustomerId) END AS 'Mobile Number', CASE WHEN Invoice.CustomerIdType = '1' THEN
+                               WHERE        contactid = Invoice.CustomerId) END AS 'Mobile Number', 
+				CASE WHEN Invoice.CustomerIdType = '1' THEN
                              (SELECT        EMailAddress1
                                FROM            Account
                                WHERE        AccountId = Invoice.CustomerId) ELSE
                              (SELECT        EMailAddress1
                                FROM            Contact
-                               WHERE        contactid = Invoice.CustomerId) END AS 'Email Address', Invoice.ShipTo_Composite AS 'Address', Invoice.gsc_Tin AS 'Tin', Invoice.CreatedOn AS 'Date', Invoice.gsc_DrNo AS 'DR No', 
-                         Invoice.gsc_LeadSourceIdName AS 'Lead Source', Invoice.gsc_PaymentMode AS 'Payment Mode', InvoiceMonthlyAmortization.gsc_FinancingTermIdName AS 'Financing Term', 
-                         Invoice.gsc_SalesExecutiveIdName AS 'Sales Executive', Invoice.gsc_BankIdName AS 'Bank', Invoice.gsc_ProductIdName AS 'Model Description', Product.gsc_ModelYear AS 'Model Year', 
-                         InvoicedVehicle.gsc_ModelCode AS 'Model Code', InvoicedVehicle.gsc_OptionCode AS 'Option Code', InvoicedVehicle.gsc_EngineNo AS 'Engine No.', InvoicedVehicle.gsc_VIN AS 'VIN', 
-                         Invoice.gsc_VehicleColorId1Name AS 'Color', InvoicedVehicle.gsc_ProductionNo AS 'Production No.', InvoicedVehicle.gsc_CSNo AS 'CS No.', InvoicedVehicle.gsc_WarrantyBookletNo AS 'WB#', 
-                         Product.gsc_GrossVehicleWeight AS 'Gross Vehicle', Product.gsc_PistonDisplacement AS 'Piston Displacement', 
-                         CASE WHEN Product .gsc_FuelType = '100000000' THEN 'Gasoline' WHEN Product .gsc_FuelType = '100000001' THEN 'Diesel' ELSE '' END AS 'Fuel Used', Invoice.gsc_VehicleDetails AS 'Vehicle Details', 
-                         Product.gsc_VehicleTypeIdName AS 'Vehicle Type', Product.gsc_BodyTypeIdName AS 'Body Type', Product.gsc_Transmission AS 'Transmission', Product.gsc_WarrantyExpiryDays AS 'Warranty Years', 
-                         Product.gsc_WarrantyMileage AS 'Warranty Mileage', Product.gsc_OtherVehicleDetails AS 'Others', Invoice.gsc_UnitPrice AS 'Unit Price', Invoice.gsc_CCAddons AS 'CC AddOns', 
-                         Invoice.gsc_ColorPrice AS 'Color Price', Invoice.gsc_FreightandHandling AS 'Freight and Handling', Invoice.gsc_ApplyToUpAmount AS 'Total Discount Amount', Invoice.gsc_NetPrice AS 'Net Price', 
-                         Invoice.gsc_Accessories AS 'Accessories', Invoice.gsc_ChattelFee AS 'Chattel fee', Invoice.gsc_Insurance AS 'Insurance Charge', OrderCharge.gsc_ChargesIdName AS 'Charges', 
-                         OrderCharge.gsc_ActualCost AS 'Actual Cost', Invoice.gsc_Reservation AS 'Reservation', Invoice.gsc_NetDownPayment AS 'Net Downpayment', Invoice.gsc_VATableSales AS 'VATable Sales', 
-                         Invoice.gsc_VATEXEMPTSales AS 'VATEXEMPT Sales', Invoice.gsc_ZERORATEDSales AS 'ZERORATED Sales', Invoice.gsc_TotalSales AS 'Total Sales', Invoice.gsc_VATAmount AS 'VAT Amount', 
-                         Invoice.TotalAmount AS 'Total Amount Due', Invoice.gsc_TotalCashOutlay AS 'Total Cash Outlay', Invoice.gsc_DownPaymentDisplay AS 'Down Payment', Invoice.gsc_NetDownPayment AS 'Net Down Payment', 
-                         Invoice.gsc_AmountFinanced AS 'Total Amount Financed', Invoice.gsc_NetMonthlyAmortization AS 'Net MonthlyAmortization', Invoice.gsc_Remarks AS 'Remarks', Account.gsc_VSOTermsandAgreement AS 'TaA', 
-                         Account.Telephone1 AS 'Branch Telephone', Account.Fax AS 'Branch Fax', Account.gsc_VATReg AS 'Branch VAT Reg', Account.WebSiteURL AS 'Branch WebSite Url', Account.EntityImage AS 'Branch Entity Image', 
-                         Account.Name AS 'Branch Name', Account.EMailAddress1 AS 'Branch Email Address', Account.Address1_Line1 AS 'Branch Address', Account.gsc_CityIdName AS 'Branch City', 
-                         Account.gsc_ProvinceIdName AS 'Branch Province', Account.Address1_PostalCode AS 'Branch Postal Code', Account.Address2_Telephone2 AS 'Branch Service Number', 
-                         Account.Address2_Telephone1 AS 'Branch Sales Number', Invoice.gsc_RecordOwnerIdName AS 'PreparedBy', Contact_1.gsc_ReportsToName AS 'VerifyBy', Account.gsc_ApprovedBy AS 'ApprovedBy', 
-                         Invoice.gsc_Discount
+                               WHERE        contactid = Invoice.CustomerId) END AS 'Email Address', 
+				CASE WHEN Invoice.CustomerIdType = '1' THEN
+                             (SELECT        gsc_birthdate
+                               FROM            Account
+                               WHERE        AccountId = Invoice.CustomerId) ELSE
+                             (SELECT        birthdate 
+                               FROM         Contact
+                               WHERE        contactid = Invoice.CustomerId) END AS 'Birthday', 
+				Invoice.ShipTo_Composite AS 'Address', 
+				Account.gsc_Tin AS 'Tin', 
+				Invoice.CreatedOn AS 'Date', 
+				Invoice.gsc_DrNo AS 'DR No', 
+                Invoice.gsc_LeadSourceIdName AS 'Lead Source', 
+				Invoice.gsc_PaymentMode AS 'Payment Mode', 
+				InvoiceMonthlyAmortization.gsc_Selected AS 'Selected Financing Term',
+				CASE WHEN Invoice.gsc_PaymentMode = '100000001' THEN
+								(SELECT  
+								gsc_FinancingTermIdName 
+								FROM	
+								gsc_sls_InvoiceMonthlyAmortization
+								WHERE gsc_Selected = '1' AND Invoice.InvoiceId = gsc_InvoiceId) ELSE
+								'' END AS 'Financing Term', 
+                Invoice.gsc_SalesExecutiveIdName AS 'Sales Executive', 
+				(SELECT gsc_Name FROM gsc_sls_bank WHERE gsc_sls_bankid = Invoice.gsc_BankId) AS 'Bank', 
+				Invoice.gsc_ProductIdName AS 'Model Description', 
+				Product.gsc_ModelYear AS 'Model Year', 
+                InvoicedVehicle.gsc_ModelCode AS 'Model Code', 
+				InvoicedVehicle.gsc_OptionCode AS 'Option Code', 
+				InvoicedVehicle.gsc_EngineNo AS 'Engine No.', 
+				InvoicedVehicle.gsc_VIN AS 'VIN', 
+                Invoice.gsc_VehicleColorId1Name AS 'Color', 
+				InvoicedVehicle.gsc_ProductionNo AS 'Production No.', 
+				InvoicedVehicle.gsc_CSNo AS 'CS No.', 
+				InvoicedVehicle.gsc_WarrantyBookletNo AS 'WB#', 
+                Product.gsc_GrossVehicleWeight AS 'Gross Vehicle', 
+				Product.gsc_PistonDisplacement AS 'Piston Displacement', 
+                CASE WHEN Product .gsc_FuelType = '100000000' THEN 
+							'Gasoline' 
+							WHEN Product .gsc_FuelType = '100000001' THEN 
+							'Diesel' 
+							ELSE '' END AS 'Fuel Used', 
+				Invoice.gsc_VehicleDetails AS 'Vehicle Details', 
+                Product.gsc_VehicleTypeIdName AS 'Vehicle Type', 
+				Product.gsc_BodyTypeIdName AS 'Body Type', 
+				Product.gsc_Transmission AS 'Transmission', 
+				Product.gsc_WarrantyExpiryDays AS 'Warranty Years', 
+                Product.gsc_WarrantyMileage AS 'Warranty Mileage', 
+				Product.gsc_OtherVehicleDetails AS 'Others', 
+				Invoice.gsc_UnitPrice AS 'Unit Price', 
+				Invoice.gsc_CCAddons AS 'CC AddOns', 
+                Invoice.gsc_ColorPrice AS 'Color Price', 
+				Invoice.gsc_FreightandHandling AS 'Freight and Handling', 
+				Invoice.gsc_ApplyToUpAmount AS 'Total Discount Amount', 
+				Invoice.gsc_NetPrice AS 'Net Price', 
+                Invoice.gsc_Accessories AS 'Accessories', 
+				Invoice.gsc_ChattelFee AS 'Chattel fee', 
+				Invoice.gsc_Insurance AS 'Insurance Charge', 
+				OrderCharge.gsc_ChargesIdName AS 'Charges', 
+                OrderCharge.gsc_ActualCost AS 'Actual Cost', 
+				Invoice.gsc_Reservation AS 'Reservation', 
+				Invoice.gsc_NetDownPayment AS 'Net Downpayment', 
+				Invoice.gsc_VATableSales AS 'VATable Sales', 
+                Invoice.gsc_VATEXEMPTSales AS 'VATEXEMPT Sales', 
+				Invoice.gsc_ZERORATEDSales AS 'ZERORATED Sales', 
+				Invoice.gsc_TotalSales AS 'Total Sales', 
+				Invoice.gsc_VATAmount AS 'VAT Amount', 
+                Invoice.TotalAmount AS 'Total Amount Due', 
+				Invoice.gsc_TotalCashOutlay AS 'Total Cash Outlay', 
+				Invoice.gsc_DownPaymentAmount AS 'Down Payment', 
+				Invoice.gsc_NetDownPayment AS 'Net Down Payment', 
+                Invoice.gsc_AmountFinanced AS 'Total Amount Financed', 
+				Invoice.gsc_NetMonthlyAmortization AS 'Net MonthlyAmortization', 
+				Invoice.gsc_Remarks AS 'Remarks', 
+				Account.gsc_VSOTermsandAgreement AS 'TaA', 
+                Account.Telephone1 AS 'Branch Telephone', 
+				Account.Fax AS 'Branch Fax', 
+				Account.gsc_VATReg AS 'Branch VAT Reg', 
+				Account.WebSiteURL AS 'Branch WebSite Url', 
+				Account.EntityImage AS 'Branch Entity Image', 
+                Account.Name AS 'Branch Name', 
+				Account.EMailAddress1 AS 'Branch Email Address', 
+				Account.Address1_Line1 AS 'Branch Address', 
+				Account.gsc_CityIdName AS 'Branch City', 
+                Account.gsc_ProvinceIdName AS 'Branch Province', 
+				Account.Address1_PostalCode AS 'Branch Postal Code', 
+				Account.Address2_Telephone2 AS 'Branch Service Number', 
+                Account.Address2_Telephone1 AS 'Branch Sales Number', 
+				Invoice.gsc_RecordOwnerIdName AS 'PreparedBy', 
+				Contact_1.gsc_ReportsToName AS 'VerifyBy', 
+				Account.gsc_ApprovedBy AS 'ApprovedBy', 
+                Invoice.gsc_Discount
 FROM            Invoice LEFT OUTER JOIN
                          gsc_cmn_OrderCharge AS OrderCharge ON Invoice.gsc_ProductId = OrderCharge.gsc_OrderId LEFT OUTER JOIN
                          Account ON Invoice.gsc_BranchId = Account.AccountId LEFT OUTER JOIN
@@ -6442,6 +6522,10 @@ WHERE        (Invoice.InvoiceId = @reportid)</CommandText>
         <Field Name="Email_Address">
           <DataField>Email Address</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Birthday">
+          <DataField>Birthday</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="Address">
           <DataField>Address</DataField>
@@ -6470,6 +6554,10 @@ WHERE        (Invoice.InvoiceId = @reportid)</CommandText>
         <Field Name="Financing_Term">
           <DataField>Financing Term</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Selected_Financing_Term">
+          <DataField>Selected Financing Term</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
         <Field Name="Sales_Executive">
           <DataField>Sales Executive</DataField>

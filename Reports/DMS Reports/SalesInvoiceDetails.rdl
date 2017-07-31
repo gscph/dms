@@ -1559,7 +1559,8 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=First(Fields!Model_Description.Value,"SalesInvoice") + 
-IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First(Fields!CabChassis.Value, "CabChassis"),1,InStrRev(First(Fields!CabChassis.Value, "CabChassis") , "")) + " &amp;" 
+IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First(Fields!CabChassis.Value, "CabChassis"),1,
+InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
 + Mid(First(Fields!CabChassis.Value, "CabChassis"),InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")+1,LEN(First(Fields!CabChassis.Value, "CabChassis")) ))</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
@@ -6719,7 +6720,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
     <DataSource Name="SalesInvoice">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=DMSUATDB2;Initial Catalog=MMPCUAT_MSCRM</ConnectString>
+        <ConnectString>Data Source=XRMDMSDB;Initial Catalog=MMPCDEV_MSCRM</ConnectString>
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>4c3244d0-705d-4300-963b-98a10e9c52da</rd:DataSourceID>
@@ -6739,7 +6740,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
                              (SELECT        name
                                FROM            Account
                                WHERE        AccountId = Invoice.CustomerId) ELSE
-                             (SELECT        (FirstName + ' ' + MiddleName + ' ' + LastName)
+                             (SELECT        (FirstName + ' ' + ISNULL(MiddleName,'')  + ' ' + LastName)
                                FROM            Contact
                                WHERE        contactid = Invoice.CustomerId) END AS 'Customer', 
 				CASE WHEN Invoice.CustomerIdType = '1' THEN
@@ -6764,7 +6765,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
                                FROM         Contact
                                WHERE        contactid = Invoice.CustomerId) END AS 'Birthday', 
 				Invoice.ShipTo_Composite AS 'Address', 
-				Invoice.gsc_Tin AS 'Tin', 
+				Account.gsc_Tin AS 'Tin', 
 				Invoice.CreatedOn AS 'Date', 
 				Invoice.gsc_DrNo AS 'DR No', 
                 Invoice.gsc_LeadSourceIdName AS 'Lead Source', 
@@ -7181,7 +7182,8 @@ WHERE        (Invoice.InvoiceId = @reportid)</CommandText>
         <CommandText>SELECT        REPLACE(STUFF
                              ((SELECT        ', ' + gsc_VehicleCabChassisIdName AS 'data()'
                                  FROM            gsc_invoicecabchassis
-                                 WHERE        (gsc_InvoiceId = @reportid) FOR XML PATH('')), 1, 1, ''), ' ,', ',') AS CabChassis</CommandText>
+                                 WHERE        (gsc_InvoiceId = @reportid) FOR XML PATH(''), root('MyString'), type
+     ).value('/MyString[1]','varchar(max)'), 1, 1, ''), ' ,', ',') AS CabChassis</CommandText>
       </Query>
       <Fields>
         <Field Name="CabChassis">
