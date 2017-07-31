@@ -6,7 +6,10 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+    <link href="~/css/dms/handsontable.full.min.css" rel="stylesheet" />
     <link href="~/css/dms/entity-form.css" rel="stylesheet" />
+    <link href="~/css/dms/handsontable.bootstrap.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css" rel="stylesheet" />
     <style>
         .no-border {
             border: none;
@@ -33,7 +36,6 @@
     </script>
     <h1 class="hidden" id="webPageId">
         <adx:Property PropertyName="adx_webpageid" Editable="false" DataItem='<%$ CrmSiteMap: Current %>' runat="server" />
-
     </h1>
 
     <div id="loader">
@@ -85,7 +87,32 @@
                 PortalName="<%$ SiteSetting: Language Code %>" />
         </div>
     </div>
-
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.27.0/handsontable.full.js"></script>
+    <script>
+        numbro.language('fil-PH', {
+            delimiters: {
+                thousands: ',',
+                decimal: '.'
+            },
+            abbreviations: {
+                thousand: 'k',
+                million: 'm',
+                billion: 'b',
+                trillion: 't'
+            },
+            ordinal: function (number) {
+                var b = number % 10;
+                return (~~(number % 100 / 10) === 1) ? 'th' :
+                    (b === 1) ? 'st' :
+                    (b === 2) ? 'nd' :
+                    (b === 3) ? 'rd' : 'th';
+            },
+            currency: {
+                symbol: '₱'
+            }
+        });
+    </script>
     <script src="~/js/dms/accordion.js"></script>
     <script src="~/js/dms/multi-select.js"></script>
 </asp:Content>
@@ -102,11 +129,6 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content10" ContentPlaceHolderID="Scripts" runat="server">
-    <script src="~/js/dms/datepicker-reinit.js"></script>
-    <script src="~/js/dms/entity-form.js"></script>
-    <script src="~/js/dms/primary-field.js"></script>
-    <script src="~/js/dms/modal-customization.js"></script>
-    <script src="~/js/dms/subgrid-counter.js"></script>
     <script src="~/js/dms/jquery.signalR-2.0.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
     <script>
@@ -234,6 +256,18 @@
             });
         });
     </script>
+    <script src="~/js/dms/hot-renderers.js"></script>
+    <script src="~/js/dms/select2-editor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.js"></script>
+    <script src="~/js/dms/edit-on-doubleclick.js"></script>
+    <script src="~/js/dms/generic-grid.js"></script>
+    <script src="~/js/dms/currency-fields.js"></script>
+    <script src="~/js/dms/datepicker-reinit.js"></script>
+    <script src="~/js/dms/entity-form.js"></script>
+    <script src="~/js/dms/computation-total.js"></script>
+    <script src="~/js/dms/primary-field.js"></script>
+    <script src="~/js/dms/modal-customization.js"></script>
+    <script src="~/js/dms/subgrid-counter.js"></script>
    <script src="~/js/dms/subgrid-button-permission.js"></script>
 
 </asp:Content>

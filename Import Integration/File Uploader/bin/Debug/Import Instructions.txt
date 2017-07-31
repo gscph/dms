@@ -1,0 +1,19 @@
+*** To integrate records in the DMS follow the instructions below.
+
+1.) After filling up the excel template with records. Save it in the same folder with FileUploader.exe
+2.) Run the FileUploader.exe and punch in the correct file name.
+3.) When the file is successfully uploaded in the server. It will be processed automatically during 7am and 8am in the morning. If no files were detected, the application will not run.
+
+
+
+
+
+Notes:
+
+- the excel template file should be used in order for it to be processed.
+- file being uploaded should be along the folder with FileUploader.exe
+- if a record / row is invalid it will not be integrated with the DMS. The integration tool will continue to run through the remaining rows. An email notification will be sent to the configured receipients where a log file is included that may be used to trace invalid rows.
+  
+
+
+

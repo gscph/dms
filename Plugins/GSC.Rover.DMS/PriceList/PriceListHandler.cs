@@ -67,7 +67,7 @@ namespace GSC.Rover.DMS.BusinessLogic.PriceList
             }
             //productpricelevel
 
-            if (transactionType == 100000000)
+            if (transactionType == 100000000)//Vehicle Sales
             {
                 EntityCollection priceListItemCollection = CommonHandler.RetrieveRecordsByOneValue("productpricelevel", "pricelevelid", priceList.Id, _organizationService, null, OrderType.Ascending,
                    new[] { "amount", "productid", "pricelevelid" });
@@ -453,9 +453,9 @@ namespace GSC.Rover.DMS.BusinessLogic.PriceList
                 var errormsg = "";
 
                 if (itemType == 1)
-                    errormsg = "Atleast one of the accessories associated to this vehicle has no effective price list.";
+                    errormsg = "At least one of the accessories associated to this vehicle has no effective price list.";
                 else if (itemType == 2)
-                    errormsg = "Atleast one of the cab chassis associated to this vehicle has no effective price list.";
+                    errormsg = "At least one of the cab chassis associated to this vehicle has no effective price list.";
                 else
                     errormsg = "There is no effecive price list for the selected vehicle.";
 

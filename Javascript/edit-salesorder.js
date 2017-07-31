@@ -444,7 +444,7 @@ $(document).ready(function () {
             showLoading();
 
             $("#gsc_inventoryidtoallocate").val(id);
-            $("#UpdateButton").click();
+            //   $("#UpdateButton").click();
         }
         else {
             DMS.Notification.Error(" You can only allocate one vehicle per transaction.", true, 5000);

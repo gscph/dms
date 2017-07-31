@@ -44,8 +44,6 @@ namespace GSC.Rover.DMS.BusinessLogic.Invoice
                 ? invoiceEntity.GetAttributeValue<EntityReference>("salesorderid").Id
                 : Guid.Empty;
 
-            _tracingService.Trace("a"); 
-
             //Retrieve Order records
             EntityCollection salesOrderRecords = CommonHandler.RetrieveRecordsByOneValue("salesorder", "salesorderid", salesOrderId, _organizationService, null, OrderType.Ascending,
                  new[] {  "gsc_dealerid", "gsc_branchid", "gsc_recordownerid",
@@ -67,7 +65,6 @@ namespace GSC.Rover.DMS.BusinessLogic.Invoice
 
             if (salesOrderRecords != null && salesOrderRecords.Entities.Count > 0)
             {
-                _tracingService.Trace("0"); 
                 Entity salesOrder = salesOrderRecords.Entities[0];
 
                 String today = DateTime.Today.ToString("MM-dd-yyyy");
@@ -79,26 +76,21 @@ namespace GSC.Rover.DMS.BusinessLogic.Invoice
                 invoiceEntity["gsc_dealerid"] = salesOrder.GetAttributeValue<EntityReference>("gsc_dealerid") != null
                     ? new EntityReference("account", salesOrder.GetAttributeValue<EntityReference>("gsc_dealerid").Id)
                     : null;
-                _tracingService.Trace("1");
                 invoiceEntity["gsc_branchid"] = salesOrder.GetAttributeValue<EntityReference>("gsc_branchid") != null
                     ? new EntityReference("account", salesOrder.GetAttributeValue<EntityReference>("gsc_branchid").Id)
                     : null;
-                _tracingService.Trace("2"); 
                 #endregion
 
                 #region Invoice Information
                 invoiceEntity["gsc_leadsourceid"] = salesOrder.GetAttributeValue<EntityReference>("gsc_leadsourceid") != null
                     ? new EntityReference("gsc_sls_leadsource", salesOrder.GetAttributeValue<EntityReference>("gsc_leadsourceid").Id)
                     : null;
-                _tracingService.Trace("3");
                 invoiceEntity["gsc_salesexecutiveid"] = salesOrder.GetAttributeValue<EntityReference>("gsc_salesexecutiveid") != null
                     ? new EntityReference("contact", salesOrder.GetAttributeValue<EntityReference>("gsc_salesexecutiveid").Id)
                     : null;
-                _tracingService.Trace("4");
                 invoiceEntity["gsc_paymentmode"] = salesOrder.GetAttributeValue<OptionSetValue>("gsc_paymentmode") != null
                     ? new OptionSetValue(salesOrder.GetAttributeValue<OptionSetValue>("gsc_paymentmode").Value)
                     : null;
-                _tracingService.Trace("5");
                 invoiceEntity["gsc_salesinvoicestatus"] = new OptionSetValue(100000000);
                 #endregion
 
@@ -109,51 +101,39 @@ namespace GSC.Rover.DMS.BusinessLogic.Invoice
                 invoiceEntity["gsc_customertype"] = salesOrder.GetAttributeValue<OptionSetValue>("gsc_customertype") != null
                     ? new OptionSetValue(salesOrder.GetAttributeValue<OptionSetValue>("gsc_customertype").Value)
                     : null;
-                _tracingService.Trace("6");
                 invoiceEntity["shipto_composite"] = salesOrder.GetAttributeValue<String>("gsc_address") != null
                     ? salesOrder.GetAttributeValue<String>("gsc_address")
                     : null;
-                _tracingService.Trace("8");
                 invoiceEntity["gsc_tin"] = salesOrder.GetAttributeValue<String>("gsc_tin") != null
                     ? salesOrder.GetAttributeValue<String>("gsc_tin")
                     : null;
                 invoiceEntity["gsc_markup"] = salesOrder.Contains("gsc_markup") != null
                    ? salesOrder.GetAttributeValue<Decimal>("gsc_markup")
                    : 0;
-                _tracingService.Trace("9");
-              
-
                 #endregion
 
                 #region Vehicle Information
                 invoiceEntity["gsc_productid"] = salesOrder.GetAttributeValue<EntityReference>("gsc_productid") != null
                     ? new EntityReference("product", salesOrder.GetAttributeValue<EntityReference>("gsc_productid").Id)
                     : null;
-                _tracingService.Trace("10");
                 invoiceEntity["gsc_vehicleunitprice"] = salesOrder.GetAttributeValue<Money>("gsc_vehicleunitprice") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_vehicleunitprice").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("11");
                 invoiceEntity["gsc_vehiclecolorid1"] = salesOrder.GetAttributeValue<EntityReference>("gsc_vehiclecolorid1") != null
                     ? new EntityReference("gsc_cmn_vehiclecolor", salesOrder.GetAttributeValue<EntityReference>("gsc_vehiclecolorid1").Id)
                     : null;
-                _tracingService.Trace("12");
                 invoiceEntity["gsc_vehiclecolorid2"] = salesOrder.GetAttributeValue<EntityReference>("gsc_vehiclecolorid2") != null
                     ? new EntityReference("gsc_cmn_vehiclecolor", salesOrder.GetAttributeValue<EntityReference>("gsc_vehiclecolorid2").Id)
                     : null;
-                _tracingService.Trace("13");
                 invoiceEntity["gsc_vehiclecolorid3"] = salesOrder.GetAttributeValue<EntityReference>("gsc_vehiclecolorid3") != null
                     ? new EntityReference("gsc_cmn_vehiclecolor", salesOrder.GetAttributeValue<EntityReference>("gsc_vehiclecolorid3").Id)
                     : null;
-                _tracingService.Trace("14");
                 invoiceEntity["gsc_vehicledetails"] = salesOrder.GetAttributeValue<String>("gsc_vehicledetails") != null
                     ? salesOrder.GetAttributeValue<String>("gsc_vehicledetails")
                     : null;
-                _tracingService.Trace("15");
                 invoiceEntity["gsc_remarks"] = salesOrder.GetAttributeValue<String>("gsc_remarks") != null
                     ? salesOrder.GetAttributeValue<String>("gsc_remarks")
                     : null;
-                _tracingService.Trace("16");
                 #endregion
 
                 #region Payment Summary
@@ -235,127 +215,98 @@ namespace GSC.Rover.DMS.BusinessLogic.Invoice
                 invoiceEntity["gsc_downpaymentamount"] = salesOrder.GetAttributeValue<Money>("gsc_downpaymentamount") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_downpaymentamount").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("30");
                 invoiceEntity["gsc_downpaymentpercentage"] = salesOrder.GetAttributeValue<Double>("gsc_downpaymentpercentage") != null
                     ? salesOrder.GetAttributeValue<Double>("gsc_downpaymentpercentage")
                     : 0;
-                _tracingService.Trace("31");
                 invoiceEntity["gsc_downpaymentdiscount"] = salesOrder.GetAttributeValue<Money>("gsc_downpaymentdiscount") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_downpaymentdiscount").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("32");
                 invoiceEntity["gsc_netdownpayment"] = salesOrder.GetAttributeValue<Money>("gsc_netdownpayment") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_netdownpayment").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("33");
                 invoiceEntity["gsc_amountfinanced"] = salesOrder.GetAttributeValue<Money>("gsc_amountfinanced") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_amountfinanced").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("34");
                 invoiceEntity["gsc_discountamountfinanced"] = salesOrder.GetAttributeValue<Money>("gsc_discountamountfinanced") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_discountamountfinanced").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("33");
                 invoiceEntity["gsc_netamountfinanced"] = salesOrder.GetAttributeValue<Money>("gsc_netamountfinanced") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_netamountfinanced").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("34");
                 invoiceEntity["gsc_bankid"] = salesOrder.GetAttributeValue<EntityReference>("gsc_bankid") != null
                     ? new EntityReference("gsc_sls_bank", salesOrder.GetAttributeValue<EntityReference>("gsc_bankid").Id)
                     : null;
-                _tracingService.Trace("35");
                 invoiceEntity["gsc_financingschemeid"] = salesOrder.GetAttributeValue<EntityReference>("gsc_financingschemeid") != null
                     ? new EntityReference("gsc_cmn_financingscheme", salesOrder.GetAttributeValue<EntityReference>("gsc_financingschemeid").Id)
                     : null;
-                _tracingService.Trace("36");
                 invoiceEntity["gsc_freechattelfee"] = salesOrder.GetAttributeValue<Boolean>("gsc_freechattelfee");
-                _tracingService.Trace("37");
                 invoiceEntity["gsc_chattelfeeeditable"] = salesOrder.GetAttributeValue<Money>("gsc_chattelfeeeditable") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_chattelfeeeditable").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("34");
                 #endregion
 
                 #region Discounts
                 invoiceEntity["gsc_totaldiscountamount"] = salesOrder.GetAttributeValue<Money>("gsc_totaldiscountamount") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_totaldiscountamount").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("38");
                 invoiceEntity["gsc_applytodppercentage"] = salesOrder.GetAttributeValue<Double>("gsc_applytodppercentage") != null
                     ? salesOrder.GetAttributeValue<Double>("gsc_applytodppercentage")
                     : 0;
-                _tracingService.Trace("39");
                 invoiceEntity["gsc_applytoafpercentage"] = salesOrder.GetAttributeValue<Double>("gsc_applytoafpercentage") != null
                     ? salesOrder.GetAttributeValue<Double>("gsc_applytoafpercentage")
                     : 0;
-                _tracingService.Trace("40");
                 invoiceEntity["gsc_applytouppercentage"] = salesOrder.GetAttributeValue<Double>("gsc_applytouppercentage") != null
                     ? salesOrder.GetAttributeValue<Double>("gsc_applytouppercentage")
                     : 0;
-                _tracingService.Trace("41");
                 invoiceEntity["gsc_applytodpamount"] = salesOrder.GetAttributeValue<Money>("gsc_applytodpamount") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_applytodpamount").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("42");
                 invoiceEntity["gsc_applytoafamount"] = salesOrder.GetAttributeValue<Money>("gsc_applytoafamount") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_applytoafamount").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("43");
                 invoiceEntity["gsc_applytoupamount"] = salesOrder.GetAttributeValue<Money>("gsc_applytoupamount") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_applytoupamount").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("44");
                 #endregion
 
                 #region Insurance
                 invoiceEntity["gsc_insuranceid"] = salesOrder.GetAttributeValue<EntityReference>("gsc_insuranceid") != null
                     ? new EntityReference("gsc_cmn_insurance", salesOrder.GetAttributeValue<EntityReference>("gsc_insuranceid").Id)
                     : null;
-                _tracingService.Trace("45");
                 invoiceEntity["gsc_vehicletypeid"] = salesOrder.GetAttributeValue<EntityReference>("gsc_vehicletypeid") != null
                     ? new EntityReference("gsc_iv_vehicletype", salesOrder.GetAttributeValue<EntityReference>("gsc_vehicletypeid").Id)
                     : null;
-                _tracingService.Trace("46");
                 invoiceEntity["gsc_providerid"] = salesOrder.GetAttributeValue<EntityReference>("gsc_providercompanyid") != null
                     ? salesOrder.GetAttributeValue<EntityReference>("gsc_providercompanyid")
                     : null;
-                _tracingService.Trace("45");
                 invoiceEntity["gsc_vehicleuse"] = salesOrder.GetAttributeValue<OptionSetValue>("gsc_vehicleuse") != null
                     ? new OptionSetValue(salesOrder.GetAttributeValue<OptionSetValue>("gsc_vehicleuse").Value)
                     : null;
-                _tracingService.Trace("47");
                 invoiceEntity["gsc_free"] = salesOrder.GetAttributeValue<Boolean>("gsc_free");
-                _tracingService.Trace("48");
                 invoiceEntity["gsc_rate"] = salesOrder.Contains("gsc_rate")
                     ? salesOrder.GetAttributeValue<Double>("gsc_rate")
                     : (Double)0;
-                _tracingService.Trace("49");
                 invoiceEntity["gsc_cost"] = salesOrder.GetAttributeValue<Money>("gsc_cost") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_cost").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("50");
                 invoiceEntity["gsc_totalpremium"] = salesOrder.GetAttributeValue<Money>("gsc_totalpremium") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_totalpremium").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("51");
                 invoiceEntity["gsc_originaltotalpremium"] = salesOrder.GetAttributeValue<Money>("gsc_originaltotalpremuim") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_originaltotalpremuim").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("52");
                 #endregion
 
                 #region Charges
                 invoiceEntity["gsc_totalchargesamount"] = salesOrder.GetAttributeValue<Money>("gsc_totalchargesamount") != null
                     ? new Money(salesOrder.GetAttributeValue<Money>("gsc_totalchargesamount").Value)
                     : new Money(Decimal.Zero);
-                _tracingService.Trace("53");
                 #endregion
 
                 #region Document Checklist
                 invoiceEntity["gsc_documentstatus"] = salesOrder.Contains("gsc_documentstatus") != null
                     ? salesOrder.GetAttributeValue<OptionSetValue>("gsc_documentstatus")
                     : null;
-                _tracingService.Trace("53");
                 #endregion
 
                 #region Sales Date Entries
@@ -365,55 +316,43 @@ namespace GSC.Rover.DMS.BusinessLogic.Invoice
                 invoiceEntity["gsc_promiseddeliverydate"] = salesOrder.Contains("gsc_promiseddeliverydate")
                     ? salesOrder.GetAttributeValue<DateTime?>("gsc_promiseddeliverydate")
                     : (DateTime?)null;
-                _tracingService.Trace("70");
                 invoiceEntity["gsc_placeofrelease"] = salesOrder.GetAttributeValue<String>("gsc_placeofrelease") != null
                     ? salesOrder.GetAttributeValue<String>("gsc_placeofrelease")
                     : String.Empty;
                 invoiceEntity["gsc_deliverytermsremarks"] = salesOrder.GetAttributeValue<String>("gsc_deliverytermsremarks") != null
                     ? salesOrder.GetAttributeValue<String>("gsc_deliverytermsremarks")
                     : String.Empty;
-                _tracingService.Trace("71");
                 invoiceEntity["gsc_quotedate"] = salesOrder.Contains("gsc_quotedate")
                     ? salesOrder.GetAttributeValue<DateTime?>("gsc_quotedate")
                     : (DateTime?)null;
-                _tracingService.Trace("72");
                 invoiceEntity["gsc_orderdate"] = salesOrder.Contains("gsc_orderdate")
                     ? salesOrder.GetAttributeValue<DateTime?>("gsc_orderdate")
                     : (DateTime?)null;
-                _tracingService.Trace("73");
                 invoiceEntity["gsc_requestedallocationdate"] = salesOrder.Contains("gsc_requestedallocationdate")
                     ? salesOrder.GetAttributeValue<DateTime?>("gsc_requestedallocationdate")
                     : (DateTime?)null;
-                _tracingService.Trace("74");
                 invoiceEntity["gsc_vehicleallocateddate"] = salesOrder.Contains("gsc_vehicleallocateddate")
                     ? salesOrder.GetAttributeValue<DateTime?>("gsc_vehicleallocateddate")
                     : (DateTime?)null;
-                _tracingService.Trace("75");
                 invoiceEntity["gsc_transferreddateforinvoicing"] = salesOrder.Contains("gsc_transferreddateforinvoicing")
                     ? salesOrder.GetAttributeValue<DateTime?>("gsc_transferreddateforinvoicing")
                     : (DateTime?)null;
-                _tracingService.Trace("76");
                 invoiceEntity["gsc_ordercancelleddate"] = salesOrder.Contains("gsc_ordercancelleddate")
                     ? salesOrder.GetAttributeValue<DateTime?>("gsc_ordercancelleddate")
                     : (DateTime?)null;
-                _tracingService.Trace("77");
                 invoiceEntity["gsc_createddate"] = Convert.ToDateTime(today);
                 invoiceEntity["gsc_invoicedate"] = salesOrder.Contains("gsc_invoicedate")
                     ? salesOrder.GetAttributeValue<DateTime?>("gsc_invoicedate")
                     : (DateTime?)null;
-                _tracingService.Trace("78");
                 invoiceEntity["gsc_printeddrdate"] = salesOrder.Contains("gsc_printeddrdate")
                     ? salesOrder.GetAttributeValue<DateTime?>("gsc_printeddrdate")
                     : (DateTime?)null;
-                _tracingService.Trace("79");
                 invoiceEntity["gsc_releaseddate"] = salesOrder.Contains("gsc_releaseddate")
                     ? salesOrder.GetAttributeValue<DateTime?>("gsc_releaseddate")
                     : (DateTime?)null;
                 invoiceEntity["gsc_invoicecancelleddate"] = salesOrder.Contains("gsc_invoicecancelleddate")
                     ? salesOrder.GetAttributeValue<DateTime?>("gsc_invoicecancelleddate")
                     : (DateTime?)null;
-                _tracingService.Trace("80");
-                _tracingService.Trace("81");
                 #endregion
 
             }
@@ -2078,6 +2017,57 @@ namespace GSC.Rover.DMS.BusinessLogic.Invoice
 
             _tracingService.Trace("Ended CreateSoldInventoryHistory method..");
             return invoiceEntity;
+        }
+
+         //Created By : Leslie Baliguat, Created On : 7/28/2017
+        /*Purpose: Check if there is no created open Invoice from the same SO
+         * Registration Details: 
+         * Event/Message:
+         *      Post/Update: Sales Invoice Status
+         * Primary Entity: Invoice
+         */
+        public bool IsInvoiceExists(Entity salesInvoice)
+        {
+            var salesOrderId = salesInvoice.GetAttributeValue<EntityReference>("salesorderid") != null
+               ? salesInvoice.GetAttributeValue<EntityReference>("salesorderid").Id
+               : Guid.Empty;
+
+             //Custom filter for Invoice Discount
+            var invoiceConditionList = new List<ConditionExpression>
+                {
+                    new ConditionExpression("salesorderid", ConditionOperator.Equal, salesOrderId),
+                    new ConditionExpression("gsc_salesinvoicestatus", ConditionOperator.NotEqual, 100000005)
+                };
+
+            EntityCollection invoiceRecords = CommonHandler.RetrieveRecordsByConditions("invoice", invoiceConditionList, _organizationService, null, OrderType.Ascending,
+                new[] { "salesorderid"});
+
+            if (invoiceRecords != null && invoiceRecords.Entities.Count > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public Entity UpdateSOStatus(Entity salesInvoice)
+        {
+            var salesOrderId = salesInvoice.GetAttributeValue<EntityReference>("salesorderid") != null
+               ? salesInvoice.GetAttributeValue<EntityReference>("salesorderid").Id
+               : Guid.Empty;
+
+            //Retrieve Sales Order record
+            EntityCollection orderRecords = CommonHandler.RetrieveRecordsByOneValue("salesorder", "salesorderid", salesOrderId, _organizationService, null, OrderType.Ascending,
+                new[] { "gsc_status"});
+
+            if (orderRecords != null || orderRecords.Entities.Count > 0)
+            {
+                Entity order = orderRecords.Entities[0];
+                order["gsc_status"] = new OptionSetValue(100000007);
+                _organizationService.Update(order);
+            }
+
+            return salesInvoice;
         }
     }
 }

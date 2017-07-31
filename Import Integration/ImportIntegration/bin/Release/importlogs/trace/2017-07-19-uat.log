@@ -1,0 +1,33 @@
+2017-07-19 10:41:47.2789 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-19 10:41:47.3681 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-19 10:41:47.3681 INFO Checking configuration for file name to be parsed..
+2017-07-19 10:41:50.7522 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-19 10:42:06.2953 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-19 10:42:06.3434 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-19 10:42:06.3434 INFO Checking configuration for file name to be parsed..
+2017-07-19 10:42:06.3524 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-19 10:42:35.6706 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-19 10:42:35.7097 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-19 10:42:35.7137 INFO Checking configuration for file name to be parsed..
+2017-07-19 10:42:35.7137 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-19 10:43:04.5960 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-19 10:43:04.6421 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-19 10:43:04.6421 INFO Checking configuration for file name to be parsed..
+2017-07-19 10:43:04.6512 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-19 11:40:23.9601 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-19 11:40:24.0052 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-19 11:40:24.0097 INFO Checking configuration for file name to be parsed..
+2017-07-19 11:40:24.0097 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-19 11:40:33.1985 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-19 11:40:33.2426 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-19 11:40:33.2426 INFO Checking configuration for file name to be parsed..
+2017-07-19 11:40:33.2426 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-19 13:20:36.5495 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-19 13:20:36.5921 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-19 13:20:36.5921 INFO Checking configuration for file name to be parsed..
+2017-07-19 13:20:36.6022 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-19 17:35:16.5724 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-19 17:35:16.6130 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-19 17:35:16.6170 INFO Checking configuration for file name to be parsed..
+2017-07-19 17:35:16.6170 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-19 17:35:16.6640 ERROR An unexpected error occured during the execution of import: Message : "Could not find file 'C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Release\Vehicle Receiving.xlsx'." 

@@ -1,0 +1,6 @@
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\File Uploader\bin\Release\File Uploader.exe.config
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\File Uploader\bin\Release\File Uploader.exe
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\File Uploader\bin\Release\File Uploader.pdb
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\File Uploader\obj\Release\File Uploader.exe
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\File Uploader\obj\Release\File Uploader.pdb
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\File Uploader\obj\Release\File Uploader.csprojResolveAssemblyReference.cache

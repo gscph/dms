@@ -121,7 +121,8 @@
     <Reference Include="GSC.Rover.DMS.BusinessLogic.Invitation">
       <HintPath>..\..\..\GSC.Rover.DMS\Invitation\bin\Release\GSC.Rover.DMS.BusinessLogic.Invitation.dll</HintPath>
     </Reference>
-    <Reference Include="GSC.Rover.DMS.BusinessLogic.Invoice">
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.Invoice, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\GSC.Rover.DMS\Invoice\bin\Release\GSC.Rover.DMS.BusinessLogic.Invoice.dll</HintPath>
     </Reference>
     <Reference Include="GSC.Rover.DMS.BusinessLogic.Opportunity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7c9699a7e9c67cb1, processorArchitecture=MSIL">

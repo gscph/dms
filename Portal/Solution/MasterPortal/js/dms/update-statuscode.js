@@ -21,7 +21,7 @@
 
         recordArr = updatePermissionValidator(recordArr);
         if (recordArr.length <= 0) {
-            DMS.Notification.Error('You are unauthorized to modify this record.');
+            DMS.Notification.Error('You are unauthorized to delete this record.');
             return false;
         }
 
@@ -40,7 +40,7 @@
 
         recordArr = updatePermissionValidator(recordArr);
         if (recordArr.length <= 0) {
-            DMS.Notification.Error('You are unauthorized to modify this record.');
+            DMS.Notification.Error('You are unauthorized to delete this record.');
             return false;
         }
 
@@ -117,6 +117,14 @@ function updatePermissionValidator(records) {
     if (DMS.Settings.Permission.UpdateScope !== 756150000) {
         records.forEach(function (value, index) {
             var $tr = $('tr[data-id=' + value + ']');
+            var tdGlobalRecord = $tr.find('td[data-attribute="gsc_isglobalrecord"]');
+
+            if (typeof tdGlobalRecord !== 'undefined') {
+                if (tdGlobalRecord.data('value') == true) {
+                    records.splice(index, 1);
+                    return true;
+                }
+            }
 
             if (DMS.Settings.Permission.UpdateScope == 756150002) {
                 var tdBranchId = $tr.find('td[data-attribute="gsc_branchid"]');

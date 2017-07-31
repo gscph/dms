@@ -49,6 +49,7 @@
                           <Color>Black</Color>
                           <Width>1pt</Width>
                         </BottomBorder>
+                        <BackgroundColor>#ed0000</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
@@ -87,6 +88,7 @@
                           <Color>Black</Color>
                           <Width>1pt</Width>
                         </BottomBorder>
+                        <BackgroundColor>#ed0000</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -97,7 +99,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.43917in</Height>
+              <Height>0.21in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -148,7 +150,6 @@
                   <CellContents>
                     <Textbox Name="Customer">
                       <CanGrow>true</CanGrow>
-                      <CanShrink>true</CanShrink>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -657,6 +658,146 @@
                 </TablixCell>
               </TablixCells>
             </TablixRow>
+            <TablixRow>
+              <Height>0.21in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox14">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>TIN:</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox8</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Tin">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Tin.Value</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Tin</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox22">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox22</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
@@ -673,12 +814,13 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>SalesInvoice</DataSetName>
         <Top>0.07in</Top>
         <Left>0.35in</Left>
-        <Height>1.69917in</Height>
+        <Height>1.68in</Height>
         <Width>4.54495in</Width>
         <Style>
           <Border>
@@ -732,6 +874,7 @@
                         <LeftBorder>
                           <Color>Silver</Color>
                         </LeftBorder>
+                        <BackgroundColor>#ed0000</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
@@ -1221,187 +1364,6 @@
                 </TablixCell>
               </TablixCells>
             </TablixRow>
-            <TablixRow>
-              <Height>0.21in</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox113">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>TIN:</Value>
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Left</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox113</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Width>1pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </RightBorder>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Tin1">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!Tin.Value</Value>
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Tin1</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </RightBorder>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
-            <TablixRow>
-              <Height>0.21in</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox115">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Birthdate:</Value>
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Left</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox115</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Width>1pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Width>1pt</Width>
-                        </RightBorder>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Birthday">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!Birthday.Value</Value>
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                                <Format>MMMM d, yyyy</Format>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Left</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Birthday</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
@@ -1418,14 +1380,12 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
-            <TablixMember />
-            <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>SalesInvoice</DataSetName>
         <Top>0.07in</Top>
         <Left>4.87833in</Left>
-        <Height>1.68in</Height>
+        <Height>1.26in</Height>
         <Width>3.11167in</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -1476,6 +1436,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
+                        <BackgroundColor>#ed0000</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
@@ -1509,6 +1470,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
+                        <BackgroundColor>#ed0000</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
@@ -1559,8 +1521,12 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=First(Fields!Model_Description.Value,"SalesInvoice") + 
+<<<<<<< HEAD
 IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First(Fields!CabChassis.Value, "CabChassis"),1,
 InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
+=======
+IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First(Fields!CabChassis.Value, "CabChassis"),1,InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;" 
+>>>>>>> origin/master
 + Mid(First(Fields!CabChassis.Value, "CabChassis"),InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")+1,LEN(First(Fields!CabChassis.Value, "CabChassis")) ))</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
@@ -2382,7 +2348,7 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=IIF(Fields!WB_.Value is Nothing, "",Fields!WB_.Value)</Value>
+                              <Value>=Fields!Gross_Vehicle.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                               </Style>
@@ -2472,14 +2438,14 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Gross_Vehicle">
+                    <Textbox Name="WB_">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Gross_Vehicle.Value</Value>
+                              <Value>=Fields!WB_.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                               </Style>
@@ -2490,7 +2456,7 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Gross_Vehicle</rd:DefaultName>
+                      <rd:DefaultName>WB_</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -2774,13 +2740,10 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
               <Width>0.2in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.32152in</Width>
+              <Width>0.38227in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.64292in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>0.18in</Width>
+              <Width>0.7494in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -2816,6 +2779,7 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                           <Color>Red</Color>
                           <Style>None</Style>
                         </Border>
+                        <BackgroundColor>#ed0000</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
@@ -2856,6 +2820,7 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                         <BottomBorder>
                           <Width>2pt</Width>
                         </BottomBorder>
+                        <BackgroundColor>#ed0000</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
@@ -2865,44 +2830,6 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                 </TablixCell>
                 <TablixCell />
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox19">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                                <FontWeight>Bold</FontWeight>
-                                <TextDecoration>None</TextDecoration>
-                                <Color>White</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Left</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox19</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>Red</Color>
-                          <Style>None</Style>
-                        </Border>
-                        <BottomBorder>
-                          <Width>2pt</Width>
-                        </BottomBorder>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -3006,37 +2933,6 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox25">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox25</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -3140,37 +3036,6 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox52">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox52</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -3274,41 +3139,10 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox60">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox60</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.18in</Height>
+              <Height>0.21in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -3408,37 +3242,6 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox64">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox64</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -3543,37 +3346,6 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox65">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox65</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -3677,37 +3449,6 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox75">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox75</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -3840,37 +3581,6 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                     </Textbox>
                   </CellContents>
                 </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox88">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox88</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -3976,38 +3686,6 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox90">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox90</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -4113,37 +3791,6 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox92">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox92</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -4249,37 +3896,6 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox96">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox96</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -4385,37 +4001,6 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox98">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox98</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -4521,37 +4106,6 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox101">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox101</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -4657,37 +4211,6 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox110">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox110</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -4738,7 +4261,7 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Microsoft.VisualBasic.Interaction.IIF(Fields!Down_Payment.Value = Nothing, Nothing, "₱")</Value>
+                              <Value>=Microsoft.VisualBasic.Interaction.IIF(Fields!Net_Down_Payment.Value = Nothing, Nothing, "₱")</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                               </Style>
@@ -4768,7 +4291,7 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Microsoft.VisualBasic.Interaction.IIF(Sum(Fields!Down_Payment.Value, "SalesInvoice") = Nothing, "-      ", Fields!Down_Payment.Value)</Value>
+                              <Value>=Microsoft.VisualBasic.Interaction.IIF(Sum(Fields!Net_Downpayment.Value, "SalesInvoice") = Nothing, "-      ", Fields!Net_Downpayment.Value)</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <Format>#,0.00;(#,0.00)</Format>
@@ -4793,37 +4316,6 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox111">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox111</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -4929,44 +4421,12 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox112">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox112</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
           <TablixMembers>
-            <TablixMember />
             <TablixMember />
             <TablixMember />
             <TablixMember />
@@ -4997,8 +4457,8 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
         <DataSetName>SalesInvoice</DataSetName>
         <Top>1.80885in</Top>
         <Left>4.87833in</Left>
-        <Height>3.20614in</Height>
-        <Width>3.12444in</Width>
+        <Height>3.23614in</Height>
+        <Width>3.11167in</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -6104,6 +5564,7 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
+                        <BackgroundColor>#ed0000</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
@@ -6210,6 +5671,7 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
+                        <BackgroundColor>#ed0000</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
@@ -6230,7 +5692,7 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>    Received the vehicle/s described above in good order and condition. Price just and reasonable and for value received, I promised to pay the full amount on the due date appearing above. For failure to pay this invoice within the period specified above, an interest of 4% per month plus 4% penalty per month will be charged. in case of litigation, the parties agree that the jurisdiction shall be Makati City and an additional amount equivalent to 25% of the outstanding amount will be charged for attorney's fee. No payment against this invoice shall be valid unless evidenced by an Official REceipt duly signed by our authorized representative. MAKE ALL CHECKS PAYABLE TO CITIMOTORS, INC.</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                               </Style>
@@ -6279,6 +5741,166 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
           </Border>
         </Style>
       </Tablix>
+      <Line Name="Line10">
+        <Top>8.36in</Top>
+        <Left>0.33723in</Left>
+        <Height>0in</Height>
+        <Width>7.65277in</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Color>Gray</Color>
+            <Style>Solid</Style>
+            <Width>2pt</Width>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox306">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Prepared by</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox305</rd:DefaultName>
+        <Top>8.875in</Top>
+        <Left>0.3487in</Left>
+        <Height>0.22123in</Height>
+        <Width>1.8in</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox307">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Verified by</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox305</rd:DefaultName>
+        <Top>8.875in</Top>
+        <Left>2.28in</Left>
+        <Height>0.22123in</Height>
+        <Width>1.8in</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox308">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Approved by</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox305</rd:DefaultName>
+        <Top>8.875in</Top>
+        <Left>4.22in</Left>
+        <Height>0.22123in</Height>
+        <Width>1.8in</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+        </Style>
+      </Textbox>
+      <Line Name="Line8">
+        <Top>9.1541in</Top>
+        <Left>0.35in</Left>
+        <Height>0in</Height>
+        <Width>7.65277in</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Color>Gray</Color>
+            <Style>Solid</Style>
+            <Width>2pt</Width>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox309">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Conforme by the Customer</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox305</rd:DefaultName>
+        <Top>8.875in</Top>
+        <Left>6.15in</Left>
+        <Height>0.22123in</Height>
+        <Width>1.85277in</Width>
+        <ZIndex>14</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+        </Style>
+      </Textbox>
       <Textbox Name="Textbox248">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -6299,11 +5921,11 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox248</rd:DefaultName>
-        <Top>8.35in</Top>
+        <Top>8.42in</Top>
         <Left>0.35in</Left>
         <Height>0.37in</Height>
         <Width>1.7987in</Width>
-        <ZIndex>9</ZIndex>
+        <ZIndex>15</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -6333,11 +5955,11 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox249</rd:DefaultName>
-        <Top>8.35in</Top>
+        <Top>8.42in</Top>
         <Left>2.28in</Left>
         <Height>0.37in</Height>
         <Width>1.8in</Width>
-        <ZIndex>10</ZIndex>
+        <ZIndex>16</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -6367,11 +5989,11 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox250</rd:DefaultName>
-        <Top>8.35in</Top>
+        <Top>8.42in</Top>
         <Left>4.22in</Left>
         <Height>0.37in</Height>
         <Width>1.8in</Width>
-        <ZIndex>11</ZIndex>
+        <ZIndex>17</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -6401,11 +6023,11 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox251</rd:DefaultName>
-        <Top>8.35in</Top>
+        <Top>8.42in</Top>
         <Left>6.15in</Left>
         <Height>0.37in</Height>
         <Width>1.85277in</Width>
-        <ZIndex>12</ZIndex>
+        <ZIndex>18</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -6415,15 +6037,60 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
           <PaddingRight>2pt</PaddingRight>
         </Style>
       </Textbox>
+      <Line Name="Line5">
+        <Top>8.845in</Top>
+        <Left>0.3487in</Left>
+        <Height>0in</Height>
+        <Width>1.8013in</Width>
+        <ZIndex>19</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line6">
+        <Top>8.845in</Top>
+        <Left>4.22in</Left>
+        <Height>0in</Height>
+        <Width>1.8037in</Width>
+        <ZIndex>20</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line7">
+        <Top>8.845in</Top>
+        <Left>2.28in</Left>
+        <Height>0in</Height>
+        <Width>1.80369in</Width>
+        <ZIndex>21</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line9">
+        <Top>8.845in</Top>
+        <Left>6.15in</Left>
+        <Height>0in</Height>
+        <Width>1.85277in</Width>
+        <ZIndex>22</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
       <Line Name="Line11">
         <Top>2.0276in</Top>
         <Left>4.8in</Left>
         <Height>4.30938in</Height>
         <Width>0in</Width>
-        <ZIndex>13</ZIndex>
-        <Visibility>
-          <Hidden>true</Hidden>
-        </Visibility>
+        <ZIndex>23</ZIndex>
         <Style>
           <Border>
             <Color>Silver</Color>
@@ -6450,9 +6117,6 @@ InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;"
           <Left>0.47244in</Left>
           <Height>0.94792in</Height>
           <Width>0.57087in</Width>
-          <Visibility>
-            <Hidden>true</Hidden>
-          </Visibility>
           <Style>
             <Border>
               <Style>None</Style>
@@ -6475,7 +6139,7 @@ IIF(First(Fields!Branch_Telephone.Value, "SalesInvoice") = NOTHING, NOTHING, Fir
 IIF(First(Fields!Branch_Service_Number.Value, "SalesInvoice") = NOTHING, NOTHING, "Service DL: " + First(Fields!Branch_Service_Number.Value, "SalesInvoice") +" " &amp; vbcrlf) &amp;
 IIF(First(Fields!Branch_Sales_Number.Value, "SalesInvoice") = NOTHING, NOTHING, "Sales Direct Line: "+ First(Fields!Branch_Sales_Number.Value, "SalesInvoice") + "&lt;br&gt;" &amp; vbcrlf) &amp;
 IIF(First(Fields!Branch_Email_Address.Value, "SalesInvoice") = NOTHING, NOTHING, "Email: "+ First(Fields!Branch_Email_Address.Value, "SalesInvoice") + "&lt;br&gt;" &amp; vbcrlf) &amp;
-IIF(First(Fields!Tin.Value, "SalesInvoice") =NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!Tin.Value, "SalesInvoice") &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_VAT_Reg.Value, "SalesInvoice") =NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!Branch_VAT_Reg.Value, "SalesInvoice") &amp; vbcrlf) &amp;
 IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, First(Fields!Branch_WebSite_Url.Value, "SalesInvoice"))</Value>
                   <MarkupType>HTML</MarkupType>
                   <Style>
@@ -6492,11 +6156,8 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
           <Top>0.59722in</Top>
           <Left>1.78076in</Left>
           <Height>1.01737in</Height>
-          <Width>4.23924in</Width>
+          <Width>4.12221in</Width>
           <ZIndex>1</ZIndex>
-          <Visibility>
-            <Hidden>true</Hidden>
-          </Visibility>
           <Style>
             <Border>
               <Style>None</Style>
@@ -6530,11 +6191,8 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
           <Top>0.34376in</Top>
           <Left>1.78076in</Left>
           <Height>0.25347in</Height>
-          <Width>4.23924in</Width>
+          <Width>4.12221in</Width>
           <ZIndex>2</ZIndex>
-          <Visibility>
-            <Hidden>true</Hidden>
-          </Visibility>
           <Style>
             <Border>
               <Style>None</Style>
@@ -6552,7 +6210,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Sales Invoice #</Value>
+                  <Value>Vehicle Sales Invoice #</Value>
                   <Style>
                     <FontFamily>Segoe UI</FontFamily>
                     <FontWeight>Bold</FontWeight>
@@ -6568,9 +6226,6 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
           <Height>0.21in</Height>
           <Width>1.52555in</Width>
           <ZIndex>3</ZIndex>
-          <Visibility>
-            <Hidden>true</Hidden>
-          </Visibility>
           <Style>
             <Border>
               <Style>None</Style>
@@ -6605,9 +6260,6 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
           <Height>0.21in</Height>
           <Width>3.60727in</Width>
           <ZIndex>4</ZIndex>
-          <Visibility>
-            <Hidden>true</Hidden>
-          </Visibility>
           <Style>
             <Border>
               <Style>None</Style>
@@ -6641,9 +6293,6 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
           <Height>0.21in</Height>
           <Width>1.01307in</Width>
           <ZIndex>5</ZIndex>
-          <Visibility>
-            <Hidden>true</Hidden>
-          </Visibility>
           <Style>
             <Border>
               <Style>None</Style>
@@ -6671,7 +6320,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Date</rd:DefaultName>
-          <Top>1.9in</Top>
+          <Top>1.92757in</Top>
           <Left>6.95697in</Left>
           <Height>0.21in</Height>
           <Width>1in</Width>
@@ -6695,9 +6344,6 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
           <Height>0.94792in</Height>
           <Width>1.00265in</Width>
           <ZIndex>7</ZIndex>
-          <Visibility>
-            <Hidden>true</Hidden>
-          </Visibility>
           <Style>
             <Border>
               <Style>None</Style>
@@ -6735,6 +6381,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
             <Value>=Parameters!reportid.Value</Value>
           </QueryParameter>
         </QueryParameters>
+<<<<<<< HEAD
         <CommandText>SELECT			Invoice.Name AS 'Sales Invoice Number', 
 				CASE WHEN Invoice.CustomerIdType = '1' THEN
                              (SELECT        name
@@ -6744,18 +6391,21 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
                                FROM            Contact
                                WHERE        contactid = Invoice.CustomerId) END AS 'Customer', 
 				CASE WHEN Invoice.CustomerIdType = '1' THEN
+=======
+        <CommandText>SELECT        Invoice.Name AS 'Sales Invoice Number', Invoice.CustomerIdName AS 'Customer', CASE WHEN Invoice.CustomerIdType = '1' THEN
+>>>>>>> origin/master
                              (SELECT        Telephone1
                                FROM            Account
                                WHERE        AccountId = Invoice.CustomerId) ELSE
                              (SELECT        MobilePhone
                                FROM            Contact
-                               WHERE        contactid = Invoice.CustomerId) END AS 'Mobile Number', 
-				CASE WHEN Invoice.CustomerIdType = '1' THEN
+                               WHERE        contactid = Invoice.CustomerId) END AS 'Mobile Number', CASE WHEN Invoice.CustomerIdType = '1' THEN
                              (SELECT        EMailAddress1
                                FROM            Account
                                WHERE        AccountId = Invoice.CustomerId) ELSE
                              (SELECT        EMailAddress1
                                FROM            Contact
+<<<<<<< HEAD
                                WHERE        contactid = Invoice.CustomerId) END AS 'Email Address', 
 				CASE WHEN Invoice.CustomerIdType = '1' THEN
                              (SELECT        gsc_birthdate
@@ -6847,6 +6497,28 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesInvoice") = NOTHING, NOTHING, F
 				Contact_1.gsc_ReportsToName AS 'VerifyBy', 
 				Account.gsc_ApprovedBy AS 'ApprovedBy', 
                 Invoice.gsc_Discount
+=======
+                               WHERE        contactid = Invoice.CustomerId) END AS 'Email Address', Invoice.ShipTo_Composite AS 'Address', Invoice.gsc_Tin AS 'Tin', Invoice.CreatedOn AS 'Date', Invoice.gsc_DrNo AS 'DR No', 
+                         Invoice.gsc_LeadSourceIdName AS 'Lead Source', Invoice.gsc_PaymentMode AS 'Payment Mode', InvoiceMonthlyAmortization.gsc_FinancingTermIdName AS 'Financing Term', 
+                         Invoice.gsc_SalesExecutiveIdName AS 'Sales Executive', Invoice.gsc_BankIdName AS 'Bank', Invoice.gsc_ProductIdName AS 'Model Description', Product.gsc_ModelYear AS 'Model Year', 
+                         InvoicedVehicle.gsc_ModelCode AS 'Model Code', InvoicedVehicle.gsc_OptionCode AS 'Option Code', InvoicedVehicle.gsc_EngineNo AS 'Engine No.', InvoicedVehicle.gsc_VIN AS 'VIN', 
+                         Invoice.gsc_VehicleColorId1Name AS 'Color', InvoicedVehicle.gsc_ProductionNo AS 'Production No.', InvoicedVehicle.gsc_CSNo AS 'CS No.', InvoicedVehicle.gsc_WarrantyBookletNo AS 'WB#', 
+                         Product.gsc_GrossVehicleWeight AS 'Gross Vehicle', Product.gsc_PistonDisplacement AS 'Piston Displacement', 
+                         CASE WHEN Product .gsc_FuelType = '100000000' THEN 'Gasoline' WHEN Product .gsc_FuelType = '100000001' THEN 'Diesel' ELSE '' END AS 'Fuel Used', Invoice.gsc_VehicleDetails AS 'Vehicle Details', 
+                         Product.gsc_VehicleTypeIdName AS 'Vehicle Type', Product.gsc_BodyTypeIdName AS 'Body Type', Product.gsc_Transmission AS 'Transmission', Product.gsc_WarrantyExpiryDays AS 'Warranty Years', 
+                         Product.gsc_WarrantyMileage AS 'Warranty Mileage', Product.gsc_OtherVehicleDetails AS 'Others', Invoice.gsc_UnitPrice AS 'Unit Price', Invoice.gsc_CCAddons AS 'CC AddOns', 
+                         Invoice.gsc_ColorPrice AS 'Color Price', Invoice.gsc_FreightandHandling AS 'Freight and Handling', Invoice.gsc_ApplyToUpAmount AS 'Total Discount Amount', Invoice.gsc_NetPrice AS 'Net Price', 
+                         Invoice.gsc_Accessories AS 'Accessories', Invoice.gsc_ChattelFee AS 'Chattel fee', Invoice.gsc_Insurance AS 'Insurance Charge', OrderCharge.gsc_ChargesIdName AS 'Charges', 
+                         OrderCharge.gsc_ActualCost AS 'Actual Cost', Invoice.gsc_Reservation AS 'Reservation', Invoice.gsc_NetDownPayment AS 'Net Downpayment', Invoice.gsc_VATableSales AS 'VATable Sales', 
+                         Invoice.gsc_VATEXEMPTSales AS 'VATEXEMPT Sales', Invoice.gsc_ZERORATEDSales AS 'ZERORATED Sales', Invoice.gsc_TotalSales AS 'Total Sales', Invoice.gsc_VATAmount AS 'VAT Amount', 
+                         Invoice.TotalAmount AS 'Total Amount Due', Invoice.gsc_TotalCashOutlay AS 'Total Cash Outlay', Invoice.gsc_DownPaymentDisplay AS 'Down Payment', Invoice.gsc_NetDownPayment AS 'Net Down Payment', 
+                         Invoice.gsc_AmountFinanced AS 'Total Amount Financed', Invoice.gsc_NetMonthlyAmortization AS 'Net MonthlyAmortization', Invoice.gsc_Remarks AS 'Remarks', Account.gsc_VSOTermsandAgreement AS 'TaA', 
+                         Account.Telephone1 AS 'Branch Telephone', Account.Fax AS 'Branch Fax', Account.gsc_VATReg AS 'Branch VAT Reg', Account.WebSiteURL AS 'Branch WebSite Url', Account.EntityImage AS 'Branch Entity Image', 
+                         Account.Name AS 'Branch Name', Account.EMailAddress1 AS 'Branch Email Address', Account.Address1_Line1 AS 'Branch Address', Account.gsc_CityIdName AS 'Branch City', 
+                         Account.gsc_ProvinceIdName AS 'Branch Province', Account.Address1_PostalCode AS 'Branch Postal Code', Account.Address2_Telephone2 AS 'Branch Service Number', 
+                         Account.Address2_Telephone1 AS 'Branch Sales Number', Invoice.gsc_RecordOwnerIdName AS 'PreparedBy', Contact_1.gsc_ReportsToName AS 'VerifyBy', Account.gsc_ApprovedBy AS 'ApprovedBy', 
+                         Invoice.gsc_Discount
+>>>>>>> origin/master
 FROM            Invoice LEFT OUTER JOIN
                          gsc_cmn_OrderCharge AS OrderCharge ON Invoice.gsc_ProductId = OrderCharge.gsc_OrderId LEFT OUTER JOIN
                          Account ON Invoice.gsc_BranchId = Account.AccountId LEFT OUTER JOIN
@@ -6873,10 +6545,6 @@ WHERE        (Invoice.InvoiceId = @reportid)</CommandText>
           <DataField>Email Address</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Birthday">
-          <DataField>Birthday</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
         <Field Name="Address">
           <DataField>Address</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -6900,10 +6568,6 @@ WHERE        (Invoice.InvoiceId = @reportid)</CommandText>
         <Field Name="Payment_Mode">
           <DataField>Payment Mode</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Selected_Financing_Term">
-          <DataField>Selected Financing Term</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
         <Field Name="Financing_Term">
           <DataField>Financing Term</DataField>

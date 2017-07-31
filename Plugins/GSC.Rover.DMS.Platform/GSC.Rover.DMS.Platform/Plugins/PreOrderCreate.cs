@@ -74,7 +74,6 @@ namespace GSC.Rover.DMS.Platform.Plugins
                 salesOrderHandler.SetVehicleColorAmount(salesOrder, message);
                 salesOrderHandler.SetChattelFeeAmount(salesOrder, message);
                 salesOrderHandler.SetNetPriceAmount(salesOrder, message);
-                salesOrderHandler.ReplicateInsuranceDetails(salesOrder, message);
                 salesOrderHandler.SetTotalCashOutlayAmount(salesOrder, message);
                 salesOrderHandler.SetDates(salesOrder);
             }

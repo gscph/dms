@@ -1,0 +1,14 @@
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\NLog.config
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\ImportIntegration.exe.config
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\ImportIntegration.exe
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\ImportIntegration.pdb
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\Microsoft.Xrm.Client.dll
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\NLog.dll
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\Microsoft.Xrm.Sdk.Deployment.dll
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\Microsoft.Xrm.Client.xml
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\NLog.xml
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\Microsoft.Xrm.Sdk.Deployment.xml
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\obj\Debug\ImportIntegration.exe
+C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\obj\Debug\ImportIntegration.pdb

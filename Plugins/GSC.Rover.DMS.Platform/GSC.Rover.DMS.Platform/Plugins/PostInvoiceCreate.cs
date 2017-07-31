@@ -87,6 +87,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     invoiceHandler.ReplicateAccessories(invoice);
                     invoiceHandler.ReplicateCabChassis(invoice);
                     invoiceHandler.ChangeSOInvoiceCreatedDate(invoice);
+                    invoiceHandler.UpdateSOStatus(invoice);
                 }
             }
             catch (Exception ex)

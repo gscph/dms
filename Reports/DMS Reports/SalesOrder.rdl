@@ -6028,6 +6028,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
                       </Style>
                     </Textbox>
                     <ColSpan>2</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -6951,11 +6952,10 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
             <Value>=Parameters!reportid.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>
-SELECT        REPLACE(STUFF
+        <CommandText>SELECT        REPLACE(STUFF
                              ((SELECT        ', ' + gsc_ProductIdName AS 'data()'
                                  FROM            gsc_sls_OrderAccessory
-                                 WHERE        (gsc_Standard = 1) and (gsc_OrderId = @reportid) FOR XML PATH('')), 1, 1, ''), ' ,', ',') AS Freebies</CommandText>
+                                 WHERE        (gsc_OrderId = @reportid) FOR XML PATH('')), 1, 1, ''), ' ,', ',') AS Freebies</CommandText>
       </Query>
       <Fields>
         <Field Name="Freebies">

@@ -5,10 +5,6 @@
   <DataSets />
   <Reports>
     <ProjectItem>
-      <Name>DailySalesStocksReport.rdl</Name>
-      <FullPath>DailySalesStocksReport.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>DeliveryReceiptandGatePass.rdl</Name>
       <FullPath>DeliveryReceiptandGatePass.rdl</FullPath>
     </ProjectItem>
@@ -21,6 +17,7 @@
       <FullPath>PurchaseOrder.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+<<<<<<< HEAD
       <Name>PurchaseOrderDetails.rdl</Name>
       <FullPath>PurchaseOrderDetails.rdl</FullPath>
     </ProjectItem>
@@ -33,6 +30,8 @@
       <FullPath>PurchaseOrderLayout.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+=======
+>>>>>>> origin/master
       <Name>Quote.rdl</Name>
       <FullPath>Quote.rdl</FullPath>
     </ProjectItem>
@@ -41,6 +40,7 @@
       <FullPath>SalesInvoice.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+<<<<<<< HEAD
       <Name>SalesInvoiceDetails.rdl</Name>
       <FullPath>SalesInvoiceDetails.rdl</FullPath>
     </ProjectItem>
@@ -53,20 +53,10 @@
       <FullPath>SalesInvoiceLayout.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+=======
+>>>>>>> origin/master
       <Name>SalesOrder.rdl</Name>
       <FullPath>SalesOrder.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>SalesOrderDetails.rdl</Name>
-      <FullPath>SalesOrderDetails.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>SalesOrderDetailsAdjusted.rdl</Name>
-      <FullPath>SalesOrderDetailsAdjusted.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>SalesOrderLayout.rdl</Name>
-      <FullPath>SalesOrderLayout.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>VehicleAdjustment.rdl</Name>
@@ -109,12 +99,17 @@
       <FullPath>VehicleTransfer.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+<<<<<<< HEAD
       <Name>SalesInvoiceDetailsAdjustedRevert.rdl</Name>
       <FullPath>SalesInvoiceDetailsAdjustedRevert.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>SalesOrderDetailsAdjustedRevert.rdl</Name>
       <FullPath>SalesOrderDetailsAdjustedRevert.rdl</FullPath>
+=======
+      <Name>DailySalesStocksReport.rdl</Name>
+      <FullPath>DailySalesStocksReport.rdl</FullPath>
+>>>>>>> origin/master
     </ProjectItem>
   </Reports>
   <Configurations>

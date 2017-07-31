@@ -436,6 +436,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
+<<<<<<< HEAD
                               <Value>COMPUTATION BASED ON </Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
@@ -449,6 +450,9 @@
 First(Fields!PaymentMode.Value, "QuoteDetails") = 100000001, "FINANCING",
  First(Fields!PaymentMode.Value, "QuoteDetails") = 100000002, "BANK PO",
   First(Fields!PaymentMode.Value, "QuoteDetails") = 100000003, "COMPANY PO")</Value>
+=======
+                              <Value>="COMPUTATION BASED ON " + Microsoft.VisualBasic.Interaction.Switch(Fields!PaymentMode.Value = 100000000, "CASH", Fields!PaymentMode.Value = 100000001, "FINANCING", Fields!PaymentMode.Value = 100000002, "BANK PO", Fields!PaymentMode.Value = 100000003, "COMPANY PO")</Value>
+>>>>>>> origin/master
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -3205,7 +3209,7 @@ First(Fields!PaymentMode.Value, "QuoteDetails") = 100000001, "FINANCING",
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Charges.Value</Value>
+                              <Value>=First(Fields!Charges.Value, "QuoteDetails")</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                               </Style>
@@ -4789,15 +4793,8 @@ First(Fields!PaymentMode.Value, "QuoteDetails") = 100000001, "FINANCING",
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=First(Fields!ProductModel.Value, "QuoteDetails") 
-+
- Microsoft.VisualBasic.Interaction.IIF(
-    Microsoft.VisualBasic.Information.ISNOTHING(
-        First(Fields!CabChassis.Value, "CabChassis")), "", " w/" 
-        + (Mid(First(Fields!CabChassis.Value, "CabChassis"),1,InStrRev(First(Fields!CabChassis.Value, "CabChassis") , "")) + " &amp;" )
-        + (Mid(First(Fields!CabChassis.Value, "CabChassis"),InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")+1,LEN(First(Fields!CabChassis.Value, "CabChassis")))
-    )
-)</Value>
+                              <Value>=First(Fields!ProductModel.Value, "QuoteDetails") + Microsoft.VisualBasic.Interaction.IIF(Microsoft.VisualBasic.Information.ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")), "", " w/" + Mid(First(Fields!CabChassis.Value, "CabChassis"),1,InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;" 
++ Mid(First(Fields!CabChassis.Value, "CabChassis"),InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")+1,LEN(First(Fields!CabChassis.Value, "CabChassis")) ))</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                               </Style>
@@ -6097,11 +6094,11 @@ First(Fields!PaymentMode.Value, "QuoteDetails") = 100000001, "FINANCING",
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.21in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox243">
+                    <Textbox Name="Textbox252">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -6118,7 +6115,7 @@ First(Fields!PaymentMode.Value, "QuoteDetails") = 100000001, "FINANCING",
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox240</rd:DefaultName>
+                      <rd:DefaultName>Textbox252</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -6133,7 +6130,40 @@ First(Fields!PaymentMode.Value, "QuoteDetails") = 100000001, "FINANCING",
                 <TablixCell />
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox10">
+                    <Textbox Name="Textbox776">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox776</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.18193in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox253">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -6142,25 +6172,158 @@ First(Fields!PaymentMode.Value, "QuoteDetails") = 100000001, "FINANCING",
                             <TextRun>
                               <Value />
                               <Style>
-                                <FontFamily>Segoe UI</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox10</rd:DefaultName>
+                      <rd:DefaultName>Textbox253</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Tablix Name="Tablix7">
+                      <TablixBody>
+                        <TablixColumns>
+                          <TablixColumn>
+                            <Width>1.43332in</Width>
+                          </TablixColumn>
+                        </TablixColumns>
+                        <TablixRows>
+                          <TablixRow>
+                            <Height>0.18193in</Height>
+                            <TablixCells>
+                              <TablixCell>
+                                <CellContents>
+                                  <Textbox Name="Freebies1">
+                                    <CanGrow>true</CanGrow>
+                                    <KeepTogether>true</KeepTogether>
+                                    <Paragraphs>
+                                      <Paragraph>
+                                        <TextRuns>
+                                          <TextRun>
+                                            <Value>=Fields!Freebies.Value</Value>
+                                            <Style>
+                                              <FontFamily>Segoe UI</FontFamily>
+                                            </Style>
+                                          </TextRun>
+                                        </TextRuns>
+                                        <Style />
+                                      </Paragraph>
+                                    </Paragraphs>
+                                    <rd:DefaultName>Freebies1</rd:DefaultName>
+                                    <Style>
+                                      <Border>
+                                        <Color>LightGrey</Color>
+                                        <Style>Solid</Style>
+                                      </Border>
+                                      <PaddingLeft>2pt</PaddingLeft>
+                                      <PaddingRight>2pt</PaddingRight>
+                                    </Style>
+                                  </Textbox>
+                                </CellContents>
+                              </TablixCell>
+                            </TablixCells>
+                          </TablixRow>
+                        </TablixRows>
+                      </TablixBody>
+                      <TablixColumnHierarchy>
+                        <TablixMembers>
+                          <TablixMember />
+                        </TablixMembers>
+                      </TablixColumnHierarchy>
+                      <TablixRowHierarchy>
+                        <TablixMembers>
+                          <TablixMember>
+                            <Group Name="Details1" />
+                          </TablixMember>
+                        </TablixMembers>
+                      </TablixRowHierarchy>
+                      <DataSetName>QuoteDetails</DataSetName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </Tablix>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Tablix Name="Tablix16">
+                      <TablixBody>
+                        <TablixColumns>
+                          <TablixColumn>
+                            <Width>2.19501in</Width>
+                          </TablixColumn>
+                        </TablixColumns>
+                        <TablixRows>
+                          <TablixRow>
+                            <Height>0.18193in</Height>
+                            <TablixCells>
+                              <TablixCell>
+                                <CellContents>
+                                  <Textbox Name="Freebies">
+                                    <CanGrow>true</CanGrow>
+                                    <KeepTogether>true</KeepTogether>
+                                    <Paragraphs>
+                                      <Paragraph>
+                                        <TextRuns>
+                                          <TextRun>
+                                            <Value>=Fields!Freebies.Value</Value>
+                                            <Style>
+                                              <FontFamily>Segoe UI</FontFamily>
+                                            </Style>
+                                          </TextRun>
+                                        </TextRuns>
+                                        <Style />
+                                      </Paragraph>
+                                    </Paragraphs>
+                                    <rd:DefaultName>Freebies</rd:DefaultName>
+                                    <Style>
+                                      <Border>
+                                        <Style>None</Style>
+                                      </Border>
+                                      <PaddingLeft>2pt</PaddingLeft>
+                                      <PaddingRight>2pt</PaddingRight>
+                                    </Style>
+                                  </Textbox>
+                                </CellContents>
+                              </TablixCell>
+                            </TablixCells>
+                          </TablixRow>
+                        </TablixRows>
+                      </TablixBody>
+                      <TablixColumnHierarchy>
+                        <TablixMembers>
+                          <TablixMember />
+                        </TablixMembers>
+                      </TablixColumnHierarchy>
+                      <TablixRowHierarchy>
+                        <TablixMembers>
+                          <TablixMember>
+                            <Group Name="Details2" />
+                          </TablixMember>
+                        </TablixMembers>
+                      </TablixRowHierarchy>
+                      <DataSetName>QuoteDetails</DataSetName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </Tablix>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -6192,13 +6355,22 @@ First(Fields!PaymentMode.Value, "QuoteDetails") = 100000001, "FINANCING",
             <TablixMember />
             <TablixMember />
             <TablixMember />
-            <TablixMember />
+            <TablixMember>
+              <Visibility>
+                <Hidden>=IIF(RunningValue(Fields!Freebies.Value, CountDistinct, Nothing) &gt; 0, false, true)</Hidden>
+              </Visibility>
+            </TablixMember>
+            <TablixMember>
+              <Visibility>
+                <Hidden>=IIF(RunningValue(Fields!Freebies.Value, CountDistinct, Nothing) &gt; 0, false, true)</Hidden>
+              </Visibility>
+            </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>QuoteDetails</DataSetName>
         <Top>1.55845in</Top>
         <Left>0.35in</Left>
-        <Height>3.52937in</Height>
+        <Height>3.6713in</Height>
         <Width>3.83999in</Width>
         <ZIndex>4</ZIndex>
         <Style>
@@ -7133,75 +7305,6 @@ First(Fields!PaymentMode.Value, "QuoteDetails") = 100000001, "FINANCING",
           </Border>
         </Style>
       </Line>
-      <Tablix Name="Tablix6">
-        <TablixBody>
-          <TablixColumns>
-            <TablixColumn>
-              <Width>3.05736in</Width>
-            </TablixColumn>
-          </TablixColumns>
-          <TablixRows>
-            <TablixRow>
-              <Height>0.25in</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Freebies">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!Freebies.Value</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Freebies</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
-          </TablixRows>
-        </TablixBody>
-        <TablixColumnHierarchy>
-          <TablixMembers>
-            <TablixMember />
-          </TablixMembers>
-        </TablixColumnHierarchy>
-        <TablixRowHierarchy>
-          <TablixMembers>
-            <TablixMember>
-              <Group Name="Details1" />
-            </TablixMember>
-          </TablixMembers>
-        </TablixRowHierarchy>
-        <DataSetName>Freebies</DataSetName>
-        <Top>5.08782in</Top>
-        <Left>1.12299in</Left>
-        <Height>0.25in</Height>
-        <Width>3.05736in</Width>
-        <ZIndex>14</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Tablix>
     </ReportItems>
     <Height>7.98771in</Height>
     <Style />
@@ -7209,7 +7312,7 @@ First(Fields!PaymentMode.Value, "QuoteDetails") = 100000001, "FINANCING",
   <Width>8.27in</Width>
   <Page>
     <PageHeader>
-      <Height>2.4466in</Height>
+      <Height>2.16535in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -7251,6 +7354,7 @@ First(Fields!PaymentMode.Value, "QuoteDetails") = 100000001, "FINANCING",
               <TextRuns>
                 <TextRun>
                   <Value>=IIF(First(Fields!BranchStreet.Value, "QuoteDetails") = NOTHING, NOTHING, First(Fields!BranchStreet.Value, "QuoteDetails") + ", " &amp; vbcrlf) &amp;
+First(Fields!BranchStreet.Value, "QuoteDetails") + "&lt;br&gt; " &amp; vbcrlf &amp;
 IIF(First(Fields!BranchCity.Value, "QuoteDetails") = NOTHING, NOTHING, First(Fields!BranchCity.Value, "QuoteDetails") + ", " &amp; vbcrlf) &amp;
 First(Fields!BranchProvince.Value, "QuoteDetails") + " " +
 First(Fields!BranchPostalCode.Value, "QuoteDetails")+ "&lt;br&gt;" +
@@ -7275,7 +7379,7 @@ IIF(First(Fields!BranchWebSiteURL.Value, "QuoteDetails") = NOTHING, NOTHING, Fir
           <rd:DefaultName>Textbox18</rd:DefaultName>
           <Top>0.59722in</Top>
           <Left>1.78076in</Left>
-          <Height>1.31945in</Height>
+          <Height>1.01737in</Height>
           <Width>4.12221in</Width>
           <ZIndex>2</ZIndex>
           <Style>
@@ -7341,7 +7445,7 @@ IIF(First(Fields!BranchWebSiteURL.Value, "QuoteDetails") = NOTHING, NOTHING, Fir
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>2.17757in</Top>
+          <Top>1.92757in</Top>
           <Left>0.35in</Left>
           <Height>0.21in</Height>
           <Width>1.35322in</Width>
@@ -7375,7 +7479,7 @@ IIF(First(Fields!BranchWebSiteURL.Value, "QuoteDetails") = NOTHING, NOTHING, Fir
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>QuoteNumber</rd:DefaultName>
-          <Top>2.17757in</Top>
+          <Top>1.92757in</Top>
           <Left>1.72844in</Left>
           <Height>0.21in</Height>
           <Width>2.85087in</Width>
@@ -7408,7 +7512,7 @@ IIF(First(Fields!BranchWebSiteURL.Value, "QuoteDetails") = NOTHING, NOTHING, Fir
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox28</rd:DefaultName>
-          <Top>2.17757in</Top>
+          <Top>1.92757in</Top>
           <Left>5.75547in</Left>
           <Height>0.21in</Height>
           <Width>1in</Width>
@@ -7438,7 +7542,7 @@ IIF(First(Fields!BranchWebSiteURL.Value, "QuoteDetails") = NOTHING, NOTHING, Fir
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox28</rd:DefaultName>
-          <Top>2.17757in</Top>
+          <Top>1.92757in</Top>
           <Left>6.9741in</Left>
           <Height>0.21in</Height>
           <Width>1.01244in</Width>
@@ -7684,7 +7788,7 @@ IIF(First(Fields!BranchWebSiteURL.Value, "QuoteDetails") = NOTHING, NOTHING, Fir
     <DataSource Name="Quote">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=DMSUATDB2;Initial Catalog=MMPCUAT_MSCRM</ConnectString>
+        <ConnectString>Data Source=XRMDMSDB;Initial Catalog=MMPCDEV_MSCRM</ConnectString>
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>d6756ee6-ed10-46f1-bae4-aa9b2205e2de</rd:DataSourceID>
@@ -7699,6 +7803,7 @@ IIF(First(Fields!BranchWebSiteURL.Value, "QuoteDetails") = NOTHING, NOTHING, Fir
             <Value>=Parameters!reportid.Value</Value>
           </QueryParameter>
         </QueryParameters>
+<<<<<<< HEAD
         <CommandText>
 SELECT			Quote.CreatedOn AS DateCreated, 
 				Quote.gsc_ValidUntil AS ValidUntilDate, 
@@ -7778,10 +7883,37 @@ SELECT			Quote.CreatedOn AS DateCreated,
                 Product.gsc_WarrantyExpiryDays AS WarrantyYears, 
 				Product.gsc_WarrantyMileage AS WarantyMileage, 
 				Product.gsc_OtherVehicleDetails AS Others
+=======
+        <CommandText>SELECT        Quote.CreatedOn AS DateCreated, Quote.gsc_ValidUntil AS ValidUntilDate, Quote.gsc_DealerIdName AS Dealer, Quote.gsc_SalesExecutiveIdName AS SalesExecutive, Quote.gsc_ProductIdName AS ProductModel,
+                          Quote.gsc_BranchIdName AS BranchSite, Quote.gsc_VehicleColorId1Name AS VehicleColor, Quote.QuoteId, Quote.Name AS QuoteNumber, Quote.CustomerIdName AS CustomerName, 
+                         Quote.gsc_Address AS CustomerAddress, Quote.gsc_ContactNo AS ContactNumber, Quote.gsc_AlternateContactNo AS AlternativeContactNumber, Quote.gsc_VehicleDetails AS VehicleDetails, 
+                         Quote.gsc_UnitPrice AS UnitPrice, Quote.gsc_VehicleUnitPrice AS VehicleUnitPrice, Quote.gsc_ColorPrice AS ColorPrice, Quote.gsc_NetPrice AS NetPrice, Quote.gsc_Reservation AS Reservation, 
+                         Quote.gsc_TotalCashOutlay AS TotalCashOutlay, Quote.gsc_VATableSales AS VATableSales, Quote.gsc_VATAmount AS VATAmount, Quote.gsc_TotalAmountDue AS TotalAmountDue, 
+                         Quote.gsc_VATEXEMPTSales AS VATEXEMPTSales, Quote.CustomerId, Quote.gsc_DownPayment AS DownPayment, Quote.gsc_NetDownpayment AS 'Net Down Payment', Quote.gsc_LessDiscount AS DPDiscount,
+                          Quote.gsc_DownPaymentPercentage AS DPPercentage, Quote.gsc_ChattelFee AS ChattelFee, Quote.gsc_Insurance AS Insurance, Quote.gsc_NetMonthlyAmortization AS NetMontlyAmortization, 
+                         Quote.gsc_TotalDiscount AS TotalDiscount, Quote.gsc_TotalAmountFinanced AS TotalAmountFinanced, Quote.gsc_PaymentMode AS PaymentMode, Quote.gsc_NetAmountFinanced AS NetAmountFinanced, 
+                         Quote.gsc_Accessories AS Accessories, Quote.gsc_CCAddOns AS CCAddOns, Quote.gsc_FreightAndHandling AS FreightAndHandling, Quote.gsc_TotalSales AS TotalSales, 
+                         Quote.gsc_ZERORATEDSales AS ZERORATEDSales, Quote.gsc_Remarks AS Remarks, Account.Telephone1 AS BranchTelephone, Account.Fax AS BranchFax, Account.gsc_VATReg AS VATReg, 
+                         Account.WebSiteURL AS BranchWebSiteURL, Account.EntityImage AS BranchEntityImage, Account.Name AS BranchName, Account.EMailAddress1 AS BranchEmailAddress, 
+                         Account.Address1_Line1 AS BranchStreet, Account.gsc_CityIdName AS BranchCity, Account.gsc_ProvinceIdName AS BranchProvince, Account.Address1_PostalCode AS BranchPostalCode, 
+                         Account.Address1_Telephone1 AS BranchMobileNumber, Account.Address1_Telephone1 AS BranchBusinessPhone, Account.gsc_VSQTermsandAgreement AS TaA, 
+                         QuoteMontlyAmortization.gsc_FinancingTermIdName AS FinancingTerm, QuoteAccessory.gsc_ProductIdName AS Freebies, QuoteCharge.gsc_ChargesIdName AS Charges, 
+                         QuoteCharge.gsc_ActualCost AS ActualCost, Contact.MobilePhone AS SalesExecutiveMobileNo, Contact.gsc_ReportsToName AS ReportsTo, Quote.CustomerIdType AS CustomerType, 
+                         CASE WHEN Quote.CustomerIdType = '1' THEN
+                             (SELECT        EMailAddress1
+                               FROM            Account
+                               WHERE        AccountId = Quote.CustomerId) ELSE
+                             (SELECT        EMailAddress1
+                               FROM            Contact
+                               WHERE        contactid = Quote.CustomerId) END AS EmailAddress, Product.gsc_ModelYear AS ModelYear, Product.gsc_VehicleTypeIdName AS vehicleType, Product.gsc_BodyTypeIdName AS BodyType, 
+                         Product.gsc_GrossVehicleWeight AS GrossWeight, Product.gsc_PistonDisplacement AS PistonDisplacement, Product.gsc_FuelType AS FuelType, Product.gsc_Transmission AS Transmission, 
+                         Product.gsc_WarrantyExpiryDays AS WarrantyYears, Product.gsc_WarrantyMileage AS WarantyMileage, Product.gsc_OtherVehicleDetails AS Others
+>>>>>>> origin/master
 FROM            Account RIGHT OUTER JOIN
                          Quote ON Account.AccountId = Quote.gsc_BranchId LEFT OUTER JOIN
                          Contact ON Quote.gsc_SalesExecutiveId = Contact.ContactId LEFT OUTER JOIN
                          gsc_sls_QuoteMonthlyAmortization AS QuoteMontlyAmortization ON Quote.QuoteId = QuoteMontlyAmortization.gsc_QuoteId AND QuoteMontlyAmortization.gsc_isSelected = '1' LEFT OUTER JOIN
+                         gsc_sls_QuoteAccessory AS QuoteAccessory ON Quote.QuoteId = QuoteAccessory.gsc_QuoteId LEFT OUTER JOIN
                          gsc_cmn_QuoteCharge AS QuoteCharge ON Quote.QuoteId = QuoteCharge.gsc_QuoteId LEFT OUTER JOIN
                          Product ON Quote.gsc_ProductId = Product.ProductId
 WHERE        (Quote.QuoteId = @reportid)</CommandText>
@@ -8015,6 +8147,10 @@ WHERE        (Quote.QuoteId = @reportid)</CommandText>
           <DataField>FinancingTerm</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Freebies">
+          <DataField>Freebies</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Charges">
           <DataField>Charges</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -8189,23 +8325,6 @@ WHERE        (gsc_DocumentType = 0) AND (gsc_Default = 1)</CommandText>
       <Fields>
         <Field Name="CabChassis">
           <DataField>CabChassis</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-    </DataSet>
-    <DataSet Name="Freebies">
-      <Query>
-        <DataSourceName>Quote</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="@reportid">
-            <Value>=Parameters!reportid.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <CommandText>SELECT gsc_ProductIdName AS 'Freebies' FROM gsc_sls_quoteaccessory WHERE gsc_Free = 1 and gsc_QuoteId = @reportid</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="Freebies">
-          <DataField>Freebies</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
