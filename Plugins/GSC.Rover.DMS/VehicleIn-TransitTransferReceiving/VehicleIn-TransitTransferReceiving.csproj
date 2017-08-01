@@ -44,6 +44,10 @@
     <Reference Include="GSC.Rover.DMS.BusinessLogic.Common">
       <HintPath>..\Common\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll</HintPath>
     </Reference>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.InventoryMovement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\InventoryMovementHandler\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xrm.Sdk">
       <HintPath>..\Common\bin\Release\Microsoft.Xrm.Sdk.dll</HintPath>
     </Reference>
