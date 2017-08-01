@@ -69,11 +69,13 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                     #region Update Inventory and product quantity
 
                     //set status to allocated
-                    inventoryEntity["gsc_status"] = new OptionSetValue(100000001);
-                    _organizationService.Update(inventoryEntity);
+                    InventoryMovementHandler inventoryMovement = new InventoryMovementHandler(_organizationService, _tracingService);
+                    inventoryMovement.UpdateInventoryStatus(inventoryEntity, 100000001);
+
                     _tracingService.Trace("Updated inventory status to allocated...");
 
-                    var productQuantityId = inventoryEntity.Contains("gsc_productquantityid") ? inventoryEntity.GetAttributeValue<EntityReference>("gsc_productquantityid").Id
+                    Guid productQuantityId = inventoryEntity.Contains("gsc_productquantityid")
+                        ? inventoryEntity.GetAttributeValue<EntityReference>("gsc_productquantityid").Id
                         : Guid.Empty;
 
                     EntityCollection productQuantityCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_productquantity", "gsc_iv_productquantityid", productQuantityId, _organizationService,
@@ -84,19 +86,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                     {
                         Entity productQuantityEntity = productQuantityCollection.Entities[0];
 
-                        Int32 allocated = productQuantityEntity.Contains("gsc_allocated") ? productQuantityEntity.GetAttributeValue<Int32>("gsc_allocated")
-                            : 0;
-                        Int32 available = productQuantityEntity.Contains("gsc_available") ? productQuantityEntity.GetAttributeValue<Int32>("gsc_available")
-                            : 0;
-
-                        productQuantityEntity["gsc_allocated"] = allocated + 1;
-
-                        if (available > 0)
-                        {
-                            productQuantityEntity["gsc_available"] = available - 1;
-                        }
-
-                        _organizationService.Update(productQuantityEntity);
+                        inventoryMovement.UpdateProductQuantityDirectly(productQuantityEntity, 0, -1, 1, 0, 0, 0, 0, 0);
                         _tracingService.Trace("Updated productquantity count...");
 
                         #region Create VehicleAllocation Record
@@ -417,7 +407,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                 
                 Guid inventoryId = vehicleInTransitTransferDetail.Contains("gsc_inventoryid")
                     ? vehicleInTransitTransferDetail.GetAttributeValue<EntityReference>("gsc_inventoryid").Id
-                    : Guid.Empty;
+                    : Guid.Empty;                
 
                 //Retrieve and update inventory
                 EntityCollection inventoryRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId, _organizationService, null, OrderType.Ascending,
@@ -427,7 +417,8 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                 {
                     Entity inventory = inventoryRecords.Entities[0];
 
-                    inventory["gsc_status"] = new OptionSetValue(100000000);
+                    InventoryMovementHandler inventoryMovement = new InventoryMovementHandler(_organizationService, _tracingService);
+                    inventoryMovement.UpdateInventoryStatus(inventory, 100000000);
 
                     Guid productQuantityId = inventory.Contains("gsc_productquantityid")
                         ? inventory.GetAttributeValue<EntityReference>("gsc_productquantityid").Id
@@ -439,21 +430,8 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                     if (productQuantityRecords.Entities.Count > 0)
                     {
                         Entity productQuantity = productQuantityRecords.Entities[0];
-                        Int32 available = productQuantity.GetAttributeValue<Int32>("gsc_available");
-                        Int32 allocated = productQuantity.GetAttributeValue<Int32>("gsc_allocated");
-
-                        productQuantity["gsc_available"] = available + 1;
                         
-                        if (allocated != 0)
-                        {
-                            productQuantity["gsc_allocated"] = allocated - 1;
-                        }                        
-
-                        _organizationService.Update(productQuantity);
-                        _tracingService.Trace("Product Quantity updated...");
-
-                        _organizationService.Update(inventory);
-                        _tracingService.Trace("Updated inventory record...");
+                        inventoryMovement.UpdateProductQuantityDirectly(productQuantity, 0, 1, -1, 0, 0, 0, 0, 0);
 
                         _organizationService.Delete(vehicleInTransitTransferDetail.LogicalName, vehicleInTransitTransferDetail.Id);
                     }
