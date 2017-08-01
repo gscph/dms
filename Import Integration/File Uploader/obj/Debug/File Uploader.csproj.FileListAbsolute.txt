@@ -4,3 +4,9 @@ C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\File 
 C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\File Uploader\obj\Debug\File Uploader.exe
 C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\File Uploader\obj\Debug\File Uploader.pdb
 C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\File Uploader\obj\Debug\File Uploader.csprojResolveAssemblyReference.cache
+C:\Users\jgerero\Documents\GitHub\dms\Import Integration\File Uploader\bin\Debug\File Uploader.exe.config
+C:\Users\jgerero\Documents\GitHub\dms\Import Integration\File Uploader\bin\Debug\File Uploader.exe
+C:\Users\jgerero\Documents\GitHub\dms\Import Integration\File Uploader\bin\Debug\File Uploader.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Import Integration\File Uploader\obj\Debug\File Uploader.csprojResolveAssemblyReference.cache
+C:\Users\jgerero\Documents\GitHub\dms\Import Integration\File Uploader\obj\Debug\File Uploader.exe
+C:\Users\jgerero\Documents\GitHub\dms\Import Integration\File Uploader\obj\Debug\File Uploader.pdb

@@ -1,0 +1,20 @@
+2017-07-31 16:41:40.8530 INFO ******** Import Integration Tool ********
+2017-07-31 16:41:40.8795 INFO ******** Started : 20170731 04:41 PM ********
+2017-07-31 16:41:40.8795 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-31 16:41:40.9485 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-31 16:41:40.9485 INFO Checking configuration for file name..
+2017-07-31 16:41:40.9615 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-31 16:41:40.9615 INFO Import file C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Release\Vehicle Receiving.xlsx does not exist in the directory.. Exiting Application
+2017-07-31 16:49:25.0430 INFO ******** Import Integration Tool ********
+2017-07-31 16:49:25.0720 INFO ******** Started : 20170731 04:49 PM ********
+2017-07-31 16:49:25.0720 INFO Trying to connect to DMS Dynamics CRM.
+2017-07-31 16:49:25.1000 INFO Successfully connected to DMS Dynamics CRM!
+2017-07-31 16:49:25.1045 INFO Checking configuration for file name..
+2017-07-31 16:49:25.1045 INFO Trying to open Vehicle Receiving.xlsx..
+2017-07-31 16:49:25.1045 INFO Starting to read the data..
+2017-07-31 16:49:25.3235 INFO 1 records found..
+2017-07-31 16:49:25.3235 INFO Starting to read the data..
+2017-07-31 16:49:27.2734 ERROR Unable to save row 1 Vehicle Purchase Order Number:[VSFM-10088] does not exist in the DMS.
+2017-07-31 16:49:27.2734 INFO Trying to send email..
+2017-07-31 16:49:27.3214 ERROR An unexpected error occured during the execution of import: Message : "The parameter 'addresses' cannot be an empty string.
+Parameter name: addresses" 

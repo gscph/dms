@@ -1,0 +1,38 @@
+2017-07-31 16:56:28.7590 FATAL  Message:The parameter 'addresses' cannot be an empty string.
+Parameter name: addresses Stack Trace:    at System.Net.Mail.MailAddressCollection.Add(String addresses)
+   at ImportIntegration.EmailSender.Send(Int32 successRecordCount, Int32 failedRecordCount) in c:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\EmailSender.cs:line 87
+   at ImportIntegration.Program.Main(String[] args) in c:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\Program.cs:line 67
+2017-07-31 17:01:16.9983 FATAL  Message:The parameter 'addresses' cannot be an empty string.
+Parameter name: addresses Stack Trace:    at System.Net.Mail.MailAddressCollection.Add(String addresses)
+   at ImportIntegration.EmailSender.Send(Int32 successRecordCount, Int32 failedRecordCount) in c:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\EmailSender.cs:line 87
+   at ImportIntegration.Program.Main(String[] args) in c:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\Program.cs:line 67
+2017-07-31 17:05:05.8731 FATAL  Message:The parameter 'addresses' cannot be an empty string.
+Parameter name: addresses Stack Trace:    at System.Net.Mail.MailAddressCollection.Add(String addresses)
+   at ImportIntegration.EmailSender.Send(Int32 successRecordCount, Int32 failedRecordCount) in c:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\EmailSender.cs:line 87
+   at ImportIntegration.Program.Main(String[] args) in c:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\Program.cs:line 67
+2017-07-31 17:07:54.3846 FATAL  Message:The parameter 'addresses' cannot be an empty string.
+Parameter name: addresses Stack Trace:    at System.Net.Mail.MailAddressCollection.Add(String addresses)
+   at ImportIntegration.EmailSender.Send(Int32 successRecordCount, Int32 failedRecordCount) in c:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\EmailSender.cs:line 87
+   at ImportIntegration.Program.Main(String[] args) in c:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\Program.cs:line 67
+2017-07-31 17:10:52.3780 FATAL  Message:The parameter 'addresses' cannot be an empty string.
+Parameter name: addresses Stack Trace:    at System.Net.Mail.MailAddressCollection.Add(String addresses)
+   at ImportIntegration.EmailSender.Send(Int32 successRecordCount, Int32 failedRecordCount) in c:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\EmailSender.cs:line 87
+   at ImportIntegration.Program.Main(String[] args) in c:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\Program.cs:line 67
+2017-07-31 17:13:25.9854 FATAL  Message:Entity Id must be specified for Update Stack Trace: 
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at Microsoft.Xrm.Sdk.IOrganizationService.Update(Entity entity)
+   at Microsoft.Xrm.Sdk.Client.OrganizationServiceProxy.UpdateCore(Entity entity)
+   at Microsoft.Xrm.Sdk.Client.OrganizationServiceProxy.Update(Entity entity)
+   at Microsoft.Xrm.Client.Services.OrganizationService.<>c__DisplayClass13.<Update>b__12(IOrganizationService s)
+   at Microsoft.Xrm.Client.Services.OrganizationService.InnerOrganizationService.UsingService(Action`1 action)
+   at Microsoft.Xrm.Client.Services.OrganizationService.Update(Entity entity)
+   at ImportIntegration.ServiceProvider.MassUploadReceiving(IEnumerable`1 receivingTransactions) in c:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\ServiceProvider.cs:line 263
+   at ImportIntegration.Program.Main(String[] args) in c:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\Program.cs:line 64
