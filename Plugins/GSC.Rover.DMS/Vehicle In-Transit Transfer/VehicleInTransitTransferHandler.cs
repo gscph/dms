@@ -169,10 +169,9 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                         {
                             Entity inventory = inventoryCollection.Entities[0];
 
-                            //Status = Available
-                            inventory["gsc_status"] = new OptionSetValue(100000000);
+                            InventoryMovementHandler inventoryMovement = new InventoryMovementHandler(_organizationService, _tracingService);
+                            inventoryMovement.UpdateInventoryStatus(inventory, 100000000);
 
-                            _organizationService.Update(inventory);
                             _tracingService.Trace("Updated inventory record...");
 
                             var productQuantityId = inventory.Contains("gsc_productquantityid") ? inventory.GetAttributeValue<EntityReference>("gsc_productquantityid").Id
@@ -186,13 +185,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                             if (productQuantityCollection.Entities.Count > 0)
                             {
                                 Entity productQuantity = productQuantityCollection.Entities[0];
-                                Int32 available = productQuantity.GetAttributeValue<Int32>("gsc_available");
-                                Int32 allocated = productQuantity.GetAttributeValue<Int32>("gsc_allocated");
-
-                                productQuantity["gsc_available"] = available + 1;
-                                productQuantity["gsc_allocated"] = allocated - 1;
-
-                                _organizationService.Update(productQuantity);
+                                inventoryMovement.UpdateProductQuantityDirectly(productQuantity, 0, 1, -1, 0, 0, 0, 0, 0);
                                 _tracingService.Trace("Product Quantity updated...");
 
                                 //Delete Vehicle Allocation
@@ -201,6 +194,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
 
                                 //Clear inventoryidtoallocate field
                                 vehicleInTransitTransfer["gsc_inventoryidtoallocate"] = "";
+                                vehicleInTransitTransfer["gsc_intransittransferstatus"] = new OptionSetValue(100000003);
                                 _organizationService.Update(vehicleInTransitTransfer);
                                 _tracingService.Trace("Updated Vehicle In-Transit Transfer record...");
                             }
