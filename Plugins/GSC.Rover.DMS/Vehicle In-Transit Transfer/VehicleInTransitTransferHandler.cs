@@ -208,10 +208,10 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
             {
                 _tracingService.Trace("Status is not Picked...");
                 if (message == "Delete")
-                    throw new InvalidPluginExecutionException("Unable to delete Shipped Vehicle In-Transit Transfer record.");
+                    throw new InvalidPluginExecutionException("Unable to delete Shipped/Received Vehicle In-Transit Transfer record.");
                 else if (message == "Update")
                 {
-                    throw new InvalidPluginExecutionException("Unable to cancel Shipped Vehicle In-Transit Transfer record.");
+                    throw new InvalidPluginExecutionException("Unable to cancel Shipped/Received Vehicle In-Transit Transfer record.");
                 }
             }
             _tracingService.Trace("Ending ValidateDelete method...");
