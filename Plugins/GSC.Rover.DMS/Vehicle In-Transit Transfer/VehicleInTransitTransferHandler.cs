@@ -159,7 +159,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
             if (vehicleInTransitTransfer.GetAttributeValue<OptionSetValue>("gsc_intransittransferstatus").Value == 100000000)
             {
                 _tracingService.Trace("Status is Picked...");
-                EntityCollection allocatedVehicleCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_allocatedvehicle", "gsc_vehicleintransittransferid", vehicleInTransitTransfer.Id, _organizationService,
+                EntityCollection allocatedVehicleCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_vehicleintransittransferdetail", "gsc_vehicleintransittransferid", vehicleInTransitTransfer.Id, _organizationService,
                     null, OrderType.Ascending, new[] { "gsc_inventoryid" });
 
                 _tracingService.Trace("AllocatedVehicle records retrieved: " + allocatedVehicleCollection.Entities.Count);
