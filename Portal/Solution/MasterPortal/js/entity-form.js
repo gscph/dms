@@ -690,7 +690,9 @@
                 }).done(function () {
                     createNotificationCookie(layout.ConvertOrderToInvoiceActionLink.SuccessMessage);
                     onComplete(layout.ConvertOrderToInvoiceActionLink);
-                }).fail(function (jqXhr) {
+                }).fail(function (jqXhr, textStatus, errorThrown) {
+                    if (errorThrown == "There is already Invoice created for this Sales Order.")
+                        DMS.Notification.Error(errorThrown, true, 3000);
                     var contentType = jqXhr.getResponseHeader("content-type");
                     var error = contentType.indexOf("json") > -1 ? $.parseJSON(jqXhr.responseText) : { Message: jqXhr.status, InnerError: { Message: jqXhr.statusText } };
                     displayErrorAlert(error, $parent);
