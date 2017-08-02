@@ -135,6 +135,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
         }
 
         //Created By: Raphael Herrera, Created On: 8/24/2016
+        //Modified By: Artum Ramos, Modified On: 8/2/2017
         /*Purpose: Handle Delete AND Cancel BL for Vehicle In-Transit Transfer record
          * Registration Details:
          * Event/Message: 
