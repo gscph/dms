@@ -105,7 +105,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn
                 vehicleSalesReturnEntity["gsc_customerid"] = invoice.Contains("gsc_customer")
                     ? invoice.GetAttributeValue<String>("gsc_customer")
                     : String.Empty;
-                vehicleSalesReturnEntity["gsc_recordownerid"] = invoice.Contains("gsc_recordownerid")
+                /*vehicleSalesReturnEntity["gsc_recordownerid"] = invoice.Contains("gsc_recordownerid")
                     ? invoice.GetAttributeValue<EntityReference>("gsc_recordownerid")
                     : null;
                 vehicleSalesReturnEntity["gsc_dealerid"] = invoice.Contains("gsc_dealerid")
@@ -113,7 +113,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn
                     : null;
                 vehicleSalesReturnEntity["gsc_branchid"] = invoice.Contains("gsc_branchid")
                     ? invoice.GetAttributeValue<EntityReference>("gsc_branchid")
-                    : null;
+                    : null;*/
                 vehicleSalesReturnEntity["gsc_vehiclesalesinvoicedate"] = invoice.Contains("gsc_invoicedate")
                     ? invoice.GetAttributeValue<DateTime>("gsc_invoicedate")
                     : (DateTime?)null;
