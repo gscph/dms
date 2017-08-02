@@ -245,7 +245,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                     // Get Vehicle In-Transit Transfer Receiving Details
                     Entity receivingDetails = GetIntransitTransferDetails(vehicleInTransitTransfer.Id);
 
-                    CreateReceivingDetails(vehicleInTransitTransfer, receivingDetails);
+                    CreateReceivingDetails(vehicleInTransitTransfer, receivingDetails, receivingId);
                     // Create Vehicle In-Transit Transfer Receiving Entity Details
 
                     foreach (Entity allocatedVehicleEntity in allocatedVehicleCollection.Entities)
@@ -389,15 +389,15 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
          *      Post/Update: gsc_intransittransferstatus
          * Primary Entity: Vehicle In-Transit Transfer Receiving Details
          */
-        private void CreateReceivingDetails(Entity vehicleInTransitTransfer, Entity vehicleInTransitTransferDetails)
+        private void CreateReceivingDetails(Entity vehicleInTransitTransfer, Entity vehicleInTransitTransferDetails, Guid receivingId)
         {
             Entity inTransitReceivingEntity = new Entity("gsc_iv_vehicleintransitreceivingdetail");
             vehicleInTransitTransferDetails.Attributes.Remove("gsc_vehicleintransittransferid");
             vehicleInTransitTransferDetails.Attributes.Remove("gsc_iv_vehicleintransittransferdetailid");
             inTransitReceivingEntity.Attributes = vehicleInTransitTransferDetails.Attributes;
 
-            inTransitReceivingEntity.Attributes.Add("gsc_modelid",  CommonHandler.GetEntityReferenceIdSafe(vehicleInTransitTransfer, "gsc_modelid"));
-
+            inTransitReceivingEntity.Attributes.Add("gsc_intransitreceivingid", new EntityReference("gsc_iv_vehicleintransittransferreceiving", receivingId));
+            inTransitReceivingEntity.Attributes.Add("gsc_modelid",  CommonHandler.GetEntityReferenceIdSafe(vehicleInTransitTransfer, "gsc_modelid"));            
             inTransitReceivingEntity.Attributes.Add("gsc_productid", CommonHandler.GetEntityReferenceIdSafe(vehicleInTransitTransfer, "gsc_productid"));
 
             _organizationService.Create(inTransitReceivingEntity);
