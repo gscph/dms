@@ -673,6 +673,7 @@
             });
         } else {
             $element.find(".convert-order-link").on("click", function (e) {
+                $.blockUI({ message: null, overlayCSS: { opacity: .3 } });
                 e.preventDefault();
                 var id = $parent.find("[id$='_EntityID']").val();
                 var url = $(this).data("url");
@@ -691,11 +692,14 @@
                     createNotificationCookie(layout.ConvertOrderToInvoiceActionLink.SuccessMessage);
                     onComplete(layout.ConvertOrderToInvoiceActionLink);
                 }).fail(function (jqXhr, textStatus, errorThrown) {
-                    if (errorThrown == "There is already Invoice created for this Sales Order.")
+                    if (errorThrown.indexOf("There is already Invoice created for this Sales Order.") >= 0)
                         DMS.Notification.Error(errorThrown, true, 3000);
-                    var contentType = jqXhr.getResponseHeader("content-type");
-                    var error = contentType.indexOf("json") > -1 ? $.parseJSON(jqXhr.responseText) : { Message: jqXhr.status, InnerError: { Message: jqXhr.statusText } };
-                    displayErrorAlert(error, $parent);
+                    else {
+                        var contentType = jqXhr.getResponseHeader("content-type");
+                        var error = contentType.indexOf("json") > -1 ? $.parseJSON(jqXhr.responseText) : { Message: jqXhr.status, InnerError: { Message: jqXhr.statusText } };
+                        displayErrorAlert(error, $parent);
+                    }
+                    $(".blockUI").remove()
                 });
             });
         }

@@ -444,18 +444,13 @@ $(document).ready(function () {
             showLoading();
 
             $("#gsc_inventoryidtoallocate").val(id);
-            //   $("#UpdateButton").click();
+            $("#UpdateButton").click();
         }
         else {
             DMS.Notification.Error(" You can only allocate one vehicle per transaction.", true, 5000);
         }
         event.preventDefault();
     }
-
-    /*if (DMS.Settings.User.positionName == 'Sales Executive') {
-        $('#gsc_originaltotalpremium_label').hide();
-        $('#gsc_originaltotalpremium').hide();
-    }*/
 
     function showLoading() {
         $.blockUI({ message: null, overlayCSS: { opacity: .3 } });
@@ -704,7 +699,7 @@ var AccessroiessGridInstance = {
                 ],
                 columns: [
                     { data: 'gsc_free', type: 'checkbox', renderer: checkboxRenderer, className: "htCenter htMiddle", width: 50 },
-                    { data: 'gsc_itemnumber', renderer: stringRenderer, readOnly: false, className: "htCenter htMiddle", width: 100 },
+                    { data: 'gsc_itemnumber', renderer: stringRenderer, readOnly: true, className: "htCenter htMiddle", width: 100 },
                     {
                         data: 'gsc_productid', className: "htCenter htMiddle", width: 100, renderer: function (instance, td, row, col, prop, value, cellProperties) {
                             return lookupRenderer(accessoriesSelectData, instance, td, row, col, prop, value, cellProperties);
