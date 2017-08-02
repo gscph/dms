@@ -255,5 +255,37 @@ namespace GSC.Rover.DMS.BusinessLogic.Common
           
             return result;
         }
+
+        /// <summary>
+        /// Checks if entity attribute exists gets its value of an entity. returns default value if attribute does not exist
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="service"></param>
+        /// <returns></returns>
+        public static T GetEntityAttributeValueSafe<T>(Entity entity, string attribute)
+        {
+            if (entity.Attributes.Contains(attribute))
+            {
+                return entity.GetAttributeValue<T>(attribute);
+            }
+
+            return default(T);
+        }
+
+        /// <summary>
+        /// Checks if entity attribute exists gets its value of an entity. returns default value if attribute does not exist
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="service"></param>
+        /// <returns></returns>
+        public static Guid GetEntityReferenceValueSafe(Entity entity, string attribute)
+        {
+            if (entity.Attributes.Contains(attribute))
+            {
+                return entity.GetAttributeValue<EntityReference>(attribute).Id;
+            }
+
+            return default(Guid);
+        }
     }
 }

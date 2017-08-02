@@ -79,5 +79,37 @@ namespace CommonUnitTests
             //assert
             Assert.AreEqual(sampleId, result);
         }
+
+        [TestMethod]
+        public void GetEntityReferenceIdSafelyReturnsValue()
+        {            
+            //arrange
+            Entity sampleEntity = new Entity("account");
+            Guid sampleId = Guid.NewGuid();
+            EntityReference sampleReference = new EntityReference();
+            sampleReference.Id = sampleId;
+
+            sampleEntity.Attributes.Add("gsc_samplereferenceid", sampleReference);
+
+            //act
+            Guid result = CommonHandler.GetEntityReferenceValueSafe(sampleEntity, "gsc_samplereferenceid");
+            
+            //assert
+            Assert.AreEqual(sampleId, result);
+        }
+
+
+        [TestMethod]
+        public void GetEntityReferenceIdSafelyReturnsDefaultValue()
+        {
+            //arrange
+            Entity sampleEntity = new Entity("account");            
+
+            //act
+            Guid result = CommonHandler.GetEntityReferenceValueSafe(sampleEntity, "gsc_samplereferenceid");
+
+            //assert
+            Assert.AreEqual(default(Guid), result);
+        }
     }
 }
