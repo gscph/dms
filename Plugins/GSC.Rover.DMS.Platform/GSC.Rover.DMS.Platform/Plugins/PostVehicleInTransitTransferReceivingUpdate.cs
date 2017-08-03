@@ -101,7 +101,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     VehicleInTransitTransferReceivingHandler vehicleReceivingHandler = new VehicleInTransitTransferReceivingHandler(service, trace);
 
                     //BL for postStatus changed to Received
-                    if (preStatus != postStatus && postStatus == 100000001)
+                    if (preStatus != postStatus)
                     {
                         if(postStatus == 100000001)//Received
                             vehicleReceivingHandler.ReceiveTransfer(preImageEntity);
