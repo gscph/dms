@@ -272,5 +272,22 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                 throw new InvalidPluginExecutionException("No In Transit Transfer Records Found...");
             _tracingService.Trace("Ending CancelTransfer Method...");
         }
-    }
+
+        public void DetectDuplicate(Entity vehicleReceivingTransfer) 
+        {
+            QueryExpression query = new QueryExpression("gsc_iv_vehicleintransittransferreceiving");
+            query.ColumnSet.AddColumn("gsc_intransittransferid");
+
+            Guid transferId = CommonHandler.GetEntityReferenceValueSafe(vehicleReceivingTransfer, "gsc_iv_vehicleintransittransferid");
+
+            query.Criteria.AddCondition(new ConditionExpression("gsc_intransittransferid", ConditionOperator.Equal, transferId));
+
+            int count = _organizationService.RetrieveMultiple(query).Entities.Count;
+
+            if (count > 0)
+            {
+                throw new InvalidPluginExecutionException("Duplicate detected, In-Transit Transfer already exist.");
+            }
+        }
+    } 
 }
