@@ -39,6 +39,7 @@ namespace ImportIntegration
                 vpoConditionExp.Add(new ConditionExpression("gsc_purchaseorderpn", ConditionOperator.Equal, item.VehiclePurchaseOrderNumber));
                 // check if vpo status is equal to Ordered
                 vpoConditionExp.Add(new ConditionExpression("gsc_vpostatus", ConditionOperator.Equal, 100000002));
+                vpoConditionExp.Add(new ConditionExpression("gsc_isreceivedrecordcreated", ConditionOperator.Equal, false));
 
                 Entity vpo = GetEntityRecord("gsc_cmn_purchaseorder", vpoConditionExp,
                          new string[] { "gsc_purchaseorderpn", "gsc_vpostatus", "gsc_recordownerid" });
@@ -72,7 +73,7 @@ namespace ImportIntegration
 
                 if (vpoId == Guid.Empty)
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row {0} Vehicle Purchase Order Number:[{1}] does not exist in the DMS.", counter, item.VehiclePurchaseOrderNumber);
+                    _logger.Log(LogLevel.Error, "Unable to save row {0} Vehicle Purchase Order Number:[{1}] either does not exist in the DMS or receiving record is already created.", counter, item.VehiclePurchaseOrderNumber);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
