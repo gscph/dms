@@ -24,3 +24,8 @@ C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Common\bin\Release\G
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Common\obj\Release\Common.csprojResolveAssemblyReference.cache
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Common\obj\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Common\obj\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Common\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Common\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Common\obj\Release\Common.csprojResolveAssemblyReference.cache
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Common\obj\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Common\obj\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb

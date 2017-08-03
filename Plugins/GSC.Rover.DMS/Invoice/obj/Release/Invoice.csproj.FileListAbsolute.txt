@@ -64,3 +64,14 @@ C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\obj\Release\Invoice.csprojResolveAssemblyReference.cache
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\obj\Release\GSC.Rover.DMS.BusinessLogic.Invoice.dll
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\obj\Release\GSC.Rover.DMS.BusinessLogic.Invoice.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\GSC.Rover.DMS.BusinessLogic.Invoice.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\GSC.Rover.DMS.BusinessLogic.Invoice.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\bin\Release\Microsoft.Crm.Sdk.Proxy.xml
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\obj\Release\Invoice.csprojResolveAssemblyReference.cache
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\obj\Release\GSC.Rover.DMS.BusinessLogic.Invoice.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Invoice\obj\Release\GSC.Rover.DMS.BusinessLogic.Invoice.pdb

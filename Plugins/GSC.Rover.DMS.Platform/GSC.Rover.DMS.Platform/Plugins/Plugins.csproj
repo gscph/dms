@@ -387,6 +387,7 @@
     <Compile Include="PostVehicleClaimUpdate.cs" />
     <Compile Include="PostVehicleCountEntryDetailsUpdate.cs" />
     <Compile Include="PostVehicleCountEntryUpdate.cs" />
+    <Compile Include="PostVehicleInTransitTransferReceivingCreate.cs" />
     <Compile Include="PostVehicleInTransitTransferReceivingUpdate.cs" />
     <Compile Include="PostVehicleInTransitTransferUpdate.cs" />
     <Compile Include="PostVehicleCountScheduleUpdate.cs" />
