@@ -3030,6 +3030,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                 salesOrder["gsc_applytoafamount"] = quoteEntity.Contains("gsc_applytoafamount")
                     ? quoteEntity.GetAttributeValue<Money>("gsc_applytoafamount")
                     : new Money(0);
+                _organizationService.Update(salesOrder);
             }
 
             return salesOrder;
