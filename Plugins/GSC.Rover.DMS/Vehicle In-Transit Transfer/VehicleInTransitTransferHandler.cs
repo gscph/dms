@@ -229,8 +229,16 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
         {
             _tracingService.Trace("Started ShipVehicle method...");
 
+
+            OptionSetValue status = CommonHandler.GetEntityAttributeSafe<OptionSetValue>(vehicleInTransitTransfer, "gsc_intransittransferstatus");
+
+            if (status == null)
+            {
+                return;
+            }
+
             //Status == Picked
-            if (vehicleInTransitTransfer.GetAttributeValue<OptionSetValue>("gsc_intransittransferstatus").Value == 100000000)
+            if (status.Value == 100000000)
             {
                 _tracingService.Trace("Status is Picked...");
 
@@ -362,7 +370,6 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                 : string.Empty;
             //Status = Shipped
             inTransitReceivingEntity["gsc_intransitstatus"] = new OptionSetValue(100000000);
-            inTransitReceivingEntity["gsc_intransitstatuscopy"] = new OptionSetValue(100000000);
             inTransitReceivingEntity["gsc_intransittransferid"] = new EntityReference(vehicleInTransitTransfer.LogicalName, vehicleInTransitTransfer.Id);
             inTransitReceivingEntity["gsc_intransittransferremarks"] = vehicleInTransitTransfer.Contains("gsc_remarks") ? vehicleInTransitTransfer.GetAttributeValue<string>("gsc_remarks")
                 : string.Empty;

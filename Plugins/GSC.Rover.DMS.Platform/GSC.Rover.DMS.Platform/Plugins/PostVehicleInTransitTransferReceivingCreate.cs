@@ -13,11 +13,12 @@ namespace GSC.Rover.DMS.Platform.Plugins
     using System;
     using System.ServiceModel;
     using Microsoft.Xrm.Sdk;
+    using GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving;
 
     /// <summary>
     /// PostVehicleInTransitTransferReceivingCreate Plugin.
     /// </summary>    
-    public class PostVehicleInTransitTransferReceivingCreate: Plugin
+    public class PostVehicleInTransitTransferReceivingCreate : Plugin
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PostVehicleInTransitTransferReceivingCreate"/> class.
@@ -64,12 +65,10 @@ namespace GSC.Rover.DMS.Platform.Plugins
             string error = "";
 
             try
-            {
-                throw new InvalidPluginExecutionException("hello");
-
-               // VehicleInTransitTransferReceivingHandler receivingHandler = new VehicleInTransitTransferReceivingHandler(service, trace);
+            {              
+                VehicleInTransitTransferReceivingHandler receivingHandler = new VehicleInTransitTransferReceivingHandler(service, trace);
                 // check if in-transit transfer already exists.
-             //   receivingHandler.DetectDuplicate(entity);
+                receivingHandler.DetectDuplicate(entity);
                 // populate in-transit transfer details               
 
             }
