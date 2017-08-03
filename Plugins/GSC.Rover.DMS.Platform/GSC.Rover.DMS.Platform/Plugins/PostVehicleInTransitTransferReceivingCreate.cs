@@ -67,8 +67,10 @@ namespace GSC.Rover.DMS.Platform.Plugins
             try
             {              
                 VehicleInTransitTransferReceivingHandler receivingHandler = new VehicleInTransitTransferReceivingHandler(service, trace);
+                // get value changes from the entity
+                Entity postImage = service.Retrieve(entity.LogicalName, entity.Id, new Microsoft.Xrm.Sdk.Query.ColumnSet("gsc_iv_vehicleintransittransferid"));
                 // check if in-transit transfer already exists.
-                receivingHandler.DetectDuplicate(entity);
+                receivingHandler.DetectDuplicate(postImage);
                 // populate in-transit transfer details               
 
             }

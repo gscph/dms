@@ -287,7 +287,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             if (count > 0)
             {
                 throw new InvalidPluginExecutionException("Duplicate detected, In-Transit Transfer already exist.");
-            }
+            }     
         }
         public Entity CopyStatus(Entity vehicleInTransitReceiving)
         {
