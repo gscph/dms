@@ -289,5 +289,12 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                 throw new InvalidPluginExecutionException("Duplicate detected, In-Transit Transfer already exist.");
             }
         }
+        public Entity CopyStatus(Entity vehicleInTransitReceiving)
+        {
+            vehicleInTransitReceiving["gsc_intransitstatuscopy"] = vehicleInTransitReceiving.GetAttributeValue<OptionSetValue>("gsc_intransitstatus");
+            _organizationService.Update(vehicleInTransitReceiving);
+            _tracingService.Trace("Updated In Transit Receiving status copy...");
+            return vehicleInTransitReceiving;
+        }
     } 
 }

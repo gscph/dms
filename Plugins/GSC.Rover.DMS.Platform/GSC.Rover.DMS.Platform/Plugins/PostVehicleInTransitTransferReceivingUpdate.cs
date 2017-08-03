@@ -103,11 +103,11 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     //BL for postStatus changed to Received
                     if (preStatus != postStatus && postStatus == 100000001)
                     {
-                        vehicleReceivingHandler.ReceiveTransfer(preImageEntity);
-                    }
-                    else if (preStatus != postStatus && postStatus == 100000002)
-                    {
-                        vehicleReceivingHandler.CancelTransfer(preImageEntity);
+                        if(postStatus == 100000001)//Received
+                            vehicleReceivingHandler.ReceiveTransfer(preImageEntity);
+                        if(postStatus == 100000002)//Cancelled
+                            vehicleReceivingHandler.CancelTransfer(preImageEntity);
+                        vehicleReceivingHandler.CopyStatus(postImageEntity);
                     }
                 }
 
