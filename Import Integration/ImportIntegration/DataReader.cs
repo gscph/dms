@@ -126,7 +126,16 @@ namespace ImportIntegration
                             }
                             if (columnIndex == 1)
                             {
-                                rt.PullOutDate = DateTime.FromOADate(Convert.ToDouble(GetCellValue(doc, cell))).ToString();
+                                string cellValue = GetCellValue(doc, cell);
+
+                                if (string.IsNullOrEmpty(cellValue))
+                                {
+                                    rt.PullOutDate = cellValue;
+                                }
+                                else
+                                {
+                                    rt.PullOutDate = DateTime.FromOADate(Convert.ToDouble(cellValue)).ToString();
+                                }                              
                             }
                             if (columnIndex == 2)
                             {
@@ -138,11 +147,30 @@ namespace ImportIntegration
                             }
                             if (columnIndex == 4)
                             {
-                                rt.InTransitReceiptDate = DateTime.FromOADate(Convert.ToDouble(GetCellValue(doc, cell))).ToString();
+                                string cellValue = GetCellValue(doc, cell);
+
+                                if (string.IsNullOrEmpty(cellValue))
+                                {
+                                    rt.InTransitReceiptDate = cellValue;
+                                }
+                                else
+                                {
+                                    rt.InTransitReceiptDate = DateTime.FromOADate(Convert.ToDouble(cellValue)).ToString();
+                                }  
+                              
                             }
                             if (columnIndex == 5)
                             {
-                                rt.InvoiceDate = DateTime.FromOADate(Convert.ToDouble(GetCellValue(doc, cell))).ToString();
+                                string cellValue = GetCellValue(doc, cell);
+
+                                if (string.IsNullOrEmpty(cellValue))
+                                {
+                                    rt.InvoiceDate = cellValue;
+                                }
+                                else
+                                {
+                                    rt.InvoiceDate = DateTime.FromOADate(Convert.ToDouble(cellValue)).ToString();
+                                }                                
                             }
                             if (columnIndex == 6)
                             {

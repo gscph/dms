@@ -25,7 +25,6 @@ namespace ImportIntegration
                 _logger.Log(LogLevel.Info, "Trying to connect to DMS Dynamics CRM.");
                 this.ConnectionString = ConfigurationManager.ConnectionStrings[connectionString].ConnectionString;                
             }
-
         }       
     }
 }

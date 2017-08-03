@@ -31,7 +31,7 @@ namespace ImportIntegration
             ConfigurationReader reader = new ConfigurationReader("Xrm", logger);
 
             IOrganizationService service = new OrganizationService(CrmConnection.Parse(reader.ConnectionString));
-            
+
             logger.Log(LogLevel.Info, "Successfully connected to DMS Dynamics CRM!");
 
             logger.Log(LogLevel.Info, "Checking configuration for file name..");
@@ -43,13 +43,13 @@ namespace ImportIntegration
             }
 
             string fileName = ConfigurationManager.AppSettings["FileName"].ToString();
-            string currentPath =  Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string currentPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             string excelPath = currentPath + "\\" + fileName;
             logger.Log(LogLevel.Info, "Trying to open {0}..", fileName);
 
             if (!System.IO.File.Exists(excelPath))
-            {                
-                logger.Log(LogLevel.Info, "Import file {0} does not exist in the directory.. Exiting Application", excelPath);            
+            {
+                logger.Log(LogLevel.Info, "There are no more files to be processed.. Exiting Application", excelPath);
                 Environment.Exit(0);
             }
 
@@ -59,14 +59,12 @@ namespace ImportIntegration
                 ServiceProvider _provider = new ServiceProvider(service, logger);
                 logger.Log(LogLevel.Info, "Starting to read the data..");
                 List<ReceivingTransaction> rtList = _reader.Read();
-                logger.Log(LogLevel.Info, "{0} records found..", rtList.Count);
                 logger.Log(LogLevel.Info, "Starting to read the data..");
-                _provider.MassUploadReceiving(rtList);               
+                _provider.MassUploadReceiving(rtList);
                 EmailSender emailSender = new EmailSender(service);
                 logger.Log(LogLevel.Info, "Trying to send email..");
                 emailSender.Send(_provider.RecordsUploaded, _provider.RecordsFailedUpload);
-
-                logger.Log(LogLevel.Info, "Import request has been processed. There were {0}/{1} records uploaded to the DMS Application", _provider.RecordsUploaded, rtList.Count);
+                logger.Log(LogLevel.Info, "Import request has been processed. There were {0} record(s) uploaded to the DMS Application", _provider.RecordsUploaded);
             }
             catch (Exception ex)
             {
@@ -83,9 +81,9 @@ namespace ImportIntegration
                 }
                 Environment.Exit(0);
             }
-        }     
+        }
 
-      
+
     }
 
 }

@@ -13,17 +13,3 @@ C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\Impor
 C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\obj\Release\ImportIntegration.csprojResolveAssemblyReference.cache
 C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\obj\Release\ImportIntegration.exe
 C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\obj\Release\ImportIntegration.pdb
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Release\ImportIntegration.exe.config
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\obj\Release\ImportIntegration.exe
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\obj\Release\ImportIntegration.pdb
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Release\NLog.config
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Release\ImportIntegration.exe
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Release\ImportIntegration.pdb
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Release\Microsoft.Xrm.Client.dll
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Release\Microsoft.Xrm.Sdk.dll
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Release\NLog.dll
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Release\Microsoft.Xrm.Sdk.Deployment.dll
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Release\Microsoft.Xrm.Client.xml
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Release\NLog.xml
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Release\Microsoft.Xrm.Sdk.Deployment.xml

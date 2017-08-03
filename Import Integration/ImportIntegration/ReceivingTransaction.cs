@@ -87,7 +87,7 @@ namespace ImportIntegration
         }
 
         public ReceivingTransactionDetails ReceivingDetails { get; set; }
-      
+
     }
 
 
@@ -143,6 +143,6 @@ namespace ImportIntegration
         {
             get { return _VIN; }
             set { _VIN = value.Trim(); }
-        }
+        }        
     }
 }

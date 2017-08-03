@@ -27,7 +27,12 @@ namespace ImportIntegration
         {
             int counter = 1;
             foreach (ReceivingTransaction item in receivingTransactions)
-            {                
+            {
+                if (IsRowEmpty(item))
+                {
+                    continue;
+                }
+
                 Entity rt = new Entity("gsc_cmn_receivingtransaction");
 
                 List<ConditionExpression> vpoConditionExp = new List<ConditionExpression>();
@@ -36,7 +41,7 @@ namespace ImportIntegration
                 vpoConditionExp.Add(new ConditionExpression("gsc_vpostatus", ConditionOperator.Equal, 100000002));
 
                 Entity vpo = GetEntityRecord("gsc_cmn_purchaseorder", vpoConditionExp,
-                         new string[] { "gsc_recordownerid" });
+                         new string[] { "gsc_purchaseorderpn", "gsc_vpostatus", "gsc_recordownerid" });
 
                 Guid vpoId = vpo.Id;
 
@@ -45,6 +50,12 @@ namespace ImportIntegration
 
                 Guid vehicleColorId = GetEntityReferenceId("gsc_iv_color",
                   GetEntityConditionExpression("gsc_colorcode", item.ReceivingDetails.ColorCode));
+
+                Guid dealerId = GetEntityReferenceId("account",
+                 GetEntityConditionExpression("accountnumber", item.DealerCode));
+
+                Guid branchId = GetEntityReferenceId("account",
+                  GetEntityConditionExpression("accountnumber", item.BranchCode));
 
                 List<ConditionExpression> productConditionExp = new List<ConditionExpression>();
                 productConditionExp.Add(new ConditionExpression("gsc_optioncode", ConditionOperator.Equal, item.ReceivingDetails.OptionCode));
@@ -58,12 +69,6 @@ namespace ImportIntegration
                 productColorConditionExp.Add(new ConditionExpression("gsc_productid", ConditionOperator.Equal, productId));
 
                 Guid vehicleProductColorId = GetEntityReferenceId("gsc_cmn_vehiclecolor", productColorConditionExp);
-
-                Guid dealerId = GetEntityReferenceId("account",
-                  GetEntityConditionExpression("accountnumber", item.DealerCode));
-
-                Guid branchId = GetEntityReferenceId("account",
-                  GetEntityConditionExpression("accountnumber", item.BranchCode));
 
                 if (vpoId == Guid.Empty)
                 {
@@ -164,7 +169,7 @@ namespace ImportIntegration
 
                 if (vehicleProductColorId == Guid.Empty)
                 {
-                    _logger.Log(LogLevel.Error, @"Unable to save row:[{0}], vpo:[{1}]. Vehicle Id {2} with Color {3} does not exist in the DMS..", 
+                    _logger.Log(LogLevel.Error, @"Unable to save row:[{0}], vpo:[{1}]. Vehicle Id {2} with Color {3} does not exist in the DMS..",
                                         counter, item.VehiclePurchaseOrderNumber, productId, item.ReceivingDetails.ColorCode);
                     counter++;
                     this.RecordsFailedUpload++;
@@ -220,7 +225,7 @@ namespace ImportIntegration
                 }
 
                 rt.Attributes.Add("gsc_recordtype", new OptionSetValue(100000000));
-                rt.Attributes.Add("gsc_purchaseorderid", new EntityReference("gsc_cmn_purchaseorder", vpoId));              
+                rt.Attributes.Add("gsc_purchaseorderid", new EntityReference("gsc_cmn_purchaseorder", vpoId));
                 rt.Attributes.Add("gsc_intransitsiteid", new EntityReference("gsc_iv_site", siteId));
                 DateTime pullOutDate;
                 DateTime.TryParse(item.PullOutDate, out pullOutDate);
@@ -238,6 +243,7 @@ namespace ImportIntegration
                 rt.Attributes.Add("gsc_recordownerid", vpo.GetAttributeValue<EntityReference>("gsc_recordownerid"));
 
                 Guid rtId = _service.Create(rt);
+              
 
                 _logger.Log(LogLevel.Info, @"Row {0} with Vehicle Purchase Number {1} was successfully created in Receiving Transaction with record id {2}",
                     counter,
@@ -245,7 +251,7 @@ namespace ImportIntegration
                     rtId);
 
 
-                Entity rtDetails = new Entity("gsc_cmn_receivingtransactiondetail");           
+                Entity rtDetails = new Entity("gsc_cmn_receivingtransactiondetail");
 
                 rtDetails = GetEntityRecord("gsc_cmn_receivingtransactiondetail",
                     GetEntityConditionExpression("gsc_receivingtransactionid", rtId),
@@ -258,11 +264,11 @@ namespace ImportIntegration
                 rtDetails.Attributes.Add("gsc_engineno", item.ReceivingDetails.EngineNumber);
                 rtDetails.Attributes.Add("gsc_csno", item.ReceivingDetails.CSNumber);
                 rtDetails.Attributes.Add("gsc_productionno", item.ReceivingDetails.ProductionNumber);
-                rtDetails.Attributes.Add("gsc_vin", item.ReceivingDetails.VIN);                
+                rtDetails.Attributes.Add("gsc_vin", item.ReceivingDetails.VIN);
 
                 _service.Update(rtDetails);
-               
-                _logger.Log(LogLevel.Info, @"Row {0} with Vehicle Purchase Number {1} successfully created a record in Receiving Transaction Detail with Id {2}", 
+
+                _logger.Log(LogLevel.Info, @"Row {0} with Vehicle Purchase Number {1} successfully created a record in Receiving Transaction Detail with Id {2}",
                     counter, item.VehiclePurchaseOrderNumber, rtDetails.Id);
                 counter++;
                 this.RecordsUploaded++;
@@ -368,6 +374,11 @@ namespace ImportIntegration
             return new Entity();
         }
 
+        private bool IsRowEmpty(ReceivingTransaction row)
+        {
+            return row.GetType().GetProperties().Where(pi => pi.GetValue(row) is string)
+                    .Select(pi => (string)pi.GetValue(row)).Any(value => String.IsNullOrEmpty(value));
+        }
 
     }
 }
