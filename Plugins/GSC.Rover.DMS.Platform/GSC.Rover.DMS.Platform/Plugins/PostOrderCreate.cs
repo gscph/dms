@@ -80,13 +80,14 @@ namespace GSC.Rover.DMS.Platform.Plugins
 
                    salesOrderHandler.ReplicateQuoteVehicleAccessories(salesOrder);
                    salesOrderHandler.ReplicateQuoteDiscount(salesOrder);
-                   salesOrderHandler.ReplicateDiscountFields(salesOrder);
+                   //salesOrderHandler.ReplicateDiscountFields(salesOrder);
                    salesOrderHandler.ReplicateQuoteCharges(salesOrder);
                    //salesOrderHandler.CreateCoverageAvailable(salesOrder, message);
                    salesOrderHandler.CreateRequirementChecklist(salesOrder, message);
                    salesOrderHandler.DeleteExistingMonthlyAmortizationRecords(salesOrder);
                    salesOrderHandler.GetSelectedMonthlyAmortization(salesOrder);
                    salesOrderHandler.GenerateAccessoriesforVehicleModel(salesOrder);
+                   salesOrderHandler.ReplicateDiscountFields(salesOrder);
                    salesOrderHandler.ReplicateQuoteCabChassis(salesOrder);
                }
             }
