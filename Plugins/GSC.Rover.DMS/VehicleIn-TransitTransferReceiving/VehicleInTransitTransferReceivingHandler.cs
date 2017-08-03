@@ -42,16 +42,15 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             if (inTransitCollection.Entities.Count > 0)
             {
                 Entity vehicleInTransit = inTransitCollection.Entities[0];
-                EntityCollection transferDetailsCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_vehicleintransittransferdetail", "gsc_vehicleintransittransferid", vehicleInTransit.Id, _organizationService,
-                    null, OrderType.Ascending, new[] { "gsc_inventoryid", "gsc_modelyear", "gsc_modelcode", "gsc_optioncode", "gsc_color", "gsc_csno", "gsc_vin", "gsc_productionno", 
-                    "gsc_engineno", "gsc_destinationsiteid"});
+                EntityCollection receivingDetailsCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_vehicleintransitreceivingdetail", "gsc_intransitreceivingid", vehicleTransferReceiving.Id, _organizationService,
+                    null, OrderType.Ascending, new[] { "gsc_inventoryid" });
 
-                _tracingService.Trace("In Transit Transfer Details records retrieved: " + transferDetailsCollection.Entities.Count);
-                if (transferDetailsCollection.Entities.Count > 0)
+                _tracingService.Trace("In Transit Transfer Details records retrieved: " + receivingDetailsCollection.Entities.Count);
+                if (receivingDetailsCollection.Entities.Count > 0)
                 {
-                    foreach (Entity transferDetailsEntity in transferDetailsCollection.Entities)
+                    foreach (Entity receivingDetailsEntity in receivingDetailsCollection.Entities)
                     {
-                        var inventoryId = transferDetailsEntity.Contains("gsc_inventoryid") ? transferDetailsEntity.GetAttributeValue<EntityReference>("gsc_inventoryid").Id
+                        var inventoryId = receivingDetailsEntity.Contains("gsc_inventoryid") ? receivingDetailsEntity.GetAttributeValue<EntityReference>("gsc_inventoryid").Id
                            : Guid.Empty;
 
                         //Retrieve inventory
@@ -68,7 +67,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
 
                             //Retrieve product quantity of Via Site
                             EntityCollection viaQuantityCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_productquantity", "gsc_iv_productquantityid", productQuantityId, _organizationService,
-                                null, OrderType.Ascending, new[] { "gsc_available", "gsc_onhand", "gsc_productid", "gsc_vehiclemodelid" });
+                                null, OrderType.Ascending, new[] { "gsc_available", "gsc_onhand", "gsc_allocated", "gsc_productid", "gsc_vehiclemodelid" });
 
                             _tracingService.Trace("Via Site ProductQuantity records retrieved: " + viaQuantityCollection.Entities.Count);
                             if (viaQuantityCollection.Entities.Count > 0)
@@ -88,7 +87,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                                 };
 
                                 EntityCollection destinationQuantityCollection = CommonHandler.RetrieveRecordsByConditions("gsc_iv_productquantity", destinationConditionList, _organizationService, null,
-                                    OrderType.Ascending, new[] { "gsc_onhand", "gsc_available" });
+                                    OrderType.Ascending, new[] { "gsc_onhand", "gsc_available", "gsc_allocated" });
 
                                 Entity destinationQuantityEntity = new Entity("gsc_iv_productquantity");
                                 _tracingService.Trace("Destination ProductQuantity records retrieved: " + destinationQuantityCollection.Entities.Count);
@@ -103,6 +102,8 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                                     destinationQuantityEntity["gsc_siteid"] = new EntityReference("gsc_iv_site", destinationSite);
                                     destinationQuantityEntity["gsc_productid"] = new EntityReference("product", productId);
                                     destinationQuantityEntity["gsc_productquantitypn"] = productName + "-" + siteName;
+                                    destinationQuantityEntity["gsc_allocated"] = 0;
+                                    destinationQuantityEntity["gsc_sold"] = 0;
 
                                     destinationQuantityEntity.Id = _organizationService.Create(destinationQuantityEntity);
                                     _tracingService.Trace("Created Product Quantity...");
@@ -124,11 +125,11 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                                 _tracingService.Trace("Updated Inventory Status...");
 
                                 //Update Product Quantity of Via Site
-                                inventoryHandler.UpdateProductQuantityDirectly(viaProdQuantity, -1, -1, 0, 0, 0, 0, 0, 0);
+                                inventoryHandler.UpdateProductQuantityDirectly(viaProdQuantity, -1, -1, -1, 0, 0, 0, 0, 0);//Included value in allocated for recount
                                 _tracingService.Trace("Updated Via Site Product Quantity...");
 
                                 //Update Product Quantity of Destination Site
-                                inventoryHandler.UpdateProductQuantityDirectly(destinationQuantityEntity, 1, 1, 0, 0, 0, 0, 0, 0);
+                                inventoryHandler.UpdateProductQuantityDirectly(destinationQuantityEntity, 1, 1, 1, 0, 0, 0, 0, 0);//Included value in allocated for recount
                                 _tracingService.Trace("Updated Destination Site Product Quantity...");
 
                                 //Update Vehicle In-Transit Transfer. Status = Received
@@ -145,7 +146,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                     }
                 }
                 else
-                    throw new InvalidPluginExecutionException("No Transfer Details Found...");
+                    throw new InvalidPluginExecutionException("No Receiving Details Found...");
             }
             _tracingService.Trace("Ending ReceiveTransfer Method...");
         }
@@ -160,6 +161,10 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
         public void CancelTransfer(Entity vehicleTransferReceiving)
         {
             _tracingService.Trace("Started Cancel Transfer Method...");
+            if (vehicleTransferReceiving.GetAttributeValue<OptionSetValue>("gsc_intransitstatus").Value != 100000000)
+            {
+                throw new InvalidPluginExecutionException("Only records with Shipped status can be canceled.");
+            }
             var inTransitTransferId = vehicleTransferReceiving.Contains("gsc_intransittransferid") ? vehicleTransferReceiving.GetAttributeValue<EntityReference>("gsc_intransittransferid").Id
                 : Guid.Empty;
 
@@ -168,101 +173,104 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                 null, OrderType.Ascending, new[] { "gsc_sourcesiteid", "gsc_viasiteid" });
 
             _tracingService.Trace("In-Transit Transfer Records Retrieved: " + inTransitTransferCollection.Entities.Count);
-                if(inTransitTransferCollection.Entities.Count > 0)
+            if (inTransitTransferCollection.Entities.Count > 0)
+            {
+                Entity inTransitTransferEntity = inTransitTransferCollection.Entities[0];
+
+                //Retrieve Allocated Vehicles of In-Transit Transfer
+                EntityCollection transferDetailsCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_vehicleintransittransferdetail", "gsc_vehicleintransittransferid", inTransitTransferEntity.Id, _organizationService,
+                null, OrderType.Ascending, new[] { "gsc_sourcesiteid", "gsc_viasiteid", "gsc_inventoryid" });
+
+                _tracingService.Trace("In Transit Transfer Detail Records Retrieved: " + transferDetailsCollection.Entities.Count);
+                if (transferDetailsCollection.Entities.Count > 0)
                 {
-                    Entity inTransitTransferEntity = inTransitTransferCollection.Entities[0];
-
-                    //Retrieve Allocated Vehicles of In-Transit Transfer
-                    EntityCollection allocatedVehicleCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_allocatedvehicle", "gsc_vehicleintransittransferid", inTransitTransferEntity.Id, _organizationService,
-                    null, OrderType.Ascending, new[] { "gsc_sourcesiteid", "gsc_viasiteid", "gsc_inventoryid" });
-
-                    _tracingService.Trace("Allocated Vehicle Records Retrieved: " + allocatedVehicleCollection.Entities.Count);
-                    if (allocatedVehicleCollection.Entities.Count > 0)
+                    foreach (Entity transferDetailsEntity in transferDetailsCollection.Entities)
                     {
-                        foreach (Entity allocatedVehicle in allocatedVehicleCollection.Entities)
+                        var sourceSiteId = transferDetailsEntity.Contains("gsc_sourcesiteid") ? transferDetailsEntity.GetAttributeValue<EntityReference>("gsc_sourcesiteid").Id
+                            : Guid.Empty;
+                        var inventoryId = transferDetailsEntity.Contains("gsc_inventoryid") ? transferDetailsEntity.GetAttributeValue<EntityReference>("gsc_inventoryid").Id
+                            : Guid.Empty;
+
+                        //Retrieve Inventory of Allocated Vehicle
+                        EntityCollection inventoryCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId, _organizationService,
+                         null, OrderType.Ascending, new[] { "gsc_status", "gsc_productquantityid" });
+
+                        _tracingService.Trace("Inventory Records Retrieved: " + inventoryCollection.Entities.Count);
+                        if (inventoryCollection.Entities.Count > 0)
                         {
-                            var sourceSiteId = allocatedVehicle.Contains("gsc_sourcesiteid") ? allocatedVehicle.GetAttributeValue<EntityReference>("gsc_sourcesiteid").Id
+                            Entity inventoryEntity = inventoryCollection.Entities[0];
+                            var viaProdQuantityId = inventoryEntity.Contains("gsc_productquantityid") ? inventoryEntity.GetAttributeValue<EntityReference>("gsc_productquantityid").Id
                                 : Guid.Empty;
-                            var inventoryId = allocatedVehicle.Contains("gsc_inventoryid") ? allocatedVehicle.GetAttributeValue<EntityReference>("gsc_inventoryid").Id
-                                : Guid.Empty;
-
-                            //Retrieve Inventory of Allocated Vehicle
-                            EntityCollection inventoryCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId, _organizationService,
-                             null, OrderType.Ascending, new[] { "gsc_status", "gsc_productquantityid" });
-
-                            _tracingService.Trace("Inventory Records Retrieved: " + inventoryCollection.Entities.Count);
-                            if (inventoryCollection.Entities.Count > 0)
+                            if (inventoryEntity.GetAttributeValue<OptionSetValue>("gsc_status").Value == 100000001)//status == allocated
                             {
-                                Entity inventoryEntity = inventoryCollection.Entities[0];
-                                var viaProdQuantityId = inventoryEntity.Contains("gsc_productquantityid") ? inventoryEntity.GetAttributeValue<EntityReference>("gsc_productquantityid").Id
+                                throw new InvalidPluginExecutionException("Vehicle in this transaction is still allocated. Please remove allocation in Sales Order before cancelling.");
+                            }
+                            //Retrieve Product Quantity of Via Site
+                            EntityCollection viaQuantityCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_productquantity", "gsc_iv_productquantityid", viaProdQuantityId, _organizationService,
+                                null, OrderType.Ascending, new[] { "gsc_available", "gsc_onhand", "gsc_productid", "gsc_allocated" });
+
+                            _tracingService.Trace("Via Site Product Quantity Records Retrieved: " + viaQuantityCollection.Entities.Count);
+                            if (viaQuantityCollection.Entities.Count > 0)
+                            {
+                                Entity viaQuantityEntity = viaQuantityCollection.Entities[0];
+                                var productId = viaQuantityEntity.Contains("gsc_productid") ? viaQuantityEntity.GetAttributeValue<EntityReference>("gsc_productid").Id
                                     : Guid.Empty;
 
-                                //Retrieve Product Quantity of Via Site
-                                EntityCollection viaQuantityCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_productquantity", "gsc_iv_productquantityid", viaProdQuantityId, _organizationService,
-                                 null, OrderType.Ascending, new[] { "gsc_available", "gsc_onhand", "gsc_productid" });
-
-                                _tracingService.Trace("Via Site Product Quantity Records Retrieved: " + viaQuantityCollection.Entities.Count);
-                                if (viaQuantityCollection.Entities.Count > 0)
+                                //Retrieve Product Quantity of Source Site
+                                var sourceConditionList = new List<ConditionExpression>
                                 {
-                                    Entity viaQuantityEntity = viaQuantityCollection.Entities[0];
-                                    var productId = viaQuantityEntity.Contains("gsc_productid") ? viaQuantityEntity.GetAttributeValue<EntityReference>("gsc_productid").Id
-                                        : Guid.Empty;
+                                    new ConditionExpression("gsc_siteid", ConditionOperator.Equal, sourceSiteId),
+                                    new ConditionExpression("gsc_productid", ConditionOperator.Equal, productId)
+                                };
 
-                                    //Retrieve Product Quantity of Source Site
-                                    var sourceConditionList = new List<ConditionExpression>
-                                    {
-                                        new ConditionExpression("gsc_siteid", ConditionOperator.Equal, sourceSiteId),
-                                        new ConditionExpression("gsc_productid", ConditionOperator.Equal, productId)
-                                    };
+                                EntityCollection sourceQuantityCollection = CommonHandler.RetrieveRecordsByConditions("gsc_iv_productquantity", sourceConditionList, _organizationService, null,
+                                    OrderType.Ascending, new[] { "gsc_onhand", "gsc_available", "gsc_allocated" });
 
-                                    EntityCollection sourceQuantityCollection = CommonHandler.RetrieveRecordsByConditions("gsc_iv_productquantity", sourceConditionList, _organizationService, null,
-                                     OrderType.Ascending, new[] { "gsc_onhand", "gsc_available" });
+                                _tracingService.Trace("Source Site Product Quantity Records Retrieved: " + sourceQuantityCollection.Entities.Count);
+                                if (sourceQuantityCollection.Entities.Count > 0)
+                                {
+                                    #region BL for Cancellation of Vehicle In-Transit Transfer Receiving
+                                    Entity sourceQuantityEntity = sourceQuantityCollection.Entities[0];
+                                    InventoryMovementHandler inventoryHandler = new InventoryMovementHandler(_organizationService, _tracingService);
 
-                                    _tracingService.Trace("Source Site Product Quantity Records Retrieved: " + sourceQuantityCollection.Entities.Count);
-                                    if (sourceQuantityCollection.Entities.Count > 0)
-                                    {
-                                        #region BL for Cancellation of Vehicle In-Transit Transfer Receiving
-                                        Entity sourceQuantityEntity = sourceQuantityCollection.Entities[0];
-                                        Int32 viaAvailable = viaQuantityEntity.GetAttributeValue<Int32>("gsc_available");
-                                        Int32 viaOnHand = viaQuantityEntity.GetAttributeValue<Int32>("gsc_onhand");
-                                        Int32 sourceAvailable = sourceQuantityEntity.GetAttributeValue<Int32>("gsc_available");
-                                        Int32 sourceOnHand = sourceQuantityEntity.GetAttributeValue<Int32>("gsc_onhand");
+                                    // Update Inventory. Status = Available
+                                    inventoryEntity["gsc_productquantityid"] = new EntityReference(sourceQuantityEntity.LogicalName, sourceQuantityEntity.Id);
+                                    inventoryEntity["gsc_status"] = new OptionSetValue(100000000);
+                                    inventoryHandler.UpdateInventoryFields(inventoryEntity, "Update");
+                                    _tracingService.Trace("Updated Inventory Status...");
 
+                                    // Update Product Quantity of Via Site
+                                    inventoryHandler.UpdateProductQuantityDirectly(viaQuantityEntity, -1, -1, -1, 0, 0, 0, 0, 0);//Included value in allocated for recount
+                                    _tracingService.Trace("Updated Via Site Product Quantity...");
 
-                                        // Update Inventory. Status = Available
-                                        inventoryEntity["gsc_productquantityid"] = new EntityReference(sourceQuantityEntity.LogicalName, sourceQuantityEntity.Id);
-                                        inventoryEntity["gsc_status"] = new OptionSetValue(100000000);
-                                        _organizationService.Update(inventoryEntity);
-                                        _tracingService.Trace("Updated Inventory Status...");
+                                    //Update Product Quantity of Source Site
+                                    inventoryHandler.UpdateProductQuantityDirectly(sourceQuantityEntity, 1, 1, 1, 0, 0, 0, 0, 0);//Included value in allocated for recount
+                                    _tracingService.Trace("Updated Source Site Product Quantity...");
 
-                                        // Update Product Quantity of Via Site
-                                        viaQuantityEntity["gsc_available"] = viaAvailable - 1;
-                                        viaQuantityEntity["gsc_onhand"] = viaOnHand - 1;
-                                        _organizationService.Update(viaQuantityEntity);
-                                        _tracingService.Trace("Updated Via Site Product Quantity...");
-
-                                        //Update Product Quantity of Source Site
-                                        sourceQuantityEntity["gsc_available"] = sourceAvailable + 1;
-                                        sourceQuantityEntity["gsc_onhand"] = sourceOnHand + 1;
-                                        _organizationService.Update(sourceQuantityEntity);
-                                        _tracingService.Trace("Updated Source Site Product Quantity...");
-
-                                        // Delete Allocated Vehicle record
-                                        _organizationService.Delete(allocatedVehicle.LogicalName, allocatedVehicle.Id);
-                                        _tracingService.Trace("Deleted Allocated Vehicle...");
-                                    }
+                                    // Delete Allocated Vehicle record
+                                    _organizationService.Delete(transferDetailsEntity.LogicalName, transferDetailsEntity.Id);
+                                    _tracingService.Trace("Deleted Transfer Details...");
                                 }
+                                else
+                                    throw new InvalidPluginExecutionException("Product Quantity of source site not found...");
                             }
+                            else
+                                throw new InvalidPluginExecutionException("Product Quantity of via site not found...");
                         }
-                        // Update Vehicle In-Transit Transfer Status to Cancelled
-                        inTransitTransferEntity["gsc_intransittransferstatus"] = new OptionSetValue(100000003);
-                        _organizationService.Update(inTransitTransferEntity);
-                        _tracingService.Trace("Updated Vehicle In-Transit Transfer status to cancelled...");
-                                        #endregion
+                        else
+                            throw new InvalidPluginExecutionException("No Inventory Records Found...");
+
                     }
-                
+                    // Update Vehicle In-Transit Transfer Status to Picked
+                    inTransitTransferEntity["gsc_intransittransferstatus"] = new OptionSetValue(100000000);
+                    _organizationService.Update(inTransitTransferEntity);
+                    _tracingService.Trace("Updated Vehicle In-Transit Transfer status to cancelled...");
+                                    #endregion
                 }
-                _tracingService.Trace("Ending CancelTransfer Method...");
+            }
+            else
+                throw new InvalidPluginExecutionException("No In Transit Transfer Records Found...");
+            _tracingService.Trace("Ending CancelTransfer Method...");
         }
     }
 }
