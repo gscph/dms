@@ -186,7 +186,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                 {
                     foreach (Entity transferDetailsEntity in transferDetailsCollection.Entities)
                     {
-                        var sourceSiteId = transferDetailsEntity.Contains("gsc_sourcesiteid") ? transferDetailsEntity.GetAttributeValue<EntityReference>("gsc_sourcesiteid").Id
+                        var sourceSiteId = inTransitTransferEntity.Contains("gsc_sourcesiteid") ? inTransitTransferEntity.GetAttributeValue<EntityReference>("gsc_sourcesiteid").Id
                             : Guid.Empty;
                         var inventoryId = transferDetailsEntity.Contains("gsc_inventoryid") ? transferDetailsEntity.GetAttributeValue<EntityReference>("gsc_inventoryid").Id
                             : Guid.Empty;
