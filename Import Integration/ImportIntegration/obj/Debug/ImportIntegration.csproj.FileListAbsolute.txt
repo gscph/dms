@@ -12,18 +12,3 @@ C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\Impor
 C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\bin\Debug\Microsoft.Xrm.Sdk.Deployment.xml
 C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\obj\Debug\ImportIntegration.exe
 C:\Users\i-jcadiao\Documents\Visual Studio 2013\Projects\ImportIntegration\ImportIntegration\obj\Debug\ImportIntegration.pdb
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Debug\ImportIntegration.exe.config
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\obj\Debug\ImportIntegration.exe
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\obj\Debug\ImportIntegration.pdb
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Debug\NLog.config
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Debug\ImportIntegration.exe
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Debug\ImportIntegration.pdb
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Debug\Microsoft.Xrm.Client.dll
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Debug\Microsoft.Xrm.Sdk.dll
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Debug\NLog.dll
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Debug\Microsoft.Xrm.Sdk.Deployment.dll
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Debug\Microsoft.Xrm.Client.xml
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Debug\NLog.xml
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\bin\Debug\Microsoft.Xrm.Sdk.Deployment.xml
-C:\Users\jgerero\Documents\GitHub\dms\Import Integration\ImportIntegration\obj\Debug\ImportIntegration.csprojResolveAssemblyReference.cache

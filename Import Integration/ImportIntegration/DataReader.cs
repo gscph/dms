@@ -107,14 +107,6 @@ namespace ImportIntegration
                                     {
                                         rt.ReceivingDetails.VIN = string.Empty;
                                     }
-                                    if (columnIndex == 15)
-                                    {
-                                        rt.DealerCode = string.Empty;
-                                    }
-                                    if (columnIndex == 16)
-                                    {
-                                        rt.BranchCode = string.Empty;
-                                    }
                                     columnIndex++;
                                 }
                                 while (columnIndex < cellColumnIndex);
@@ -126,7 +118,16 @@ namespace ImportIntegration
                             }
                             if (columnIndex == 1)
                             {
-                                rt.PullOutDate = DateTime.FromOADate(Convert.ToDouble(GetCellValue(doc, cell))).ToString();
+                                string cellValue = GetCellValue(doc, cell);
+
+                                if (string.IsNullOrEmpty(cellValue))
+                                {
+                                    rt.PullOutDate = cellValue;
+                                }
+                                else
+                                {
+                                    rt.PullOutDate = DateTime.FromOADate(Convert.ToDouble(cellValue)).ToString();
+                                }                              
                             }
                             if (columnIndex == 2)
                             {
@@ -138,11 +139,30 @@ namespace ImportIntegration
                             }
                             if (columnIndex == 4)
                             {
-                                rt.InTransitReceiptDate = DateTime.FromOADate(Convert.ToDouble(GetCellValue(doc, cell))).ToString();
+                                string cellValue = GetCellValue(doc, cell);
+
+                                if (string.IsNullOrEmpty(cellValue))
+                                {
+                                    rt.InTransitReceiptDate = cellValue;
+                                }
+                                else
+                                {
+                                    rt.InTransitReceiptDate = DateTime.FromOADate(Convert.ToDouble(cellValue)).ToString();
+                                }  
+                              
                             }
                             if (columnIndex == 5)
                             {
-                                rt.InvoiceDate = DateTime.FromOADate(Convert.ToDouble(GetCellValue(doc, cell))).ToString();
+                                string cellValue = GetCellValue(doc, cell);
+
+                                if (string.IsNullOrEmpty(cellValue))
+                                {
+                                    rt.InvoiceDate = cellValue;
+                                }
+                                else
+                                {
+                                    rt.InvoiceDate = DateTime.FromOADate(Convert.ToDouble(cellValue)).ToString();
+                                }                                
                             }
                             if (columnIndex == 6)
                             {
@@ -179,14 +199,6 @@ namespace ImportIntegration
                             if (columnIndex == 14)
                             {
                                 rt.ReceivingDetails.VIN = GetCellValue(doc, cell);
-                            }
-                            if (columnIndex == 15)
-                            {
-                                rt.DealerCode = GetCellValue(doc, cell);
-                            }
-                            if (columnIndex == 16)
-                            {
-                                rt.BranchCode = GetCellValue(doc, cell);
                             }
 
                             columnIndex++;
