@@ -473,6 +473,11 @@ $(document).ready(function (e) {
         $('#gsc_downpaymentamount').blur(function () {
             var netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
             var dpAmount = parseFloat($('#gsc_downpaymentamount').val().replace(/,/g, ""));
+			
+			if (netPrice == 0) {
+            netPrice = odataComputeNetPrice();
+			}
+			
             if (dpAmount > netPrice) {
                 //do not allow greater than net price
                 this.value = netPrice.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
@@ -539,7 +544,6 @@ $(document).ready(function (e) {
             computeDownPaymentPercent();
 
             if (paymentmode == '100000001') {
-                console.log('a');
                 if ($("#gsc_downpaymentamount").val() > 0) {
                     Page_Validators = jQuery.grep(Page_Validators, function (value) {
                         return value != downPaymentPercentageValidator;
@@ -608,14 +612,13 @@ $(document).ready(function (e) {
     function computeDownPaymentPercent() {
         netPrice = parseFloat($('#gsc_netprice').html().substr(1).replace(/,/g, ""));
         downpayment = $("#gsc_downpaymentamount").val() == "" ? 0 : $("#gsc_downpaymentamount").val().replace(/,/g, "");
-
-        //if (netPrice == 0) {
-        //    netPrice = odataComputeNetPrice();
-        //}
+		
+        if (netPrice == 0) {
+            netPrice = odataComputeNetPrice();
+        }
 
         if (netPrice != 0) {
             dppercent = (parseFloat(downpayment) / (parseFloat(netPrice))) * 100;
-
             $("#gsc_downpaymentpercentage").val(parseFloat(dppercent.toFixed(2)));
             $("#gsc_precisedownpaymentpercentage").val(parseFloat(dppercent));
         } else {
