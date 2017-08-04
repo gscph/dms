@@ -475,7 +475,11 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
 
                     amortization["gsc_quoteid"] = new EntityReference("quote", quoteEntity.Id);
                     amortization["gsc_financingtermid"] = new EntityReference("gsc_sls_financingterm", term);
-                    amortization["gsc_quotemonthlyamortizationpn"] = string.Format("{0:n0}", ComputeForMonthlyAmortization(quoteEntity, schemeEntity));
+
+                    double amortizationValue = ComputeForMonthlyAmortization(quoteEntity, schemeEntity);
+
+                    //   amortization["gsc_quotemonthlyamortizationpn"] = Math.Round(amortizationValue).ToString();
+                    amortization["gsc_quotemonthlyamortizationpn"] = RoundOfftoWholeNumber(amortizationValue).ToString("N0");
                     amortization["gsc_dealerid"] = quoteEntity.Contains("gsc_dealerid") ?
                         quoteEntity.GetAttributeValue<EntityReference>("gsc_dealerid") :
                         null;
@@ -524,7 +528,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                 monthlyAmortization = NormalFormula(quoteEntity, schemeEntity);
             }
 
-            return Math.Round(monthlyAmortization, 2);
+            return monthlyAmortization;
         }
 
         private bool CheckifZIP(Entity quoteEntity, Entity schemeEntity)
@@ -624,6 +628,29 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             return (amountfinanced * (1 + (aor / 100))) / term;
         }
 
+        //Round off to whole number considering all the decimal places
+        private int RoundOfftoWholeNumber(double amortization)
+        {
+            string[] amortizationString = amortization.ToString().Split('.');
+            double newAmortization = amortization;
+
+            if (amortizationString[1] != null)
+            {
+                for (int i = amortizationString[1].Length - 1; i >= 0; i--)
+                {
+                    if (i != 0)
+                        newAmortization = Math.Round(newAmortization, i, MidpointRounding.AwayFromZero);
+                    else
+                        newAmortization = Math.Round(newAmortization, MidpointRounding.AwayFromZero);
+
+
+                    _tracingService.Trace(newAmortization.ToString());
+                }
+            }
+
+            return Convert.ToInt32(newAmortization);
+        }
+
         //Set already selected Financing Term
         private Entity UpdateMonthlyAmortization(Entity quoteEntity, Guid financingTermId)
         {
@@ -639,7 +666,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                     foreach (var quoteMonthlyAmortization in quoteMonthlyAmortizationRecords.Entities)
                     {
                         Guid financingTerm = quoteMonthlyAmortization.Contains("gsc_financingtermid") ? quoteMonthlyAmortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
-                     
+
                         if (financingTerm == financingTermId)
                         {
                             _tracingService.Trace("Update Fianncing Term");
