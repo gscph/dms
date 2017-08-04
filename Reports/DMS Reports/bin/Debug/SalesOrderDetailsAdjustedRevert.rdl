@@ -9,7 +9,7 @@
               <Width>1.18in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.25263in</Width>
+              <Width>3.53388in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.1in</Width>
@@ -495,10 +495,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>SalesOrder</DataSetName>
-        <Top>0.1325in</Top>
-        <Left>0.40356in</Left>
+        <Top>0.17in</Top>
+        <Left>0.3in</Left>
         <Height>1.47in</Height>
-        <Width>4.53263in</Width>
+        <Width>4.81388in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -512,7 +512,7 @@
               <Width>1.52093in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.9117in</Width>
+              <Width>3.19295in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.1in</Width>
@@ -631,10 +631,10 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>SalesOrder</DataSetName>
-        <Top>1.79in</Top>
-        <Left>0.40356in</Left>
+        <Top>1.8in</Top>
+        <Left>0.3in</Left>
         <Height>0.63in</Height>
-        <Width>4.53263in</Width>
+        <Width>4.81388in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -649,7 +649,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
               <Width>1.51325in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.9117in</Width>
+              <Width>3.20337in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.09232in</Width>
@@ -1751,9 +1751,9 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
         </TablixRowHierarchy>
         <DataSetName>SalesOrder</DataSetName>
         <Top>2.41677in</Top>
-        <Left>0.41124in</Left>
+        <Left>0.3in</Left>
         <Height>2.31in</Height>
-        <Width>4.51727in</Width>
+        <Width>4.80894in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -1818,8 +1818,8 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>Freebies</DataSetName>
-        <Top>6.78in</Top>
-        <Left>0.40068in</Left>
+        <Top>6.73in</Top>
+        <Left>0.3in</Left>
         <Height>0.335in</Height>
         <Width>7.89288in</Width>
         <ZIndex>3</ZIndex>
@@ -1847,8 +1847,8 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>7.13in</Top>
-        <Left>0.40068in</Left>
+        <Top>7.08in</Top>
+        <Left>0.3in</Left>
         <Height>0.335in</Height>
         <Width>7.88299in</Width>
         <ZIndex>4</ZIndex>
@@ -1870,7 +1870,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
               <Width>0.82083in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.67152in</Width>
+              <Width>1.8486in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -2413,9 +2413,9 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
         </TablixRowHierarchy>
         <DataSetName>SalesOrder</DataSetName>
         <Top>4.72677in</Top>
-        <Left>0.40356in</Left>
+        <Left>0.3in</Left>
         <Height>1.26in</Height>
-        <Width>2.61735in</Width>
+        <Width>2.79443in</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -2430,7 +2430,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
               <Width>1.0685in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.74954in</Width>
+              <Width>0.84812in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.1in</Width>
@@ -2907,9 +2907,9 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
         </TablixRowHierarchy>
         <DataSetName>SalesOrder</DataSetName>
         <Top>4.72677in</Top>
-        <Left>2.96459in</Left>
+        <Left>3.1in</Left>
         <Height>1.05in</Height>
-        <Width>1.91804in</Width>
+        <Width>2.01662in</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -2921,10 +2921,10 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.1in</Width>
+              <Width>1.16085in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.1384in</Width>
+              <Width>2.19925in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -3280,10 +3280,10 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>SalesOrder</DataSetName>
-        <Top>0.1325in</Top>
-        <Left>5.25333in</Left>
+        <Top>0.17in</Top>
+        <Left>5.12in</Left>
         <Height>1.05in</Height>
-        <Width>3.2384in</Width>
+        <Width>3.36011in</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -3311,7 +3311,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
         </Paragraphs>
         <rd:DefaultName>Textbox248</rd:DefaultName>
         <Top>10.07in</Top>
-        <Left>0.34712in</Left>
+        <Left>0.32in</Left>
         <Height>0.37in</Height>
         <Width>1.87in</Width>
         <ZIndex>8</ZIndex>
@@ -3344,7 +3344,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
         </Paragraphs>
         <rd:DefaultName>Textbox249</rd:DefaultName>
         <Top>10.07in</Top>
-        <Left>2.35in</Left>
+        <Left>2.46458in</Left>
         <Height>0.37in</Height>
         <Width>1.87in</Width>
         <ZIndex>9</ZIndex>
@@ -3377,7 +3377,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
         </Paragraphs>
         <rd:DefaultName>Textbox250</rd:DefaultName>
         <Top>10.07in</Top>
-        <Left>4.35in</Left>
+        <Left>4.58in</Left>
         <Height>0.37in</Height>
         <Width>1.87in</Width>
         <ZIndex>10</ZIndex>
@@ -3410,7 +3410,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
         </Paragraphs>
         <rd:DefaultName>Textbox251</rd:DefaultName>
         <Top>10.07in</Top>
-        <Left>6.36011in</Left>
+        <Left>6.61011in</Left>
         <Height>0.37in</Height>
         <Width>1.87in</Width>
         <ZIndex>11</ZIndex>
@@ -4649,8 +4649,8 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
           </Tablix>
         </ReportItems>
         <KeepTogether>true</KeepTogether>
-        <Top>1.79in</Top>
-        <Left>5.2175in</Left>
+        <Top>1.8in</Top>
+        <Left>5.12in</Left>
         <Height>2.48in</Height>
         <Width>3.20761in</Width>
         <ZIndex>13</ZIndex>
@@ -5870,8 +5870,8 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>SalesOrder</DataSetName>
-        <Top>4.27in</Top>
-        <Left>5.22661in</Left>
+        <Top>4.28in</Top>
+        <Left>5.12in</Left>
         <Height>2.31in</Height>
         <Width>3.17178in</Width>
         <ZIndex>14</ZIndex>
@@ -5891,7 +5891,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
   <Width>8.5in</Width>
   <Page>
     <PageHeader>
-      <Height>2.12in</Height>
+      <Height>2.15in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -6122,7 +6122,7 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox28</rd:DefaultName>
-          <Top>1.79in</Top>
+          <Top>1.82in</Top>
           <Left>7.53097in</Left>
           <Height>0.21in</Height>
           <Width>0.94914in</Width>
@@ -6221,11 +6221,9 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
             <Value>=Parameters!reportid.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>
-SELECT  SalesOrder.CreatedOn, 
+        <CommandText>SELECT  SalesOrder.CreatedOn, 
 		SalesOrder.gsc_SalesExecutiveIdName AS 'Sales Executive', 
 		SalesOrder.gsc_RecordOwnerIdName AS 'PreparedBy', 
-		SalesOrder.gsc_VehicleColorId1Name AS 'Vehicle Color', 
         SalesOrder.gsc_BranchIdName AS 'Branch Site', 
 		SalesOrder.gsc_DealerIdName AS 'Dealer', 
 		SalesOrder.gsc_LeadSourceIdName AS 'Lead Source', 
@@ -6236,10 +6234,6 @@ SELECT  SalesOrder.CreatedOn,
 		SalesOrder.gsc_VehicleDetails AS 'Vehicle Details', 
         SalesOrder.gsc_UnitPrice AS 'Unit Price', 
 		SalesOrder.gsc_CcAddons AS 'CC AddOns',
-		SalesOrder.gsc_ProductIdName AS 'Model Description', 
-		SalesOrder.gsc_CSNo AS 'CS No.', 
-		SalesOrder.gsc_EngineNo AS 'Engine No.', 
-        SalesOrder.gsc_ProductionNo AS 'Production No.', 
 		SalesOrder.gsc_DownPayment AS 'Down Payment', 
 		SalesOrder.gsc_NetDownPayment AS 'Net Down Payment', 
         SalesOrder.gsc_DownPaymentDiscount AS 'DP Discount', 
@@ -6253,7 +6247,6 @@ SELECT  SalesOrder.CreatedOn,
         SalesOrder.gsc_TotalAmountFinanced AS 'Total Amount Financed', 
 		SalesOrder.gsc_ProductIdName AS 'Product', 
 		SalesOrder.OrderNumber AS 'Order Number', 
-		SalesOrder.gsc_VIN AS 'VIN', 
         SalesOrder.gsc_ColorPrice AS 'Color Price', 
 		SalesOrder.gsc_VehicleUnitPrice AS 'Vehicle Unit Price', 
 		SalesOrder.gsc_Reservation AS 'Reservation', 
@@ -6305,6 +6298,12 @@ SELECT  SalesOrder.CreatedOn,
             (SELECT        Contact_1.BirthDate
             FROM            Contact
             WHERE        (ContactId = SalesOrder.CustomerId)) AS Birthdate, 
+        SalesOrder.gsc_ProductIdName AS 'Model Description', 
+		Allocated.gsc_EngineNo AS 'Engine No.', 
+        Allocated.gsc_VIN AS 'VIN', 
+        SalesOrder.gsc_VehicleColorId1Name AS 'Vehicle Color', 
+        Allocated.gsc_ProductionNo AS 'Production No.',
+        Allocated.gsc_CSNo AS 'CS No.',  
 		Product.gsc_ModelCode AS 'Model Code', 
 		Product.gsc_OptionCode AS 'Option Code', 
 		Allocated.gsc_ModelYear AS 'Model Year', 
@@ -6504,6 +6503,10 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>ApprovedBy</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Bank">
+          <DataField>Bank</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Branch_Telephone">
           <DataField>Branch Telephone</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -6528,10 +6531,6 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Branch Name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Bank">
-          <DataField>Bank</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Branch_Email_Address">
           <DataField>Branch Email Address</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -6552,6 +6551,14 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Branch Postal Code</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Branch_Sales_Number">
+          <DataField>Branch Sales Number</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Branch_Service_Number">
+          <DataField>Branch Service Number</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Charges">
           <DataField>Charges</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -6568,16 +6575,8 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
           <DataField>Mobile Number</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Branch_Sales_Number">
-          <DataField>Branch Sales Number</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Email_Address">
           <DataField>Email Address</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Branch_Service_Number">
-          <DataField>Branch Service Number</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Birthdate">
@@ -6586,18 +6585,6 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
         </Field>
         <Field Name="Model_Description">
           <DataField>Model Description</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Model_Year">
-          <DataField>Model Year</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Model_Code">
-          <DataField>Model Code</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Option_Code">
-          <DataField>Option Code</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Engine_No_">
@@ -6618,6 +6605,18 @@ WHERE        (SalesOrder.SalesOrderId = @reportid)</CommandText>
         </Field>
         <Field Name="CS_No_">
           <DataField>CS No.</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Model_Code">
+          <DataField>Model Code</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Option_Code">
+          <DataField>Option Code</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Model_Year">
+          <DataField>Model Year</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="WB_">

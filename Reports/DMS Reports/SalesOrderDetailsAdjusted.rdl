@@ -487,7 +487,6 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")),""," w/" + Mid(First
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -6266,11 +6265,9 @@ IIF(First(Fields!Branch_WebSite_Url.Value, "SalesOrder") = NOTHING, NOTHING, Fir
             <Value>=Parameters!reportid.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>
-SELECT  SalesOrder.CreatedOn, 
+        <CommandText>SELECT  SalesOrder.CreatedOn, 
 		SalesOrder.gsc_SalesExecutiveIdName AS 'Sales Executive', 
 		SalesOrder.gsc_RecordOwnerIdName AS 'PreparedBy', 
-		SalesOrder.gsc_VehicleColorId1Name AS 'Vehicle Color', 
         SalesOrder.gsc_BranchIdName AS 'Branch Site', 
 		SalesOrder.gsc_DealerIdName AS 'Dealer', 
 		SalesOrder.gsc_LeadSourceIdName AS 'Lead Source', 
@@ -6281,10 +6278,6 @@ SELECT  SalesOrder.CreatedOn,
 		SalesOrder.gsc_VehicleDetails AS 'Vehicle Details', 
         SalesOrder.gsc_UnitPrice AS 'Unit Price', 
 		SalesOrder.gsc_CcAddons AS 'CC AddOns',
-		SalesOrder.gsc_ProductIdName AS 'Model Description', 
-		SalesOrder.gsc_CSNo AS 'CS No.', 
-		SalesOrder.gsc_EngineNo AS 'Engine No.', 
-        SalesOrder.gsc_ProductionNo AS 'Production No.', 
 		SalesOrder.gsc_DownPayment AS 'Down Payment', 
 		SalesOrder.gsc_NetDownPayment AS 'Net Down Payment', 
         SalesOrder.gsc_DownPaymentDiscount AS 'DP Discount', 
@@ -6298,7 +6291,6 @@ SELECT  SalesOrder.CreatedOn,
         SalesOrder.gsc_TotalAmountFinanced AS 'Total Amount Financed', 
 		SalesOrder.gsc_ProductIdName AS 'Product', 
 		SalesOrder.OrderNumber AS 'Order Number', 
-		SalesOrder.gsc_VIN AS 'VIN', 
         SalesOrder.gsc_ColorPrice AS 'Color Price', 
 		SalesOrder.gsc_VehicleUnitPrice AS 'Vehicle Unit Price', 
 		SalesOrder.gsc_Reservation AS 'Reservation', 
@@ -6350,6 +6342,12 @@ SELECT  SalesOrder.CreatedOn,
             (SELECT        Contact_1.BirthDate
             FROM            Contact
             WHERE        (ContactId = SalesOrder.CustomerId)) AS Birthdate, 
+        SalesOrder.gsc_ProductIdName AS 'Model Description', 
+		Allocated.gsc_EngineNo AS 'Engine No.', 
+        Allocated.gsc_VIN AS 'VIN', 
+        SalesOrder.gsc_VehicleColorId1Name AS 'Vehicle Color', 
+        Allocated.gsc_ProductionNo AS 'Production No.',
+        Allocated.gsc_CSNo AS 'CS No.',  
 		Product.gsc_ModelCode AS 'Model Code', 
 		Product.gsc_OptionCode AS 'Option Code', 
 		Allocated.gsc_ModelYear AS 'Model Year', 

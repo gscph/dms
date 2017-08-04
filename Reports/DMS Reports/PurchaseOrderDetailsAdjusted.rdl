@@ -3940,7 +3940,7 @@
     <DataSource Name="DataSource1">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=DMSUATDB2;Initial Catalog=MMPCUAT_MSCRM</ConnectString>
+        <ConnectString>Data Source=XRMDMSDB;Initial Catalog=MMPCDEV_MSCRM</ConnectString>
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>26e271ad-9dbe-4b3c-8056-a798f7a64df6</rd:DataSourceID>
