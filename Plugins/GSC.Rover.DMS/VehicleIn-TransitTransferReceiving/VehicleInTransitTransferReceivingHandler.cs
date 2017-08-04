@@ -273,7 +273,14 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             _tracingService.Trace("Ending CancelTransfer Method...");
         }
 
-        public void DetectDuplicate(Entity vehicleReceivingTransfer) 
+        // Created By: Joseph F. Cadiao, Created On: 8/1/2017
+        /*Purpose: Check if record's In-Transit Transfer already exist
+         * Registration Details:
+         * Event/Message: 
+         *      Post/Create: gsc_intransittransfer
+         * Primary Entity: Vehicle In-Transit Transfer Receiving
+         */
+        public void DetectDuplicate(Entity vehicleReceivingTransfer)
         {
             QueryExpression query = new QueryExpression("gsc_iv_vehicleintransittransferreceiving");
             query.ColumnSet.AddColumn("gsc_intransittransferid");
@@ -287,8 +294,9 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             if (count > 0)
             {
                 throw new InvalidPluginExecutionException("Duplicate detected, In-Transit Transfer already exist.");
-            }     
+            }
         }
+
         public Entity CopyStatus(Entity vehicleInTransitReceiving)
         {
             vehicleInTransitReceiving["gsc_intransitstatuscopy"] = vehicleInTransitReceiving.GetAttributeValue<OptionSetValue>("gsc_intransitstatus");
@@ -296,5 +304,5 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             _tracingService.Trace("Updated In Transit Receiving status copy...");
             return vehicleInTransitReceiving;
         }
-    } 
+    }
 }
