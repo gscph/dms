@@ -470,6 +470,7 @@
     <Compile Include="PreVehicleAdjustmentVarianceEntryDetailCreate.cs" />
     <Compile Include="PreVehicleandItemCatalogCreate.cs" />
     <Compile Include="PreVehicleCabChassisCreate.cs" />
+    <Compile Include="PreVehicleInTransitTransferReceivingCreate.cs" />
     <Compile Include="PreVehicleSalesReturnCreate.cs" />
     <Compile Include="PreVehicleColorCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

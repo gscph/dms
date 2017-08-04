@@ -13,6 +13,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
     using System;
     using System.ServiceModel;
     using Microsoft.Xrm.Sdk;
+    using GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving;
 
     /// <summary>
     /// PostVehicleInTransitTransferReceivingCreate Plugin.
@@ -53,7 +54,24 @@ namespace GSC.Rover.DMS.Platform.Plugins
                 throw new ArgumentNullException("localContext");
             }
 
-            // TODO: Implement your custom Plug-in business logic.
-        }
+            IPluginExecutionContext context = localContext.PluginExecutionContext;
+            IOrganizationService service = localContext.OrganizationService;
+            ITracingService trace = localContext.TracingService;
+            Entity vehicleInTransitReceiving = (Entity)context.InputParameters["Target"];
+
+            string message = context.MessageName;
+            string error = "";
+
+            try
+            {
+                VehicleInTransitTransferReceivingHandler receivingHandler = new VehicleInTransitTransferReceivingHandler(service, trace);
+
+                receivingHandler.GenerateComponents(vehicleInTransitReceiving);
+            }
+            catch (Exception ex)
+            {
+                //throw new InvalidPluginExecutionException(String.Concat("(Exception)\n", ex.Message, Environment.NewLine, ex.StackTrace, Environment.NewLine, error));
+                throw new InvalidPluginExecutionException(ex.Message);
+            }
     }
 }
