@@ -4610,7 +4610,8 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=First(Fields!ProductModel.Value, "QuoteDetails") + Microsoft.VisualBasic.Interaction.IIF(Microsoft.VisualBasic.Information.ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")), "", " w/" + Mid(First(Fields!CabChassis.Value, "CabChassis"),1,InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")-1) + " &amp;" 
+                              <Value>=First(Fields!ProductModel.Value, "QuoteDetails") + 
+IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")), "", " w/" + Mid(First(Fields!CabChassis.Value, "CabChassis"),1,InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")) + " &amp;" 
 + Mid(First(Fields!CabChassis.Value, "CabChassis"),InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")+1,LEN(First(Fields!CabChassis.Value, "CabChassis")) ))</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
