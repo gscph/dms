@@ -1377,11 +1377,12 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                 {
                     var financingTermId = CommonHandler.GetEntityReferenceIdSafe(financingSchemeDetail, "gsc_financingtermid");
 
-
-
                     monthlyAmortization["gsc_orderid"] = new EntityReference("salesorder", salesOrderEntity.Id);
                     monthlyAmortization["gsc_financingtermid"] = new EntityReference("gsc_sls_financingterm", financingTermId);
-                    monthlyAmortization["gsc_ordermonthlyamortizationpn"] = string.Format("{0:n0}", ComputeForMonthlyAmortization(salesOrderEntity, financingSchemeDetail));
+
+                    double amortizationValue = ComputeForMonthlyAmortization(salesOrderEntity, financingSchemeDetail);
+
+                    monthlyAmortization["gsc_ordermonthlyamortizationpn"] = RoundOfftoWholeNumber(amortizationValue).ToString("N0");
 
                     _organizationService.Create(monthlyAmortization);
 
@@ -1519,6 +1520,29 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
 
             _tracingService.Trace("ZIP_ZeroAOR_NoAFDiscount Computed.");
             return (amountfinanced * (1 + (aor / 100))) / term;
+        }
+
+        //Round off to whole number considering all the decimal places
+        private int RoundOfftoWholeNumber(double amortization)
+        {
+            string[] amortizationString = amortization.ToString().Split('.');
+            double newAmortization = amortization;
+
+            if (amortizationString[1] != null)
+            {
+                for (int i = amortizationString[1].Length - 1; i >= 0; i--)
+                {
+                    if (i != 0)
+                        newAmortization = Math.Round(newAmortization, i, MidpointRounding.AwayFromZero);
+                    else
+                        newAmortization = Math.Round(newAmortization, MidpointRounding.AwayFromZero);
+
+
+                    _tracingService.Trace(newAmortization.ToString());
+                }
+            }
+
+            return Convert.ToInt32(newAmortization);
         }
 
         //Created By : Jerome Anthony Gerero, Created On : 4/7/2016
