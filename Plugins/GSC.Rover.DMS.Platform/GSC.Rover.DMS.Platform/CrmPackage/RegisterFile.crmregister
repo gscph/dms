@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Register xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/crm/2011/tools/pluginregistration">
   <Solutions>
     <Solution Assembly="GSC.Rover.DMS.Platform.Plugins.dll" Id="52c58133-16c0-e511-80cb-00155d010e2c" IsolationMode="None" SourceType="Database">
@@ -1514,6 +1513,14 @@
           <Steps>
             <clear />
             <Step CustomConfiguration="" Name="PostVehicleInTransitTransferReceivingCreate" Description="Post-Operation of Vehicle In-Transit Transfer Receiving Create" Id="88c37c77-2678-e711-80f6-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_iv_vehicleintransittransferreceiving" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+        <Plugin Description="Plug-in to PreVehicleInTransitTransferReceivingCreate" FriendlyName="PreVehicleInTransitTransferReceivingCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreVehicleInTransitTransferReceivingCreate" Id="edeff054-de78-e711-80f6-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreVehicleInTransitTransferReceivingCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreVehicleInTransitTransferReceivingCreate" Description="Pre-Operation of Vehicle In-Transit Transfer Receiving Create" Id="142e02a4-e278-e711-80f6-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_iv_vehicleintransittransferreceiving" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
               <Images />
             </Step>
           </Steps>
