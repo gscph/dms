@@ -50,7 +50,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             EntityCollection quoteRecords = CommonHandler.RetrieveRecordsByOneValue("quote", "quoteid", quoteId, _organizationService, null, OrderType.Ascending,
                 new[] { "gsc_dealerid", "gsc_branchid", "gsc_salesexecutiveid", "gsc_paymentmode", "gsc_productid", "gsc_vehiclecolorid1", "gsc_recordownerid",
                    "gsc_vehiclecolorid2", "gsc_vehiclecolorid3", "gsc_remarks", "gsc_vehicleunitprice", "gsc_vehicledetails", "customerid", "gsc_address",
-                   "gsc_leadsourceid", "gsc_financingschemeid", "gsc_bankid", "gsc_freechattelfee", "gsc_insuranceid", "gsc_free",
+                   "gsc_leadsourceid", "gsc_financingschemeid", "gsc_bankid", "gsc_freechattelfee", "gsc_insuranceid", "gsc_free", "gsc_chattelfeeeditable",
                    "gsc_downpaymentamount", "gsc_downpaymentpercentage", "gsc_applytodppercentage", "gsc_applytouppercentage", "gsc_applytoafpercentage",
                    "gsc_applytodpamount", "gsc_applytoupamount", "gsc_applytoafamount", "gsc_netmonthlyamortization", "gsc_portaluserid", "gsc_precisedownpaymentpercentage",
                    "opportunityid", "gsc_vehicletype", "gsc_vehicleuse", "gsc_lessdiscount", "gsc_netdownpayment", "gsc_lessdiscountaf", "gsc_totalamountfinanced",
@@ -118,6 +118,9 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                 salesOrderEntity["gsc_financingschemeid"] = quote.GetAttributeValue<EntityReference>("gsc_financingschemeid") != null
                     ? quote.GetAttributeValue<EntityReference>("gsc_financingschemeid")
                     : null;
+                salesOrderEntity["gsc_chattelfeeeditable"] = quote.Contains("gsc_chattelfeeeditable")
+                    ? quote.GetAttributeValue<Money>("gsc_chattelfeeeditable")
+                    : new Money(0);
                 salesOrderEntity["gsc_freechattelfee"] = quote.GetAttributeValue<Boolean>("gsc_freechattelfee");
                 salesOrderEntity["gsc_applytodppercentage"] = quote.Contains("gsc_applytodppercentage")
                     ? quote.GetAttributeValue<Double>("gsc_applytodppercentage")
