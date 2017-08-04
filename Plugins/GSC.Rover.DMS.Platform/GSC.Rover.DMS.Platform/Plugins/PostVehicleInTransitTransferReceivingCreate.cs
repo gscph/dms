@@ -73,5 +73,6 @@ namespace GSC.Rover.DMS.Platform.Plugins
                 //throw new InvalidPluginExecutionException(String.Concat("(Exception)\n", ex.Message, Environment.NewLine, ex.StackTrace, Environment.NewLine, error));
                 throw new InvalidPluginExecutionException(ex.Message);
             }
+        }
     }
 }
