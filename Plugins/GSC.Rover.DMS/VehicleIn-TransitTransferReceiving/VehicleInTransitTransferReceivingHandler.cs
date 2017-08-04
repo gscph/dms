@@ -278,7 +278,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             QueryExpression query = new QueryExpression("gsc_iv_vehicleintransittransferreceiving");
             query.ColumnSet.AddColumn("gsc_intransittransferid");
 
-            Guid transferId = CommonHandler.GetEntityReferenceValueSafe(vehicleReceivingTransfer, "gsc_iv_vehicleintransittransferid");
+            Guid transferId = CommonHandler.GetEntityReferenceValueSafe(vehicleReceivingTransfer, "gsc_intransittransferid");
 
             query.Criteria.AddCondition(new ConditionExpression("gsc_intransittransferid", ConditionOperator.Equal, transferId));
 
