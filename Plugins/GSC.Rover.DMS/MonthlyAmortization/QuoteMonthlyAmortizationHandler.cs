@@ -58,7 +58,7 @@ namespace GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization
                         _organizationService.Update(quoteEntity);
                     }
 
-                    //check if there is other monthly amortization record which gsc_isselected is checked
+                   /* //check if there is other monthly amortization record which gsc_isselected is checked
                     _tracingService.Trace("Retrieve Monthly Amortization Records associated with the same Quote...");
 
                     var monthlyAmotizationConditionList = new List<ConditionExpression>
@@ -88,7 +88,7 @@ namespace GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization
                             }
 
                         }
-                    }
+                    } */
                 }
                 else
                 {

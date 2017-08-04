@@ -48,7 +48,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization
                 }
 
 
-                //Uncheck Selected field in every other Sales Order Monthly Amortization record
+               /* //Uncheck Selected field in every other Sales Order Monthly Amortization record
                 var salesOrderMonthlyAmortizationConditionList = new List<ConditionExpression>
                 {
                     new ConditionExpression("gsc_orderid", ConditionOperator.Equal, salesOrderId),
@@ -72,7 +72,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization
                             break;
                         }
                     }
-                }
+                }*/
             }
             else
             {
