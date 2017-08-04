@@ -296,5 +296,44 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             _tracingService.Trace("Updated In Transit Receiving status copy...");
             return vehicleInTransitReceiving;
         }
+
+        public Entity GenerateComponents(Entity vehicleInTransitReceiving)
+        {
+            _tracingService.Trace("Started GenerateComponents method...");
+
+            EntityCollection receivingDetailsCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_vehicleintransitreceivingdetail", "gsc_intransitreceivingid", vehicleInTransitReceiving.Id, _organizationService,
+                null, OrderType.Ascending, new[] {"gsc_inventoryid"});
+            if (receivingDetailsCollection.Entities == null || receivingDetailsCollection.Entities.Count == 0)
+                throw new InvalidPluginExecutionException("No receiving detail found.");
+
+            Entity receivingDetailsEntity = receivingDetailsCollection.Entities[0];
+            Guid inventoryId = receivingDetailsEntity.Contains("gsc_inventoryid") ? receivingDetailsEntity.GetAttributeValue<EntityReference>("gsc_inventoryid").Id
+                : Guid.Empty;
+            EntityCollection inventoryCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId, _organizationService,
+                null, OrderType.Ascending, new[] { "gsc_basemodelid" });
+            if (inventoryCollection.Entities == null || inventoryCollection.Entities.Count == 0)
+                throw new InvalidPluginExecutionException("No inventory record found.");
+
+            Entity inventoryEntity = inventoryCollection.Entities[0];
+            var baseModelId = inventoryEntity.Contains("gsc_basemodelid") ? inventoryEntity.GetAttributeValue<EntityReference>("gsc_basemodelid").Id
+                : Guid.Empty;
+            EntityCollection componentChecklistCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_vehiclecomponentchecklist", "gsc_vehiclebasemodelid", baseModelId, _organizationService,
+                null, OrderType.Ascending, new[] { "gsc_vehiclecomponentchecklistpn"});
+
+            if (componentChecklistCollection.Entities != null && componentChecklistCollection.Entities.Count > 0)
+            {
+                _tracingService.Trace("Retrieved vehicle components...");
+                Entity receivingComponent = new Entity("gsc_iv_vehicleintransitreceivingchecklist");
+                foreach (Entity componentEntity in componentChecklistCollection.Entities)
+                {
+                    receivingComponent["gsc_vehicleintransitreceivingchecklistpn"] = componentEntity.Contains("gsc_vehiclecomponentchecklistpn") ? 
+                        componentEntity.GetAttributeValue<String>("gsc_vehiclecomponentchecklistpn") : String.Empty;
+                    receivingComponent["gsc_intransitreceivingid"] = new EntityReference("gsc_iv_vehicleintransittransferreceiving", vehicleInTransitReceiving.Id);
+                    _organizationService.Create(receivingComponent);
+                }
+            }
+            _tracingService.Trace("Ending GenerateComponents method...");
+            return vehicleInTransitReceiving; 
+        }
     } 
 }
