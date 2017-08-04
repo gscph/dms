@@ -304,9 +304,6 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             _tracingService.Trace("Updated In Transit Receiving status copy...");
             return vehicleInTransitReceiving;
         }
-<<<<<<< HEAD
-    }
-=======
 
         public Entity GenerateComponents(Entity vehicleInTransitReceiving)
         {
@@ -347,5 +344,4 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             return vehicleInTransitReceiving; 
         }
     } 
->>>>>>> origin/master
 }
