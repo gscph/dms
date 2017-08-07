@@ -87,7 +87,7 @@
     </Reference>
     <Reference Include="GSC.Rover.DMS.BusinessLogic.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\GSC.Rover.DMS\Common\bin\Debug\GSC.Rover.DMS.BusinessLogic.Common.dll</HintPath>
+      <HintPath>..\..\..\GSC.Rover.DMS\Common\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll</HintPath>
     </Reference>
     <Reference Include="GSC.Rover.DMS.BusinessLogic.Contact, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
