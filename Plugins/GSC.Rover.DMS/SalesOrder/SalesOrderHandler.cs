@@ -1531,7 +1531,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             string[] amortizationString = amortization.ToString().Split('.');
             double newAmortization = amortization;
 
-            if (amortizationString[1] != null)
+            if (amortizationString.Length == 2)
             {
                 for (int i = amortizationString[1].Length - 1; i >= 0; i--)
                 {
