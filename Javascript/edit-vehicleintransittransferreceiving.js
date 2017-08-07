@@ -16,10 +16,14 @@ $(document).ready(function () {
   $(document).trigger('initializeEditableGrid', vehicleComponentChecklistGridInstance);
 
    setTimeout(function(){
-    if(intransitStatus == 100000001 || intransitStatus == 100000002)
+    if(intransitStatus == 100000001 || intransitStatus == 100000002) //Received || Cancelled
       {
         $('form fieldset').attr('disabled', true);
         $(".datetimepicker input").attr('disabled', true);
+        if(intransitStatus == 100000001)
+        {
+          $('*[data-name="VehicleComponentChecklist"]').parent().removeAttr("disabled");
+        }
       }
    },3000);
 });
@@ -31,10 +35,11 @@ var vehicleComponentChecklistGridInstance = {
     var $container = document.getElementById('vehiclecomponentchecklist-editablegrid');
     var idQueryString = DMS.Helpers.GetUrlQueryString('id');
     var oDataQuery = '/_odata/gsc_iv_vehicleintransitreceivingchecklist?$filter=gsc_intransitreceivingid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
-    var screenSize = $(window).width() - 100;
+    var screenSize = ($(window).width() / 2) - 80;
     var options = {
       dataSchema: {
-        gsc_intransitreceivingid: { Id: null, Name: null }, gsc_included: null,
+        gsc_iv_vehicleintransitreceivingchecklistid: { Id: null, Name: null }, 
+        gsc_included: null,
         gsc_vehicleintransitreceivingchecklistpn: ''
       },
       colHeaders: [
@@ -42,17 +47,23 @@ var vehicleComponentChecklistGridInstance = {
       ],
       columns: [
         { data: 'gsc_included', type: 'checkbox', renderer: checkboxRenderer, className: 'htCenter htMiddle', width: 80 },
-        { data: 'gsc_vehicleintransitreceivingchecklistpn', readOnly: true, className: 'htCenter htMiddle', width: 200 }
+        { data: 'gsc_vehicleintransitreceivingchecklistpn', renderer: stringRenderer, readOnly: true, className: 'htCenter htMiddle', width: 200 }
       ],
-      gridWidth: screenSize,
+      gridWidth: 1000,
       addNewRows: false,
       deleteRows: false
     }
 
     var sectionName = 'VehicleComponentChecklist';
-    var attributes = [{ key: 'gsc_included', type: 'System.Boolean' }, { key: 'gsc_vehicleintransitreceivingchecklistpn', type: 'System.String' }];
+    var attributes = [{ key: 'gsc_included', type: 'System.Boolean' }, 
+    { key: 'gsc_vehicleintransitreceivingchecklistpn', type: 'System.String' },
+    { key: 'gsc_intransitreceivingid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'gsc_iv_vehicleintransittransferreceiving', value: idQueryString }];
     var model = { id: 'gsc_iv_vehicleintransitreceivingchecklistid', entity: 'gsc_iv_vehicleintransitreceivingchecklist', attr: attributes };
-    var hotInstance = EditableGrid(options, $container, sectionName, oDataQuery, model);
+    var hotInstance = EditableGrid(options, $container, sectionName, oDataQuery, model, {
+            gsc_iv_vehicleintransitreceivingchecklistid: null,
+            gsc_included: false,
+            gsc_vehicleintransitreceivingchecklistpn: ''
+        });
   }
 }
 
