@@ -14,6 +14,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
     using System.ServiceModel;
     using Microsoft.Xrm.Sdk;
     using GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer;
+    using GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving;
 
 
     /// <summary>
@@ -64,7 +65,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
             string error = "";
 
             try
-            {
+            {             
                 VehicleInTransitTransferHandler vehicleInTransitTransferHandler = new VehicleInTransitTransferHandler(service, trace);
                 vehicleInTransitTransferHandler.PopulateFields(vehicleInTransitTransfer);
             }

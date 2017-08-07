@@ -14,6 +14,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
     using System.ServiceModel;
     using Microsoft.Xrm.Sdk;
     using GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving;
+    using GSC.Rover.DMS.BusinessLogic.Common;
 
     /// <summary>
     /// PostVehicleInTransitTransferReceivingCreate Plugin.
@@ -57,7 +58,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
             IPluginExecutionContext context = localContext.PluginExecutionContext;
             IOrganizationService service = localContext.OrganizationService;
             ITracingService trace = localContext.TracingService;
-            Entity vehicleInTransitReceiving = (Entity)context.InputParameters["Target"];
+            Entity entity = (Entity)context.InputParameters["Target"];
 
             string message = context.MessageName;
             string error = "";
@@ -65,8 +66,13 @@ namespace GSC.Rover.DMS.Platform.Plugins
             try
             {
                 VehicleInTransitTransferReceivingHandler receivingHandler = new VehicleInTransitTransferReceivingHandler(service, trace);
+                Guid intransitTransferId = entity.GetEntityReferenceGuid("gsc_intransittransferid");
+                Entity receivingTransferDetails = receivingHandler.GetIntransitTransferDetails(intransitTransferId);
+                Entity receivingTransfer = service.Retrieve("gsc_iv_vehicleintransittransfer", intransitTransferId, new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
 
-                receivingHandler.GenerateComponents(vehicleInTransitReceiving);
+
+                receivingHandler.CreateReceivingDetails(receivingTransfer, receivingTransferDetails, intransitTransferId);
+                receivingHandler.GenerateComponents(entity);
             }
             catch (Exception ex)
             {
