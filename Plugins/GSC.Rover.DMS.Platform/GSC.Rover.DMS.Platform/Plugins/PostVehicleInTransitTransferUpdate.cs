@@ -14,7 +14,6 @@ namespace GSC.Rover.DMS.Platform.Plugins
     using System.ServiceModel;
     using Microsoft.Xrm.Sdk;
     using GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer;
-    using GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving;
 
     /// <summary>
     /// PostVehicleInTransitTransferUpdate Plugin.
@@ -114,8 +113,8 @@ namespace GSC.Rover.DMS.Platform.Plugins
                         ? postImageEntity.GetAttributeValue<String>("gsc_allocateditemstodelete")
                         : String.Empty;
 
-                    VehicleInTransitTransferReceivingHandler receivingHandler = new VehicleInTransitTransferReceivingHandler(service, trace);
-                    VehicleInTransitTransferHandler vehicleInTransitHandler = new VehicleInTransitTransferHandler(service, trace, receivingHandler);
+
+                    VehicleInTransitTransferHandler vehicleInTransitHandler = new VehicleInTransitTransferHandler(service, trace);
 
                     //BL for update of inventoryidtoallocate
                     if (preInventoryId != postInventoryId && postInventoryId != string.Empty)
