@@ -398,7 +398,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
             inTransitReceivingEntity.Attributes = vehicleInTransitTransferDetails.Attributes;
 
             inTransitReceivingEntity.Attributes.Add("gsc_intransitreceivingid", new EntityReference("gsc_iv_vehicleintransittransferreceiving", receivingId));
-            inTransitReceivingEntity.Attributes.Add("gsc_modelid",  CommonHandler.GetEntityReferenceIdSafe(vehicleInTransitTransfer, "gsc_modelid"));            
+            inTransitReceivingEntity.Attributes.Add("gsc_modelid", CommonHandler.GetEntityReferenceIdSafe(vehicleInTransitTransfer, "gsc_modelid"));
             inTransitReceivingEntity.Attributes.Add("gsc_productid", CommonHandler.GetEntityReferenceIdSafe(vehicleInTransitTransfer, "gsc_productid"));
 
             _organizationService.Create(inTransitReceivingEntity);
@@ -419,8 +419,8 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
 
             Entity result = _organizationService.RetrieveMultiple(query).Entities.FirstOrDefault();
 
-            return result;        
-        }     
+            return result;
+        }
 
         //Created By: Jerome Anthony Gerero, Created On: 7/19/2017
         /*Purpose: Delete transferred vehicles
@@ -448,7 +448,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
 
                 Guid inventoryId = vehicleInTransitTransferDetail.Contains("gsc_inventoryid")
                     ? vehicleInTransitTransferDetail.GetAttributeValue<EntityReference>("gsc_inventoryid").Id
-                    : Guid.Empty;                
+                    : Guid.Empty;
 
                 //Retrieve and update inventory
                 EntityCollection inventoryRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId, _organizationService, null, OrderType.Ascending,
@@ -471,7 +471,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                     if (productQuantityRecords.Entities.Count > 0)
                     {
                         Entity productQuantity = productQuantityRecords.Entities[0];
-                        
+
                         inventoryMovement.UpdateProductQuantityDirectly(productQuantity, 0, 1, -1, 0, 0, 0, 0, 0);
 
                         _organizationService.Delete(vehicleInTransitTransferDetail.LogicalName, vehicleInTransitTransferDetail.Id);

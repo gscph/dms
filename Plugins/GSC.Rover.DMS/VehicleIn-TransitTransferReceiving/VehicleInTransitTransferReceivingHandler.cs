@@ -21,6 +21,94 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             _tracingService = trace;
         }
 
+        //Refactored By: Joseph F. Cadiao, Created On: 8/1/2017
+        /*Purpose: Create Receiving Entity
+         * Registration Details:
+         * Event/Message: 
+         *      Post/Update: gsc_intransittransferstatus
+         * Primary Entity: Vehicle In-Transit Transfer Receiving
+         */
+        public Guid CreateRecevingEntity(Entity vehicleInTransitTransfer)
+        {
+            Entity inTransitReceivingEntity = new Entity("gsc_iv_vehicleintransittransferreceiving");
+
+            var receivingDestinationSiteId = vehicleInTransitTransfer.Contains("gsc_destinationsiteid") ? vehicleInTransitTransfer.GetAttributeValue<EntityReference>("gsc_destinationsiteid").Id
+               : Guid.Empty;
+            var receivingRecordOwnerId = vehicleInTransitTransfer.Contains("gsc_recordownerid") ? vehicleInTransitTransfer.GetAttributeValue<EntityReference>("gsc_recordownerid").Id
+                : Guid.Empty;
+            var receivingBranchId = vehicleInTransitTransfer.Contains("gsc_branchid") ? vehicleInTransitTransfer.GetAttributeValue<EntityReference>("gsc_branchid").Id
+                : Guid.Empty;
+            var receivingDealerId = vehicleInTransitTransfer.Contains("gsc_dealerid") ? vehicleInTransitTransfer.GetAttributeValue<EntityReference>("gsc_dealerid").Id
+                : Guid.Empty;
+
+            inTransitReceivingEntity["gsc_actualreceiptdate"] = DateTime.UtcNow;
+            inTransitReceivingEntity["gsc_description"] = vehicleInTransitTransfer.Contains("gsc_description") ? vehicleInTransitTransfer.GetAttributeValue<string>("gsc_description")
+                : String.Empty;
+            inTransitReceivingEntity["gsc_destinationsiteid"] = new EntityReference("gsc_iv_site", receivingDestinationSiteId);
+            inTransitReceivingEntity["gsc_destinationbranch"] = vehicleInTransitTransfer.Contains("gsc_destinationbranchid") ? vehicleInTransitTransfer.GetAttributeValue<EntityReference>("gsc_destinationbranchid").Name
+                : string.Empty;
+            //Status = Shipped
+            inTransitReceivingEntity["gsc_intransitstatus"] = new OptionSetValue(100000000);
+            inTransitReceivingEntity["gsc_intransitstatuscopy"] = new OptionSetValue(100000000);
+            inTransitReceivingEntity["gsc_intransittransferid"] = new EntityReference(vehicleInTransitTransfer.LogicalName, vehicleInTransitTransfer.Id);
+            inTransitReceivingEntity["gsc_intransittransferremarks"] = vehicleInTransitTransfer.Contains("gsc_remarks") ? vehicleInTransitTransfer.GetAttributeValue<string>("gsc_remarks")
+                : string.Empty;
+            inTransitReceivingEntity["gsc_sourcebranch"] = vehicleInTransitTransfer.Contains("gsc_sourcebranchid") ? vehicleInTransitTransfer.GetAttributeValue<EntityReference>("gsc_sourcebranchid").Name
+                : string.Empty;
+            inTransitReceivingEntity["gsc_sourcesite"] = vehicleInTransitTransfer.Contains("gsc_sourcesiteid") ? vehicleInTransitTransfer.GetAttributeValue<EntityReference>("gsc_sourcesiteid").Name
+                : string.Empty;
+            inTransitReceivingEntity["gsc_viasite"] = vehicleInTransitTransfer.Contains("gsc_viasiteid") ? vehicleInTransitTransfer.GetAttributeValue<EntityReference>("gsc_viasiteid").Name
+                : string.Empty;
+            inTransitReceivingEntity["gsc_recordownerid"] = new EntityReference("contact", receivingRecordOwnerId);
+            inTransitReceivingEntity["gsc_branchid"] = new EntityReference("account", receivingBranchId);
+            inTransitReceivingEntity["gsc_dealerid"] = new EntityReference("account", receivingDealerId);
+
+            Guid Id = _organizationService.Create(inTransitReceivingEntity);
+            _tracingService.Trace("Created Vehicle In-Transit Transfer Receiving record...");
+
+            return Id;
+        }
+
+        /*Purpose: Create Receiving Entity Details
+         * Registration Details:
+         * Event/Message: 
+         *      Post/Update: gsc_intransittransferstatus
+         * Primary Entity: Vehicle In-Transit Transfer Receiving Details
+         */
+        public void CreateReceivingDetails(Entity vehicleInTransitTransfer, Entity vehicleInTransitTransferDetails, Guid receivingId)
+        {
+            Entity inTransitReceivingEntity = new Entity("gsc_iv_vehicleintransitreceivingdetail");
+            vehicleInTransitTransferDetails.Attributes.Remove("gsc_vehicleintransittransferid");
+            vehicleInTransitTransferDetails.Attributes.Remove("gsc_iv_vehicleintransittransferdetailid");
+            inTransitReceivingEntity.Attributes = vehicleInTransitTransferDetails.Attributes;
+
+            inTransitReceivingEntity.Attributes.Add("gsc_intransitreceivingid", new EntityReference("gsc_iv_vehicleintransittransferreceiving", receivingId));
+            inTransitReceivingEntity.Attributes.Add("gsc_modelid", CommonHandler.GetEntityReferenceIdSafe(vehicleInTransitTransfer, "gsc_modelid"));
+            inTransitReceivingEntity.Attributes.Add("gsc_productid", CommonHandler.GetEntityReferenceIdSafe(vehicleInTransitTransfer, "gsc_productid"));
+
+            _organizationService.Create(inTransitReceivingEntity);
+            _tracingService.Trace("Created Vehicle In-Transit Transfer Receiving Details record...");
+        }
+
+        public Entity GetIntransitTransferDetails(Guid inTransitTransferId)
+        {
+            QueryExpression query = new QueryExpression("gsc_iv_vehicleintransittransferdetail");
+            query.ColumnSet.AddColumn("gsc_vehicleintransittransferid");
+
+            query.ColumnSet.AddColumns("gsc_modelcode", "gsc_optioncode", "gsc_productionno",
+                                       "gsc_modelyear", "gsc_color", "gsc_destinationsiteid",
+                                       "gsc_engineno", "gsc_csno", "gsc_inventoryid",
+                                       "gsc_productionno", "gsc_vin");
+
+            query.Criteria.AddCondition(new ConditionExpression("gsc_vehicleintransittransferid", ConditionOperator.Equal, inTransitTransferId));
+
+            Entity result = _organizationService.RetrieveMultiple(query).Entities.FirstOrDefault();
+
+            return result;
+        }
+
+
+
         //Created By: Raphael Herrera, Created On: 8/31/2016
         /*Purpose: Perform BL for receiving Vehicle In-Transit Transfer records 
          * Registration Details:
@@ -265,7 +353,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                     inTransitTransferEntity["gsc_intransittransferstatus"] = new OptionSetValue(100000000);
                     _organizationService.Update(inTransitTransferEntity);
                     _tracingService.Trace("Updated Vehicle In-Transit Transfer status to cancelled...");
-                                    #endregion
+                    #endregion
                 }
             }
             else
@@ -310,7 +398,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             _tracingService.Trace("Started GenerateComponents method...");
 
             EntityCollection receivingDetailsCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_vehicleintransitreceivingdetail", "gsc_intransitreceivingid", vehicleInTransitReceiving.Id, _organizationService,
-                null, OrderType.Ascending, new[] {"gsc_inventoryid"});
+                null, OrderType.Ascending, new[] { "gsc_inventoryid" });
             if (receivingDetailsCollection.Entities == null || receivingDetailsCollection.Entities.Count == 0)
                 throw new InvalidPluginExecutionException("No receiving detail found.");
 
@@ -326,7 +414,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             var baseModelId = inventoryEntity.Contains("gsc_basemodelid") ? inventoryEntity.GetAttributeValue<EntityReference>("gsc_basemodelid").Id
                 : Guid.Empty;
             EntityCollection componentChecklistCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_vehiclecomponentchecklist", "gsc_vehiclebasemodelid", baseModelId, _organizationService,
-                null, OrderType.Ascending, new[] { "gsc_vehiclecomponentchecklistpn"});
+                null, OrderType.Ascending, new[] { "gsc_vehiclecomponentchecklistpn" });
 
             if (componentChecklistCollection.Entities != null && componentChecklistCollection.Entities.Count > 0)
             {
@@ -334,14 +422,14 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                 Entity receivingComponent = new Entity("gsc_iv_vehicleintransitreceivingchecklist");
                 foreach (Entity componentEntity in componentChecklistCollection.Entities)
                 {
-                    receivingComponent["gsc_vehicleintransitreceivingchecklistpn"] = componentEntity.Contains("gsc_vehiclecomponentchecklistpn") ? 
+                    receivingComponent["gsc_vehicleintransitreceivingchecklistpn"] = componentEntity.Contains("gsc_vehiclecomponentchecklistpn") ?
                         componentEntity.GetAttributeValue<String>("gsc_vehiclecomponentchecklistpn") : String.Empty;
                     receivingComponent["gsc_intransitreceivingid"] = new EntityReference("gsc_iv_vehicleintransittransferreceiving", vehicleInTransitReceiving.Id);
                     _organizationService.Create(receivingComponent);
                 }
             }
             _tracingService.Trace("Ending GenerateComponents method...");
-            return vehicleInTransitReceiving; 
+            return vehicleInTransitReceiving;
         }
-    } 
+    }
 }
