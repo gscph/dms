@@ -66,6 +66,12 @@
   <ItemGroup>
     <None Include="GSC.Rover.snk" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VehicleIn-TransitTransferReceiving\VehicleIn-TransitTransferReceiving.csproj">
+      <Project>{90366D5C-3BB5-4A4E-9C30-CCC60772E4E4}</Project>
+      <Name>VehicleIn-TransitTransferReceiving</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

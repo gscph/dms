@@ -7,6 +7,7 @@ using Microsoft.Xrm.Sdk;
 using GSC.Rover.DMS.BusinessLogic.Common;
 using Microsoft.Xrm.Sdk.Query;
 using GSC.Rover.DMS.BusinessLogic.InventoryMovement;
+using GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving;
 
 namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
 {
@@ -14,11 +15,18 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
     {
         private readonly IOrganizationService _organizationService;
         private readonly ITracingService _tracingService;
-
+        private readonly VehicleInTransitTransferReceivingHandler _receivingHandler;
         public VehicleInTransitTransferHandler(IOrganizationService service, ITracingService trace)
         {
             _organizationService = service;
             _tracingService = trace;
+        }
+
+        public VehicleInTransitTransferHandler(IOrganizationService service, ITracingService trace, VehicleInTransitTransferReceivingHandler receivingHandler)
+        {
+            _organizationService = service;
+            _tracingService = trace;
+            _receivingHandler = receivingHandler;
         }
 
         //Created By: Raphael Herrera, Created On: 8/22/2016

@@ -63,3 +63,17 @@ C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnit
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.dll
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\AppliedPriceListUnitTests.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\AppliedPriceListUnitTests.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.AppliedPriceList.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\Moq.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.AppliedPriceList.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\Moq.xml
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.csprojResolveAssemblyReference.cache
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\AppliedPriceListUnitTests\obj\Release\AppliedPriceListUnitTests.pdb

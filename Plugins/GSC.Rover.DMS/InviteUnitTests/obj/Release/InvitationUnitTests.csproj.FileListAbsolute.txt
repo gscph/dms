@@ -60,3 +60,17 @@ C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\obj\Release\InvitationUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\obj\Release\InviteUnitTests.dll
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\obj\Release\InviteUnitTests.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\InviteUnitTests.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\InviteUnitTests.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Invitation.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\Moq.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Invitation.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\Moq.xml
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\obj\Release\InvitationUnitTests.csprojResolveAssemblyReference.cache
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\obj\Release\InviteUnitTests.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\InviteUnitTests\obj\Release\InviteUnitTests.pdb

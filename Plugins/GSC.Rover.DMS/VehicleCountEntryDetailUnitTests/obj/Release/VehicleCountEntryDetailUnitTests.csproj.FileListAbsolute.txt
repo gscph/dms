@@ -46,3 +46,17 @@ C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDet
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\obj\Release\VehicleCountEntryDetailUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\obj\Release\VehicleCountEntryDetailUnitTests.dll
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\obj\Release\VehicleCountEntryDetailUnitTests.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\VehicleCountEntryDetailUnitTests.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\VehicleCountEntryDetailUnitTests.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountEntryDetail.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\Microsoft.Xrm.Sdk.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\Moq.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountEntryDetail.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\Moq.xml
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\obj\Release\VehicleCountEntryDetailUnitTests.csprojResolveAssemblyReference.cache
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\obj\Release\VehicleCountEntryDetailUnitTests.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleCountEntryDetailUnitTests\obj\Release\VehicleCountEntryDetailUnitTests.pdb

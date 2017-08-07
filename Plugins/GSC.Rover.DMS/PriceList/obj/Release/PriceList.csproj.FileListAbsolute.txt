@@ -49,3 +49,13 @@ C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceList\bin\Releas
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceList\obj\Release\PriceList.csprojResolveAssemblyReference.cache
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceList\obj\Release\GSC.Rover.DMS.BusinessLogic.PriceList.dll
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceList\obj\Release\GSC.Rover.DMS.BusinessLogic.PriceList.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceList\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceList.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceList\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceList.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceList\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceList\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceList\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceList\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceList\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceList\obj\Release\PriceList.csprojResolveAssemblyReference.cache
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceList\obj\Release\GSC.Rover.DMS.BusinessLogic.PriceList.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\PriceList\obj\Release\GSC.Rover.DMS.BusinessLogic.PriceList.pdb

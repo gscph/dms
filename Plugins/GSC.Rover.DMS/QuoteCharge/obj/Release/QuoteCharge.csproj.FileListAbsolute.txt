@@ -80,3 +80,17 @@ C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Rele
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\obj\Release\QuoteCharge.csprojResolveAssemblyReference.cache
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteCharge.dll
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteCharge.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteCharge.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.QuoteCharge.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.Quote.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceList.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.Quote.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceList.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\bin\Release\GSC.Rover.DMS.BusinessLogic.PriceListItem.pdb
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\obj\Release\QuoteCharge.csprojResolveAssemblyReference.cache
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteCharge.dll
+C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\QuoteCharge\obj\Release\GSC.Rover.DMS.BusinessLogic.QuoteCharge.pdb
