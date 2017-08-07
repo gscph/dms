@@ -58,8 +58,7 @@ namespace ImportIntegration
                 DataReader _reader = new DataReader(excelPath);
                 ServiceProvider _provider = new ServiceProvider(service, logger);
                 logger.Log(LogLevel.Info, "Starting to read the data..");
-                List<ReceivingTransaction> rtList = _reader.Read();
-                logger.Log(LogLevel.Info, "Starting to read the data..");
+                List<ReceivingTransaction> rtList = _reader.Read();               
                 _provider.MassUploadReceiving(rtList);
                 EmailSender emailSender = new EmailSender(service);
                 logger.Log(LogLevel.Info, "Trying to send email..");

@@ -127,11 +127,11 @@ namespace ImportIntegration
                             if (columnIndex == 1)
                             {
                                 string cellValue = GetCellValue(doc, cell);
-
-                                if (string.IsNullOrEmpty(cellValue))
+                                DateTime sample;
+                                if (string.IsNullOrEmpty(cellValue) || DateTime.TryParse(cellValue, out sample))
                                 {
                                     rt.PullOutDate = cellValue;
-                                }
+                                }                               
                                 else
                                 {
                                     rt.PullOutDate = DateTime.FromOADate(Convert.ToDouble(cellValue)).ToString();
@@ -148,8 +148,8 @@ namespace ImportIntegration
                             if (columnIndex == 4)
                             {
                                 string cellValue = GetCellValue(doc, cell);
-
-                                if (string.IsNullOrEmpty(cellValue))
+                                DateTime sample;
+                                if (string.IsNullOrEmpty(cellValue) || DateTime.TryParse(cellValue, out sample))
                                 {
                                     rt.InTransitReceiptDate = cellValue;
                                 }
@@ -162,8 +162,8 @@ namespace ImportIntegration
                             if (columnIndex == 5)
                             {
                                 string cellValue = GetCellValue(doc, cell);
-
-                                if (string.IsNullOrEmpty(cellValue))
+                                DateTime sample;
+                                if (string.IsNullOrEmpty(cellValue) || DateTime.TryParse(cellValue, out sample))
                                 {
                                     rt.InvoiceDate = cellValue;
                                 }
