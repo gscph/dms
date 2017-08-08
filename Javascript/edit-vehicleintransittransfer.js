@@ -447,7 +447,7 @@ $(document).ready(function () {
 
     function shipTransaction() {
         $('#gsc_intransittransferstatus').val('100000001');
-        $('#gsc_isshipping').val(true);
+        $('#gsc_isshipping').attr('checked', 'checked');
         $('#UpdateButton').click();
     }
 

@@ -54,33 +54,6 @@ namespace GSC.Rover.DMS.BusinessLogic.Common
                 return entity.GetAttributeValue<OptionSetValue>(attribute).Value;
             }
             return 0;
-        }
-
-        /// <summary>
-        /// Clones entity attribute collection from one to another and removes unecessary keys
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="attributes"></param>
-        /// <param name="destination"></param>
-        /// <returns>Entity</returns>
-        public static void MapEntityAttributes(Entity source,  Entity destination, string[] attributes = null)
-        {
-            Entity sourceEntity = source;
-
-            foreach (var item in source.Attributes)
-            {
-                if (attributes.Contains(item.Key))
-                {
-                    source.Attributes.Remove(item.Key);
-                }
-            }
-
-            destination.Attributes = sourceEntity.Attributes;
-            //if (entity.Attributes.Contains(attribute))
-            //{
-            //    return entity.GetAttributeValue<OptionSetValue>(attribute).Value;
-            //}
-           
-        }
+        }       
     }
 }
