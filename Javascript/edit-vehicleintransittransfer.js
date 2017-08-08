@@ -1,58 +1,55 @@
 //Created By : Raphael Herrera, Created On : 8/23/2016
 $(document).bind('DOMNodeInserted', function (evt) {
-  var isSubGridFrm = $(evt.target).parent().parent('#AllocatedVehicle.subgrid').html();
-  if ((typeof isSubGridFrm !== 'undefined') ) {
-    var table = $(evt.target).siblings('.view-grid.table-responsive');
-    console.log(table.html());
-  }
+    var isSubGridFrm = $(evt.target).parent().parent('#AllocatedVehicle.subgrid').html();
+    if ((typeof isSubGridFrm !== 'undefined')) {
+        var table = $(evt.target).siblings('.view-grid.table-responsive');
+        console.log(table.html());
+    }
 });
 
 $(document).ready(function () {
-  var inTransitStatus = $('#gsc_intransittransferstatus').val();
+    var inTransitStatus = $('#gsc_intransittransferstatus').val();
 
- $('#gsc_intransittransferstatus').attr('readOnly', true);
- $('#gsc_intransittransferstatus').css({ "pointer-events": "none", "cursor": "default" });
- drawAllocateButton();
- drawShipButton();
- 
+    $('#gsc_intransittransferstatus').attr('readOnly', true);
+    $('#gsc_intransittransferstatus').css({ "pointer-events": "none", "cursor": "default" });
+    drawAllocateButton();
+    drawShipButton();
 
- $('#gsc_inventoryidtoallocate').hide();
+   
+    $('#gsc_inventoryidtoallocate').hide();
     $('#gsc_inventoryidtoallocate_label').hide();
     $('.sort-disabled').innerHTML = "<a href=\"#\"> Site </a>";
 
- setTimeout(function () 
-     {
-            RefreshAvailableItems($(".btn-primary").closest("div #Inventory"), 1, 4);
+    setTimeout(function () {
+        $('#gsc_isshipping').hide();
+        RefreshAvailableItems($(".btn-primary").closest("div #Inventory"), 1, 4);
 
-            $('.btn-primary').on('click', function (e) {
+        $('.btn-primary').on('click', function (e) {
 
-                var $subgrid = $(this).closest(".subgrid");
-                var $subgridId = $subgrid.parent().attr("id");
+            var $subgrid = $(this).closest(".subgrid");
+            var $subgridId = $subgrid.parent().attr("id");
 
-                if ($subgridId == "Inventory") {
-                    e.preventDefault();
-                    e.stopPropagation();
+            if ($subgridId == "Inventory") {
+                e.preventDefault();
+                e.stopPropagation();
 
-                    RefreshAvailableItems($subgrid.parent(), 1, 4);
-                }
-            });
+                RefreshAvailableItems($subgrid.parent(), 1, 4);
+            }
+        });
 
-        }, 1000);
+    }, 500);
 
- /* inTransitStatus != Picked */
- if(inTransitStatus != 100000000)
- {
-  disableFields();
- }
- // // inTransitStatus == Picked
- // else
- else if(inTransitStatus == 100000000)
- {
-  drawCancelButton();
- }
-  drawPrintButton();
-     function RefreshAvailableItems($parent, page, PageSize) 
-     {
+    /* inTransitStatus != Picked */
+    if (inTransitStatus != 100000000) {
+        disableFields();
+    }
+    // // inTransitStatus == Picked
+    // else
+    else if (inTransitStatus == 100000000) {
+        drawCancelButton();
+    }
+    drawPrintButton();
+    function RefreshAvailableItems($parent, page, PageSize) {
         var $subgrid = $parent.children(".subgrid");
         var $table = $subgrid.children(".view-grid").find("table");
         var $tbody = $("<tbody></tbody>");
@@ -93,8 +90,7 @@ $(document).ready(function () {
     }
 
     //filtered inventory of the filter criteria
-    function FilterInventory(data) 
-    {
+    function FilterInventory(data) {
 
         var colorIdFilter = $("#gsc_colorid_name").val();
         var siteIdFilter = $("#gsc_siteid").val();
@@ -112,46 +108,43 @@ $(document).ready(function () {
 
         var removeData = false;
 
-        if(colorIdFilter != null && colorIdFilter != "")
-            if(colorId != colorIdFilter)
+        if (colorIdFilter != null && colorIdFilter != "")
+            if (colorId != colorIdFilter)
                 removeData = true;
 
-        if(siteIdFilter != null && siteIdFilter != "")
-            if(siteId != null)
-            {
-                if(siteId.Id != siteIdFilter)
+        if (siteIdFilter != null && siteIdFilter != "")
+            if (siteId != null) {
+                if (siteId.Id != siteIdFilter)
                     removeData = true;
             }
             else
                 removeData = true;
 
-        if(modelDescriptionFilter != null && modelDescriptionFilter != "")
-            if(productId != null)
-            {
-                if(productId.Id != modelDescriptionFilter)
+        if (modelDescriptionFilter != null && modelDescriptionFilter != "")
+            if (productId != null) {
+                if (productId.Id != modelDescriptionFilter)
                     removeData = true;
             }
             else
                 removeData = true;
 
-        if(baseModelFilter != null && baseModelFilter != "")
-            if(baseModel != null)
-            {
-                if(baseModel.Id != baseModelFilter)
+        if (baseModelFilter != null && baseModelFilter != "")
+            if (baseModel != null) {
+                if (baseModel.Id != baseModelFilter)
                     removeData = true;
             }
             else
                 removeData = true;
 
-        if(modelCodeFilter != null && modelCodeFilter != "")
-            if(modelCodeFilter != modelCode)
+        if (modelCodeFilter != null && modelCodeFilter != "")
+            if (modelCodeFilter != modelCode)
                 removeData = true;
 
-        if(optionCodeFilter != null && optionCodeFilter != "")
-            if(optionCodeFilter != optionCode)
+        if (optionCodeFilter != null && optionCodeFilter != "")
+            if (optionCodeFilter != optionCode)
                 removeData = true;
 
-         if (removeData == false)
+        if (removeData == false)
             return data;
 
     }
@@ -236,19 +229,19 @@ $(document).ready(function () {
                         return false;
                     }
                     else if (key.split("-").pop() == columns[j].split(".").pop()) {
-                       var html;
-                       if(value != null) {
-                          html = value.Name;
-                       }
-                       else { 
-                         html = "";
-                       }
-                      
+                        var html;
+                        if (value != null) {
+                            html = value.Name;
+                        }
+                        else {
+                            html = "";
+                        }
+
                         var $td = $("<td></td>")
                             .attr("data-attribute", value)
                             .attr("data-value", typeof value === 'object' ? JSON.stringify(value) : value)
                             .html(html);
-                       
+
                         $tr.append($td);
                         found = true;
                         return false;
@@ -257,14 +250,14 @@ $(document).ready(function () {
                 if (!found) {
                     var typeColumn = columns[j];
                     //   console.log(columns);
-                      
+
                     var $td = $("<td></td>")
                         .attr("data-attribute", columns[j]);
 
                     $tr.append($td);
                 };
             }
-            
+
             $tbody.append($tr);
         });
 
@@ -276,7 +269,7 @@ $(document).ready(function () {
     }
 
     function initializePagination(data, $parent, PageNumber) {
-            // requires ~/js/jquery.bootstrap-pagination.js
+        // requires ~/js/jquery.bootstrap-pagination.js
 
         var $subgrid = $parent.children(".subgrid");
         var $pagination = $subgrid.children(".view-pagination");
@@ -315,19 +308,18 @@ $(document).ready(function () {
             .show();
     }
 
-    function disableFields()
-    {
-     $('#AllocatedVehicle table tbody tr').each(function (){
-         $(this).find('td:last .btn').addClass('disabled');
-          }
-         );
+    function disableFields() {
+        $('#AllocatedVehicle table tbody tr').each(function () {
+            $(this).find('td:last .btn').addClass('disabled');
+        }
+        );
 
-  $('.delete-link').addClass('disabled');
+        $('.delete-link').addClass('disabled');
 
         $('.control > input').attr('readOnly', true);
         $('.control > textarea').attr('readOnly', true);
         $('.datetimepicker > .form-control').attr('readOnly', true);
-        
+
 
         $('.clearlookupfield').remove();
         $('.launchentitylookup').remove();
@@ -336,11 +328,10 @@ $(document).ready(function () {
         $('#gsc_transferstatus').hide();
         $('#gsc_transferstatus_label').hide();
 
-        
+
     }
 
-    function drawAllocateButton()
-    {
+    function drawAllocateButton() {
 
         var allocateButton = document.createElement("BUTTON");
         var allocate = document.createElement("SPAN");
@@ -349,52 +340,51 @@ $(document).ready(function () {
         var allocateButtonLabel = document.createTextNode(" ALLOCATE");
         allocateButton.appendChild(allocateButtonLabel);
 
-        if(inTransitStatus != 100000000)
-         allocateButton.className = "allocate-link btn btn-primary action disabled";
+        if (inTransitStatus != 100000000)
+            allocateButton.className = "allocate-link btn btn-primary action disabled";
         else
-         allocateButton.className = "allocate-link btn btn-primary action";
+            allocateButton.className = "allocate-link btn btn-primary action";
 
         allocateButton.addEventListener("click", allocateVehicle);
         $("#Inventory").find(".view-toolbar.grid-actions.clearfix").append(allocateButton);
     }
-    
+
     function drawShipButton() {
-      var shipButton = document.createElement("BUTTON");
-      var ship = document.createElement("SPAN");
-      ship.className = "fa fa-ship";
-      shipButton.appendChild(ship);
-      var shipButtonLabel = document.createTextNode(" SHIP");
-      shipButton.appendChild(shipButtonLabel);
-      shipButton.addEventListener("click", shipTransaction);
-      
-      if (inTransitStatus != 100000000) {
-        shipButton.className = "btn btn-primary disabled";
-      } else {
-        shipButton.className = "btn btn-primary";
-      }
-      DMS.Helpers.AppendButtonToToolbar(shipButton);
+        var shipButton = document.createElement("BUTTON");
+        var ship = document.createElement("SPAN");
+        ship.className = "fa fa-ship";
+        shipButton.appendChild(ship);
+        var shipButtonLabel = document.createTextNode(" SHIP");
+        shipButton.appendChild(shipButtonLabel);
+        shipButton.addEventListener("click", shipTransaction);
+
+        if (inTransitStatus != 100000000) {
+            shipButton.className = "btn btn-primary disabled";
+        } else {
+            shipButton.className = "btn btn-primary";
+        }
+        DMS.Helpers.AppendButtonToToolbar(shipButton);
     }
 
     function drawCancelButton() {
-      var cancelButton = document.createElement("BUTTON");
-      var cancel = document.createElement("SPAN");
-      cancel.className = "fa fa-ban";
-      cancelButton.appendChild(cancel);
-      var cancelButtonLabel = document.createTextNode(" CANCEL");
-      
-      if(inTransitStatus != 100000000) {
-        cancelButton.className = "btn btn-primary disabled";
-      } else {
-        cancelButton.className = "btn btn-primary";
-      }
-      
-      cancelButton.appendChild(cancelButtonLabel);
-      cancelButton.addEventListener("click", cancelTransaction);
-      DMS.Helpers.AppendButtonToToolbar(cancelButton);
+        var cancelButton = document.createElement("BUTTON");
+        var cancel = document.createElement("SPAN");
+        cancel.className = "fa fa-ban";
+        cancelButton.appendChild(cancel);
+        var cancelButtonLabel = document.createTextNode(" CANCEL");
+
+        if (inTransitStatus != 100000000) {
+            cancelButton.className = "btn btn-primary disabled";
+        } else {
+            cancelButton.className = "btn btn-primary";
+        }
+
+        cancelButton.appendChild(cancelButtonLabel);
+        cancelButton.addEventListener("click", cancelTransaction);
+        DMS.Helpers.AppendButtonToToolbar(cancelButton);
     }
 
-     function drawPrintButton()
-    {
+    function drawPrintButton() {
         var printButton = document.createElement("BUTTON");
         var print = document.createElement("SPAN");
         print.className = "fa fa-print";
@@ -403,27 +393,25 @@ $(document).ready(function () {
         printButton.appendChild(printButtonLabel);
         printButton.className = "allocate-link btn btn-primary action";
 
-        printButton.addEventListener("click", function(event){
-      
-      printVehileInTransitTransfer();
-      event.preventDefault();
-  });
+        printButton.addEventListener("click", function (event) {
+
+            printVehileInTransitTransfer();
+            event.preventDefault();
+        });
 
         DMS.Helpers.AppendButtonToToolbar(printButton);
     }
 
- function printVehileInTransitTransfer()
-    {
+    function printVehileInTransitTransfer() {
         var param1var = getQueryVariable("id");
         var protocol = window.location.protocol;
         var host = window.location.host;
         var url = protocol + "//" + host + "/report/?reportname={96BD2042-E870-E611-80DB-00155D010E2C}&reportid=" + param1var;
         window.open(url, 'blank', 'width=500,height=400');
-        
+
     }
 
-    function allocateVehicle(event) 
-    {
+    function allocateVehicle(event) {
         var count = 0;
         var id = "";
 
@@ -451,46 +439,41 @@ $(document).ready(function () {
         //event.preventDefault();
     }
 
-    function cancelTransaction()
-    {
-     $('#gsc_intransittransferstatus').val('100000003');
-     $('#UpdateButton').click();
+    function cancelTransaction() {
+        $('#gsc_intransittransferstatus').val('100000003');
+        $('#UpdateButton').click();
 
     }
 
-    function shipTransaction()
-    {
-      $('#gsc_intransittransferstatus').val('100000001');
-      $('#gsc_isshipping').val(true);
-      $('#UpdateButton').click();
+    function shipTransaction() {
+        $('#gsc_intransittransferstatus').val('100000001');
+        $('#gsc_isshipping').val(true);
+        $('#UpdateButton').click();
     }
 
-    function getQueryVariable(variable) 
-    {
+    function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
         var vars = query.split("&");
         for (var i = 0; i < vars.length; i++) {
-          var pair = vars[i].split("=");
-          if (pair[0] == variable) {
-            return pair[1];
-          }
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
         }
     }
 
-    function preventDefault(event) 
-    {
+    function preventDefault(event) {
         event.preventDefault();
-    }   
+    }
 
-     function getQueryVariable(variable) 
-    {
+    function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
         var vars = query.split("&");
         for (var i = 0; i < vars.length; i++) {
-          var pair = vars[i].split("=");
-          if (pair[0] == variable) {
-            return pair[1];
-          }
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
         }
     }
 

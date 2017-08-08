@@ -253,9 +253,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                     {
                         // Create Vehicle In-Transit Transfer Receiving Entity
                         _receivingHandler.CreateRecevingEntity(vehicleInTransitTransfer);
-                    }
-
-                         
+                    }                         
 
                     foreach (Entity allocatedVehicleEntity in allocatedVehicleCollection.Entities)
                     {
