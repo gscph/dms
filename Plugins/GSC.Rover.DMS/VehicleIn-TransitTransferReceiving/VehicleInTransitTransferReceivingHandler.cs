@@ -368,7 +368,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
          *      Post/Create: gsc_intransittransfer
          * Primary Entity: Vehicle In-Transit Transfer Receiving
          */
-        public void DetectDuplicate(Entity vehicleReceivingTransfer)
+        public bool DetectDuplicate(Entity vehicleReceivingTransfer)
         {
             QueryExpression query = new QueryExpression("gsc_iv_vehicleintransittransferreceiving");
             query.ColumnSet.AddColumn("gsc_intransittransferid");
@@ -381,8 +381,10 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
 
             if (count > 0)
             {
-                throw new InvalidPluginExecutionException("Duplicate detected, In-Transit Transfer already exist.");
+                return true;
             }
+
+            return false;
         }
 
         public Entity CopyStatus(Entity vehicleInTransitReceiving)

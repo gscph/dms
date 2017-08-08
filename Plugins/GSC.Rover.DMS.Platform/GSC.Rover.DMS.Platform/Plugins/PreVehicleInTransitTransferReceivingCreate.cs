@@ -69,9 +69,12 @@ namespace GSC.Rover.DMS.Platform.Plugins
                 VehicleInTransitTransferReceivingHandler receivingHandler = new VehicleInTransitTransferReceivingHandler(service, trace);              
 
                 // check if in-transit transfer already exists.
-                receivingHandler.DetectDuplicate(entity);
-                // populate in-transit transfer details               
+                bool isDuplicate = receivingHandler.DetectDuplicate(entity);
 
+                if (isDuplicate)
+                {
+                    throw new InvalidPluginExecutionException("Duplicate detected, In-Transit Transfer already exist.");
+                }
             }
             catch (Exception ex)
             {
