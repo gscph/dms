@@ -1468,7 +1468,7 @@
     <DataSource Name="VIBQ">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=DMSQADB2;Initial Catalog=MMPCQA_MSCRM</ConnectString>
+        <ConnectString>Data Source=MMPCDB;Initial Catalog=MMPCPROD2_MSCRM</ConnectString>
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>35c2fafd-551f-49a0-8d8c-38bd254db1bc</rd:DataSourceID>
