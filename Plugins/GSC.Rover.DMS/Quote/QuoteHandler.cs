@@ -411,7 +411,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             EntityCollection MARecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_quotemonthlyamortization", "gsc_quoteid", quoteEntity.Id, _organizationService, null, OrderType.Ascending,
                 new[] { "gsc_quoteid", "gsc_isselected", "gsc_financingtermid" });
 
-            if (MARecords != null || MARecords.Entities.Count > 0)
+            if (MARecords != null && MARecords.Entities.Count > 0)
             {
                 foreach (var amortization in MARecords.Entities)
                 {
@@ -422,14 +422,15 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
 
                     if (isSelected == true)
                     {
-                        _tracingService.Trace(financingTermId.ToString());
                         financingTermId = amortization.Contains("gsc_financingtermid") ? amortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
                     }
 
                     _organizationService.Delete(amortization.LogicalName, amortization.Id);
                 }
 
-                quoteEntity["gsc_netmonthlyamortization"] = new Money(0);
+                 Entity quoteToUpdate = _organizationService.Retrieve(quoteEntity.LogicalName, quoteEntity.Id, new ColumnSet("gsc_netmonthlyamortization"));
+                 quoteToUpdate["gsc_netmonthlyamortization"] = new Money(0);
+                _organizationService.Update(quoteToUpdate);
 
                 _tracingService.Trace("Net monthly amortization Updated to 0 ...");
             }
@@ -634,7 +635,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             string[] amortizationString = amortization.ToString().Split('.');
             double newAmortization = amortization;
 
-            if (amortizationString[1].Length == 2)
+            if (amortizationString.Length == 2)
             {
                 for (int i = amortizationString[1].Length - 1; i >= 0; i--)
                 {
@@ -657,7 +658,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             if (financingTermId != Guid.Empty)
             {
                 EntityCollection quoteMonthlyAmortizationRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_quotemonthlyamortization", "gsc_quoteid", quoteEntity.Id, _organizationService, null, OrderType.Ascending,
-                    new[] { "gsc_financingtermid", "gsc_isselected" });
+                    new[] { "gsc_financingtermid", "gsc_isselected", "gsc_quotemonthlyamortizationpn" });
 
                 _tracingService.Trace(quoteMonthlyAmortizationRecords.Entities.Count.ToString());
 
@@ -677,6 +678,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
                     }
                 }
             }
+
             return quoteEntity;
         }
 
@@ -925,7 +927,9 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             quoteEntity["gsc_totalcashoutlay"] = new Money(cashoutlay);
 
             Entity quoteToUpdate = _organizationService.Retrieve(quoteEntity.LogicalName, quoteEntity.Id,
-                           new ColumnSet(true));
+                           new ColumnSet("gsc_lessdiscount", "gsc_totaldownpaymentdiscountdisplay", "gsc_lessdiscountaf", "gsc_totaldiscount",
+                               "gsc_netdownpayment", "gsc_downpayment", "gsc_netprice", "gsc_totalcashoutlay", "gsc_amountfinanced", "gsc_totalamountfinanced", "gsc_totalamountdue",
+                               "gsc_vatablesales", "gsc_vatexemptsales", "gsc_zeroratedsales", "gsc_totalsales", "gsc_vatamount", "gsc_downpaymentamount", "gsc_downpaymentdisplay"));
 
             quoteToUpdate["gsc_lessdiscount"] = quoteEntity["gsc_lessdiscount"];
             quoteToUpdate["gsc_totaldownpaymentdiscountdisplay"] = quoteEntity["gsc_lessdiscount"];
@@ -946,10 +950,10 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             quoteToUpdate["gsc_downpaymentamount"] = quoteEntity["gsc_downpaymentamount"];
             quoteToUpdate["gsc_downpaymentdisplay"] = quoteEntity["gsc_downpaymentamount"];
 
-            //Update Monthly Amortization
-            CheckMonthlyAmortizationRecord(quoteToUpdate);
-
             _organizationService.Update(quoteToUpdate);
+
+            //Update Monthly Amortization
+            CheckMonthlyAmortizationRecord(quoteEntity);
 
             _tracingService.Trace("Ended SetLessDiscountValues method...");
         }
@@ -1149,11 +1153,11 @@ namespace GSC.Rover.DMS.BusinessLogic.Quote
             quoteEntity["gsc_totalcashoutlay"] = new Money(cashoutlay);
 
             Entity quoteToUpdate = _organizationService.Retrieve(quoteEntity.LogicalName, quoteEntity.Id, new ColumnSet("gsc_downpayment",
-                "gsc_totalcashoutlay", "gsc_totalamountfinanced", "gsc_netmonthlyamortization", "gsc_financingschemeid", "gsc_dealerid", "gsc_branchid", "gsc_recordownerid"));
+                "gsc_totalcashoutlay", "gsc_totalamountfinanced", "gsc_financingschemeid", "gsc_dealerid", "gsc_branchid", "gsc_recordownerid"));
+
             quoteToUpdate["gsc_downpayment"] = new Money(netdownpayment);
             quoteToUpdate["gsc_totalcashoutlay"] = new Money(cashoutlay);
             quoteToUpdate["gsc_totalamountfinanced"] = new Money(amountfinanced);
-
 
             _organizationService.Update(quoteToUpdate);
 

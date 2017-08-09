@@ -896,7 +896,9 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             salesOrderEntity = SetTotalCashOutlayAmount(salesOrderEntity, "create");
 
             Entity orderToUpdate = _organizationService.Retrieve(salesOrderEntity.LogicalName, salesOrderEntity.Id,
-                           new ColumnSet(true));
+                           new ColumnSet("gsc_discount", "gsc_totaldownpaymentdiscountdisplay", "gsc_discountamountfinanced", "gsc_downpaymentdiscount",
+                               "gsc_downpaymentamount", "gsc_netdownpayment", "gsc_downpayment", "gsc_downpaymentdisplay", "gsc_netprice", "gsc_totalcashoutlay", "gsc_amountfinanced",
+                               "gsc_totalamountfinanced", "gsc_vatablesales", "gsc_vatexemptsales", "gsc_zeroratedsales", "gsc_totalsales", "gsc_vatamount", "gsc_totalamountdue"));
 
             orderToUpdate["gsc_discount"] = salesOrderEntity["gsc_discount"];
             orderToUpdate["gsc_totaldownpaymentdiscountdisplay"] = new Money(downpayment);
@@ -919,7 +921,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
 
             _organizationService.Update(orderToUpdate);
 
-            DeleteExistingMonthlyAmortizationRecords(orderToUpdate);
+            DeleteExistingMonthlyAmortizationRecords(salesOrderEntity);
 
             _tracingService.Trace("Ended SetLessDiscountValues method..");
             return salesOrderEntity;
@@ -1212,38 +1214,6 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             return new Money(Decimal.Zero);
         }
 
-        //TO BE DELETED
-        /*//Created By : Jerome Anthony Gerero, Created On : 3/31/2016
-        public Entity SetAddAccessoriesAmount(Entity salesOrderEntity)
-        {
-            _tracingService.Trace("Started SetAddAccessoriesAmount method..");
-
-            Decimal totalAccessoriesAmount = 0;
-
-            //Retrieve Order Product records using Sales Order ID
-            EntityCollection orderProductRecords = CommonHandler.RetrieveRecordsByOneValue("salesorderdetail", "salesorderid", salesOrderEntity.Id, _organizationService, null, OrderType.Ascending,
-                new[] { "priceperunit" });
-
-            if (orderProductRecords != null && orderProductRecords.Entities.Count > 0)
-            {
-                foreach (Entity orderProduct in orderProductRecords.Entities)
-                {
-                    totalAccessoriesAmount += orderProduct.GetAttributeValue<Money>("priceperunit") != null
-                        ? orderProduct.GetAttributeValue<Money>("priceperunit").Value
-                        : Decimal.Zero;
-                }
-                salesOrderEntity["gsc_accessories"] = new Money(totalAccessoriesAmount);
-            }
-            else
-            {
-                salesOrderEntity["gsc_accessories"] = new Money(Decimal.Zero);
-            }
-            _organizationService.Update(salesOrderEntity);
-
-            _tracingService.Trace("Ended SetAddAccessoriesAmount method..");
-            return salesOrderEntity;
-        }*/
-
         //Created By : Jerome Anthony Gerero, Created On : 3/31/2016
         public Entity SetVehicleColorAmount(Entity salesOrderEntity, String message)
         {
@@ -1315,8 +1285,10 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
 
             EntityCollection salesOrderMonthlyAmortizationRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_ordermonthlyamortization", "gsc_orderid", salesOrderEntity.Id, _organizationService, null, OrderType.Ascending,
                 new[] { "gsc_financingtermid", "gsc_selected" });
+
             Guid financingTermId = Guid.Empty;
-            if (salesOrderMonthlyAmortizationRecords != null || salesOrderMonthlyAmortizationRecords.Entities.Count > 0)
+
+            if (salesOrderMonthlyAmortizationRecords != null && salesOrderMonthlyAmortizationRecords.Entities.Count > 0)
             {
                 foreach (var salesOrderMonthlyAmortization in salesOrderMonthlyAmortizationRecords.Entities)
                 {
@@ -1327,8 +1299,10 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                     }
                     _organizationService.Delete(salesOrderMonthlyAmortization.LogicalName, salesOrderMonthlyAmortization.Id);
                 }
-                salesOrderEntity["gsc_netmonthlyamortization"] = new Money(0);
-                _organizationService.Update(salesOrderEntity);
+
+                Entity quoteToUpdate = _organizationService.Retrieve(salesOrderEntity.LogicalName, salesOrderEntity.Id, new ColumnSet("gsc_netmonthlyamortization"));
+                quoteToUpdate["gsc_netmonthlyamortization"] = new Money(0);
+                _organizationService.Update(quoteToUpdate);
             }
 
             //Call CreateMonthlyAmortization method if Financing Scheme field is not null
@@ -1343,18 +1317,23 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
 
         private Entity UpdateMonthlyAmortization(Entity salesOrderEntity, Guid financingTermId)
         {
-            EntityCollection salesOrderMonthlyAmortizationRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_ordermonthlyamortization", "gsc_orderid", salesOrderEntity.Id, _organizationService, null, OrderType.Ascending,
-                new[] { "gsc_financingtermid", "gsc_selected" });
-            if (salesOrderMonthlyAmortizationRecords != null || salesOrderMonthlyAmortizationRecords.Entities.Count > 0)
+            if (financingTermId != Guid.Empty)
             {
-                foreach (var salesOrderMonthlyAmortization in salesOrderMonthlyAmortizationRecords.Entities)
+                EntityCollection salesOrderMonthlyAmortizationRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_ordermonthlyamortization", "gsc_orderid", salesOrderEntity.Id, _organizationService, null, OrderType.Ascending,
+                    new[] { "gsc_financingtermid", "gsc_selected", "gsc_ordermonthlyamortizationpn" });
+
+                if (salesOrderMonthlyAmortizationRecords != null || salesOrderMonthlyAmortizationRecords.Entities.Count > 0)
                 {
-                    Guid financingTerm = salesOrderMonthlyAmortization.Contains("gsc_financingtermid") ? salesOrderMonthlyAmortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
-                    if (financingTerm == financingTermId)
+                    foreach (var salesOrderMonthlyAmortization in salesOrderMonthlyAmortizationRecords.Entities)
                     {
-                        salesOrderMonthlyAmortization["gsc_selected"] = true;
-                        _organizationService.Update(salesOrderMonthlyAmortization);
-                    }                    
+                        Guid financingTerm = salesOrderMonthlyAmortization.Contains("gsc_financingtermid") ? salesOrderMonthlyAmortization.GetAttributeValue<EntityReference>("gsc_financingtermid").Id : Guid.Empty;
+
+                        if (financingTerm == financingTermId)
+                        {
+                            salesOrderMonthlyAmortization["gsc_selected"] = true;
+                            _organizationService.Update(salesOrderMonthlyAmortization);
+                        }
+                    }
                 }
             }
             return salesOrderEntity;
@@ -1425,7 +1404,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                 monthlyAmortization = NormalFormula(salesOrderEntity, schemeEntity);
             }
 
-            return Math.Round(monthlyAmortization, 2);
+            return monthlyAmortization;
         }
 
         private bool CheckifZIP(Entity salesOrderEntity, Entity schemeEntity)
@@ -2458,16 +2437,7 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
 
                     _tracingService.Trace("Order Monthly Amortization Selected");
 
-                    Entity orderToUpdate = _organizationService.Retrieve(salesOrderEntity.LogicalName, salesOrderEntity.Id,
-                        new ColumnSet("gsc_netmonthlyamortization"));
-
-                    orderToUpdate["gsc_netmonthlyamortization"] = orderMonthlyAmoritzation.Contains("gsc_ordermonthlyamortizationpn")
-                        ? new Money(Decimal.Parse(orderMonthlyAmoritzation.GetAttributeValue<String>("gsc_ordermonthlyamortizationpn").Trim(',')))
-                        : new Money(0);
-
-                    _organizationService.Update(orderToUpdate);
-
-                    _tracingService.Trace("Order Net Monthly Amoritzation Updated.");
+                    _tracingService.Trace("Order Net Monthly Amortization Updated.");
                 }
             }
 
@@ -2496,8 +2466,6 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                     _organizationService.Delete(orderCC.LogicalName, orderCC.Id);
                     _tracingService.Trace("Order Cab Chassis Deleted...");
                 }
-
-
             }
 
             _tracingService.Trace("Ending DeleteQuoteCabChassis Method...");

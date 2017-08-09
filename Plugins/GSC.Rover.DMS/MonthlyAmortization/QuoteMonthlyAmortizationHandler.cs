@@ -31,7 +31,7 @@ namespace GSC.Rover.DMS.BusinessLogic.QuoteMonthlyAmortization
         {
             _tracingService.Trace("Started ReplicateMonthlyAmortization method ...");
 
-            if (monthlyAmortizationEntity.Contains("gsc_quoteid") || monthlyAmortizationEntity.GetAttributeValue<EntityReference>("gsc_quoteid") != null)
+            if (monthlyAmortizationEntity.Contains("gsc_quoteid") && monthlyAmortizationEntity.GetAttributeValue<EntityReference>("gsc_quoteid") != null)
             {
                 var quoteid = monthlyAmortizationEntity.GetAttributeValue<EntityReference>("gsc_quoteid").Id;
                 var isSelected = monthlyAmortizationEntity.GetAttributeValue<Boolean>("gsc_isselected");
