@@ -39,9 +39,9 @@ $(document).ready(function () {
       if (inTransitStatus != 100000000) {
         DMS.Helpers.DisableEntityForm();
       }
+      drawPrintButton();
     }, 3000);
     
-    drawPrintButton();
     function RefreshAvailableItems($parent, page, PageSize) {
         var $subgrid = $parent.children(".subgrid");
         var $table = $subgrid.children(".view-grid").find("table");
@@ -378,21 +378,20 @@ $(document).ready(function () {
     }
 
     function drawPrintButton() {
-        var printButton = document.createElement("BUTTON");
-        var print = document.createElement("SPAN");
-        print.className = "fa fa-print";
-        printButton.appendChild(print);
-        var printButtonLabel = document.createTextNode(" PRINT");
-        printButton.appendChild(printButtonLabel);
-        printButton.className = "allocate-link btn btn-primary action";
+      var printButton = document.createElement("BUTTON");
+      var print = document.createElement("SPAN");
+      print.className = "fa fa-print";
+      printButton.appendChild(print);
+      var printButtonLabel = document.createTextNode(" PRINT");
+      printButton.appendChild(printButtonLabel);
+      printButton.className = "allocate-link btn btn-primary action";
 
-        printButton.addEventListener("click", function (event) {
+      printButton.addEventListener("click", function (event) {
 
-            printVehileInTransitTransfer();
-            event.preventDefault();
-        });
-
-        DMS.Helpers.AppendButtonToToolbar(printButton);
+          printVehileInTransitTransfer();
+          event.preventDefault();
+      });
+      DMS.Helpers.AppendButtonToToolbar(printButton);
     }
 
     function printVehileInTransitTransfer() {
