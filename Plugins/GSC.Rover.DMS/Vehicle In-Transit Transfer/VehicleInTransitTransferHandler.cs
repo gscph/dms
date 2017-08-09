@@ -233,7 +233,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
          *      Post/Update: gsc_intransittransferstatus
          * Primary Entity: gsc_iv_vehicleintransittransfer
          */
-        public void ShipVehicle(Entity vehicleInTransitTransfer)
+        public void ShipVehicle(Entity vehicleInTransitTransfer, bool isShipping)
         {
             _tracingService.Trace("Started ShipVehicle method...");           
 
@@ -247,9 +247,9 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
 
                 _tracingService.Trace("AllocatedVehicle records retrieved: " + allocatedVehicleCollection.Entities.Count);
                 if (allocatedVehicleCollection.Entities.Count > 0)
-                {
+                {                    
                     // Check if request is from shipping button
-                    if (vehicleInTransitTransfer.GetEntityAttributeValueSafely<bool>("gsc_isshipping"))
+                    if (isShipping)
                     {
                         // Create Vehicle In-Transit Transfer Receiving Entity
                         _receivingHandler.CreateRecevingEntity(vehicleInTransitTransfer);
