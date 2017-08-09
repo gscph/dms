@@ -14,6 +14,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
     using System.ServiceModel;
     using Microsoft.Xrm.Sdk;
     using GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving;
+    using GSC.Rover.DMS.BusinessLogic.Common;
 
     /// <summary>
     /// PreVehicleInTransitTransferReceivingCreate Plugin.
@@ -66,7 +67,13 @@ namespace GSC.Rover.DMS.Platform.Plugins
 
             try
             {
-                VehicleInTransitTransferReceivingHandler receivingHandler = new VehicleInTransitTransferReceivingHandler(service, trace);              
+                VehicleInTransitTransferReceivingHandler receivingHandler = new VehicleInTransitTransferReceivingHandler(service, trace);
+
+                Guid inTransitId = CommonHandler.GetEntityReferenceIdSafe(entity, "gsc_intransittransferid");
+                EntityCollection inTransitCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_vehicleintransittransfer", "gsc_iv_vehicleintransittransferid", inTransitId, service,
+                    null, Microsoft.Xrm.Sdk.Query.OrderType.Ascending, new[] { "gsc_sourcebranchid", "gsc_sourcesiteid", "gsc_viasiteid", "gsc_destinationbranchid" });
+
+                entity = receivingHandler.PopulateSites(entity, inTransitCollection.Entities[0]);
 
                 // check if in-transit transfer already exists.
                 bool isDuplicate = receivingHandler.DetectDuplicate(entity);
