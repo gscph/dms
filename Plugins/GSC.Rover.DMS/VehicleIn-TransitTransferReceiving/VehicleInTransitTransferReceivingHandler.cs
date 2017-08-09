@@ -50,8 +50,6 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             inTransitReceivingEntity["gsc_branchid"] = new EntityReference("account", receivingBranchId);
             inTransitReceivingEntity["gsc_dealerid"] = new EntityReference("account", receivingDealerId);
 
-            inTransitReceivingEntity = PopulateSites(inTransitReceivingEntity, vehicleInTransitTransfer);
-
             Guid Id = _organizationService.Create(inTransitReceivingEntity);
             _tracingService.Trace("Created Vehicle In-Transit Transfer Receiving record...");
 
