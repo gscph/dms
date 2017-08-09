@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GSC.Rover.DMS.BusinessLogic.PriceList;
 
 namespace GSC.Rover.DMS.BusinessLogic.VehicleAccessory
 {
@@ -42,29 +43,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAccessory
              {
                 var itemEntity = itemRecords.Entities[0];
 
-                var pricelistId = itemEntity.GetAttributeValue<EntityReference>("pricelevelid") != null
-                    ? itemEntity.GetAttributeValue<EntityReference>("pricelevelid").Id
-                    : Guid.Empty;
-                _tracingService.Trace("2");
-                var productConditionList = new List<ConditionExpression>
-                    {
-                        new ConditionExpression("pricelevelid", ConditionOperator.Equal, pricelistId),
-                        new ConditionExpression("productid", ConditionOperator.Equal, itemEntity.Id)
-                    };
-
-                //Retrieve related products from Product Relationship entity
-                EntityCollection priceListItemRecords = CommonHandler.RetrieveRecordsByConditions("productpricelevel", productConditionList, _organizationService, null, OrderType.Ascending,
-                    new[] { "amount" });
-                _tracingService.Trace("3");
-                if (priceListItemRecords != null && priceListItemRecords.Entities.Count > 0)
-                {
-                    var priceListItemEntity = priceListItemRecords.Entities[0];
-                    _tracingService.Trace("4");
-                    vehicleAccessory["gsc_sellingprice"] = priceListItemEntity.Contains("amount")
-                        ? priceListItemEntity.GetAttributeValue<Money>("amount")
-                        : new Money(0);
-                }
-
+                vehicleAccessory["gsc_sellingprice"] = RetrivePrice(vehicleAccessory);
                 vehicleAccessory["gsc_vehicleaccessorypn"] = itemEntity.Contains("productnumber")
                     ? itemEntity.GetAttributeValue<String>("productnumber")
                     : String.Empty;
@@ -77,6 +56,30 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAccessory
                 _tracingService.Trace("5");
                 //throw new InvalidPluginExecutionException("TEST KO");
              }
+        }
+
+        private Money RetrivePrice(Entity vehicleAccessory)
+        {
+            /* Legend: 
+             * itemType = 1 : Accessory
+             * itemType = 2 : Cab Chassis
+            */
+
+            PriceListHandler priceListHandler = new PriceListHandler(_organizationService, _tracingService);
+            priceListHandler.itemType = 1;
+            priceListHandler.productFieldName = "gsc_itemid";
+            List<Entity> latestPriceList = priceListHandler.RetrievePriceList(vehicleAccessory, 100000000, 100000002);
+            if (latestPriceList.Count > 0)
+            {
+                Entity priceListItem = latestPriceList[0];
+                Entity priceList = latestPriceList[1];
+
+                return priceListItem.GetAttributeValue<Money>("amount");
+            }
+            else
+            {
+                throw new InvalidPluginExecutionException("There is no effective Price List for the selected item.");
+            }
         }
 
         //Created By: Artum M. Ramos, Created On: 1/3/2017

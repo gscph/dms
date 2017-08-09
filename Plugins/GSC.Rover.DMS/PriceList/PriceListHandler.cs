@@ -350,7 +350,12 @@ namespace GSC.Rover.DMS.BusinessLogic.PriceList
                     if (CheckifDefaultPriceListIsLatest(defaultPriceList))
                         effectivePriceList.Add(defaultPriceList);
                     else
-                        throw new InvalidPluginExecutionException("Default Price List of effectivity date is out of date.");
+                    {
+                        if (priceListType == 100000002)
+                            throw new InvalidPluginExecutionException("There is no effective Price List for the selected item.");
+                        else
+                            throw new InvalidPluginExecutionException("Default Price List of effectivity date is out of date.");
+                    }
                 }
 
                 else
@@ -399,7 +404,6 @@ namespace GSC.Rover.DMS.BusinessLogic.PriceList
             var branchId = entity.GetAttributeValue<EntityReference>("gsc_branchid") != null
                 ? entity.GetAttributeValue<EntityReference>("gsc_branchid").Id
                 : Guid.Empty;
-            var productType = "vehicle";
 
             _tracingService.Trace("Branch - " + branchId.ToString());
 
@@ -421,12 +425,10 @@ namespace GSC.Rover.DMS.BusinessLogic.PriceList
 
                 if (itemType == 1)
                 {
-                    productType = "cab chassis";
                     retrievePriceList.LinkEntities[0].LinkCriteria.AddCondition(new ConditionExpression("gsc_classmaintenancepn", ConditionOperator.Like, "%Accessory"));
                 }
                 else if (itemType == 2)
                 {
-                    productType = "accessories";
                     retrievePriceList.LinkEntities[0].LinkCriteria.AddCondition(new ConditionExpression("gsc_classmaintenancepn", ConditionOperator.Like, "%Chassis"));
                 }
             }
