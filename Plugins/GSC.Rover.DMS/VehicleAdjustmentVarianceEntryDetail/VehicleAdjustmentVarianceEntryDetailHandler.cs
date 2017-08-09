@@ -33,7 +33,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail
         public Entity CheckExistingInventoryRecord(Entity vehicleAdjustmentVarianceEntryDetailEntity, String message)
         {
             _tracingService.Trace("Started CheckExistingInventoryRecord Method...");
-            
+
             //Return if record is made through plugin by checking if Inventory field contains data
             if (vehicleAdjustmentVarianceEntryDetailEntity.GetAttributeValue<EntityReference>("gsc_inventoryid") != null) { return null; }
 
@@ -42,7 +42,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail
 
             //Return error message if record is already posted
             if (vehicleAdjustmentVarianceEntry.FormattedValues["gsc_adjustmentvariancestatus"].Equals("Posted"))
-            { 
+            {
                 throw new InvalidPluginExecutionException("Record is already posted. Cannot allocate new vehicle.");
             }
 
@@ -75,13 +75,13 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail
             //Retrieve Vehicle Color record for filtering
             EntityCollection vehicleColorRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_cmn_vehiclecolor", "gsc_cmn_vehiclecolorid", colorId, _organizationService, null, OrderType.Ascending,
                 new[] { "gsc_vehiclecolorpn" });
-            
+
             _tracingService.Trace(vehicleColorRecords.Entities.Count.ToString() + " Vehicle Color record/records retrieved.");
-            
+
             if (vehicleColorRecords != null && vehicleColorRecords.Entities.Count > 0)
             {
                 Entity vehicleColor = vehicleColorRecords.Entities[0];
-                
+
                 colorName = vehicleColor.Contains("gsc_vehiclecolorpn")
                     ? vehicleColor.GetAttributeValue<String>("gsc_vehiclecolorpn")
                     : String.Empty;
@@ -119,22 +119,22 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail
 
             //Create filter for Product in Adjustment/Variance Entry and Inventory entities
             FilterExpression productFilter = new FilterExpression(LogicalOperator.And);
-            
+
             FilterExpression productInfoFilter = new FilterExpression(LogicalOperator.Or);
             productInfoFilter.Conditions.Add(new ConditionExpression("gsc_productionno", ConditionOperator.Equal, productionNo));
             productInfoFilter.Conditions.Add(new ConditionExpression("gsc_csno", ConditionOperator.Equal, csNo));
             productInfoFilter.Conditions.Add(new ConditionExpression("gsc_engineno", ConditionOperator.Equal, engineNo));
             productInfoFilter.Conditions.Add(new ConditionExpression("gsc_vin", ConditionOperator.Equal, vin));
-            
+
             FilterExpression statusFilter = new FilterExpression(LogicalOperator.And);
             statusFilter.Conditions.Add(new ConditionExpression("statecode", ConditionOperator.Equal, 0));
 
             productFilter.AddFilter(productInfoFilter);
             productFilter.AddFilter(statusFilter);
 
-            //Verify if vehicle exists in Adjustment/Variance Detail entity
+            //Verify if vehicle exists in Adjustment/Variance Detail entity with Open Status
             QueryExpression vehicleAdjustmentVarianceEntryDetailQuery = new QueryExpression("gsc_sls_adjustmentvariancedetail");
-            vehicleAdjustmentVarianceEntryDetailQuery.ColumnSet = new ColumnSet("gsc_sls_adjustmentvariancedetailid");
+            vehicleAdjustmentVarianceEntryDetailQuery.ColumnSet = new ColumnSet("gsc_vehicleadjustmentvarianceentryid");
             vehicleAdjustmentVarianceEntryDetailQuery.Criteria.AddFilter(productInfoFilter);
             EntityCollection vehicleAdjustmentVarianceEntryDetailRecords = _organizationService.RetrieveMultiple(vehicleAdjustmentVarianceEntryDetailQuery);
 
@@ -142,20 +142,35 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail
 
             if (vehicleAdjustmentVarianceEntryDetailRecords != null && vehicleAdjustmentVarianceEntryDetailRecords.Entities.Count > 0)
             {
-                if (message.Equals("Create"))
+                foreach (Entity vehicleAdjustmentVarianceEntryDetail in vehicleAdjustmentVarianceEntryDetailRecords.Entities)
                 {
-                    throw new InvalidPluginExecutionException("Vehicle already exists in Adjustment/Variance Entry.");
-                }
-                else if (message.Equals("Update"))
-                {
-                    foreach (Entity vehicleAdjustmentVarianceEntryDetail in vehicleAdjustmentVarianceEntryDetailRecords.Entities)
+                    var vehicleAdjustmentId = CommonHandler.GetEntityReferenceIdSafe(vehicleAdjustmentVarianceEntryDetail, "gsc_vehicleadjustmentvarianceentryid");
+
+                    if (message.Equals("Create"))
+                    {
+                        Entity vehicleAdjustment = _organizationService.Retrieve("gsc_sls_vehicleadjustmentvarianceentry", vehicleAdjustmentId, new ColumnSet("gsc_adjustmentvariancestatus"));
+
+                        if (vehicleAdjustment != null)
+                        {
+                            if (vehicleAdjustment.GetAttributeValue<OptionSetValue>("gsc_adjustmentvariancestatus").Value == 100000000)
+                                throw new InvalidPluginExecutionException("Vehicle already exists in Adjustment/Variance Entry.");
+                        }
+
+                    }
+                    else if (message.Equals("Update"))
                     {
                         if (vehicleAdjustmentVarianceEntryDetail.Id != vehicleAdjustmentVarianceEntryDetailEntity.Id)
                         {
-                            throw new InvalidPluginExecutionException("Vehicle already exists in Adjustment/Variance Entry.");
+                            Entity vehicleAdjustment = _organizationService.Retrieve("gsc_sls_vehicleadjustmentvarianceentry", vehicleAdjustmentId, new ColumnSet("gsc_adjustmentvariancestatus"));
+
+                            if (vehicleAdjustment != null)
+                            {
+                                if (vehicleAdjustment.GetAttributeValue<OptionSetValue>("gsc_adjustmentvariancestatus").Value == 100000000)
+                                    throw new InvalidPluginExecutionException("Vehicle already exists in Adjustment/Variance Entry.");
+                            }
                         }
-                    }    
-                }                                
+                    }
+                }
             }
 
             //Retrieve Inventory records using ConditionList
@@ -182,7 +197,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail
             {
                 _tracingService.Trace("Update...");
                 _organizationService.Update(vehicleAdjustmentVarianceEntryDetailEntity);
-            }            
+            }
 
             _tracingService.Trace("Ended CheckExistingInventoryRecord Method...");
             return vehicleAdjustmentVarianceEntryDetailEntity;
@@ -265,7 +280,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleAdjustmentVarianceEntryDetail
             }
 
             _tracingService.Trace("Ended AdjustInventoryRecordOnDelete Method...");
-            return vehicleAdjustmentVarianceEntryDetailEntity;        
+            return vehicleAdjustmentVarianceEntryDetailEntity;
         }
 
         //Created By : Jerome Anthony Gerero, Created On : 7/11/2017
