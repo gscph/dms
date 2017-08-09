@@ -37,16 +37,10 @@ $(document).ready(function () {
       
       /* inTransitStatus != Picked */
       if (inTransitStatus != 100000000) {
-        disableFields();
+        DMS.Helpers.DisableEntityForm();
       }
     }, 3000);
-
     
-    // // inTransitStatus == Picked
-    // else
-    else if (inTransitStatus == 100000000) {
-        drawCancelButton();
-    }
     drawPrintButton();
     function RefreshAvailableItems($parent, page, PageSize) {
         var $subgrid = $parent.children(".subgrid");
