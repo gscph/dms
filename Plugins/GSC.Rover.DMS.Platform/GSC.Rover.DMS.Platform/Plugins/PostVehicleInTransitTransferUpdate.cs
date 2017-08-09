@@ -131,7 +131,8 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     //BL for status change to Shipped
                     if (preTransferStatus != postTransferStatus && postTransferStatus == 100000001)
                     {
-                        vehicleInTransitHandler.ShipVehicle(preImageEntity);
+                        bool isShipping = postImageEntity.GetAttributeValue<bool>("gsc_isshipping");
+                        vehicleInTransitHandler.ShipVehicle(preImageEntity, isShipping);
                     }
                     if (preImageAllocatedItemsToDelete != postImageAllocatedItemsToDelete && postImageAllocatedItemsToDelete != String.Empty)
                     {
