@@ -41,8 +41,9 @@
     <AssemblyOriginatorKeyFile>GSC.Rover.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GSC.Rover.DMS.BusinessLogic.Common">
-      <HintPath>..\Common\bin\Debug\GSC.Rover.DMS.BusinessLogic.Common.dll</HintPath>
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Common\bin\Release\GSC.Rover.DMS.BusinessLogic.Common.dll</HintPath>
     </Reference>
     <Reference Include="GSC.Rover.DMS.BusinessLogic.InventoryMovement">
       <HintPath>..\InventoryMovementHandler\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll</HintPath>
