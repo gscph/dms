@@ -21,28 +21,27 @@ $(document).ready(function () {
     $('.sort-disabled').innerHTML = "<a href=\"#\"> Site </a>";
 
     setTimeout(function () {
-        $('#gsc_isshipping').hide();
-        RefreshAvailableItems($(".btn-primary").closest("div #Inventory"), 1, 4);
-
-        $('.btn-primary').on('click', function (e) {
-
-            var $subgrid = $(this).closest(".subgrid");
-            var $subgridId = $subgrid.parent().attr("id");
-
-            if ($subgridId == "Inventory") {
-                e.preventDefault();
-                e.stopPropagation();
-
-                RefreshAvailableItems($subgrid.parent(), 1, 4);
-            }
-        });
-
-    }, 500);
-
-    /* inTransitStatus != Picked */
-    if (inTransitStatus != 100000000) {
+      $('#gsc_isshipping').hide();
+      RefreshAvailableItems($(".btn-primary").closest("div #Inventory"), 1, 4);
+      
+      $('.btn-primary').on('click', function (e) {
+        var $subgrid = $(this).closest(".subgrid");
+        var $subgridId = $subgrid.parent().attr("id");
+        
+        if ($subgridId == "Inventory") {
+          e.preventDefault();
+          e.stopPropagation();
+          RefreshAvailableItems($subgrid.parent(), 1, 4);
+        }
+      });
+      
+      /* inTransitStatus != Picked */
+      if (inTransitStatus != 100000000) {
         disableFields();
-    }
+      }
+    }, 3000);
+
+    
     // // inTransitStatus == Picked
     // else
     else if (inTransitStatus == 100000000) {
