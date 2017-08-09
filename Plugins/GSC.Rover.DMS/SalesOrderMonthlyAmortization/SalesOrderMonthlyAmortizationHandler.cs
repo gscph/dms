@@ -43,7 +43,6 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization
 
                     var monthlyAmortizationAmount = salesOrderMonthlyAmortizationEntity.GetAttributeValue<String>("gsc_ordermonthlyamortizationpn").Trim(',');
                     salesOrder["gsc_netmonthlyamortization"] = new Money(Decimal.Parse(monthlyAmortizationAmount));
-
                     _organizationService.Update(salesOrder);
                 }
 
@@ -111,7 +110,6 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrderMonthlyAmortization
                 if (salesOrderMonthlyAmortizationRecords == null || salesOrderMonthlyAmortizationRecords.Entities.Count == 0)
                 {
                     salesOrder["gsc_netmonthlyamortization"] = null;
-
                     _organizationService.Update(salesOrder);
                 }
             }
