@@ -25,6 +25,9 @@ $(document).ready(function () {
           $('*[data-name="VehicleComponentChecklist"]').parent().removeAttr("disabled");
         }
       }
+
+      if(intransitStatus == 100000000)
+         $('*[data-name="VehicleComponentChecklist"]').parent().attr("disabled", "disabled");
    },3000);
 });
 
