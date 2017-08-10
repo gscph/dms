@@ -73,6 +73,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                 : string.Empty;
             vehicleInTransitReceiving["gsc_destinationbranch"] =  vehicleInTransitTransfer.Contains("gsc_viasiteid") ? vehicleInTransitTransfer.GetAttributeValue<EntityReference>("gsc_destinationbranchid").Name
                 : string.Empty;
+            vehicleInTransitReceiving["gsc_destinationbranchid"] = vehicleInTransitTransfer["gsc_destinationbranchid"];
 
             _tracingService.Trace("Ending PopulateSites Method...");
 
