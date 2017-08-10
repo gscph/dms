@@ -1937,6 +1937,8 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
                     if (preferredColor1 != allocatedColor) { throw new InvalidPluginExecutionException("Allocated vehicle color doesn't match with the preferred color 1."); }
 
                     var isAllocated = CheckifAllocated(inventoryEntity);
+                    if (isAllocated == true)
+                        throw new InvalidPluginExecutionException("Vehicle is currently being allocated in other sales order record.");
                     var vin = inventoryEntity.GetAttributeValue<String>("gsc_vin");
                     var cs = inventoryEntity.GetAttributeValue<String>("gsc_csno");
                     var prod = inventoryEntity.GetAttributeValue<String>("gsc_productionno");
@@ -1999,7 +2001,11 @@ namespace GSC.Rover.DMS.BusinessLogic.SalesOrder
             EntityCollection allocatedRecords = CommonHandler.RetrieveRecordsByConditions("gsc_iv_allocatedvehicle", ConditionList, _organizationService, null, OrderType.Ascending,
                 new[] { "gsc_inventoryid" });
 
-            if (allocatedRecords != null && allocatedRecords.Entities.Count > 0)
+            Int32 status = inventoryEntity.Contains("gsc_status")
+                  ? inventoryEntity.GetAttributeValue<OptionSetValue>("gsc_status").Value
+                  : 0;
+
+            if (allocatedRecords != null && allocatedRecords.Entities.Count > 0 && status == 100000001)
             {
                 _tracingService.Trace("Inventory Item already tagged in AllocatedVehicle");
                 return true;
