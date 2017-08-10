@@ -129,7 +129,7 @@ $(document).ready(function () {
     '<div id="cancelReason" style="display:none"><br/>Enter remarks here:<br/><textarea id="disqualifyRemarks" style="margin: 0px; height: 50px; width: 300px;"></textarea></div>' +
     '</center></div>' +
     '<div class="modal-footer">' +
-    '<a href="#confirmModal" data-toggle="modal" data-dismiss="modal"> <button id="continueBtn" type="button" class="btn btn-dialog button">CONTINUE</button> </a>' +
+    '<a href="" data-toggle="modal" data-dismiss="modal"> <button id="continueBtn" type="button" class="btn btn-dialog button required">CONTINUE</button> </a>' +
     '<button type="button" class="btn btn-dialog button" data-dismiss="modal">CANCEL</button>' +
     '</div>' +
     '</div><!-- /.modal-content -->' +
@@ -359,7 +359,6 @@ $(document).ready(function () {
         var reasonList = Service('GET', reasonOdataUrl, null, DMS.Helpers.DefaultErrorHandler);
 
         reasonList.then(function (data) {
-            console.log(data);
             $.unblockUI();
             $(".loadingDiv").remove();
             if (data != null) {
@@ -442,11 +441,14 @@ $(document).ready(function () {
 
         if (reason == "Others" && disqualifyRemarks.length <= 0) {
             Page_Validators.push(statusReasonRemarksValidator);
+            Page_ClientValidate();
         } else {
             $("#gsc_reasonforcancellation").val(disqualifyRemarks);
             Page_Validators = jQuery.grep(Page_Validators, function (value) {
                 return value != statusReasonRemarksValidator;
             });
+            Page_ClientValidate();
+            $("#confirmModal").modal("toggle");
         }
     });
     // End of Continue Button
