@@ -1040,7 +1040,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=CDate(Fields!VPO_Date.Value).ToString("MMMM dd, yyyy")</Value>
+                                  <Value>=Format(DateAdd(DateInterval.Hour, 8 ,Fields!VPO_Date.Value),"MMMM dd, yyyy")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1195,7 +1195,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=CDate(Fields!In_Transit_Receipt_Date.Value).ToString("MMMM dd, yyyy")</Value>
+                                  <Value>=Format(DateAdd(DateInterval.Hour, 8 ,Fields!In_Transit_Receipt_Date.Value),"MMMM dd, yyyy")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1284,7 +1284,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=CDate(Fields!Invoice_Date.Value).ToString("MMMM dd, yyyy")</Value>
+                                  <Value>=Format(DateAdd(DateInterval.Hour, 8 ,Fields!Invoice_Date.Value),"MMMM dd, yyyy")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2649,7 +2649,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=CDate(Fields!Date.Value).ToString("MMMM dd, yyyy")</Value>
+                                  <Value>=Format(DateAdd(DateInterval.Hour, 8 ,Fields!Date.Value),"MMMM dd, yyyy")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
