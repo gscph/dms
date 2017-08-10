@@ -69,6 +69,14 @@
       <FullPath>VehicleAdjustment.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>VehicleIn-TransitTransfer.rdl</Name>
+      <FullPath>VehicleIn-TransitTransfer.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>VehicleIn-TransitTransferReceiving.rdl</Name>
+      <FullPath>VehicleIn-TransitTransferReceiving.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>VehicleInventoryByQuantity.rdl</Name>
       <FullPath>VehicleInventoryByQuantity.rdl</FullPath>
     </ProjectItem>
@@ -105,12 +113,8 @@
       <FullPath>VehicleTransfer.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>VehicleIn-TransitTransfer.rdl</Name>
-      <FullPath>VehicleIn-TransitTransfer.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>VehicleIn-TransitTransferReceiving.rdl</Name>
-      <FullPath>VehicleIn-TransitTransferReceiving.rdl</FullPath>
+      <Name>SalesInvoiceDetailsAdjustedRevert (1).rdl</Name>
+      <FullPath>SalesInvoiceDetailsAdjustedRevert (1).rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>
