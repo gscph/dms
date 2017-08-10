@@ -5,13 +5,12 @@ $(document).ready(function (e) {
         event.preventDefault();
         setTimeout(function () {
             window.parent.$('#btnRecalculate').click();
-
         }, 500);
     });
 
     var isFinancing = true;
     var paymentMode = window.parent.$('#gsc_paymentmode').val();
-    
+
     if (paymentMode != '100000001')
         isFinancing = false;
 
@@ -20,11 +19,10 @@ $(document).ready(function (e) {
         $('#gsc_applyamounttodp').attr('readonly', true);
     }
 
-    if (!isFinancing) {        
-        $('#gsc_applypercentagetoaf').attr('readonly', true);      
+    if (!isFinancing) {
+        $('#gsc_applypercentagetoaf').attr('readonly', true);
         $('#gsc_applyamounttoaf').attr('readonly', true);
     }
-
 
     //set page validators
     if (typeof (Page_Validators) == 'undefined') return;

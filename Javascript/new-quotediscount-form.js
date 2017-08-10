@@ -11,7 +11,7 @@ $(document).ready(function (e) {
     });
 
     var param1var = getQueryVariable("refid");
-    
+
     function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
         var vars = query.split("&");
@@ -25,7 +25,7 @@ $(document).ready(function (e) {
 
     var isFinancing = true;
     var paymentMode = window.parent.$('#gsc_paymentmode').val();
-    
+
     if (paymentMode != '100000001')
         isFinancing = false;
 
@@ -34,13 +34,12 @@ $(document).ready(function (e) {
         $('#gsc_applyamounttodp').attr('readonly', true);
     }
 
-    if (!isFinancing) {        
-        $('#gsc_applypercentagetoaf').attr('readonly', true);      
+    if (!isFinancing) {
+        $('#gsc_applypercentagetoaf').attr('readonly', true);
         $('#gsc_applyamounttoaf').attr('readonly', true);
     }
 
-
-      setTimeout(function () {
+    setTimeout(function () {
         $("#gsc_pricelistid").on('change', function () {
             var priceLevelid = $("#gsc_pricelistid").val();
             if (priceLevelid == "")
@@ -49,11 +48,11 @@ $(document).ready(function (e) {
 
                 var productId = window.parent.$("#gsc_productid").val();
                 var countryOdataQuery = "/_odata/productpricelevel?$filter=pricelevelid/Id eq (Guid'" + priceLevelid + "') and productid/Id eq (Guid'" + productId + "')";
-             
-                
-   var priceLevelOdataQuery = "/_odata/promo?$filter=pricelevelid%20eq%20(Guid'" + priceLevelid + "')";
-                
-                  $.ajax({
+
+
+                var priceLevelOdataQuery = "/_odata/promo?$filter=pricelevelid%20eq%20(Guid'" + priceLevelid + "')";
+
+                $.ajax({
                     type: 'get',
                     async: true,
                     url: priceLevelOdataQuery,
@@ -67,7 +66,7 @@ $(document).ready(function (e) {
                         console.log(errorMessage);
                     }
                 });
-                
+
                 $.ajax({
                     type: 'get',
                     async: true,
@@ -106,7 +105,6 @@ $(document).ready(function (e) {
         }
     }
 
-
     function setReadOnly() {
         $('#gsc_description').val("");
         $('#gsc_discountamount').val("");
@@ -122,20 +120,16 @@ $(document).ready(function (e) {
         $('#gsc_discountamount').attr('readonly', true);
         $('#gsc_quotediscountpn').attr('readonly', true);
 
-       
-
-
         if (!isFinancing) {
-            
+
             $('#gsc_applypercentagetoaf').attr('readonly', true);
             $('#gsc_applyamounttoaf').attr('readonly', true);
 
-            if(paymentMode != '100000002')
-            {
+            if (paymentMode != '100000002') {
                 $('#gsc_applypercentagetodp').attr('readonly', true);
-                $('#gsc_applyamounttodp').attr('readonly', true); 
+                $('#gsc_applyamounttodp').attr('readonly', true);
             }
-            
+
         }
     }
 
@@ -323,6 +317,28 @@ $(document).ready(function (e) {
         }
     }
 
+    var discountNameValidator = document.createElement('span');
+    discountNameValidator.style.display = "none";
+    discountNameValidator.id = "RequiredFieldValidatordiscountName";
+    discountNameValidator.errormessage = "Please provide Discount Name.";
+    discountNameValidator.validationGroup = "";
+    discountNameValidator.initialvalue = "";
+    discountNameValidator.evaluationfunction = function () {
+        var priceListId = $("#gsc_pricelistid").val();
+
+        if (priceListId != "") {
+            return true;
+        } else {
+            var discountName = $("#gsc_quotediscountpn").val();
+            if (discountName != "")
+                return true;
+        }
+
+        return false;
+    };
+
+    Page_Validators.push(discountNameValidator);
+
     // Validator when the discounts are not equal to 100%
     var discountValidator = document.createElement('span');
     discountValidator.style.display = "none";
@@ -359,8 +375,7 @@ $(document).ready(function (e) {
     discountAmountValidator.evaluationfunction = function () {
         var amount = $("#gsc_discountamount").val() == "" ? 0 : $("#gsc_discountamount").val();
 
-        if(amount == 0)
-        {
+        if (amount == 0) {
             console.log("empty");
             return false;
         }
@@ -371,6 +386,4 @@ $(document).ready(function (e) {
 
     Page_Validators.push(discountValidator);
     Page_Validators.push(discountAmountValidator);
-
-
 });
