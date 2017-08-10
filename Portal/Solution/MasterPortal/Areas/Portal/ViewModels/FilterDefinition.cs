@@ -646,6 +646,10 @@ namespace Site.Areas.Portal.ViewModels
             {
                 _viewConfig = FilterAvailableItems_VehicleTransfer(_viewConfig);
             }
+            else if (objectName == "Sales Executives Portal View")
+            {
+                _viewConfig = FilterSalesExecutive(_viewConfig);
+            }
 
             return _viewConfig;
         }
@@ -1723,6 +1727,38 @@ namespace Site.Areas.Portal.ViewModels
                     Value = priceListTypeValue
                 });
             }
+
+            fetch.Entity.Filters.Add(filter);
+
+            _viewConfig.FetchXml = fetch.ToXml().ToString();
+
+            return _viewConfig;
+        }
+
+        public ViewConfiguration FilterSalesExecutive(ViewConfiguration _viewConfig)
+        {
+            SavedQueryView queryView = _viewConfig.GetSavedQueryView(_serviceContext);
+
+            Fetch fetch = Fetch.Parse(queryView.FetchXml);
+
+            Link relatedEntity = new Link();
+            relatedEntity.Alias = "Related";
+            relatedEntity.FromAttribute = "gsc_cmn_positionid";
+            relatedEntity.Name = "gsc_cmn_position";
+            relatedEntity.ToAttribute = "gsc_positionid";
+            fetch.Entity.Links.Add(relatedEntity);
+
+            Filter filter = new Filter { Type = LogicalOperator.And };
+            filter.Conditions = new List<Condition>();
+
+
+            filter.Conditions.Add(new Condition
+            {
+                EntityName = "Related",
+                Attribute = "gsc_position",
+                Operator = ConditionOperator.Contains,
+                Value = "%Sales Executive%"
+            });
 
             fetch.Entity.Filters.Add(filter);
 
