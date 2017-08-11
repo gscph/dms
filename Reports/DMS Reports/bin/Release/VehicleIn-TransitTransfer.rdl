@@ -22,7 +22,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.13831in</Width>
+                  <Width>3.47049in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -38,10 +38,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Vehicle Receiving In-transit Transfer Receiving Report</Value>
+                                  <Value>Vehicle In-transit Transfer Report</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontSize>14pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>CornflowerBlue</Color>
                                   </Style>
@@ -159,10 +159,10 @@
                 <TablixMember />
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>VehicleInTransitTransferReceiving</DataSetName>
-            <Left>6.81169in</Left>
+            <DataSetName>VehicleInTransitTransfer</DataSetName>
+            <Left>7.40951in</Left>
             <Height>1.27101in</Height>
-            <Width>4.13831in</Width>
+            <Width>3.47049in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -176,7 +176,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.92024in</Width>
+                  <Width>4.86154in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -232,10 +232,10 @@
                 <TablixMember />
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>VehicleInTransitTransferReceiving</DataSetName>
+            <DataSetName>VehicleInTransitTransfer</DataSetName>
             <Left>1.82201in</Left>
             <Height>0.3175in</Height>
-            <Width>4.92024in</Width>
+            <Width>4.86154in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -252,12 +252,12 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=IIF(First(Fields!Branch_Address.Value, "VehicleInTransitTransferReceiving") = NOTHING, NOTHING, First(Fields!Branch_Address.Value, "VehicleInTransitTransferReceiving") + ", " &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_City.Value, "VehicleInTransitTransferReceiving") = NOTHING, NOTHING, First(Fields!Branch_City.Value, "VehicleInTransitTransferReceiving") + ", " &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_Province.Value, "VehicleInTransitTransferReceiving")= NOTHING, NOTHING, First(Fields!Branch_Province.Value, "VehicleInTransitTransferReceiving") + "&lt;br&gt;" &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_Telephone.Value, "VehicleInTransitTransferReceiving") = NOTHING, NOTHING, "Tel. Nos.: " + First(Fields!Branch_Telephone.Value, "VehicleInTransitTransferReceiving") + "   " &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_Fax.Value, "VehicleInTransitTransferReceiving") = NOTHING, NOTHING, "Fax No.: " + First(Fields!Branch_Fax.Value, "VehicleInTransitTransferReceiving") + "&lt;br&gt;" &amp; vbcrlf) &amp;
-IIF(First(Fields!Branch_Tin.Value, "VehicleInTransitTransferReceiving") = NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!Branch_Tin.Value, "VehicleInTransitTransferReceiving"))</Value>
+                    <Value>=IIF(First(Fields!Branch_Address.Value, "VehicleInTransitTransfer") = NOTHING, NOTHING, First(Fields!Branch_Address.Value, "VehicleInTransitTransfer") + ", " &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_City.Value, "VehicleInTransitTransfer") = NOTHING, NOTHING, First(Fields!Branch_City.Value, "VehicleInTransitTransfer") + ", " &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_Province.Value, "VehicleInTransitTransfer")= NOTHING, NOTHING, First(Fields!Branch_Province.Value, "VehicleInTransitTransfer") + "&lt;br&gt;" &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_Telephone.Value, "VehicleInTransitTransfer") = NOTHING, NOTHING, "Tel. Nos.: " + First(Fields!Branch_Telephone.Value, "VehicleInTransitTransfer") + "   " &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_Fax.Value, "VehicleInTransitTransfer") = NOTHING, NOTHING, "Fax No.: " + First(Fields!Branch_Fax.Value, "VehicleInTransitTransfer") + "&lt;br&gt;" &amp; vbcrlf) &amp;
+IIF(First(Fields!Branch_Tin.Value, "VehicleInTransitTransfer") = NOTHING, NOTHING, "VAT REG. TIN: " + First(Fields!Branch_Tin.Value, "VehicleInTransitTransfer"))</Value>
                     <MarkupType>HTML</MarkupType>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
@@ -270,10 +270,10 @@ IIF(First(Fields!Branch_Tin.Value, "VehicleInTransitTransferReceiving") = NOTHIN
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>0.37306in</Top>
-            <Left>1.83068in</Left>
+            <Top>0.35917in</Top>
+            <Left>1.82201in</Left>
             <Height>0.8272in</Height>
-            <Width>4.91157in</Width>
+            <Width>4.86154in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -290,7 +290,7 @@ IIF(First(Fields!Branch_Tin.Value, "VehicleInTransitTransferReceiving") = NOTHIN
         <Top>0.05in</Top>
         <Left>0.05in</Left>
         <Height>1.27556in</Height>
-        <Width>10.95in</Width>
+        <Width>10.9in</Width>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -499,21 +499,21 @@ IIF(First(Fields!Branch_Tin.Value, "VehicleInTransitTransferReceiving") = NOTHIN
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="In_Transfer_Receiving_No">
+                        <Textbox Name="In_Transfer_No">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!In_Transfer_Receiving_No.Value</Value>
+                                  <Value>=Fields!In_Transfer_No.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>In_Transfer_Receiving_No</rd:DefaultName>
+                          <rd:DefaultName>In_Transfer_No</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -595,7 +595,7 @@ IIF(First(Fields!Branch_Tin.Value, "VehicleInTransitTransferReceiving") = NOTHIN
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Constant" />
+                                  <Value>=CDate(Fields!Date_Transfer.Value).ToString("MMMM dd, yyyy")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -792,7 +792,7 @@ IIF(First(Fields!Branch_Tin.Value, "VehicleInTransitTransferReceiving") = NOTHIN
                 <TablixMember />
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>VehicleInTransitTransferReceiving</DataSetName>
+            <DataSetName>VehicleInTransitTransfer</DataSetName>
             <Height>1.08853in</Height>
             <Width>10.9in</Width>
             <Style>
@@ -1448,14 +1448,14 @@ IIF(First(Fields!Branch_Tin.Value, "VehicleInTransitTransferReceiving") = NOTHIN
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox2">
+                        <Textbox Name="Base_Model">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!Base_Model.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1464,7 +1464,7 @@ IIF(First(Fields!Branch_Tin.Value, "VehicleInTransitTransferReceiving") = NOTHIN
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox2</rd:DefaultName>
+                          <rd:DefaultName>Base_Model</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1576,14 +1576,14 @@ IIF(First(Fields!Branch_Tin.Value, "VehicleInTransitTransferReceiving") = NOTHIN
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox3">
+                        <Textbox Name="Model_Description">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!Model_Description.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1592,7 +1592,7 @@ IIF(First(Fields!Branch_Tin.Value, "VehicleInTransitTransferReceiving") = NOTHIN
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                          <rd:DefaultName>Model_Description</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1895,7 +1895,7 @@ IIF(First(Fields!Branch_Tin.Value, "VehicleInTransitTransferReceiving") = NOTHIN
               </TablixMembers>
             </TablixRowHierarchy>
             <KeepTogether>true</KeepTogether>
-            <DataSetName>VehicleInTransitTransferReceiving</DataSetName>
+            <DataSetName>VehicleInTransitTransfer</DataSetName>
             <Top>0.00584in</Top>
             <Height>0.69583in</Height>
             <Width>10.9in</Width>
@@ -2159,7 +2159,7 @@ IIF(First(Fields!Branch_Tin.Value, "VehicleInTransitTransferReceiving") = NOTHIN
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="VehicleInTransitTransferReceiving">
+    <DataSource Name="VehicleInTransitTransfer">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
         <ConnectString>Data Source=XRMDMSDB;Initial Catalog=MMPCDEV_MSCRM</ConnectString>
@@ -2169,33 +2169,34 @@ IIF(First(Fields!Branch_Tin.Value, "VehicleInTransitTransferReceiving") = NOTHIN
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="VehicleInTransitTransferReceiving">
+    <DataSet Name="VehicleInTransitTransfer">
       <Query>
-        <DataSourceName>VehicleInTransitTransferReceiving</DataSourceName>
+        <DataSourceName>VehicleInTransitTransfer</DataSourceName>
         <QueryParameters>
           <QueryParameter Name="@reportid">
             <Value>=Parameters!reportid.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT
-	VITR.gsc_VehicleInTransitTransferReceivingPn AS 'In-Transfer Receiving No',
-	VITR.gsc_Description AS 'Description',
-	/*CAST(VITR.gsc_InTransitTransferDate AS DATE) AS 'Date Transfer', */
-	VITR.gsc_DestinationBranch AS 'Destination Branch',
-	VITR.gsc_Remarks AS 'Remarks',
-	/*VITRD.gsc_BaseModel AS 'Base Model',*/
-	VITRD.gsc_ModelCode AS 'Model Code',
-	VITRD.gsc_OptionCode AS 'Option Code',
-	/* VITRD.gsc_mo AS 'Model Description', */
-	VITRD.gsc_ModelYear AS 'Model Year', 
-	VITRD.gsc_Color AS 'Color',
-	VITRD.gsc_CsNo AS 'CS No', 
-	VITRD.gsc_Vin AS 'VIN', 
-	VITRD.gsc_ProductionNo AS 'Production No',
-	VITRD.gsc_EngineNo AS 'Engine No',
-	VITR.gsc_SourceSite AS 'Source Site',
-	VITR.gsc_ViaSite AS 'Via Site', 
-	VITRD.gsc_DestinationSiteIdName AS 'Destination Site',
+        <CommandText>
+SELECT
+	VIT.gsc_VehicleInTransitTransferPn AS 'In-Transfer No',
+	VIT.gsc_Description AS 'Description',
+	CAST(VIT.gsc_InTransitTransferDate AS DATE) AS 'Date Transfer', 
+	VIT.gsc_DestinationBranchIdName AS 'Destination Branch',
+	VIT.gsc_Remarks AS 'Remarks',
+	VITD.gsc_BaseModel AS 'Base Model',
+	VITD.gsc_ModelCode AS 'Model Code',
+	VITD.gsc_OptionCode AS 'Option Code',
+	VITD.gsc_ModelDescription AS 'Model Description',
+	VITD.gsc_ModelYear AS 'Model Year', 
+	VITD.gsc_Color AS 'Color',
+	VITD.gsc_CsNo AS 'CS No', 
+	VITD.gsc_Vin AS 'VIN', 
+	VITD.gsc_ProductionNo AS 'Production No',
+	VITD.gsc_EngineNo AS 'Engine No',
+	VITD.gsc_SourceSiteIdName AS 'Source Site',
+	VITD.gsc_ViaSiteIdName AS 'Via Site', 
+	VITD.gsc_DestinationSiteIdName AS 'Destination Site',
 	A.Name AS 'Branch Name', 
 	A.gsc_Tin AS 'Branch Tin', 
 	A.gsc_CityIdName AS 'Branch City', 
@@ -2204,23 +2205,27 @@ IIF(First(Fields!Branch_Tin.Value, "VehicleInTransitTransferReceiving") = NOTHIN
 	A.Address1_Telephone1 AS 'Branch Telephone', 
 	A.Fax AS 'Branch Fax', 
 	A.EntityImage AS 'Branch Entity Image'
-FROM gsc_iv_vehicleintransittransferreceiving VITR
+FROM gsc_iv_vehicleintransittransfer VIT
 	LEFT JOIN
-	gsc_iv_VehicleInTransitReceivingDetail VITRD 
-	ON (VITRD.gsc_InTransitReceivingId = gsc_iv_VehicleInTransitTransferReceivingId)
+	gsc_iv_VehicleInTransitTransferDetail VITD 
+	ON (VITD.gsc_VehicleInTransitTransferId = gsc_iv_VehicleInTransitTransferId)
 	LEFT JOIN
 	Account A 
-	ON (A.AccountId = VITR.gsc_BranchId)
-WHERE gsc_iv_VehicleInTransitTransferReceivingId = @reportid</CommandText>
+	ON (A.AccountId = VIT.gsc_BranchId)
+WHERE gsc_iv_VehicleInTransitTransferId = @reportid</CommandText>
       </Query>
       <Fields>
-        <Field Name="In_Transfer_Receiving_No">
-          <DataField>In-Transfer Receiving No</DataField>
+        <Field Name="In_Transfer_No">
+          <DataField>In-Transfer No</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Description">
           <DataField>Description</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Date_Transfer">
+          <DataField>Date Transfer</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="Destination_Branch">
           <DataField>Destination Branch</DataField>
@@ -2230,12 +2235,20 @@ WHERE gsc_iv_VehicleInTransitTransferReceivingId = @reportid</CommandText>
           <DataField>Remarks</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Base_Model">
+          <DataField>Base Model</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Model_Code">
           <DataField>Model Code</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Option_Code">
           <DataField>Option Code</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Model_Description">
+          <DataField>Model Description</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Model_Year">
