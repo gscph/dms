@@ -287,6 +287,24 @@ namespace GSC.Rover.DMS.BusinessLogic.Common
 
             return default(Guid);
         }
-     
+
+
+        public static EntityReference GetEntityReferenceFromPrimaryName(IOrganizationService service, string entityLogicalName, string primaryNameAttribute, string nameValue)
+        {
+            QueryExpression query = new QueryExpression(entityLogicalName);
+            query.ColumnSet.AddColumn(primaryNameAttribute);
+            query.Criteria.AddCondition(new ConditionExpression(primaryNameAttribute, ConditionOperator.Equal, nameValue));
+
+            Entity entity = service.RetrieveMultiple(query).Entities.FirstOrDefault();
+            EntityReference reference = new EntityReference();
+            if (entity != null)
+            {
+                reference.LogicalName = entity.LogicalName;
+                reference.Id = entity.Id;
+            }
+
+            return reference;
+        }
+
     }
 }
