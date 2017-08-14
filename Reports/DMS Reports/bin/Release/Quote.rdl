@@ -4610,9 +4610,13 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=First(Fields!ProductModel.Value, "QuoteDetails") + 
-IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")), "", " w/" + Mid(First(Fields!CabChassis.Value, "CabChassis"),1,InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")) + " &amp;" 
-+ Mid(First(Fields!CabChassis.Value, "CabChassis"),InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")+1,LEN(First(Fields!CabChassis.Value, "CabChassis")) ))</Value>
+                              <Value>=Replace(Replace(First(Fields!ProductModel.Value, "QuoteDetails") + 
+	IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis"))
+		, "", " w/" + Mid(First(Fields!CabChassis.Value, "CabChassis")
+						,1,InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ","))
+					 + "&amp;" 
+					+ Mid(First(Fields!CabChassis.Value, "CabChassis"),InStrRev(First(Fields!CabChassis.Value, "CabChassis") , ",")+1,LEN(First(Fields!CabChassis.Value, "CabChassis")) ))
+	,"&amp;amp;", "&amp;"),",&amp;", " &amp;")</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                               </Style>
@@ -4630,6 +4634,7 @@ IIF(ISNOTHING(First(Fields!CabChassis.Value, "CabChassis")), "", " w/" + Mid(Fir
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -7605,7 +7610,8 @@ IIF(First(Fields!BranchWebSiteURL.Value, "QuoteDetails") = NOTHING, NOTHING, Fir
     <DataSource Name="Quote">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=XRMDMSDB;Initial Catalog=MMPCDEV_MSCRM</ConnectString>
+        <ConnectString>Data Source=xrmdmsdb;Initial Catalog=MMPCDEV_MSCRM</ConnectString>
+        <Prompt>Specify a user name and password for data source Quote:</Prompt>
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>d6756ee6-ed10-46f1-bae4-aa9b2205e2de</rd:DataSourceID>
