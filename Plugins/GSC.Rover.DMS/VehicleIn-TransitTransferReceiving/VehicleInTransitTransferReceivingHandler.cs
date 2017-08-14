@@ -443,7 +443,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                     {
                         receivingComponent["gsc_vehicleintransitreceivingchecklistpn"] = componentEntity.Contains("gsc_vehiclecomponentchecklistpn") ?
                             componentEntity.GetAttributeValue<String>("gsc_vehiclecomponentchecklistpn") : String.Empty;
-                        receivingComponent["gsc_intransitreceivingid"] = new EntityReference("gsc_iv_vehicleintransittransferreceiving", vehicleInTransitReceiving.Id);
+                        receivingComponent["gsc_vehicleintransitreceivingdetailid"] = new EntityReference("gsc_iv_vehicleintransitreceivingdetail", receivingDetailsEntity.Id);
                         _organizationService.Create(receivingComponent);
                         _tracingService.Trace("Created vehicle checklist component record...");
                     }
