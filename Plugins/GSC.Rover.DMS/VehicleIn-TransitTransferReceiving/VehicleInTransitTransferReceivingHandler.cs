@@ -419,30 +419,34 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             if (receivingDetailsCollection.Entities == null || receivingDetailsCollection.Entities.Count == 0)
                 throw new InvalidPluginExecutionException("No receiving detail found.");
 
-            Entity receivingDetailsEntity = receivingDetailsCollection.Entities[0];
-            Guid inventoryId = receivingDetailsEntity.Contains("gsc_inventoryid") ? receivingDetailsEntity.GetAttributeValue<EntityReference>("gsc_inventoryid").Id
-                : Guid.Empty;
-            EntityCollection inventoryCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId, _organizationService,
-                null, OrderType.Ascending, new[] { "gsc_basemodelid" });
-            if (inventoryCollection.Entities == null || inventoryCollection.Entities.Count == 0)
-                throw new InvalidPluginExecutionException("No inventory record found.");
-
-            Entity inventoryEntity = inventoryCollection.Entities[0];
-            var baseModelId = inventoryEntity.Contains("gsc_basemodelid") ? inventoryEntity.GetAttributeValue<EntityReference>("gsc_basemodelid").Id
-                : Guid.Empty;
-            EntityCollection componentChecklistCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_vehiclecomponentchecklist", "gsc_vehiclebasemodelid", baseModelId, _organizationService,
-                null, OrderType.Ascending, new[] { "gsc_vehiclecomponentchecklistpn" });
-
-            if (componentChecklistCollection.Entities != null && componentChecklistCollection.Entities.Count > 0)
+            foreach(Entity receivingDetailsEntity in receivingDetailsCollection.Entities)
             {
-                _tracingService.Trace("Retrieved vehicle components...");
-                Entity receivingComponent = new Entity("gsc_iv_vehicleintransitreceivingchecklist");
-                foreach (Entity componentEntity in componentChecklistCollection.Entities)
+                _tracingService.Trace("Retrieving components...");
+                Guid inventoryId = receivingDetailsEntity.Contains("gsc_inventoryid") ? receivingDetailsEntity.GetAttributeValue<EntityReference>("gsc_inventoryid").Id
+                    : Guid.Empty;
+                EntityCollection inventoryCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId, _organizationService,
+                    null, OrderType.Ascending, new[] { "gsc_basemodelid" });
+                if (inventoryCollection.Entities == null || inventoryCollection.Entities.Count == 0)
+                    throw new InvalidPluginExecutionException("No inventory record found.");
+
+                Entity inventoryEntity = inventoryCollection.Entities[0];
+                var baseModelId = inventoryEntity.Contains("gsc_basemodelid") ? inventoryEntity.GetAttributeValue<EntityReference>("gsc_basemodelid").Id
+                    : Guid.Empty;
+                EntityCollection componentChecklistCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_sls_vehiclecomponentchecklist", "gsc_vehiclebasemodelid", baseModelId, _organizationService,
+                    null, OrderType.Ascending, new[] { "gsc_vehiclecomponentchecklistpn" });
+
+                if (componentChecklistCollection.Entities != null && componentChecklistCollection.Entities.Count > 0)
                 {
-                    receivingComponent["gsc_vehicleintransitreceivingchecklistpn"] = componentEntity.Contains("gsc_vehiclecomponentchecklistpn") ?
-                        componentEntity.GetAttributeValue<String>("gsc_vehiclecomponentchecklistpn") : String.Empty;
-                    receivingComponent["gsc_intransitreceivingid"] = new EntityReference("gsc_iv_vehicleintransittransferreceiving", vehicleInTransitReceiving.Id);
-                    _organizationService.Create(receivingComponent);
+                    _tracingService.Trace("Retrieved vehicle components...");
+                    Entity receivingComponent = new Entity("gsc_iv_vehicleintransitreceivingchecklist");
+                    foreach (Entity componentEntity in componentChecklistCollection.Entities)
+                    {
+                        receivingComponent["gsc_vehicleintransitreceivingchecklistpn"] = componentEntity.Contains("gsc_vehiclecomponentchecklistpn") ?
+                            componentEntity.GetAttributeValue<String>("gsc_vehiclecomponentchecklistpn") : String.Empty;
+                        receivingComponent["gsc_intransitreceivingid"] = new EntityReference("gsc_iv_vehicleintransittransferreceiving", vehicleInTransitReceiving.Id);
+                        _organizationService.Create(receivingComponent);
+                        _tracingService.Trace("Created vehicle checklist component record...");
+                    }
                 }
             }
             _tracingService.Trace("Ending GenerateComponents method...");
