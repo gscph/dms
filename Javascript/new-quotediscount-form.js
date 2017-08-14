@@ -317,28 +317,6 @@ $(document).ready(function (e) {
         }
     }
 
-    var discountNameValidator = document.createElement('span');
-    discountNameValidator.style.display = "none";
-    discountNameValidator.id = "RequiredFieldValidatordiscountName";
-    discountNameValidator.errormessage = "Please provide Discount Name.";
-    discountNameValidator.validationGroup = "";
-    discountNameValidator.initialvalue = "";
-    discountNameValidator.evaluationfunction = function () {
-        var priceListId = $("#gsc_pricelistid").val();
-
-        if (priceListId != "") {
-            return true;
-        } else {
-            var discountName = $("#gsc_quotediscountpn").val();
-            if (discountName != "")
-                return true;
-        }
-
-        return false;
-    };
-
-    Page_Validators.push(discountNameValidator);
-
     // Validator when the discounts are not equal to 100%
     var discountValidator = document.createElement('span');
     discountValidator.style.display = "none";
