@@ -14,6 +14,7 @@ $(document).ready(function () {
     $('#gsc_intransittransferstatus').css({ "pointer-events": "none", "cursor": "default" });
     drawAllocateButton();
     drawShipButton();
+    drawCancelButton();
 
    
     $('#gsc_inventoryidtoallocate').hide();
@@ -40,7 +41,7 @@ $(document).ready(function () {
         DMS.Helpers.DisableEntityForm();
       }
       drawPrintButton();
-    }, 3000);
+    }, 2000);
     
     function RefreshAvailableItems($parent, page, PageSize) {
         var $subgrid = $parent.children(".subgrid");
@@ -365,13 +366,6 @@ $(document).ready(function () {
         cancel.className = "fa fa-ban";
         cancelButton.appendChild(cancel);
         var cancelButtonLabel = document.createTextNode(" CANCEL");
-
-        if (inTransitStatus != 100000000) {
-            cancelButton.className = "btn btn-primary disabled";
-        } else {
-            cancelButton.className = "btn btn-primary";
-        }
-
         cancelButton.appendChild(cancelButtonLabel);
         cancelButton.addEventListener("click", cancelTransaction);
         DMS.Helpers.AppendButtonToToolbar(cancelButton);
