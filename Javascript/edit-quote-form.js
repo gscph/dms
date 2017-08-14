@@ -403,7 +403,6 @@ $(document).ready(function (e) {
             }
         }
         else if (paymentmode == '100000001') {
-
             if (action == "onchange") {
                 dscnt_uppercent = 0;
                 dscnt_dppercent = 0;
@@ -419,7 +418,7 @@ $(document).ready(function (e) {
 
             dpDiscountfield.attr('readonly', true);
             afDiscountfield.attr('readonly', true);
-
+			setTimeout(function () {
             if (DMS.Settings.Permission.Update == true) {
                 chattelFeefield.attr('readonly', false);
                 dpamountfield.attr('readonly', false);
@@ -429,7 +428,7 @@ $(document).ready(function (e) {
                 applytodpprcntfield.attr('readonly', false);
                 applytodpamntfield.attr('readonly', false);
             }
-
+			 }, 1000);
             bankidfield.siblings('.input-group-btn').removeClass('hidden');
             schemeidfield.siblings('.input-group-btn').removeClass('hidden');
 
