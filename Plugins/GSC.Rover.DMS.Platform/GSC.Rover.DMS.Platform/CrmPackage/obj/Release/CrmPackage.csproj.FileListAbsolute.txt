@@ -425,9 +425,6 @@ C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.D
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Bank.dll
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleTransferDetails.dll
 C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.UnitOfMeasure.dll
-C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Bank.pdb
-C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleTransferDetails.pdb
-C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.UnitOfMeasure.pdb
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Plugins.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.Platform.Workflow.dll
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\Microsoft.Xrm.Sdk.dll

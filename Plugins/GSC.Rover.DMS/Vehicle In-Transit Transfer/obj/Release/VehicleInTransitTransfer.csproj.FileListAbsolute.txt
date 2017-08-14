@@ -56,3 +56,5 @@ C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit
 C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer.pdb
 C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.dll
 C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\Vehicle In-Transit Transfer\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.pdb

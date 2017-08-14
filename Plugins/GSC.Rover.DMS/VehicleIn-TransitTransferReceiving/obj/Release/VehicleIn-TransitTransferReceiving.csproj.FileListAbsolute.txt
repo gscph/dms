@@ -49,3 +49,5 @@ C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitT
 C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\obj\Release\VehicleIn-TransitTransferReceiving.csprojResolveAssemblyReference.cache
 C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.dll
 C:\Users\i-jcadiao\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\obj\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.dll
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS\VehicleIn-TransitTransferReceiving\bin\Release\GSC.Rover.DMS.BusinessLogic.InventoryMovement.pdb
