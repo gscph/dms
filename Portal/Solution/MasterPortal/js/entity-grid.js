@@ -98,7 +98,7 @@
 		var $container = $element.children(".view-grid");
 		$container.empty();
 		$element.children(".view-toolbar").remove();
-		var $toolbar = $("<div></div>").addClass("view-toolbar col-md-6 col-xs-12 pull-right").addClass("grid-actions").addClass("clearfix");
+		var $toolbar = $("<div></div>").addClass("view-toolbar").addClass("grid-actions").addClass("clearfix");
 		var addToolbar = false;
 		if (allowFilterOff) {
 			var $toggleFilter = $("<a></a>")
@@ -403,6 +403,7 @@
 			});
 			$viewSelectionDropdown.append($viewSelectionDropdownMenu).appendTo($viewSelectionContainer);
 			$viewSelectionContainer.prependTo($toolbar);
+			$toolbar.addClass("col-md-6 col-xs-12 pull-right");
 			addToolbar = true;
 		}
 		if (addToolbar) {
