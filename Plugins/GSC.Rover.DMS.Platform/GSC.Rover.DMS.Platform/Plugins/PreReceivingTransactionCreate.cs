@@ -67,6 +67,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
                 ReceivingTransactionHandler receivingTransactionHandler = new ReceivingTransactionHandler(service, trace);
                 receivingTransactionHandler.ReplicatePurchaseOrderFields(receivingTransactionEntity);
                 receivingTransactionHandler.IsWBNoUnique(receivingTransactionEntity);
+                receivingTransactionHandler.ValidateInvoiceNo(receivingTransactionEntity);
             }
             catch (Exception ex)
             {
