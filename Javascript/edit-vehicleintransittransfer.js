@@ -8,7 +8,8 @@ $(document).bind('DOMNodeInserted', function (evt) {
 });
 
 $(document).ready(function () {
-    var inTransitStatus = $('#gsc_intransittransferstatus').val();
+    //var inTransitStatus = $('#gsc_intransittransferstatus').val();
+    var inTransitStatus = $(".record-status").html();
 
     $('#gsc_intransittransferstatus').attr('readOnly', true);
     $('#gsc_intransittransferstatus').css({ "pointer-events": "none", "cursor": "default" });
@@ -37,7 +38,7 @@ $(document).ready(function () {
       });
       
       /* inTransitStatus != Picked */
-      if (inTransitStatus != 100000000) {
+      if (inTransitStatus != 'Picked') {
         DMS.Helpers.DisableEntityForm();
       }
       drawPrintButton();
@@ -333,12 +334,7 @@ $(document).ready(function () {
         allocateButton.appendChild(allocate);
         var allocateButtonLabel = document.createTextNode(" ALLOCATE");
         allocateButton.appendChild(allocateButtonLabel);
-
-        if (inTransitStatus != 100000000)
-            allocateButton.className = "allocate-link btn btn-primary action disabled";
-        else
-            allocateButton.className = "allocate-link btn btn-primary action";
-
+        allocateButton.className = "allocate-link btn btn-primary action";
         allocateButton.addEventListener("click", allocateVehicle);
         $("#Inventory").find(".view-toolbar.grid-actions.clearfix").append(allocateButton);
     }
@@ -351,12 +347,7 @@ $(document).ready(function () {
         var shipButtonLabel = document.createTextNode(" SHIP");
         shipButton.appendChild(shipButtonLabel);
         shipButton.addEventListener("click", shipTransaction);
-
-        if (inTransitStatus != 100000000) {
-            shipButton.className = "btn btn-primary disabled";
-        } else {
-            shipButton.className = "btn btn-primary";
-        }
+        shipButton.className = "btn btn-primary";
         DMS.Helpers.AppendButtonToToolbar(shipButton);
     }
 
