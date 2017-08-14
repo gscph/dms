@@ -575,3 +575,6 @@ C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Invitation.pdb
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.PurchaseOrder.pdb
 C:\Users\lbaliguat\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\obj\Release\CrmPackage.csprojResolveAssemblyReference.cache
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.Bank.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.VehicleTransferDetails.pdb
+C:\Users\jgerero\Documents\GitHub\dms\Plugins\GSC.Rover.DMS.Platform\GSC.Rover.DMS.Platform\CrmPackage\bin\Debug\GSC.Rover.DMS.BusinessLogic.UnitOfMeasure.pdb
