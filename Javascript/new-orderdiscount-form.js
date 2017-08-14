@@ -123,9 +123,6 @@ $(document).ready(function (e) {
         $('#gsc_discountamount').attr('readonly', true);
         $('#gsc_quotediscountpn').attr('readonly', true);
 
-       
-
-
         if (!isFinancing) {
             
             $('#gsc_applypercentagetoaf').attr('readonly', true);

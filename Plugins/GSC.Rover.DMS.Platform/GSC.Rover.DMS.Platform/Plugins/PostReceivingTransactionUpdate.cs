@@ -104,6 +104,9 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     var preImageWBNo = preImageEntity.Contains("gsc_warrantybookletno")
                         ? preImageEntity.GetAttributeValue<String>("gsc_warrantybookletno")
                         : String.Empty;
+                    var preImagInvoiceNo = preImageEntity.Contains("gsc_invoiceno")
+                        ? preImageEntity.GetAttributeValue<String>("gsc_invoiceno")
+                        : String.Empty;
 
                     #endregion
 
@@ -114,6 +117,9 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     var postImageWBNo = postImageEntity.Contains("gsc_warrantybookletno")
                         ? postImageEntity.GetAttributeValue<String>("gsc_warrantybookletno")
                         : String.Empty;
+                    var postImagInvoiceNo = postImageEntity.Contains("gsc_invoiceno")
+                        ? postImageEntity.GetAttributeValue<String>("gsc_invoiceno")
+                        : String.Empty;
 
                     #endregion
 
@@ -123,6 +129,11 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     {
                         receivingTransactionHandler.IsWBNoUnique(postImageEntity);
                         receivingTransactionHandler.UpdateInventoryWBNo(postImageEntity);
+                    }
+
+                    if (preImagInvoiceNo != postImagInvoiceNo)
+                    {
+                        receivingTransactionHandler.ValidateInvoiceNo(postImageEntity);
                     }
 
                     if (preImageReceivingStatus != postImageReceivingStatus)
