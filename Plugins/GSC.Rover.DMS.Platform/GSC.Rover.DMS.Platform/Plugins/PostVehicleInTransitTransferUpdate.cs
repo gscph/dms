@@ -105,6 +105,9 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     String preImageAllocatedItemsToDelete = preImageEntity.Contains("gsc_allocateditemstodelete")
                         ? preImageEntity.GetAttributeValue<String>("gsc_allocateditemstodelete")
                         : String.Empty;
+                    EntityReference preImageSourceSite = preImageEntity.Contains("gsc_sourcesiteid")
+                        ? preImageEntity.GetAttributeValue<EntityReference>("gsc_sourcesiteid")
+                        : null;
 
                     string postInventoryId = postImageEntity.Contains("gsc_inventoryidtoallocate") ? postImageEntity.GetAttributeValue<string>("gsc_inventoryidtoallocate")
                         : String.Empty;
@@ -113,6 +116,9 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     String postImageAllocatedItemsToDelete = postImageEntity.Contains("gsc_allocateditemstodelete")
                         ? postImageEntity.GetAttributeValue<String>("gsc_allocateditemstodelete")
                         : String.Empty;
+                    EntityReference postImageSourceSite = postImageEntity.Contains("gsc_sourcesiteid")
+                        ? postImageEntity.GetAttributeValue<EntityReference>("gsc_sourcesiteid")
+                        : null;
 
                     VehicleInTransitTransferReceivingHandler receivingHandler = new VehicleInTransitTransferReceivingHandler(service, trace);
                     VehicleInTransitTransferHandler vehicleInTransitHandler = new VehicleInTransitTransferHandler(service, trace, receivingHandler);
@@ -137,6 +143,14 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     if (preImageAllocatedItemsToDelete != postImageAllocatedItemsToDelete && postImageAllocatedItemsToDelete != String.Empty)
                     {
                         vehicleInTransitHandler.DeleteInTransitTransferVehicle(postImageEntity);
+                    }
+                    if (preTransferStatus != postTransferStatus)
+                    {
+                        vehicleInTransitHandler.ReplicateVehicleInTransitTransferStatus(postImageEntity);
+                    }
+                    if (preImageSourceSite != postImageSourceSite)
+                    {
+                        vehicleInTransitHandler.ReplicateSourceField(postImageEntity);
                     }
                 }
 

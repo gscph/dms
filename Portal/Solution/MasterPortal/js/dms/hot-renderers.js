@@ -32,14 +32,14 @@ function lookupRenderer(optionsList, instance, td, row, col, prop, value, cellPr
             }
         }
         td.style.textAlign = "center";
-        if (typeof value.Name !== 'undefined') {
-            td.innerHTML = value.Name;
+        if (typeof value.Name !== 'undefined' && value.Name != null) {
+            td.innerHTML = value.Name + "<span style=\"float: right\"><i class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></i></span>";
+            return td;
         }      
-        return td;
     }
    
     td.style.textAlign = "center";
-    td.innerHTML = '';
+    td.innerHTML = "<span style=\"float: right\"><i class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></i></span>";
     return td;    
 }
 

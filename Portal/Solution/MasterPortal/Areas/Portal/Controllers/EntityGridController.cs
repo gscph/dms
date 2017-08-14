@@ -98,15 +98,13 @@ namespace Site.Areas.Portal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "Invalid Request.");
             }
+
             if (pageSize < 0)
             {
                 pageSize = DefaultPageSize;
             }
-          
        
             viewConfiguration = EnableSearchForPriceList(viewConfiguration);
-
-
 
             if (pageSize > DefaultMaxPageSize && !overrideMaxPageSize)
             {

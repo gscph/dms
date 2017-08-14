@@ -404,5 +404,51 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
             _tracingService.Trace("Ending DeleteInTransitTransferVehicle method...");
             return vehicleInTransitTransferEntity;
         }
+
+        //Created By: Jerome Anthony Gerero, Created On: 8/14/2017
+        /*Purpose: Copy source site value to site filter field
+         * Registration Details:
+         * Event/Message: 
+         *      Post/Update, Create: Source Site
+         * Primary Entity: Vehicle In-Transit Transfer
+         */
+        public Entity ReplicateSourceField(Entity vehicleInTransitTransferEntity)
+        {
+            _tracingService.Trace("Started ReplicateSourceField method...");
+
+            EntityReference sourceSite = vehicleInTransitTransferEntity.GetAttributeValue<EntityReference>("gsc_sourcesiteid") != null
+                ? vehicleInTransitTransferEntity.GetAttributeValue<EntityReference>("gsc_sourcesiteid")
+                : null;
+
+            vehicleInTransitTransferEntity["gsc_sourcesiteid"] = sourceSite;
+
+            _organizationService.Update(vehicleInTransitTransferEntity);
+
+            _tracingService.Trace("Ended ReplicateSourceField method...");
+            return vehicleInTransitTransferEntity;
+        }
+
+        //Created By: Jerome Anthony Gerero, Created On: 8/14/2017
+        /*Purpose: Replicate vehicle in-transit transfer status to copy status field
+         * Registration Details:
+         * Event/Message: 
+         *      Post/Update: Vehicle In-Transit Transfer Status
+         * Primary Entity: Vehicle In-Transit Transfer
+         */
+        public Entity ReplicateVehicleInTransitTransferStatus(Entity vehicleInTransitTransferEntity)
+        {
+            _tracingService.Trace("Started ReplicateVehicleInTransitTransferStatus method...");
+
+            Int32 vehicleInTransitStatus = vehicleInTransitTransferEntity.Contains("gsc_intransittransferstatus")
+                ? vehicleInTransitTransferEntity.GetAttributeValue<OptionSetValue>("gsc_intransittransferstatus").Value
+                : 100000000;
+
+            vehicleInTransitTransferEntity["gsc_intransittransferstatuscopy"] = new OptionSetValue(vehicleInTransitStatus);
+
+            _organizationService.Update(vehicleInTransitTransferEntity);
+
+            _tracingService.Trace("Ended ReplicateVehicleInTransitTransferStatus method...");
+            return vehicleInTransitTransferEntity;
+        }
     }
 }

@@ -256,7 +256,8 @@
     <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule">
       <HintPath>..\..\..\GSC.Rover.DMS\VehicleCountSchedule\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleCountSchedule.dll</HintPath>
     </Reference>
-    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer">
+    <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\GSC.Rover.DMS\Vehicle In-Transit Transfer\bin\Release\GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer.dll</HintPath>
     </Reference>
     <Reference Include="GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fe7f35056bafc7da, processorArchitecture=MSIL">

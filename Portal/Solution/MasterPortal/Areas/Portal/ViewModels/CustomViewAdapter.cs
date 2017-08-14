@@ -96,9 +96,9 @@ namespace Site
                 });
             }
 
-            ViewDataAdapter.FetchResult records = base.FetchEntities(_dependencies.GetServiceContext(), fetch);
+            return base.FetchEntities(_dependencies.GetServiceContext(), fetch);
 
-            return records;
+         //   return records;
         }
 
         private EntityCollection GetSharedEntityScope(Fetch fetch)

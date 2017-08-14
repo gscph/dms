@@ -367,6 +367,7 @@ $(document).ready(function () {
         cancelButton.appendChild(cancel);
         var cancelButtonLabel = document.createTextNode(" CANCEL");
         cancelButton.appendChild(cancelButtonLabel);
+        cancelButton.className = "btn btn-primary";
         cancelButton.addEventListener("click", cancelTransaction);
         DMS.Helpers.AppendButtonToToolbar(cancelButton);
     }
