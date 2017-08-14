@@ -45,7 +45,7 @@ namespace Site
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             GlobalConfiguration.Configure(WebApiConfig.Register);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
-			BundleConfig.RegisterBundles(BundleTable.Bundles);           
+			BundleConfig.RegisterBundles(BundleTable.Bundles);       
 		}
 
         protected void Application_End()
@@ -175,5 +175,15 @@ namespace Site
 
 			return portalContext.Website == null ? null : portalContext.Website.Id.ToString();
 		}
+        void Application_Error(object sender, EventArgs e)
+        {
+            var hafe = Server.GetLastError() as HttpAntiForgeryException;
+
+            if (hafe != null)
+            {
+                Server.ClearError();
+                Response.Redirect("~/login?message=xsrf");
+            }
+        }
 	}
 }
