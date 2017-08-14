@@ -420,7 +420,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                 ? vehicleInTransitTransferEntity.GetAttributeValue<EntityReference>("gsc_sourcesiteid")
                 : null;
 
-            vehicleInTransitTransferEntity["gsc_sourcesiteid"] = sourceSite;
+            vehicleInTransitTransferEntity["gsc_siteid"] = sourceSite;
 
             _organizationService.Update(vehicleInTransitTransferEntity);
 
