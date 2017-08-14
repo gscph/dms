@@ -267,7 +267,10 @@
 
         activateButton.on('click', function (evt) {
             var recordArr = [];
+            var statusVal = 0;
             recordArr = getSelectedRecords();
+            if (statusValidatorED(recordArr, statusVal) > 0)
+            { DMS.Notification.Error(statusValidatorED(recordArr, statusVal) + " record(s) already active. Please select inactive records only.", true, 5000); return false; }
 
             UpdateStatus(recordArr, "enable", $(this), deActivateButton, buttonValidation);
         });
@@ -276,8 +279,10 @@
 
         deActivateButton.on('click', function (evt) {
             var recordArr = [];
+            var statusVal = 1;
             recordArr = getSelectedRecords();
-
+            if (statusValidatorED(recordArr, statusVal) > 0)
+            { DMS.Notification.Error(statusValidatorED(recordArr, statusVal) + " record(s) already inactive. Please select active records only.", true, 5000); return false; }
             UpdateStatus(recordArr, "disable", $(this), activateButton, buttonValidation);
         });
 
@@ -310,6 +315,20 @@
         }
 
     });
+
+    function statusValidatorED(records, statusVal) {
+        //data-attribute="statecode"
+        var count = 0;
+        for (x = 0 ; x < records.length ; x++) {
+            var status, td = $('tr[data-id=' + records[x] + '] td[data-attribute="statecode"]');
+            if (typeof td !== 'undefined') {
+                status = td.data('value').Value;
+                if (status == statusVal)
+                    count++;
+            }
+        }
+        return count;
+    }
 
     function UpdateStatus(records, status, button, sibling, buttonValidation) {
 
