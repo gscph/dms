@@ -144,6 +144,14 @@ namespace GSC.Rover.DMS.Platform.Plugins
                     {
                         vehicleInTransitHandler.DeleteInTransitTransferVehicle(postImageEntity);
                     }
+                    if (preTransferStatus != postTransferStatus)
+                    {
+                        vehicleInTransitHandler.ReplicateVehicleInTransitTransferStatus(postImageEntity);
+                    }
+                    if (preImageSourceSite != postImageSourceSite)
+                    {
+                        vehicleInTransitHandler.ReplicateSourceField(postImageEntity);
+                    }
                 }
 
                 catch (Exception ex)
