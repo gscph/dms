@@ -1004,6 +1004,7 @@ namespace GSC.Rover.DMS.BusinessLogic.ReceivingTransaction
             return null;
         }
 
+       //Check if WB No provided is not used yet.
         public Boolean IsWBNoUnique(Entity vehicleReceiving)
         {
             var WBNo = vehicleReceiving.Contains("gsc_warrantybookletno")
@@ -1018,6 +1019,34 @@ namespace GSC.Rover.DMS.BusinessLogic.ReceivingTransaction
                 if (inventoryRecords != null && inventoryRecords.Entities.Count > 0)
                 {
                     throw new InvalidPluginExecutionException("Warranty Booklet No. is already associated to an existing vehicle.");
+                }
+            }
+
+            return true;
+        }
+
+        //Created By: Leslie Baliguat, Created On: 08/14/2017
+        /*Purpose: Validate if Invoice No is not yet used.
+         * Registration Details: 
+         * Event/Message:
+         *      Pre/Create: 
+         *      Post/Update: Invoice No.
+         * Primary Entity: Receiving Transaction
+         */
+        public bool ValidateInvoiceNo(Entity vehicleReceiving)
+        {
+            var invoiceNo = vehicleReceiving.Contains("gsc_invoiceno")
+                        ? vehicleReceiving.GetAttributeValue<String>("gsc_invoiceno")
+                        : String.Empty;
+
+            if (invoiceNo != String.Empty && invoiceNo != null)
+            {
+                EntityCollection receivingRecords = CommonHandler.RetrieveRecordsByOneValue(vehicleReceiving.LogicalName, "gsc_invoiceno", invoiceNo, _organizationService, null, OrderType.Ascending,
+                    new[] { "gsc_invoiceno" });
+
+                if (receivingRecords != null && receivingRecords.Entities.Count > 0)
+                {
+                    throw new InvalidPluginExecutionException("Invoice No. is already used in an exisitng vehicle receiving record");
                 }
             }
 

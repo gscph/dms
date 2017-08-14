@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     var webRole = DMS.Settings.User.webRole;
 
-    if (status != "Open" ||  webRole.indexOf("MSD Manager") >= 0) {
+    if (status != "Open" || webRole.indexOf("MSD Manager") >= 0) {
         $('#SubmitButton').hide();
         $('#UpdateButton').hide();
         $('.delete-link').hide();
@@ -28,8 +28,8 @@ $(document).ready(function () {
         $('#SubmitButton').addClass("hidden");
         $('#UpdateButton').addClass("hidden");
         // Exception: Invoicer can only update sales invoice number (name)
-        if(status == "Open")
-        $('#name').attr("readonly", false);
+        if (status == "Open")
+            $('#name').attr("readonly", false);
     }
 
     setTimeout(function () {
@@ -126,7 +126,7 @@ $(document).ready(function () {
     '<center><p>This Sales Invoice will be cancelled. Please select one of the reasons below: </p>' +
     '<select id="statusReason" >' +
     '</select>' +
-    '<div id="cancelReason" style="display:none"><br/>Enter remarks here:<br/><textarea id="disqualifyRemarks" style="margin: 0px; height: 50px; width: 300px;"></textarea></div>' +
+    '<div id="cancelReason" style="display:none"><br/>Enter remarks here: <span style="color:red">*</span><br/><textarea id="disqualifyRemarks" style="margin: 0px; height: 50px; width: 300px;"></textarea></div>' +
     '</center></div>' +
     '<div class="modal-footer">' +
     '<a href="" data-toggle="modal" data-dismiss="modal"> <button id="continueBtn" type="button" class="btn btn-dialog button required">CONTINUE</button> </a>' +
