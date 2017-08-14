@@ -67,9 +67,8 @@ namespace GSC.Rover.DMS.Platform.Plugins
             {
                 VehicleInTransitTransferReceivingHandler receivingHandler = new VehicleInTransitTransferReceivingHandler(service, trace);
                 Guid intransitTransferId = entity.GetEntityReferenceGuid("gsc_intransittransferid");
-                Entity receivingTransferDetails = receivingHandler.GetIntransitTransferDetails(intransitTransferId);
+                EntityCollection receivingTransferDetails = receivingHandler.GetIntransitTransferDetails(intransitTransferId);
                 Entity receivingTransfer = service.Retrieve("gsc_iv_vehicleintransittransfer", intransitTransferId, new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
-
 
                 receivingHandler.CreateReceivingDetails(receivingTransfer, receivingTransferDetails, entity.Id);
                 receivingHandler.GenerateComponents(entity);
