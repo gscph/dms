@@ -341,6 +341,9 @@ namespace GSC.Rover.DMS.BusinessLogic.ProspectInquiry
             contact["gsc_prospect"] = true;
             Entity DefaultCustomerTax = GetDefaultTax();
             contact["gsc_taxid"] = new EntityReference(DefaultCustomerTax.LogicalName, DefaultCustomerTax.Id);
+            contact["gsc_tin"] = prospectInquiryEntity.Contains("gsc_tin")
+               ? prospectInquiryEntity.GetAttributeValue<String>("gsc_tin")
+               : String.Empty;
 
             _tracingService.Trace("Customer Record Created...");
             _tracingService.Trace("Ended CreateCustomerIndividual method...");
@@ -425,6 +428,9 @@ namespace GSC.Rover.DMS.BusinessLogic.ProspectInquiry
             account["gsc_recordtype"] = new OptionSetValue(100000003);
             account["gsc_ispotential"] = true;
             account["gsc_prospect"] = true;
+            account["gsc_tin"] = prospectInquiryEntity.Contains("gsc_tin")
+               ? prospectInquiryEntity.GetAttributeValue<String>("gsc_tin")
+               : String.Empty;
             Entity DefaultCustomerTax = GetDefaultTax();
             account["gsc_taxid"] = new EntityReference(DefaultCustomerTax.LogicalName, DefaultCustomerTax.Id);
 
