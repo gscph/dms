@@ -6,7 +6,10 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+    <link href="~/css/dms/handsontable.full.min.css" rel="stylesheet" />
     <link href="~/css/dms/entity-form.css" rel="stylesheet" />
+    <link href="~/css/dms/handsontable.bootstrap.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css" rel="stylesheet" />
     <style>
         .no-border {
             border: none;
@@ -28,9 +31,11 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="EntityControls" runat="server">
+      <script>
+          $(".navbar-right.toolbar-right").addClass("hidden");
+    </script>
     <h1 class="hidden" id="webPageId">
         <adx:Property PropertyName="adx_webpageid" Editable="false" DataItem='<%$ CrmSiteMap: Current %>' runat="server" />
-
     </h1>
 
     <div id="loader">
@@ -82,7 +87,32 @@
                 PortalName="<%$ SiteSetting: Language Code %>" />
         </div>
     </div>
-
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.27.0/handsontable.full.js"></script>
+    <script>
+        numbro.language('fil-PH', {
+            delimiters: {
+                thousands: ',',
+                decimal: '.'
+            },
+            abbreviations: {
+                thousand: 'k',
+                million: 'm',
+                billion: 'b',
+                trillion: 't'
+            },
+            ordinal: function (number) {
+                var b = number % 10;
+                return (~~(number % 100 / 10) === 1) ? 'th' :
+                    (b === 1) ? 'st' :
+                    (b === 2) ? 'nd' :
+                    (b === 3) ? 'rd' : 'th';
+            },
+            currency: {
+                symbol: '₱'
+            }
+        });
+    </script>
     <script src="~/js/dms/accordion.js"></script>
     <script src="~/js/dms/multi-select.js"></script>
 </asp:Content>
@@ -99,11 +129,6 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content10" ContentPlaceHolderID="Scripts" runat="server">
-    <script src="~/js/dms/datepicker-reinit.js"></script>
-    <script src="~/js/dms/entity-form.js"></script>
-    <script src="~/js/dms/primary-field.js"></script>
-    <script src="~/js/dms/modal-customization.js"></script>
-    <script src="~/js/dms/subgrid-counter.js"></script>
     <script src="~/js/dms/jquery.signalR-2.0.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
     <script>
@@ -113,60 +138,137 @@
     <script src="~/js/dms/form-locking.js"></script>
     <script>
         $(function () {
-            $(document).on('hideLoader', function () {
-                var webPageId = $('#webPageId span').html();
+            $(document).ready(function () {
+                $("div.entity-grid.subgrid").each(function (a, b) {
+                    $(this).find(".grid-actions").addClass("hidden");
+                });
 
-                var service = DMS.Service('GET', '~/api/Service/GetPrivilages',
-                   { webPageId: webPageId }, DMS.Helpers.DefaultErrorHandler, null);
+                if (DMS.Settings.User.webRole == "Sales Supervisor" || DMS.Settings.User.webRole == "Sales Executive") {
+                    //Edit Prospect scripts
+                    // var reportsTo = $("#gsc_recordownerreportsto").val();
+                    var owner = $("#gsc_recordownerid").val();
+                    var salesExecutive = $("#gsc_salesexecutiveid").val();
+
+                    var oDataUrl = '/_odata/employee?$filter=contactid%20eq%20(Guid%27' + salesExecutive + '%27)&';
+                    $.ajax({
+                        type: 'get',
+                        async: true,
+                        url: oDataUrl,
+                        success: function (data) {
+                            if (data.value.length !== 0) {
+                                var reportsTo = data.value[0].gsc_reportsto;
+                                if (reportsTo !== null && reportsTo !== undefined)
+                                    var reportsToId = reportsTo.Id;
+
+                                if (DMS.Settings.Permission.Scope === 756150000 && DMS.Settings.Permission.Read === true) {
+                                    return;
+                                }
+
+                                if (reportsToId == userId || salesExecutive == userId) {
+                                    return;
+                                }
+
+                                if (entityName != "contact" && entityName != "account") {
+                                    if (owner === userId) {
+                                        window.location.href = editUrl;
+                                        return;
+                                    }
+                                }
+
+                                $("section.content").hide();
+                                var entityForm = $("#EntityForm1");
+                                entityForm.html("");
+                                var template = "<div class=\"alert alert-block alert-danger\"><span class=\"fa fa-lock\" aria-hidden=\"true\"></span> Access denied. You do not have the appropriate permissions.</div>";
+                                $(template).appendTo(entityForm);
+                            }
+                        },
+                        error: function (xhr, textStatus, errorMessage) {
+                            console.error(errorMessage);
+                        }
+                    });
+                }
+
+                var webPageId = $("#webPageId span").html();
+                var recordOwnerId = $("#gsc_recordownerid").val();
+                var OwningBranchId = $("#gsc_branchid").val();
+                var salesExecutiveId = $("#gsc_salesexecutiveid").val();
+                var guidEmpty = "00000000-0000-0000-0000-000000000000";
+
+                if (recordOwnerId == null || recordOwnerId == undefined || recordOwnerId == "")
+                    recordOwnerId = guidEmpty;
+
+                if (OwningBranchId == null || OwningBranchId == undefined || OwningBranchId == "")
+                    OwningBranchId = guidEmpty;
+
+                if (salesExecutiveId == null || salesExecutiveId == undefined || salesExecutiveId == "")
+                    salesExecutiveId = guidEmpty;
+
+                var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
+                   { webPageId: webPageId, recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId, salesExecutiveId: salesExecutiveId }, DMS.Helpers.DefaultErrorHandler, null);
 
                 service.then(function (response) {
                     DMS.Settings.Permission = response;
 
-                    if (response == null) return;
-                    if (DMS.Settings.Permission.Read == null) return;
+                    if (response === null) return;
+                    if (DMS.Settings.Permission.Read === null) return;
 
 
-                    if (DMS.Settings.Permission.Read == false) {
+                    if (DMS.Settings.Permission.Read === false) {
                         //window.location.href = "~/Pages/AccessDenied.aspx";
-                        var entityForm = $('#EntityForm1');
-                        entityForm.html('');
-                        var template = '<div class="alert alert-block alert-danger"><span class="fa fa-lock" aria-hidden="true"></span> Access denied. You do not have the appropriate permissions.</div>';
+                        var entityForm = $("#EntityForm1");
+                        entityForm.html("");
+                        var template = "<div class=\"alert alert-block alert-danger\"><span class=\"fa fa-lock\" aria-hidden=\"true\"></span> Access denied. You do not have the appropriate permissions.</div>";
                         $(template).appendTo(entityForm);
-                        $('.toolbar-right').html('');
                         return;
                     }
 
-                    if (DMS.Settings.Permission.Update == false) {
-                        $('.submit-btn').remove();
-                        $('.deactivate-link').remove();
-                        $('.activate-link').remove();
+                    if (DMS.Settings.Permission.Update === false) {
+                        DisableFormByPermission();
+                        $(".toolbar-right").find("button, a, input").each(function () {
+                            var text = $(this).html();
+                            if (text.indexOf("NEW") === -1 && text.indexOf("DELETE") === -1 && text.indexOf("REMOVE") === -1 && text.indexOf("EXPORT") === -1) {
+                                $(this).remove();
+                            }
+                        });
+
+                        $(".view-toolbar.grid-actions").remove();
                     }
 
-                    if (DMS.Settings.Permission.Delete == false) {
-                        $('.delete-link').remove();
+                    if (DMS.Settings.Permission.Delete === false) {
+                        $(".delete-link").remove();
                     }
 
-                    //Edit Prospect scripts
-                    var reportsTo = $('#gsc_recordownerreportsto').val();
-                    var owner = $('#gsc_recordownerid').val();                   
+                    $(".navbar-right.toolbar-right").removeClass("hidden");
 
-                    if (owner == userId || reportsTo == userId) {
-                        return;
-                    }
-                    
-                    if (DMS.Settings.Permission.Scope == 756150000 && DMS.Settings.Permission.Read == true) {
-                        return;
-                    }
-
-                    $('section.content').hide();
-                    window.location.href = '~/transactions/prospectinquiry/';                  
-                 
                 });
 
+                function DisableFormByPermission() {
+                    $("#EntityFormView").find("input, select").each(function () {
+                        $(this).attr("readonly", true);
+                        $(this).attr("disabled", true);
+                        $(this).addClass("permanent-disabled");
+                    });
+
+                    $("#EntityFormView").find(".input-group-btn").each(function () {
+                        $(this).addClass("hidden");
+                    });
+                }
             });
         });
-
     </script>
+    <script src="~/js/dms/hot-renderers.js"></script>
+    <script src="~/js/dms/select2-editor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.js"></script>
+    <script src="~/js/dms/edit-on-doubleclick.js"></script>
+    <script src="~/js/dms/generic-grid.js"></script>
+    <script src="~/js/dms/currency-fields.js"></script>
+    <script src="~/js/dms/datepicker-reinit.js"></script>
+    <script src="~/js/dms/entity-form.js"></script>
+    <script src="~/js/dms/computation-total.js"></script>
+    <script src="~/js/dms/primary-field.js"></script>
+    <script src="~/js/dms/modal-customization.js"></script>
+    <script src="~/js/dms/subgrid-counter.js"></script>
+   <script src="~/js/dms/subgrid-button-permission.js"></script>
 
 </asp:Content>
 

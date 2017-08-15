@@ -25,7 +25,11 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">  
 </asp:Content>
-<asp:Content ID="Content5" ContentPlaceHolderID="EntityControls" runat="server">     
+<asp:Content ID="Content5" ContentPlaceHolderID="EntityControls" runat="server">      
+    <script>
+        if (DMS.Settings.User.webRole != "Purchase Approver") 
+            $(".navbar-right.toolbar-right").addClass("hidden");
+    </script>
     <div id="loader">
         <span class="fa fa-spinner fa-spin fa-4x loader-color"></span>
     </div>
@@ -130,6 +134,58 @@
     <script>
         var userFullName = "<%: Html.AttributeLiteral(Html.PortalUser(), "fullname") ?? "" %>";
         var imgUrl = "<%: Html.AttributeLiteral(Html.PortalUser(), "gsc_userimageurl") ?? "~/css/images/default.png" %>";
+
+        $(document).ready(function () {
+
+            if (DMS.Settings.User.webRole != "Purchase Approver") {
+                $("div.entity-grid.subgrid").each(function (a, b) {
+                    $(this).find(".grid-actions").addClass("hidden");
+                });
+
+                var webPageId = $("#webPageId span").html();
+                var recordOwnerId = $("#gsc_recordownerid").val();
+                var OwningBranchId = $("#gsc_branchid").val();
+                var salesExecutiveId = $("#gsc_salesexecutiveid").val();
+                var guidEmpty = "00000000-0000-0000-0000-000000000000";
+
+                if (recordOwnerId == null || recordOwnerId == "undefined" || recordOwnerId == "")
+                    recordOwnerId = guidEmpty;
+
+                if (OwningBranchId == null || OwningBranchId == "undefined" || OwningBranchId == "")
+                    OwningBranchId = guidEmpty;
+
+                if (salesExecutiveId == null || salesExecutiveId == "undefined" || salesExecutiveId == "")
+                    salesExecutiveId = guidEmpty;
+
+                var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
+                   { webPageId: webPageId, recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId, salesExecutiveId: salesExecutiveId }, DMS.Helpers.DefaultErrorHandler, null);
+
+                service.then(function (response) {
+                    DMS.Settings.Permission = response;
+                    if (response === null) {
+                        return;
+                    }
+
+                    if (DMS.Settings.Permission.Scope === 756150002) {
+                        if (DMS.Settings.User.branchId != $("#gsc_branchid").val())
+                            $(".toolbar-right").html("");
+                    }
+
+                    if (DMS.Settings.Permission.Update === false) {
+                        $(".datetimepicker input").attr("disabled", "disabled");
+
+                        $(".toolbar-right").find("button, a, input").each(function () {
+                            var text = $(this).html();
+                            if (text.indexOf("NEW") === -1 && text.indexOf("DELETE") === -1 && text.indexOf("REMOVE") === -1 && text.indexOf("EXPORT") === -1 && text.indexOf("ORDER") === -1) {
+                                $(this).remove();
+                            }
+                        });
+                    }
+
+                    $(".navbar-right.toolbar-right").removeClass("hidden");
+                });
+            }
+        });
     </script>
     <script src="~/js/dms/form-locking.js"></script>
     <script src="~/js/dms/hot-renderers.js"></script>
@@ -144,6 +200,7 @@
     <script src="~/js/dms/primary-field.js"></script>
     <script src="~/js/dms/modal-customization.js"></script>
     <script src="~/js/dms/subgrid-counter.js"></script>
+    <script src="~/js/dms/subgrid-button-permission.js"></script>
 </asp:Content>
 
 

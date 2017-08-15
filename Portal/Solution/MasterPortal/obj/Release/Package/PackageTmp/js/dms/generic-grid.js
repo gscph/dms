@@ -14,6 +14,11 @@ if (typeof jQuery === "undefined") {
 function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, newRowModel) {
     var that = this;
 
+    var entityGridTable = $('table[data-name="' + sectionDataname + '"]');
+    if (entityGridTable.html() == undefined)
+        entityGridTable = $("#" + sectionDataname);
+    entityGridTable.addClass("disabledGrid");
+
     // initialize variables needed
     var changedRows = [], editedCells = [], odataList = [],
         rowDeleted = { index: null, amount: null, records: [] },
@@ -81,7 +86,7 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
 
         // get subgrid data
         this.getSubgridData(odataUrl);
-
+       
         // add click event for save button
         this.hookSaveEvent();
 
@@ -179,7 +184,7 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
 
     this.setupSubGrid = function (editableGridContainer) {
 
-        var $toolbar = $('<div class="editable-grid-toolbar"></div>')
+        var $toolbar = $('<div class="editable-grid-toolbar hidden"></div>')
         // setup subgrid section
         $section.addClass('subgrid-cell');
 
@@ -200,8 +205,10 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
             $toolbar.append($delete);
             $section.append($modal);
         }
-
+      
         $section.append($toolbar);
+
+        addEntityPermission(model, sectionDataname);
 
         $hot.updateSettings({ contextMenu: this.customContextMenu(opt.addNewRows, opt.deleteRows) });
     }
@@ -249,7 +256,7 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
             url: odataQuery,
             cache: false
         }).then(function (response) {
-            $('.editable-grid').removeClass('hidden');
+            $('.editable-grid').not(".editable-grid-toolbar").removeClass('hidden');
             container.style.display = 'block';
             odataList = response.value;
 
@@ -283,6 +290,7 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
             $hot.origData = odataList;
 
             $section.append($(container).detach());
+            
 
             hookOnChangeEvent();           
         });
@@ -344,7 +352,7 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
             $saveButton.html('<span class="fa fa-spinner fa-spin"></span>&nbsp;SAVING..');
             $saveButton.addClass('disabled');
             $cancel.addClass('disabled');
-
+            
             var clientData = [];
 
             var dataRows = [];
@@ -408,7 +416,7 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
             }).always(function () {
                 $saveButton.html('<span class="fa fa-floppy-o"></span> SAVE');
 
-                that.getSubgridData(odataUrl);
+                that.getSubgridData(odataUrl, false);
 
                 $hot.clearUndo();
 
@@ -540,7 +548,6 @@ function EditableGrid(hotOptions, container, sectionDataname, odataUrl, model, n
     }
 
     this.run();
-
     return $hot;
 }
 
@@ -550,4 +557,50 @@ function addDefaultClass(button, isDisabled) {
     if (isDisabled) {
         button.addClass('disabled');
     }
+}
+
+function addEntityPermission(model, sectionDataname) {
+    var entityGridTable = $('table[data-name="' + sectionDataname + '"]');
+
+    var entity = model.entity;
+    var webRoleId = DMS.Settings.User.webRoleId;
+    var recordOwnerId = $("#gsc_recordownerid").val();
+    var OwningBranchId = $("#gsc_branchid").val();
+
+    var service = DMS.Service('GET', '~/api/Service/GetEntityGridPrivilages',
+      { webRoleId: webRoleId, entityName: entity, recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId }, DMS.Helpers.DefaultErrorHandler, null);
+
+    service.then(function (response) {
+        if (entityGridTable.html() == undefined) {
+            entityGridTable = $('#' + sectionDataname);
+        }
+
+        if (response == null) return;
+        if (response.Read == null) return;
+
+        if (response.Read == false) {
+            entityGridTable.find('.editable-grid-toolbar').html('');
+            return;
+        }
+
+        if (response.Create == false) {
+            entityGridTable.find('.editable-grid-toolbar .addnew').remove();
+        }
+
+        if (response.Update == false) {
+            entityGridTable.find('.editable-grid-toolbar .save').remove();
+            entityGridTable.find('.editable-grid-toolbar .btnSaveCopy').remove();
+            entityGridTable.find('.editable-grid-toolbar .delete').remove();
+            entityGridTable.find('.editable-grid-toolbar .cancelCopy').remove();
+        }
+
+        if (response.Delete == false) {
+            entityGridTable.find('.editable-grid-toolbar .cancel').remove();
+        }
+
+        if (response.Update == true || response.Delete == true)
+            entityGridTable.removeClass("disabledGrid");
+
+        entityGridTable.find('.editable-grid-toolbar').removeClass("hidden");
+    });
 }

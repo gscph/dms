@@ -25,7 +25,9 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">    
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="EntityControls" runat="server">
-    
+      <script>
+          $(".navbar-right.toolbar-right").addClass("hidden");
+    </script>
     <div id="loader">
         <span class="fa fa-spinner fa-spin fa-4x loader-color"></span>
     </div>
@@ -124,6 +126,74 @@
     <script>
         var userFullName = "<%: Html.AttributeLiteral(Html.PortalUser(), "fullname") ?? "" %>";
         var imgUrl = "<%: Html.AttributeLiteral(Html.PortalUser(), "gsc_userimageurl") ?? "~/css/images/default.png" %>";
+
+        $(document).ready(function () {
+            $("div.entity-grid.subgrid").each(function (a, b) {
+                $(this).find(".grid-actions").addClass("hidden");
+            });
+
+            var webPageId = $("#webPageId span").html();
+            var recordOwnerId = $("#gsc_recordownerid").val();
+            var OwningBranchId = $("#gsc_branchid").val();
+            var salesExecutiveId = $("#gsc_salesexecutiveid").val();
+            var guidEmpty = "00000000-0000-0000-0000-000000000000";
+
+            if (recordOwnerId == null || recordOwnerId == undefined || recordOwnerId == "")
+                recordOwnerId = guidEmpty;
+
+            if (OwningBranchId == null || OwningBranchId == undefined || OwningBranchId == "")
+                OwningBranchId = guidEmpty;
+
+            if (salesExecutiveId == null || salesExecutiveId == undefined || salesExecutiveId == "")
+                salesExecutiveId = guidEmpty;
+
+            var service = DMS.Service("GET", "~/api/Service/GetPrivilages",
+                { webPageId: webPageId, recordOwnerId: recordOwnerId, OwningBranchId: OwningBranchId, salesExecutiveId: salesExecutiveId }, DMS.Helpers.DefaultErrorHandler, null);
+
+            service.then(function (response) {
+                DMS.Settings.Permission = response;
+
+                if (response === null) return;
+                if (DMS.Settings.Permission.Read === null) return;
+
+
+                if (DMS.Settings.Permission.Read === false) {
+                    var entityForm = $("#EntityForm1");
+                    entityForm.html("");
+                    var template = "<div class=\"alert alert-block alert-danger\"><span class=\"fa fa-lock\" aria-hidden=\"true\"></span> Access denied. You do not have the appropriate permissions.</div>";
+                    $(template).appendTo(entityForm);
+                    return;
+                }
+
+                if (DMS.Settings.Permission.Update === false) {
+                    DisableFormByPermission();
+                    $(".toolbar-right").find("button, a, input").each(function () {
+                        var text = $(this).html();
+                        if (text.indexOf("NEW") === -1 && text.indexOf("DELETE") === -1 && text.indexOf("REMOVE") === -1 && text.indexOf("EXPORT") === -1) {
+                            $(this).remove();
+                        }
+                    });
+                }
+
+                if (DMS.Settings.Permission.Delete === false) {
+                    $(".delete-link").remove();
+                }
+
+                $(".navbar-right.toolbar-right").removeClass("hidden");
+            });
+
+            function DisableFormByPermission() {
+                $("#EntityFormView").find("input, select, textarea").each(function () {
+                    $(this).attr("readonly", true);
+                    $(this).attr("disabled", true);
+                    $(this).addClass("permanent-disabled");
+                });
+
+                $("#EntityFormView").find(".input-group-btn").each(function () {
+                    $(this).addClass("hidden");
+                });
+            }
+        });
     </script>
     <script src="~/js/dms/form-locking.js"></script>
     <script src="~/js/dms/select2-editor.js"></script>
@@ -138,44 +208,5 @@
     <script src="~/js/dms/primary-field.js"></script>
     <script src="~/js/dms/modal-customization.js"></script>
     <script src="~/js/dms/subgrid-counter.js"></script>
-    <script>      
-        $(function () {
-            $(document).on('hideLoader', function () {
-                var webPageId = $('#webPageId span').html();
-
-                var service = DMS.Service('GET', '~/api/Service/GetPrivilages',
-                   { webPageId: webPageId }, DMS.Helpers.DefaultErrorHandler, null);
-
-                service.then(function (response) {
-                    DMS.Settings.Permission = response;
-
-                    if (response == null) return;
-                    if (DMS.Settings.Permission.Read == null) return;
-
-
-                    if (DMS.Settings.Permission.Read == false) {                        
-                        var entityForm = $('#EntityForm1');
-                        entityForm.html('');
-                        var template = '<div class="alert alert-block alert-danger"><span class="fa fa-lock" aria-hidden="true"></span> Access denied. You do not have the appropriate permissions.</div>';
-                        $(template).appendTo(entityForm);
-                        $('.toolbar-right').html('');
-                        return;
-                    }                  
-
-                    if (DMS.Settings.Permission.Update == false) {
-                        $('.submit-btn').remove();
-                        $('.deactivate-link').remove();
-                        $('.activate-link').remove();
-                    }
-
-                    if (DMS.Settings.Permission.Delete == false) {
-                        $('.delete-link').remove();
-                    }
-
-                });
-
-            });
-        });
-    
-    </script>
+    <script src="~/js/dms/subgrid-button-permission.js"></script>
 </asp:Content>

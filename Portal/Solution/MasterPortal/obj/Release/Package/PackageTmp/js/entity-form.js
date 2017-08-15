@@ -673,6 +673,7 @@
             });
         } else {
             $element.find(".convert-order-link").on("click", function (e) {
+                $.blockUI({ message: null, overlayCSS: { opacity: .3 } });
                 e.preventDefault();
                 var id = $parent.find("[id$='_EntityID']").val();
                 var url = $(this).data("url");
@@ -690,10 +691,15 @@
                 }).done(function () {
                     createNotificationCookie(layout.ConvertOrderToInvoiceActionLink.SuccessMessage);
                     onComplete(layout.ConvertOrderToInvoiceActionLink);
-                }).fail(function (jqXhr) {
-                    var contentType = jqXhr.getResponseHeader("content-type");
-                    var error = contentType.indexOf("json") > -1 ? $.parseJSON(jqXhr.responseText) : { Message: jqXhr.status, InnerError: { Message: jqXhr.statusText } };
-                    displayErrorAlert(error, $parent);
+                }).fail(function (jqXhr, textStatus, errorThrown) {
+                    if (errorThrown.indexOf("There is already Invoice created for this Sales Order.") >= 0)
+                        DMS.Notification.Error(errorThrown, true, 3000);
+                    else {
+                        var contentType = jqXhr.getResponseHeader("content-type");
+                        var error = contentType.indexOf("json") > -1 ? $.parseJSON(jqXhr.responseText) : { Message: jqXhr.status, InnerError: { Message: jqXhr.statusText } };
+                        displayErrorAlert(error, $parent);
+                    }
+                    $(".blockUI").remove()
                 });
             });
         }
@@ -1527,7 +1533,7 @@
                         }
                         //error = jqXhr.statusText;;
                         $modal.modal("hide");
-                        error = 'Opportunity cannot be closed since there\'s at least one quote record which is not \"Won\"';
+                        error = 'Opportunity cannot be closed as won since there\'s at least one quote record which is not \"Won\"';
                         displayErrorAlert(error, $parent);
                     }).always(function () {
                         $button.removeAttr("disabled", "disabled").find(".fa-spin").remove();
@@ -1561,7 +1567,7 @@
                         error = contentType.indexOf("json") > -1 ? $.parseJSON(jqXhr.responseText) : { Message: jqXhr.status, InnerError: { Message: jqXhr.statusText } };
                     }
                     //error = jqXhr.statusText;;
-                    error = 'Opportunity cannot be closed since there\'s at least one quote record which is not \"Won\".';
+                    error = 'Opportunity cannot be closed as won since there\'s at least one quote record which is not \"Won\".';
                     displayErrorAlert(error, $parent);
                 }).always(function () { });
             });
@@ -1623,7 +1629,7 @@
                             error = contentType.indexOf("json") > -1 ? $.parseJSON(jqXhr.responseText) : { Message: jqXhr.status, InnerError: { Message: jqXhr.statusText } };
                         }
                         //error = jqXhr.statusText;
-                        error = 'Opportunity cannot be closed since there\'s at least one quote record which is not \"Lost\"';
+                        error = 'Opportunity cannot be closed as lost since there\'s at least one quote record which is not \"Lost\"';
                         $modal.modal("hide");
                         displayErrorAlert(error, $parent);
                     }).always(function () {
@@ -1658,7 +1664,7 @@
                         error = contentType.indexOf("json") > -1 ? $.parseJSON(jqXhr.responseText) : { Message: jqXhr.status, InnerError: { Message: jqXhr.statusText } };
                     }
                     //error = jqXhr.statusText;
-                    error = 'Opportunity cannot be closed since there\'s at least one quote record which is not \"Closed\"';
+                    error = 'Opportunity cannot be closed as lost since there\'s at least one quote record which is not \"Closed\"';
                     displayErrorAlert(error, $parent);
                 }).always(function () { });
             });
@@ -1838,7 +1844,7 @@
             else {
                 message = error.Message;
             }
-           
+
             if (typeof message === 'undefined') {
                 message = error;
             }

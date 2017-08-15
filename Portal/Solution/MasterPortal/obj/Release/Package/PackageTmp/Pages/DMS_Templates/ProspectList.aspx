@@ -7,13 +7,13 @@
 <asp:Content ContentPlaceHolderID="Head" runat="server">
     <link href="~/css/dms/entity-list.css" rel="stylesheet" />
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="Breadcrumbs" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PageHeader" runat="server">
     <script>
        DMS.Settings.Prospect.setForceLoad(true);       
-       DMS.Settings.User.Id = "<%: Html.AttributeLiteral(Html.PortalUser(), "contactid") %>";        
+       DMS.Settings.User.Id = "<%: Html.AttributeLiteral(Html.PortalUser(), "contactid") %>";
+       $(".navbar-right.toolbar-right").addClass("hidden");
     </script>  
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
@@ -77,58 +77,97 @@
                     (typeof isEntityList !== 'undefined')) {
 
                     $(document).on("dblclick", ".entity-grid.entitylist .view-grid table tbody tr td:not(:first)", function () {
+                        showLoading();
 
                         var that = $(this);
 
                         var _layouts = that.closest('div[data-view-layouts]').data("view-layouts")[0];
+                        var entityName = _layouts.Configuration.EntityName;
                         var path = _layouts.Configuration.DetailsActionLink.URL.PathWithQueryString;
                         var editUrl = path + "?id=" + that.parent('tr').data('id');
-                        var isAuthorized = false;
 
-                        if (DMS.Settings.Permission != null) {
-                            isAuthorized = DMS.Settings.Permission.Scope == 756150000 && DMS.Settings.Permission.Read == true;
-                        }
-                         
-
-                        if (IsRecordOwner(that) || isAuthorized) {
+                        if (DMS.Settings.User.webRole != "Sales Supervisor" && DMS.Settings.User.webRole != "Sales Executive") {
                             window.location.href = editUrl;
                             return;
                         }
+                        var isAuthorized = false;
 
-                        DMS.Notification.Error('You are unauthorized to open this record.', true, 3000);
+                        if (DMS.Settings.Permission != null) {
+                            isAuthorized = DMS.Settings.Permission.UpdateScope == 756150000 && DMS.Settings.Permission.Read == true;
+                        }
+                        IsRecordOwner(that, isAuthorized, editUrl, entityName);
                     });
                 }
 
             });
 
           
-            function IsRecordOwner(element) {
+            function IsRecordOwner(element, isAuthorized, editUrl, entityName) {
+                var userId = DMS.Settings.User.Id;
 
                 var attribute = element.data('attribute');
                 var tdReportsTo = element.siblings('td[data-attribute="gsc_reportsto"]').data('value');
-                var createdBy, reportsTo;
+                var createdBy, reportsToId, salesExecutive;
                 
                 if (attribute == 'gsc_recordownerid') createdBy = element.data('value') != null ? element.data('value').Id : null;
                 else if (typeof element.siblings('td[data-attribute="gsc_recordownerid"]').data('value') !== 'undefined') {
                     createdBy = element.siblings('td[data-attribute="gsc_recordownerid"]').data('value').Id;
                 }
-                if (attribute == 'gsc_reportsto') {
-                    reportsTo = element.data('value').Id;                    
-                }
-                else if (typeof tdReportsTo !== 'undefined') {
-                    reportsTo = tdReportsTo.Id;
-                }         
 
-                return (createdBy == DMS.Settings.User.Id || reportsTo == DMS.Settings.User.Id);
+                if (attribute == 'gsc_salesexecutiveid') salesExecutive = element.data('value') != null ? element.data('value').Id : null;
+                else if (typeof element.siblings('td[data-attribute="gsc_salesexecutiveid"]').data('value') !== 'undefined') {
+                    salesExecutive = element.siblings('td[data-attribute="gsc_salesexecutiveid"]').data('value').Id;
+                }
+             
+                var oDataUrl = '/_odata/employee?$filter=contactid%20eq%20(Guid%27' + salesExecutive + '%27)&';
+                $.ajax({
+                    type: 'get',
+                    async: true,
+                    url: oDataUrl,
+                    success: function (data) {
+                        if (data.value.length !== 0) {
+                            var reportsTo = data.value[0].gsc_reportsto;
+                            if (reportsTo !== null && reportsTo !== undefined)
+                            var reportsToId = reportsTo.Id;
+
+                            if (salesExecutive === userId || reportsToId === DMS.Settings.User.Id || isAuthorized) {
+                                window.location.href = editUrl;
+                                return;
+                            }
+
+                            if (entityName != "contact" && entityName != "account")
+                            {
+                                if (createdBy === userId) {
+                                    window.location.href = editUrl;
+                                    return;
+                                }
+                            }
+
+                            $.unblockUI();
+                            $(".loadingDiv").remove();
+                            DMS.Notification.Error('You are unauthorized to open this record.', true, 3000);
+                        }
+                    },
+                    error: function (xhr, textStatus, errorMessage) {
+                        console.error(errorMessage);
+                    }
+                });
+            }
+
+            function showLoading() {
+                $.blockUI({ message: null, overlayCSS: { opacity: .3 } });
+
+                var div = document.createElement("DIV");
+                div.className = "view-loading message text-center";
+                div.style.cssText = 'position: absolute; top: 50%; left: 50%;margin-right: -50%;display: block;';
+                var span = document.createElement("SPAN");
+                span.className = "fa fa-2x fa-spinner fa-spin";
+                div.appendChild(span);
+                $(".content-wrapper").append(div);
             }
 
         }(jQuery));  
     </script>
     <script src="~/js/dms/prospect.js"></script>
     <script src="~/js/dms/entity-permission.js"></script>
-    <script>      
-        $(document).ready(function () {
-            $('th:last').hide();            
-        })
-    </script>
 </asp:Content>

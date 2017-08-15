@@ -59,7 +59,14 @@
         //        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
         //        </span>"></i>&nbsp;DELETING..');
         modalButton.addClass('disabled');
-        modalButton.siblings('.btn').addClass('disabled');    
+        modalButton.siblings('.btn').addClass('disabled');
+
+        recordArr = globalRecordValidator(recordArr);
+        if (recordArr.length <= 0) {
+            HideModal(modalButton, html);
+            DMS.Notification.Error('Cannot delete other owner\'s record.');
+            return false;
+        }
 
         var json = DMS.Helpers.CreateModelWithoutFieldUpdate(recordArr, logicalName);                  
      
@@ -76,14 +83,58 @@
                 $('.entity-grid.entitylist').trigger('refresh');
             }, 100);
         }).always(function () {
-            modalButton.html(html);
-            modalButton.removeClass('disabled');
-            modalButton.siblings('.btn').removeClass('disabled');
-            $('.view-toolbar.grid-actions .activate').addClass('disabled');
-            $('.view-toolbar.grid-actions .deactivate').addClass('disabled');
-            $('.modal-delete').modal('hide');        
-          
+            HideModal(modalButton, html);
         });
+    }
+
+    function HideModal(modalButton, html)
+    {
+        modalButton.html(" DELETE");
+        modalButton.removeClass('disabled');
+        modalButton.siblings('.btn').removeClass('disabled');
+        $('.view-toolbar.grid-actions .activate').addClass('disabled');
+        $('.view-toolbar.grid-actions .deactivate').addClass('disabled');
+        $('.modal-delete').modal('hide');
+    }
+
+    function globalRecordValidator(records) {
+        if (DMS.Settings.Permission.DeleteScope !== 756150000) {
+            records.forEach(function (value, index) {
+                var $tr = $('tr[data-id=' + value + ']');
+                var tdGlobalRecord = $tr.find('td[data-attribute="gsc_isglobalrecord"]');
+
+                if (typeof tdGlobalRecord !== 'undefined') {
+                    if (tdGlobalRecord.data('value') == true) {
+                        records.splice(index, 1);
+                        return true;
+                    }
+                }
+
+                if (DMS.Settings.Permission.DeleteScope == 756150002) {
+                    var tdBranchId = $tr.find('td[data-attribute="gsc_branchid"]');
+                    if (typeof tdBranchId !== 'undefined') {
+                        var value = tdBranchId.data('value');
+                        if (value !== "undefined" && value != null) {
+                            if (value.Id != DMS.Settings.User.branchId)
+                                records.splice(index, 1);
+                        }
+                        return true;
+                    }
+                }
+                else if (DMS.Settings.Permission.DeleteScope == 756150001) {
+                    var tdOwnerId = $tr.find('td[data-attribute="gsc_recordownerid"]');
+                    if (typeof tdOwnerId !== 'undefined') {
+                        var value = tdOwnerId.data('value');
+                        if (value !== "undefined" && value != null) {
+                            if (value.Id != DMS.Settings.User.Id)
+                                records.splice(index, 1);
+                        }
+                        return true;
+                    }
+                }
+            });
+        }
+        return records;
     }
 
 })(jQuery);

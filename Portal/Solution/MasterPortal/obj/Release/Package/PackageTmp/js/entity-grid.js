@@ -403,6 +403,7 @@
 			});
 			$viewSelectionDropdown.append($viewSelectionDropdownMenu).appendTo($viewSelectionContainer);
 			$viewSelectionContainer.prependTo($toolbar);
+			$toolbar.addClass("col-md-6 col-xs-12 pull-right");
 			addToolbar = true;
 		}
 		if (addToolbar) {
@@ -612,6 +613,10 @@
 		filter = filter || $this.getCurrentFilter();
 		page = page || pageNumber;
 		var pageSize = $pagination.data("pagesize");
+
+        //custom - fixed bug in pagination
+		pageSize = configuration.PageSize;
+
 		if (pageSize == null || pageSize == '') {
 			pageSize = 10;
 		}
@@ -1361,12 +1366,20 @@
 		}
 		var url = getUrlFromActionLink(layout.Configuration.DeleteActionLink);
 		$table.find(".delete-link").on("click", function (e) {
-			e.preventDefault();
+		    e.preventDefault();
 			var link = $(this);
 			var $tr = $(this).closest("tr");
 			var id = $tr.data("id");
 			var $modal = $element.children(".modal-delete");
 			var $button = $modal.find("button.primary");
+
+			var quoteSatecode = $tr.find("td[data-attribute='statecode']").data("value") == undefined ? 0 : $tr.find("td[data-attribute='statecode']").data("value").Value;
+			if (quoteSatecode != 0) {
+			    error = "Quote with an Active, Closed, or Won status can't be deleted.";
+			    DMS.Notification.Error(error, true, 1000);
+			    return;
+			}
+
 			$button.off("click");
 			$button.on("click", function (ev) {
 				ev.preventDefault();
@@ -2887,10 +2900,10 @@
 
 		var $this = this;
 		var $element = $this._element;
-		var $pagination = $element.children(".view-pagination");
+		var $pagination = $(".view-pagination");
 
 		if (typeof data === typeof undefined || data === false || data == null) {
-			$pagination.hide();
+		    $pagination.hide();
 			return;
 		}
 
@@ -2907,6 +2920,7 @@
 			return;
 		}
 
+
 		$pagination
 			.data("pagesize", data.PageSize)
 			.data("pages", data.PageCount)
@@ -2920,7 +2934,7 @@
 					event.preventDefault();
 					var $li = $(event.target).closest("li");
 					if ($li.not(".disabled").length > 0 && $li.not(".active").length > 0) {
-						var filter = $this.getCurrentFilter();
+					    var filter = $this.getCurrentFilter();
 						$this.load(pg, filter, !$this.isRelatedRecordFilterEnabled(), event.currentTarget);
 					}
 				}
