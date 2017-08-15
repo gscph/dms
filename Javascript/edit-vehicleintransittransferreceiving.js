@@ -10,12 +10,9 @@ $(document).ready(function () {
 
   drawPrintButton();
   drawComponentsButton();
-  
+
   $('#gsc_intransitstatus').attr('readOnly', true);
   $('#gsc_intransitstatus').css({ "pointer-events": "none", "cursor": "default" });
-  
-  //Initialize editable grid
-//  $(document).trigger('initializeEditableGrid', vehicleComponentChecklistGridInstance);
 
   setTimeout(function () {
     if (intransitStatus == 100000001 || intransitStatus == 100000002) //Received || Cancelled
@@ -32,44 +29,6 @@ $(document).ready(function () {
   }, 3000);
 });
 
-// var vehicleComponentChecklistGridInstance = {
-//   initialize: function () {
-//     /* - Editable Grid - Vehicle Component Checklist Subgrid*/
-//     $('<div id="vehiclecomponentchecklist-editablegrid" class="editable-grid"></div>').appendTo('.content-wrapper');
-//     var $container = document.getElementById('vehiclecomponentchecklist-editablegrid');
-//     var idQueryString = DMS.Helpers.GetUrlQueryString('id');
-//     var oDataQuery = '/_odata/gsc_iv_vehicleintransitreceivingchecklist?$filter=gsc_intransitreceivingid/Id%20eq%20(Guid%27' + idQueryString + '%27)';
-//     var screenSize = ($(window).width() / 2) - 80;
-//     var options = {
-//       dataSchema: {
-//         gsc_iv_vehicleintransitreceivingchecklistid: { Id: null, Name: null },
-//         gsc_included: null,
-//         gsc_vehicleintransitreceivingchecklistpn: ''
-//       },
-//       colHeaders: [
-//         'Included', 'Vehicle Checklist'
-//       ],
-//       columns: [
-//         { data: 'gsc_included', type: 'checkbox', renderer: checkboxRenderer, className: 'htCenter htMiddle', width: 80 },
-//         { data: 'gsc_vehicleintransitreceivingchecklistpn', renderer: stringRenderer, readOnly: true, className: 'htCenter htMiddle', width: 200 }
-//       ],
-//       gridWidth: 1000,
-//       addNewRows: false,
-//       deleteRows: false
-//     }
-
-//     var sectionName = 'VehicleComponentChecklist';
-//     var attributes = [{ key: 'gsc_included', type: 'System.Boolean' },
-//     { key: 'gsc_vehicleintransitreceivingchecklistpn', type: 'System.String' },
-//     { key: 'gsc_intransitreceivingid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'gsc_iv_vehicleintransittransferreceiving', value: idQueryString }];
-//     var model = { id: 'gsc_iv_vehicleintransitreceivingchecklistid', entity: 'gsc_iv_vehicleintransitreceivingchecklist', attr: attributes };
-//     var hotInstance = EditableGrid(options, $container, sectionName, oDataQuery, model, {
-//       gsc_iv_vehicleintransitreceivingchecklistid: null,
-//       gsc_included: false,
-//       gsc_vehicleintransitreceivingchecklistpn: ''
-//     });
-//   }
-// }
 
 function preventDefault(event) {
   event.preventDefault();
@@ -77,9 +36,9 @@ function preventDefault(event) {
 
 function drawCancelButton() {
 
-  $cancelButtonIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-ban');
+  var $cancelButtonIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-ban');
 
-  $cancelButton = DMS.Helpers.CreateButton('button', true, 'cancel', ' CANCEL', $cancelButtonIcon);
+  var $cancelButton = DMS.Helpers.CreateButton('button', true, 'cancel', ' CANCEL', $cancelButtonIcon);
 
   $cancelButton.click(function () {
     $('#gsc_intransitstatus').val('100000002');
@@ -91,8 +50,8 @@ function drawCancelButton() {
 }
 
 function drawReceiveButton() {
-  $buttonIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-truck');
-  $button = DMS.Helpers.CreateButton('button', true, 'receive', ' RECEIVE', $buttonIcon);
+  var $buttonIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-truck');
+  var $button = DMS.Helpers.CreateButton('button', true, 'receive', ' RECEIVE', $buttonIcon);
 
   $button.click(function () {
     $('#gsc_intransitstatus').val('100000001');
@@ -103,8 +62,8 @@ function drawReceiveButton() {
 }
 
 function drawPrintButton() {
-  $buttonIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-print');
-  $button = DMS.Helpers.CreateButton('button', true, 'print', ' PRINT', $buttonIcon);
+  var $buttonIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-print');
+  var $button = DMS.Helpers.CreateButton('button', true, 'print', ' PRINT', $buttonIcon);
 
   $button.click(function () {
     printInTransitReceiving();
@@ -123,16 +82,89 @@ function printInTransitReceiving() {
 }
 
 function drawComponentsButton() {
-  $container = $('<div class="view-toolbar grid-actions clearfix"></div>');
-  $buttonIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-wrench');
+  var $container = $('<div class="view-toolbar grid-actions clearfix"></div>');
+  var $buttonIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-wrench');
 
-  $button = DMS.Helpers.CreateButton('button', true, 'components', ' COMPONENTS', $buttonIcon);
+  var $button = DMS.Helpers.CreateButton('button', true, 'components', ' COMPONENTS', $buttonIcon);
+
+  var modalOptions = { id: 'componentsModal', headerIcon: 'fa fa-car', headerTitle: ' Vehicle Component Checklist', Body: createEditableGridSection() };
+
+
 
   $button.click(function () {
-    alert('hey');
+    $('.editable-grid-toolbar').remove();
+    $('#vehiclecomponentchecklist-editablegrid').remove();
+
+
+  var vehicleComponentChecklistGridInstance = {
+    initialize: function () {
+      /* - Editable Grid - Vehicle Component Checklist Subgrid*/
+      $('<div id="vehiclecomponentchecklist-editablegrid" class="editable-grid"></div>').appendTo('.content-wrapper');
+      var $container = document.getElementById('vehiclecomponentchecklist-editablegrid');
+      var detailId = getSelectedRecordsId("#VehicleInTransitTransferReceivingDetail");
+      var oDataQuery = '/_odata/gsc_iv_vehicleintransitreceivingchecklist?$filter=gsc_vehicleintransitreceivingdetailid/Id%20eq%20(Guid%27' + detailId + '%27)';
+      var options = {
+        dataSchema: {
+          gsc_iv_vehicleintransitreceivingchecklistid: { Id: null, Name: null },
+          gsc_included: null,
+          gsc_vehicleintransitreceivingchecklistpn: ''
+        },
+        colHeaders: [
+          'Included', 'Vehicle Checklist'
+        ],
+        columns: [
+          { data: 'gsc_included', type: 'checkbox', renderer: checkboxRenderer, className: 'htCenter htMiddle', width: 80 },
+          { data: 'gsc_vehicleintransitreceivingchecklistpn', renderer: stringRenderer, readOnly: true, className: 'htCenter htMiddle', width: 200 }
+        ],
+        gridWidth: 550,
+        addNewRows: false,
+        deleteRows: false
+      }
+
+      var sectionName = 'VehicleComponentChecklistGrid';
+      var attributes = [{ key: 'gsc_included', type: 'System.Boolean' },
+      { key: 'gsc_vehicleintransitreceivingchecklistpn', type: 'System.String' },
+      { key: 'gsc_vehicleintransitreceivingdetailid', type: 'Microsoft.Xrm.Sdk.EntityReference', reference: 'gsc_iv_vehicleintransitreceivingdetail', value: detailId }];
+      var model = { id: 'gsc_iv_vehicleintransitreceivingchecklistid', entity: 'gsc_iv_vehicleintransitreceivingchecklist', attr: attributes };
+      var hotInstance = new EditableGrid(options, $container, sectionName, oDataQuery, model, {
+        gsc_iv_vehicleintransitreceivingchecklistid: null,
+        gsc_included: false,
+        gsc_vehicleintransitreceivingchecklistpn: ''
+      });
+    }
+  }
+
+    // Initialize editable grid
+    $(document).trigger('initializeEditableGrid', vehicleComponentChecklistGridInstance);
+
+    $('#' + modalOptions.id).modal('show');
   });
 
   $container.append($button);
 
+  $modal = DMS.Helpers.CreateModalConfirmation(modalOptions);
+
+  $('#VehicleInTransitTransferReceivingDetail .subgrid').append($modal);
   $('#VehicleInTransitTransferReceivingDetail .subgrid').prepend($container);
+}
+
+function createEditableGridSection() {
+  var $container = $('<div class="container"></div>');
+
+  var $section = `<table role="presentation" data-name="VehicleComponentChecklistGrid" class="section">
+                          <colgroup>
+                          <col style="width:100%;">
+                          <col>
+                          </colgroup>
+                    <tbody>
+                      <tr>
+                          <td colspan="1" rowspan="1" class="clearfix cell subgrid-cell">
+                          </td>
+                          <td class="cell zero-cell"></td>
+                        </tr>
+                    </tbody>
+                  </table>`;
+
+  $container.append($section);
+  return $container.html();
 }
