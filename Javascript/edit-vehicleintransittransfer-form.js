@@ -1,4 +1,37 @@
 $(document).ready(function (e) {
+  setTimeout(function () {
+    $.cookie("baseModelId", $("#gsc_modelid").val(), { path: '/' });
+    $.cookie("productId", $("#gsc_productid").val(), { path: '/' });
+    $.cookie("siteId", $("#gsc_siteid").val(), { path: '/' });
+    $.cookie("colorName", $("#gsc_colorid_name").val(), { path: '/' });
+    $.cookie("modelCode", $("#gsc_modelcode").val(), { path: '/' });
+    $.cookie("optionCode", $("#gsc_optioncode").val(), { path: '/' });
+    
+    $("#gsc_modelid").on('change', function () {
+      $.cookie("baseModelId", $("#gsc_modelid").val(), { path: '/' });
+    });
+    
+    $("#gsc_productid").on('change', function () {
+      $.cookie("productId", $("#gsc_productid").val(), { path: '/' });
+    });
+    
+    $("#gsc_modelcode").on('change', function () {
+      $.cookie("modelCode", $("#gsc_modelcode").val(), { path: '/' });
+    });
+    
+    $("#gsc_optioncode").on('change', function () {
+      $.cookie("optionCode", $("#gsc_optioncode").val(), { path: '/' });
+    });
+    
+    $("#gsc_sitecriteriaid").on('change', function () {
+      $.cookie("siteId", $("#gsc_siteid").val(), { path: '/' });
+    });
+    
+    $("#gsc_colorid_name").on('change', function () {
+      $.cookie("colorName", $("#gsc_colorid_name").val(), { path: '/' });
+    });
+  }, 100);
+  
   //Disable transferred vehicles remove button on load then enable on item select
   $(document).on('click', '#AllocatedVehicle .view-grid table tbody tr', AddEventAllocatedVehicles);
   

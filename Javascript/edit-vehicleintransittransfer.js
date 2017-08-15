@@ -23,7 +23,7 @@ $(document).ready(function () {
 
     setTimeout(function () {
       $('#gsc_isshipping').hide();
-      RefreshAvailableItems($(".btn-primary").closest("div #Inventory"), 1, 4);
+      //RefreshAvailableItems($(".btn-primary").closest("div #Inventory"), 1, 4);
       
       $('.btn-primary').on('click', function (e) {
         var $subgrid = $(this).closest(".subgrid");
@@ -32,7 +32,7 @@ $(document).ready(function () {
         if ($subgridId == "Inventory") {
           e.preventDefault();
           e.stopPropagation();
-          RefreshAvailableItems($subgrid.parent(), 1, 4);
+          //RefreshAvailableItems($subgrid.parent(), 1, 4);
         }
       });
       
