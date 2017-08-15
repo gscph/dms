@@ -8,7 +8,6 @@ $(document).bind('DOMNodeInserted', function (evt) {
 });
 
 $(document).ready(function () {
-    //var inTransitStatus = $('#gsc_intransittransferstatus').val();
     var inTransitStatus = $(".record-status").html();
 
     $('#gsc_intransittransferstatus').attr('readOnly', true);
@@ -303,42 +302,41 @@ $(document).ready(function () {
             .show();
     }
 
-    function disableFields() {
-        $('#AllocatedVehicle table tbody tr').each(function () {
-            $(this).find('td:last .btn').addClass('disabled');
-        }
-        );
-
-        $('.delete-link').addClass('disabled');
-
-        $('.control > input').attr('readOnly', true);
-        $('.control > textarea').attr('readOnly', true);
-        $('.datetimepicker > .form-control').attr('readOnly', true);
-
-
-        $('.clearlookupfield').remove();
-        $('.launchentitylookup').remove();
-        $('.input-group-addon').remove();
-
-        $('#gsc_transferstatus').hide();
-        $('#gsc_transferstatus_label').hide();
-
-
-    }
-
     function drawAllocateButton() {
-
         var allocateButton = document.createElement("BUTTON");
         var allocate = document.createElement("SPAN");
         allocate.className = "fa fa-lock";
         allocateButton.appendChild(allocate);
         var allocateButtonLabel = document.createTextNode(" ALLOCATE");
         allocateButton.appendChild(allocateButtonLabel);
-        allocateButton.className = "allocate-link btn btn-primary action";
+        allocateButton.className = "allocate-link btn btn-primary action disabled";
         allocateButton.addEventListener("click", allocateVehicle);
         $("#Inventory").find(".view-toolbar.grid-actions.clearfix").append(allocateButton);
     }
-
+    
+    $(document).on('click', '#Inventory tbody tr', addEventInventory);
+    setTimeout(function() {
+      $('#Inventory tbody tr td:first-child').click(function () {
+        addEventInventory();
+      });
+    }, 3000);
+    
+    function addEventInventory() {
+      var counter = 0;
+      
+      $('#Inventory tbody tr td.multi-select-cbx').each(function () {
+        if ($(this).data('checked') == "true") {
+          counter++;
+        }
+      });
+      
+      if (counter > 0 && $('.record-status').html() == 'Picked') {
+        $('#Inventory .allocate-link').removeClass('disabled');
+      } else {
+        $('#Inventory .allocate-link').addClass('disabled');
+      }
+    }
+    
     function drawShipButton() {
         var shipButton = document.createElement("BUTTON");
         var ship = document.createElement("SPAN");
@@ -386,7 +384,6 @@ $(document).ready(function () {
         var host = window.location.host;
         var url = protocol + "//" + host + "/report/?reportname={96BD2042-E870-E611-80DB-00155D010E2C}&reportid=" + param1var;
         window.open(url, 'blank', 'width=500,height=400');
-
     }
 
     function allocateVehicle(event) {
@@ -420,7 +417,6 @@ $(document).ready(function () {
     function cancelTransaction() {
         $('#gsc_intransittransferstatus').val('100000003');
         $('#UpdateButton').click();
-
     }
 
     function shipTransaction() {
