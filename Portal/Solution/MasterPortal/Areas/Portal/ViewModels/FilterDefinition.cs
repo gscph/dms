@@ -1708,7 +1708,7 @@ namespace Site.Areas.Portal.ViewModels
                         {
                             Attribute = "gsc_classmaintenancepn",
                             Operator = ConditionOperator.Contains,
-                            Value = priceListTypeClass
+                            Value = "%"+priceListTypeClass+"%"
                         });
                         
                         List<Filter> linkfilters = new List<Filter>();
