@@ -1,0 +1,172 @@
+$(document).ready(function () {
+    
+    if($('#gsc_inquiryno').val() != "")
+    {
+      $("#gsc_productid").siblings('div.input-group-btn').children('.clearlookupfield').hide();
+      $('#gsc_productid_name').siblings('.input-group-btn').addClass('hidden');
+      $("#gsc_vehiclecolor").siblings('div.input-group-btn').children('.clearlookupfield').hide();
+      $('#gsc_vehiclecolor_name').siblings('.input-group-btn').addClass('hidden');
+      $("#gsc_vehiclebasemodelid").siblings('div.input-group-btn').children('.clearlookupfield').hide();
+      $('#gsc_vehiclebasemodelid_name').siblings('.input-group-btn').addClass('hidden');
+    }
+  
+    if (typeof (Page_ClientValidate) == 'function') {
+    }
+
+    var status = document.getElementById("statecode").innerHTML;
+    $(".section[data-name='HideSection']").closest("fieldset").hide();
+    $('label[for=gsc_quotecount], input#gsc_quotecount').hide();
+
+    $('.generate-quote-from-opportunity-link').hide();
+
+    var generateButton = document.createElement("BUTTON");
+    var plus = document.createElement("SPAN");
+    plus.className = "fa fa-flash";
+    generateButton.appendChild(plus);
+    var generateButtonLbl = document.createTextNode(" GENERATE QUOTE");
+    generateButton.appendChild(generateButtonLbl);
+    generateButton.className = "btn btn-primary";
+    generateButton.addEventListener("click", generateQuote);
+    
+    if (status == 'Open') {
+        $(".form-action-container-left").append(generateButton);
+    }
+  
+    //ReOpen Button
+    var reopenButton = document.createElement("BUTTON");
+    var reopen = document.createElement("SPAN");
+    reopen.className = "fa fa-edit";
+    reopenButton.appendChild(reopen);
+    var reopenButtonLabel = document.createTextNode(" REOPEN OPPORTUNITY");
+    reopenButton.appendChild(reopenButtonLabel);
+    reopenButton.className = "btn btn-primary button";
+    reopenButton.addEventListener("click", reOpenOpportunity);
+
+    if (status == 'Lost') {
+        $(".form-action-container-left").append(reopenButton);
+        $(".datetimepicker > input").attr("disabled", "true");
+    }
+    if (status == 'Won') {
+        $(".datetimepicker > input").attr("disabled", "true");
+    }
+
+    function generateQuote() {
+        var quoteCount = $("#gsc_quotecount").val();
+        if (quoteCount == "")
+            quoteCount = 0;
+
+        $("#gsc_quotecount").val(parseInt(quoteCount) + 1);
+        //$('#gsc_portaluserid').val(userId);
+        $("#UpdateButton").click();
+    }
+    
+    $("#UpdateButton").click(function () {
+    $('#gsc_portaluserid').val(userId);
+    });
+
+    function reOpenOpportunity(e) {
+        e.preventDefault();
+
+        //Loading Image
+        $.blockUI({ message: null, overlayCSS: { opacity: .3 } });
+
+        var div = document.createElement("DIV");
+        div.className = "view-loading message text-center";
+        div.style.cssText = 'position: absolute; top: 50%; left: 50%;margin-right: -50%;display: block;';
+        var span = document.createElement("SPAN");
+        span.className = "fa fa-2x fa-spinner fa-spin";
+        div.appendChild(span);
+        $(".content-wrapper").append(div);
+
+        var entityId = getQueryVariable("id");
+        var workflowName = "Opportunity - ReOpen";
+
+        $.ajax({
+            type: "PUT",
+            url: "/api/Service/RunWorkFlow/?workflowName=" + workflowName + "&entityId=" + entityId,
+            success: function (response) {
+                var url = document.location.protocol + '//' +
+                    document.location.host + (document.location.host.indexOf("demo.adxstudio.com") != -1
+                    ? document.location.pathname.split("/").slice(0, 3).join("/")
+                    : "") + '/Cache.axd?Message=InvalidateAll&d=' +
+                    (new Date()).valueOf();
+                var req = new XMLHttpRequest();
+                req.open('GET', url, false);
+                req.send(null); window.location.reload(true);
+            }
+        }).error(function (errormsg) { console.log(errormsg) });
+
+    }
+
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+    }
+    
+    //Modified By : Jerome Anthony Gerero, Modified On : 1/23/2017
+    if (typeof (Page_Validators) == 'undefined') return;
+    
+    var financingValidator = document.createElement('span');
+    financingValidator.style.display = "none";
+    financingValidator.id = "RequiredFieldValidatorgsc_financingtermid";
+    financingValidator.controltovalidate = "gsc_financingtermid";
+    financingValidator.errormessage = "<a href='#gsc_financingtermid'>Financing Term is a required field</a>";
+    financingValidator.validationGroup = "";
+    financingValidator.initialvalue = "";
+    financingValidator.evaluationfunction = function () {
+        var value = $("#gsc_financingtermid").val();
+        if (value == null || value == "") {
+            return false;
+        } else {
+            return true;
+        }
+    };
+    
+    setTimeout(function () {
+      
+      if(DMS.Settings.User.positionName.indexOf("Sales Executive") == 0)
+        SetSalesExecutive();
+
+        function SetSalesExecutive(){
+			  $("#gsc_salesexecutiveid").siblings('div.input-group-btn').children('.launchentitylookup').hide();
+			  $("#gsc_salesexecutiveid").siblings('div.input-group-btn').children('.clearlookupfield').hide();
+        }
+      
+      $("#gsc_paymentmode").on('change', function () {
+            var paymentmode = $("#gsc_paymentmode").val();
+
+            if (paymentmode == '100000001') {
+                $('#gsc_financingtermid_label').parent("div").addClass("required");
+                $("#gsc_financingtermid").siblings('div.input-group-btn').children('.clearlookupfield').hide();
+                $('#gsc_financingtermid_name').siblings('.input-group-btn').removeClass('hidden');
+
+                Page_Validators.push(financingValidator);
+            }
+            else {
+                $('#gsc_financingtermid').val(null);
+                $('#gsc_financingtermid_name').val(null);
+                $('#gsc_financingtermid_label').parent("div").removeClass("required");
+                $("#gsc_financingtermid").siblings('div.input-group-btn').children('.clearlookupfield').hide();
+                $('#gsc_financingtermid_name').siblings('.input-group-btn').addClass('hidden');
+
+                Page_Validators = jQuery.grep(Page_Validators, function (value) {
+                    return value != financingValidator;
+                });
+            }
+        });
+    });
+    //End
+    
+    /* Added by: Christell Ann Mataac - 2/22/2017
+        need to remove edit (lookup) functionality on existing records. */
+    $('#gsc_leadsourceid').parent().find("button.launchentitylookup, button.clearlookupfield").attr("disabled", "true");
+    $('#gsc_vehiclebasemodelid').parent().find("button.launchentitylookup, button.clearlookupfield").attr("disabled", "true");
+    $('#gsc_colorid').parent().find("button.launchentitylookup, button.clearlookupfield").attr("disabled", "true");
+    
+});

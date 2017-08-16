@@ -29,15 +29,16 @@ $(document).ready(function () {
 
     setTimeout(function () {
 
-        if (DMS.Settings.User.positionName == "Sales Executive" || DMS.Settings.User.webRole == "Sales Executive")
+         if(DMS.Settings.User.positionName.indexOf("Sales Executive") == 0)
             SetSalesExecutive();
 
-        function SetSalesExecutive() {
-            $("#gsc_salesexecutiveid_entityname").val("contact");
-            $("#gsc_salesexecutiveid").val(DMS.Settings.User.Id);
-            var fullName = $("#userFullname").html();
-            $("#gsc_salesexecutiveid_name").val(fullName);
-        }
+    function SetSalesExecutive(){
+        $("#gsc_salesexecutiveid").siblings('div.input-group-btn').children('.launchentitylookup').hide();
+        $("#gsc_salesexecutiveid_entityname").val("contact");
+        $("#gsc_salesexecutiveid").val(DMS.Settings.User.Id);
+        var fullName = $("#userFullname").html();
+        $("#gsc_salesexecutiveid_name").val(fullName);
+    }
         $("#gsc_paymentmode").on('change', function () {
             var paymentmode = $("#gsc_paymentmode").val();
 
@@ -84,30 +85,31 @@ $(document).ready(function () {
                         var address = customer.address1_line1;
                         var isFraud = customer.gsc_fraud;
 
-                        if (isFraud == true) {
-                            $("#customerid").val(null);
-                            $("#customerid_name").val(null);
-                            DMS.Notification.Error("The customer you selected has been identified as a fraud account. Please ask the customer to provide further information.", true, 5000);
+                        if(isFraud == true)
+                        {
+                          $("#customerid").val(null);
+                          $("#customerid_name").val(null);
+                          DMS.Notification.Error("The customer you selected has been identified as a fraud account. Please ask the customer to provide further information.",true,5000);
                         }
-                        else {
-                            if (customerEntity == "contact")
-                                $("#gsc_mobileno").val(customer.mobilephone);
-                            else
-                                $("#gsc_mobileno").val(customer.telephone1);
+                      else 
+                        {
+                        if (customerEntity == "contact")
+                            $("#gsc_mobileno").val(customer.mobilephone);
+                        else
+                            $("#gsc_mobileno").val(customer.telephone1);
 
-                            if (city != null) {
-                                address = address + ", " + city.Name;
-                            }
-                            if (province != null) {
-                                address = address + ", " + province.Name;
-                            }
-                            if (country != null) {
-                                address = address + ", " + country.Name;
-                            }
-                            $("#gsc_completeaddress").val(address);
-
+                        if (city != null) {
+                            address = address + ", " + city.Name;
                         }
-                    },
+                        if (province != null) {
+                            address = address + ", " + province.Name;
+                        }
+                        if (country != null) {
+                            address = address + ", " + country.Name;
+                        }
+                        $("#gsc_completeaddress").val(address);
+
+                    }},
                     error: function (xhr, textStatus, errorMessage) {
                         console.log(errorMessage);
                     }
@@ -154,45 +156,46 @@ $(document).ready(function () {
                 var city = customer.gsc_cityid;
                 var address = customer.address1_line1;
                 var isFraud = customer.gsc_fraud;
-
-                if (isFraud == true) {
-                    $("#customerid").val(null);
-                    $("#customerid_name").val(null);
-                    DMS.Notification.Error("The customer you selected has been identified as a fraud account. Please ask the customer to provide further information.", true, 5000);
+              
+                if(isFraud == true)
+                {
+                  $("#customerid").val(null);
+                  $("#customerid_name").val(null);
+                  DMS.Notification.Error("The customer you selected has been identified as a fraud account. Please ask the customer to provide further information.",true,5000);
+                }
+              else
+              {
+                if (refEntity == "contact") {
+                    $("#customerid").val(customer.contactid);
+                    $("#customerid_name").val(customer.fullname);
                 }
                 else {
-                    if (refEntity == "contact") {
-                        $("#customerid").val(customer.contactid);
-                        $("#customerid_name").val(customer.fullname);
-                    }
-                    else {
-                        $("#customerid").val(customer.accountid);
-                        $("#customerid_name").val(customer.name);
-                    }
-
-                    $("#customerid_entityname").val(refEntity);
-                    $('#customerid_name').siblings('.input-group-btn').addClass('hidden');
-
-                    if (refEntity == "contact")
-                        $("#gsc_mobileno").val(customer.mobilephone);
-                    else
-                        $("#gsc_mobileno").val(customer.telephone1);
-
-                    if (city != null) {
-                        address = address + ", " + city.Name;
-                    }
-                    if (province != null) {
-                        address = address + ", " + province.Name;
-                    }
-                    if (country != null) {
-                        address = address + ", " + country.Name;
-                    }
-                    $("#gsc_completeaddress").val(address);
-                    $.unblockUI();
-                    $(".loadingDiv").remove();
-
+                    $("#customerid").val(customer.accountid);
+                    $("#customerid_name").val(customer.name);
                 }
-            },
+
+                $("#customerid_entityname").val(refEntity);
+                $('#customerid_name').siblings('.input-group-btn').addClass('hidden');
+
+                if (refEntity == "contact")
+                    $("#gsc_mobileno").val(customer.mobilephone);
+                else
+                    $("#gsc_mobileno").val(customer.telephone1);
+
+                if (city != null) {
+                    address = address + ", " + city.Name;
+                }
+                if (province != null) {
+                    address = address + ", " + province.Name;
+                }
+                if (country != null) {
+                    address = address + ", " + country.Name;
+                }
+                $("#gsc_completeaddress").val(address);
+                $.unblockUI();
+                $(".loadingDiv").remove();
+
+            }},
             error: function (xhr, textStatus, errorMessage) {
                 console.log(errorMessage);
             }
