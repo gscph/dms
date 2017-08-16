@@ -1,4 +1,10 @@
 $(document).ready(function () {
+    if ($('#gsc_inquiryno').val() == '') {
+      $('#gsc_inquiryno').attr("readonly", false);
+    } else {
+      $('#gsc_inquiryno').attr("readonly", true);
+    }
+    
     $('#gsc_regionid_name').siblings('.input-group-btn').addClass('hidden');
     $("table[data-name='Summary_section_3']").hide();
     if (typeof (Page_Validators) == 'undefined') return;
@@ -7,7 +13,7 @@ $(document).ready(function () {
     financingValidator.style.display = "none";
     financingValidator.id = "RequiredFieldValidatorgsc_financingtermid";
     financingValidator.controltovalidate = "gsc_financingtermid";
-    financingValidator.errormessage = "<a href='#gsc_financingtermid'>Financing Term is a required field</a>";
+    financingValidator.errormessage = "<a href='#gsc_financingtermid'>Financing Term is a required field.</a>";
     financingValidator.validationGroup = "";
     financingValidator.initialvalue = "";
     financingValidator.evaluationfunction = function () {
@@ -20,6 +26,18 @@ $(document).ready(function () {
     };
 
     setTimeout(function () {
+		
+		if(DMS.Settings.User.positionName.indexOf("Sales Executive") == 0)
+        SetSalesExecutive();
+
+        function SetSalesExecutive(){
+			  $("#gsc_salesexecutiveid").siblings('div.input-group-btn').children('.launchentitylookup').hide();
+			  $("#gsc_salesexecutiveid").siblings('div.input-group-btn').children('.clearlookupfield').hide();
+        }
+		
+		var paymentmode = $("#gsc_paymentmode").val();
+		eValidator(paymentmode);
+		
         $('#gsc_portaluserid').val(userId);
 
         $('.datetimepicker').data("DateTimePicker").setMaxDate(new Date());
@@ -31,8 +49,12 @@ $(document).ready(function () {
 
         $("#gsc_paymentmode").on('change', function () {
             var paymentmode = $("#gsc_paymentmode").val();
-
-            if (paymentmode == '100000001') {
+			     eValidator(paymentmode);
+        });
+		
+		function eValidator(paymentmode)
+			{
+		     if (paymentmode == '100000001') {
                 $('#gsc_financingtermid_label').parent("div").addClass("required");
                 $('#gsc_financingtermid_name').siblings('.input-group-btn').removeClass('hidden');
 
@@ -48,8 +70,11 @@ $(document).ready(function () {
                     return value != financingValidator;
                 });
             }
-        });
+	}
+		
     }, 100);
+	
+
 
     /* Edit Prospect scripts
     var reportsTo = $('#gsc_recordsownerreportsto').val();
@@ -68,14 +93,27 @@ $(document).ready(function () {
 
     //Add onchange events
     setTimeout(function () {
+      
+        
         requirementLevel();
-
+  
         $('.datetimepicker').data("DateTimePicker").setMaxDate(new Date());
 
         //Compute age based on birthday
+        
+        $('#gsc_birthday').next('.datetimepicker').children('input').mask('ZZ/ZZ/ZZZZ', {
+                  translation: {
+                    'Z': {
+                      pattern: /[0-9]/, optional: true
+                    }
+                  }
+        });
+   
+        
         $('#gsc_birthday').next('.datetimepicker').on('dp.change', function (e) {
             var diff = moment().diff(e.date, 'years');
             $('#gsc_age').val(Math.max(0, diff));
+       
         });
 
 
@@ -119,7 +157,7 @@ $(document).ready(function () {
     }, 100);
 
     //Set page validators
-    if (typeof (Page_Validators) == 'undefined') return;
+   // if (typeof (Page_Validators) == 'undefined') return;
 
     //Create new validator
     var companyValidator = document.createElement('span');
