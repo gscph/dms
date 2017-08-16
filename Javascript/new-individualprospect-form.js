@@ -66,6 +66,19 @@ $(document).ready(function () {
 
     setTimeout(function () {
 
+        $('.datetimepicker').data("DateTimePicker").setMaxDate(new Date());
+        
+       	if(DMS.Settings.User.positionName.indexOf("Sales Executive") == 0)
+        SetSalesExecutive();
+
+        function SetSalesExecutive(){
+			      $("#gsc_salesexecutiveid").siblings('div.input-group-btn').children('.launchentitylookup').hide();
+            $("#gsc_salesexecutiveid_entityname").val("contact");
+            $("#gsc_salesexecutiveid").val(DMS.Settings.User.Id);
+            var fullName = $("#userFullname").html();
+            $("#gsc_salesexecutiveid_name").val(fullName);
+        }
+
         $('#birthdate').next('.datetimepicker').on('dp.change', function (e) {
             var diff = moment().diff(e.date, 'years');
             $('#gsc_age').val(Math.max(0, diff));

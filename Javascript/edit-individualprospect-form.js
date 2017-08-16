@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    if ($('#gsc_customerid').val() == '') {
+      $('#gsc_customerid').attr("readonly", false);
+    } else {
+      $('#gsc_customerid').attr("readonly", true);
+    }
 
     $(".section[data-name='HideSection']").closest("fieldset").hide();
     $('#gsc_regionid_name').siblings('.input-group-btn').addClass('hidden');
@@ -6,7 +11,15 @@ $(document).ready(function () {
 
     setTimeout(function () {
         $('#birthdate').next('.datetimepicker').data("DateTimePicker").setMaxDate(new Date());
+		
+		if(DMS.Settings.User.positionName.indexOf("Sales Executive") == 0)
+        SetSalesExecutive();
 
+        function SetSalesExecutive(){
+			  $("#gsc_salesexecutiveid").siblings('div.input-group-btn').children('.launchentitylookup').hide();
+			  $("#gsc_salesexecutiveid").siblings('div.input-group-btn').children('.clearlookupfield').hide();
+        }
+		
         $('#birthdate').next('.datetimepicker').on('dp.change', function (e) {
             var diff = moment().diff(e.date, 'years');
             $('#gsc_age').val(Math.max(0, diff));
@@ -85,10 +98,12 @@ $(document).ready(function () {
         $(".form-action-container-left").append($btnConvertToCustomer);
     }
     $btnConvertToCustomer.click(function (evt) {
+      if (Page_ClientValidate("")) {
         showLoading();
         $("#gsc_ispotential_0").prop("checked", true);
         evt.preventDefault();
         $("#UpdateButton").click();
+      }
     });
     if ($("#gsc_ispotential_0").is(":checked")) {
         alert("Redirecting to customer page...")
