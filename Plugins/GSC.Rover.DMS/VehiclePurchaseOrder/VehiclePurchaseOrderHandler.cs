@@ -292,14 +292,19 @@ namespace GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrder
             purchaseOrderApproval["gsc_approverlevel"] = approverLevelName;
             purchaseOrderApproval["gsc_date"] = DateTime.UtcNow;
 
+            //Approved
             if (approvalStatus == 100000000)
             {
                 purchaseOrderApproval["gsc_status"] = new OptionSetValue(100000000);
             }
+            //Disapproved
             else if (approvalStatus == 100000001)
             {
                 purchaseOrderApproval["gsc_status"] = new OptionSetValue(100000001);
             }
+
+            if (isLastApproverApproved(approverLevelName, purchaseOrderEntity) == false)
+                throw new InvalidPluginExecutionException("This record is not yet approved by the approver preceding you.");
 
             _organizationService.Create(purchaseOrderApproval);
             
@@ -325,6 +330,38 @@ namespace GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrder
 
             _tracingService.Trace("Ended CreateApprovalRecord method...");
             return purchaseOrderEntity;
+        }
+
+        public Boolean isLastApproverApproved(String approverLevelName, Entity purchaseOrderEntity)
+        {
+            //If first approver return true
+            String levelName = approverLevelName.Substring(approverLevelName.Length - 1);
+            if (levelName == "1") return true;
+
+            Int32 levelNumber = Convert.ToInt32(levelName);
+            levelNumber = levelNumber - 1;
+
+             var purchaseOrderConditionList = new List<ConditionExpression>
+                    {
+                        new ConditionExpression("gsc_purchaseorderid", ConditionOperator.Equal, purchaseOrderEntity.Id),
+                        new ConditionExpression("gsc_approverlevel", ConditionOperator.Equal, "Level " + levelNumber.ToString())
+                    };
+
+                    EntityCollection purchaseOrderApprovalRecords = CommonHandler.RetrieveRecordsByConditions("gsc_cmn_purchaseorderapproval", purchaseOrderConditionList, _organizationService, null, OrderType.Ascending,
+                        new[] { "gsc_status" });
+
+                    _tracingService.Trace("Product Quantity Records Count : " + purchaseOrderApprovalRecords.Entities.Count.ToString());
+
+                    if (purchaseOrderApprovalRecords != null && purchaseOrderApprovalRecords.Entities.Count > 0)
+                    {
+                        Entity purchaseOrderApproval = purchaseOrderApprovalRecords.Entities[0];
+                        Int32 approvalStatus = purchaseOrderApproval.GetAttributeValue<OptionSetValue>("gsc_status") != null
+                           ? purchaseOrderApproval.GetAttributeValue<OptionSetValue>("gsc_status").Value
+                           : 0;
+                        if (approvalStatus == 100000000)
+                            return true;
+                    }
+             return false;
         }
 
         //Created By : Jerome Anthony Gerero, Created On : 5/4/2016
