@@ -337,6 +337,22 @@ $(document).ready(function () {
       }
     }
     
+    checkRefreshButton();
+    
+    function checkRefreshButton() {
+      if ($('a:contains(" REFRESH")').is(':visible')) {
+        $('a:contains(" REFRESH")').attr('id', 'refresh');
+        document.getElementById('refresh').addEventListener('click', DMS.Helpers.Debounce(function (e) {
+          e.preventDefault();
+          $(document).on('click', '#Inventory tbody tr', addEventInventory);
+          $('#Inventory').children('.subgrid').trigger('refresh');
+        }, 500));
+      }
+      else {
+        setTimeout(checkRefreshButton, 50);
+      }
+    }
+    
     function drawShipButton() {
         var shipButton = document.createElement("BUTTON");
         var ship = document.createElement("SPAN");
