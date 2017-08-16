@@ -14,7 +14,7 @@ $(document).ready(function (e) {
 
     setTimeout(function () {
 
-        if (DMS.Settings.User.positionName == "Sales Executive" || DMS.Settings.User.webRole == "Sales Executive")
+        if(DMS.Settings.User.positionName.indexOf("Sales Executive") == 0)
             SetSalesExecutive();
 
         $('#gsc_validuntil').next('.datetimepicker').on("dp.change", function (e) {
@@ -118,6 +118,7 @@ $(document).ready(function (e) {
     }, 100);
 
     function SetSalesExecutive() {
+		$("#gsc_salesexecutiveid").siblings('div.input-group-btn').children('.launchentitylookup').hide();
         $("#gsc_salesexecutiveid_entityname").val("contact");
         $("#gsc_salesexecutiveid").val(DMS.Settings.User.Id);
         var fullName = $("#userFullname").html();
@@ -204,7 +205,7 @@ $(document).ready(function (e) {
         });
     }, 100);
 
-    function checkPreferredColor(index) {
+     function checkPreferredColor(index) {
         var colorNum = index;
         var color1 = $('#gsc_vehiclecolorid1').val();
         var color2 = $('#gsc_vehiclecolorid2').val();
