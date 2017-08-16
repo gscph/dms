@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     setTimeout(function () {
 
-        if (DMS.Settings.User.positionName == "Sales Executive" || DMS.Settings.User.webRole == "Sales Executive")
+       if(DMS.Settings.User.positionName.indexOf("Sales Executive") == 0)
             SetSalesExecutive();
 
         $('#gsc_productid').on('change', function () {
@@ -56,6 +56,7 @@ $(document).ready(function () {
     }
 
     function SetSalesExecutive() {
+		$("#gsc_salesexecutiveid").siblings('div.input-group-btn').children('.launchentitylookup').hide();
         $("#gsc_salesexecutiveid_entityname").val("contact");
         $("#gsc_salesexecutiveid").val(DMS.Settings.User.Id);
         var fullName = $("#userFullname").html();
