@@ -23,7 +23,7 @@ $(document).ready(function (e) {
       $.cookie("optionCode", $("#gsc_optioncode").val(), { path: '/' });
     });
     
-    $("#gsc_sitecriteriaid").on('change', function () {
+    $("#gsc_siteid").on('change', function () {
       $.cookie("siteId", $("#gsc_siteid").val(), { path: '/' });
     });
     
