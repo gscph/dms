@@ -81,6 +81,7 @@ $(document).ready(function (e) {
        // $("#gsc_discountamount").val(parseFloat(totaldiscount).toFixed(2));
 
         //do not allow less than 0 input
+        var value = 0;
         $('#gsc_applypercentagetodp').blur(function () {
             if (this.value < 0) {
                 this.value = 0;
@@ -93,12 +94,14 @@ $(document).ready(function (e) {
         });
 
         $('#gsc_applyamounttodp').blur(function () {
-            if (this.value < 0) {
+            value = this.value.replace(/,/g, "");
+            if (value < 0) {
                 this.value = 0;
                 $("#gsc_applyamounttodp").trigger('change');
             }
-            else if ((parseFloat(this.value) + parseFloat(dscnt_afamount) + parseFloat(dscnt_upamount)) > totaldiscount) {
-                this.value = totaldiscount - dscnt_afamount - dscnt_upamount;
+            else if ((parseFloat(value) + parseFloat(dscnt_afamount) + parseFloat(dscnt_upamount)) > totaldiscount) {
+                value = totaldiscount - dscnt_afamount - dscnt_upamount;
+                this.value = value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
                 $("#gsc_applyamounttodp").trigger('change');
             }
         });
@@ -115,12 +118,14 @@ $(document).ready(function (e) {
         });
 
         $('#gsc_applyamounttoaf').blur(function () {
-            if (this.value < 0) {
+            value = this.value.replace(/,/g, "");
+            if (value < 0) {
                 this.value = 0;
                 $("#gsc_applyamounttoaf").trigger('change');
             }
-            else if ((parseFloat(this.value) + parseFloat(dscnt_dpamount) + parseFloat(dscnt_upamount)) > totaldiscount) {
-                this.value = totaldiscount - dscnt_dpamount - dscnt_upamount;
+            else if ((parseFloat(value) + parseFloat(dscnt_dpamount) + parseFloat(dscnt_upamount)) > totaldiscount) {
+                value = totaldiscount - dscnt_dpamount - dscnt_upamount;
+                this.value = value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
                 $("#gsc_applyamounttoaf").trigger('change');
             }
         });
@@ -137,12 +142,14 @@ $(document).ready(function (e) {
         });
 
         $('#gsc_applyamounttoup').blur(function () {
-            if (this.value < 0) {
+            value = this.value.replace(/,/g, "");
+            if (value < 0) {
                 this.value = 0;
                 $("#gsc_applyamounttoup").trigger('change');
             }
-            else if ((parseFloat(this.value) + parseFloat(dscnt_dpamount) + parseFloat(dscnt_afamount)) > totaldiscount) {
-                this.value = totaldiscount - dscnt_dpamount - dscnt_afamount;
+            else if ((parseFloat(value) + parseFloat(dscnt_dpamount) + parseFloat(dscnt_afamount)) > totaldiscount) {
+                value = totaldiscount - dscnt_dpamount - dscnt_afamount;
+                this.value = value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
                 $("#gsc_applyamounttoup").trigger('change');
             }
         });

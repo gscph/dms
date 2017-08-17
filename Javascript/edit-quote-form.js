@@ -668,29 +668,34 @@ $(document).ready(function (e) {
     //validations
     setTimeout(function () {
         //variable assignment
-    //    $('#gsc_applytodpamount').val(dscnt_dpamount);
-      //  $('#gsc_applytoafamount').val(dscnt_afamount);
-      //  $('#gsc_applytoupamount').val(dscnt_upamount);
+        //    $('#gsc_applytodpamount').val(dscnt_dpamount);
+        //  $('#gsc_applytoafamount').val(dscnt_afamount);
+        //  $('#gsc_applytoupamount').val(dscnt_upamount);
 
         //do not allow less than 0 input
+        var value = 0;
         $('#gsc_applytodpamount').blur(function () {
-            if (this.value < 0 || totaldiscount == 0) {
+            value = this.value.replace(/,/g, "");
+            if (value < 0 || totaldiscount == 0) {
                 this.value = "";
                 $("#gsc_applytodpamount").trigger('change');
             }
-            else if ((parseFloat(this.value) + parseFloat(dscnt_afamount) + parseFloat(dscnt_upamount)) > totaldiscount) {
-                this.value = totaldiscount - dscnt_afamount - dscnt_upamount;
+            else if ((parseFloat(value) + parseFloat(dscnt_afamount) + parseFloat(dscnt_upamount)) > totaldiscount) {
+                value = totaldiscount - dscnt_afamount - dscnt_upamount;
+                this.value = value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
                 $("#gsc_applytodpamount").trigger('change');
             }
         });
 
         $('#gsc_applytoafamount').blur(function () {
-            if (this.value < 0 || totaldiscount == 0) {
+            value = this.value.replace(/,/g, "");
+            if (value < 0 || totaldiscount == 0) {
                 this.value = "";
                 $("#gsc_applytoafamount").trigger('change');
             }
-            else if ((parseFloat(this.value) + parseFloat(dscnt_dpamount) + parseFloat(dscnt_upamount)) > totaldiscount) {
-                this.value = totaldiscount - dscnt_dpamount - dscnt_upamount;
+            else if ((parseFloat(value) + parseFloat(dscnt_dpamount) + parseFloat(dscnt_upamount)) > totaldiscount) {
+                value = totaldiscount - dscnt_dpamount - dscnt_upamount;
+                this.value = value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
                 $("#gsc_applytoafamount").trigger('change');
             }
         });
@@ -727,12 +732,14 @@ $(document).ready(function (e) {
             }
         });
         $('#gsc_applytoupamount').blur(function () {
-            if (this.value < 0 || totaldiscount == 0) {
+            value = this.value.replace(/,/g, "");
+            if (value < 0 || totaldiscount == 0) {
                 this.value = "";
                 $("#gsc_applytoupamount").trigger('change');
             }
-            else if ((parseFloat(this.value) + parseFloat(dscnt_dpamount) + parseFloat(dscnt_afamount)) > totaldiscount) {
-                this.value = totaldiscount - dscnt_dpamount - dscnt_afamount;
+            else if ((parseFloat(value) + parseFloat(dscnt_dpamount) + parseFloat(dscnt_afamount)) > totaldiscount) {
+                value = totaldiscount - dscnt_dpamount - dscnt_afamount;
+                this.value = value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
                 $("#gsc_applytoupamount").trigger('change');
             }
         });
