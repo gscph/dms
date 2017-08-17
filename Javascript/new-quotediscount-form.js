@@ -354,6 +354,7 @@ $(document).ready(function (e) {
         var amount = $("#gsc_discountamount").val() == "" ? 0 : $("#gsc_discountamount").val();
 
         if (amount == 0) {
+            console.log("empty");
             return false;
         }
 
