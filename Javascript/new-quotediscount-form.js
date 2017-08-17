@@ -1,5 +1,6 @@
 $(document).ready(function (e) {
 
+    $('.text.money').mask("#,##0.00", { reverse: true });
     var totaldiscount = 0;
 
     $('#UpdateButton').click(function (event) {
@@ -150,41 +151,6 @@ $(document).ready(function (e) {
         dscnt_uppercent = dscnt_uppercent == "" ? 0 : dscnt_uppercent;
         totaldiscount = totaldiscount == "" ? 0 : totaldiscount;
 
-        $('#gsc_applyamounttodp').val(parseFloat(dscnt_dpamount).toFixed(2));
-        $('#gsc_applyamounttoaf').val(parseFloat(dscnt_afamount).toFixed(2));
-        $('#gsc_applyamounttoup').val(parseFloat(dscnt_upamount).toFixed(2));
-        $("#gsc_discountamount").val(parseFloat(totaldiscount).toFixed(2));
-
-
-        //change type from text to number; only allow numbers in textbox
-        $('#gsc_applypercentagetodp').click(function () {
-            $(this).get(0).type = 'number';
-        });
-
-        $('#gsc_applyamounttodp').click(function () {
-            $(this).get(0).type = 'number';
-        });
-
-        $('#gsc_applypercentagetoaf').click(function () {
-            $(this).get(0).type = 'number';
-        });
-
-        $('#gsc_applyamounttoaf').click(function () {
-            $(this).get(0).type = 'number';
-        });
-
-        $('#gsc_applypercentagetoup').click(function () {
-            $(this).get(0).type = 'number';
-        });
-
-        $('#gsc_applyamounttoup').click(function () {
-            $(this).get(0).type = 'number';
-        });
-
-        $('#gsc_discountamount').click(function () {
-            $(this).get(0).type = 'number';
-        });
-
         //do not allow less than 0 input
         $('#gsc_applypercentagetodp').blur(function () {
             if (this.value < 0) {
@@ -260,11 +226,11 @@ $(document).ready(function (e) {
         $("#gsc_applypercentagetodp").on('change', function () {
             dscnt_dppercent = $('#gsc_applypercentagetodp').val() == "" ? 0 : $('#gsc_applypercentagetodp').val();
             dscnt_dpamount = computeAmount(dscnt_dppercent);
-            $("#gsc_applyamounttodp").val(dscnt_dpamount == 0 ? "" : dscnt_dpamount);
+            $("#gsc_applyamounttodp").val(dscnt_dpamount == 0 ? "" : dscnt_dpamount.replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
         });
 
         $("#gsc_applyamounttodp").on('change', function () {
-            dscnt_dpamount = $('#gsc_applyamounttodp').val() == "" ? 0 : $('#gsc_applyamounttodp').val();
+            dscnt_dpamount = $('#gsc_applyamounttodp').val() == "" ? 0 : $('#gsc_applyamounttodp').val().replace(/,/g, "");
             dscnt_dppercent = computePercentage(dscnt_dpamount);
             $("#gsc_applypercentagetodp").val(dscnt_dppercent == 0 ? "" : dscnt_dppercent);
         });
@@ -272,11 +238,11 @@ $(document).ready(function (e) {
         $("#gsc_applypercentagetoaf").on('change', function () {
             dscnt_afpercent = $('#gsc_applypercentagetoaf').val() == "" ? 0 : $('#gsc_applypercentagetoaf').val();
             dscnt_afamount = computeAmount(dscnt_afpercent);
-            $("#gsc_applyamounttoaf").val(dscnt_afamount == 0 ? "" : dscnt_afamount);
+            $("#gsc_applyamounttoaf").val(dscnt_afamount == 0 ? "" : dscnt_afamount.replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
         });
 
         $("#gsc_applyamounttoaf").on('change', function () {
-            dscnt_afamount = $('#gsc_applyamounttoaf').val() == "" ? 0 : $('#gsc_applyamounttoaf').val();
+            dscnt_afamount = $('#gsc_applyamounttoaf').val() == "" ? 0 : $('#gsc_applyamounttoaf').val().replace(/,/g, "");
             dscnt_afpercent = computePercentage(dscnt_afamount);
             $("#gsc_applypercentagetoaf").val(dscnt_afpercent == 0 ? "" : dscnt_afpercent);
         });
@@ -284,19 +250,19 @@ $(document).ready(function (e) {
         $("#gsc_applypercentagetoup").on('change', function () {
             dscnt_uppercent = $('#gsc_applypercentagetoup').val() == "" ? 0 : $('#gsc_applypercentagetoup').val();
             dscnt_upamount = computeAmount(dscnt_uppercent);
-            $("#gsc_applyamounttoup").val(dscnt_upamount == 0 ? "" : dscnt_upamount);
+            $("#gsc_applyamounttoup").val(dscnt_upamount == 0 ? "" : dscnt_upamount.replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
         });
 
         $("#gsc_applyamounttoup").on('change', function () {
-            dscnt_upamount = $('#gsc_applyamounttoup').val() == "" ? 0 : $('#gsc_applyamounttoup').val();
+            dscnt_upamount = $('#gsc_applyamounttoup').val() == "" ? 0 : $('#gsc_applyamounttoup').val().replace(/,/g, "");
             dscnt_uppercent = computePercentage(dscnt_upamount);
             $("#gsc_applypercentagetoup").val(dscnt_uppercent == 0 ? "" : dscnt_uppercent);
         });
 
         $("#gsc_discountamount").on('change', function () {
-            $("#gsc_applyamounttodp").val(dscnt_dpamount = computeAmount(dscnt_dppercent));
-            $("#gsc_applyamounttoaf").val(dscnt_afamount = computeAmount(dscnt_afpercent));
-            $("#gsc_applyamounttoup").val(dscnt_upamount = computeAmount(dscnt_uppercent));
+            $("#gsc_applyamounttodp").val(dscnt_dpamount = computeAmount(dscnt_dppercent).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+            $("#gsc_applyamounttoaf").val(dscnt_afamount = computeAmount(dscnt_afpercent).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+            $("#gsc_applyamounttoup").val(dscnt_upamount = computeAmount(dscnt_uppercent).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
         });
 
     }, 100);
