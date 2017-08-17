@@ -1,4 +1,5 @@
 $(document).ready(function (e) {
+    $.cookie("primaryName", $("#name").val(), { path: '/' });
     $('#gsc_isdeactivated').closest('td').hide();
 
     var status = $(".record-status").html();
@@ -178,17 +179,14 @@ $(document).ready(function (e) {
         $('.disabled').attr("tabindex", "-1");
         $('fieldset.permanent-disabled .btn').attr("tabindex", "-1");
     }
-    
-    
-      
 
-     AddSearchToPriceListItems();
-		
+     AddSearchToPriceListItems('#Item');
+	   AddSearchToPriceListItems('#PriceListItem');
 });
 
 
-function AddSearchToPriceListItems() {
-    var $searchContainer = $("<div></div>").addClass("input-group").addClass("pull-right").addClass("view-search").attr('style', 'width:240px');
+function AddSearchToPriceListItems(subgridId) {
+    var $searchContainer = $("<div></div>").addClass("input-group").addClass("pull-right").addClass("view-search").addClass("entitylist-search").attr('style', 'width:240px');
 			var $searchButton = $("<button></button>")
 				.attr("type", "button")
 				.addClass("btn")
@@ -197,10 +195,8 @@ function AddSearchToPriceListItems() {
 				.append($("<span></span>").addClass("fa").addClass("fa-search"))
                 .on("click", DMS.Helpers.Debounce(function (e) {
                     e.preventDefault();
-                    $this.load(1);
+                    $(subgridId + ' .entity-grid').trigger('refresh');
                 }, 200));            
-
-
 
 	var $searchButtonGroup = $("<div></div>").addClass("input-group-btn").append($searchButton);
 			var $searchInput = $("<input/>")
@@ -219,6 +215,6 @@ function AddSearchToPriceListItems() {
 						$(this).trigger("focus");
 					}
 				});
-			$searchContainer.append($searchInput).append($searchButtonGroup).prependTo($('#Item .view-toolbar.grid-actions'));
+			$searchContainer.append($searchInput).append($searchButtonGroup).prependTo($(subgridId + ' .view-toolbar.grid-actions'));
   
 }
