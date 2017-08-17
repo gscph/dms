@@ -303,8 +303,8 @@ namespace GSC.Rover.DMS.BusinessLogic.VehiclePurchaseOrder
                 purchaseOrderApproval["gsc_status"] = new OptionSetValue(100000001);
             }
 
-            if (isLastApproverApproved(approverLevelName, purchaseOrderEntity) == false)
-                throw new InvalidPluginExecutionException("This record is not yet approved by the approver preceding you.");
+           /* if (isLastApproverApproved(approverLevelName, purchaseOrderEntity) == false)
+                throw new InvalidPluginExecutionException("This record is not yet approved by the approver preceding you."); */
 
             _organizationService.Create(purchaseOrderApproval);
             
