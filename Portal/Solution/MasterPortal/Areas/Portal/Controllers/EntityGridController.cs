@@ -32,6 +32,7 @@ using Site.Areas.Portal.ViewModels;
 using System.Web.Script.Serialization;
 using System.Runtime.Serialization.Json;
 using Site.Areas.DMS_Api;
+using System.Web;
 
 namespace Site.Areas.Portal.Controllers
 {
@@ -604,6 +605,26 @@ namespace Site.Areas.Portal.Controllers
             spreadsheet.Close();
 
             var filename = new string(viewName.Where(c => !Path.GetInvalidFileNameChars().Contains(c)).ToArray());
+
+            //Concatenate primary name in downloaded excel
+            string primaryName = string.Empty;
+            var context = System.Web.HttpContext.Current;
+
+            if (context != null)
+            {
+                var request = context.Request.RequestContext;
+                var cookies = request.HttpContext.Request.Cookies;
+                if (cookies["primaryName"] != null)
+                {
+                    primaryName = HttpUtility.UrlDecode(Request.Cookies["primaryName"].Value.ToString());
+                    System.Web.HttpCookie primaryNameCookie = new HttpCookie("primaryName");
+                    primaryNameCookie.Expires = DateTime.Now.AddDays(-1d);
+                    Response.Cookies.Add(primaryNameCookie);
+                    filename = filename + " - " + primaryName;
+                }
+            }
+
+            //End
 
             var sessionKey = "{0:s}|{1}.xlsx".FormatWith(DateTime.UtcNow, filename);
 
