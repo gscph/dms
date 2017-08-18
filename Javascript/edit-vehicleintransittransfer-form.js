@@ -111,4 +111,25 @@ $(document).ready(function (e) {
       });
     }
   }
+  
+  disableModelOptionCode();
+  
+  setTimeout(function() {
+    $('#gsc_productid').on('change', function () {
+      disableModelOptionCode();
+    });
+  }, 2000);
+  
+  function disableModelOptionCode() {
+    if ($('#gsc_productid').val() != '') {
+      $('#gsc_modelcode').prop('readonly', true);
+      $('#gsc_optioncode').prop('readonly', true);
+    }
+    else {
+      $('#gsc_modelcode').prop('readonly', false);
+      $('#gsc_modelcode').val('');
+      $('#gsc_optioncode').prop('readonly', false);
+      $('#gsc_modelcode').val('');
+    }
+  }
 });
