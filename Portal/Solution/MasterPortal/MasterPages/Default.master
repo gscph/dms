@@ -188,7 +188,7 @@
             e.stopPropagation();
         }       
         function OpenReport(reportId) {
-            var param1var = DMS.Settings.User.dealerId;
+            var param1var = DMS.Settings.User.branchId;
             var protocol = window.location.protocol;
             var host = window.location.host;
             var url = protocol + "//" + host + "/report/?reportname={" + reportId + "}&reportid=" + param1var;

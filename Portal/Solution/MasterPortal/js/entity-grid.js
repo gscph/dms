@@ -2900,7 +2900,10 @@
 
 		var $this = this;
 		var $element = $this._element;
-		var $pagination = $(".view-pagination");
+		var $pagination = $element.find(".view-pagination");
+
+		if ($pagination.length == 0)
+		    $pagination = $(".footer").find(".view-pagination");
 
 		if (typeof data === typeof undefined || data === false || data == null) {
 		    $pagination.hide();
