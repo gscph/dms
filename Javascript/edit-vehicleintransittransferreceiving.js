@@ -1,7 +1,7 @@
 //Created By : Raphael Herrera, Created On : 9/02/16
 $(document).ready(function () {
 
-  var intransitStatus = $('#gsc_intransitstatus').val();
+  var intransitStatus = $('#gsc_intransitstatuscopy').val();
 
   if (intransitStatus == 100000000) {
     drawCancelButton();
@@ -14,9 +14,13 @@ $(document).ready(function () {
   $('#gsc_intransitstatus').attr('readOnly', true);
   $('#gsc_intransitstatus').css({ "pointer-events": "none", "cursor": "default" });
 
+  $('#gsc_intransitstatus_label').hide();
+  $('#gsc_intransitstatus').hide();
+
   setTimeout(function () {
     if (intransitStatus == 100000001 || intransitStatus == 100000002) //Received || Cancelled
     {
+      $("#UpdateButton").attr('disabled', true);
       $('form fieldset').attr('disabled', true);
       $(".datetimepicker input").attr('disabled', true);
       if (intransitStatus == 100000001) {
