@@ -93,23 +93,6 @@ $(document).ready(function () {
     });
     //End
 
-    //Added by: JGC_12092016
-    /*    if (DMS.Settings.User.positionName != 'Sales Manager' && DMS.Settings.User.positionName != 'Sales Executive' && DMS.Settings.User.positionName != 'System Administrator') {
-            $(".nav.nav-tabs li:eq(3)").hide()
-    
-        }
-        if (DMS.Settings.User.positionName != 'Sales Manager' && DMS.Settings.User.positionName != 'System Administrator') {
-            $('#gsc_rate_label').hide();
-            $('#gsc_rate').hide();
-            $('#gsc_cost_label').hide();
-            $('#gsc_cost').hide();
-            $('#gsc_originaltotalpremium_label').hide();
-            $('#gsc_originaltotalpremium').hide();
-            $('#basic-addon1_label').hide();
-            $('#basic-addon1').hide();
-        }*/
-    // end hide
-
     $(".section[data-name='HiddenSection']").closest("fieldset").hide();
     $("#gsc_posttransactiondate").next(".datetimepicker").children('input').attr("readOnly", "readOnly");
     $("#gsc_posttransactiondate").next(".datetimepicker").children('span').remove();
@@ -234,8 +217,6 @@ $(document).ready(function () {
             checker = false;
         }
     });
-
-
 
     $('td.datetime:nth-child(2) > div:nth-child(2)').css({ "pointer-events": "none", "cursor": "default" });
 
@@ -436,6 +417,9 @@ $(document).ready(function () {
     };
 
     $('#continueBtn').click(function () {
+        Page_Validators = jQuery.grep(Page_Validators, function (value) {
+            return value != statusReasonRemarksValidator;
+        });
         var reason = $('#statusReason option:selected').text();
         var disqualifyRemarks = $('#disqualifyRemarks').val();
 
@@ -444,9 +428,6 @@ $(document).ready(function () {
             Page_ClientValidate();
         } else {
             $("#gsc_reasonforcancellation").val(disqualifyRemarks);
-            Page_Validators = jQuery.grep(Page_Validators, function (value) {
-                return value != statusReasonRemarksValidator;
-            });
             Page_ClientValidate();
             $("#confirmModal").modal("toggle");
         }
