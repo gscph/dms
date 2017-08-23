@@ -88,3 +88,58 @@ $(document).on("createFilter", function (event, filters) {
         });
     });
 });
+
+$(document).on("createStateCodeFilter", function (event, entity) {
+    var statecode = [];
+
+    switch(entity)
+    {
+        case 'lead':
+            statecode.push({"value": 0, "label": 'Open'});
+            statecode.push({"value": 1, "label": 'Qualified' });
+            statecode.push({"value": 2, "label": 'Disqualified' });
+            break;
+        case 'opportunity':
+            statecode.push({"value": 0, "label": 'Open' });
+            statecode.push({"value": 1, "label": 'Won'});
+            statecode.push({"value": 2, "label": 'Lost'});
+            break;
+        case 'quote':
+            statecode.push({"value": 0, "label": 'Draft'});
+            statecode.push({"value": 1, "label": 'Active'});
+            statecode.push({"value": 2, "label": 'Won'});
+            statecode.push({"value": 3, "label": 'Closed'});
+            break;
+         default:
+             break;
+    }
+
+    var stateCodeOptionSet = '<ul class="list-unstyled" role="presentation"> \
+                                    <li class="entitylist-filter-option-group"> \
+                                        <label class="entitylist-filter-option-group-label h4" for="satecode"> \
+                                            <span class="sr-only">Filter: </span> Status\
+                                        </label> \
+                                            <ul class="list-unstyled" role="presentation"> \
+                                                <li class="entitylist-filter-option"> \
+                                                    <div class="input-group entitylist-filter-option-text"> \
+                                                        <span class="input-group-addon"><span class="fa fa-filter" aria-hidden="true"></span></span> \
+                                                       <select class="form-control" id="satecode"> \
+                                                            <option value="" label="All"> </option> \
+                                                        </select>\
+                                                     </div>\
+                                                </li>\
+                                            </ul>\
+                                     </li>\
+                                </ul>';
+
+
+    $(stateCodeOptionSet).insertBefore($('#EntityListFilterControl .panel-body .pull-right'));
+    var stateCodeSelect = $("#satecode").find('option').end();
+    $.each(statecode, function (x, status) {
+        console.log(status.value);
+        console.log(status.label);
+        stateCodeSelect.append("<option value='{" + status.value + "}' label='" + status.label + "'>" + status.label + "</option>");
+    });
+
+
+});

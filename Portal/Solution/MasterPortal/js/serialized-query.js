@@ -20,6 +20,15 @@
         e.preventDefault();
         var metaFilter = $(target).find('input,select').serialize();
 
+        //append custom state code filter in metafilter
+        $('#satecode').each(function () {
+            var statecode = $('#satecode').val().replace('{', '');
+            statecode = statecode.replace('}', '');
+
+            if(statecode != "")
+                metaFilter = metaFilter + ",statecode=" + statecode;
+        });
+
         // check for custom attributes and values - DMS
         var count = 0;
 

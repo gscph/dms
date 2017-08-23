@@ -121,15 +121,16 @@ $(document).ready(function (e) {
   }, 2000);
   
   function disableModelOptionCode() {
+      $('#gsc_modelcode').val('');
+      $('#gsc_optioncode').val('');
+
     if ($('#gsc_productid').val() != '') {
       $('#gsc_modelcode').prop('readonly', true);
       $('#gsc_optioncode').prop('readonly', true);
     }
     else {
       $('#gsc_modelcode').prop('readonly', false);
-      $('#gsc_modelcode').val('');
       $('#gsc_optioncode').prop('readonly', false);
-      $('#gsc_modelcode').val('');
     }
   }
 });
