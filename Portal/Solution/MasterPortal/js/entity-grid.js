@@ -2901,7 +2901,7 @@
 		var $this = this;
 		var $element = $this._element;
 		var $pagination = $element.find(".view-pagination");
-
+        
 		if ($pagination.length == 0)
 		    $pagination = $(".footer").find(".view-pagination");
 
@@ -2952,7 +2952,10 @@
 	}
 
 	entityGrid.prototype.hidePagination = function () {
-		this._element.children(".view-pagination").hide();
+	    if (this._element.children(".view-pagination").length != 0)
+	        this._element.children(".view-pagination").hide();
+	    else
+	        $(".footer").find(".view-pagination").hide();
 	}
 
 	function displayErrorModal(error, $modal) {
