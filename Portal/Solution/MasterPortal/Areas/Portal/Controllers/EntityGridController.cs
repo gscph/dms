@@ -302,23 +302,34 @@ namespace Site.Areas.Portal.Controllers
                 serviceContext.CreateQuery(entityReference.LogicalName)
                     .First(e => e.GetAttributeValue<Guid>(primaryKeyName) == entityReference.Id);
             var test = entityPermissionProvider.TryAssert(serviceContext, CrmEntityPermissionRight.Delete, entity);
+         
+                if (test)
+                {
+                   try
+                    {
+                        serviceContext.DeleteObject(entity);
+                        serviceContext.SaveChanges();
 
-            if (test)
-            {
-                    serviceContext.DeleteObject(entity);
-                    serviceContext.SaveChanges();
+                        SalesHub hub = new SalesHub();
+                        string url = Request.Url.OriginalString;
+                    }   
 
-                    SalesHub hub = new SalesHub();
-                    string url = Request.Url.OriginalString;
-
+                  catch (Exception ex)
+                    {
+                        if (ex.InnerException.Message.Contains("The object you tried to delete is associated with another object and cannot be deleted."))
+                            throw new InvalidOperationException("Record cannot be deleted. It is already used in transactions.");
+                        else
+                            throw new InvalidOperationException(ex.InnerException.Message.ToString());
+                    }
                     //string userId = Portal.User.Id.ToString();
                     //string fullName = Portal.User.Attributes["fullname"].ToString();
                     //hub.UserHasSaved(url, userId, fullName);              
-            }
-            else
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "Permission Denied. You do not have the appropriate Entity Permissions to delete this record.");
-            }
+                }
+                else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "Permission Denied. You do not have the appropriate Entity Permissions to delete this record.");
+                }
+            
 
             return new HttpStatusCodeResult(HttpStatusCode.NoContent);
         }

@@ -43,10 +43,9 @@ namespace Site.Areas.DMS_Api.Controllers
             }
             catch (Exception ex)
             {
-                if (ex.Message.Equals("An error has occurred.") || ex.Message.Equals("You are not authorized to modify this record."))
+                if (ex.Message.Equals("The object you tried to delete is associated with another object and cannot be deleted."))
                 {
-                    throw new InvalidOperationException("This record is already referenced to another transaction. It cannot be deleted.");
-                    //return InternalServerError(ex);
+                    throw new InvalidOperationException("Record/s cannot be deleted. It is already used in transactions.");
                 }
                 else
                 {
