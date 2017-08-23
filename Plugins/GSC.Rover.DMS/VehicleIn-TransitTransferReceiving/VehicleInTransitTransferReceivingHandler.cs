@@ -116,7 +116,8 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             query.ColumnSet.AddColumns("gsc_modelcode", "gsc_optioncode", "gsc_productionno",
                                        "gsc_modelyear", "gsc_color", "gsc_destinationsiteid",
                                        "gsc_engineno", "gsc_csno", "gsc_inventoryid",
-                                       "gsc_productionno", "gsc_vin", "gsc_basemodel", "gsc_modeldescription");
+                                       "gsc_productionno", "gsc_vin", "gsc_basemodel", "gsc_modeldescription",
+                                       "gsc_viasiteid");
 
             query.Criteria.AddCondition(new ConditionExpression("gsc_vehicleintransittransferid", ConditionOperator.Equal, inTransitTransferId));
 
