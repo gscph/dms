@@ -456,7 +456,8 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
 
         public Entity CopyDestinationSite(Entity vehicleIntransitReceiving)
         {
-            var destinationSiteId = vehicleIntransitReceiving.Contains("gsc_destinationsiteid") ? vehicleIntransitReceiving.GetAttributeValue<EntityReference>("gsc_destinationid").Id
+            _tracingService.Trace("Started CopyDestinationSite Method...");
+            var destinationSiteId = vehicleIntransitReceiving.Contains("gsc_destinationsiteid") ? vehicleIntransitReceiving.GetAttributeValue<EntityReference>("gsc_destinationsiteid").Id
                 : Guid.Empty;
 
             EntityCollection siteCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_site", "gsc_iv_siteid", destinationSiteId, _organizationService, null,
@@ -480,6 +481,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                 receivingDetails["gsc_destinationsiteid"] = new EntityReference("gsc_iv_site", destinationSiteId);
                 _organizationService.Update(receivingDetails);
             }
+            _tracingService.Trace("Ending CopyDestinationSite Method...");
             return vehicleIntransitReceiving;
         }
     }
