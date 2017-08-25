@@ -89,6 +89,7 @@
 				activeLayoutIndex = 0;
 			}
 		}
+
 		this._activeLayoutIndex = activeLayoutIndex;
 		var layout = layouts[activeLayoutIndex];
 		var queryString = URI(window.location).search(true);
@@ -598,6 +599,9 @@
 		var createdOnFilter = $this._createdOnFilter;
 
 		$element.children(".view-grid").find("tbody").remove();
+		console.log($table.closest(".entity-lookup").length);
+		if($table.closest(".entity-lookup").length > 0)
+		    $table.css("font-size", "10.2px");
     
 		$errorMessage.hide().prop("aria-hidden", true);
 		$emptyMessage.hide().prop("aria-hidden", true);
@@ -1066,6 +1070,7 @@
 				$this.addGenerateQuoteFromOpportunityActionLinkClickEventHandlers();
 				$this.addDisassociateActionLinkClickEventHandlers();
 				$this.addWorkflowActionLinkClickEventHandlers();
+
 				$element.trigger("loaded");			    
                
 			},
@@ -1078,6 +1083,7 @@
 			function (data) {
 				// always
 			    $loadingMessage.hide().prop("aria-hidden", true);
+			    $element.children(".view-grid").siblings('.row-count-container').css("font-size", "12px");
 			    $(document).trigger("hideLoader");
 			    // hide loader
 			    //$(document).trigger('hideLoader');

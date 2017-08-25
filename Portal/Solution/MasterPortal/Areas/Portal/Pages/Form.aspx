@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Default.master" AutoEventWireup="true" CodeBehind="Form.aspx.cs" Inherits="Site.Areas.Portal.Pages.Form" %>
 
-
 <asp:Content ContentPlaceHolderID="Head" runat="server">
     <link href="~/css/dms/handsontable.full.min.css" rel="stylesheet" />
     <link href="~/css/dms/entity-form.css" rel="stylesheet" />
@@ -33,7 +32,6 @@
             top: 0;
             right: 0;
             z-index: 750;
-            height: 100px;
             max-height: 500px;
             max-width: 300px;
         }
@@ -52,10 +50,26 @@
         </asp:ScriptManager>
         <script type="text/javascript">
             function entityFormClientValidate() {
+                var errorLength = $("#ValidationSummaryEntityFormView ul li").length;
+                errorLength = 62 + (errorLength * 17);
+                $("#ValidationSummaryEntityFormView").css("height", errorLength + "px");
+
                 // Custom client side validation. Method is called by the submit button's onclick event.
                 // Must return true or false. Returning false will prevent the form from submitting.
                 return true;
             }
+
+            $(document).ready(function () {
+                $(".launchentitylookup").css("height", "30px");
+                $(".clearlookupfield").css("height", "30px");
+                $("label").css("font-size", "12px");
+              //  if ($("td").css("font-size") != "85%")
+                $(".view-grid.table-responsive table tbody td").css("font-size", "10.2px");
+
+                $("#InsertButton").click(function () {
+                    entityFormClientValidate();
+                });
+            });
         </script>
         <div class="content-wrapper">
             <div class="notifications" style="margin-top: 50px; margin-left: 5px; margin-right: 5px; margin-bottom: 0px; top: 0px;"></div>
@@ -72,7 +86,6 @@
     <script src="~/js/dms/another-grid.js"></script>
 
     <script>
-
         $(document).ready(function () {
             // styles
             $('.form-custom-actions .btn.btn-default').addClass('btn-primary');
@@ -83,8 +96,6 @@
             $('.row.form-custom-actions .col-sm-6:first').addClass('col-sm-12');
             $('.row.form-custom-actions .col-sm-6:first').removeClass('col-sm-6');
             $('.row.form-custom-actions .col-sm-12:first .form-action-container-right').attr('style', 'margin-right:0px');
-
-
 
             // remove modal from from toolbar to avoid position: fixed; conflict
             setTimeout(function () {
