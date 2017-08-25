@@ -94,9 +94,14 @@ namespace GSC.Rover.DMS.Platform.Plugins
                 {
                     var preStatus = preImageEntity.Contains("gsc_intransitstatus") ? preImageEntity.GetAttributeValue<OptionSetValue>("gsc_intransitstatus").Value
                         : 0;
+                    var preDestinationSite = preImageEntity.Contains("gsc_destinationsiteid") ? preImageEntity.GetAttributeValue<EntityReference>("gsc_destinationsiteid").Id
+                        : Guid.Empty;
 
                     var postStatus = postImageEntity.Contains("gsc_intransitstatus") ? postImageEntity.GetAttributeValue<OptionSetValue>("gsc_intransitstatus").Value
                         : 0;
+                    var postDestinationSite = postImageEntity.Contains("gsc_destinationsiteid") ? postImageEntity.GetAttributeValue<EntityReference>("gsc_destinationsiteid").Id
+                        : Guid.Empty;
+
  
                     VehicleInTransitTransferReceivingHandler vehicleReceivingHandler = new VehicleInTransitTransferReceivingHandler(service, trace);
 
@@ -109,6 +114,8 @@ namespace GSC.Rover.DMS.Platform.Plugins
                             vehicleReceivingHandler.CancelTransfer(preImageEntity);
                         vehicleReceivingHandler.CopyStatus(postImageEntity);
                     }
+                    if (preDestinationSite != postDestinationSite && postDestinationSite != Guid.Empty)
+                        vehicleReceivingHandler.CopyDestinationSite(postImageEntity);
                 }
 
                 catch (Exception ex)

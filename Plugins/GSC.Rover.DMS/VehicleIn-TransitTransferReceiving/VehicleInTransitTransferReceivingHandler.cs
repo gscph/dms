@@ -453,5 +453,36 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             _tracingService.Trace("Ending GenerateComponents method...");
             return vehicleInTransitReceiving;
         }
+
+        public Entity CopyDestinationSite(Entity vehicleIntransitReceiving)
+        {
+            _tracingService.Trace("Started CopyDestinationSite Method...");
+            var destinationSiteId = vehicleIntransitReceiving.Contains("gsc_destinationsiteid") ? vehicleIntransitReceiving.GetAttributeValue<EntityReference>("gsc_destinationsiteid").Id
+                : Guid.Empty;
+
+            EntityCollection siteCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_site", "gsc_iv_siteid", destinationSiteId, _organizationService, null,
+                OrderType.Ascending, new[] { "gsc_iv_siteid" });
+
+            if (siteCollection.Entities == null || siteCollection.Entities.Count == 0)
+            {
+                throw new InvalidPluginExecutionException("Destination site not found...");
+            }
+
+            Entity siteEntity = siteCollection.Entities[0];
+            EntityCollection receivingDetailsCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_vehicleintransitreceivingdetail", "gsc_intransitreceivingid", vehicleIntransitReceiving.Id,
+                _organizationService, null, OrderType.Ascending, new[]{"gsc_destinationsiteid"});
+            if (receivingDetailsCollection.Entities == null || receivingDetailsCollection.Entities.Count == 0)
+            {
+                throw new InvalidPluginExecutionException("No receiving details found...");
+            }
+
+            foreach (Entity receivingDetails in receivingDetailsCollection.Entities)
+            {
+                receivingDetails["gsc_destinationsiteid"] = new EntityReference("gsc_iv_site", destinationSiteId);
+                _organizationService.Update(receivingDetails);
+            }
+            _tracingService.Trace("Ending CopyDestinationSite Method...");
+            return vehicleIntransitReceiving;
+        }
     }
 }

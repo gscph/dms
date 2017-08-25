@@ -27,6 +27,7 @@
 </asp:Content>
 
 <asp:Content ID="Content9" ContentPlaceHolderID="MainContent" runat="server">
+    <script> $('.toolbar-left .active').remove();</script>
     <style>
         .body-container {
             padding: 100px 15px 25px 25px;

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/MasterPages/Default.master" Inherits="Site.MasterPages.PortalMasterPage" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPages/DMS-Forms.master" Inherits="Site.MasterPages.DMS_Profile" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="Head">
 	<link rel="stylesheet" href="<%: Url.Content("~/Areas/Account/css/account.css") %>">
@@ -6,6 +6,12 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
+    <script> $('.toolbar-left .active').hide();</script>
+       <style>
+        .page-content {
+            padding: 100px 15px 25px 25px;
+        }
+    </style>
 	<div class="row page-content">
 		<div class="col-md-4">
 			<div class="well">
