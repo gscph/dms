@@ -11,12 +11,27 @@
         var datetime = $("form").find('input.datetime').next('.datetimepicker');
 
         $.each(datetime, function () {
-            var defaultDate = $(this).parent().children('.datetime').val();
-            var dataType = $(this).parent().children('.datetime').data("type");
-            var dateFormat = dataType == "date" ? "M/D/YYYY" : "M/D/YYYY h:mm A"
+            var valueInput = $(this).parent().children('.datetime');
+            var defaultDate = valueInput.val();
+            var dataType = valueInput.data("type");
+            var dateFormat = dataType == "date" ? "M/D/YYYY" : "M/D/YYYY h:mm A";
             var formattedDate = defaultDate == "" ? "" : moment(defaultDate).format(dateFormat);
-            $(this).children('input').val(formattedDate);
-            $(this).children('input').removeAttr('placeholder');
+            var input = $(this).children('input');
+
+            input.val(formattedDate);
+            input.removeAttr('placeholder');
+           
+            input.blur(function (e) {
+                var enteredDate = input.val();
+                var regEx = /^(0?[1-9]|1[0-2])\/(0?[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+                if (!enteredDate.match(regEx)) {
+                    DMS.Notification.Error("The date you entered has an invalid format.", true, 1000);
+                    valueInput.val('');
+                    $(this).val('');                    
+                }
+            });
+
+            input.mask('00/00/0000');
 
             var isReadOnly = $(this).siblings('input').hasClass('readonly');
 
@@ -26,12 +41,12 @@
             }
 
             datetime.datetimepicker({
-                pickTime: $(this).parent().children('.datetime').data("type") == "date" ? false : true,
+                pickTime: valueInput.data("type") == "date" ? false : true,
                 useCurrent: true
             });
 
             datetime.on('dp.change', function (e) {
-                $(this).parent().children('.datetime').val(e.date.format('YYYY-MM-DDTHH:mm:ss.0000000Z'));
+                valueInput.val(e.date.format('YYYY-MM-DDTHH:mm:ss.0000000Z'));
             });
 
             $(".datetimepicker input").on("change", function (e) {
