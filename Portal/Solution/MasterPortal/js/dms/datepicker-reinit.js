@@ -11,9 +11,9 @@
         var datetime = $("form").find('input.datetime').next('.datetimepicker');
 
         $.each(datetime, function () {
-            var valueInput = $(this).parent().children('.datetime');
-            var defaultDate = valueInput.val();
-            var dataType = valueInput.data("type");
+            var inputValue = $(this).parent().children('.datetime');
+            var defaultDate = inputValue.val();
+            var dataType = inputValue.data("type");
             var dateFormat = dataType == "date" ? "M/D/YYYY" : "M/D/YYYY h:mm A";
             var formattedDate = defaultDate == "" ? "" : moment(defaultDate).format(dateFormat);
             var input = $(this).children('input');
@@ -26,7 +26,7 @@
                 var regEx = /^(0?[1-9]|1[0-2])\/(0?[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
                 if (!enteredDate.match(regEx)) {
                     DMS.Notification.Error("The date you entered has an invalid format.", true, 1000);
-                    valueInput.val('');
+                    inputValue.val('');
                     $(this).val('');                    
                 }
             });
@@ -41,12 +41,12 @@
             }
 
             datetime.datetimepicker({
-                pickTime: valueInput.data("type") == "date" ? false : true,
+                pickTime: inputValue.data("type") == "date" ? false : true,
                 useCurrent: true
             });
 
             datetime.on('dp.change', function (e) {
-                valueInput.val(e.date.format('YYYY-MM-DDTHH:mm:ss.0000000Z'));
+                inputValue.val(e.date.format('YYYY-MM-DDTHH:mm:ss.0000000Z'));
             });
 
             $(".datetimepicker input").on("change", function (e) {
