@@ -103,6 +103,34 @@ namespace Site.Areas.Portal.ViewModels
             return _viewConfig;
         }
 
+        public ViewConfiguration FilterRecordsbyVehicleColor(ViewConfiguration _viewConfig, string vehicleColor)
+        {
+            SavedQueryView queryView = _viewConfig.GetSavedQueryView(_serviceContext);
+
+            Fetch fetch = Fetch.Parse(_viewConfig.FetchXml);
+
+            if (fetch == null)
+                fetch = Fetch.Parse(queryView.FetchXml);
+
+
+            Filter filter = new Filter { Type = LogicalOperator.And };
+
+            filter.Conditions = new List<Condition>();
+
+            filter.Conditions.Add(new Condition
+            {
+                Attribute = "gsc_vehiclecolor",
+                Operator = ConditionOperator.Equal,
+                Value = vehicleColor
+            });
+
+            fetch.Entity.Filters.Add(filter);
+
+            _viewConfig.FetchXml = fetch.ToXml().ToString();
+
+            return _viewConfig;
+        }
+
         public IEnumerable<Entity> FilterRootBusinessUnitRecords(ViewConfiguration _viewConfig, string filterEntityName, String filterRelationshipName, Guid? filterValue, string search)
         {
             List<Entity> globalRecordList = new List<Entity>();

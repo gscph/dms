@@ -136,10 +136,51 @@ $(document).on("createStateCodeFilter", function (event, entity) {
     $(stateCodeOptionSet).insertBefore($('#EntityListFilterControl .panel-body .pull-right'));
     var stateCodeSelect = $("#satecode").find('option').end();
     $.each(statecode, function (x, status) {
-        console.log(status.value);
-        console.log(status.label);
         stateCodeSelect.append("<option value='{" + status.value + "}' label='" + status.label + "'>" + status.label + "</option>");
     });
 
+
+});
+
+
+$(document).on("createVehicleColorFilter", function (event) {
+
+    var vehicleColorOptionSet = '<li class="entitylist-filter-option-group"> \
+                                        <label class="entitylist-filter-option-group-label h4" for="vehiclecolor"> \
+                                            <span class="sr-only">Filter: </span> Color\
+                                        </label> \
+                                            <ul class="list-unstyled" role="presentation"> \
+                                                <li class="entitylist-filter-option"> \
+                                                    <div class="input-group entitylist-filter-option-text"> \
+                                                        <span class="input-group-addon"><span class="fa fa-filter" aria-hidden="true"></span></span> \
+                                                       <select class="form-control" id="vehiclecolor"> \
+                                                            <option value="" label="All"> </option> \
+                                                        </select>\
+                                                     </div>\
+                                                </li>\
+                                            </ul>\
+                                     </li>';
+
+
+    $(vehicleColorOptionSet).insertBefore($("#dropdownfilter_4").closest('.entitylist-filter-option-group'));
+    var colorSelect = $("#vehiclecolor").find('option').end();
+
+    var odataUrl = "/_odata/vehiclecolor";
+    $.ajax({
+        type: "get",
+        async: true,
+        url: odataUrl,
+        success: function (data) {
+            for (var i = 0; i < data.value.length; i++) {
+                var obj = data.value[i];
+                var colorId = obj.gsc_cmn_vehiclecolorid;
+                var colorName = obj.gsc_vehiclecolorpn != null ? obj.gsc_vehiclecolorpn : "";
+
+                colorSelect.append("<option value='{" + colorId + "}' label='" + colorName + "'>" + colorName + "</option>");
+            }
+        },
+        error: function (xhr, textStatus, errorMessage) {
+        }
+    });
 
 });
