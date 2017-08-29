@@ -1,87 +1,16 @@
 $(document).ready(function () {
-    //$('label[for=gsc_recordtype], select#gsc_recordtype').hide();
-    $('#gsc_recordownerid_name').siblings('.input-group-btn').addClass('hidden');
-    $('#gsc_dealerid_name').siblings('.input-group-btn').addClass('hidden');
-    $('#gsc_branchid_name').siblings('.input-group-btn').addClass('hidden');
+    if ($('#gsc_customerid').val() == '') {
+      $('#gsc_customerid').attr("readonly", false);
+    } else {
+      $('#gsc_customerid').attr("readonly", true);
+    }
+    
     $(".section[data-name='HideSection']").closest("fieldset").hide();
     $('#gsc_age').attr('readonly', true);
     $('#gsc_regionid_name').siblings('.input-group-btn').addClass('hidden');
     $('#gsc_regionbillingid_name').siblings('.input-group-btn').addClass('hidden');
 
-    var branchId = $('#gsc_branchid').val();
-    var addressOdataQuery = "/_odata/branchAddress?$filter=accountid eq (Guid'" + branchId + "')";
-    $.ajax({
-        type: 'get',
-        async: true,
-        url: addressOdataQuery,
-        success: function (data) {
-            var country = data.value[0].gsc_countryid;
-            var province = data.value[0].gsc_provinceid;
-            var city = data.value[0].gsc_cityid;
-            var region = data.value[0].gsc_regionid;
-
-            if (country != null) {
-                $("#gsc_countryid").val(country.Id);
-                $("#gsc_countryid_name").val(country.Name);
-                $("#gsc_countryid_entityname").val("gsc_cmn_country");
-                $("#gsc_countryid").siblings('div.input-group-btn').children('.clearlookupfield').show();
-                $("#gsc_countrybillingid").val(country.Id);
-                $("#gsc_countrybillingid_name").val(country.Name);
-                $("#gsc_countrybillingid_entityname").val("gsc_cmn_country");
-                $("#gsc_countrybillingid").siblings('div.input-group-btn').children('.clearlookupfield').show();
-            }
-            if (province != null) {
-                $("#gsc_provinceid").val(province.Id);
-                $("#gsc_provinceid_name").val(province.Name);
-                $("#gsc_provinceid_entityname").val("gsc_cmn_province");
-                $("#gsc_provinceid").siblings('div.input-group-btn').children('.clearlookupfield').show();
-                $("#gsc_provincebillingid").val(province.Id);
-                $("#gsc_provincebillingid_name").val(province.Name);
-                $("#gsc_provincebillingid_entityname").val("gsc_cmn_province");
-                $("#gsc_provincebillingid").siblings('div.input-group-btn').children('.clearlookupfield').show();
-            }
-            if (city != null) {
-                $("#gsc_cityid").val(city.Id);
-                $("#gsc_cityid_name").val(city.Name);
-                $("#gsc_cityid_entityname").val("gsc_cmn_city");
-                $("#gsc_cityid").siblings('div.input-group-btn').children('.clearlookupfield').show();
-                $("#gsc_citybillingid").val(city.Id);
-                $("#gsc_citybillingid_name").val(city.Name);
-                $("#gsc_citybillingid_entityname").val("gsc_cmn_city");
-                $("#gsc_citybillingid").siblings('div.input-group-btn').children('.clearlookupfield').show();
-            }
-            if (region != null) {
-                $("#gsc_regionid_name").val(region.Name);
-                $("#gsc_regionid").val(region.Id);
-                $("#gsc_regionid_entityname").val("gsc_cmn_region");
-                $("#gsc_regionbillingid_name").val(region.Name);
-                $("#gsc_regionbillingid").val(region.Id);
-                $("#gsc_regionbillingid_entityname").val("gsc_cmn_region");
-            }
-        },
-        error: function (xhr, textStatus, errorMessage) {
-            console.log(errorMessage);
-        }
-    });
-
-    var taxOdataUrl = "/_odata/gsc_cmn_taxmaintenance?$filter=gsc_isdefault eq true and gsc_branchid/Id eq (Guid'" + DMS.Settings.User.branchId + "')";
-    $.ajax({
-        type: "get",
-        async: true,
-        url: taxOdataUrl,
-        success: function (data) {
-            if (data.value.length != 0) {
-                var tax = data.value[0];
-                $("#gsc_taxid_name").val(tax.gsc_taxname);
-                $("#gsc_taxid").val(tax.gsc_cmn_taxmaintenanceid);
-                $("#gsc_taxid_entityname").val("gsc_cmn_taxmaintenance");
-                $("#gsc_taxid").siblings('div.input-group-btn').children('.clearlookupfield').show();
-            }
-        },
-        error: function (xhr, textStatus, errorMessage) {
-            console.log(errorMessage);
-        }
-    });
+     
 
     //set page validators
     if (typeof (Page_Validators) == 'undefined') return;
@@ -171,9 +100,9 @@ $(document).ready(function () {
         }
     };
 
+
     setTimeout(function () {
         SamePermanentAddress();
-
         if($('#gsc_fleetcategory').val() == 100000001)
                 $('#gsc_fleetaccount').attr('disabled', 'disabled');
               
@@ -214,6 +143,7 @@ $(document).ready(function () {
             $('#gsc_fleetcategory').attr('disabled', 'disabled');
             $('#gsc_fleetaccount').attr('disabled', 'disabled');
         });
+
 
         $('.datetimepicker').data("DateTimePicker").setMaxDate(new Date());
 
@@ -261,7 +191,6 @@ $(document).ready(function () {
             }
         });
 
-
         //billing address
         $("#gsc_countrybillingid").on('change', function () {
             $("#gsc_provincebillingid_name").val("");
@@ -304,7 +233,7 @@ $(document).ready(function () {
         $('#gsc_sametopermanentaddress').on('change', function () {
             SamePermanentAddress();
         });
-        
+
         /* Added by: Christell Ann Mataac - 2/22/2017
           this will auto populate tax rate based on the selected tax id*/
         $('#gsc_taxid').on('change', function () {
@@ -329,8 +258,9 @@ $(document).ready(function () {
             }
           });
         });
-
+        
     }, 100);
+
 
     function SamePermanentAddress() {
         var copyAddress = $('#gsc_sametopermanentaddress').is(":checked");
@@ -342,14 +272,16 @@ $(document).ready(function () {
             $('#gsc_provincebillingid_label').parent("div").removeClass("required");
             $('#gsc_citybillingid_label').parent("div").removeClass("required");
 
-            $("#address2_postalcode").val("");
-            $("#address2_line1").val("");
-            $("#gsc_countrybillingid").val("");
-            $("#gsc_countrybillingid_name").val("");
-            $("#gsc_provincebillingid").val("");
-            $("#gsc_provincebillingid_name").val("");
-            $("#gsc_citybillingid").val("");
-            $("#gsc_citybillingid_name").val("");
+            $("#address2_postalcode").val($("#address1_postalcode").val());
+            $("#address2_line1").val($("#address1_line1").val());
+            $("#gsc_countrybillingid").val($("#gsc_countryid").val());
+            $("#gsc_countrybillingid_name").val($("#gsc_countryid_name").val());
+            $("#gsc_provincebillingid").val($("#gsc_provinceid").val());
+            $("#gsc_provincebillingid_name").val($("#gsc_provinceid_name").val());
+            $("#gsc_regionbillingid_name").val($("#gsc_regionid_name").val());
+            $("#gsc_regionbillingid").val($("#gsc_regionid").val());
+            $("#gsc_citybillingid").val($("#gsc_cityid").val());
+            $("#gsc_citybillingid_name").val($("#gsc_cityid_name").val());
 
             $("#address2_postalcode").attr('disabled', 'disabled');
             $("#address2_line1").attr('disabled', 'disabled');
@@ -373,12 +305,6 @@ $(document).ready(function () {
             Page_Validators = jQuery.grep(Page_Validators, function (value) {
                 return value != billingCityValidator;
             });
-
-            $("a[href='#address2_postalcode']").on("click", function () { scrollToAndFocus('address2_postalcode_label', 'address2_postalcode'); });
-            $("a[href='#address2_line1']").on("click", function () { scrollToAndFocus('address2_line1_label', 'address2_line1'); });
-            $("a[href='#gsc_countrybillingid']").on("click", function () { scrollToAndFocus('gsc_countrybillingid_label', 'gsc_countrybillingid'); });
-            $("a[href='#gsc_provincebillingid']").on("click", function () { scrollToAndFocus('gsc_provincebillingid_label', 'gsc_provincebillingid'); });
-            $("a[href='#gsc_citybillingid']").on("click", function () { scrollToAndFocus('gsc_citybillingid_label', 'gsc_citybillingid'); });
         }
         else {
             $('label[for=address2_postalcode]').parent("div").addClass("required");
@@ -399,6 +325,12 @@ $(document).ready(function () {
             Page_Validators.push(billingCountryValidator);
             Page_Validators.push(billingProvinceValidator);
             Page_Validators.push(billingCityValidator);
+
+            $("a[href='#address2_postalcode']").on("click", function () { scrollToAndFocus('address2_postalcode_label', 'address2_postalcode'); });
+            $("a[href='#address2_line1']").on("click", function () { scrollToAndFocus('address2_line1_label', 'address2_line1'); });
+            $("a[href='#gsc_countrybillingid']").on("click", function () { scrollToAndFocus('gsc_countrybillingid_label', 'gsc_countrybillingid'); });
+            $("a[href='#gsc_provincebillingid']").on("click", function () { scrollToAndFocus('gsc_provincebillingid_label', 'gsc_provincebillingid'); });
+            $("a[href='#gsc_citybillingid']").on("click", function () { scrollToAndFocus('gsc_citybillingid_label', 'gsc_citybillingid'); });
         }
     }
 
@@ -465,7 +397,7 @@ $(document).ready(function () {
                 return false;
         };
 
-        var faxValidator = document.createElement('span');
+         var faxValidator = document.createElement('span');
         faxValidator.style.display = "none";
         faxValidator.id = "RequiredFieldValidatormobilephone";
         faxValidator.controltovalidate = "fax";
@@ -497,11 +429,11 @@ $(document).ready(function () {
       	var datetoday = new Date();
       	if(birthdate > datetoday)
 			    { return false; }
-		else 
+		    else 
 			    { return true; }
 		};
 	
-		Page_Validators.push(birthdateValidator);
+		    Page_Validators.push(birthdateValidator);
         Page_Validators.push(phoneValidator);
         Page_Validators.push(mobilePhoneValidator);
         Page_Validators.push(tinValidator);
