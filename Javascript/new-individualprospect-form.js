@@ -67,23 +67,25 @@ $(document).ready(function () {
     setTimeout(function () {
 
         $('.datetimepicker').data("DateTimePicker").setMaxDate(new Date());
-        
+		//$('#birthdate').next('.datetimepicker').children('input').mask('00/00/0000');
+		
        	if(DMS.Settings.User.positionName.indexOf("Sales Executive") == 0)
         SetSalesExecutive();
 
         function SetSalesExecutive(){
-			      $("#gsc_salesexecutiveid").siblings('div.input-group-btn').children('.launchentitylookup').hide();
+			$("#gsc_salesexecutiveid").siblings('div.input-group-btn').children('.launchentitylookup').hide();
             $("#gsc_salesexecutiveid_entityname").val("contact");
             $("#gsc_salesexecutiveid").val(DMS.Settings.User.Id);
             var fullName = $("#userFullname").html();
             $("#gsc_salesexecutiveid_name").val(fullName);
         }
-
-        $('#birthdate').next('.datetimepicker').on('dp.change', function (e) {
+		
+		$('.datetimepicker').data("DateTimePicker").setMaxDate(new Date());
+		//$('#birthdate').next('.datetimepicker').children('input').mask('00/00/0000');
+		$('#birthdate').next('.datetimepicker').on('dp.change', function (e) {
             var diff = moment().diff(e.date, 'years');
-            $('#gsc_age').val(Math.max(0, diff));
-
-        });
+            $("#gsc_age").val(Math.max(0, diff));
+        });		
 
         $("#gsc_countryid").on('change', function () {
             $("#gsc_provinceid_name").val("");
@@ -218,4 +220,22 @@ $(document).ready(function () {
     };
 
     Page_Validators.push(alternatePhoneValidator);
+	
+	  var birthdateValidator = document.createElement('span');
+    birthdateValidator.style.display = "none";
+    birthdateValidator.id = "RequiredFieldValidatorbirthdate";
+    birthdateValidator.controltovalidate = "birthdate";
+    birthdateValidator.errormessage = "<a href='#birthdate'>Birthdate must be a valid date.</a>";
+    birthdateValidator.validationGroup = "";
+    birthdateValidator.initialvalue = "";
+    birthdateValidator.evaluationfunction = function () {
+        var birthdate = new Date($("#birthdate").val());
+      	var datetoday = new Date();
+      	if(birthdate > datetoday)
+			    {	return false; }
+		    else 
+		      { return true; }
+    };
+	Page_Validators.push(birthdateValidator);
+	
 });
