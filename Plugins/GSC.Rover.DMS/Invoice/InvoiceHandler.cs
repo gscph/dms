@@ -1976,13 +1976,16 @@ namespace GSC.Rover.DMS.BusinessLogic.Invoice
                     : Guid.Empty;
 
                 EntityCollection inventoryRecords = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId, _organizationService, null, OrderType.Ascending,
-                    new[] { "gsc_csno", "gsc_engineno", "gsc_modelcode", "gsc_optioncode", "gsc_productionno", "gsc_vin", "gsc_siteid", "gsc_modelyear", "gsc_productquantityid" });
+                    new[] { "gsc_csno", "gsc_engineno", "gsc_modelcode", "gsc_optioncode", "gsc_productionno", "gsc_vin", "gsc_siteid", "gsc_modelyear", "gsc_productquantityid", "gsc_basemodelid"});
 
                 if (inventoryRecords != null && inventoryRecords.Entities.Count > 0)
                 {
                     Entity inventory = inventoryRecords.Entities[0];
 
                     inventoryHistory["gsc_inventoryid"] = new EntityReference("gsc_iv_inventory", inventory.Id);
+                    inventoryHistory["gsc_vehiclebasemodeilid"] = inventory.Contains("gsc_basemodelid")
+                        ? inventory.GetAttributeValue<EntityReference>("gsc_basemodelid")
+                        : null;
                     inventoryHistory["gsc_modelcode"] = inventory.Contains("gsc_modelcode")
                         ? inventory.GetAttributeValue<String>("gsc_modelcode")
                         : null;

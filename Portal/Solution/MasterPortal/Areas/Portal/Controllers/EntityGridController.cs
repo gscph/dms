@@ -162,8 +162,15 @@ namespace Site.Areas.Portal.Controllers
                     string statecode = metaFilter.Substring(metaFilter.IndexOf("statecode=") + 10);
 
                     viewConfiguration = converter.FilterRecordsbyStateCode(viewConfiguration, statecode);
-                    var a = metaFilter.Substring(0, start);
-                    //   var b = metaFilter.Substring(start + 12, metaFilter.Length);
+                    metaFilter = metaFilter.Substring(0, start);
+                }
+
+                if (metaFilter.IndexOf(",vehiclecolor") > 0)
+                {
+                    int start = metaFilter.LastIndexOf(",vehiclecolor");
+                    string vehicleColor = metaFilter.Substring(metaFilter.IndexOf("vehiclecolor=") + 10);
+
+                    viewConfiguration = converter.FilterRecordsbyVehicleColor(viewConfiguration, vehicleColor);
                     metaFilter = metaFilter.Substring(0, start);
                 }
             }

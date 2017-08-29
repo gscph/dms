@@ -29,6 +29,14 @@
                 metaFilter = metaFilter + ",statecode=" + statecode;
         });
 
+        //append custom vehicle color filter in metafilter
+        $('#vehiclecolor').each(function () {
+            var vehiclecolor = $('#vehiclecolor option:selected').text();
+
+            if (vehiclecolor != "")
+                metaFilter = metaFilter + ",vehiclecolor=" + vehiclecolor;
+        });
+
         // check for custom attributes and values - DMS
         var count = 0;
 
