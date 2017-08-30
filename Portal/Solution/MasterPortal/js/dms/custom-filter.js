@@ -75,10 +75,24 @@ $(document).on("createFilter", function (event, filters) {
 
                 $("#dateFromValue" + x).on("change", function (e) {
                     $('#dateTo' + x).data("DateTimePicker").setMinDate(new Date(1753,01,01));
+                });              
+
+                $('#dateFromValue' + x).mask('ZZ/ZZ/ZZZZ', {
+                    translation: {
+                        'Z': {
+                            pattern: /[0-9]/, optional: true
+                        }
+                    }
                 });
 
-                $('#dateFromValue' + x).mask('00/00/0000');
-                $('#dateToValue' + x).mask('00/00/0000');
+                $('#dateToValue' + x).mask('ZZ/ZZ/ZZZZ', {
+                    translation: {
+                        'Z': {
+                            pattern: /[0-9]/, optional: true
+                        }
+                    }
+                });
+
 
                 if (value !== 'undefined') {
                     $('#dateFromValue'+ x).attr('data-entityfield', value);

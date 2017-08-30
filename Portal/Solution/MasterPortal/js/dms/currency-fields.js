@@ -21,6 +21,8 @@
                 return false;
             }
         });
+
+        $('input.money').mask("#,##0.00", { reverse: true });
     });
 
 }(jQuery));

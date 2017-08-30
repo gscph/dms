@@ -391,25 +391,27 @@ $(document).ready(function () {
             async: true,
             url: productOdataUrl,
             success: function (data) {
-                var bodyType = data.value[0].gsc_bodytypeid;
+                if (data.length > 0) {
+                    var bodyType = data.value[0].gsc_bodytypeid;
 
-                if (bodyType != null) {
-                    var bodyTypeOdataUrl = "/_odata/bodytype?$filter=gsc_sls_bodytypeid eq (Guid'" + bodyType.Id + "')";
-                    $.ajax({
-                        type: 'get',
-                        async: true,
-                        url: bodyTypeOdataUrl,
-                        success: function (data) {
-                            var isCabChassis = data.value[0].gsc_cabchassis;
+                    if (bodyType != null) {
+                        var bodyTypeOdataUrl = "/_odata/bodytype?$filter=gsc_sls_bodytypeid eq (Guid'" + bodyType.Id + "')";
+                        $.ajax({
+                            type: 'get',
+                            async: true,
+                            url: bodyTypeOdataUrl,
+                            success: function (data) {
+                                var isCabChassis = data.value[0].gsc_cabchassis;
 
-                            if (isCabChassis == false) {
-                                $('[data-name="CABCHASSIS"').parent().hide();
+                                if (isCabChassis == false) {
+                                    $('[data-name="CABCHASSIS"').parent().hide();
+                                }
+                            },
+                            error: function (xhr, textStatus, errorMessage) {
+                                console.log(errorMessage);
                             }
-                        },
-                        error: function (xhr, textStatus, errorMessage) {
-                            console.log(errorMessage);
-                        }
-                    });
+                        });
+                    }
                 }
             },
             error: function (xhr, textStatus, errorMessage) {
@@ -431,8 +433,8 @@ $(document).ready(function () {
                 return pair[1];
             }
         }
-    }
-    $('.text.money').mask("#,##0.00", { reverse: true });
+    }   
+
     //Added JGC_04102017 : Enhancement Of Insurance Tab
     $("#gsc_totalpremium").on('change', function () {
         var totalpremium = 0;

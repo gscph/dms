@@ -31,7 +31,13 @@
                 }
             });
 
-            input.mask('00/00/0000');
+            input.mask('ZZ/ZZ/ZZZZ', {
+                translation: {
+                    'Z': {
+                        pattern: /[0-9]/, optional: true
+                    }
+                }
+            });
 
             var isReadOnly = $(this).siblings('input').hasClass('readonly');
 
