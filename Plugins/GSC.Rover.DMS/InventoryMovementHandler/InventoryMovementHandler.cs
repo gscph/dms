@@ -470,5 +470,60 @@ namespace GSC.Rover.DMS.BusinessLogic.InventoryMovement
             return null;
         }
 
+        //Created By: Raphael Herrera, Created On: 8/30/2017
+        /*Purpose: Create Product Quantity Record
+         * Primary Entity: gsc_iv_productquantity
+         * Return: Guid id of created Product Quantity record
+         * Parameters: 
+         *       siteReference - EntityReference of site to be used in product quantity
+         *       productId - Guid id of product to be used in product quantity
+         *       vehicleColorReference - EntityReference of vehicle color to be used in product quantity
+         */
+        public Guid CreateProductQuantity(EntityReference siteReference, Guid productId, EntityReference vehicleColorReference)
+        {
+            EntityCollection productCollection = CommonHandler.RetrieveRecordsByOneValue("product", "productid", productId, _organizationService,
+                null, OrderType.Ascending, new[]{"gsc_vehiclemodelid", "name"});
+
+            if(productCollection.Entities == null || productCollection.Entities.Count == 0)
+                throw new InvalidPluginExecutionException("Inventory Movement Handler - CreateProductQuantity Method: No product records retrieved...");
+
+            Entity productEntity = productCollection.Entities[0];
+            string quantityName = productEntity.GetAttributeValue<string>("name") + "-" + siteReference.Name;
+            
+            Entity productQuantity = new Entity("gsc_iv_productquantity");
+            productQuantity["gsc_productquantitypn"] = quantityName;
+            productQuantity["gsc_siteid"] = siteReference;
+            productQuantity["gsc_productid"] = new EntityReference("product", productId);
+            productQuantity["gsc_vehiclemodelid"] = productEntity.GetAttributeValue<EntityReference>("gsc_vehiclemodelid");
+            productQuantity["gsc_vehiclecolorid"] = vehicleColorReference;
+
+            return  _organizationService.Create(productQuantity);
+        }
+
+        //Created By: Raphael Herrera, Created On: 8/30/2017
+        /*Purpose: Retrieve and return vehicle color entity based on filters in inventory record
+         * Return: Entity record of vehicle color
+         * Parameters: 
+         *       inventoryEntity - Inventory entity. Must have color and productid
+         */
+        public Entity GetVehicleColorReference(Entity inventoryEntity)
+        {
+            string color = inventoryEntity.Contains("gsc_color") ? inventoryEntity.GetAttributeValue<string>("gsc_color") : string.Empty;
+            Guid productId = inventoryEntity.Contains("gsc_productid") ? inventoryEntity.GetAttributeValue<EntityReference>("gsc_productid").Id
+                : Guid.Empty;
+
+            var colorConditionList = new List<ConditionExpression>
+            {
+                new ConditionExpression("gsc_productid", ConditionOperator.Equal, productId),
+                new ConditionExpression("gsc_vehiclecolorpn", ConditionOperator.Equal, color)     
+            };
+
+            EntityCollection vehicleColorCollection = CommonHandler.RetrieveRecordsByConditions("gsc_cmn_vehiclecolor", colorConditionList,_organizationService, null,
+                OrderType.Ascending, new[] { "gsc_vehiclecolorpn" });
+            if(vehicleColorCollection.Entities == null || vehicleColorCollection.Entities.Count == 0)
+                throw new InvalidPluginExecutionException("Inventory Movement Handler - GetVehicleColorReference Method: No vehicle color records retrieved...");
+            return vehicleColorCollection.Entities[0];
+        }
+
     }
 }
