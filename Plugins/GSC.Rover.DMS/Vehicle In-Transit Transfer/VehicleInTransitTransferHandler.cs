@@ -465,7 +465,6 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
             return vehicleInTransitTransferEntity;
         }
 
-
         //Created By: Raphael Herrera, Created On: 8/29/2017
         /*Purpose: Retrieve Branch Name ID to be used for creating inventory history records.
          *Return: Returns account entity
@@ -493,6 +492,5 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
             _tracingService.Trace("Ending GetBranchEntity method...");
             return branchCollection.Entities[0];
         }
-
     }
 }
