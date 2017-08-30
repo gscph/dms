@@ -496,6 +496,14 @@ namespace GSC.Rover.DMS.BusinessLogic.InventoryMovement
             productQuantity["gsc_productid"] = new EntityReference("product", productId);
             productQuantity["gsc_vehiclemodelid"] = productEntity.GetAttributeValue<EntityReference>("gsc_vehiclemodelid");
             productQuantity["gsc_vehiclecolorid"] = vehicleColorReference;
+            productQuantity["gsc_onhand"] = 0;
+            productQuantity["gsc_available"] = 0;
+            productQuantity["gsc_allocated"] = 0;
+            productQuantity["gsc_onorder"] = 0;
+            productQuantity["gsc_sold"] = 0;
+            productQuantity["gsc_intransit"] = 0;
+            productQuantity["gsc_damaged"] = 0;
+            productQuantity["gsc_backorder"] = 0;
 
             return  _organizationService.Create(productQuantity);
         }
