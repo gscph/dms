@@ -267,7 +267,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
 
                         //Retrieve inventory
                         EntityCollection inventoryCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_inventory", "gsc_iv_inventoryid", inventoryId, _organizationService,
-                            null, OrderType.Ascending, new[] { "gsc_status", "gsc_productquantityid" });
+                            null, OrderType.Ascending, new[] { "gsc_status", "gsc_productquantityid", "gsc_modelcode", "gsc_optioncode" });
 
                         _tracingService.Trace("Inventory records retrieved: " + inventoryCollection.Entities.Count);
 
@@ -280,7 +280,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
 
                             //Retrieve source site product quantity
                             EntityCollection sourceProdQuantityCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_productquantity", "gsc_iv_productquantityid", sourceProdQuantityId, _organizationService,
-                                null, OrderType.Ascending, new[] { "gsc_onhand", "gsc_allocated", "gsc_productid" });
+                                null, OrderType.Ascending, new[] { "gsc_onhand", "gsc_allocated", "gsc_productid", "gsc_vehiclecolorid", "gsc_vehiclemodelid" });
 
                             _tracingService.Trace("Source ProductQuantity records retrieved: " + sourceProdQuantityCollection.Entities.Count);
 
@@ -301,7 +301,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                                 };
 
                                 EntityCollection viaSiteProductQuantityRecords = CommonHandler.RetrieveRecordsByConditions("gsc_iv_productquantity", viaSiteConditionList, _organizationService, null,
-                                    OrderType.Ascending, new[] { "gsc_onhand", "gsc_available" });
+                                    OrderType.Ascending, new[] { "gsc_onhand", "gsc_available", "gsc_productid", "gsc_vehiclecolorid", "gsc_vehiclemodelid" });
 
                                 _tracingService.Trace("Destination ProductQuantity records retrieved: " + viaSiteProductQuantityRecords.Entities.Count);
                                 if (viaSiteProductQuantityRecords.Entities.Count > 0)
@@ -316,11 +316,20 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                                     _tracingService.Trace("Updated inventory record...");
 
                                     //Adjust source product quantity
-                                    inventoryMovement.UpdateProductQuantityDirectly(sourceProdQuantity, -1, 0, -1, 0, 0, 0, 0, 0);
+                                    Entity sourceQuantityEntity = inventoryMovement.UpdateProductQuantityDirectly(sourceProdQuantity, -1, 0, -1, 0, 0, 0, 0, 0);
+                                    Entity branchEntity = GetBranchEntity(vehicleInTransitTransfer, true);
+                                    var fromSiteId = vehicleInTransitTransfer.GetAttributeValue<EntityReference>("gsc_sourcesiteid").Id;
+
+                                    inventoryMovement.CreateInventoryHistory("Vehicle In Transit Transfer", branchEntity.GetAttributeValue<string>("accountnumber"), branchEntity.GetAttributeValue<string>("name"), vehicleInTransitTransfer.GetAttributeValue<string>("gsc_vehicleintransittransferpn"),
+                                        DateTime.UtcNow, 1, 0, sourceQuantityEntity.GetAttributeValue<Int32>("gsc_onhand"), viaSiteId, fromSiteId, fromSiteId, inventory, sourceQuantityEntity, true, false);
                                     _tracingService.Trace("Source Product Quantity updated...");
 
                                     //Adjust site product quantity
                                     inventoryMovement.UpdateProductQuantityDirectly(viaSiteProductQuantity, 1, 1, 0, 0, 0, 0, 0, 0);
+                                    branchEntity = GetBranchEntity(vehicleInTransitTransfer, false);
+
+                                    inventoryMovement.CreateInventoryHistory("Vehicle In Transit Transfer", branchEntity.GetAttributeValue<string>("accountnumber"), branchEntity.GetAttributeValue<string>("name"), vehicleInTransitTransfer.GetAttributeValue<string>("gsc_vehicleintransittransferpn"),
+                                       DateTime.UtcNow, 0, 1, viaSiteProductQuantity.GetAttributeValue<Int32>("gsc_onhand"), viaSiteId, fromSiteId, viaSiteId, inventory, viaSiteProductQuantity, true, true);
                                     _tracingService.Trace("Destination Product Quantity updated...");
 
                                     //Clear inventoryidtoallocate field
@@ -455,5 +464,35 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
             _tracingService.Trace("Ended ReplicateVehicleInTransitTransferStatus method...");
             return vehicleInTransitTransferEntity;
         }
+
+
+        //Created By: Raphael Herrera, Created On: 8/29/2017
+        /*Purpose: Retrieve Branch Name ID to be used for creating inventory history records.
+         *Return: Returns account entity
+         *Parameters: isSource = true if retrieving Source Branch, false if Destination branch
+         *            vehicleInTransitTransferEntity = Current in transit transfer entity
+         */
+        private Entity GetBranchEntity(Entity vehicleInTransitTransferEntity, bool isSource)
+        {
+            _tracingService.Trace("Started GetBranchEntity method...");
+
+            Guid branchId = new Guid();
+            if (isSource)
+                branchId = vehicleInTransitTransferEntity.Contains("gsc_sourcebranchid") ? vehicleInTransitTransferEntity.GetAttributeValue<EntityReference>("gsc_sourcebranchid").Id 
+                    : Guid.Empty;
+            else
+                branchId = vehicleInTransitTransferEntity.Contains("gsc_destinationbranchid") ? vehicleInTransitTransferEntity.GetAttributeValue<EntityReference>("gsc_destinationbranchid").Id
+                    : Guid.Empty;
+
+            EntityCollection branchCollection = CommonHandler.RetrieveRecordsByOneValue("account", "accountid", branchId, _organizationService, null,
+                OrderType.Ascending, new[]{"name", "accountnumber"});
+
+            if (branchCollection.Entities == null || branchCollection.Entities.Count == 0)
+                throw new InvalidPluginExecutionException("No branch record retrieved.");
+
+            _tracingService.Trace("Ending GetBranchEntity method...");
+            return branchCollection.Entities[0];
+        }
+
     }
 }
