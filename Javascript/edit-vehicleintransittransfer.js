@@ -3,7 +3,6 @@ $(document).bind('DOMNodeInserted', function (evt) {
     var isSubGridFrm = $(evt.target).parent().parent('#AllocatedVehicle.subgrid').html();
     if ((typeof isSubGridFrm !== 'undefined')) {
         var table = $(evt.target).siblings('.view-grid.table-responsive');
-        console.log(table.html());
     }
 });
 
@@ -12,16 +11,21 @@ $(document).ready(function () {
 
     $('#gsc_intransittransferstatus').attr('readOnly', true);
     $('#gsc_intransittransferstatus').css({ "pointer-events": "none", "cursor": "default" });
+    
     drawAllocateButton();
     drawShipButton();
     drawCancelButton();
-
    
     $('#gsc_inventoryidtoallocate').hide();
     $('#gsc_inventoryidtoallocate_label').hide();
     $('.sort-disabled').innerHTML = "<a href=\"#\"> Site </a>";
 
     setTimeout(function () {
+      if(DMS.Settings.Permission.Update == false)
+      {
+        $(".dropdown.action").hide();
+        $(".grid-actions").hide();
+      }
       $('#gsc_isshipping').hide();
       //RefreshAvailableItems($(".btn-primary").closest("div #Inventory"), 1, 4);
       

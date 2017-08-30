@@ -10,7 +10,7 @@ $(document).ready(function () {
 
   drawPrintButton();
   drawComponentsButton();
-
+  
   $('#gsc_intransitstatus').attr('readOnly', true);
   $('#gsc_intransitstatus').css({ "pointer-events": "none", "cursor": "default" });
 
@@ -18,6 +18,9 @@ $(document).ready(function () {
   $('#gsc_intransitstatus').hide();
 
   setTimeout(function () {
+    if(DMS.Settings.Permission.Update == false)
+    {$(".components").attr("disabled",true)};
+  
     if (intransitStatus == 100000001 || intransitStatus == 100000002) //Received || Cancelled
     {
       $("#UpdateButton").attr('disabled', true);
@@ -89,7 +92,7 @@ function drawComponentsButton() {
   var $container = $('<div class="view-toolbar grid-actions clearfix"></div>');
   var $buttonIcon = DMS.Helpers.CreateFontAwesomeIcon('fa-wrench');
 
-  var $button = DMS.Helpers.CreateButton('button', true, 'components', ' COMPONENTS', $buttonIcon);
+  var $button = DMS.Helpers.CreateButton('button', 'btn btn-primary components', 'components', ' COMPONENTS', $buttonIcon);
 
   var modalOptions = { id: 'componentsModal', headerIcon: 'fa fa-car', headerTitle: ' Vehicle Component Checklist', Body: createEditableGridSection() };
 
