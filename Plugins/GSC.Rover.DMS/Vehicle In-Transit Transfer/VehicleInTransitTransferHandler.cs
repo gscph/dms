@@ -333,7 +333,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                                 var fromSiteId = vehicleInTransitTransfer.GetAttributeValue<EntityReference>("gsc_sourcesiteid").Id;
 
                                 inventoryMovement.CreateInventoryHistory("Vehicle In Transit Transfer", branchEntity.GetAttributeValue<string>("accountnumber"), branchEntity.GetAttributeValue<string>("name"), vehicleInTransitTransfer.GetAttributeValue<string>("gsc_vehicleintransittransferpn"),
-                                    DateTime.UtcNow, 1, 0, sourceQuantityEntity.GetAttributeValue<Int32>("gsc_onhand"), viaSiteId, fromSiteId, fromSiteId, inventory, sourceQuantityEntity, true, false);
+                                    DateTime.UtcNow, 1, 1, sourceQuantityEntity.GetAttributeValue<Int32>("gsc_onhand"), viaSiteId, fromSiteId, fromSiteId, inventory, sourceQuantityEntity, true, false);
                                 _tracingService.Trace("Source Product Quantity updated...");
 
                                 //Adjust site product quantity
@@ -341,7 +341,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransfer
                                 branchEntity = GetBranchEntity(vehicleInTransitTransfer, false);
 
                                 inventoryMovement.CreateInventoryHistory("Vehicle In Transit Transfer", branchEntity.GetAttributeValue<string>("accountnumber"), branchEntity.GetAttributeValue<string>("name"), vehicleInTransitTransfer.GetAttributeValue<string>("gsc_vehicleintransittransferpn"),
-                                   DateTime.UtcNow, 0, 1, viaSiteProductQuantity.GetAttributeValue<Int32>("gsc_onhand"), viaSiteId, fromSiteId, viaSiteId, inventory, viaSiteProductQuantity, true, true);
+                                   DateTime.UtcNow, 1, 1, viaSiteProductQuantity.GetAttributeValue<Int32>("gsc_onhand"), viaSiteId, fromSiteId, viaSiteId, inventory, viaSiteProductQuantity, true, true);
                                 _tracingService.Trace("Destination Product Quantity updated...");
 
                                 //Clear inventoryidtoallocate field
