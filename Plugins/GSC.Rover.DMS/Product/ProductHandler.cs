@@ -14,8 +14,6 @@ namespace GSC.Rover.DMS.BusinessLogic.Product
         private readonly IOrganizationService _organizationService;
         private readonly ITracingService _tracingService;
 
-
-
         public ProductHandler(IOrganizationService service, ITracingService trace)
         {
             _organizationService = service;
@@ -193,8 +191,7 @@ namespace GSC.Rover.DMS.BusinessLogic.Product
                 _organizationService.Update(productToUpdate);
             }
         }
-
-
+        
         //Created By: Leslie Baliguat, Created On: 05/23/17
         public Entity UpdateUoMScheduleId(Entity product)
         {
@@ -210,7 +207,6 @@ namespace GSC.Rover.DMS.BusinessLogic.Product
             }
 
             return product;
-        }
-
+        }        
     }
 }
