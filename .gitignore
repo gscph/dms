@@ -13,3 +13,7 @@
 *.dll
 *.pdb
 *.txt
+Plugins/GSC.Rover.DMS/.vs/config/applicationhost.config
+Plugins/GSC.Rover.DMS/.vs/config/applicationhost.config
+Plugins/GSC.Rover.DMS/VehicleAdjustmentVarianceEntry/VehicleAdjustmentVarianceEntryHandler.cs
+Plugins/GSC.Rover.DMS/.vs/GSC.Rover.DMS/v14/.suo
