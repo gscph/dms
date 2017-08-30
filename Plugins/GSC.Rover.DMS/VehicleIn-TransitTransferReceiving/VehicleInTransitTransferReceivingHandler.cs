@@ -269,6 +269,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             {
                 throw new InvalidPluginExecutionException("Only records with Shipped status can be canceled.");
             }
+
             var inTransitTransferId = vehicleTransferReceiving.Contains("gsc_intransittransferid") ? vehicleTransferReceiving.GetAttributeValue<EntityReference>("gsc_intransittransferid").Id
                 : Guid.Empty;
 
@@ -290,7 +291,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                 {
                     foreach (Entity transferDetailsEntity in transferDetailsCollection.Entities)
                     {
-                        var sourceSiteId = inTransitTransferEntity.Contains("gsc_sourcesiteid") ? inTransitTransferEntity.GetAttributeValue<EntityReference>("gsc_sourcesiteid").Id
+                        var sourceSiteId = transferDetailsEntity.Contains("gsc_sourcesiteid") ? transferDetailsEntity.GetAttributeValue<EntityReference>("gsc_sourcesiteid").Id
                             : Guid.Empty;
                         var inventoryId = transferDetailsEntity.Contains("gsc_inventoryid") ? transferDetailsEntity.GetAttributeValue<EntityReference>("gsc_inventoryid").Id
                             : Guid.Empty;
@@ -368,6 +369,10 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                     // Update Vehicle In-Transit Transfer Status to Picked
                     inTransitTransferEntity["gsc_intransittransferstatus"] = new OptionSetValue(100000000);
                     _organizationService.Update(inTransitTransferEntity);
+
+                    //Clear vehicle in-transit transfer lookup field
+                    vehicleTransferReceiving["gsc_intransittransferid"] = null;
+                    _organizationService.Update(vehicleTransferReceiving);
                     _tracingService.Trace("Updated Vehicle In-Transit Transfer status to cancelled...");
                     #endregion
                 }
@@ -392,6 +397,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
             Guid transferId = CommonHandler.GetEntityReferenceValueSafe(vehicleReceivingTransfer, "gsc_intransittransferid");
 
             query.Criteria.AddCondition(new ConditionExpression("gsc_intransittransferid", ConditionOperator.Equal, transferId));
+            query.Criteria.AddCondition(new ConditionExpression("gsc_intransitstatus", ConditionOperator.Equal, 100000000));
 
             int count = _organizationService.RetrieveMultiple(query).Entities.Count;
 
