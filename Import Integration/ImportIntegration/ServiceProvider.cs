@@ -79,9 +79,6 @@ namespace ImportIntegration
                 Guid siteId = GetEntityReferenceId("gsc_iv_site",
                   GetEntityConditionExpression("gsc_sitepn", item.InTransitSite));
 
-                Guid vehicleColorId = GetEntityReferenceId("gsc_iv_color",
-                  GetEntityConditionExpression("gsc_colorcode", item.ReceivingDetails.ColorCode));
-
                 Guid productId = vpoDetail.GetAttributeValue<EntityReference>("gsc_productid") != null
                     ? vpoDetail.GetAttributeValue<EntityReference>("gsc_productid").Id
                     : Guid.Empty;
@@ -172,9 +169,9 @@ namespace ImportIntegration
                     continue;
                 }
 
-                if (vehicleColorId == Guid.Empty)
+                if (vehicleProductColorId == Guid.Empty)
                 {
-                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}]. Color Code:[{2}]  does not exist in the DMS..", counter, item.VehiclePurchaseOrderNumber, item.ReceivingDetails.ColorCode);
+                    _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}]. Color Code:[{2}]  does not exist in the DMS or not associated to the vehicle model..", counter, item.VehiclePurchaseOrderNumber, item.ReceivingDetails.ColorCode);
                     counter++;
                     this.RecordsFailedUpload++;
                     continue;
@@ -228,7 +225,7 @@ namespace ImportIntegration
                     continue;
                 }
 
-                if (!ValidateInvoiceNo(item))
+                if (!ValidateInvoiceNo(item, branchId))
                 {
                     _logger.Log(LogLevel.Error, "Unable to save row:[{0}], VPO:[{1}]. Invoice No. is already used in an exisitng vehicle receiving record.", counter, item.VehiclePurchaseOrderNumber);
                     counter++;
@@ -404,7 +401,7 @@ namespace ImportIntegration
                 ? vpoDetail.GetAttributeValue<String>("gsc_modelyear")
                 : String.Empty;
 
-            if (modelCode != poModelCode)
+            if (modelCode.TrimEnd() != poModelCode.TrimEnd())
             {
                 _logger.Log(LogLevel.Error, "Unable to save row:[{0}], vpo:[{1}]. Model Code provided in template must match Model Code of Purchase Order record.", counter, item.VehiclePurchaseOrderNumber);
                 return false;
@@ -426,7 +423,8 @@ namespace ImportIntegration
                 return true;
             }
         }
-        private bool ValidateInvoiceNo(ReceivingTransaction item)
+
+        private bool ValidateInvoiceNo(ReceivingTransaction item, Guid branchId)
         {
             var invoiceNo = item.InvoiceNumber;
 
@@ -435,7 +433,8 @@ namespace ImportIntegration
                 QueryExpression query = new QueryExpression("gsc_cmn_receivingtransaction");
                 query.ColumnSet.AddColumns("gsc_invoiceno");
                 query.Criteria.AddCondition(new ConditionExpression("gsc_invoiceno", ConditionOperator.Equal, invoiceNo));
-                query.Criteria.AddCondition(new ConditionExpression("gsc_status", ConditionOperator.Equal, 100000000));
+                query.Criteria.AddCondition(new ConditionExpression("gsc_receivingstatus", ConditionOperator.Equal, 100000000));
+                query.Criteria.AddCondition(new ConditionExpression("gsc_branchid", ConditionOperator.Equal, branchId));
 
                 EntityCollection collection = _service.RetrieveMultiple(query);
 
