@@ -204,7 +204,7 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleInTransitTransferReceiving
                                     Guid destinationQuantityId = inventoryHandler.CreateProductQuantity(receivingDetailsEntity.GetAttributeValue<EntityReference>("gsc_destinationsiteid"), productId, new EntityReference("gsc_cmn_vehiclecolor", vehicleColor.Id));
                                     EntityCollection destinationCollection = CommonHandler.RetrieveRecordsByOneValue("gsc_iv_productquantity", "gsc_iv_productquantityid", destinationQuantityId, _organizationService, null, OrderType.Ascending,
                                         new[] { "gsc_onhand", "gsc_available", "gsc_productid", "gsc_vehiclecolorid", "gsc_vehiclemodelid" });
-                                    destinationQuantityEntity = viaQuantityCollection.Entities[0];
+                                    destinationQuantityEntity = destinationCollection.Entities[0];
 
                                     _tracingService.Trace("Created Product Quantity...");
                                 }
