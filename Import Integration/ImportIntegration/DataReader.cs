@@ -49,71 +49,71 @@ namespace ImportIntegration
                                 {
                                     if (columnIndex == 0)
                                     {
-                                        rt.VehiclePurchaseOrderNumber = string.Empty;
+                                        rt.DealerCode = string.Empty;
                                     }
                                     if (columnIndex == 1)
                                     {
-                                        rt.PullOutDate = string.Empty;
+                                        rt.BranchCode = string.Empty;
                                     }
                                     if (columnIndex == 2)
                                     {
-                                        rt.MMPCStatus = string.Empty;
+                                        rt.VehiclePurchaseOrderNumber = string.Empty;
                                     }
                                     if (columnIndex == 3)
                                     {
-                                        rt.InvoiceNumber = string.Empty;
+                                        rt.PullOutDate = string.Empty;
                                     }
                                     if (columnIndex == 4)
                                     {
-                                        rt.InTransitReceiptDate = string.Empty;
+                                        rt.MMPCStatus = string.Empty;
                                     }
                                     if (columnIndex == 5)
                                     {
-                                        rt.InvoiceDate = string.Empty;
+                                        rt.InvoiceNumber = string.Empty;
                                     }
                                     if (columnIndex == 6)
                                     {
-                                        rt.InTransitSite = string.Empty;
+                                        rt.InTransitReceiptDate = string.Empty;
                                     }
                                     if (columnIndex == 7)
                                     {
-                                        rt.ReceivingDetails.ModelCode = string.Empty;
+                                        rt.InvoiceDate = string.Empty;
                                     }
                                     if (columnIndex == 8)
                                     {
-                                        rt.ReceivingDetails.OptionCode = string.Empty;
+                                        rt.InTransitSite = string.Empty;
                                     }
                                     if (columnIndex == 9)
                                     {
-                                        rt.ReceivingDetails.ModelYear = string.Empty;
+                                        rt.ReceivingDetails.ModelCode = string.Empty;
                                     }
                                     if (columnIndex == 10)
                                     {
-                                        rt.ReceivingDetails.ColorCode = string.Empty;
+                                        rt.ReceivingDetails.OptionCode = string.Empty;
                                     }
                                     if (columnIndex == 11)
                                     {
-                                        rt.ReceivingDetails.EngineNumber = string.Empty;
+                                        rt.ReceivingDetails.ModelYear = string.Empty;
                                     }
                                     if (columnIndex == 12)
                                     {
-                                        rt.ReceivingDetails.CSNumber = string.Empty;
+                                        rt.ReceivingDetails.ColorCode = string.Empty;
                                     }
                                     if (columnIndex == 13)
                                     {
-                                        rt.ReceivingDetails.ProductionNumber = string.Empty;
+                                        rt.ReceivingDetails.EngineNumber = string.Empty;
                                     }
                                     if (columnIndex == 14)
                                     {
-                                        rt.ReceivingDetails.VIN = string.Empty;
+                                        rt.ReceivingDetails.CSNumber = string.Empty;
                                     }
                                     if (columnIndex == 15)
                                     {
-                                        rt.DealerCode = string.Empty;
+                                        rt.ReceivingDetails.ProductionNumber = string.Empty;
                                     }
                                     if (columnIndex == 16)
                                     {
-                                        rt.BranchCode = string.Empty;
+                                        rt.ReceivingDetails.VIN = string.Empty;
                                     }
                                     columnIndex++;
                                 }
@@ -122,9 +122,17 @@ namespace ImportIntegration
 
                             if (columnIndex == 0)
                             {
-                                rt.VehiclePurchaseOrderNumber = GetCellValue(doc, cell);
+                                rt.DealerCode = GetCellValue(doc, cell);
                             }
                             if (columnIndex == 1)
+                            {
+                                rt.BranchCode = GetCellValue(doc, cell);
+                            }
+                            if (columnIndex == 2)
+                            {
+                                rt.VehiclePurchaseOrderNumber = GetCellValue(doc, cell);
+                            }
+                            if (columnIndex == 3)
                             {
                                 string cellValue = GetCellValue(doc, cell);
                                 DateTime sample;
@@ -137,15 +145,15 @@ namespace ImportIntegration
                                     rt.PullOutDate = DateTime.FromOADate(Convert.ToDouble(cellValue)).ToString();
                                 }                              
                             }
-                            if (columnIndex == 2)
+                            if (columnIndex == 4)
                             {
                                 rt.MMPCStatus = GetCellValue(doc, cell);
                             }
-                            if (columnIndex == 3)
+                            if (columnIndex == 5)
                             {
                                 rt.InvoiceNumber = GetCellValue(doc, cell);
                             }
-                            if (columnIndex == 4)
+                            if (columnIndex == 6)
                             {
                                 string cellValue = GetCellValue(doc, cell);
                                 DateTime sample;
@@ -159,7 +167,7 @@ namespace ImportIntegration
                                 }  
                               
                             }
-                            if (columnIndex == 5)
+                            if (columnIndex == 7)
                             {
                                 string cellValue = GetCellValue(doc, cell);
                                 DateTime sample;
@@ -172,49 +180,41 @@ namespace ImportIntegration
                                     rt.InvoiceDate = DateTime.FromOADate(Convert.ToDouble(cellValue)).ToString();
                                 }                                
                             }
-                            if (columnIndex == 6)
+                            if (columnIndex == 8)
                             {
                                 rt.InTransitSite = GetCellValue(doc, cell);
                             }
-                            if (columnIndex == 7)
+                            if (columnIndex == 9)
                             {
                                 rt.ReceivingDetails.ModelCode = GetCellValue(doc, cell);
                             }
-                            if (columnIndex == 8)
+                            if (columnIndex == 10)
                             {
                                 rt.ReceivingDetails.OptionCode = GetCellValue(doc, cell);
                             }
-                            if (columnIndex == 9)
+                            if (columnIndex == 11)
                             {
                                 rt.ReceivingDetails.ModelYear = GetCellValue(doc, cell);
                             }
-                            if (columnIndex == 10)
+                            if (columnIndex == 12)
                             {
                                 rt.ReceivingDetails.ColorCode = GetCellValue(doc, cell);
                             }
-                            if (columnIndex == 11)
+                            if (columnIndex == 13)
                             {
                                 rt.ReceivingDetails.EngineNumber = GetCellValue(doc, cell);
                             }
-                            if (columnIndex == 12)
+                            if (columnIndex == 14)
                             {
                                 rt.ReceivingDetails.CSNumber = GetCellValue(doc, cell);
                             }
-                            if (columnIndex == 13)
+                            if (columnIndex == 15)
                             {
                                 rt.ReceivingDetails.ProductionNumber = GetCellValue(doc, cell);
                             }
-                            if (columnIndex == 14)
-                            {
-                                rt.ReceivingDetails.VIN = GetCellValue(doc, cell);
-                            }
-                            if (columnIndex == 15)
-                            {
-                                rt.DealerCode = GetCellValue(doc, cell);
-                            }
                             if (columnIndex == 16)
                             {
-                                rt.BranchCode = GetCellValue(doc, cell);
+                                rt.ReceivingDetails.VIN = GetCellValue(doc, cell);
                             }
 
                             columnIndex++;
