@@ -74,6 +74,7 @@
                 NextButtonCssClass="btn btn-primary"
                 SubmitButtonCssClass="btn btn-primary"
                 ClientIDMode="Static"
+                OnItemSaving="OnItemSaving"
                 OnItemSaved="OnItemSaved"
                 LanguageCode="<%$ SiteSetting: Language Code, 0 %>"
                 PortalName="<%$ SiteSetting: Language Code %>" />
