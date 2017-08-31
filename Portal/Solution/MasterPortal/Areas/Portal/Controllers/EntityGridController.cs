@@ -168,7 +168,7 @@ namespace Site.Areas.Portal.Controllers
                 if (metaFilter.IndexOf(",vehiclecolor") > 0)
                 {
                     int start = metaFilter.LastIndexOf(",vehiclecolor");
-                    string vehicleColor = metaFilter.Substring(metaFilter.IndexOf("vehiclecolor=") + 10);
+                    string vehicleColor = metaFilter.Substring(metaFilter.IndexOf("vehiclecolor=") + 13);
 
                     viewConfiguration = converter.FilterRecordsbyVehicleColor(viewConfiguration, vehicleColor);
                     metaFilter = metaFilter.Substring(0, start);

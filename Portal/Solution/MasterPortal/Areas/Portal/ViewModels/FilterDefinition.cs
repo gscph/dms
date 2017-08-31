@@ -119,7 +119,7 @@ namespace Site.Areas.Portal.ViewModels
 
             filter.Conditions.Add(new Condition
             {
-                Attribute = "gsc_vehiclecolor",
+                Attribute = "gsc_color",
                 Operator = ConditionOperator.Equal,
                 Value = vehicleColor
             });

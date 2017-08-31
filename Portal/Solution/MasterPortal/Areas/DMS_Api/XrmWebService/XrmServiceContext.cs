@@ -375,91 +375,165 @@ namespace Site.Areas.DMSApi
         public bool HasDuplicate(string entityName, IDictionary<string, object> valuesSaved, Guid entityId)
         {
             bool duplicateFound = false;
+            Entity duplicateSetupEntity = GetDuplicateSetup(entityName);
 
-            //Additional validation only: Return false if parent product
-            if (entityName == "product")
+            if (duplicateSetupEntity != null)
             {
-                foreach (var entry in valuesSaved)
+                //Additional validation only: Return false if parent product
+                if (entityName == "product")
                 {
-                    string key = entry.Key;
-                    object values = entry.Value;
-                    if (key == "gsc_producttype" && values.ToString() == "100000002")
+                    foreach (var entry in valuesSaved)
                     {
-                        return false;
+                        string key = entry.Key;
+                        object values = entry.Value;
+                        if (key == "gsc_producttype" && values.ToString() == "100000002")
+                        {
+                            return false;
+                        }
+                    }
+                }
+
+                //Additional validation only: Return false if account is Corporate Customer/Prospect
+                if (entityName == "account")
+                {
+                    object a = valuesSaved.Where(x => x.Key == "gsc_recordtype").Select(y => y.Value);
+                    foreach (var entry in valuesSaved)
+                    {        
+                        if (entry.Key == "gsc_recordtype")
+                        {
+                            object values = entry.Value;
+                            var value = values.GetType().GetProperty("Value").GetValue(values, null);
+
+                            if (value.ToString() == "100000002" || value.ToString() == "100000003")
+                                return false;
+                        }
+
+
+                    }
+                }
+
+                //Query if there is existing setup
+                QueryExpression queryDuplicateDetectSetup = new QueryExpression("gsc_cmn_duplicatedetectsetup");
+                queryDuplicateDetectSetup.ColumnSet = new ColumnSet("gsc_cmn_duplicatedetectsetupid", "gsc_logicaloperator");
+
+                FilterExpression entityNameFilter = new FilterExpression();
+                entityNameFilter.Conditions.Add((new ConditionExpression("gsc_entityname", ConditionOperator.Equal, entityName)));
+                queryDuplicateDetectSetup.Criteria.AddFilter(entityNameFilter);
+
+                EntityCollection duplicateCollection = _service.ServiceContext.RetrieveMultiple(queryDuplicateDetectSetup);
+
+                if (duplicateCollection != null && duplicateCollection.Entities.Count > 0)//duplicate setup exists
+                {
+                    //Entity duplicateSetupEntity = duplicateCollection.Entities[0];
+
+                    //Query for the target fields fields of existing setup
+                    QueryExpression queryDuplicateFields = new QueryExpression("gsc_cmn_duplicatedetectfield");
+                    queryDuplicateFields.ColumnSet = new ColumnSet("gsc_targetfield", "gsc_islookup");
+
+                    FilterExpression duplicateSetupFilter = new FilterExpression();
+                    duplicateSetupFilter.Conditions.Add(new ConditionExpression("gsc_duplicatedetectsetupid", ConditionOperator.Equal, duplicateSetupEntity.Id));
+                    queryDuplicateFields.Criteria.AddFilter(duplicateSetupFilter);
+
+                    EntityCollection filterFieldsCollection = _service.ServiceContext.RetrieveMultiple(queryDuplicateFields);
+
+                    if (filterFieldsCollection != null && filterFieldsCollection.Entities.Count > 0)
+                    {
+                        var logicalOperator = duplicateSetupEntity.Contains("gsc_logicaloperator") ? duplicateSetupEntity.GetAttributeValue<OptionSetValue>("gsc_logicaloperator").Value
+                              : 0;
+
+                        FilterExpression fieldFilter = new FilterExpression(LogicalOperator.Or);
+                        if (logicalOperator == 100000001)
+                            fieldFilter.FilterOperator = LogicalOperator.And;
+
+                        String field = "";
+
+                        foreach (Entity filterFieldsEntity in filterFieldsCollection.Entities)//construct conditions of filtered expression for existing duplicates
+                        {
+                            field = filterFieldsEntity.GetAttributeValue<string>("gsc_targetfield");
+                            if (filterFieldsEntity.GetAttributeValue<bool>("gsc_islookup"))//adding condition if targer field is tagged as a lookup field
+                            {
+                                var lookupEntity = (EntityReference)valuesSaved[field];
+                                fieldFilter.Conditions.Add(new ConditionExpression(field, ConditionOperator.Equal, lookupEntity.Id));
+                            }
+                            else//condition for standard string fields
+                                fieldFilter.Conditions.Add(new ConditionExpression(field, ConditionOperator.Equal, valuesSaved[field]));
+                        }
+
+                        FilterExpression duplicateDetectFilter = new FilterExpression(LogicalOperator.And);
+                        duplicateDetectFilter.AddFilter(fieldFilter);
+
+                        var isBranchScope = duplicateSetupEntity.Contains("gsc_isbranchscope") ? duplicateSetupEntity.GetAttributeValue<bool>("gsc_isbranchscope")
+                            : false;
+
+                        if (isBranchScope)
+                        {
+                            var branchId = Guid.Empty;
+                            if (entityId != Guid.Empty)//Triggered by update
+                            {
+                                QueryExpression queryCurrentRecord = new QueryExpression(entityName);
+                                queryCurrentRecord.ColumnSet = new ColumnSet("gsc_branchid");
+                                FilterExpression currentRecordFilter = new FilterExpression();
+                                currentRecordFilter.Conditions.Add(new ConditionExpression(entityName + "id", ConditionOperator.Equal, entityId));
+                                queryCurrentRecord.Criteria.AddFilter(currentRecordFilter);
+                                EntityCollection currentRecordCollection = _service.ServiceContext.RetrieveMultiple(queryCurrentRecord);
+
+                                branchId = currentRecordCollection.Entities[0].GetAttributeValue<EntityReference>("gsc_branchid").Id;
+                            }
+                            else // Triggered by new record
+                            {
+                                branchId = ((EntityReference)valuesSaved["gsc_branchid"]).Id;
+                            }
+
+                            FilterExpression scopeFilter = new FilterExpression();
+                            scopeFilter.Conditions.Add(new ConditionExpression("gsc_branchid", ConditionOperator.Equal, branchId));
+                            duplicateDetectFilter.AddFilter(scopeFilter);//add condition for branch scope
+                        }
+
+
+                        //Query to check for existing duplicate fields values
+                        QueryExpression queryExistingFields = new QueryExpression(entityName);
+                        queryExistingFields.ColumnSet = new ColumnSet(field);
+
+                        queryExistingFields.Criteria.AddFilter(duplicateDetectFilter);
+
+                        EntityCollection duplicateRecordsCollection = _service.ServiceContext.RetrieveMultiple(queryExistingFields);
+                        if (duplicateRecordsCollection != null && duplicateRecordsCollection.Entities.Count > 0)
+                        {
+                            if (entityId != Guid.Empty)//Triggered by update, may have just retrieved itself
+                            {
+                                foreach (Entity duplicateEntity in duplicateRecordsCollection.Entities)
+                                {
+                                    if (duplicateEntity.Id != entityId)//Duplicate record != to itself
+                                        duplicateFound = true;
+                                }
+                            }
+                            else//Triggered by create, retrieved records means duplicate found.
+                                return true;
+                        }
                     }
                 }
             }
+            return duplicateFound;
+        }
 
-            //Query if there is existing setup
+        private Entity GetDuplicateSetup(string entityName)
+        {
             QueryExpression queryDuplicateDetectSetup = new QueryExpression("gsc_cmn_duplicatedetectsetup");
-            queryDuplicateDetectSetup.ColumnSet = new ColumnSet("gsc_cmn_duplicatedetectsetupid", "gsc_logicaloperator");
+            queryDuplicateDetectSetup.ColumnSet = new ColumnSet("gsc_cmn_duplicatedetectsetupid", "gsc_logicaloperator", "gsc_isbranchscope");
 
             FilterExpression entityNameFilter = new FilterExpression();
             entityNameFilter.Conditions.Add((new ConditionExpression("gsc_entityname", ConditionOperator.Equal, entityName)));
             queryDuplicateDetectSetup.Criteria.AddFilter(entityNameFilter);
 
+            //Query duplicate setups
             EntityCollection duplicateCollection = _service.ServiceContext.RetrieveMultiple(queryDuplicateDetectSetup);
 
-            if (duplicateCollection != null && duplicateCollection.Entities.Count > 0)//duplicate setup exists
+            if (duplicateCollection != null && duplicateCollection.Entities.Count > 0)
             {
-                Entity duplicateSetupEntity = duplicateCollection.Entities[0];
-
-                //Query for the target fields fields of existing setup
-                QueryExpression queryDuplicateFields = new QueryExpression("gsc_cmn_duplicatedetectfield");
-                queryDuplicateFields.ColumnSet = new ColumnSet("gsc_targetfield", "gsc_islookup");
-
-                FilterExpression duplicateSetupFilter = new FilterExpression();
-                duplicateSetupFilter.Conditions.Add(new ConditionExpression("gsc_duplicatedetectsetupid", ConditionOperator.Equal, duplicateSetupEntity.Id));
-                queryDuplicateFields.Criteria.AddFilter(duplicateSetupFilter);
-
-                EntityCollection filterFieldsCollection = _service.ServiceContext.RetrieveMultiple(queryDuplicateFields);
-
-                if (filterFieldsCollection != null && filterFieldsCollection.Entities.Count > 0)
-                {
-                    var logicalOperator = duplicateSetupEntity.Contains("gsc_logicaloperator") ? duplicateSetupEntity.GetAttributeValue<OptionSetValue>("gsc_logicaloperator").Value
-                          : 0;
-
-                    FilterExpression duplicateDetectFilter = new FilterExpression(LogicalOperator.Or);
-                    if (logicalOperator == 100000001)
-                        duplicateDetectFilter.FilterOperator = LogicalOperator.And;
-
-                    String field = "";
-
-                    foreach (Entity filterFieldsEntity in filterFieldsCollection.Entities)//construct conditions of filtered expression for existing duplicates
-                    {
-                        field = filterFieldsEntity.GetAttributeValue<string>("gsc_targetfield");
-                        if (filterFieldsEntity.GetAttributeValue<bool>("gsc_islookup"))//adding condition if targer field is tagged as a lookup field
-                        {
-                            var lookupEntity = (EntityReference)valuesSaved[field];
-                            duplicateDetectFilter.Conditions.Add(new ConditionExpression(field, ConditionOperator.Equal, lookupEntity.Id));
-                        }
-                        else//condition for standard string fields
-                            duplicateDetectFilter.Conditions.Add(new ConditionExpression(field, ConditionOperator.Equal, valuesSaved[field]));
-                    }
-
-                    //Query to check for existing duplicate fields values
-                    QueryExpression queryExistingFields = new QueryExpression(entityName);
-                    queryExistingFields.ColumnSet = new ColumnSet(field);
-
-                    queryExistingFields.Criteria.AddFilter(duplicateDetectFilter);
-
-                    EntityCollection duplicateRecordsCollection = _service.ServiceContext.RetrieveMultiple(queryExistingFields);
-                    if (duplicateRecordsCollection != null && duplicateRecordsCollection.Entities.Count > 0)
-                    {
-                        if (entityId != Guid.Empty)//Triggered by update, may have just retrieved itself
-                        {
-                            foreach (Entity duplicateEntity in duplicateRecordsCollection.Entities)
-                            {
-                                if (duplicateEntity.Id != entityId)//Duplicate record != to itself
-                                    duplicateFound = true;
-                            }
-                        }
-                        else//Triggered by create, retrieved records means duplicate found.
-                            return true;
-                    }
-                }
+                return duplicateCollection.Entities[0];
             }
-            return duplicateFound;
+
+            return null;
         }
 
         public Privileges GetEditableGridEntityPermission(Guid webRoleId, String entityName, Guid recordOwnerId, Guid OwningBranchId)
