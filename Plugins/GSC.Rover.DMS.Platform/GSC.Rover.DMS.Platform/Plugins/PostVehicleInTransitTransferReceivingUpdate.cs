@@ -105,6 +105,9 @@ namespace GSC.Rover.DMS.Platform.Plugins
  
                     VehicleInTransitTransferReceivingHandler vehicleReceivingHandler = new VehicleInTransitTransferReceivingHandler(service, trace);
 
+                    if (preDestinationSite != postDestinationSite && postDestinationSite != Guid.Empty)
+                        vehicleReceivingHandler.CopyDestinationSite(postImageEntity);
+
                     //BL for postStatus changed to Received
                     if (preStatus != postStatus)
                     {
@@ -114,8 +117,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
                             vehicleReceivingHandler.CancelTransfer(preImageEntity);
                         vehicleReceivingHandler.CopyStatus(postImageEntity);
                     }
-                    if (preDestinationSite != postDestinationSite && postDestinationSite != Guid.Empty)
-                        vehicleReceivingHandler.CopyDestinationSite(postImageEntity);
+                    
                 }
 
                 catch (Exception ex)
