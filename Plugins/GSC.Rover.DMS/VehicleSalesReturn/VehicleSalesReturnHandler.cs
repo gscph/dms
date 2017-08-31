@@ -202,10 +202,10 @@ namespace GSC.Rover.DMS.BusinessLogic.VehicleSalesReturn
 
                 InventoryMovementHandler inventoryMovement = new InventoryMovementHandler(_organizationService, _tracingService);
                 Int32 onHandDestination = productQuantityDestination.GetAttributeValue<Int32>("gsc_onhand");
-                inventoryMovement.CreateInventoryHistory("Vehicle Sales Return", customerId, customerName, transactionNumber, transactionDate, 0, 1, onHandDestination, siteId, fromSite, siteId, inventory, productQuantityDestination, true, true);
+                inventoryMovement.CreateInventoryHistory("Vehicle Sales Return", customerId, customerName, transactionNumber, transactionDate, 0, 1, onHandDestination, siteId, Guid.Empty, siteId, inventory, productQuantityDestination, true, true);
                
-                /*inventoryMovement.UpdateProductQuantityDirectly(productQuantity, 0, 0, 0, 0, -1, 0, 0, 0);
-                Int32 onHandFrom = productQuantity.GetAttributeValue<Int32>("gsc_onhand");
+                inventoryMovement.UpdateProductQuantityDirectly(productQuantity, 0, 0, 0, 0, -1, 0, 0, 0);
+                /*Int32 onHandFrom = productQuantity.GetAttributeValue<Int32>("gsc_onhand");
                 inventoryMovement.CreateInventoryHistory("Vehicle Sales Return", customerId, customerName, transactionNumber, transactionDate, 1, 0, onHandFrom, siteId, fromSite, fromSite, inventory, productQuantity, true, true);*/
 
                 _tracingService.Trace("Inventory History Created.");
