@@ -23,7 +23,7 @@ namespace GSC.Rover.DMS.BusinessLogic.ApproverSetup
         }
 
         //Created By: Leslie G. Baliguat, Created On: 01/25/2017
-        public void RestrictDuplicateSetup(Entity approver)
+        public void RestrictMultipleSetup(Entity approver)
         {
             _tracingService.Trace("Started RestrictDuplicateSetup method...");
 
@@ -51,6 +51,46 @@ namespace GSC.Rover.DMS.BusinessLogic.ApproverSetup
             }
 
             _tracingService.Trace("Ended RestrictDuplicateSetup method...");
+        }
+
+        //Created By: Leslie Baliguat, Created On: 9/4/2017
+        /* Purpose: Associate Department of a specific branch to employee
+         * Registration Details:
+         * Event/Message: 
+         *      Pre/Create: 
+         * Primary Entity: Contact
+         */
+        public Entity GetApproverSetup(Entity approverDetails)
+        {
+            var approverSetupId = approverDetails.GetAttributeValue<EntityReference>("gsc_approversetupid") != null
+                ? approverDetails.GetAttributeValue<EntityReference>("gsc_approversetupid").Id
+                : Guid.Empty;
+
+            if (approverSetupId == Guid.Empty)
+            {
+                var approverSetup = approverDetails.Contains("gsc_approversetup")
+                    ? approverDetails.GetAttributeValue<String>("gsc_approversetup")
+                    : String.Empty;
+
+                var approverConditionList = new List<ConditionExpression>
+                                {
+                                    new ConditionExpression("gsc_approversetuppn", ConditionOperator.Equal, approverDetails),
+                                    new ConditionExpression("gsc_branchid", ConditionOperator.Equal, CommonHandler.GetEntityReferenceIdSafe(approverDetails, "gsc_branchid"))
+                                };
+
+                EntityCollection approverCollection = CommonHandler.RetrieveRecordsByConditions("gsc_cmn_approversetup", approverConditionList, _organizationService, null, OrderType.Ascending,
+                     new[] { "gsc_approversetuppn" });
+
+                if (approverCollection != null && approverCollection.Entities.Count > 0)
+                {
+                    approverDetails["gsc_approversetupid"] = new EntityReference("gsc_cmn_approversetup", approverCollection.Entities[0].Id);
+                }
+                else
+                {
+                    throw new InvalidPluginExecutionException("Approver Setup does not exists in the system.");
+                }
+            }
+            return approverDetails;
         }
     }
 }

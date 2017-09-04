@@ -108,7 +108,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
 
                     if (preImageStatus != postImageStatus && preImageStatus == 1)
                     {
-                        approverSetupHandler.RestrictDuplicateSetup(postImageEntity);
+                        approverSetupHandler.RestrictMultipleSetup(postImageEntity);
                     }
                 }
                 catch (Exception ex)

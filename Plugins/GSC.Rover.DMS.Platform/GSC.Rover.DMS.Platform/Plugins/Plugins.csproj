@@ -398,6 +398,7 @@
     <Compile Include="PostVehicleSalesReturnUpdate.cs" />
     <Compile Include="PostVehicleTransferDetailsUpdate.cs" />
     <Compile Include="PostVehicleTransferUpdate.cs" />
+    <Compile Include="PreApproverDetailsCreate.cs" />
     <Compile Include="PreApproverSetupCreate.cs" />
     <Compile Include="PreCommittedFirmOrderQuantityDetailCreate.cs" />
     <Compile Include="PreContactCreate.cs" />

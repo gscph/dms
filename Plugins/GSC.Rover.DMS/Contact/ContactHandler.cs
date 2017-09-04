@@ -489,5 +489,82 @@ namespace GSC.Rover.DMS.BusinessLogic.Contact
             _tracingService.Trace("Ended UpdateCustomerInfo Method...");
             return contactEntity;
         }
+
+        //Created By: Leslie Baliguat, Created On: 9/4/2017
+        /* Purpose: Associate Department of a specific branch to employee
+         * Registration Details:
+         * Event/Message: 
+         *      Pre/Create: 
+         * Primary Entity: Contact
+         */
+        public Entity GetDepartment(Entity employee)
+        {
+            var departmentId = employee.GetAttributeValue<EntityReference>("gsc_departmentid") != null
+                ? employee.GetAttributeValue<EntityReference>("gsc_departmentid").Id
+                : Guid.Empty;
+
+            if (departmentId == Guid.Empty)
+            {
+                var department = employee.Contains("gsc_department")
+                    ? employee.GetAttributeValue<String>("gsc_department")
+                    : String.Empty;
+
+                var departmentConditionList = new List<ConditionExpression>
+                                {
+                                    new ConditionExpression("gsc_department", ConditionOperator.Equal, department),
+                                    new ConditionExpression("gsc_branchid", ConditionOperator.Equal, CommonHandler.GetEntityReferenceIdSafe(employee, "gsc_branchid"))
+                                };
+
+                EntityCollection departmentCollection = CommonHandler.RetrieveRecordsByConditions("gsc_cmn_department", departmentConditionList, _organizationService, null, OrderType.Ascending,
+                     new[] { "gsc_department" });
+
+                if (departmentCollection != null && departmentCollection.Entities.Count > 0)
+                {
+                    employee["gsc_departmentid"] = new EntityReference("gsc_cmn_department", departmentCollection.Entities[0].Id);
+                }
+                else
+                {
+                    throw new InvalidPluginExecutionException("Position does not exists in the system.");
+                }
+            }
+            return employee;
+        }
+
+        //Created By: Leslie Baliguat, Created On: 9/4/2017
+        /* Purpose: Associate Position of a specific branch to employee
+         * Registration Details:
+         * Event/Message: 
+         *      Pre/Create: 
+         * Primary Entity: Contact
+         */
+        public Entity GetPosition(Entity employee)
+        {
+            var position = employee.Contains("gsc_position")
+                ? employee.GetAttributeValue<String>("gsc_position")
+                : String.Empty;
+
+            if (position != String.Empty)
+            {
+                var positionConditionList = new List<ConditionExpression>
+                                {
+                                    new ConditionExpression("gsc_position", ConditionOperator.Equal, position),
+                                    new ConditionExpression("gsc_branchid", ConditionOperator.Equal, CommonHandler.GetEntityReferenceIdSafe(employee, "gsc_branchid"))
+                                };
+
+                EntityCollection positionCollection = CommonHandler.RetrieveRecordsByConditions("gsc_cmn_position", positionConditionList, _organizationService, null, OrderType.Ascending,
+                     new[] { "gsc_position" });
+
+                if (positionCollection != null && positionCollection.Entities.Count > 0)
+                {
+                    employee["gsc_positionid"] = new EntityReference("gsc_cmn_position", positionCollection.Entities[0].Id);
+                }
+                else
+                {
+                    throw new InvalidPluginExecutionException("Position does not exists in the sytstem.");
+                }
+
+            }
+            return employee;
+        }
     }
 }

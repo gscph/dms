@@ -68,7 +68,7 @@ namespace GSC.Rover.DMS.Platform.Plugins
             try
             {
                 ApproverSetupHandler approverSetupHandler = new ApproverSetupHandler(service, trace);
-                approverSetupHandler.RestrictDuplicateSetup(approverSetup);
+                approverSetupHandler.RestrictMultipleSetup(approverSetup);
             }
             catch (Exception ex)
             {

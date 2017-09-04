@@ -1526,6 +1526,14 @@
             </Step>
           </Steps>
         </Plugin>
+        <Plugin Description="Plug-in to PreApproverDetailsCreate" FriendlyName="PreApproverDetailsCreate" Name="GSC.Rover.DMS.Platform.Plugins.PreApproverDetailsCreate" Id="25e9fa3e-4591-e711-80f8-00155d010e2c" TypeName="GSC.Rover.DMS.Platform.Plugins.PreApproverDetailsCreate">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreApproverDetailsCreate" Description="Pre-Operation of Approver Details Create" Id="26e9fa3e-4591-e711-80f8-00155d010e2c" MessageName="Create" Mode="Synchronous" PrimaryEntityName="gsc_cmn_approver" Rank="1" SecureConfiguration="" Stage="PreInsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
       </PluginTypes>
     </Solution>
     <Solution Assembly="GSC.Rover.DMS.Platform.Workflow.dll" Id="55c58133-16c0-e511-80cb-00155d010e2c" IsolationMode="None" SourceType="Database">
