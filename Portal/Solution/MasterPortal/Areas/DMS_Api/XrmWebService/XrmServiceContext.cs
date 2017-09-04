@@ -402,9 +402,9 @@ namespace Site.Areas.DMSApi
                         if (entry.Key == "gsc_recordtype")
                         {
                             object values = entry.Value;
-                            var value = values.GetType().GetProperty("Value").GetValue(values, null);
+                          //  var value = values.GetType().GetProperty("Value").GetValue(values, null);
 
-                            if (value.ToString() == "100000002" || value.ToString() == "100000003")
+                            if (values.ToString() == "100000002" || values.ToString() == "100000003")
                                 return false;
                         }
 
