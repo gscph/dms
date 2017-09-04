@@ -405,7 +405,7 @@ $(document).ready(function () {
     var statusReasonRemarksValidator = document.createElement('span');
     statusReasonRemarksValidator.style.display = "none";
     statusReasonRemarksValidator.id = "statusReasonRemarksValidator";
-    statusReasonRemarksValidator.errormessage = "Disqualify Remarks must not be empty.";
+    statusReasonRemarksValidator.errormessage = "Remarks must not be empty.";
     statusReasonRemarksValidator.validationGroup = "";
     statusReasonRemarksValidator.initialvalue = "";
     statusReasonRemarksValidator.evaluationfunction = function () {
